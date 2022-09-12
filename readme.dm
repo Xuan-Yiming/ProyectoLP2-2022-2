@@ -8,5 +8,7 @@ Integrantes:    Aquino Menacho, Joel Tomas
                 Novoa Vasquez, Jarumy Aracelli
                 Ruiz Cabrera, Omar Moises
                 Xuan, Yiming
+                ..
+                
 
                 
