@@ -1,10 +1,11 @@
+
 id instancia: lasjoyasdb
 
 usuario: adminjoya
 
 contraseña: lasjoyaslp2
 
-nombre: 
+nombre: lasjoyasdb
 
 url: lasjoyasdb.cmkeurxfbwvg.us-east-1.rds.amazonaws.com
 
