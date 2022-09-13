@@ -4,13 +4,23 @@ package pe.edu.pucp.lp2soft.ventas.manejoproductos;
 public class Pedido {
 
     private int cantidad;
+    private Unidad unidad;
     private double descuento;
     private Producto producto;
+
+    public Unidad getUnidad() {
+        return unidad;
+    }
+
+    public void setUnidad(Unidad unidad) {
+        this.unidad = unidad;
+    }
     
-    public Pedido(int cantidad, double descuento,Producto producto){
+    public Pedido(int cantidad, double descuento,Producto producto, Unidad unidad){
         this.cantidad=cantidad;
         this.descuento=descuento;
         this.producto=producto;
+        this.unidad = unidad;
     }
     public Producto getProducto() {
         return producto;
