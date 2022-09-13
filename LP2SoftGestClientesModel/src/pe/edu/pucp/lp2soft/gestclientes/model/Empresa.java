@@ -1,7 +1,5 @@
 
 package pe.edu.pucp.lp2soft.gestclientes.model;
-
-//xddddd
 public class Empresa extends Cliente {
     private int RUC;
     private String razonSocial;

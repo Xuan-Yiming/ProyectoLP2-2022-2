@@ -7,7 +7,7 @@ public class Vendedor extends Usuario {
     private int cantidadVentas;
     //private ArrayList<OrdenDeCompra> ordenesDeCompra;
     
-    public Vendedor( TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, int telefono, String direccion, String email,String password, Date fechaIngreso, int cantidadVentas) {
+    public Vendedor( TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email,String password, Date fechaIngreso, int cantidadVentas) {
         super( tipoDeDocumento, numDeDocumento, nombre, apellido, fechaDeNacimiento, telefono, direccion, email, password, fechaIngreso);
         this.cantidadVentas = cantidadVentas;
     }

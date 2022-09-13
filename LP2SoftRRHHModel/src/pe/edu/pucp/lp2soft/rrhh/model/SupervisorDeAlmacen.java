@@ -7,7 +7,7 @@ import pe.edu.pucp.lp2soft.ventas.manejoproductos.Almacen;
 public class SupervisorDeAlmacen extends Usuario {
     private Almacen almacen;
 
-    public SupervisorDeAlmacen(TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, int telefono, String direccion, String email,String password, Date fechaIngreso, Almacen almacen) {
+    public SupervisorDeAlmacen(TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email,String password, Date fechaIngreso, Almacen almacen) {
         super(tipoDeDocumento, numDeDocumento, nombre, apellido, fechaDeNacimiento, telefono, direccion, email, password, fechaIngreso);
         this.almacen = almacen;
     }
