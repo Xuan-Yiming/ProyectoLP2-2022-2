@@ -1,6 +1,6 @@
 
 package pe.edu.pucp.lp2soft.gestclientes.model;
-
+/xdddddd
 import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.ventaspagos.OrdenDeCompra;
 
