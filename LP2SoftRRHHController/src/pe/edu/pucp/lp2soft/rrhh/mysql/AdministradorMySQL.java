@@ -23,16 +23,16 @@ public class AdministradorMySQL implements AdministradorDAO {
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call INSERTAR_USUARIO(?,?,?,?,?,?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_usuario", java.sql.Types.INTEGER);
-            cs.setString("_password", usuario.getPassword());
-            cs.setDate("_fecha_de_ingreso", new java.sql.Date(usuario.getFechaIngreso().getTime()));
-            cs.setString("_tipo_de_documento", usuario.getTipoDeDocumento().name());
-            cs.setString("_numero_de_documento", usuario.getNumDeDocumento());
-            cs.setString("_nombre", usuario.getNombre());
-            cs.setString("_apellido", usuario.getApellido());
-            cs.setDate("_fecha_de_nacimiento", new java.sql.Date(usuario.getFechaDeNacimiento().getTime()));
-            cs.setString("_telefono", usuario.getTelefono());
-            cs.setString("_direccion", usuario.getDireccion());
-            cs.setString("_email", usuario.getEmail());
+            cs.setString("_password", administrador.getPassword());
+            cs.setDate("_fecha_de_ingreso", new java.sql.Date(administrador.getFechaIngreso().getTime()));
+            cs.setString("_tipo_de_documento", administrador.getTipoDeDocumento().name());
+            cs.setString("_numero_de_documento", administrador.getNumDeDocumento());
+            cs.setString("_nombre", administrador.getNombre());
+            cs.setString("_apellido", administrador.getApellido());
+            cs.setDate("_fecha_de_nacimiento", new java.sql.Date(administrador.getFechaDeNacimiento().getTime()));
+            cs.setString("_telefono", administrador.getTelefono());
+            cs.setString("_direccion", administrador.getDireccion());
+            cs.setString("_email", administrador.getEmail());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
