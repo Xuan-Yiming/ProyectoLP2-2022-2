@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.rrhh.dao.AdministradorDAO;
 import pe.edu.pucp.lp2soft.rrhh.model.Administrador;
+import pe.edu.pucp.lp2soft.rrhh.model.Usuario;
 
 public class AdministradorMySQL implements AdministradorDAO {
 
