@@ -14,7 +14,10 @@ public class Persona {
     private String direccion;
     private String email;
     private ArrayList<OrdenDeCompra> ordenesDeCompra;
-
+    
+    //Constructor vacio
+    public Persona(){}
+    
     public Persona(TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email) {
         this.tipoDeDocumento = tipoDeDocumento;
         this.numDeDocumento = numDeDocumento;

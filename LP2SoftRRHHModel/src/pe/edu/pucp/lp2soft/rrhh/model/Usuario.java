@@ -8,7 +8,10 @@ public abstract class Usuario extends Persona implements UConsultable {
     private int idUsuario;
     private String password;
     private Date fechaIngreso;
-
+    
+    //Constructor vacio
+    public Usuario(){}
+    
     public Usuario( TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email,String password, Date fechaIngreso) {
         super(tipoDeDocumento, numDeDocumento, nombre, apellido, fechaDeNacimiento, telefono, direccion, email);
         idUsuario = correlativo;
@@ -17,7 +20,10 @@ public abstract class Usuario extends Persona implements UConsultable {
         correlativo++;
     }
 
-
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+    
     public int getIdUsuario() {
         return idUsuario;
     }
