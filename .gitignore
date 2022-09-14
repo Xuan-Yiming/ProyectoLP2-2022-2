@@ -4,3 +4,6 @@ LP2SoftVentasModel/nbproject/private/private.properties
 *.properties
 *.xml
 *.xml
+/LP2SoftDBManager/nbproject/private/
+/LP2SoftDBManager/build/
+/LP2SoftDBManager/dist/
