@@ -8,6 +8,8 @@ public class Almacen {
     private String  nombre;
     private String  direccion;
     private ArrayList<Stock> productos;
+    //Constructor vacio
+    public Almacen(){}
     
     public Almacen(String nombre,String direccion){
         this.id=correlativo;

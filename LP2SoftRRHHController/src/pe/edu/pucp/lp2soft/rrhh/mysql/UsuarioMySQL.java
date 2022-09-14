@@ -95,7 +95,7 @@ public class UsuarioMySQL implements UsuarioDAO {
             rs = cs.executeQuery();
             while(rs.next()){
                 Usuario usuario = new Usuario() {};
-                usuario.setIdUsuario(rs.getInt("id_persona"));
+                usuario.setIdUsuario(rs.getInt("id_usuario"));
                 usuario.setPassword(rs.getString("password"));
                 usuario.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
                 usuario.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_documento"))));
