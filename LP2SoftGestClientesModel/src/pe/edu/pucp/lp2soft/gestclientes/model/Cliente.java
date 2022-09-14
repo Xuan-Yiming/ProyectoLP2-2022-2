@@ -9,14 +9,18 @@ public abstract class Cliente implements CConsultable{
     private int idCliente;
     private String categoria;
     private ArrayList<OrdenDeCompra> ordenesCompras;
-
+    
+    public Cliente(){}
+    
     public Cliente(String categoria) {
         this.idCliente = correlativo;
         this.categoria = categoria;
         correlativo++;
     }
-    
-    
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
     
     public int getIdCliente() {
         return idCliente;

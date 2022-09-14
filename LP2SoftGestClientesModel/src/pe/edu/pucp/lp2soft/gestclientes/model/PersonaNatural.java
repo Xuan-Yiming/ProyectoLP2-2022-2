@@ -10,12 +10,13 @@ public class PersonaNatural extends Cliente {
     private String nombre;
     private String apellido;
     private Date fechaDeNacimiento;
-    private int telefono;
+    private String telefono;
     private String direccion;
     private String email;
     
+    public PersonaNatural(){}
     
-    public PersonaNatural( String categoria, TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, int telefono, String direccion, String email) {
+    public PersonaNatural( String categoria, TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email) {
         super(categoria);
         this.tipoDeDocumento = tipoDeDocumento;
         this.numDeDocumento = numDeDocumento;
@@ -70,13 +71,14 @@ public class PersonaNatural extends Cliente {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
 
     public String getDireccion() {
         return direccion;

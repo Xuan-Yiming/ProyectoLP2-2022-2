@@ -5,15 +5,14 @@ public class Empresa extends Cliente {
     private String razonSocial;
     private String direccion;
 
-
+    public Empresa(){}
+    
     public Empresa(String categoria,int RUC, String razonSocial, String direccion) {
         super(categoria);
         this.RUC = RUC;
         this.razonSocial = razonSocial;
         this.direccion = direccion;
     }
-
-    
     
     public int getRUC() {
         return RUC;
