@@ -10400,7 +10400,7 @@
 											"top": 1829,
 											"width": 259.64453125,
 											"height": 13,
-											"text": "-numDeDocumento: String",
+											"text": "-numeroDeDocumento: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -14570,7 +14570,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGC8Qa2nxD6wdo="
 							},
-							"name": "numDeDocumento",
+							"name": "numeroDeDocumento",
 							"visibility": "private",
 							"type": "String"
 						},
