@@ -10,12 +10,15 @@ public class Persona {
     private String nombre;
     private String apellido;
     private Date fechaDeNacimiento;
-    private int telefono;
+    private String telefono;
     private String direccion;
     private String email;
     private ArrayList<OrdenDeCompra> ordenesDeCompra;
-
-    public Persona(TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, int telefono, String direccion, String email) {
+    
+    //Constructor vacio
+    public Persona(){}
+    
+    public Persona(TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email) {
         this.tipoDeDocumento = tipoDeDocumento;
         this.numDeDocumento = numDeDocumento;
         this.nombre = nombre;
@@ -66,11 +69,11 @@ public class Persona {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
