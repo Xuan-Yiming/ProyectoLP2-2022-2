@@ -9,15 +9,20 @@ public class Reclamo {
     private boolean atendido;
     private String justificacion;
     private ArrayList <Devolucion> devoluciones;
-   
-    public Reclamo (Date fecha,boolean atendido,String justificacion){
-        this.id=correlativo;
-        this.fecha=fecha;
-        this.atendido=atendido;
-        this.justificacion=justificacion;
-        correlativo++;
+
+    public Reclamo(int id, Date fecha, boolean atendido, String justificacion) {
+        this.id = id;
+        this.fecha = fecha;
+        this.atendido = atendido;
+        this.justificacion = justificacion;
     }
-    
+   
+
+
+    public Reclamo() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getJustificacion() {
         return justificacion;
     }

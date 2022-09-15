@@ -1,13 +1,27 @@
 package pe.edu.pucp.lp2soft.ventas.manejoproductos;
 
 public class Stock {
+    private int id;
     private int cantidad;
     private Producto producto;
+
+    public Stock(int id, int cantidad) {
+        this.id = id;
+        this.cantidad = cantidad;
+    }
+
     
+    public Stock() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     
-    public Stock(int cantidad, Producto producto){
-        this.cantidad=cantidad;
-        this.producto=producto;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     public int getCantidad() {

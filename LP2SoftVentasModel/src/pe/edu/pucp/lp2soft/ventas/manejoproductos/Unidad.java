@@ -9,5 +9,5 @@ package pe.edu.pucp.lp2soft.ventas.manejoproductos;
  * @author xuany
  */
 public enum Unidad{
-    Unidad, Docena, Farro, Caja;
+    UUnidad, Docena, Farro, Caja;
 }
