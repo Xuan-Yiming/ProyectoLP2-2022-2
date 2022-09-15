@@ -5,7 +5,6 @@ import pe.edu.pucp.lp2soft.ventaspagos.OrdenDeCompra;
 
 
 public abstract class Cliente implements CConsultable{
-    private static int correlativo = 1; //OBS
     private int idCliente;
     private String categoria;
     private ArrayList<OrdenDeCompra> ordenesCompras;
@@ -13,9 +12,7 @@ public abstract class Cliente implements CConsultable{
     public Cliente(){}
     
     public Cliente(String categoria) {
-        this.idCliente = correlativo;
         this.categoria = categoria;
-        correlativo++;
     }
 
     public void setIdCliente(int idCliente) {
@@ -41,7 +38,4 @@ public abstract class Cliente implements CConsultable{
     public void setOrdenesCompras(ArrayList<OrdenDeCompra> ordenesCompras) {
         this.ordenesCompras = ordenesCompras;
     }
-    
-    
-    
 }
