@@ -11,3 +11,6 @@
 /LP2SoftRRHHController/dist/
 /LP2SoftRRHHController/build/
 private.properties
+/LP2SoftVentasController/build/
+/LP2SoftVentasController/dist/
+/LP2SoftVentasController/nbproject/private/
