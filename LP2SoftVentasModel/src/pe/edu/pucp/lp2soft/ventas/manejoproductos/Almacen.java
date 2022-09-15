@@ -3,20 +3,20 @@ package pe.edu.pucp.lp2soft.ventas.manejoproductos;
 import java.util.ArrayList;
 
 public class Almacen {
-    private static int correlativo=1;
     private int id;
     private String  nombre;
     private String  direccion;
     private ArrayList<Stock> productos;
     //Constructor vacio
     public Almacen(){}
-    
-    public Almacen(String nombre,String direccion){
-        this.id=correlativo;
-        this.nombre=nombre;
-        this.direccion=direccion;
-        correlativo++;
+
+    public Almacen(int id, String nombre, String direccion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
     }
+    
+    
     
     public ArrayList<Stock> getProductos() {
         return productos;

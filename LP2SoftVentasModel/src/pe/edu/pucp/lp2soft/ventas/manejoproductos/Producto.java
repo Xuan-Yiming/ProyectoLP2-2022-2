@@ -18,6 +18,21 @@ public class Producto {
         this.devuelto=devuelto;
         correlativo++;
     }
+
+    public Producto() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Producto(int id, String nombre, double precio, String unidad, int stockMinimo, boolean devuelto) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.unidad = unidad;
+        this.stockMinimo = stockMinimo;
+        this.devuelto = devuelto;
+    }
+    
+    
     
     public int getId() {
         return id;

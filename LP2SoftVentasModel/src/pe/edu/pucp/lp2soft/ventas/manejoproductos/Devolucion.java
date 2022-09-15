@@ -2,19 +2,22 @@ package pe.edu.pucp.lp2soft.ventas.manejoproductos;
 import java.util.Date;
 
 public class Devolucion {
-    private static int correlativo=1; 
     private int id;
     private int cantidad;
     private Date fecha;
     private Producto producto;
-    
-    public Devolucion(int cantidad,Date fecha,Producto producto){
-        this.id=correlativo;
-        this.cantidad=cantidad;
-        this.fecha=fecha;
-        this.producto=producto;
-        correlativo++;
+
+    public Devolucion(int id, int cantidad, Date fecha) {
+        this.id = id;
+        this.cantidad = cantidad;
+        this.fecha = fecha;
     }
+
+    public Devolucion() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+
     
     public Producto getProducto() {
         return producto;
