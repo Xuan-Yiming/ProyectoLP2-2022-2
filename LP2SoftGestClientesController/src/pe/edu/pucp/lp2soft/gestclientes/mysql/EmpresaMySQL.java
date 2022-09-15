@@ -21,7 +21,7 @@ public class EmpresaMySQL implements EmpresaDAO{
             cs = con.prepareCall("{call INSERTAR_EMPRESA(?,?,?,?,?)}");
             cs.registerOutParameter("_id_empresa", java.sql.Types.INTEGER);
             cs.setString("_categoria", empresa.getCategoria());
-            cs.setInt("_RUC", empresa.getRUC());
+            cs.setString("_RUC", empresa.getRUC());
             cs.setString("_razon_social", empresa.getRazonSocial());
             cs.setString("_direccion", empresa.getDireccion());
             resultado = cs.executeUpdate();
@@ -41,7 +41,7 @@ public class EmpresaMySQL implements EmpresaDAO{
             cs = con.prepareCall("{call MODIFICAR_EMPRESA(?,?,?,?,?)}");
             cs.setInt("_id_empresa", empresa.getIdCliente());
             cs.setString("_categoria", empresa.getCategoria());
-            cs.setInt("_RUC", empresa.getRUC());
+            cs.setString("_RUC", empresa.getRUC());
             cs.setString("_razon_social", empresa.getRazonSocial());
             cs.setString("_direccion", empresa.getDireccion());
             resultado = cs.executeUpdate();
@@ -80,7 +80,7 @@ public class EmpresaMySQL implements EmpresaDAO{
                 Empresa empresa = new Empresa();
                 empresa.setIdCliente(rs.getInt("id_cliente"));
                 empresa.setCategoria(rs.getString("categoria"));
-                empresa.setRUC(rs.getInt("RUC"));
+                empresa.setRUC(rs.getString("RUC"));
                 empresa.setRazonSocial(rs.getString("razon_social"));
                 empresa.setDireccion(rs.getString("direccion"));
                 empresas.add(empresa);

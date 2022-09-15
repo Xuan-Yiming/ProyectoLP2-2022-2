@@ -1,27 +1,27 @@
 
 package pe.edu.pucp.lp2soft.gestclientes.model;
 public class Empresa extends Cliente {
-    private int RUC;
+    private String RUC;
     private String razonSocial;
     private String direccion;
 
     public Empresa(){}
     
-    public Empresa(String categoria,int RUC, String razonSocial, String direccion) {
+    public Empresa(String categoria,String RUC, String razonSocial, String direccion) {
         super(categoria);
         this.RUC = RUC;
         this.razonSocial = razonSocial;
         this.direccion = direccion;
     }
-    
-    public int getRUC() {
+
+    public String getRUC() {
         return RUC;
     }
 
-    public void setRUC(int RUC) {
+    public void setRUC(String RUC) {
         this.RUC = RUC;
     }
-
+   
     public String getRazonSocial() {
         return razonSocial;
     }
@@ -37,9 +37,4 @@ public class Empresa extends Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
-
-    
-    
-    
 }
