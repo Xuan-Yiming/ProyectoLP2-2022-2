@@ -3,7 +3,6 @@ import java.util.Date;
 import java.util.ArrayList;
 
 public class Reclamo {
-    private static int correlativo=1;
     private int id;//numero de reclamo
     private Date fecha;
     private boolean atendido;

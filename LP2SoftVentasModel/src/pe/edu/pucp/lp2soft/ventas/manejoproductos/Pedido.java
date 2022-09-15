@@ -7,6 +7,8 @@ public class Pedido {
     private Unidad unidad;
     private double descuento;
     private Producto producto;
+    
+    
 
     public Pedido() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

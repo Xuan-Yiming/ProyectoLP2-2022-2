@@ -7,7 +7,6 @@ import pe.edu.pucp.lp2soft.ventas.manejoproductos.Reclamo;
 
 
 public class OrdenDeCompra{
-    private static int correlativo = 1;
     private int id;
     private double monto;
     private Moneda moneda;
@@ -20,20 +19,23 @@ public class OrdenDeCompra{
     private ArrayList<DocumentoCredito> documentosCredito;
     private ArrayList<Pedido> pedidos;
     private ArrayList<Reclamo> reclamos;
-    
-    public OrdenDeCompra(double monto,Moneda moneda,
-            String direccionDeEntrega,FormaDeEntrega formaDeEntrega,Date fechaDeCompra,
-            Date fechaDeEntrega,boolean cancelado){
+
+    public OrdenDeCompra(int id, double monto, Moneda moneda, String direccionDeEntrega, FormaDeEntrega formaDeEntrega, Date fechaDeCompra, Date fechaDeEntrega, boolean pagado) {
+        this.id = id;
         this.monto = monto;
         this.moneda = moneda;
         this.direccionDeEntrega = direccionDeEntrega;
         this.formaDeEntrega = formaDeEntrega;
         this.fechaDeCompra = fechaDeCompra;
         this.fechaDeEntrega = fechaDeEntrega;
-        this.pagado = cancelado;
-        this.id = correlativo;
-        correlativo++;
+        this.pagado = pagado;
     }
+
+    public OrdenDeCompra() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+
 
     public boolean isPagado() {
         return pagado;
@@ -46,6 +48,11 @@ public class OrdenDeCompra{
     public int getId() {
         return id;
     }
+    
+        public void setId(int id){
+        this.id = id;
+    }
+
 
     public double getMonto() {
         return monto;

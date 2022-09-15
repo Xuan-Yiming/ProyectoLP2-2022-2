@@ -1,7 +1,6 @@
 package pe.edu.pucp.lp2soft.ventas.manejoproductos;
 
 public class Producto {
-    private static int correlativo=1;
     private int id;
     private String nombre;
     private double precio;
@@ -9,15 +8,7 @@ public class Producto {
     private int stockMinimo;
     private boolean devuelto;
     
-    public Producto (String nombre,double precio,String unidad,int stockMinimo,boolean devuelto){
-        this.id=correlativo;
-        this.nombre=nombre;
-        this.precio=precio;
-        this.unidad=unidad;
-        this.stockMinimo=stockMinimo;
-        this.devuelto=devuelto;
-        correlativo++;
-    }
+
 
     public Producto() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

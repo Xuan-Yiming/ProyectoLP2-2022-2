@@ -9,27 +9,28 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.config.DBManager;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.MonedaDAO;
-import pe.edu.pucp.lp2soft.ventaspagos.Moneda;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.TipoDeCambioDAO;
+import pe.edu.pucp.lp2soft.ventaspagos.TipoDeCambio;
 
 /**
  *
  * @author xuany
  */
-public class MonedaMySQL implements MonedaDAO {
+public class TipoDeCambioMySQL implements TipoDeCambioDAO {
     private Connection con;
     private CallableStatement cs;
     private ResultSet rs;
 
     @Override
-    public int insertar(Moneda moneda) {
+    public int insertar(TipoDeCambio tipoDeCambio) {
         int resultado = 0;
+        //insertar fecha (Date) y cambio (double)
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call insertar_moneda(?,?,?)}");
-            cs.registerOutParameter("_id_moneda", java.sql.Types.INTEGER);
-            cs.setString("_nombre", moneda.getNombre());
-            cs.setString("_abreviatura", moneda.getAbreviatura());
+            cs = con.prepareCall("{call insertar_tipoDeCambio(?,?,?)}");
+            cs.registerOutParameter("_id_tipoDeCambio", java.sql.Types.INTEGER);
+            cs.setDate("_fecha", new java.sql.Date(tipoDeCambio.getFecha().getTime()));
+            cs.setDouble("_cambio", tipoDeCambio.getCambio());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -45,14 +46,14 @@ public class MonedaMySQL implements MonedaDAO {
     }
 
     @Override
-    public int modificar(Moneda moneda) {
+    public int modificar(TipoDeCambio tipoDeCambio) {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call modificar_moneda(?,?,?)}");
-            cs.setInt("_id_moneda", moneda.getId());
-            cs.setString("_nombre", moneda.getNombre());
-            cs.setString("_abreviatura", moneda.getAbreviatura());
+            cs = con.prepareCall("{call modificar_tipoDeCambio(?,?,?)}");
+            cs.setInt("_id_tipoDeCambio", tipoDeCambio.getId());
+            cs.setDate("_fecha", new java.sql.Date(tipoDeCambio.getFecha().getTime()));
+            cs.setDouble("_cambio", tipoDeCambio.getCambio());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -72,8 +73,8 @@ public class MonedaMySQL implements MonedaDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call eliminar_moneda(?)}");
-            cs.setInt("_id_moneda", id);
+            cs = con.prepareCall("{call eliminar_tipoDeCambio(?)}");
+            cs.setInt("_id_tipoDeCambio", id);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -89,18 +90,18 @@ public class MonedaMySQL implements MonedaDAO {
     }
 
     @Override
-    public ArrayList<Moneda> listarTodos() {
-        ArrayList<Moneda> monedas = new ArrayList<>();
+    public ArrayList<TipoDeCambio> listarTodos() {
+        ArrayList<TipoDeCambio> tiposDeCambio = new ArrayList<>();
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call listar_todas_monedas()}");
+            cs = con.prepareCall("{call listarTodos_tipoDeCambio()}");
             rs = cs.executeQuery();
             while(rs.next()){
-                Moneda moneda = new Moneda();
-                moneda.setId(rs.getInt("id_moneda"));
-                moneda.setNombre(rs.getString("nombre"));
-                moneda.setAbreviatura(rs.getString("abreviatura"));
-                monedas.add(moneda);
+                TipoDeCambio tipoDeCambio = new TipoDeCambio();
+                tipoDeCambio.setId(rs.getInt("id_tipoDeCambio"));
+                tipoDeCambio.setFecha(rs.getDate("fecha"));
+                tipoDeCambio.setCambio(rs.getDouble("cambio"));
+                tiposDeCambio.add(tipoDeCambio);
             }
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -111,7 +112,7 @@ public class MonedaMySQL implements MonedaDAO {
                 System.out.println(ex.getMessage());
             }
         }
-        return monedas;
+        return tiposDeCambio;
         // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

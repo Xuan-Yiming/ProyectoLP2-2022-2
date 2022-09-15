@@ -2,22 +2,30 @@ package pe.edu.pucp.lp2soft.ventaspagos;
 import java.util.Date;
 
 public class DocumentoCredito {
-    private static int correlativo = 1;
     private int id;
     private Date fechaCreacion;
     private double monto;
     private boolean anulado;
 
-    public DocumentoCredito(Date fechaCreacion, double monto, boolean anulado) {
+    public DocumentoCredito(int id, Date fechaCreacion, double monto, boolean anulado) {
+        this.id = id;
         this.fechaCreacion = fechaCreacion;
         this.monto = monto;
         this.anulado = anulado;
-        this.id = correlativo;
-        correlativo++;
     }
+
+    public DocumentoCredito() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
 
     public int getId() {
         return id;
+    }
+    
+    public void setId(int id){
+        this.id = id;
     }
 
     public Date getFechaCreacion() {

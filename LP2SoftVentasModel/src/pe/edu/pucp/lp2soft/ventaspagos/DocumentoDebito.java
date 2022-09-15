@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class DocumentoDebito {
-    private static int correlativo = 1;
     private int id;
     private Date fechaCreacion;
     private Date fechaVencimiento;
@@ -16,7 +15,8 @@ public class DocumentoDebito {
     private TerminoDePago terminoDePago;
     private ArrayList<DocumentoCredito> documentosCredito;
 
-    public DocumentoDebito(Date fechaCreacion, Date fechaVencimiento, double impuesto, double monto, Moneda moneda, double saldo, boolean anulado, TerminoDePago terminoDePago) {
+    public DocumentoDebito(int id, Date fechaCreacion, Date fechaVencimiento, double impuesto, double monto, Moneda moneda, double saldo, boolean anulado) {
+        this.id = id;
         this.fechaCreacion = fechaCreacion;
         this.fechaVencimiento = fechaVencimiento;
         this.impuesto = impuesto;
@@ -24,14 +24,22 @@ public class DocumentoDebito {
         this.moneda = moneda;
         this.saldo = saldo;
         this.anulado = anulado;
-        this.terminoDePago = terminoDePago;
-        this.id = correlativo;
-        correlativo++;
     }
+
+    public DocumentoDebito() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
 
     public int getId() {
         return id;
     }
+    
+    public void setId(int id){
+        this.id = id;
+    }
+
 
     public Date getFechaCreacion() {
         return fechaCreacion;
