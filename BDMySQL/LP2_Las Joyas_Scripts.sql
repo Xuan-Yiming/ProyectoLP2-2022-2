@@ -1,5 +1,5 @@
+/*DROP TABLE IF EXISTS stock;*/
 DROP TABLE IF EXISTS almacen;
-DROP TABLE IF EXISTS stock;
 DROP TABLE IF EXISTS producto;
 DROP TABLE IF EXISTS devolucion;
 DROP TABLE IF EXISTS reclamo;
@@ -10,14 +10,14 @@ DROP TABLE IF EXISTS ordenDeCompra;
 DROP TABLE IF EXISTS cliente;
 DROP TABLE IF EXISTS empresa;
 DROP TABLE IF EXISTS personaNatural;
-DROP TABLE IF EXISTS moneda;
 DROP TABLE IF EXISTS tipoDeCambio;
+DROP TABLE IF EXISTS moneda;
 DROP TABLE IF EXISTS terminoDePago;
-DROP TABLE IF EXISTS persona;
-DROP TABLE IF EXISTS usuario;
 DROP TABLE IF EXISTS supervisorDeAlmacen;
 DROP TABLE IF EXISTS vendedor;
 DROP TABLE IF EXISTS administrador;
+DROP TABLE IF EXISTS usuario;
+DROP TABLE IF EXISTS persona;
 
 CREATE TABLE persona(
 	id_persona INT PRIMARY KEY AUTO_INCREMENT,
@@ -82,9 +82,8 @@ CREATE TABLE administrador(
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 )ENGINE=InnoDB;
 
-
 CREATE TABLE almacen(
-	id_nombre INT PRIMARY KEY AUTO_INCREMENT,
+	id_almacen INT PRIMARY KEY AUTO_INCREMENT,
 	nombre VARCHAR(100),
     direccion VARCHAR(200),
     id_supervisor_de_almacen INT,
@@ -98,14 +97,6 @@ CREATE TABLE producto(
     unidad INT,
     stock_minimo int,
     devuelto BOOLEAN
-)ENGINE=InnoDB;
-
-CREATE TABLE stock(
-	id_stock INT,
-	FOREIGN KEY (id_stock) REFERENCES almacen(id_almacen),
-    cantidad INT,
-    id_producto INT,
-    FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 )ENGINE=InnoDB;
 
 CREATE TABLE ordenDeCompra(
