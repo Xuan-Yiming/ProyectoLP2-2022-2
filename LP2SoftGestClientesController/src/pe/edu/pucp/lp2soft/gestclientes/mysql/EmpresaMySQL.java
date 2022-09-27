@@ -78,7 +78,7 @@ public class EmpresaMySQL implements EmpresaDAO{
             rs = cs.executeQuery();
             while(rs.next()){
                 Empresa empresa = new Empresa();
-                empresa.setIdCliente(rs.getInt("id_cliente"));
+                empresa.setIdCliente(rs.getInt("id_empresa"));
                 empresa.setCategoria(rs.getString("categoria"));
                 empresa.setRUC(rs.getString("RUC"));
                 empresa.setRazonSocial(rs.getString("razon_social"));
