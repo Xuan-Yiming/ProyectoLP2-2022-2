@@ -4,26 +4,12 @@ import java.util.ArrayList;
 
 public class Almacen {
     private int id;
+    private int idSupervisorDeAlmacen;
     private String  nombre;
     private String  direccion;
-    private ArrayList<Stock> productos;
-    //Constructor vacio
-    public Almacen(){}
+    private ArrayList<Producto> productos;
 
-    public Almacen(int id, String nombre, String direccion) {
-        this.id = id;
-        this.nombre = nombre;
-        this.direccion = direccion;
-    }
-    
-    
-    
-    public ArrayList<Stock> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(ArrayList<Stock> productos) {
-        this.productos = productos;
+    public Almacen() {
     }
 
     public int getId() {
@@ -32,6 +18,14 @@ public class Almacen {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getIdSupervisorDeAlmacen() {
+        return idSupervisorDeAlmacen;
+    }
+
+    public void setIdSupervisorDeAlmacen(int idSupervisorDeAlmacen) {
+        this.idSupervisorDeAlmacen = idSupervisorDeAlmacen;
     }
 
     public String getNombre() {
@@ -50,7 +44,13 @@ public class Almacen {
         this.direccion = direccion;
     }
 
-    //metodos
-    void mostrarStock(){};
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(ArrayList<Producto> productos) {
+        this.productos = productos;
+    }
+
     
 }

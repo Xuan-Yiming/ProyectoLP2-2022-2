@@ -3,17 +3,13 @@ package pe.edu.pucp.lp2soft.ventas.manejoproductos;
 
 public class Pedido {
     private int id;
-    private int cantidad;
-    private Unidad unidad;
+    private int idProducto;
+    private int idOrdenDeCompra;
     private double descuento;
-    private Producto producto;
-    
-    
 
     public Pedido() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
     public int getId() {
         return id;
     }
@@ -22,35 +18,20 @@ public class Pedido {
         this.id = id;
     }
 
-    public Unidad getUnidad() {
-        return unidad;
+    public int getIdProducto() {
+        return idProducto;
     }
 
-    public void setUnidad(Unidad unidad) {
-        this.unidad = unidad;
-    }
-    
-    public Pedido(int cantidad, double descuento,Producto producto, Unidad unidad){
-        this.cantidad=cantidad;
-        this.descuento=descuento;
-        this.producto=producto;
-        this.unidad = unidad;
-    }
-    public Producto getProducto() {
-        return producto;
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
     }
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-    
-    
-    public int getCantidad() {
-        return cantidad;
+    public int getIdOrdenDeCompra() {
+        return idOrdenDeCompra;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setIdOrdenDeCompra(int idOrdenDeCompra) {
+        this.idOrdenDeCompra = idOrdenDeCompra;
     }
 
     public double getDescuento() {
@@ -61,4 +42,5 @@ public class Pedido {
         this.descuento = descuento;
     }
    
+    
 }

@@ -1,19 +1,13 @@
-package pe.edu.pucp.lp2soft.ventaspagos;
+package pe.edu.pucp.lp2soft.ventas.ventaspagos;
 import java.util.Date;
 
 public class TipoDeCambio {
     private int id;
+    private int idMoneda;
     private Date fecha;
     private double cambio;
 
-    public TipoDeCambio(int id, Date fecha, double cambio) {
-        this.id = id;
-        this.fecha = fecha;
-        this.cambio = cambio;
-    }
-
     public TipoDeCambio() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public int getId() {
@@ -24,7 +18,13 @@ public class TipoDeCambio {
         this.id = id;
     }
 
-    
+    public int getIdMoneda() {
+        return idMoneda;
+    }
+
+    public void setIdMoneda(int idMoneda) {
+        this.idMoneda = idMoneda;
+    }
 
     public Date getFecha() {
         return fecha;
@@ -42,5 +42,5 @@ public class TipoDeCambio {
         this.cambio = cambio;
     }
     
-    
+        
 }

@@ -18,3 +18,4 @@ private.properties
 /LP2SoftGestClientesModel/build/
 /LP2SoftGestClientesController/build/
 /LP2SoftGestClientesModel/build
+*.properties

@@ -4,46 +4,29 @@ import java.util.ArrayList;
 
 public class Reclamo {
     private int id;//numero de reclamo
+    private int idOrdenDeCompra;
     private Date fecha;
     private boolean atendido;
     private String justificacion;
-    private ArrayList <Devolucion> devoluciones;
-
-    public Reclamo(int id, Date fecha, boolean atendido, String justificacion) {
-        this.id = id;
-        this.fecha = fecha;
-        this.atendido = atendido;
-        this.justificacion = justificacion;
-    }
-   
-
+    ArrayList<Devolucion> devoluciones;
 
     public Reclamo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public String getJustificacion() {
-        return justificacion;
-    }
-
-    public void setJustificacion(String justificacion) {
-        this.justificacion = justificacion;
-    }
-
-    public ArrayList <Devolucion> getDevoluciones() {
-        return devoluciones;
-    }
-
-    public void setDevoluciones(ArrayList <Devolucion> devoluciones) {
-        this.devoluciones = devoluciones;
-    }
-    
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getIdOrdenDeCompra() {
+        return idOrdenDeCompra;
+    }
+
+    public void setIdOrdenDeCompra(int idOrdenDeCompra) {
+        this.idOrdenDeCompra = idOrdenDeCompra;
     }
 
     public Date getFecha() {
@@ -62,11 +45,21 @@ public class Reclamo {
         this.atendido = atendido;
     }
 
-    //metodos
-    void resolverReclamo(int atendido){
-        
+    public String getJustificacion() {
+        return justificacion;
     }
-    void mostrarReclamo(){
-        
+
+    public void setJustificacion(String justificacion) {
+        this.justificacion = justificacion;
     }
+
+    public ArrayList<Devolucion> getDevoluciones() {
+        return devoluciones;
+    }
+
+    public void setDevoluciones(ArrayList<Devolucion> devoluciones) {
+        this.devoluciones = devoluciones;
+    }
+    
+    
 }

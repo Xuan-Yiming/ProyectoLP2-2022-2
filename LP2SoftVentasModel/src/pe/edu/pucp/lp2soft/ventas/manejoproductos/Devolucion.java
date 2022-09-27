@@ -3,30 +3,12 @@ import java.util.Date;
 
 public class Devolucion {
     private int id;
-    private int cantidad;
-    private Date fecha;
-    private Producto producto;
-
-    public Devolucion(int id, int cantidad, Date fecha) {
-        this.id = id;
-        this.cantidad = cantidad;
-        this.fecha = fecha;
-    }
+    private int idProducto;
+    private int idReclamo;
 
     public Devolucion() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-
-    
-    public Producto getProducto() {
-        return producto;
     }
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-    
     public int getId() {
         return id;
     }
@@ -35,20 +17,23 @@ public class Devolucion {
         this.id = id;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public int getIdProducto() {
+        return idProducto;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public int getIdReclamo() {
+        return idReclamo;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setIdReclamo(int idReclamo) {
+        this.idReclamo = idReclamo;
     }
-
+    
+    
 }
+
+

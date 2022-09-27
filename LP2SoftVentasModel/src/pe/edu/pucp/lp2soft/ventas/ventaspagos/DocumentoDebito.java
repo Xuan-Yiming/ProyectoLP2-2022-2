@@ -1,10 +1,10 @@
-package pe.edu.pucp.lp2soft.ventaspagos;
-
+package pe.edu.pucp.lp2soft.ventas.ventaspagos;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class DocumentoDebito {
     private int id;
+    private int idOrdenDeCompra;
     private Date fechaCreacion;
     private Date fechaVencimiento;
     private double impuesto;
@@ -15,31 +15,24 @@ public class DocumentoDebito {
     private TerminoDePago terminoDePago;
     private ArrayList<DocumentoCredito> documentosCredito;
 
-    public DocumentoDebito(int id, Date fechaCreacion, Date fechaVencimiento, double impuesto, double monto, Moneda moneda, double saldo, boolean anulado) {
-        this.id = id;
-        this.fechaCreacion = fechaCreacion;
-        this.fechaVencimiento = fechaVencimiento;
-        this.impuesto = impuesto;
-        this.monto = monto;
-        this.moneda = moneda;
-        this.saldo = saldo;
-        this.anulado = anulado;
-    }
-
     public DocumentoDebito() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-
 
     public int getId() {
         return id;
     }
-    
-    public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
 
+    public int getIdOrdenDeCompra() {
+        return idOrdenDeCompra;
+    }
+
+    public void setIdOrdenDeCompra(int idOrdenDeCompra) {
+        this.idOrdenDeCompra = idOrdenDeCompra;
+    }
 
     public Date getFechaCreacion() {
         return fechaCreacion;
@@ -112,5 +105,6 @@ public class DocumentoDebito {
     public void setDocumentosCredito(ArrayList<DocumentoCredito> documentosCredito) {
         this.documentosCredito = documentosCredito;
     }
-       
+    
+    
 }

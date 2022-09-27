@@ -1,4 +1,4 @@
-package pe.edu.pucp.lp2soft.ventaspagos;
+package pe.edu.pucp.lp2soft.ventas.ventaspagos;
 import java.util.Date;
 
 public class TerminoDePago {
@@ -7,27 +7,16 @@ public class TerminoDePago {
     private int numeroCuota;
     private double montoCuota;
 
-    public TerminoDePago(int id, Date fechaLimite, int numeroCuota, double montoCuota) {
-        this.id = id;
-        this.fechaLimite = fechaLimite;
-        this.numeroCuota = numeroCuota;
-        this.montoCuota = montoCuota;
-    }
-
     public TerminoDePago() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-
 
     public int getId() {
         return id;
     }
-    
-        public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
-
 
     public Date getFechaLimite() {
         return fechaLimite;
@@ -52,5 +41,6 @@ public class TerminoDePago {
     public void setMontoCuota(double montoCuota) {
         this.montoCuota = montoCuota;
     }
+
     
 }

@@ -1,5 +1,4 @@
-
-package pe.edu.pucp.lp2soft.ventaspagos;
+package pe.edu.pucp.lp2soft.ventas.ventaspagos;
 import java.util.ArrayList;
 import java.util.Date;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Pedido;
@@ -8,6 +7,8 @@ import pe.edu.pucp.lp2soft.ventas.manejoproductos.Reclamo;
 
 public class OrdenDeCompra{
     private int id;
+    private int idCliente;
+    private int idVendedor;
     private double monto;
     private Moneda moneda;
     private String direccionDeEntrega;
@@ -20,37 +21,32 @@ public class OrdenDeCompra{
     private ArrayList<Pedido> pedidos;
     private ArrayList<Reclamo> reclamos;
 
-    public OrdenDeCompra(int id, double monto, Moneda moneda, String direccionDeEntrega, FormaDeEntrega formaDeEntrega, Date fechaDeCompra, Date fechaDeEntrega, boolean pagado) {
-        this.id = id;
-        this.monto = monto;
-        this.moneda = moneda;
-        this.direccionDeEntrega = direccionDeEntrega;
-        this.formaDeEntrega = formaDeEntrega;
-        this.fechaDeCompra = fechaDeCompra;
-        this.fechaDeEntrega = fechaDeEntrega;
-        this.pagado = pagado;
-    }
-
     public OrdenDeCompra() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public boolean isPagado() {
-        return pagado;
-    }
-
-    public void setPagado(boolean pagado) {
-        this.pagado = pagado;
     }
 
     public int getId() {
         return id;
     }
-    
-        public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
 
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public int getIdVendedor() {
+        return idVendedor;
+    }
+
+    public void setIdVendedor(int idVendedor) {
+        this.idVendedor = idVendedor;
+    }
 
     public double getMonto() {
         return monto;
@@ -100,6 +96,14 @@ public class OrdenDeCompra{
         this.fechaDeEntrega = fechaDeEntrega;
     }
 
+    public boolean isPagado() {
+        return pagado;
+    }
+
+    public void setPagado(boolean pagado) {
+        this.pagado = pagado;
+    }
+
     public ArrayList<DocumentoDebito> getDocumentosDebito() {
         return documentosDebito;
     }
@@ -115,7 +119,7 @@ public class OrdenDeCompra{
     public void setDocumentosCredito(ArrayList<DocumentoCredito> documentosCredito) {
         this.documentosCredito = documentosCredito;
     }
-    
+
     public ArrayList<Pedido> getPedidos() {
         return pedidos;
     }

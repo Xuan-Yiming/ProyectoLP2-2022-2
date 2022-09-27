@@ -1,36 +1,42 @@
 package pe.edu.pucp.lp2soft.ventas.manejoproductos;
 
+import java.util.Date;
+
 public class Producto {
     private int id;
+    private int idAlamcen;
+    private String codigoLote;
     private String nombre;
+    private double costo;
     private double precio;
-    private String unidad;
-    private int stockMinimo;
+    private Date fechaDeIngreso;
     private boolean devuelto;
-    
-
 
     public Producto() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public Producto(int id, String nombre, double precio, String unidad, int stockMinimo, boolean devuelto) {
-        this.id = id;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.unidad = unidad;
-        this.stockMinimo = stockMinimo;
-        this.devuelto = devuelto;
-    }
-    
-    
-    
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getIdAlamcen() {
+        return idAlamcen;
+    }
+
+    public void setIdAlamcen(int idAlamcen) {
+        this.idAlamcen = idAlamcen;
+    }
+
+    public String getCodigoLote() {
+        return codigoLote;
+    }
+
+    public void setCodigoLote(String codigoLote) {
+        this.codigoLote = codigoLote;
     }
 
     public String getNombre() {
@@ -41,6 +47,14 @@ public class Producto {
         this.nombre = nombre;
     }
 
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
+    }
+
     public double getPrecio() {
         return precio;
     }
@@ -49,20 +63,12 @@ public class Producto {
         this.precio = precio;
     }
 
-    public String getUnidad() {
-        return unidad;
+    public Date getFechaDeIngreso() {
+        return fechaDeIngreso;
     }
 
-    public void setUnidad(String unidad) {
-        this.unidad = unidad;
-    }
-
-    public int getStockMinimo() {
-        return stockMinimo;
-    }
-
-    public void setStockMinimo(int stockMinimo) {
-        this.stockMinimo = stockMinimo;
+    public void setFechaDeIngreso(Date fechaDeIngreso) {
+        this.fechaDeIngreso = fechaDeIngreso;
     }
 
     public boolean isDevuelto() {
@@ -73,15 +79,5 @@ public class Producto {
         this.devuelto = devuelto;
     }
     
-    //metodos
-    public void eliminarProducto(){
-    }
-    public void actualizarPrecio(double precio){
-    }
-    public void actualizarStockMinimo(int stockMinimo){
-    }
-    public void actualizarDevuelto(int devuelto){
-    }
-    public void mostrarProducto(){
-    }
+    
 }

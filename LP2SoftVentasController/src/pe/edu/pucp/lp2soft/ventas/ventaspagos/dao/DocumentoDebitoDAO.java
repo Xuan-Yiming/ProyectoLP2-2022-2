@@ -5,7 +5,7 @@
 package pe.edu.pucp.lp2soft.ventas.ventaspagos.dao;
 
 import java.util.ArrayList;
-import pe.edu.pucp.lp2soft.ventaspagos.DocumentoDebito;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.DocumentoDebito;
 
 /**
  *

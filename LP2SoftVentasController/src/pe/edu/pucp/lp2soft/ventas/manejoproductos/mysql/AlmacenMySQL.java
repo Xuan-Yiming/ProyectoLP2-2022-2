@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -26,10 +27,11 @@ public class AlmacenMySQL implements AlmacenDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_ALMACEN(?,?,?)}");
-            cs.registerOutParameter("_ID_ALMACEN", java.sql.Types.INTEGER);
-            cs.setString("_NOMBRE", almacen.getNombre());
-            cs.setString("_DIRECCION", almacen.getDireccion());
+            cs = con.prepareCall("{call INSERTAR_ALMACEN(?,?,?,?)}");
+            cs.registerOutParameter("_id_almacen", java.sql.Types.INTEGER);
+            cs.setString("_nombre", almacen.getNombre());
+            cs.setString("_direccion", almacen.getDireccion());
+            cs.setInt("_id_supervisor", almacen.getIdSupervisorDeAlmacen());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());

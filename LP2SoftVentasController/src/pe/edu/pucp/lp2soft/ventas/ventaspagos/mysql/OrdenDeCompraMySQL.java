@@ -26,7 +26,7 @@ public class OrdenDeCompraMySQL implements OrdenDeCompraDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call insertar_orden_de_compra(?,?,?,?,?,?,?)}");
+            cs = con.prepareCall("{call insertar_orden_de_compra(?,?,?,?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_orden_de_compra", java.sql.Types.INTEGER);
             cs.setDouble("_monto", ordenDeCompra.getMonto());
             cs.setString("_direccionDeEntrega", ordenDeCompra.getDireccionDeEntrega());
@@ -34,6 +34,8 @@ public class OrdenDeCompraMySQL implements OrdenDeCompraDAO {
             cs.setDate("_fechaDeCompra", new java.sql.Date(ordenDeCompra.getFechaDeCompra().getTime()));
             cs.setDate("_fechaDeEntrega", new java.sql.Date(ordenDeCompra.getFechaDeEntrega().getTime()));
             cs.setBoolean("_pagado", ordenDeCompra.isPagado());
+            cs.setInt("_idCliente", ordenDeCompra.getCliente().getId());
+            cs.setInt("_idVendedor", ordenDeCompra.getVendedor().getId());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
