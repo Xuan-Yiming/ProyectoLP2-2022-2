@@ -6,6 +6,15 @@ public class TipoDeCambio {
     private int idMoneda;
     private Date fecha;
     private double cambio;
+    private Boolean activo;
+
+    public Boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 
     public TipoDeCambio() {
     }

@@ -10,6 +10,15 @@ public class DocumentoCredito {
     private double monto;
     private Moneda moneda;
     private boolean anulado;
+    private Boolean activo;
+
+    public Boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 
     public DocumentoCredito() {
     }

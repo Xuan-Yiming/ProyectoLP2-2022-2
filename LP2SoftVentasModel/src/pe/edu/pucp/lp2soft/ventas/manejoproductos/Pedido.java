@@ -6,6 +6,15 @@ public class Pedido {
     private int idProducto;
     private int idOrdenDeCompra;
     private double descuento;
+    private Boolean activo;
+
+    public Boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 
     public Pedido() {
     }

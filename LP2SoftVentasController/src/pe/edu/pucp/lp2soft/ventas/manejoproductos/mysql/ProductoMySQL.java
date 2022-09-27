@@ -26,13 +26,16 @@ public class ProductoMySQL implements ProductoDAO{
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_PRODUCTO(?,?,?,?,?,?)}");
-            cs.registerOutParameter("_ID_PRODUCTO", java.sql.Types.INTEGER);
-            cs.setString("_NOMBRE", producto.getNombre());
-            cs.setDouble("_PRECIO", producto.getPrecio());
-            cs.setString("_UNIDAD", producto.getUnidad());
-            cs.setInt("_STOCKMINIMO", producto.getStockMinimo());
-            cs.setBoolean("_DEVUELTO", producto.isDevuelto());
+            cs = con.prepareCall("{call INSERTAR_PRODUCTO(?,?,?,?,?,?,?,?,?)}");
+            cs.registerOutParameter("_id_producto", java.sql.Types.INTEGER);
+            cs.setInt("_id_almacen", producto.getIdAlamcen());
+            cs.setString("_codigo_lote", producto.getCodigoLote());
+            cs.setString("_nombre", producto.getNombre());
+            cs.setDouble("_costo", producto.getCosto());
+            cs.setDouble("_precio", producto.getPrecio());
+            cs.setDate("_fecha_ingreso", new java.sql.Date(producto.getFechaDeIngreso().getTime()));
+            cs.setBoolean("_devuelto", producto.isDevuelto());
+            cs.setBoolean("_activo", producto.isActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -48,13 +51,16 @@ public class ProductoMySQL implements ProductoDAO{
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call MODIFICAR_PRODUCTO(?,?,?,?,?,?)}");
-            cs.setInt("_ID_PRODUCTO", producto.getId());
-            cs.setString("_NOMBRE", producto.getNombre());
-            cs.setDouble("_PRECIO", producto.getPrecio());
-            cs.setString("_UNIDAD", producto.getUnidad());
-            cs.setInt("_STOCKMINIMO", producto.getStockMinimo());
-            cs.setBoolean("_DEVUELTO", producto.isDevuelto());
+            cs = con.prepareCall("{call MODIFICAR_PRODUCTO(?,?,?,?,?,?,?,?,?)}");
+            cs.setInt("_id_producto", producto.getId());
+            cs.setInt("_id_almacen", producto.getIdAlamcen());
+            cs.setString("_codigo_lote", producto.getCodigoLote());
+            cs.setString("_nombre", producto.getNombre());
+            cs.setDouble("_costo", producto.getCosto());
+            cs.setDouble("_precio", producto.getPrecio());
+            cs.setDate("_fecha_ingreso", new java.sql.Date(producto.getFechaDeIngreso().getTime()));
+            cs.setBoolean("_devuelto", producto.isDevuelto());
+            cs.setBoolean("_activo", producto.isActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -71,7 +77,7 @@ public class ProductoMySQL implements ProductoDAO{
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call ELIMINAR_PRODUCTO(?)}");
-            cs.setInt("_ID_PRODUCTO", id);
+            cs.setInt("_id_producto", id);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -91,12 +97,15 @@ public class ProductoMySQL implements ProductoDAO{
             rs = cs.executeQuery();
             while(rs.next()){
                 Producto producto = new Producto();
-                producto.setId(rs.getInt("ID_PRODUCTO"));
-                producto.setNombre(rs.getString("NOMBRE"));
-                producto.setPrecio(rs.getDouble("PRECIO"));
-                producto.setUnidad(rs.getString("UNIDAD"));
-                producto.setStockMinimo(rs.getInt("STOCKMINIMO"));
-                producto.setDevuelto(rs.getBoolean("DEVUELTO"));
+                producto.setId(rs.getInt("id_producto"));
+                producto.setIdAlamcen(rs.getInt("id_almacen"));
+                producto.setCodigoLote(rs.getString("codigo_lote"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setCosto(rs.getDouble("costo"));
+                producto.setPrecio(rs.getDouble("precio"));
+                producto.setFechaDeIngreso(rs.getDate("fecha_ingreso"));
+                producto.setDevuelto(rs.getBoolean("devuelto"));
+                producto.setActivo(rs.getBoolean("activo"));
                 productos.add(producto);
             }
         }catch(Exception ex){

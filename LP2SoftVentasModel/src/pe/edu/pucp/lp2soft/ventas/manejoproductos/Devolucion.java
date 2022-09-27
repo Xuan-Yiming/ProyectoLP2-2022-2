@@ -5,6 +5,15 @@ public class Devolucion {
     private int id;
     private int idProducto;
     private int idReclamo;
+    private Boolean activo;
+
+    public Boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 
     public Devolucion() {
     }

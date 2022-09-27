@@ -9,6 +9,15 @@ public class Reclamo {
     private boolean atendido;
     private String justificacion;
     ArrayList<Devolucion> devoluciones;
+    private Boolean activo;
+
+    public Boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 
     public Reclamo() {
     }

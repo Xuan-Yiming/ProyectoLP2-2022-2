@@ -27,10 +27,11 @@ public class DevolucionMySQL implements DevolucionDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_DEVOLUCION(?,?,?)}");
-            cs.registerOutParameter("_ID_DEVOLUCION", java.sql.Types.INTEGER);
-            cs.setInt("_CANTIDAD", devolucion.getCantidad());
-            cs.setDate("_FECHA", new java.sql.Date(devolucion.getFecha().getTime()));
+            cs = con.prepareCall("{call INSERTAR_DEVOLUCION(?,?,?,?)}");
+            cs.registerOutParameter("_id_devolucion", java.sql.Types.INTEGER);
+            cs.setInt("_id_producto", devolucion.getIdProducto());
+            cs.setInt("_id_reclamo", devolucion.getIdReclamo());
+            cs.setBoolean("_activo", true);
             cs.executeUpdate();
             resultado = cs.executeUpdate();
         }catch(Exception ex){
@@ -39,7 +40,6 @@ public class DevolucionMySQL implements DevolucionDAO {
             try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
         }
         return resultado;
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -47,10 +47,11 @@ public class DevolucionMySQL implements DevolucionDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call MODIFICAR_DEVOLUCION(?,?,?)}");
-            cs.setInt("_ID_DEVOLUCION", devolucion.getId());
-            cs.setInt("_CANTIDAD", devolucion.getCantidad());
-            cs.setDate("_FECHA", new java.sql.Date(devolucion.getFecha().getTime()));
+            cs = con.prepareCall("{call MODIFICAR_DEVOLUCION(?,?,?,?)}");
+            cs.setInt("_id_devolucion", devolucion.getId());
+            cs.setInt("_id_producto", devolucion.getIdProducto());
+            cs.setInt("_id_reclamo", devolucion.getIdReclamo());
+            cs.setBoolean("_activo", devolucion.isActivo());
             cs.executeUpdate();
             resultado = cs.executeUpdate();
         }catch(Exception ex){
@@ -59,7 +60,6 @@ public class DevolucionMySQL implements DevolucionDAO {
             try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
         }
         return resultado;
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -68,7 +68,7 @@ public class DevolucionMySQL implements DevolucionDAO {
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call ELIMINAR_DEVOLUCION(?)}");
-            cs.setInt("_ID_DEVOLUCION", id);
+            cs.setInt("_id_devolucion", id);
             cs.executeUpdate();
             resultado = cs.executeUpdate();
         }catch(Exception ex){
@@ -77,7 +77,6 @@ public class DevolucionMySQL implements DevolucionDAO {
             try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
         }
         return resultado;
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -89,9 +88,10 @@ public class DevolucionMySQL implements DevolucionDAO {
             rs = cs.executeQuery();
             while(rs.next()){
                 Devolucion devolucion = new Devolucion();
-                devolucion.setId(rs.getInt("ID_DEVOLUCION"));
-                devolucion.setCantidad(rs.getInt("CANTIDAD"));
-                devolucion.setFecha(rs.getDate("FECHA"));
+                devolucion.setId(rs.getInt("id_devolucion"));
+                devolucion.setIdProducto(rs.getInt("id_producto"));
+                devolucion.setIdReclamo(rs.getInt("id_reclamo"));
+                devolucion.setActivo(rs.getBoolean("activo"));
                 devoluciones.add(devolucion);
             }
         }catch(Exception ex){

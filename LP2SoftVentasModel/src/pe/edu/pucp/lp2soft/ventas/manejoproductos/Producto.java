@@ -11,6 +11,15 @@ public class Producto {
     private double precio;
     private Date fechaDeIngreso;
     private boolean devuelto;
+    private Boolean activo;
+
+    public Boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 
     public Producto() {
     }

@@ -8,6 +8,15 @@ public class Almacen {
     private String  nombre;
     private String  direccion;
     private ArrayList<Producto> productos;
+    private Boolean activo;
+
+    public Boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 
     public Almacen() {
     }
@@ -52,5 +61,7 @@ public class Almacen {
         this.productos = productos;
     }
 
+
+    
     
 }

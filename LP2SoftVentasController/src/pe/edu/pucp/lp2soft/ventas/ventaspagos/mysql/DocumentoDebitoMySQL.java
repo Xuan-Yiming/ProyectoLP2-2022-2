@@ -26,15 +26,18 @@ public class DocumentoDebitoMySQL implements DocumentoDebitoDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call insertar_documento_debito(?,?,?,?,?,?,?)}");
+            cs = con.prepareCall("{call insertar_documento_debito(?,?,?,?,?,?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_documentoDebito", java.sql.Types.INTEGER);
-            cs.setDate("_FECHACREACION", new java.sql.Date(documentoDebito.getFechaCreacion().getTime()));
-            cs.setDate("_FECHAVENCIMIENTO", new java.sql.Date(documentoDebito.getFechaVencimiento().getTime()));
-            cs.setDouble("_IMPUESTO", documentoDebito.getImpuesto());
-            //moneda
-            cs.setDouble("_MONTO", documentoDebito.getMonto());
-            cs.setDouble("_SALDO", documentoDebito.getSaldo());
-            cs.setBoolean("_ANULADO", documentoDebito.isAnulado());
+            cs.setInt("_id_ordenDeCompra", documentoDebito.getIdOrdenDeCompra());
+            cs.setDate("_fecha_creacion", documentoDebito.getFechaCreacion());
+            cs.setDate("_fecha_vencimiento", documentoDebito.getFechaVencimiento());
+            cs.setDouble("_impuesto", documentoDebito.getImpuesto());
+            cs.setDouble("_monto", documentoDebito.getMonto());
+            cs.setInt("_id_moneda", documentoDebito.getMoneda().getId());
+            cs.setDouble("_saldo", documentoDebito.getSaldo());
+            cs.setBoolean("_anulado", documentoDebito.isAnulado());
+            cs.setInt("_id_terminoDePago", documentoDebito.getTerminoDePago().getId());
+            cs.setBoolean("_activo", documentoDebito.isActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -54,15 +57,18 @@ public class DocumentoDebitoMySQL implements DocumentoDebitoDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call modificar_documento_debito(?,?,?,?,?,?,?)}");
+            cs = con.prepareCall("{call modificar_documento_debito(?,?,?,?,?,?,?,?,?,?,?)}");
             cs.setInt("_id_documentoDebito", documentoDebito.getId());
-            cs.setDate("_FECHACREACION", new java.sql.Date(documentoDebito.getFechaCreacion().getTime()));
-            cs.setDate("_FECHAVENCIMIENTO", new java.sql.Date(documentoDebito.getFechaVencimiento().getTime()));
-            cs.setDouble("_IMPUESTO", documentoDebito.getImpuesto());
-            //moneda
-            cs.setDouble("_MONTO", documentoDebito.getMonto());
-            cs.setDouble("_SALDO", documentoDebito.getSaldo());
-            cs.setBoolean("_ANULADO", documentoDebito.isAnulado());
+            cs.setInt("_id_ordenDeCompra", documentoDebito.getIdOrdenDeCompra());
+            cs.setDate("_fecha_creacion", documentoDebito.getFechaCreacion());
+            cs.setDate("_fecha_vencimiento", documentoDebito.getFechaVencimiento());
+            cs.setDouble("_impuesto", documentoDebito.getImpuesto());
+            cs.setDouble("_monto", documentoDebito.getMonto());
+            cs.setInt("_id_moneda", documentoDebito.getMoneda().getId());
+            cs.setDouble("_saldo", documentoDebito.getSaldo());
+            cs.setBoolean("_anulado", documentoDebito.isAnulado());
+            cs.setInt("_id_terminoDePago", documentoDebito.getTerminoDePago().getId());
+            cs.setBoolean("_activo", documentoDebito.isActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -108,13 +114,20 @@ public class DocumentoDebitoMySQL implements DocumentoDebitoDAO {
             while(rs.next()){
                 DocumentoDebito documentoDebito = new DocumentoDebito();
                 documentoDebito.setId(rs.getInt("id_documentoDebito"));
-                documentoDebito.setFechaCreacion(rs.getDate("FECHACREACION"));
-                documentoDebito.setFechaVencimiento(rs.getDate("FECHAVENCIMIENTO"));
-                documentoDebito.setImpuesto(rs.getDouble("IMPUESTO"));
-                //moneda
-                documentoDebito.setMonto(rs.getDouble("MONTO"));
-                documentoDebito.setSaldo(rs.getDouble("SALDO"));
-                documentoDebito.setAnulado(rs.getBoolean("ANULADO"));
+                documentoDebito.setIdOrdenDeCompra(rs.getInt("id_ordenDeCompra"));
+                documentoDebito.setFechaCreacion(rs.getDate("fecha_creacion"));
+                documentoDebito.setFechaVencimiento(rs.getDate("fecha_vencimiento"));
+                documentoDebito.setImpuesto(rs.getDouble("impuesto"));
+                documentoDebito.setMonto(rs.getDouble("monto"));
+                Moneda moneda = new Moneda();
+                moneda.setId(rs.getInt("id_moneda"));
+                documentoDebito.setMoneda(moneda);
+                documentoDebito.setSaldo(rs.getDouble("saldo"));
+                documentoDebito.setAnulado(rs.getBoolean("anulado"));
+                TerminoDePago terminoDePago = new TerminoDePago();
+                terminoDePago.setId(rs.getInt("id_terminoDePago"));
+                documentoDebito.setTerminoDePago(terminoDePago);
+                documentoDebito.setActivo(rs.getBoolean("activo"));
                 documentosDebito.add(documentoDebito);
             }
         }catch(Exception ex){

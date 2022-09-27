@@ -26,11 +26,13 @@ public class ReclamoMySQL implements ReclamoDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_RECLAMO(?,?,?,?)}");
-            cs.registerOutParameter("_ID_RECLAMO", java.sql.Types.INTEGER);
-            cs.setDate("_FECHA", new java.sql.Date(reclamo.getFecha().getTime()));
-            cs.setBoolean("_ATENDIDO", reclamo.isAtendido());
-            cs.setString("_JUSTIFICACION", reclamo.getJustificacion());
+            cs = con.prepareCall("{call INSERTAR_RECLAMO(?,?,?,?,?,?)}");
+            cs.registerOutParameter("_id_reclamo", java.sql.Types.INTEGER);
+            cs.setInt("_id_ordendecompra", reclamo.getIdOrdenDeCompra());
+            cs.setDate("_fecha", new java.sql.Date(reclamo.getFecha().getTime()));
+            cs.setBoolean("_atenido", reclamo.isAtendido());
+            cs.setString("_justificacion", reclamo.getJustificacion());
+            cs.setBoolean("_activo", reclamo.isActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -46,11 +48,13 @@ public class ReclamoMySQL implements ReclamoDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call MODIFICAR_RECLAMO(?,?,?,?)}");
-            cs.setInt("_ID_RECLAMO", reclamo.getId());
-            cs.setDate("_FECHA", new java.sql.Date(reclamo.getFecha().getTime()));
-            cs.setBoolean("_ATENDIDO", reclamo.isAtendido());
-            cs.setString("_JUSTIFICACION", reclamo.getJustificacion());
+            cs = con.prepareCall("{call MODIFICAR_RECLAMO(?,?,?,?,?,?)}");
+            cs.setInt("_id_reclamo", reclamo.getId());
+            cs.setInt("_id_ordendecompra", reclamo.getIdOrdenDeCompra());
+            cs.setDate("_fecha", new java.sql.Date(reclamo.getFecha().getTime()));
+            cs.setBoolean("_atenido", reclamo.isAtendido());
+            cs.setString("_justificacion", reclamo.getJustificacion());
+            cs.setBoolean("_activo", reclamo.isActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -67,7 +71,7 @@ public class ReclamoMySQL implements ReclamoDAO {
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call ELIMINAR_RECLAMO(?)}");
-            cs.setInt("_ID_RECLAMO", id);
+            cs.setInt("_id_reclamo", id);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -87,10 +91,12 @@ public class ReclamoMySQL implements ReclamoDAO {
             rs = cs.executeQuery();
             while(rs.next()){
                 Reclamo reclamo = new Reclamo();
-                reclamo.setId(rs.getInt("ID_RECLAMO"));
-                reclamo.setFecha(rs.getDate("FECHA"));
-                reclamo.setAtendido(rs.getBoolean("ATENDIDO"));
-                reclamo.setJustificacion(rs.getString("JUSTIFICACION"));
+                reclamo.setId(rs.getInt("id_reclamo"));
+                reclamo.setIdOrdenDeCompra(rs.getInt("id_ordendecompra"));
+                reclamo.setFecha(rs.getDate("fecha"));
+                reclamo.setAtendido(rs.getBoolean("atenido"));
+                reclamo.setJustificacion(rs.getString("justificacion"));
+                reclamo.setActivo(rs.getBoolean("activo"));
                 reclamos.add(reclamo);
             }
         }catch(Exception ex){

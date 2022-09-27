@@ -20,6 +20,15 @@ public class OrdenDeCompra{
     private ArrayList<DocumentoCredito> documentosCredito;
     private ArrayList<Pedido> pedidos;
     private ArrayList<Reclamo> reclamos;
+    private Boolean activo;
+
+    public Boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 
     public OrdenDeCompra() {
     }

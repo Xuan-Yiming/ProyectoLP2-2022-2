@@ -27,11 +27,12 @@ public class AlmacenMySQL implements AlmacenDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_ALMACEN(?,?,?,?)}");
+            cs = con.prepareCall("{call INSERTAR_ALMACEN(?,?,?,?,?)}");
             cs.registerOutParameter("_id_almacen", java.sql.Types.INTEGER);
             cs.setString("_nombre", almacen.getNombre());
             cs.setString("_direccion", almacen.getDireccion());
             cs.setInt("_id_supervisor", almacen.getIdSupervisorDeAlmacen());
+            cs.setBoolean("_activo", true);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -46,10 +47,12 @@ public class AlmacenMySQL implements AlmacenDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call MODIFICAR_ALMACEN(?,?,?)}");
-            cs.setInt("_ID_ALMACEN", almacen.getId());
-            cs.setString("_NOMBRE", almacen.getNombre());
-            cs.setString("_DIRECCION", almacen.getDireccion());
+            cs = con.prepareCall("{call MODIFICAR_ALMACEN(?,?,?,?,?)}");
+            cs.setInt("_id_almacen", almacen.getId());
+            cs.setInt("_id_supervisor", almacen.getIdSupervisorDeAlmacen());
+            cs.setString("_nombre", almacen.getNombre());
+            cs.setString("_direccion", almacen.getDireccion());
+            cs.setBoolean("_activo", almacen.isActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -67,7 +70,7 @@ public class AlmacenMySQL implements AlmacenDAO {
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call ELIMINAR_ALMACEN(?)}");
-            cs.setInt("_ID", id);
+            cs.setInt("_id_almacen", id);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -87,9 +90,11 @@ public class AlmacenMySQL implements AlmacenDAO {
             rs = cs.executeQuery();
             while(rs.next()){
                 Almacen almacen = new Almacen();
-                almacen.setId(rs.getInt("ID_ALMACEN"));
-                almacen.setNombre(rs.getString("NOMBRE"));
-                almacen.setDireccion(rs.getString("DIRECCION"));
+                almacen.setId(rs.getInt("id_almacen"));
+                almacen.setNombre(rs.getString("nombre"));
+                almacen.setDireccion(rs.getString("direccion"));
+                almacen.setIdSupervisorDeAlmacen(rs.getInt("id_supervisor"));
+                almacen.setActivo(rs.getBoolean("activo"));
                 almacenes.add(almacen);
             }
         }catch(Exception ex){

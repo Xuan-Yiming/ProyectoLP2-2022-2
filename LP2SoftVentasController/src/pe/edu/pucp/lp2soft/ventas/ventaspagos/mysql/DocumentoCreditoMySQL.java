@@ -25,11 +25,16 @@ public class DocumentoCreditoMySQL implements DocumentoCreditoDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call insertar_documento_credito(?,?,?,?)}");
+            cs = con.prepareCall("{call insertar_documento_credito(?,?,?,?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_documentoCredito", java.sql.Types.INTEGER);
-            cs.setDate("_FECHACREACION", new java.sql.Date(documentoCredito.getFechaCreacion().getTime()));
-            cs.setDouble("_MONTO", documentoCredito.getMonto());
-            cs.setBoolean("_ANULADO", documentoCredito.isAnulado());
+            cs.setInt("_id_ordendecompra", documentoCredito.getIdOrdenDeCompra());
+            cs.setInt("_id_DocumentoDebito", documentoCredito.getIdDocumentoDebito());
+            cs.setDate("_fechaCreacion", new java.sql.Date(documentoCredito.getFechaCreacion().getTime()));
+            cs.setDate("_fechaVencimiento", new java.sql.Date(documentoCredito.getFechaVencimiento().getTime()));
+            cs.setDouble("_monto", documentoCredito.getMonto());
+            cs.setInt("_id_moneda", documentoCredito.getIdMoneda().getId());
+            cs.setBoolean("_anulado", documentoCredito.isAnulado());
+            cs.setBoolean("_activo", documentoCredito.isActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -49,11 +54,16 @@ public class DocumentoCreditoMySQL implements DocumentoCreditoDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call modificar_documento_credito(?,?,?,?)}");
+            cs = con.prepareCall("{call modificar_documento_credito(?,?,?,?,?,?,?,?,?)}");
             cs.setInt("_id_documentoCredito", documentoCredito.getId());
-            cs.setDate("_FECHACREACION", new java.sql.Date(documentoCredito.getFechaCreacion().getTime()));
-            cs.setDouble("_MONTO", documentoCredito.getMonto());
-            cs.setBoolean("_ANULADO", documentoCredito.isAnulado());
+            cs.setInt("_id_ordendecompra", documentoCredito.getIdOrdenDeCompra());
+            cs.setInt("_id_DocumentoDebito", documentoCredito.getIdDocumentoDebito());
+            cs.setDate("_fechaCreacion", new java.sql.Date(documentoCredito.getFechaCreacion().getTime()));
+            cs.setDate("_fechaVencimiento", new java.sql.Date(documentoCredito.getFechaVencimiento().getTime()));
+            cs.setDouble("_monto", documentoCredito.getMonto());
+            cs.setInt("_id_moneda", documentoCredito.getIdMoneda().getId());
+            cs.setBoolean("_anulado", documentoCredito.isAnulado());
+            cs.setBoolean("_activo", documentoCredito.isActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -99,9 +109,17 @@ public class DocumentoCreditoMySQL implements DocumentoCreditoDAO {
             while(rs.next()){
                 DocumentoCredito documento = new DocumentoCredito();
                 documento.setId(rs.getInt("id_documentoCredito"));
-                documento.setFechaCreacion(rs.getDate("FECHACREACION"));
-                documento.setMonto(rs.getDouble("MONTO"));
-                documento.setAnulado(rs.getBoolean("ANULADO"));
+                documento.setIdOrdenDeCompra(rs.getInt("id_ordendecompra"));
+                documento.setIdDocumentoDebito(rs.getInt("id_DocumentoDebito"));
+                documento.setFechaCreacion(rs.getDate("fechaCreacion"));
+                documento.setFechaVencimiento(rs.getDate("fechaVencimiento"));
+                documento.setMonto(rs.getDouble("monto"));
+                Moneda moneda = new Moneda();
+                //falta listar todos los tipo de cambios
+                moneda.setId(rs.getInt("id_moneda"));
+                documento.setIdMoneda(moneda);
+                documento.setAnulado(rs.getBoolean("anulado"));
+                documento.setActivo(rs.getBoolean("activo"));
                 documentos.add(documento);
             }
         }catch(Exception ex){

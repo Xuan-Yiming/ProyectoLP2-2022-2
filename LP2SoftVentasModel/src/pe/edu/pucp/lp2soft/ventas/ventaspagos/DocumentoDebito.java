@@ -14,6 +14,15 @@ public class DocumentoDebito {
     private boolean anulado;
     private TerminoDePago terminoDePago;
     private ArrayList<DocumentoCredito> documentosCredito;
+    private Boolean activo;
+
+    public Boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 
     public DocumentoDebito() {
     }

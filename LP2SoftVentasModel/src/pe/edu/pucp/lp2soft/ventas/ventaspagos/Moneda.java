@@ -6,6 +6,15 @@ public class Moneda {
     private String nombre;
     private String abreviatura;
     private ArrayList<TipoDeCambio> cambios;
+    private Boolean activo;
+
+    public Boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 
     public Moneda() {
     }

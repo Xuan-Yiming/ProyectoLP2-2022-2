@@ -6,6 +6,15 @@ public class TerminoDePago {
     private Date fechaLimite;
     private int numeroCuota;
     private double montoCuota;
+    private Boolean activo;
+
+    public Boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 
     public TerminoDePago() {
     }
