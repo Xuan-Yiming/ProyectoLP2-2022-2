@@ -1,5 +1,5 @@
+/*DROP TABLE IF EXISTS stock;*/
 DROP TABLE IF EXISTS almacen;
-DROP TABLE IF EXISTS stock;
 DROP TABLE IF EXISTS producto;
 DROP TABLE IF EXISTS devolucion;
 DROP TABLE IF EXISTS reclamo;
@@ -10,196 +10,186 @@ DROP TABLE IF EXISTS ordenDeCompra;
 DROP TABLE IF EXISTS cliente;
 DROP TABLE IF EXISTS empresa;
 DROP TABLE IF EXISTS personaNatural;
-DROP TABLE IF EXISTS moneda;
 DROP TABLE IF EXISTS tipoDeCambio;
+DROP TABLE IF EXISTS moneda;
 DROP TABLE IF EXISTS terminoDePago;
-DROP TABLE IF EXISTS persona;
-DROP TABLE IF EXISTS usuario;
 DROP TABLE IF EXISTS supervisorDeAlmacen;
 DROP TABLE IF EXISTS vendedor;
 DROP TABLE IF EXISTS administrador;
-
+DROP TABLE IF EXISTS usuario;
+DROP TABLE IF EXISTS persona;
 
 CREATE TABLE persona(
 	id_persona INT PRIMARY KEY AUTO_INCREMENT,
-    tipoDeDocumento varchar(50),
-    numDeDocumento varchar(50),
+    tipo_de_documento varchar(50),
+    numero_de_documento varchar(50),
     nombre varchar(100),
     apellido varchar(100),
-    fechaDeNacimiento date,
+    fecha_de_nacimiento date,
     telefono varchar(15),
     direccion varchar(200),
     email varchar(100)
-)ENGINE=lasjoyasdb;
+)ENGINE=InnoDB;
+
+CREATE TABLE cliente(
+	id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+    categoria varchar(100)
+)ENGINE=InnoDB;
 
 CREATE TABLE usuario(
 	id_usuario INT PRIMARY KEY,
     password Varchar(100),
-    fechaIngreso date,
+    fecha_de_ingreso date,
     FOREIGN KEY (id_usuario) REFERENCES persona(id_persona)
-)ENGINE=lasjoyasdb;
+)ENGINE=InnoDB;
+
+CREATE TABLE empresa(
+	RUC int,
+    razon_social varchar(100),
+    direccion varchar(200),
+    categoria varchar(100),
+    id_empresa int,
+	FOREIGN KEY (id_empresa) REFERENCES cliente(id_cliente)
+)ENGINE=InnoDB;
+
+CREATE TABLE personaNatural(
+    id_persona_natural int,
+    categoria varchar(100),
+	numero_de_documento varchar(50),
+    nombre varchar(100),
+    apellido varchar(100),
+    fecha_de_nacimiento date,
+    telefono varchar(15),
+    direccion varchar(200),
+    email varchar(100),
+    FOREIGN KEY (id_persona_natural) REFERENCES cliente(id_cliente)
+)ENGINE=InnoDB;
 
 CREATE TABLE supervisorDeAlmacen(
 	id_usuario INT PRIMARY KEY,
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
-)ENGINE=lasjoyasdb;
+)ENGINE=InnoDB;
+
 CREATE TABLE vendedor(
 	id_usuario INT PRIMARY KEY,
 	cantidad_ventas int,
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
-)ENGINE=lasjoyasdb;
+)ENGINE=InnoDB;
+
 CREATE TABLE administrador(
 	id_usuario INT PRIMARY KEY,
 	area varchar(100),
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
-)ENGINE=lasjoyasdb;
-
+)ENGINE=InnoDB;
 
 CREATE TABLE almacen(
-	ID_ALMACEN INT PRIMARY KEY AUTO_INCREMENT,
-	NOMBRE VARCHAR(100),
-    DIRECCION VARCHAR(200),
-    id_supervisorDeAlmacen INT,
-    FOREIGN KEY (id_supervisorDeAlmacen) REFERENCES supervisorDeAlmacen(id_usuario)
-)ENGINE=lasjoyasdb;
+	id_almacen INT PRIMARY KEY AUTO_INCREMENT,
+	nombre VARCHAR(100),
+    direccion VARCHAR(200),
+    id_supervisor_de_almacen INT,
+    FOREIGN KEY (id_supervisor_de_almacen) REFERENCES supervisorDeAlmacen(id_usuario)
+)ENGINE=InnoDB;
+
 CREATE TABLE producto(
-	ID_PRODUCTO INT PRIMARY KEY AUTO_INCREMENT,
-    NOMBRE VARCHAR(100),
-    PRECIO DOUBLE,
-    UNIDAD INT,
-    STOCKMINIMO int,
-    DEVUELTO BOOLEAN
-)ENGINE=lasjoyasdb;
-
-CREATE TABLE stock(
-	ID_STOCK INT,
-	FOREIGN KEY (id_stock) REFERENCES almacen(id_almacen),
-    CANTIDAD INT,
-    ID_PRODUCTO INT,
-    FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
-)ENGINE=lasjoyasdb;
-
-CREATE TABLE reclamo(
-	ID_RECLAMO INT PRIMARY KEY AUTO_INCREMENT,
-    FECHA DATE,
-    ATENDIDO boolean,
-    JUSTIFICACION varchar(500),
-    id_ordenDeCompra int,
-    FOREIGN KEY (id_ordenDeCompra) REFERENCES ordenDeCompra(id_ordenDeCompra)
-)ENGINE=lasjoyasdb;
-
-CREATE TABLE devolucion(
-	ID_DEVOLUCION INT PRIMARY KEY AUTO_INCREMENT,
-    CANTIDAD INT,
-    FECHA DATE,
+	id_producto INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100),
+    precio DOUBLE,
     unidad INT,
-    id_producto INT,
-    id_reclamo INT,
-    FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
-    FOREIGN KEY (id_reclamo) REFERENCES reclamo(id_reclamo)
-)ENGINE=lasjoyasdb;
-
-
-CREATE TABLE moneda(
-	id_moneda INT PRIMARY KEY AUTO_INCREMENT,
-    nombre varchar(50),
-    abreviatura varchar(10)
-)ENGINE=lasjoyasdb;
-
-CREATE TABLE tipoDeCambio(
-	id_tipoDeCambio INT,
-    FOREIGN KEY (id_tipoDeCambio) REFERENCES moneda(id_moneda),
-    fecha date,
-    cambio double
-    
-)ENGINE=lasjoyasdb;
-CREATE TABLE cliente(
-	id_cliente INT PRIMARY KEY AUTO_INCREMENT,
-    categoria varchar(100)
-    
-)ENGINE=lasjoyasdb;
+    stock_minimo int,
+    devuelto BOOLEAN
+)ENGINE=InnoDB;
 
 CREATE TABLE ordenDeCompra(
 	id_orden_de_compra INT PRIMARY KEY AUTO_INCREMENT,
 	monto double,
     id_moneda INT,
     FOREIGN KEY (id_moneda) REFERENCES moneda(id_moneda),
-    direccionDeEntrega varchar(200),
-    formaDeEntrega int,
-    fechaDeCompra date,
-    fechaDeEntrega date,
+    direccion_de_entrega varchar(200),
+    forma_de_entrega int,
+    fecha_de_compra date,
+    fecha_de_entrega date,
     pagado boolean,
     id_cliente int,
     id_vendedor int,
     FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
     FOREIGN KEY (id_vendedor) REFERENCES vendedor(id_usuario)
-)ENGINE=lasjoyasdb;
+)ENGINE=InnoDB;
+
+CREATE TABLE reclamo(
+	id_reclamo INT PRIMARY KEY AUTO_INCREMENT,
+    fecha DATE,
+    atendido boolean,
+    justificacion varchar(500),
+    id_orden_de_compra int,
+    FOREIGN KEY (id_orden_de_compra) REFERENCES ordenDeCompra(id_orden_de_compra)
+)ENGINE=InnoDB;
+
+CREATE TABLE devolucion(
+	id_devolucion INT PRIMARY KEY AUTO_INCREMENT,
+    cantidad INT,
+    fecha DATE,
+    unidad INT,
+    id_producto INT,
+    id_reclamo INT,
+    FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
+    FOREIGN KEY (id_reclamo) REFERENCES reclamo(id_reclamo)
+)ENGINE=InnoDB;
+
+CREATE TABLE moneda(
+	id_moneda INT PRIMARY KEY AUTO_INCREMENT,
+    nombre varchar(50),
+    abreviatura varchar(10)
+)ENGINE=InnoDB;
+
+CREATE TABLE tipoDeCambio(
+	id_tipo_de_cambio INT,
+    fecha date,
+    cambio double,
+    FOREIGN KEY (id_tipo_de_cambio) REFERENCES moneda(id_moneda)
+)ENGINE=InnoDB;
 
 CREATE TABLE pedido(
-	ID_PEDIDO INT PRIMARY KEY AUTO_INCREMENT,
-	CANTIDAD INT,
-    DESCUENTO double,
-    UNIDAD TINYINT,
+	id_pedido INT PRIMARY KEY AUTO_INCREMENT,
+	cantidad INT,
+    descuento double,
+    unidad TINYINT,
     id_producto int,
-    FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
     id_orden_de_compra int, 
+    FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
     FOREIGN KEY (id_orden_de_compra) REFERENCES ordenDeCompra(id_orden_de_compra)
-)ENGINE=lasjoyasdb;
-
-
+)ENGINE=InnoDB;
 
 CREATE TABLE terminoDePago(
-	id_terminoDePago INT PRIMARY KEY AUTO_INCREMENT,
-    fechaLimite date,
-    numeroCuota int,
-	montoCuota double
-)ENGINE=lasjoyasdb;
+	id_termino_de_pago INT PRIMARY KEY AUTO_INCREMENT,
+    fecha_limite date,
+    numero_cuota int,
+	monto_cuota double
+)ENGINE=InnoDB;
+
 CREATE TABLE documentoDebito(
-	id_documentoDebito INT PRIMARY KEY AUTO_INCREMENT,
-    FECHACREACION date,
-    FECHAVENCIMIENTO date,
-    IMPUESTO double,
-    MONTO double,
+	id_documento_debito INT PRIMARY KEY AUTO_INCREMENT,
+    fecha_creacion date,
+    fecha_vencimiento date,
+    impuesto double,
+    monto double,
     id_moneda int,
+    saldo double,
+    anulado boolean,
+    id_termino_de_pago int,
     FOREIGN KEY (id_moneda) REFERENCES moneda(id_moneda),
-    SALDO double,
-    ANULADO boolean,
-    id_terminoDePago int,
-    FOREIGN KEY (id_terminoDePago) REFERENCES terminoDePago(id_terminoDePago)
-)ENGINE=lasjoyasdb;
+    FOREIGN KEY (id_termino_de_pago) REFERENCES terminoDePago(id_termino_de_pago)
+)ENGINE=InnoDB;
 
 CREATE TABLE documentoCredito(
-	id_documentoCredito INT PRIMARY KEY AUTO_INCREMENT,
-    FECHACREACION date,
-    MONTO double,
-    _ANULADO boolean,
-    id_ordenDeCompra int,
-    FOREIGN KEY (id_ordenDeCompra) REFERENCES ordenDeCompra(id_ordenDeCompra),
+	id_documento_credito INT PRIMARY KEY AUTO_INCREMENT,
+    fecha_creacion date,
+    monto double,
+    anulado boolean,
+    id_orden_de_compra int,
     id_documentDebito int,
-    FOREIGN KEY (id_documentDebito) REFERENCES documentoDebito(id_documentDebito)
-)ENGINE=lasjoyasdb;
-
-CREATE TABLE empresa(
-	RUC int,
-    razonSocial varchar(100),
-    direccion varchar(200),
-    categoria varchar(100),
-    id_empresa int,
-	FOREIGN KEY (id_empresa) REFERENCES cliente(id_cliente)
-)ENGINE=lasjoyasdb;
-CREATE TABLE personaNatural(
-    id_persona_natural int,
-    FOREIGN KEY (id_persona_natural) REFERENCES cliente(id_cliente),
-    categoria varchar(100),
-	numDeDocumento varchar(50),
-    nombre varchar(100),
-    apellido varchar(100),
-    fechaDeNacimiento date,
-    telefono varchar(15),
-    direccion varchar(200),
-    email varchar(100)
-
-)ENGINE=lasjoyasdb;
+    FOREIGN KEY (id_orden_de_compra) REFERENCES ordenDeCompra(id_orden_de_compra),
+    FOREIGN KEY (id_documento_debito) REFERENCES documentoDebito(id_documento_debito)
+)ENGINE=InnoDB;
 
 
 DROP PROCEDURE IF EXISTS INSERTAR_ALMACEN;
@@ -303,201 +293,234 @@ DROP PROCEDURE IF EXISTS MODIFICAR_ADMINISTRADOR;
 DROP PROCEDURE IF EXISTS ELIMINAR_ADMINISTRADOR;
 
 DELIMITER $
-
 CREATE PROCEDURE INSERTAR_ALMACEN(
-	IN _ID_ALMACEN INT,
-    IN _NOMBRE VARCHAR(100),
-    IN _DIRECCION VARCHAR(200)
+	IN _id_almacen INT,
+    IN _nombre VARCHAR(100),
+    IN _direccion VARCHAR(200)
 )
 BEGIN
-	INSERT INTO almacen(ID_ALMACEN,NOMBRE,DIRECCION) VALUES (_ID_ALMACEN,_NOMBRE,_DIRECCION);
+	INSERT INTO almacen(id_almacen,nombre,direccion) VALUES (_id_almacen,_nombre,_direccion);
 END$
 
+DELIMITER $
 CREATE PROCEDURE LISTAR_ALMACENES()
 BEGIN
-	SELECT a.ID_ALMACEN, a.NOMBRE, a.DIRECCION
+	SELECT a.id_almacen, a.nombre, a.direccion
     FROM almacen a;
 END$
+
+DELIMITER $
 CREATE PROCEDURE MODIFICAR_ALMACEN(
-	IN _ID_ALMACEN INT,
-    IN _NOMBRE VARCHAR(100),
-    IN _DIRECCION VARCHAR(200)
+	IN _id_almacen INT,
+    IN _nombre VARCHAR(100),
+    IN _direccion VARCHAR(200)
 )
 BEGIN
 	UPDATE almacen 
-    SET ID_ALMACEN = _ID_ALMACEN, NOMBRE = _NOMBRE, DIRECCION = _DIRECCION
-    WHERE ID_ALMACEN = _ID_ALMACEN;
+    SET id_almacen = _id_almacen, nombre = _nombre, direccion = _direccion
+    WHERE id_almacen = _id_almacen;
 
 END$
+
+DELIMITER $
 CREATE PROCEDURE ELIMINAR_ALMACEN(
-	IN _ID_ALMACEN INT
+	IN _id_almacen INT
 )
 BEGIN
-	UPDATE almacen SET ID_ALMACEN = 0 WHERE ID_ALMACEN = _ID_ALMACEN;
+	UPDATE almacen SET id_almacen = 0 WHERE id_almacen = _id_almacen;
 END$
 
-
-
+DELIMITER $
 CREATE PROCEDURE INSERTAR_STOCK(
-	IN _ID_STOCK INT,
-	IN _CANTIDAD INT,
-    IN _ID_PRODUCTO INT
+	IN _id_stock INT,
+	IN _cantidad INT,
+    IN _id_producto INT
 )
 BEGIN
-	INSERT INTO stock(ID_STOCK,CANTIDAD,ID_PRODUCTO) VALUES (_ID_STOCK,_CANTIDAD,_ID_PRODUCTO);
+	INSERT INTO stock(id_stock,cantidad,id_producto) VALUES (_id_stock,_cantidad,_id_producto);
 END$
+
+DELIMITER $
 CREATE PROCEDURE LISTAR_STOCKS()
 BEGIN
-	SELECT s.ID_STOCK, s.CANTIDAD, p.ID_PRODUCTO
-    FROM stock s;
-END$
-CREATE PROCEDURE MODIFICAR_STOCK(
-	IN _ID_STOCK INT,
-	IN _CANTIDAD INT,
-    IN _ID_PRODUCTO INT
-)
-BEGIN
-	UPDATE stock SET ID_STOCK = _ID_STOCK, CANTIDAD = _CANTIDAD, ID_PRODUCTO = _ID_PRODUCTO;
-END$
-CREATE PROCEDURE ELIMINAR_STOCK(
-	IN _ID_STOCK INT
-)
-BEGIN
-	UPDATE stock SET ID_STOCK = 0 WHERE ID_STOCK = _ID_STOCK;
+	SELECT s.id_stock, s.cantidad, p.id_producto
+    FROM stock s INNER JOIN producto p ON s.id_producto = p.id_producto;
 END$
 
-CREATE PROCEDURE INSERTAR_PRODUCTO(
-	OUT _ID_PRODUCTO INT,
-    IN _NOMBRE VARCHAR(100),
-    IN _PRECIO DOUBLE,
-    IN _UNIDAD INT,
-    IN _STOCKMINIMO int,
-    IN _DEVUELTO BOOLEAN
+DELIMITER $
+CREATE PROCEDURE MODIFICAR_STOCK(
+	IN _id_stock INT,
+	IN _cantidad INT,
+    IN _id_producto INT
 )
 BEGIN
-	SET _ID_PRODUCTO = @@last_insert_id;
-    INSERT INTO producto(ID_PRODUCTO,NOMBRE,PRECIO,UNIDAD,STOCKMINIMO,DEVUELTO) VALUES(_ID_PRODUCTO,_NOMBRE,_PRECIO,_UNIDAD,_STOCKMINIMO,_DEVUELTO);
+	UPDATE stock SET id_stock = _id_stock, cantidad = _cantidad, id_producto = _id_producto;
 END$
+
+DELIMITER $
+CREATE PROCEDURE ELIMINAR_STOCK(
+	IN _id_stock INT
+)
+BEGIN
+	UPDATE stock SET id_stock = 0 WHERE id_stock = _id_stock;
+END$
+
+DELIMITER $
+CREATE PROCEDURE INSERTAR_PRODUCTO(
+	OUT _id_producto INT,
+    IN _nombre VARCHAR(100),
+    IN _precio DOUBLE,
+    IN _unidad INT,
+    IN _stock_minimo int,
+    IN _devuelto BOOLEAN
+)
+BEGIN
+	SET _id_producto = @@last_insert_id;
+    INSERT INTO producto(id_producto,nombre,precio,unidad,stock_minimo,devuelto) VALUES(_id_producto,_nombre,_precio,_unidad,_stock_minimo,_devuelto);
+END$
+
+DELIMITER $
 CREATE PROCEDURE LISTAR_PRODUCTOS()
 BEGIN
-	SELECT ID_PRODUCTO,NOMBRE,PRECIO,UNIDAD,STOCKMINIMO,DEVUELTO 
+	SELECT p.id_producto,p.nombre,p.precio,p.unidad,p.stock_minimo,p.devuelto 
     FROM producto p;
 END$
+
+DELIMITER $
 CREATE PROCEDURE MODIFICAR_PRODUCTO(
-	IN _ID_PRODUCTO INT,
-    IN _NOMBRE VARCHAR(100),
-    IN _PRECIO DOUBLE,
-    IN _UNIDAD INT,
-    IN _STOCKMINIMO int,
-    IN _DEVUELTO BOOLEAN
+    IN _id_producto INT,
+    IN _nombre VARCHAR(100),
+    IN _precio DOUBLE,
+    IN _unidad INT,
+    IN _stock_minimo int,
+    IN _devuelto BOOLEAN
 )
 BEGIN
 	UPDATE producto 
-    SET ID_PRODUCTO = _ID_PRODUCTO, 
-    NOMBRE = _NOMBRE, 
-    PRECIO = _PRECIO, 
-    UNIDAD = _UNIDAD ,
-    STOCKMINIMO=_STOCKMINIMO,
-    DEVUELTO=_DEVUELTO
-    WHERE ID_PRODUCTO = _ID_PRODUCTO;
-    
+    SET id_producto = _id_producto, 
+    nombre = _nombre, 
+    precio = _precio, 
+    unidad = _unidad ,
+    stock_minimo =_stock_minimo,
+    devuelto =_devuelto
+    WHERE id_producto = _id_producto;
 END$
+
+DELIMITER $
 CREATE PROCEDURE ELIMINAR_PRODUCTO(
-	IN _ID_PRODUCTO INT
+	IN _id_producto INT
 )
 BEGIN
-	UPDATE producto SET ID_PRODUCTO = 0 WHERE ID_PRODUCTO = _ID_PRODUCTO;
+	UPDATE producto SET id_producto = 0 WHERE id_producto = _id_producto;
 END$
 
-
+DELIMITER $
 CREATE PROCEDURE INSERTAR_DEVOLUCION(
-	OUT _ID_DEVOLUCION INT,
-    IN _CANTIDAD INT,
-    IN _FECHA DATE
+	OUT _id_devolucion INT,
+    IN _cantidad INT,
+    IN _fecha DATE
 )
 BEGIN
-	SET _ID_DEVOLUCION = @@last_insert_id;
-    INSERT INTO empleado(ID_DEVOLUCION,CANTIDAD,FECHA) VALUES(_ID_DEVOLUCION,_CANTIDAD,_FECHA);
+	SET _id_devolucion = @@last_insert_id;
+    INSERT INTO empleado(id_devolucion,cantidad,fecha) VALUES(_id_devolucion,_cantidad,_fecha);
 END$
+
+DELIMITER $
 CREATE PROCEDURE LISTAR_DEVOLUCIONES()
 BEGIN
-	SELECT ID_DEVOLUCION,CANTIDAD,FECHA
+	SELECT id_devolucion,cantidad,fecha
     FROM devolucion;
 END$
+
+DELIMITER $
 CREATE PROCEDURE MODIFICAR_DEVOLUCION(
-	IN _ID_DEVOLUCION INT,
-    IN _CANTIDAD INT,
-    IN _FECHA DATE
+	IN _id_devolucion INT,
+    IN _cantidad INT,
+    IN _fecha DATE
 )
 BEGIN
-	UPDATE devolucion SET ID_DEVOLUCION = _ID_DEVOLUCION, CANTIDAD = _CANTIDAD, FECHA = _FECHA WHERE ID_DEVOLUCION = _ID_DEVOLUCION;
+	UPDATE devolucion SET id_devolucion = _id_devolucion, cantidad = _cantidad, fecha = _fecha WHERE id_devolucion = _id_devolucion;
 END$
+
+DELIMITER $
 CREATE PROCEDURE ELIMINAR_DEVOLUCION(
-	IN _ID_DEVOLUCION INT
+	IN _id_devolucion INT
 )
 BEGIN
-	UPDATE devolucion SET ID_DEVOLUCION = 0 WHERE ID_DEVOLUCION = _ID_DEVOLUCION;
+	UPDATE devolucion SET id_devolucion = 0 WHERE id_devolucion = _id_devolucion;
 END$
 
-
+DELIMITER $
 CREATE PROCEDURE INSERTAR_RECLAMO(
-	OUT _ID_RECLAMO INT ,
-    IN _FECHA DATE,
-    IN _ATENDIDO boolean,
-    IN _JUSTIFICACION varchar(500),
-    IN _id_ordenDeCompra int
+	OUT _id_reclamo INT ,
+    IN _fecha DATE,
+    IN _atendido boolean,
+    IN _justificacion varchar(500),
+    IN _id_orden_de_compra int
 )
 BEGIN
-	SET _ID_RECLAMO = @@last_insert_id;
-    INSERT INTO reclamo(ID_RECLAMO,FECHA,ATENDIDO,JUSTIFICACION) VALUES(_ID_RECLAMO,_FECHA,_ATENDIDO,_JUSTIFICACION);
+	SET _id_reclamo = @@last_insert_id;
+    INSERT INTO reclamo(id_reclamo,fecha,atendido,justificacion) VALUES(_id_reclamo,_fecha,_atendido,_justificacion);
 END$
+
+DELIMITER $
 CREATE PROCEDURE LISTAR_RECLAMOS()
 BEGIN
-	SELECT ID_RECLAMO,FECHA,ATENDIDO,JUSTIFICACION
+	SELECT id_reclamo,fecha,atendido,justificacion
     FROM reclamo;
 END$
+
+DELIMITER $
 CREATE PROCEDURE MODIFICAR_RECLAMO(
-	IN _ID_RECLAMO INT ,
-    IN _FECHA DATE,
-    IN _ATENDIDO boolean,
-    IN _JUSTIFICACION varchar(500),
-    IN _id_ordenDeCompra int
+    IN _id_reclamo INT ,
+    IN _fecha DATE,
+    IN _atendido boolean,
+    IN _justificacion varchar(500),
+    IN _id_orden_de_compra int
 )
 BEGIN
-	UPDATE reclamo SET ID_RECLAMO = _ID_RECLAMO,FECHA = _FECHA, ATENDIDO = _ATENDIDO, JUSTIFICACION = _JUSTIFICACION 
-    WHERE ID_RECLAMO = _ID_RECLAMO;
+	UPDATE reclamo SET id_reclamo = _id_reclamo, fecha = _fecha, atendido = _atendido, justificacion = _justificacion 
+    WHERE id_reclamo = _id_reclamo;
 END$
+
+DELIMITER $
 CREATE PROCEDURE ELIMINAR_RECLAMO(
-	IN _ID_RECLAMO INT
+	IN _id_reclamo INT
 )
 BEGIN
-	UPDATE reclamo SET _ID_RECLAMO = 0 WHERE ID_RECLAMO = _ID_RECLAMO;
+	UPDATE reclamo SET _id_reclamo = 0 WHERE id_reclamo = _id_reclamo;
 END$
 
-
+DELIMITER $
 CREATE PROCEDURE INSERTAR_PEDIDO(
-	OUT _ID_PEDIDO INT ,
-	IN _CANTIDAD INT,
-    IN _DESCUENTO double,
-    IN _UNIDAD TINYINT
+	OUT _id_pedido INT ,
+	IN _cantidad INT,
+    IN _descuento double,
+    IN _unidad TINYINT
 )
 BEGIN
-	SET _ID_PEDIDO = @@last_insert_id;
-    INSERT INTO pedido(ID_PEDIDO,CANTIDAD,DESCUENTO,UNIDAD) VALUES(_ID_PEDIDO,_CANTIDAD,_DESCUENTO,_UNIDAD);
+	SET _id_pedido = @@last_insert_id;
+    INSERT INTO pedido(id_pedido,cantidad,descuento,unidad) VALUES(_id_pedido,_cantidad,_descuento,_unidad);
 END$
+
+DELIMITER $
 CREATE PROCEDURE LISTAR_PEDIDOS()
 BEGIN
-	SELECT ID_PEDIDO,CANTIDAD,DESCUENTO,UNIDAD  FROM pedido ;
-    END$
+	SELECT id_pedido,cantidad,descuento,unidad FROM pedido ;
+END$
+
+DELIMITER $
 CREATE PROCEDURE MODIFICAR_PEDIDOS(
-	IN _ID_PEDIDO INT,
-	IN _CANTIDAD INT,
-    IN _DESCUENTO double,
-    IN _UNIDAD TINYINT
+    IN _id_pedido INT ,
+	IN _cantidad INT,
+    IN _descuento double,
+    IN _unidad TINYINT
 )
 BEGIN
-	UPDATE pedido SET CANTIDAD = _CANTIDAD, DESCUENTO = _DESCUENTO, UNIDAD = _UNIDAD WHERE ID_PEDIDO = _ID_PEDIDO;
+	UPDATE pedido SET cantidad = _cantidad, descuento = _descuento, unidad = _unidad WHERE id_pedido = _id_pedido;
 END$
+
+DELIMITER $
 CREATE PROCEDURE ELIMINAR_PEDIDOS(
 	IN _id_empleado INT
 )
@@ -505,161 +528,164 @@ BEGIN
 	UPDATE empleado SET activo = 0 WHERE id_empleado = _id_empleado;
 END$
 
-
-
-CREATE PROCEDURE insertar_documento_credito(
-	OUT _id_documentoCredito INT ,
-    IN _FECHACREACION date,
-    IN _MONTO double,
-    IN _ANULADO boolean
+DELIMITER $
+CREATE PROCEDURE INSERTAR_DOCUMENTO_CREDITO(
+	OUT _id_documento_credito INT ,
+    IN _fecha_creacion date,
+    IN _monto double,
+    IN _anulado boolean
 )
 BEGIN
-	SET _id_documentoCredito = @@last_insert_id;
-    INSERT INTO documentoCredito(id_documentoCredito,FECHACREACION,MONTO_ANULADO) VALUES(_id_documentoCredito,_FECHACREACION,_MONTO_ANULADO);
+	SET _id_documento_credito = @@last_insert_id;
+    INSERT INTO documentoCredito(id_documento_credito,fecha_creacion,monto,anulado) VALUES(_id_documento_credito,_fecha_creacion,_monto,_anulado);
 END$
-CREATE PROCEDURE LISTAR_TODOS_DOCUMENTOSCREDITO()
+
+DELIMITER $
+CREATE PROCEDURE LISTAR_TODOS_DOCUMENTOS_CREDITO()
 BEGIN
-	SELECT id_documentoCredito,FECHACREACION,MONTO_ANULADO 
+	SELECT id_documento_credito,fecha_creacion,monto,anulado 
     FROM documentoCredito ;
 END$
-CREATE PROCEDURE modificar_documento_credito(
-	OUT _id_documentoCredito INT ,
-    IN _FECHACREACION date,
-    IN _MONTO double,
-    IN _ANULADO boolean
+
+DELIMITER $
+CREATE PROCEDURE MODIFICAR_DOCUMENTO_CREDITO(
+    IN _id_documento_credito INT ,
+    IN _fecha_creacion date,
+    IN _monto double,
+    IN _anulado boolean
 )
 BEGIN
-	UPDATE documentoCredito SET id_documentoCredito = _id_documentoCredito, 
-    _FECHACREACION = FECHACREACION, MONTO = _MONTO WHERE ANULADO = _ANULADO;
-END$
-CREATE PROCEDURE eliminar_documento_credito(
-	IN _id_documentoCredito INT
-)
-BEGIN
-	UPDATE documentoCredito SET id_documentoCredito = 0 WHERE id_documentoCredito = _id_documentoCredito;
+	UPDATE documentoCredito SET fecha_creacion = _fecha_creacion, monto = _monto, anulado = _anulado 
+    WHERE id_documento_credito = _id_documento_credito;
 END$
 
-CREATE TABLE documentoDebito(
-	id_documentoDebito INT PRIMARY KEY AUTO_INCREMENT,
-    FECHACREACION date,
-    FECHAVENCIMIENTO date,
-    IMPUESTO double,
-    MONTO double,
-    id_moneda int,
-    FOREIGN KEY (id_moneda) REFERENCES moneda(id_moneda),
-    SALDO double,
-    ANULADO boolean,
-    id_terminoDePago int,
-    FOREIGN KEY (id_terminoDePago) REFERENCES terminoDePago(id_terminoDePago)
-)ENGINE=lasjoyasdb;
-CREATE PROCEDURE insertar_documento_debito(
-	OUT _id_documentoDebito INT ,
-    IN _FECHACREACION date,
-    IN _FECHAVENCIMIENTO date,
-    IN _IMPUESTO double,
-    IN _MONTO double,
-    IN _SALDO double,
-    IN _ANULADO boolean,
+DELIMITER $
+CREATE PROCEDURE ELIMINAR_DOCUMENTO_CREDITO(
+	IN _id_documento_credito INT
 )
 BEGIN
-	SET _id_documentoDebito = @@last_insert_id;
-    INSERT INTO documentoDebito(id_documentoDebito,FECHACREACION,FECHAVENCIMIENTO,IMPUESTO,MONTO,SALDO,ANULADO) VALUES(_id_documentoDebito,_FECHACREACION,_FECHAVENCIMIENTO,
-    _IMPUESTO,_MONTO,_SALDO,_ANULADO);
-END$
-CREATE PROCEDURE listar_documentos_debito()
-BEGIN
-	SELECT id_documentoDebito,FECHACREACION,FECHAVENCIMIENTO,IMPUESTO,MONTO,SALDO,ANULADO FROM documentoDebito ;
-END$
-CREATE PROCEDURE modificar_documento_debito(
-	IN _id_empleado INT,
-    IN _fid_area INT,
-    IN _DNI VARCHAR(8),
-	IN _nombre VARCHAR(40),
-    IN _apellido_paterno VARCHAR(40),
-    IN _genero CHAR,
-    IN _fecha_nacimiento DATE,
-    IN _cargo VARCHAR(40),
-    IN _sueldo DECIMAL(10,2)
-)
-BEGIN
-	UPDATE documentoDebito SET id_documentoDebito = _id_documentoDebito, FECHACREACION = _FECHACREACION, 
-    FECHAVENCIMIENTO = _FECHAVENCIMIENTO,IMPUESTO=_IMPUESTO, MONTO=_MONTO, SALDO=_SALDO, ANULADO=_ANULADO
-    WHERE id_empleado = _id_empleado;
-END$
-CREATE PROCEDURE eliminar_documento_debito(
-	IN _id_documentoDebito INT
-)
-BEGIN
-	UPDATE documentoDebito SET id_documentoDebito = 0 WHERE id_documentoDebito = _id_documentoDebito;
+	UPDATE documentoCredito SET id_documento_credito = 0 WHERE id_documento_credito = _id_documento_credito;
 END$
 
+DELIMITER $
+CREATE PROCEDURE INSERTAR_DOCUMENTO_DEBITO(
+	OUT _id_documento_debito INT ,
+    IN _fecha_creacion date,
+    IN _fecha_vencimiento date,
+    IN _impuesto double,
+    IN _monto double,
+    IN _saldo double,
+    IN _anulado boolean
+)
+BEGIN
+	SET _id_documento_debito = @@last_insert_id;
+    INSERT INTO documentoDebito(id_documento_debito,fecha_creacion,fecha_vencimiento,impuesto,monto,saldo,anulado) VALUES(_id_documento_debito,_fecha_creacion,_fecha_vencimiento,
+    _impuesto,_monto,_saldo,_anulado);
+END$
 
-CREATE PROCEDURE insertar_orden_de_compra(
+DELIMITER $
+CREATE PROCEDURE LISTAR_DOCUMENTOS_DEBITO()
+BEGIN
+	SELECT id_documento_debito,fecha_creacion,fecha_vencimiento,impuesto,monto,saldo,anulado FROM documentoDebito ;
+END$
+
+DELIMITER $
+CREATE PROCEDURE MODIFICAR_DOCUMENTO_DEBITO(
+	IN _id_documento_debito INT ,
+    IN _fecha_creacion date,
+    IN _fecha_vencimiento date,
+    IN _impuesto double,
+    IN _monto double,
+    IN _saldo double,
+    IN _anulado boolean
+)
+BEGIN
+	UPDATE documentoDebito SET fecha_creacion = _fecha_creacion, fecha_vencimiento = _fecha_vencimiento,impuesto=_impuesto, monto=_monto, saldo=_saldo, anulado=_anulado
+    WHERE id_documento_debito = _id_documento_debito;
+END$
+
+DELIMITER $
+CREATE PROCEDURE ELIMINAR_DOCUMENTO_DEBITO(
+	IN _id_documento_debito INT
+)
+BEGIN
+	UPDATE documentoDebito SET id_documento_debito = 0 WHERE id_documento_debito = _id_documento_debito;
+END$
+
+DELIMITER $
+CREATE PROCEDURE INSERTAR_ORDEN_DE_COMPRA(
 	OUT _id_orden_de_compra INT ,
 	IN _monto double,
-    IN _direccionDeEntrega varchar(200),
-    IN _formaDeEntrega int,
-    IN _fechaDeCompra date,
-    IN _fechaDeEntrega date,
+    IN _direccion_de_entrega varchar(200),
+    IN _forma_de_entrega int,
+    IN _fecha_de_compra date,
+    IN _fecha_de_entrega date,
     IN _pagado boolean
 )
 BEGIN
 	SET _id_orden_de_compra = @@last_insert_id;
-    INSERT INTO ordenDeCompra(id_orden_de_compra,monto,direccionDeEntrega,formaDeEntrega,fechaDeCompra,fechaDeEntrega,pagado) 
-    VALUES(_id_orden_de_compra,_monto,_direccionDeEntrega,_formaDeEntrega,_fechaDeCompra,_fechaDeEntrega,_pagado);
+    INSERT INTO ordenDeCompra(id_orden_de_compra,monto,direccion_de_entrega,forma_de_entrega,fecha_de_compra,fecha_de_entrega,pagado) 
+    VALUES(_id_orden_de_compra,_monto,_direccion_de_entrega,_forma_de_entrega,_fecha_de_compra,_fecha_de_entrega,_pagado);
 END$
-CREATE PROCEDURE LISTAR_TODOS_ORDENESDECOMPRA()
+
+DELIMITER $
+CREATE PROCEDURE LISTAR_TODOS_ORDENES_DE_COMPRA()
 BEGIN
-	SELECT id_orden_de_compra,monto,direccionDeEntrega,formaDeEntrega,fechaDeCompra,fechaDeEntrega,pagado
+	SELECT id_orden_de_compra,monto,direccion_de_entrega,forma_de_entrega,fecha_de_compra,fecha_de_entrega,pagado
     FROM ordenDeCompra ;
 END$
-CREATE PROCEDURE modificar_orden_de_compra(
-	IN _id_empleado INT,
-    IN _fid_area INT,
-    IN _DNI VARCHAR(8),
-	IN _nombre VARCHAR(40),
-    IN _apellido_paterno VARCHAR(40),
-    IN _genero CHAR,
-    IN _fecha_nacimiento DATE,
-    IN _cargo VARCHAR(40),
-    IN _sueldo DECIMAL(10,2)
+
+DELIMITER $
+CREATE PROCEDURE MODIFICAR_ORDEN_DE_COMPRA(
+	IN _id_orden_de_compra INT ,
+	IN _monto double,
+    IN _direccion_de_entrega varchar(200),
+    IN _forma_de_entrega int,
+    IN _fecha_de_compra date,
+    IN _fecha_de_entrega date,
+    IN _pagado boolean
 )
 BEGIN
-	UPDATE ordenDeCompra SET id_orden_de_compra=_id_orden_de_compra,
-    monto=_monto,direccionDeEntrega=_direccionDeEntrega,
-    formaDeEntrega=_formaDeEntrega,fechaDeCompra=_fechaDeCompra,fechaDeEntrega=_fechaDeEntrega,pagado=_pagado
-    WHERE id_orden_de_compra = _id_orden_de_compra;
+	UPDATE ordenDeCompra SET id_orden_de_compra=_id_orden_de_compra, monto=_monto,direccion_de_entrega=_direccion_de_entrega,
+    forma_de_entrega=_forma_de_entrega, fecha_de_compra=_fecha_de_compra, fecha_de_entrega=_fecha_de_entrega, pagado=_pagado
+    WHERE id_orden_de_compra=_id_orden_de_compra;
 END$
-CREATE PROCEDURE eliminar_orden_de_compra(
-	IN _id_empleado INT
+
+DELIMITER $
+CREATE PROCEDURE ELIMINAR_ORDEN_DE_COMPRA(
+	IN _id_orden_de_compra INT
 )
 BEGIN
-	UPDATE ordenDeCompra SET id_orden_de_compra = 0 WHERE id_empleado = _id_empleado;
+	UPDATE ordenDeCompra SET id_orden_de_compra = 0 WHERE id_orden_de_compra=_id_orden_de_compra;
 END$
 
-
+DELIMITER $
 CREATE PROCEDURE INSERTAR_CLIENTE(
 	OUT _id_cliente INT ,
     IN _categoria varchar(100)
-    
 )
 BEGIN
 	SET _id_cliente = @@last_insert_id;
     INSERT INTO empleado(id_cliente,categoria) VALUES(_id_cliente,_categoria);
 END$
+
+DELIMITER $
 CREATE PROCEDURE LISTAR_CLIENTES()
 BEGIN
 	SELECT id_cliente,categoria 
     FROM cliente;
 END$
+
+DELIMITER $
 CREATE PROCEDURE MODIFICAR_CLIENTE(
 	IN _id_cliente INT ,
     IN _categoria varchar(100)
-    
 )
 BEGIN
-	UPDATE cliente SET id_cliente = _id_cliente, categoria = _categoria WHERE id_cliente = _id_cliente;
+	UPDATE cliente SET categoria = _categoria WHERE id_cliente = _id_cliente;
 END$
+
+DELIMITER $
 CREATE PROCEDURE ELIMINAR_CLIENTE(
 	IN _id_empleado INT
 )
@@ -667,89 +693,100 @@ BEGIN
 	UPDATE cliente SET _id_cliente = 0 WHERE id_cliente = _id_cliente;
 END$
 
-
+DELIMITER $
 CREATE PROCEDURE INSERTAR_EMPRESA(
-	IN _RUC int,
-    IN _razonSocial varchar(100),
+	OUT _id_empresa int,
+    IN _RUC int,
+    IN _razon_social varchar(100),
     IN _direccion varchar(200),
-    IN _categoria varchar(100),
-    OUT _id_cliente int
+    IN _categoria varchar(100)
 )
 BEGIN
-	SET _id_cliente = @@last_insert_id;
-    INSERT INTO empresa(RUC,razonSocial,direccion,categoria,id_cliente) VALUES(_RUC,_razonSocial,_direccion,_categoria,_id_cliente);
+	SET _id_empresa = @@last_insert_id;
+    INSERT INTO empresa(id_empresa,RUC,razon_social,direccion,categoria) VALUES(_id_empresa,_RUC,_razon_social,_direccion,_categoria);
 END$
+
+DELIMITER $
 CREATE PROCEDURE LISTAR_EMPRESAS()
 BEGIN
-	SELECT RUC,razonSocial,direccion,categoria,id_cliente
+	SELECT id_empresa,RUC,razon_social,direccion,categoria
     FROM empresa ;
 END$
+
+DELIMITER $
 CREATE PROCEDURE MODIFICAR_EMPRESA(
+	IN _id_empresa int,
 	IN _RUC int,
     IN _razonSocial varchar(100),
     IN _direccion varchar(200),
-    IN _categoria varchar(100),
-    IN _id_cliente int
+    IN _categoria varchar(100)
 )
 BEGIN
-	UPDATE empresa SET RUC = _RUC, razonSocial = _razonSocial, direccion = _direccion,
-    categoria=_categoria, id_cliente=_id_cliente
-    WHERE id_cliente=_id_cliente;
-END$
-CREATE PROCEDURE ELIMINAR_EMPRESA(
-	IN _id_empleado INT
-)
-BEGIN
-	UPDATE empresa SET id_cliente = 0 WHERE id_cliente=_id_cliente;
+	UPDATE empresa SET RUC = _RUC, razonSocial = _razonSocial, direccion = _direccion, categoria=_categoria
+    WHERE id_empresa=_id_empresa;
 END$
 
+DELIMITER $
+CREATE PROCEDURE ELIMINAR_EMPRESA(
+	IN _id_empresa INT
+)
+BEGIN
+	UPDATE empresa SET id_empresa = 0 WHERE id_empresa=_id_empresa;
+END$
+
+DELIMITER $
 CREATE PROCEDURE INSERTAR_PERSONA_NATURAL(
-	IN _id_persona_natural int,
+	OUT _id_persona_natural int,
     IN _categoria varchar(100),
-	IN _numDeDocumento varchar(50),
+	IN _numero_de_documento varchar(50),
     IN _nombre varchar(100),
     IN _apellido varchar(100),
-    IN _fechaDeNacimiento date,
+    IN _fecha_de_nacimiento date,
     IN _telefono varchar(15),
     IN _direccion varchar(200),
     IN _email varchar(100)
 )
 BEGIN
-	INSERT INTO personaNatural(id_persona_natural,categoria,numDeDocumento,nombre,apellido,fechaDeNacimiento,telefono,direccion,email) 
-    VALUES (_id_persona_natural,_categoria,_numDeDocumento,_nombre,_apellido,_fechaDeNacimiento,_telefono,_direccion,_email);
+	SET _id_persona_natural = @@last_insert_id;
+	INSERT INTO personaNatural(id_persona_natural,categoria,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email) 
+    VALUES (_id_persona_natural,_categoria,_numero_de_documento,_nombre,_apellido,_fecha_de_nacimiento,_telefono,_direccion,_email);
 END$
-CREATE PROCEDURE LISTAR_TODOS_PERSONASNATURALES()
+
+DELIMITER $
+CREATE PROCEDURE LISTAR_TODOS_PERSONAS_NATURALES()
 BEGIN
-	SELECT id_persona_natural,categoria,numDeDocumento,nombre,apellido,fechaDeNacimiento,telefono,direccion,email
+	SELECT id_persona_natural,categoria,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email
     FROM personaNatural;
 END$
+
+DELIMITER $
 CREATE PROCEDURE MODIFICAR_PERSONA_NATURAL(
-	IN _id_empleado INT,
-    IN _fid_area INT,
-    IN _DNI VARCHAR(8),
-	IN _nombre VARCHAR(40),
-    IN _apellido_paterno VARCHAR(40),
-    IN _genero CHAR,
-    IN _fecha_nacimiento DATE,
-    IN _cargo VARCHAR(40),
-    IN _sueldo DECIMAL(10,2)
+	IN _id_persona_natural int,
+    IN _categoria varchar(100),
+	IN _numero_de_documento varchar(50),
+    IN _nombre varchar(100),
+    IN _apellido varchar(100),
+    IN _fecha_de_nacimiento date,
+    IN _telefono varchar(15),
+    IN _direccion varchar(200),
+    IN _email varchar(100)
 )
 BEGIN
-	UPDATE personaNatural SET id_persona_natural=_id_persona_natural,categoria=_categoria
-    ,numDeDocumento=_numDeDocumento,nombre=_nombre,apellido=_apellido,fechaDeNacimiento=_fechaDeNacimiento,
+	UPDATE personaNatural SET categoria=_categoria, numero_de_documento=_numero_de_documento,nombre=_nombre,apellido=_apellido,fecha_de_nacimiento=_fecha_de_nacimiento,
     telefono=_telefono,direccion=_direccion,email=_email 
     WHERE id_persona_natural = _id_persona_natural;
 END$
+
+DELIMITER $
 CREATE PROCEDURE ELIMINAR_PERSONA_NATURAL(
-	IN _id_empleado INT
+	IN _id_persona_natural INT
 )
 BEGIN
 	UPDATE personaNatural SET id_persona_natural = 0 WHERE id_persona_natural=_id_persona_natural;
 END$
 
-
-
-CREATE PROCEDURE insertar_moneda(
+DELIMITER $
+CREATE PROCEDURE INSERTAR_MONEDA(
 	OUT _id_moneda INT ,
     IN _nombre varchar(50),
     IN _abreviatura varchar(10)
@@ -758,143 +795,150 @@ BEGIN
 	SET _id_moneda = @@last_insert_id;
     INSERT INTO moneda(id_moneda,nombre,abreviatura) VALUES(_id_moneda,_nombre,_abreviatura);
 END$
-CREATE PROCEDURE listar_todas_monedas()
+
+DELIMITER $
+CREATE PROCEDURE LISTAR_MONEDAS()
 BEGIN
 	SELECT id_moneda,nombre,abreviatura
     FROM moneda ;
 END$
-CREATE PROCEDURE modificar_moneda(
-	IN _id_empleado INT,
-    IN _fid_area INT,
-    IN _DNI VARCHAR(8),
-	IN _nombre VARCHAR(40),
-    IN _apellido_paterno VARCHAR(40),
-    IN _genero CHAR,
-    IN _fecha_nacimiento DATE,
-    IN _cargo VARCHAR(40),
-    IN _sueldo DECIMAL(10,2)
+
+DELIMITER $
+CREATE PROCEDURE MODIFICAR_MONEDA(
+	IN _id_moneda INT ,
+    IN _nombre varchar(50),
+    IN _abreviatura varchar(10)
 )
 BEGIN
-	UPDATE moneda SET id_moneda=_id_moneda,nombre=_nombre,abreviatura=_abreviatura 
+	UPDATE moneda SET nombre=_nombre, abreviatura=_abreviatura 
     WHERE id_moneda = _id_moneda;
 END$
-CREATE PROCEDURE eliminar_moneda(
+
+DELIMITER $
+CREATE PROCEDURE ELIMINAR_MONEDA(
 	IN _id_moneda INT
 )
 BEGIN
 	UPDATE moneda SET id_moneda = 0 WHERE id_moneda=_id_moneda;
 END$
 
-
-
-CREATE PROCEDURE insertar_tipoDeCambio(
-	IN _id_tipoDeCambio INT,
+DELIMITER $
+CREATE PROCEDURE INSERTAR_TIPO_DE_CAMBIO(
+	OUT _id_tipo_de_cambio INT,
     IN _fecha date,
     IN _cambio double
 )
 BEGIN
-	INSERT INTO tipoDeCambio(id_tipoDeCambio,fecha,cambio) VALUES(_id_tipoDeCambio,_fecha,_cambio);
+	SET _id_tipo_de_cambio = @@last_insert_id;
+	INSERT INTO tipoDeCambio(id_tipo_de_cambio,fecha,cambio) VALUES(_id_tipo_de_cambio,_fecha,_cambio);
 END$
-CREATE PROCEDURE listarTodos_tipoDeCambio()
+
+DELIMITER $
+CREATE PROCEDURE LISTAR_TIPOS_DE_CAMBIO()
 BEGIN
-	SELECT id_tipoDeCambio,fecha,cambio 
+	SELECT id_tipo_de_cambio,fecha,cambio 
     FROM tipoDeCambio ;
 END$
-CREATE PROCEDURE modificar_tipoDeCambio(
-	IN _id_empleado INT,
-    IN _fid_area INT,
-    IN _DNI VARCHAR(8),
-	IN _nombre VARCHAR(40),
-    IN _apellido_paterno VARCHAR(40),
-    IN _genero CHAR,
-    IN _fecha_nacimiento DATE,
-    IN _cargo VARCHAR(40),
-    IN _sueldo DECIMAL(10,2)
+
+DELIMITER $
+CREATE PROCEDURE MODIFICAR_TIPO_DE_CAMBIO(
+	IN _id_tipo_de_cambio INT,
+    IN _fecha date,
+    IN _cambio double
 )
 BEGIN
-	UPDATE tipoDeCambio SET id_tipoDeCambio=_id_tipoDeCambio,fecha=_fecha,cambio=_cambio
-    WHERE id_tipoDeCambio=_id_tipoDeCambio;
+	UPDATE tipoDeCambio SET fecha=_fecha,cambio=_cambio
+    WHERE id_tipo_de_cambio=_id_tipo_de_cambio;
 END$
-CREATE PROCEDURE eliminar_tipoDeCambio(
-	IN _id_tipoDeCambio INT
+
+DELIMITER $
+CREATE PROCEDURE ELIMINAR_TIPO_DE_CAMBIO(
+	IN _id_tipo_de_cambio INT
 )
 BEGIN
-	UPDATE tipoDeCambio SET id_tipoDeCambio = 0 WHERE id_tipoDeCambio=_id_tipoDeCambio;
+	UPDATE tipoDeCambio SET id_tipo_de_cambio = 0 WHERE id_tipo_de_cambio=_id_tipo_de_cambio;
 END$
 
-
+DELIMITER $
 CREATE PROCEDURE INSERTAR_PERSONA(
 	OUT _id_persona INT,
-    IN _tipoDeDocumento int,
-    IN _numDeDocumento varchar(50),
+    IN _tipo_de_documento int,
+    IN _numero_de_documento varchar(50),
     IN _nombre varchar(100),
     IN _apellido varchar(100),
-    IN _fechaDeNacimiento date,
+    IN _fecha_de_nacimiento date,
     IN _telefono varchar(15),
     IN _direccion varchar(200),
     IN _email varchar(100)
 )
 BEGIN
 	SET _id_persona = @@last_insert_id;
-    INSERT INTO persona(id_persona,tipoDeDocumento,numDeDocumento,nombre,apellido,fechaDeNacimiento,telefono,direccion,email) 
-    VALUES(_id_persona,_tipoDeDocumento,_numDeDocumento,_nombre,_apellido,_fechaDeNacimiento,_telefono,_direccion,_email);
+    INSERT INTO persona(id_persona,tipo_de_documento,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email) 
+    VALUES(_id_persona,_tipo_de_documento,_numero_de_documento,_nombre,_apellido,_fecha_de_nacimiento,_telefono,_direccion,_email);
 END$
+
+DELIMITER $
 CREATE PROCEDURE LISTAR_PERSONAS()
 BEGIN
-	SELECT id_persona,tipoDeDocumento,numDeDocumento,nombre,apellido,fechaDeNacimiento,telefono,direccion,email
+	SELECT id_persona,tipo_de_documento,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email
 	FROM persona ;
 END$
+
+DELIMITER $
 CREATE PROCEDURE MODIFICAR_PERSONA(
-	IN _id_empleado INT,
-    IN _fid_area INT,
-    IN _DNI VARCHAR(8),
-	IN _nombre VARCHAR(40),
-    IN _apellido_paterno VARCHAR(40),
-    IN _genero CHAR,
-    IN _fecha_nacimiento DATE,
-    IN _cargo VARCHAR(40),
-    IN _sueldo DECIMAL(10,2)
+	IN _id_persona INT,
+    IN _tipo_de_documento int,
+    IN _numero_de_documento varchar(50),
+    IN _nombre varchar(100),
+    IN _apellido varchar(100),
+    IN _fecha_de_nacimiento date,
+    IN _telefono varchar(15),
+    IN _direccion varchar(200),
+    IN _email varchar(100)
 )
 BEGIN
-	UPDATE persona SET id_persona=_id_persona,tipoDeDocumento=_tipoDeDocumento,numDeDocumento=_numDeDocumento,
-    nombre=_nombre,apellido=_apellido,fechaDeNacimiento=_fechaDeNacimiento,telefono=_telefono,direccion=_direccion,email=_email 
+	UPDATE persona SET tipo_de_documento=_tipo_de_documento, numero_de_documento=_numero_de_documento,
+    nombre=_nombre,apellido=_apellido, fecha_de_nacimiento=_fecha_de_nacimiento,telefono=_telefono,direccion=_direccion,email=_email 
     WHERE id_persona=_id_persona;
 END$
+
+DELIMITER $
 CREATE PROCEDURE ELIMINAR_PERSONA(
-	IN _id_empleado INT
+	IN _id_persona INT
 )
 BEGIN
 	UPDATE persona SET id_persona = 0 WHERE id_persona=_id_persona;
 END$
 
-
+DELIMITER $
 CREATE PROCEDURE INSERTAR_USUARIO(
-	IN _id_usuario INT,
+	OUT _id_usuario INT,
     IN _password Varchar(100),
-    IN _fechaIngreso date
+    IN _fecha_de_ingreso date
 )
 BEGIN
-	INSERT INTO usuario(id_usuario,password,fechaIngreso) VALUES(_id_usuario,_password,_fechaIngreso);
+	SET _id_usuario = @@last_insert_id;
+	INSERT INTO usuario(id_usuario,password,fecha_de_ingreso) VALUES(_id_usuario,_password,_fecha_de_ingreso);
 END$
+
+DELIMITER $
 CREATE PROCEDURE LISTAR_USUARIOS()
 BEGIN
 	SELECT  id_usuario,password,fechaIngreso 
     FROM usuario;
 END$
+
+DELIMITER $
 CREATE PROCEDURE MODIFICAR_USUARIO(
-	IN _id_empleado INT,
-    IN _fid_area INT,
-    IN _DNI VARCHAR(8),
-	IN _nombre VARCHAR(40),
-    IN _apellido_paterno VARCHAR(40),
-    IN _genero CHAR,
-    IN _fecha_nacimiento DATE,
-    IN _cargo VARCHAR(40),
-    IN _sueldo DECIMAL(10,2)
+	IN _id_usuario INT,
+    IN _password Varchar(100),
+    IN _fecha_de_ingreso date
 )
 BEGIN
-	UPDATE usuario SET id_usuario=_id_usuario,password=_password,fechaIngreso=_fechaIngreso WHERE id_usuario=_id_usuario;
+	UPDATE usuario SET password=_password,fechaIngreso=_fechaIngreso WHERE id_usuario=_id_usuario;
 END$
+
+DELIMITER $
 CREATE PROCEDURE ELIMINAR_USUARIO(
 	IN _id_usuario INT
 )
@@ -902,10 +946,7 @@ BEGIN
 	UPDATE usuario SET id_usuario = 0 WHERE id_usuario=_id_usuario;
 END$
 
-
-    
-    
-    
+DELIMITER $
 CREATE PROCEDURE INSERTAR_SUPERVISOR_DE_ALMACEN(
 	IN _id_usuario INT ,
 	IN _password VARCHAR(50),     
@@ -918,20 +959,22 @@ CREATE PROCEDURE INSERTAR_SUPERVISOR_DE_ALMACEN(
     IN _telefono varchar(15),
     IN _direccion varchar(200),
     IN _email varchar(100)
-
 )
 BEGIN
 	INSERT INTO supervisorDeAlmacen(id_usuario) VALUES (_id_usuario);
-    
     INSERT INTO usuario(id_usuario,password,fechaIngreso) VALUES(_id_usuario,_password,_fechaIngreso);
     INSERT INTO persona(id_usuario,tipoDeDocumento,numDeDocumento,nombre,apellido,fechaDeNacimiento,telefono,direccion,email) 
     VALUES(id_usuario,_tipoDeDocumento,_numDeDocumento,_nombre,_apellido,_fechaDeNacimiento,_telefono,_direccion,_email);
 END$
+
+DELIMITER $
 CREATE PROCEDURE LISTAR_SUPERVISORES_DE_ALMACEN()
 BEGIN
 	SELECT id_usuario
     FROM supervisorDeAlmacen ;
 END$
+
+DELIMITER $
 CREATE PROCEDURE MODIFICAR_SUPERVISORDEALMACEN(
 	IN _id_usuario INT ,
 	IN _password VARCHAR(50),     

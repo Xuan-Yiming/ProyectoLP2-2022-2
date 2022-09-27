@@ -87,7 +87,7 @@ public class PersonaMySQL implements PersonaDAO{
             rs = cs.executeQuery();
             while(rs.next()){
                 Persona persona = new Persona();
-                persona.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_documento"))));
+                persona.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_de_documento"))));
                 persona.setNumDeDocumento(rs.getString("numero_de_documento"));
                 persona.setNombre(rs.getString("nombre"));
                 persona.setApellido(rs.getString("apellido"));
