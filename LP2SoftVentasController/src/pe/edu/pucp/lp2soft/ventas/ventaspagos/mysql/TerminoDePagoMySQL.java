@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.TerminoDePagoDAO;
-import pe.edu.pucp.lp2soft.ventaspagos.TerminoDePago;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.TerminoDePago;
 
 /**
  *
@@ -26,11 +26,12 @@ public class TerminoDePagoMySQL implements TerminoDePagoDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call insertar_terminoDePago(?,?,?,?)}");
+            cs = con.prepareCall("{call insertar_terminoDePago(?,?,?,?,?)}");
             cs.registerOutParameter("_id_terminoDePago", java.sql.Types.INTEGER);
             cs.setDate("_fechaLimite", new java.sql.Date(terminoDePago.getFechaLimite().getTime()));
             cs.setInt("_numeroCuota", terminoDePago.getNumeroCuota());
             cs.setDouble("_montoCuota", terminoDePago.getMontoCuota());
+            cs.setBoolean("_activo", true);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -50,11 +51,12 @@ public class TerminoDePagoMySQL implements TerminoDePagoDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call modificar_terminoDePago(?,?,?,?)}");
+            cs = con.prepareCall("{call modificar_terminoDePago(?,?,?,?,?)}");
             cs.setInt("_id_terminoDePago", terminoDePago.getId());
             cs.setDate("_fechaLimite", new java.sql.Date(terminoDePago.getFechaLimite().getTime()));
             cs.setInt("_numeroCuota", terminoDePago.getNumeroCuota());
             cs.setDouble("_montoCuota", terminoDePago.getMontoCuota());
+            cs.setBoolean("_activo", terminoDePago.isActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -103,6 +105,7 @@ public class TerminoDePagoMySQL implements TerminoDePagoDAO {
                 terminoDePago.setFechaLimite(rs.getDate("fechaLimite"));
                 terminoDePago.setNumeroCuota(rs.getInt("numeroCuota"));
                 terminoDePago.setMontoCuota(rs.getDouble("montoCuota"));
+                terminoDePago.setActivo(rs.getBoolean("activo"));
                 terminosDePago.add(terminoDePago);
             }
         }catch(Exception ex){

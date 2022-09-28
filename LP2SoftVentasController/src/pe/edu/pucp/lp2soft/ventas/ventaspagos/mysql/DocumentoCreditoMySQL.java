@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.DocumentoCreditoDAO;
-import pe.edu.pucp.lp2soft.ventaspagos.DocumentoCredito;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.DocumentoCredito;
 
 /**
  *
@@ -33,8 +33,8 @@ public class DocumentoCreditoMySQL implements DocumentoCreditoDAO {
             cs.setDate("_fechaVencimiento", new java.sql.Date(documentoCredito.getFechaVencimiento().getTime()));
             cs.setDouble("_monto", documentoCredito.getMonto());
             cs.setInt("_id_moneda", documentoCredito.getIdMoneda().getId());
-            cs.setBoolean("_anulado", documentoCredito.isAnulado());
-            cs.setBoolean("_activo", documentoCredito.isActivo());
+            cs.setBoolean("_anulado", false);
+            cs.setBoolean("_activo", true);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());

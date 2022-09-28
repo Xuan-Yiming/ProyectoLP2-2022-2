@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.TipoDeCambioDAO;
-import pe.edu.pucp.lp2soft.ventaspagos.TipoDeCambio;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.TipoDeCambio;
 
 /**
  *
@@ -27,10 +27,12 @@ public class TipoDeCambioMySQL implements TipoDeCambioDAO {
         //insertar fecha (Date) y cambio (double)
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call insertar_tipoDeCambio(?,?,?)}");
+            cs = con.prepareCall("{call insertar_tipoDeCambio(?,?,?,?,?)}");
             cs.registerOutParameter("_id_tipoDeCambio", java.sql.Types.INTEGER);
+            cs.setInt("_id_moneda", tipoDeCambio.getIdMoneda());
             cs.setDate("_fecha", new java.sql.Date(tipoDeCambio.getFecha().getTime()));
             cs.setDouble("_cambio", tipoDeCambio.getCambio());
+            cs.setBoolean("_activo", true);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -50,10 +52,12 @@ public class TipoDeCambioMySQL implements TipoDeCambioDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call modificar_tipoDeCambio(?,?,?)}");
+            cs = con.prepareCall("{call modificar_tipoDeCambio(?,?,?,?,?)}");
             cs.setInt("_id_tipoDeCambio", tipoDeCambio.getId());
+            cs.setInt("_id_moneda", tipoDeCambio.getIdMoneda());
             cs.setDate("_fecha", new java.sql.Date(tipoDeCambio.getFecha().getTime()));
             cs.setDouble("_cambio", tipoDeCambio.getCambio());
+            cs.setBoolean("_activo", tipoDeCambio.isActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -99,8 +103,10 @@ public class TipoDeCambioMySQL implements TipoDeCambioDAO {
             while(rs.next()){
                 TipoDeCambio tipoDeCambio = new TipoDeCambio();
                 tipoDeCambio.setId(rs.getInt("id_tipoDeCambio"));
+                tipoDeCambio.setIdMoneda(rs.getInt("id_moneda"));
                 tipoDeCambio.setFecha(rs.getDate("fecha"));
                 tipoDeCambio.setCambio(rs.getDouble("cambio"));
+                tipoDeCambio.setActivo(rs.getBoolean("activo"));
                 tiposDeCambio.add(tipoDeCambio);
             }
         }catch(Exception ex){

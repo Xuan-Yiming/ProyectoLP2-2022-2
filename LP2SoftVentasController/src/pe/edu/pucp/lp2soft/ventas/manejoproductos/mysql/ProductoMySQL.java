@@ -35,7 +35,7 @@ public class ProductoMySQL implements ProductoDAO{
             cs.setDouble("_precio", producto.getPrecio());
             cs.setDate("_fecha_ingreso", new java.sql.Date(producto.getFechaDeIngreso().getTime()));
             cs.setBoolean("_devuelto", producto.isDevuelto());
-            cs.setBoolean("_activo", producto.isActivo());
+            cs.setBoolean("_activo", true);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());

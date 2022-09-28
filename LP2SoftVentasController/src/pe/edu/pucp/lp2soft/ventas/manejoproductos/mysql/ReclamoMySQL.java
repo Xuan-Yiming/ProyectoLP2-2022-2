@@ -32,7 +32,7 @@ public class ReclamoMySQL implements ReclamoDAO {
             cs.setDate("_fecha", new java.sql.Date(reclamo.getFecha().getTime()));
             cs.setBoolean("_atenido", reclamo.isAtendido());
             cs.setString("_justificacion", reclamo.getJustificacion());
-            cs.setBoolean("_activo", reclamo.isActivo());
+            cs.setBoolean("_activo", true);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());

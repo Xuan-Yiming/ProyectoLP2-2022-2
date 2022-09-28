@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.MonedaDAO;
-import pe.edu.pucp.lp2soft.ventaspagos.Moneda;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.Moneda;
 
 /**
  *
@@ -26,10 +26,11 @@ public class MonedaMySQL implements MonedaDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call insertar_moneda(?,?,?)}");
+            cs = con.prepareCall("{call insertar_moneda(?,?,?,?)}");
             cs.registerOutParameter("_id_moneda", java.sql.Types.INTEGER);
             cs.setString("_nombre", moneda.getNombre());
             cs.setString("_abreviatura", moneda.getAbreviatura());
+            cs.setBoolean("_activo", true);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -49,10 +50,11 @@ public class MonedaMySQL implements MonedaDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call modificar_moneda(?,?,?)}");
+            cs = con.prepareCall("{call modificar_moneda(?,?,?,?)}");
             cs.setInt("_id_moneda", moneda.getId());
             cs.setString("_nombre", moneda.getNombre());
             cs.setString("_abreviatura", moneda.getAbreviatura());
+            cs.setBoolean("_activo", moneda.isActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -100,6 +102,7 @@ public class MonedaMySQL implements MonedaDAO {
                 moneda.setId(rs.getInt("id_moneda"));
                 moneda.setNombre(rs.getString("nombre"));
                 moneda.setAbreviatura(rs.getString("abreviatura"));
+                moneda.setActivo(rs.getBoolean("activo"));
                 monedas.add(moneda);
             }
         }catch(Exception ex){
