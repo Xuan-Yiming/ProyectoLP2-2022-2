@@ -35,6 +35,7 @@ CREATE TABLE empresa(
 
 CREATE TABLE personaNatural(
     id_persona_natural int PRIMARY KEY,
+    tipo_de_documento varchar(50),
 	numero_de_documento varchar(50),
     nombre varchar(100),
     apellido varchar(100),
@@ -61,6 +62,7 @@ CREATE TABLE persona(
 
 CREATE TABLE usuario(
 	id_usuario INT PRIMARY KEY,
+    username varchar(100),
     password varchar(100),
     fecha_de_ingreso date,
     activo TINYINT,
@@ -212,6 +214,47 @@ CREATE TABLE documentoCredito(
     FOREIGN KEY (fid_moneda) REFERENCES moneda(id_moneda)
 )ENGINE=InnoDB;
 
+DROP PROCEDURE IF EXISTS INSERTAR_EMPRESA;
+DROP PROCEDURE IF EXISTS LISTAR_TODOS_EMPRESAS;
+DROP PROCEDURE IF EXISTS MODIFICAR_EMPRESA;
+DROP PROCEDURE IF EXISTS ELIMINAR_EMPRESA;
+
+DROP PROCEDURE IF EXISTS INSERTAR_PERSONANATURAL;
+DROP PROCEDURE IF EXISTS LISTAR_PERSONAS_NATURALES;
+DROP PROCEDURE IF EXISTS MODIFICAR_PERSONANATURAL;
+DROP PROCEDURE IF EXISTS ELIMINAR_PERSONANATURAL;
+
+DROP PROCEDURE IF EXISTS INSERTAR_CLIENTE;
+DROP PROCEDURE IF EXISTS LISTAR_TODOS_CLIENTES;
+DROP PROCEDURE IF EXISTS MODIFICAR_CLIENTE;
+DROP PROCEDURE IF EXISTS ELIMINAR_CLIENTE;
+
+DROP PROCEDURE IF EXISTS INSERTAR_SUPERVISOR_DE_ALMACEN;
+DROP PROCEDURE IF EXISTS LISTAR_SUPERVISORES_DE_ALMACEN;
+DROP PROCEDURE IF EXISTS MODIFICAR_SUPERVISOR_DE_ALMACEN;
+DROP PROCEDURE IF EXISTS ELIMINAR_SUPERVISOR_DE_ALMACEN;
+
+DROP PROCEDURE IF EXISTS INSERTAR_VENDEDOR;
+DROP PROCEDURE IF EXISTS LISTAR_TODOS_VENDEDORES;
+DROP PROCEDURE IF EXISTS MODIFICAR_VENDEDOR;
+DROP PROCEDURE IF EXISTS ELIMINAR_VENDEDOR;
+
+DROP PROCEDURE IF EXISTS INSERTAR_ADMINISTRADOR;
+DROP PROCEDURE IF EXISTS LISTAR_TODOS_ADMINISTRADORES;
+DROP PROCEDURE IF EXISTS MODIFICAR_ADMINISTRADOR;
+DROP PROCEDURE IF EXISTS ELIMINAR_ADMINISTRADOR;
+
+DROP PROCEDURE IF EXISTS INSERTAR_PERSONA;
+DROP PROCEDURE IF EXISTS LISTAR_TODOS_PERSONAS;
+DROP PROCEDURE IF EXISTS MODIFICAR_PERSONA;
+DROP PROCEDURE IF EXISTS ELIMINAR_PERSONA;
+
+DROP PROCEDURE IF EXISTS INSERTAR_USUARIO;
+DROP PROCEDURE IF EXISTS LISTAR_TODOS_USUARIOS;
+DROP PROCEDURE IF EXISTS MODIFICAR_USUARIO;
+DROP PROCEDURE IF EXISTS ELIMINAR_USUARIO;
+
+/*FALTA REVISAR ESTOS PROCEDURE*/
 
 DROP PROCEDURE IF EXISTS INSERTAR_ALMACEN;
 DROP PROCEDURE IF EXISTS LISTAR_TODOS_ALMACENES;
@@ -258,21 +301,6 @@ DROP PROCEDURE IF EXISTS LISTAR_TODOS_ORDENESDECOMPRA;
 DROP PROCEDURE IF EXISTS MODIFICAR_ORDENDECOMPRA;
 DROP PROCEDURE IF EXISTS ELIMINAR_ORDENDECOMPRA;
 
-DROP PROCEDURE IF EXISTS INSERTAR_CLIENTE;
-DROP PROCEDURE IF EXISTS LISTAR_TODOS_CLIENTES;
-DROP PROCEDURE IF EXISTS MODIFICAR_CLIENTE;
-DROP PROCEDURE IF EXISTS ELIMINAR_CLIENTE;
-
-DROP PROCEDURE IF EXISTS INSERTAR_EMPRESA;
-DROP PROCEDURE IF EXISTS LISTAR_TODOS_EMPRESAS;
-DROP PROCEDURE IF EXISTS MODIFICAR_EMPRESA;
-DROP PROCEDURE IF EXISTS ELIMINAR_EMPRESA;
-
-DROP PROCEDURE IF EXISTS INSERTAR_PERSONANATURAL;
-DROP PROCEDURE IF EXISTS LISTAR_TODOS_PERSONASNATURALES;
-DROP PROCEDURE IF EXISTS MODIFICAR_PERSONANATURAL;
-DROP PROCEDURE IF EXISTS ELIMINAR_PERSONANATURAL;
-
 DROP PROCEDURE IF EXISTS INSERTAR_MONEDA;
 DROP PROCEDURE IF EXISTS LISTAR_TODOS_MONEDAS;
 DROP PROCEDURE IF EXISTS MODIFICAR_MONEDAS;
@@ -288,30 +316,6 @@ DROP PROCEDURE IF EXISTS LISTAR_TODOS_TERMINOSDEPAGO;
 DROP PROCEDURE IF EXISTS MODIFICAR_TERMINODEPAGO;
 DROP PROCEDURE IF EXISTS ELIMINAR_TERMINODEPAGO;
 
-DROP PROCEDURE IF EXISTS INSERTAR_PERSONA;
-DROP PROCEDURE IF EXISTS LISTAR_TODOS_PERSONAS;
-DROP PROCEDURE IF EXISTS MODIFICAR_PERSONA;
-DROP PROCEDURE IF EXISTS ELIMINAR_PERSONA;
-
-DROP PROCEDURE IF EXISTS INSERTAR_USUARIO;
-DROP PROCEDURE IF EXISTS LISTAR_TODOS_USUARIOS;
-DROP PROCEDURE IF EXISTS MODIFICAR_USUARIO;
-DROP PROCEDURE IF EXISTS ELIMINAR_USUARIO;
-
-DROP PROCEDURE IF EXISTS INSERTAR_SUPERVISORDEALMACEN;
-DROP PROCEDURE IF EXISTS LISTAR_TODOS_SUPERVISORESDEALMACEN;
-DROP PROCEDURE IF EXISTS MODIFICAR_SUPERVISORDEALMACEN;
-DROP PROCEDURE IF EXISTS ELIMINAR_SUPERVISORDEALMACEN;
-
-DROP PROCEDURE IF EXISTS INSERTAR_VENDEDOR;
-DROP PROCEDURE IF EXISTS LISTAR_TODOS_VENDEDORES;
-DROP PROCEDURE IF EXISTS MODIFICAR_VENDEDOR;
-DROP PROCEDURE IF EXISTS ELIMINAR_VENDEDOR;
-
-DROP PROCEDURE IF EXISTS INSERTAR_ADMINISTRADOR;
-DROP PROCEDURE IF EXISTS LISTAR_TODOS_ADMINISTRADORES;
-DROP PROCEDURE IF EXISTS MODIFICAR_ADMINISTRADOR;
-DROP PROCEDURE IF EXISTS ELIMINAR_ADMINISTRADOR;
 
 /*
 DELIMITER $
@@ -377,7 +381,8 @@ CREATE PROCEDURE MODIFICAR_EMPRESA(
 	IN _RUC int,
     IN _razon_social varchar(100),
     IN _direccion varchar(200),
-    IN _categoria varchar(100)
+    IN _categoria varchar(100),
+    IN _activo TINYINT
 )
 BEGIN
 	UPDATE cliente SET categoria = _categoria WHERE id_cliente = _id_empresa;
@@ -390,6 +395,237 @@ CREATE PROCEDURE ELIMINAR_EMPRESA(
 )
 BEGIN
 	UPDATE empresa SET activo = 0 WHERE id_empresa=_id_empresa;
+END$
+
+DELIMITER $
+CREATE PROCEDURE INSERTAR_PERSONA_NATURAL(
+	OUT _id_persona_natural int,
+    IN _categoria varchar(100),
+    IN _tipo_de_documento varchar(50),
+	IN _numero_de_documento varchar(50),
+    IN _nombre varchar(100),
+    IN _apellido varchar(100),
+    IN _fecha_de_nacimiento date,
+    IN _telefono varchar(15),
+    IN _direccion varchar(200),
+    IN _email varchar(100)
+)
+BEGIN
+	INSERT INTO cliente(categoria,activo) VALUES(_categoria,1);
+	SET _id_persona_natural = @@last_insert_id;
+    INSERT INTO personaNatural(id_persona_natural,_tipo_de_documento,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email,activo) 
+		VALUES (_id_persona_natural,_tipo_de_documento,_numero_de_documento,_nombre,_apellido,_fecha_de_nacimiento,_telefono,_direccion,_email,1);
+END$
+
+DELIMITER $
+CREATE PROCEDURE LISTAR_PERSONAS_NATURALES()
+BEGIN
+	SELECT  c.id_cliente, p.nombre, p.apellido, p.fecha_de_nacimiento, p.telefono, p.direccion, p.email, p.tipo_de_documento, p.numero_de_documento ,c.categoria 
+    FROM cliente c INNER JOIN personaNatural p ON c.id_cliente = p.id_persona_natural WHERE e.activo = 1;
+END$
+
+DELIMITER $
+CREATE PROCEDURE MODIFICAR_PERSONA_NATURAL(
+	IN _id_persona_natural int,
+    IN _categoria varchar(100),
+    IN _tipo_de_documento varchar(50),
+	IN _numero_de_documento varchar(50),
+    IN _nombre varchar(100),
+    IN _apellido varchar(100),
+    IN _fecha_de_nacimiento date,
+    IN _telefono varchar(15),
+    IN _direccion varchar(200),
+    IN _email varchar(100),
+    IN _activo TINYINT
+)
+BEGIN
+	UPDATE cliente SET categoria = _categoria WHERE id_cliente = _id_persona_natural;
+    UPDATE personaNatural SET nombre = _nombre, apellido = _apellido, fecha_de_nacimiento = _fecha_de_nacimiento, telefono=_telefono, direccion = _direccion, 
+			email= _email, tipo_de_documento = _tipo_de_documento, numero_de_documento = _numero_de_documento, activo = _activo
+				WHERE id_persona_natural=_id_persona_natural;
+END$
+
+DELIMITER $
+CREATE PROCEDURE ELIMINAR_PERSONA_NATURAL(
+	IN _id_persona_natural INT
+)
+BEGIN
+	UPDATE personaNatural SET activo = 0 WHERE id_persona_natural=_id_persona_natural;
+END$
+
+DELIMITER $
+CREATE PROCEDURE INSERTAR_SUPERVISOR_DE_ALMACEN(
+	OUT _id_usuario INT ,
+    IN _username varchar(100),
+	IN _password VARCHAR(50),     
+	IN _fecha_de_ingreso date,       
+	IN _tipo_de_documento int,
+    IN _numero_de_documento varchar(50),
+    IN _nombre varchar(100),
+    IN _apellido varchar(100),
+    IN _fecha_de_nacimiento date,
+    IN _telefono varchar(15),
+    IN _direccion varchar(200),
+    IN _email varchar(100)
+)
+BEGIN
+	INSERT INTO persona(tipo_de_documento,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email) 
+			VALUES(_tipo_de_documento,_numero_de_documento,_nombre,_apellido,_fecha_de_nacimiento,_telefono,_direccion,_email);
+    INSERT INTO usuario(username,password,fecha_de_ingreso) VALUES(_username,_password,_fecha_de_ingreso);
+    SET _id_usuario = @@last_insert_id;
+    INSERT INTO supervisorDeAlmacen(id_usuario,activo) VALUES (_id_usuario,1);
+END$
+
+DELIMITER $
+CREATE PROCEDURE LISTAR_SUPERVISORES_DE_ALMACEN()
+BEGIN
+	SELECT p.id_persona, p.nombre, p.apellido, p.telefono, p.direccion, p.email, p.fecha_de_nacimiento, p.tipo_de_documento, p.numero_de_documento,
+			u.username, u.fecha_de_ingreso
+    FROM persona p INNER JOIN usuario u ON p.id_persona = u.id_usuario INNER JOIN supervisorDeAlmacen s ON u.id_usuario = s.id_usuario WHERE s.activo = 1;
+END$
+
+DELIMITER $
+CREATE PROCEDURE MODIFICAR_SUPERVISOR_DE_ALMACEN(
+	IN _id_usuario INT ,
+    IN _username varchar(100),
+	IN _password VARCHAR(50),     
+	IN _fecha_de_ingreso date,       
+	IN _tipo_de_documento int,
+    IN _numero_de_documento varchar(50),
+    IN _nombre varchar(100),
+    IN _apellido varchar(100),
+    IN _fecha_de_nacimiento date,
+    IN _telefono varchar(15),
+    IN _direccion varchar(200),
+    IN _email varchar(100),
+    IN _activo TINYINT
+)
+BEGIN
+	UPDATE persona SET tipo_de_documento=_tipo_de_documento,numero_de_documento=_numero_de_documento, nombre=_nombre,apellido=_apellido,
+		fecha_de_nacimiento=_fecha_de_nacimiento,telefono=_telefono,direccion=_direccion,email=_email WHERE id_persona =_id_usuario;
+    UPDATE usuario SET username = _username,password=_password,fecha_de_ingreso=_fecha_de_ingreso WHERE id_usuario=_id_usuario;
+    UPDATE supervisorDeAlmacen SET activo = _activo WHERE id_usuario=_id_usuario;
+END$
+
+DELIMITER $
+CREATE PROCEDURE ELIMINAR_SUPERVISOR_DE_ALMACEN(
+	IN _id_usuario INT
+)
+BEGIN
+	UPDATE supervisorDeAlmacen SET activo = 0 WHERE id_usuario = _id_usuario;
+END$
+
+DELIMITER $
+CREATE PROCEDURE INSERTAR_VENDEDOR(
+	IN _id_usuario INT ,
+    IN _cantidad_ventas int,
+    IN _username varchar(100),
+	IN _password VARCHAR(50),     
+	IN _fecha_de_ingreso date,       
+	IN _tipo_de_documento int,
+    IN _numero_de_documento varchar(50),
+    IN _nombre varchar(100),
+    IN _apellido varchar(100),
+    IN _fecha_de_nacimiento date,
+    IN _telefono varchar(15),
+    IN _direccion varchar(200),
+    IN _email varchar(100)
+)
+BEGIN
+/*
+	INSERT INTO vendedor(id_usuario,cantidad_ventas) VALUES (_id_usuario,_cantidad_ventas);
+    INSERT INTO usuario(id_usuario,password,fechaIngreso) VALUES(_id_usuario,_password,_fechaIngreso);
+    INSERT INTO persona(id_usuario,tipoDeDocumento,numDeDocumento,nombre,apellido,fechaDeNacimiento,telefono,direccion,email) 
+    VALUES(id_usuario,_tipoDeDocumento,_numDeDocumento,_nombre,_apellido,_fechaDeNacimiento,_telefono,_direccion,_email);*/
+END$
+
+
+CREATE PROCEDURE LISTAR_TODOS_VENDEDORES()
+BEGIN
+	SELECT id_usuario,cantidad_ventas
+    FROM vendedor ;
+END$
+CREATE PROCEDURE MODIFICAR_VENDEDOR(
+	IN _id_usuario INT ,
+    IN _cantidad_ventas int,
+	IN _password VARCHAR(50),     
+	IN _fechaIngreso date,       
+	IN _tipoDeDocumento int,
+    IN _numDeDocumento varchar(50),
+    IN _nombre varchar(100),
+    IN _apellido varchar(100),
+    IN _fechaDeNacimiento date,
+    IN _telefono varchar(15),
+    IN _direccion varchar(200),
+    IN _email varchar(100)
+)
+BEGIN
+	UPDATE vendedor set cantidad_ventas=_cantidad_ventas where id_usuario=_id_usuario;
+	UPDATE usuario SET id_usuario=_id_usuario,password=_password,fechaIngreso=_fechaIngreso WHERE id_usuario=_id_usuario;
+    UPDATE persona SET id_usuario=_id_usuario,tipoDeDocumento=_tipoDeDocumento,numDeDocumento=_numDeDocumento,
+    nombre=_nombre,apellido=_apellido,fechaDeNacimiento=_fechaDeNacimiento,telefono=_telefono,direccion=_direccion,email=_email 
+    WHERE id_usuario=_id_usuario;
+END$
+CREATE PROCEDURE ELIMINAR_VENDEDOR(
+	IN _id_usuario INT
+)
+BEGIN
+	UPDATE vendedor SET id_usuario = 0 WHERE id_usuario=_id_usuario;
+END$
+
+
+CREATE PROCEDURE INSERTAR_ADMINISTRADOR(
+	IN _id_usuario INT ,
+    IN _area varchar(100),
+	IN _password VARCHAR(50),     
+	IN _fechaIngreso date,       
+	IN _tipoDeDocumento int,
+    IN _numDeDocumento varchar(50),
+    IN _nombre varchar(100),
+    IN _apellido varchar(100),
+    IN _fechaDeNacimiento date,
+    IN _telefono varchar(15),
+    IN _direccion varchar(200),
+    IN _email varchar(100)
+)
+BEGIN
+	INSERT INTO administrador(id_usuario,area) VALUES (_id_usuario,_area);
+    
+    INSERT INTO usuario(id_usuario,password,fechaIngreso) VALUES(_id_usuario,_password,_fechaIngreso);
+    INSERT INTO persona(id_usuario,tipoDeDocumento,numDeDocumento,nombre,apellido,fechaDeNacimiento,telefono,direccion,email) 
+    VALUES(id_usuario,_tipoDeDocumento,_numDeDocumento,_nombre,_apellido,_fechaDeNacimiento,_telefono,_direccion,_email);
+END$
+CREATE PROCEDURE LISTAR_ADMINISTRADORES()
+BEGIN
+	SELECT id_usuario,area
+    FROM administrador ;
+END$
+CREATE PROCEDURE MODIFICAR_ADMINISTRADOR(
+	IN _id_usuario INT ,
+    IN _area varchar(100),
+	IN _password VARCHAR(50),     
+	IN _fechaIngreso date,       
+	IN _tipoDeDocumento int,
+    IN _numDeDocumento varchar(50),
+    IN _nombre varchar(100),
+    IN _apellido varchar(100),
+    IN _fechaDeNacimiento date,
+    IN _telefono varchar(15),
+    IN _direccion varchar(200),
+    IN _email varchar(100)
+)
+BEGIN
+	UPDATE administrador set area=_area where id_usuario=_id_usuario;
+	UPDATE usuario SET id_usuario=_id_usuario,password=_password,fechaIngreso=_fechaIngreso WHERE id_usuario=_id_usuario;
+    UPDATE persona SET id_usuario=_id_usuario,tipoDeDocumento=_tipoDeDocumento,numDeDocumento=_numDeDocumento,
+    nombre=_nombre,apellido=_apellido,fechaDeNacimiento=_fechaDeNacimiento,telefono=_telefono,direccion=_direccion,email=_email 
+    WHERE id_usuario=_id_usuario;
+END$
+CREATE PROCEDURE ELIMINAR_ADMINISTRADOR(
+	IN id_usuario INT
+)
+BEGIN
+	UPDATE administrador SET id_usuario = 0 WHERE id_usuario = _id_usuario;
 END$
 
 DELIMITER $
@@ -760,57 +996,6 @@ BEGIN
 END$
 
 DELIMITER $
-CREATE PROCEDURE INSERTAR_PERSONA_NATURAL(
-	OUT _id_persona_natural int,
-    IN _categoria varchar(100),
-	IN _numero_de_documento varchar(50),
-    IN _nombre varchar(100),
-    IN _apellido varchar(100),
-    IN _fecha_de_nacimiento date,
-    IN _telefono varchar(15),
-    IN _direccion varchar(200),
-    IN _email varchar(100)
-)
-BEGIN
-	SET _id_persona_natural = @@last_insert_id;
-	INSERT INTO personaNatural(id_persona_natural,categoria,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email) 
-    VALUES (_id_persona_natural,_categoria,_numero_de_documento,_nombre,_apellido,_fecha_de_nacimiento,_telefono,_direccion,_email);
-END$
-
-DELIMITER $
-CREATE PROCEDURE LISTAR_TODOS_PERSONAS_NATURALES()
-BEGIN
-	SELECT id_persona_natural,categoria,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email
-    FROM personaNatural;
-END$
-
-DELIMITER $
-CREATE PROCEDURE MODIFICAR_PERSONA_NATURAL(
-	IN _id_persona_natural int,
-    IN _categoria varchar(100),
-	IN _numero_de_documento varchar(50),
-    IN _nombre varchar(100),
-    IN _apellido varchar(100),
-    IN _fecha_de_nacimiento date,
-    IN _telefono varchar(15),
-    IN _direccion varchar(200),
-    IN _email varchar(100)
-)
-BEGIN
-	UPDATE personaNatural SET categoria=_categoria, numero_de_documento=_numero_de_documento,nombre=_nombre,apellido=_apellido,fecha_de_nacimiento=_fecha_de_nacimiento,
-    telefono=_telefono,direccion=_direccion,email=_email 
-    WHERE id_persona_natural = _id_persona_natural;
-END$
-
-DELIMITER $
-CREATE PROCEDURE ELIMINAR_PERSONA_NATURAL(
-	IN _id_persona_natural INT
-)
-BEGIN
-	UPDATE personaNatural SET id_persona_natural = 0 WHERE id_persona_natural=_id_persona_natural;
-END$
-
-DELIMITER $
 CREATE PROCEDURE INSERTAR_MONEDA(
 	OUT _id_moneda INT ,
     IN _nombre varchar(50),
@@ -969,172 +1154,6 @@ CREATE PROCEDURE ELIMINAR_USUARIO(
 )
 BEGIN
 	UPDATE usuario SET id_usuario = 0 WHERE id_usuario=_id_usuario;
-END$
-
-DELIMITER $
-CREATE PROCEDURE INSERTAR_SUPERVISOR_DE_ALMACEN(
-	IN _id_usuario INT ,
-	IN _password VARCHAR(50),     
-	IN _fechaIngreso date,       
-	IN _tipoDeDocumento int,
-    IN _numDeDocumento varchar(50),
-    IN _nombre varchar(100),
-    IN _apellido varchar(100),
-    IN _fechaDeNacimiento date,
-    IN _telefono varchar(15),
-    IN _direccion varchar(200),
-    IN _email varchar(100)
-)
-BEGIN
-	INSERT INTO supervisorDeAlmacen(id_usuario) VALUES (_id_usuario);
-    INSERT INTO usuario(id_usuario,password,fechaIngreso) VALUES(_id_usuario,_password,_fechaIngreso);
-    INSERT INTO persona(id_usuario,tipoDeDocumento,numDeDocumento,nombre,apellido,fechaDeNacimiento,telefono,direccion,email) 
-    VALUES(id_usuario,_tipoDeDocumento,_numDeDocumento,_nombre,_apellido,_fechaDeNacimiento,_telefono,_direccion,_email);
-END$
-
-DELIMITER $
-CREATE PROCEDURE LISTAR_SUPERVISORES_DE_ALMACEN()
-BEGIN
-	SELECT id_usuario
-    FROM supervisorDeAlmacen ;
-END$
-
-DELIMITER $
-CREATE PROCEDURE MODIFICAR_SUPERVISORDEALMACEN(
-	IN _id_usuario INT ,
-	IN _password VARCHAR(50),     
-	IN _fechaIngreso date,       
-	IN _tipoDeDocumento int,
-    IN _numDeDocumento varchar(50),
-    IN _nombre varchar(100),
-    IN _apellido varchar(100),
-    IN _fechaDeNacimiento date,
-    IN _telefono varchar(15),
-    IN _direccion varchar(200),
-    IN _email varchar(100)
-)
-BEGIN
-	UPDATE usuario SET id_usuario=_id_usuario,password=_password,fechaIngreso=_fechaIngreso WHERE id_usuario=_id_usuario;
-    UPDATE persona SET id_usuario=_id_usuario,tipoDeDocumento=_tipoDeDocumento,numDeDocumento=_numDeDocumento,
-    nombre=_nombre,apellido=_apellido,fechaDeNacimiento=_fechaDeNacimiento,telefono=_telefono,direccion=_direccion,email=_email 
-    WHERE id_usuario=_id_usuario;
-END$
-CREATE PROCEDURE ELIMINAR_SUPERVISOR_DE_ALMACEN(
-	IN _id_usuario INT
-)
-BEGIN
-	UPDATE supervisorDeAlmacen SET id_usuario = 0 WHERE id_usuario = _id_usuario;
-END$
-
-
-CREATE PROCEDURE INSERTAR_VENDEDOR(
-	IN _id_usuario INT ,
-    IN _cantidad_ventas int,
-	IN _password VARCHAR(50),     
-	IN _fechaIngreso date,       
-	IN _tipoDeDocumento int,
-    IN _numDeDocumento varchar(50),
-    IN _nombre varchar(100),
-    IN _apellido varchar(100),
-    IN _fechaDeNacimiento date,
-    IN _telefono varchar(15),
-    IN _direccion varchar(200),
-    IN _email varchar(100)
-
-)
-BEGIN
-	INSERT INTO vendedor(id_usuario,cantidad_ventas) VALUES (_id_usuario,_cantidad_ventas);
-    
-    INSERT INTO usuario(id_usuario,password,fechaIngreso) VALUES(_id_usuario,_password,_fechaIngreso);
-    INSERT INTO persona(id_usuario,tipoDeDocumento,numDeDocumento,nombre,apellido,fechaDeNacimiento,telefono,direccion,email) 
-    VALUES(id_usuario,_tipoDeDocumento,_numDeDocumento,_nombre,_apellido,_fechaDeNacimiento,_telefono,_direccion,_email);
-END$
-CREATE PROCEDURE LISTAR_TODOS_VENDEDORES()
-BEGIN
-	SELECT id_usuario,cantidad_ventas
-    FROM vendedor ;
-END$
-CREATE PROCEDURE MODIFICAR_VENDEDOR(
-	IN _id_usuario INT ,
-    IN _cantidad_ventas int,
-	IN _password VARCHAR(50),     
-	IN _fechaIngreso date,       
-	IN _tipoDeDocumento int,
-    IN _numDeDocumento varchar(50),
-    IN _nombre varchar(100),
-    IN _apellido varchar(100),
-    IN _fechaDeNacimiento date,
-    IN _telefono varchar(15),
-    IN _direccion varchar(200),
-    IN _email varchar(100)
-)
-BEGIN
-	UPDATE vendedor set cantidad_ventas=_cantidad_ventas where id_usuario=_id_usuario;
-	UPDATE usuario SET id_usuario=_id_usuario,password=_password,fechaIngreso=_fechaIngreso WHERE id_usuario=_id_usuario;
-    UPDATE persona SET id_usuario=_id_usuario,tipoDeDocumento=_tipoDeDocumento,numDeDocumento=_numDeDocumento,
-    nombre=_nombre,apellido=_apellido,fechaDeNacimiento=_fechaDeNacimiento,telefono=_telefono,direccion=_direccion,email=_email 
-    WHERE id_usuario=_id_usuario;
-END$
-CREATE PROCEDURE ELIMINAR_VENDEDOR(
-	IN _id_usuario INT
-)
-BEGIN
-	UPDATE vendedor SET id_usuario = 0 WHERE id_usuario=_id_usuario;
-END$
-
-
-CREATE PROCEDURE INSERTAR_ADMINISTRADOR(
-	IN _id_usuario INT ,
-    IN _area varchar(100),
-	IN _password VARCHAR(50),     
-	IN _fechaIngreso date,       
-	IN _tipoDeDocumento int,
-    IN _numDeDocumento varchar(50),
-    IN _nombre varchar(100),
-    IN _apellido varchar(100),
-    IN _fechaDeNacimiento date,
-    IN _telefono varchar(15),
-    IN _direccion varchar(200),
-    IN _email varchar(100)
-)
-BEGIN
-	INSERT INTO administrador(id_usuario,area) VALUES (_id_usuario,_area);
-    
-    INSERT INTO usuario(id_usuario,password,fechaIngreso) VALUES(_id_usuario,_password,_fechaIngreso);
-    INSERT INTO persona(id_usuario,tipoDeDocumento,numDeDocumento,nombre,apellido,fechaDeNacimiento,telefono,direccion,email) 
-    VALUES(id_usuario,_tipoDeDocumento,_numDeDocumento,_nombre,_apellido,_fechaDeNacimiento,_telefono,_direccion,_email);
-END$
-CREATE PROCEDURE LISTAR_ADMINISTRADORES()
-BEGIN
-	SELECT id_usuario,area
-    FROM administrador ;
-END$
-CREATE PROCEDURE MODIFICAR_ADMINISTRADOR(
-	IN _id_usuario INT ,
-    IN _area varchar(100),
-	IN _password VARCHAR(50),     
-	IN _fechaIngreso date,       
-	IN _tipoDeDocumento int,
-    IN _numDeDocumento varchar(50),
-    IN _nombre varchar(100),
-    IN _apellido varchar(100),
-    IN _fechaDeNacimiento date,
-    IN _telefono varchar(15),
-    IN _direccion varchar(200),
-    IN _email varchar(100)
-)
-BEGIN
-	UPDATE administrador set area=_area where id_usuario=_id_usuario;
-	UPDATE usuario SET id_usuario=_id_usuario,password=_password,fechaIngreso=_fechaIngreso WHERE id_usuario=_id_usuario;
-    UPDATE persona SET id_usuario=_id_usuario,tipoDeDocumento=_tipoDeDocumento,numDeDocumento=_numDeDocumento,
-    nombre=_nombre,apellido=_apellido,fechaDeNacimiento=_fechaDeNacimiento,telefono=_telefono,direccion=_direccion,email=_email 
-    WHERE id_usuario=_id_usuario;
-END$
-CREATE PROCEDURE ELIMINAR_ADMINISTRADOR(
-	IN id_usuario INT
-)
-BEGIN
-	UPDATE administrador SET id_usuario = 0 WHERE id_usuario = _id_usuario;
 END$
 
 
