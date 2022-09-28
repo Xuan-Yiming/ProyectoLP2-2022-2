@@ -20,8 +20,8 @@ DROP TABLE IF EXISTS persona;
 
 CREATE TABLE cliente(
 	id_cliente INT PRIMARY KEY AUTO_INCREMENT,
-    categoria varchar(100)
-    #activo TINYINT
+    categoria varchar(100),
+    activo TINYINT
 )ENGINE=InnoDB;
 
 CREATE TABLE empresa(
@@ -29,7 +29,6 @@ CREATE TABLE empresa(
     RUC int,
     razon_social varchar(100),
     direccion varchar(200),
-    activo TINYINT,
 	FOREIGN KEY (id_empresa) REFERENCES cliente(id_cliente)
 )ENGINE=InnoDB;
 
@@ -43,7 +42,6 @@ CREATE TABLE personaNatural(
     telefono varchar(15),
     direccion varchar(200),
     email varchar(100),
-    activo TINYINT,
     FOREIGN KEY (id_persona_natural) REFERENCES cliente(id_cliente)
 )ENGINE=InnoDB;
 
@@ -65,39 +63,35 @@ CREATE TABLE usuario(
     username varchar(100),
     password varchar(100),
     fecha_de_ingreso date,
-    activo TINYINT,
     FOREIGN KEY (id_usuario) REFERENCES persona(id_persona)
 )ENGINE=InnoDB;
 
 CREATE TABLE supervisorDeAlmacen(
 	id_usuario INT PRIMARY KEY,
-    /*fid_almacen INT,*/
-    activo TINYINT,
-	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
-    /*FOREIGN KEY (fid_almacen) REFERENCES almacen(id_almacen)*/
+    fid_almacen INT,
+	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (fid_almacen) REFERENCES almacen(id_almacen)
 )ENGINE=InnoDB;
 
 CREATE TABLE vendedor(
 	id_usuario INT PRIMARY KEY,
 	cantidad_ventas int,
-    activo TINYINT,
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 )ENGINE=InnoDB;
 
 CREATE TABLE administrador(
 	id_usuario INT PRIMARY KEY,
 	area varchar(100),
-    activo TINYINT,
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 )ENGINE=InnoDB;
 
 CREATE TABLE almacen(
 	id_almacen INT PRIMARY KEY AUTO_INCREMENT,
-    fid_supervisor_de_almacen INT,
+    #fid_supervisor_de_almacen INT,
 	nombre VARCHAR(100),
     direccion VARCHAR(200),
-    activo TINYINT,
-    FOREIGN KEY (fid_supervisor_de_almacen) REFERENCES supervisorDeAlmacen(id_usuario)
+    activo TINYINT
+    #FOREIGN KEY (fid_supervisor_de_almacen) REFERENCES supervisorDeAlmacen(id_usuario)
 )ENGINE=InnoDB;
 
 CREATE TABLE producto(
@@ -106,6 +100,7 @@ CREATE TABLE producto(
     codigo_lote varchar(50),
     nombre varchar(100),
     precio DOUBLE,
+    costo double,
     devuelto BOOLEAN,
     fecha_ingreso date,
     activo TINYINT,
@@ -215,35 +210,36 @@ CREATE TABLE documentoCredito(
 )ENGINE=InnoDB;
 
 DROP PROCEDURE IF EXISTS INSERTAR_EMPRESA;
-DROP PROCEDURE IF EXISTS LISTAR_TODOS_EMPRESAS;
+DROP PROCEDURE IF EXISTS LISTAR_EMPRESAS;
 DROP PROCEDURE IF EXISTS MODIFICAR_EMPRESA;
 DROP PROCEDURE IF EXISTS ELIMINAR_EMPRESA;
 
-DROP PROCEDURE IF EXISTS INSERTAR_PERSONANATURAL;
+DROP PROCEDURE IF EXISTS INSERTAR_PERSONA_NATURAL;
 DROP PROCEDURE IF EXISTS LISTAR_PERSONAS_NATURALES;
-DROP PROCEDURE IF EXISTS MODIFICAR_PERSONANATURAL;
-DROP PROCEDURE IF EXISTS ELIMINAR_PERSONANATURAL;
+DROP PROCEDURE IF EXISTS MODIFICAR_PERSONA_NATURAL;
+DROP PROCEDURE IF EXISTS ELIMINAR_PERSONA_NATURAL;
 
+/*
 DROP PROCEDURE IF EXISTS INSERTAR_CLIENTE;
 DROP PROCEDURE IF EXISTS LISTAR_TODOS_CLIENTES;
 DROP PROCEDURE IF EXISTS MODIFICAR_CLIENTE;
 DROP PROCEDURE IF EXISTS ELIMINAR_CLIENTE;
-
+*/
 DROP PROCEDURE IF EXISTS INSERTAR_SUPERVISOR_DE_ALMACEN;
 DROP PROCEDURE IF EXISTS LISTAR_SUPERVISORES_DE_ALMACEN;
 DROP PROCEDURE IF EXISTS MODIFICAR_SUPERVISOR_DE_ALMACEN;
 DROP PROCEDURE IF EXISTS ELIMINAR_SUPERVISOR_DE_ALMACEN;
 
 DROP PROCEDURE IF EXISTS INSERTAR_VENDEDOR;
-DROP PROCEDURE IF EXISTS LISTAR_TODOS_VENDEDORES;
+DROP PROCEDURE IF EXISTS LISTAR_VENDEDORES;
 DROP PROCEDURE IF EXISTS MODIFICAR_VENDEDOR;
 DROP PROCEDURE IF EXISTS ELIMINAR_VENDEDOR;
 
 DROP PROCEDURE IF EXISTS INSERTAR_ADMINISTRADOR;
-DROP PROCEDURE IF EXISTS LISTAR_TODOS_ADMINISTRADORES;
+DROP PROCEDURE IF EXISTS LISTAR_ADMINISTRADORES;
 DROP PROCEDURE IF EXISTS MODIFICAR_ADMINISTRADOR;
 DROP PROCEDURE IF EXISTS ELIMINAR_ADMINISTRADOR;
-
+/*
 DROP PROCEDURE IF EXISTS INSERTAR_PERSONA;
 DROP PROCEDURE IF EXISTS LISTAR_TODOS_PERSONAS;
 DROP PROCEDURE IF EXISTS MODIFICAR_PERSONA;
@@ -253,18 +249,12 @@ DROP PROCEDURE IF EXISTS INSERTAR_USUARIO;
 DROP PROCEDURE IF EXISTS LISTAR_TODOS_USUARIOS;
 DROP PROCEDURE IF EXISTS MODIFICAR_USUARIO;
 DROP PROCEDURE IF EXISTS ELIMINAR_USUARIO;
-
-/*FALTA REVISAR ESTOS PROCEDURE*/
+*/
 
 DROP PROCEDURE IF EXISTS INSERTAR_ALMACEN;
 DROP PROCEDURE IF EXISTS LISTAR_TODOS_ALMACENES;
 DROP PROCEDURE IF EXISTS MODIFICAR_ALMACEN;
 DROP PROCEDURE IF EXISTS ELIMINAR_ALMACEN;
-
-DROP PROCEDURE IF EXISTS INSERTAR_STOCK;
-DROP PROCEDURE IF EXISTS LISTAR_TODOS_STOCKS;
-DROP PROCEDURE IF EXISTS MODIFICAR_STOCK;
-DROP PROCEDURE IF EXISTS ELIMINAR_STOCK;
 
 DROP PROCEDURE IF EXISTS INSERTAR_PRODUCTO;
 DROP PROCEDURE IF EXISTS LISTAR_TODOS_PRODUCTOS;
@@ -285,6 +275,9 @@ DROP PROCEDURE IF EXISTS INSERTAR_PEDIDO;
 DROP PROCEDURE IF EXISTS LISTAR_TODOS_PEDIDOS;
 DROP PROCEDURE IF EXISTS MODIFICAR_PEDIDOS;
 DROP PROCEDURE IF EXISTS ELIMINAR_PEDIDOS;
+
+/*FALTA REVISAR ESTOS PROCEDURE*/
+
 
 DROP PROCEDURE IF EXISTS INSERTAR_DOCUMENTOCREDITO;
 DROP PROCEDURE IF EXISTS LISTAR_TODOS_DOCUMENTOSCREDITO;
@@ -364,7 +357,7 @@ CREATE PROCEDURE INSERTAR_EMPRESA(
 BEGIN
 	INSERT INTO cliente(categoria,activo) VALUES(_categoria,1);
 	SET _id_empresa = @@last_insert_id;
-    INSERT INTO empresa(id_empresa,RUC,razon_social,direccion,activo) VALUES(_id_empresa,_RUC,_razon_social,_direccion,1);
+    INSERT INTO empresa(id_empresa,RUC,razon_social,direccion) VALUES(_id_empresa,_RUC,_razon_social,_direccion);
 END$
 
 DELIMITER $
@@ -372,7 +365,7 @@ CREATE PROCEDURE LISTAR_EMPRESAS()
 BEGIN
     SELECT  c.id_cliente, e.RUC, e.razon_social, e.direccion ,c.categoria 
     FROM cliente c INNER JOIN empresa e ON c.id_cliente = e.id_empresa 
-    WHERE e.activo = 1;
+    WHERE c.activo = 1;
 END$
 
 DELIMITER $
@@ -385,8 +378,8 @@ CREATE PROCEDURE MODIFICAR_EMPRESA(
     IN _activo TINYINT
 )
 BEGIN
-	UPDATE cliente SET categoria = _categoria WHERE id_cliente = _id_empresa;
-    UPDATE empresa SET RUC = _RUC, razon_social = _razon_social, direccion = _direccion, activo=_activo WHERE id_empresa=_id_empresa;
+	UPDATE cliente SET categoria = _categoria, activo = _activo WHERE id_cliente = _id_empresa;
+    UPDATE empresa SET RUC = _RUC, razon_social = _razon_social, direccion = _direccion WHERE id_empresa=_id_empresa;
 END$
 
 DELIMITER $
@@ -394,7 +387,7 @@ CREATE PROCEDURE ELIMINAR_EMPRESA(
 	IN _id_empresa INT
 )
 BEGIN
-	UPDATE empresa SET activo = 0 WHERE id_empresa=_id_empresa;
+	UPDATE cliente SET activo = 0 WHERE id_cliente=_id_empresa;
 END$
 
 DELIMITER $
@@ -413,15 +406,15 @@ CREATE PROCEDURE INSERTAR_PERSONA_NATURAL(
 BEGIN
 	INSERT INTO cliente(categoria,activo) VALUES(_categoria,1);
 	SET _id_persona_natural = @@last_insert_id;
-    INSERT INTO personaNatural(id_persona_natural,_tipo_de_documento,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email,activo) 
-		VALUES (_id_persona_natural,_tipo_de_documento,_numero_de_documento,_nombre,_apellido,_fecha_de_nacimiento,_telefono,_direccion,_email,1);
+    INSERT INTO personaNatural(id_persona_natural,_tipo_de_documento,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email) 
+		VALUES (_id_persona_natural,_tipo_de_documento,_numero_de_documento,_nombre,_apellido,_fecha_de_nacimiento,_telefono,_direccion,_email);
 END$
 
 DELIMITER $
 CREATE PROCEDURE LISTAR_PERSONAS_NATURALES()
 BEGIN
 	SELECT  c.id_cliente, p.nombre, p.apellido, p.fecha_de_nacimiento, p.telefono, p.direccion, p.email, p.tipo_de_documento, p.numero_de_documento ,c.categoria 
-    FROM cliente c INNER JOIN personaNatural p ON c.id_cliente = p.id_persona_natural WHERE e.activo = 1;
+    FROM cliente c INNER JOIN personaNatural p ON c.id_cliente = p.id_persona_natural WHERE c.activo = 1;
 END$
 
 DELIMITER $
@@ -439,9 +432,9 @@ CREATE PROCEDURE MODIFICAR_PERSONA_NATURAL(
     IN _activo TINYINT
 )
 BEGIN
-	UPDATE cliente SET categoria = _categoria WHERE id_cliente = _id_persona_natural;
+	UPDATE cliente SET categoria = _categoria, activo = _activo WHERE id_cliente = _id_persona_natural;
     UPDATE personaNatural SET nombre = _nombre, apellido = _apellido, fecha_de_nacimiento = _fecha_de_nacimiento, telefono=_telefono, direccion = _direccion, 
-			email= _email, tipo_de_documento = _tipo_de_documento, numero_de_documento = _numero_de_documento, activo = _activo
+			email= _email, tipo_de_documento = _tipo_de_documento, numero_de_documento = _numero_de_documento
 				WHERE id_persona_natural=_id_persona_natural;
 END$
 
@@ -450,12 +443,13 @@ CREATE PROCEDURE ELIMINAR_PERSONA_NATURAL(
 	IN _id_persona_natural INT
 )
 BEGIN
-	UPDATE personaNatural SET activo = 0 WHERE id_persona_natural=_id_persona_natural;
+	UPDATE cliente SET activo = 0 WHERE id_cliente = _id_persona_natural;
 END$
 
 DELIMITER $
 CREATE PROCEDURE INSERTAR_SUPERVISOR_DE_ALMACEN(
 	OUT _id_usuario INT ,
+    IN _fid_almacen INT,
     IN _username varchar(100),
 	IN _password VARCHAR(50),     
 	IN _fecha_de_ingreso date,       
@@ -469,24 +463,25 @@ CREATE PROCEDURE INSERTAR_SUPERVISOR_DE_ALMACEN(
     IN _email varchar(100)
 )
 BEGIN
-	INSERT INTO persona(tipo_de_documento,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email) 
-			VALUES(_tipo_de_documento,_numero_de_documento,_nombre,_apellido,_fecha_de_nacimiento,_telefono,_direccion,_email);
+	INSERT INTO persona(tipo_de_documento,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email,activo) 
+			VALUES(_tipo_de_documento,_numero_de_documento,_nombre,_apellido,_fecha_de_nacimiento,_telefono,_direccion,_email,1);
     INSERT INTO usuario(username,password,fecha_de_ingreso) VALUES(_username,_password,_fecha_de_ingreso);
     SET _id_usuario = @@last_insert_id;
-    INSERT INTO supervisorDeAlmacen(id_usuario,activo) VALUES (_id_usuario,1);
+    INSERT INTO supervisorDeAlmacen(id_usuario,fid_almacen) VALUES (_id_usuario,_fid_almacen);
 END$
 
 DELIMITER $
 CREATE PROCEDURE LISTAR_SUPERVISORES_DE_ALMACEN()
 BEGIN
 	SELECT p.id_persona, p.nombre, p.apellido, p.telefono, p.direccion, p.email, p.fecha_de_nacimiento, p.tipo_de_documento, p.numero_de_documento,
-			u.username, u.fecha_de_ingreso
-    FROM persona p INNER JOIN usuario u ON p.id_persona = u.id_usuario INNER JOIN supervisorDeAlmacen s ON u.id_usuario = s.id_usuario WHERE s.activo = 1;
+			u.username, u.fecha_de_ingreso, s._fid_almacen
+    FROM persona p INNER JOIN usuario u ON p.id_persona = u.id_usuario INNER JOIN supervisorDeAlmacen s ON u.id_usuario = s.id_usuario WHERE p.activo = 1;
 END$
 
 DELIMITER $
 CREATE PROCEDURE MODIFICAR_SUPERVISOR_DE_ALMACEN(
 	IN _id_usuario INT ,
+    IN _fid_almacen INT,
     IN _username varchar(100),
 	IN _password VARCHAR(50),     
 	IN _fecha_de_ingreso date,       
@@ -502,9 +497,9 @@ CREATE PROCEDURE MODIFICAR_SUPERVISOR_DE_ALMACEN(
 )
 BEGIN
 	UPDATE persona SET tipo_de_documento=_tipo_de_documento,numero_de_documento=_numero_de_documento, nombre=_nombre,apellido=_apellido,
-		fecha_de_nacimiento=_fecha_de_nacimiento,telefono=_telefono,direccion=_direccion,email=_email WHERE id_persona =_id_usuario;
+		fecha_de_nacimiento=_fecha_de_nacimiento,telefono=_telefono,direccion=_direccion,email=_email,activo = _activo WHERE id_persona =_id_usuario;
     UPDATE usuario SET username = _username,password=_password,fecha_de_ingreso=_fecha_de_ingreso WHERE id_usuario=_id_usuario;
-    UPDATE supervisorDeAlmacen SET activo = _activo WHERE id_usuario=_id_usuario;
+    UPDATE supervisorDeAlmacen SET fid_almacen=_fid_almacen WHERE id_usuario=_id_usuario;
 END$
 
 DELIMITER $
@@ -512,18 +507,18 @@ CREATE PROCEDURE ELIMINAR_SUPERVISOR_DE_ALMACEN(
 	IN _id_usuario INT
 )
 BEGIN
-	UPDATE supervisorDeAlmacen SET activo = 0 WHERE id_usuario = _id_usuario;
+	UPDATE persona SET activo = 0 WHERE id_persona = _id_usuario;
 END$
 
 DELIMITER $
 CREATE PROCEDURE INSERTAR_VENDEDOR(
-	IN _id_usuario INT ,
+	OUT _id_usuario INT ,
     IN _cantidad_ventas int,
     IN _username varchar(100),
 	IN _password VARCHAR(50),     
 	IN _fecha_de_ingreso date,       
 	IN _tipo_de_documento int,
-    IN _numero_de_documento varchar(50),
+    IN _numero_de_documento varchar(50), 
     IN _nombre varchar(100),
     IN _apellido varchar(100),
     IN _fecha_de_nacimiento date,
@@ -532,130 +527,143 @@ CREATE PROCEDURE INSERTAR_VENDEDOR(
     IN _email varchar(100)
 )
 BEGIN
-/*
-	INSERT INTO vendedor(id_usuario,cantidad_ventas) VALUES (_id_usuario,_cantidad_ventas);
-    INSERT INTO usuario(id_usuario,password,fechaIngreso) VALUES(_id_usuario,_password,_fechaIngreso);
-    INSERT INTO persona(id_usuario,tipoDeDocumento,numDeDocumento,nombre,apellido,fechaDeNacimiento,telefono,direccion,email) 
-    VALUES(id_usuario,_tipoDeDocumento,_numDeDocumento,_nombre,_apellido,_fechaDeNacimiento,_telefono,_direccion,_email);*/
+	INSERT INTO persona(tipo_de_documento,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email,activo) 
+			VALUES(_tipo_de_documento,_numero_de_documento,_nombre,_apellido,_fecha_de_nacimiento,_telefono,_direccion,_email,1);
+    INSERT INTO usuario(username,password,fecha_de_ingreso) VALUES(_username,_password,_fecha_de_ingreso);
+    SET _id_usuario = @@last_insert_id;
+    INSERT INTO vendedor(id_usuario, cantidad_ventas) VALUES (_id_usuario,_cantidad_ventas);
 END$
 
-
-CREATE PROCEDURE LISTAR_TODOS_VENDEDORES()
+DELIMITER $
+CREATE PROCEDURE LISTAR_VENDEDORES()
 BEGIN
-	SELECT id_usuario,cantidad_ventas
-    FROM vendedor ;
+	SELECT p.id_persona, p.nombre, p.apellido, p.telefono, p.direccion, p.email, p.fecha_de_nacimiento, p.tipo_de_documento, p.numero_de_documento,
+			u.username, u.fecha_de_ingreso, v.cantidad_ventas
+    FROM persona p INNER JOIN usuario u ON p.id_persona = u.id_usuario INNER JOIN vendedor v ON u.id_usuario = v.id_usuario WHERE p.activo = 1;
 END$
 CREATE PROCEDURE MODIFICAR_VENDEDOR(
 	IN _id_usuario INT ,
     IN _cantidad_ventas int,
+    IN _username varchar(100),
 	IN _password VARCHAR(50),     
-	IN _fechaIngreso date,       
-	IN _tipoDeDocumento int,
-    IN _numDeDocumento varchar(50),
+	IN _fecha_de_ingreso date,       
+	IN _tipo_de_documento int,
+    IN _numero_de_documento varchar(50), 
     IN _nombre varchar(100),
     IN _apellido varchar(100),
-    IN _fechaDeNacimiento date,
+    IN _fecha_de_nacimiento date,
     IN _telefono varchar(15),
     IN _direccion varchar(200),
-    IN _email varchar(100)
+    IN _email varchar(100),
+    IN _activo TINYINT
 )
 BEGIN
-	UPDATE vendedor set cantidad_ventas=_cantidad_ventas where id_usuario=_id_usuario;
-	UPDATE usuario SET id_usuario=_id_usuario,password=_password,fechaIngreso=_fechaIngreso WHERE id_usuario=_id_usuario;
-    UPDATE persona SET id_usuario=_id_usuario,tipoDeDocumento=_tipoDeDocumento,numDeDocumento=_numDeDocumento,
-    nombre=_nombre,apellido=_apellido,fechaDeNacimiento=_fechaDeNacimiento,telefono=_telefono,direccion=_direccion,email=_email 
-    WHERE id_usuario=_id_usuario;
+	UPDATE persona SET tipo_de_documento=_tipo_de_documento,numero_de_documento=_numero_de_documento, nombre=_nombre,apellido=_apellido,
+		fecha_de_nacimiento=_fecha_de_nacimiento,telefono=_telefono,direccion=_direccion,email=_email,activo = _activo WHERE id_persona =_id_usuario;
+    UPDATE usuario SET username = _username,password=_password,fecha_de_ingreso=_fecha_de_ingreso WHERE id_usuario=_id_usuario;
+    UPDATE vendedor SET cantidad_ventas = _cantidad_ventas WHERE id_usuario=_id_usuario;
 END$
+
+DELIMITER $
 CREATE PROCEDURE ELIMINAR_VENDEDOR(
 	IN _id_usuario INT
 )
 BEGIN
-	UPDATE vendedor SET id_usuario = 0 WHERE id_usuario=_id_usuario;
+	UPDATE persona SET activo = 0 WHERE id_persona = _id_usuario;
 END$
 
-
+DELIMITER $
 CREATE PROCEDURE INSERTAR_ADMINISTRADOR(
-	IN _id_usuario INT ,
+	OUT _id_usuario INT ,
     IN _area varchar(100),
+	IN _username varchar(100),
 	IN _password VARCHAR(50),     
-	IN _fechaIngreso date,       
-	IN _tipoDeDocumento int,
-    IN _numDeDocumento varchar(50),
+	IN _fecha_de_ingreso date,       
+	IN _tipo_de_documento int,
+    IN _numero_de_documento varchar(50), 
     IN _nombre varchar(100),
     IN _apellido varchar(100),
-    IN _fechaDeNacimiento date,
+    IN _fecha_de_nacimiento date,
     IN _telefono varchar(15),
     IN _direccion varchar(200),
     IN _email varchar(100)
 )
 BEGIN
-	INSERT INTO administrador(id_usuario,area) VALUES (_id_usuario,_area);
-    
-    INSERT INTO usuario(id_usuario,password,fechaIngreso) VALUES(_id_usuario,_password,_fechaIngreso);
-    INSERT INTO persona(id_usuario,tipoDeDocumento,numDeDocumento,nombre,apellido,fechaDeNacimiento,telefono,direccion,email) 
-    VALUES(id_usuario,_tipoDeDocumento,_numDeDocumento,_nombre,_apellido,_fechaDeNacimiento,_telefono,_direccion,_email);
+	INSERT INTO persona(tipo_de_documento,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email,activo) 
+			VALUES(_tipo_de_documento,_numero_de_documento,_nombre,_apellido,_fecha_de_nacimiento,_telefono,_direccion,_email,1);
+    INSERT INTO usuario(username,password,fecha_de_ingreso) VALUES(_username,_password,_fecha_de_ingreso);
+    SET _id_usuario = @@last_insert_id;
+    INSERT INTO administrador(id_usuario, area) VALUES (_id_usuario,_area);
 END$
+
+DELIMITER $
 CREATE PROCEDURE LISTAR_ADMINISTRADORES()
 BEGIN
-	SELECT id_usuario,area
-    FROM administrador ;
+	SELECT p.id_persona, p.nombre, p.apellido, p.telefono, p.direccion, p.email, p.fecha_de_nacimiento, p.tipo_de_documento, p.numero_de_documento,
+			u.username, u.fecha_de_ingreso, a.area
+    FROM persona p INNER JOIN usuario u ON p.id_persona = u.id_usuario INNER JOIN administrador a ON u.id_usuario = a.id_usuario WHERE p.activo = 1;
 END$
+
+DELIMITER $
 CREATE PROCEDURE MODIFICAR_ADMINISTRADOR(
 	IN _id_usuario INT ,
     IN _area varchar(100),
+	IN _username varchar(100),
 	IN _password VARCHAR(50),     
-	IN _fechaIngreso date,       
-	IN _tipoDeDocumento int,
-    IN _numDeDocumento varchar(50),
+	IN _fecha_de_ingreso date,       
+	IN _tipo_de_documento int,
+    IN _numero_de_documento varchar(50), 
     IN _nombre varchar(100),
     IN _apellido varchar(100),
-    IN _fechaDeNacimiento date,
+    IN _fecha_de_nacimiento date,
     IN _telefono varchar(15),
     IN _direccion varchar(200),
-    IN _email varchar(100)
+    IN _email varchar(100),
+    IN _activo TINYINT
 )
 BEGIN
-	UPDATE administrador set area=_area where id_usuario=_id_usuario;
-	UPDATE usuario SET id_usuario=_id_usuario,password=_password,fechaIngreso=_fechaIngreso WHERE id_usuario=_id_usuario;
-    UPDATE persona SET id_usuario=_id_usuario,tipoDeDocumento=_tipoDeDocumento,numDeDocumento=_numDeDocumento,
-    nombre=_nombre,apellido=_apellido,fechaDeNacimiento=_fechaDeNacimiento,telefono=_telefono,direccion=_direccion,email=_email 
-    WHERE id_usuario=_id_usuario;
+	UPDATE persona SET tipo_de_documento=_tipo_de_documento,numero_de_documento=_numero_de_documento, nombre=_nombre,apellido=_apellido,
+		fecha_de_nacimiento=_fecha_de_nacimiento,telefono=_telefono,direccion=_direccion,email=_email,activo = _activo WHERE id_persona =_id_usuario;
+    UPDATE usuario SET username = _username,password=_password,fecha_de_ingreso=_fecha_de_ingreso WHERE id_usuario=_id_usuario;
+    UPDATE administrador SET area=_area WHERE id_usuario=_id_usuario;
 END$
+
+DELIMITER $
 CREATE PROCEDURE ELIMINAR_ADMINISTRADOR(
-	IN id_usuario INT
+	IN _id_usuario INT
 )
 BEGIN
-	UPDATE administrador SET id_usuario = 0 WHERE id_usuario = _id_usuario;
+	UPDATE persona SET activo = 0 WHERE id_persona = _id_usuario;
 END$
 
 DELIMITER $
 CREATE PROCEDURE INSERTAR_ALMACEN(
-	IN _id_almacen INT,
+	OUT _id_almacen INT,
     IN _nombre VARCHAR(100),
-    IN _direccion VARCHAR(200)
+    IN _direccion VARCHAR(200),
+    IN _activo TINYINT
 )
 BEGIN
-	INSERT INTO almacen(id_almacen,nombre,direccion) VALUES (_id_almacen,_nombre,_direccion);
+	INSERT INTO almacen(id_almacen,nombre,direccion,activo) VALUES (_id_almacen,_nombre,_direccion,1);
 END$
 
 DELIMITER $
 CREATE PROCEDURE LISTAR_ALMACENES()
 BEGIN
 	SELECT a.id_almacen, a.nombre, a.direccion
-    FROM almacen a;
+    FROM almacen a WHERE a.activo = 1;
 END$
 
 DELIMITER $
 CREATE PROCEDURE MODIFICAR_ALMACEN(
 	IN _id_almacen INT,
     IN _nombre VARCHAR(100),
-    IN _direccion VARCHAR(200)
+    IN _direccion VARCHAR(200),
+    IN _activo TINYINT
 )
 BEGIN
-	UPDATE almacen 
-    SET id_almacen = _id_almacen, nombre = _nombre, direccion = _direccion
+	UPDATE almacen SET nombre = _nombre, direccion = _direccion, activo = _activo
     WHERE id_almacen = _id_almacen;
-
 END$
 
 DELIMITER $
@@ -663,82 +671,48 @@ CREATE PROCEDURE ELIMINAR_ALMACEN(
 	IN _id_almacen INT
 )
 BEGIN
-	UPDATE almacen SET id_almacen = 0 WHERE id_almacen = _id_almacen;
-END$
-
-DELIMITER $
-CREATE PROCEDURE INSERTAR_STOCK(
-	IN _id_stock INT,
-	IN _cantidad INT,
-    IN _id_producto INT
-)
-BEGIN
-	INSERT INTO stock(id_stock,cantidad,id_producto) VALUES (_id_stock,_cantidad,_id_producto);
-END$
-
-DELIMITER $
-CREATE PROCEDURE LISTAR_STOCKS()
-BEGIN
-	SELECT s.id_stock, s.cantidad, p.id_producto
-    FROM stock s INNER JOIN producto p ON s.id_producto = p.id_producto;
-END$
-
-DELIMITER $
-CREATE PROCEDURE MODIFICAR_STOCK(
-	IN _id_stock INT,
-	IN _cantidad INT,
-    IN _id_producto INT
-)
-BEGIN
-	UPDATE stock SET id_stock = _id_stock, cantidad = _cantidad, id_producto = _id_producto;
-END$
-
-DELIMITER $
-CREATE PROCEDURE ELIMINAR_STOCK(
-	IN _id_stock INT
-)
-BEGIN
-	UPDATE stock SET id_stock = 0 WHERE id_stock = _id_stock;
+	UPDATE almacen SET activo = 0 WHERE id_almacen = _id_almacen;
 END$
 
 DELIMITER $
 CREATE PROCEDURE INSERTAR_PRODUCTO(
 	OUT _id_producto INT,
+    IN _fid_almacen INT,
+    IN _codigo_lote varchar(50),
     IN _nombre VARCHAR(100),
     IN _precio DOUBLE,
-    IN _unidad INT,
-    IN _stock_minimo int,
-    IN _devuelto BOOLEAN
+    IN _costo DOUBLE,
+    IN _devuelto BOOLEAN,
+    IN _fecha_ingreso date
 )
 BEGIN
 	SET _id_producto = @@last_insert_id;
-    INSERT INTO producto(id_producto,nombre,precio,unidad,stock_minimo,devuelto) VALUES(_id_producto,_nombre,_precio,_unidad,_stock_minimo,_devuelto);
+    INSERT INTO producto(id_producto,fid_almacen,codigo_lote,nombre,precio,costo,devuelto,fecha_ingreso,activo) 
+			VALUES(_id_producto,_fid_almacen,_codigo_lote,_nombre,_precio,_costo,_devuelto,_fecha_ingreso,1);
 END$
 
 DELIMITER $
 CREATE PROCEDURE LISTAR_PRODUCTOS()
 BEGIN
-	SELECT p.id_producto,p.nombre,p.precio,p.unidad,p.stock_minimo,p.devuelto 
-    FROM producto p;
+	SELECT id_producto,fid_almacen,nombre,codigo_lote,precio,costo,devuelto,fecha_ingreso
+    FROM producto WHERE activo = 1;
 END$
 
 DELIMITER $
 CREATE PROCEDURE MODIFICAR_PRODUCTO(
     IN _id_producto INT,
+    IN _fid_almacen INT,
+    IN _codigo_lote varchar(50),
     IN _nombre VARCHAR(100),
     IN _precio DOUBLE,
-    IN _unidad INT,
-    IN _stock_minimo int,
-    IN _devuelto BOOLEAN
+    IN _costo DOUBLE,
+    IN _devuelto BOOLEAN,
+    IN _fecha_ingreso date,
+    IN _activo TINYINT
 )
 BEGIN
-	UPDATE producto 
-    SET id_producto = _id_producto, 
-    nombre = _nombre, 
-    precio = _precio, 
-    unidad = _unidad ,
-    stock_minimo =_stock_minimo,
-    devuelto =_devuelto
+	UPDATE producto SET fid_almacen = _fid_almacen, codigo_lote=_codigo_lote,nombre = _nombre, precio = _precio, costo = _costo,devuelto =_devuelto,
+						fecha_ingreso = _fecha_ingreso, activo = _activo
     WHERE id_producto = _id_producto;
 END$
 
@@ -747,35 +721,36 @@ CREATE PROCEDURE ELIMINAR_PRODUCTO(
 	IN _id_producto INT
 )
 BEGIN
-	UPDATE producto SET id_producto = 0 WHERE id_producto = _id_producto;
+	UPDATE producto SET activo = 0 WHERE id_producto = _id_producto;
 END$
 
 DELIMITER $
 CREATE PROCEDURE INSERTAR_DEVOLUCION(
 	OUT _id_devolucion INT,
-    IN _cantidad INT,
-    IN _fecha DATE
+    IN _fid_producto INT,
+    IN _fid_reclamo INT
 )
 BEGIN
 	SET _id_devolucion = @@last_insert_id;
-    INSERT INTO empleado(id_devolucion,cantidad,fecha) VALUES(_id_devolucion,_cantidad,_fecha);
+    INSERT INTO devolucion(id_devolucion,fid_producto,fid_reclamo,activo) VALUES(_id_devolucion,_fid_producto,_fid_reclamo,1);
 END$
 
 DELIMITER $
 CREATE PROCEDURE LISTAR_DEVOLUCIONES()
 BEGIN
-	SELECT id_devolucion,cantidad,fecha
-    FROM devolucion;
+	SELECT d.id_devolucion,d.fid_producto,p.nombre, d.fid_reclamo 
+    FROM devolucion d INNER JOIN producto p ON d.fid_producto = p.id_producto WHERE activo = 1;
 END$
 
 DELIMITER $
 CREATE PROCEDURE MODIFICAR_DEVOLUCION(
 	IN _id_devolucion INT,
-    IN _cantidad INT,
-    IN _fecha DATE
+    IN _fid_producto INT,
+    IN _fid_reclamo INT,
+    IN _activo TINYINT
 )
 BEGIN
-	UPDATE devolucion SET id_devolucion = _id_devolucion, cantidad = _cantidad, fecha = _fecha WHERE id_devolucion = _id_devolucion;
+	UPDATE devolucion SET fid_producto = _fid_producto, fid_reclamo = _fid_reclamo, activo = _activo WHERE id_devolucion = _id_devolucion;
 END$
 
 DELIMITER $
@@ -783,39 +758,41 @@ CREATE PROCEDURE ELIMINAR_DEVOLUCION(
 	IN _id_devolucion INT
 )
 BEGIN
-	UPDATE devolucion SET id_devolucion = 0 WHERE id_devolucion = _id_devolucion;
+	UPDATE devolucion SET activo = 0 WHERE id_devolucion = _id_devolucion;
 END$
 
 DELIMITER $
 CREATE PROCEDURE INSERTAR_RECLAMO(
 	OUT _id_reclamo INT ,
+    IN _fid_orden_de_compra INT,
     IN _fecha DATE,
     IN _atendido boolean,
-    IN _justificacion varchar(500),
-    IN _id_orden_de_compra int
+    IN _justificacion varchar(500)
 )
 BEGIN
 	SET _id_reclamo = @@last_insert_id;
-    INSERT INTO reclamo(id_reclamo,fecha,atendido,justificacion) VALUES(_id_reclamo,_fecha,_atendido,_justificacion);
+    INSERT INTO reclamo(id_reclamo,fid_orden_de_compra,fecha,atendido,justificacion,activo) 
+			VALUES(_id_reclamo,_fid_orden_de_compra,_fecha,_atendido,_justificacion,1);
 END$
 
 DELIMITER $
 CREATE PROCEDURE LISTAR_RECLAMOS()
 BEGIN
-	SELECT id_reclamo,fecha,atendido,justificacion
-    FROM reclamo;
+	SELECT id_reclamo,fid_orden_de_compra,fecha,atendido,justificacion
+    FROM reclamo WHERE activo = 1;
 END$
 
 DELIMITER $
 CREATE PROCEDURE MODIFICAR_RECLAMO(
     IN _id_reclamo INT ,
+    IN _fid_orden_de_compra int,
     IN _fecha DATE,
     IN _atendido boolean,
     IN _justificacion varchar(500),
-    IN _id_orden_de_compra int
+    IN _activo tinyint
 )
 BEGIN
-	UPDATE reclamo SET id_reclamo = _id_reclamo, fecha = _fecha, atendido = _atendido, justificacion = _justificacion 
+	UPDATE reclamo SET fid_orden_de_compra = _fid_orden_de_compra, fecha = _fecha, atendido = _atendido, justificacion = _justificacion, activo = _activo 
     WHERE id_reclamo = _id_reclamo;
 END$
 
@@ -824,25 +801,25 @@ CREATE PROCEDURE ELIMINAR_RECLAMO(
 	IN _id_reclamo INT
 )
 BEGIN
-	UPDATE reclamo SET _id_reclamo = 0 WHERE id_reclamo = _id_reclamo;
+	UPDATE reclamo SET activo = 0 WHERE id_reclamo = _id_reclamo;
 END$
 
 DELIMITER $
 CREATE PROCEDURE INSERTAR_PEDIDO(
 	OUT _id_pedido INT ,
-	IN _cantidad INT,
-    IN _descuento double,
-    IN _unidad TINYINT
+    IN _fid_producto INT,
+    IN _fid_orden_de_compra INT,
+    IN _descuento double
 )
 BEGIN
 	SET _id_pedido = @@last_insert_id;
-    INSERT INTO pedido(id_pedido,cantidad,descuento,unidad) VALUES(_id_pedido,_cantidad,_descuento,_unidad);
+    INSERT INTO pedido(id_pedido,fid_producto,fid_orden_de_compra,descuento,activo) VALUES(_id_pedido,_fid_producto,_fid_orden_de_compra,_descuento,1);
 END$
 
 DELIMITER $
 CREATE PROCEDURE LISTAR_PEDIDOS()
 BEGIN
-	SELECT id_pedido,cantidad,descuento,unidad FROM pedido ;
+	SELECT id_pedido,fid_producto,fid_orden_de_compra,descuento FROM pedido WHERE activo = 1;
 END$
 
 DELIMITER $
@@ -1068,7 +1045,7 @@ CREATE PROCEDURE ELIMINAR_TIPO_DE_CAMBIO(
 BEGIN
 	UPDATE tipoDeCambio SET id_tipo_de_cambio = 0 WHERE id_tipo_de_cambio=_id_tipo_de_cambio;
 END$
-
+/*
 DELIMITER $
 CREATE PROCEDURE INSERTAR_PERSONA(
 	OUT _id_persona INT,
@@ -1155,5 +1132,5 @@ CREATE PROCEDURE ELIMINAR_USUARIO(
 BEGIN
 	UPDATE usuario SET id_usuario = 0 WHERE id_usuario=_id_usuario;
 END$
-
+*/
 
