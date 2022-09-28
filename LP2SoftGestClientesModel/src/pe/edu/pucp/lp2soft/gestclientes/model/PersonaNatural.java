@@ -16,8 +16,8 @@ public class PersonaNatural extends Cliente {
     
     public PersonaNatural(){}
     
-    public PersonaNatural( String categoria, TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email) {
-        super(categoria);
+    public PersonaNatural( String categoria,Boolean activo, TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email) {
+        super(categoria,activo);
         this.tipoDeDocumento = tipoDeDocumento;
         this.numDeDocumento = numDeDocumento;
         this.nombre = nombre;

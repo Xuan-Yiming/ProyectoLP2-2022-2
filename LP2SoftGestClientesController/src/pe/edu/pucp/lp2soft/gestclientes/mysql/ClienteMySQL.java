@@ -18,9 +18,10 @@ public class ClienteMySQL implements ClienteDAO{
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_CLIENTE(?,?)}");
+            cs = con.prepareCall("{call INSERTAR_CLIENTE(?,?,?)}");
             cs.registerOutParameter("_id_cliente", java.sql.Types.INTEGER);
             cs.setString("_categoria", cliente.getCategoria());
+            cs.setBoolean("_activo", cliente.getActivo());
             resultado = cs.executeUpdate();   
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -35,8 +36,9 @@ public class ClienteMySQL implements ClienteDAO{
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call MODIFICAR_CLIENTE(?,?)}");
+            cs = con.prepareCall("{call MODIFICAR_CLIENTE(?,?,?)}");
             cs.setInt("_id_cliente", cliente.getIdCliente());
+            cs.setString("_categoria", cliente.getCategoria());
             cs.setString("_categoria", cliente.getCategoria());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
