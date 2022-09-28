@@ -2,9 +2,10 @@
 package pe.edu.pucp.lp2soft.rrhh.model;
 import java.util.ArrayList;
 import java.util.Date;
-import pe.edu.pucp.lp2soft.ventaspagos.OrdenDeCompra;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
 
 public class Persona {
+    private int idPersona;
     private TipoDeDocumento tipoDeDocumento;
     private String numDeDocumento;  
     private String nombre;
@@ -14,6 +15,14 @@ public class Persona {
     private String direccion;
     private String email;
     private ArrayList<OrdenDeCompra> ordenesDeCompra;
+
+    public int getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(int idPersona) {
+        this.idPersona = idPersona;
+    }
     
     //Constructor vacio
     public Persona(){}

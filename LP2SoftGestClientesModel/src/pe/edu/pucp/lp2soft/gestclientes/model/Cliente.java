@@ -1,7 +1,8 @@
 
 package pe.edu.pucp.lp2soft.gestclientes.model;
 import java.util.ArrayList;
-import pe.edu.pucp.lp2soft.ventaspagos.OrdenDeCompra;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
+
 
 
 public abstract class Cliente implements CConsultable{

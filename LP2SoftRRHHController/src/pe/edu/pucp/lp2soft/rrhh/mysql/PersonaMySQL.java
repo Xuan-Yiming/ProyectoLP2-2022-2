@@ -20,7 +20,8 @@ public class PersonaMySQL implements PersonaDAO{
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_PERSONA(?,?,?,?,?,?,?,?)}");
+            cs = con.prepareCall("{call INSERTAR_PERSONA(?,?,?,?,?,?,?,?,?)}");
+            cs.registerOutParameter("_id_persona", java.sql.Types.INTEGER);
             cs.setString("_tipo_de_documento", persona.getTipoDeDocumento().name());
             cs.setString("_numero_de_documento", persona.getNumDeDocumento());
             cs.setString("_nombre", persona.getNombre());
@@ -43,8 +44,9 @@ public class PersonaMySQL implements PersonaDAO{
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call MODIFICAR_PERSONA(?,?,?"
+            cs = con.prepareCall("{call MODIFICAR_PERSONA(?,?,?,?"
                     + ",?,?,?,?,?)}");
+            cs.setInt("_id_persona", persona.getIdPersona());
             cs.setString("_tipo_de_documento", persona.getTipoDeDocumento().name());
             cs.setString("_numero_de_documento", persona.getNumDeDocumento());
             cs.setString("_nombre", persona.getNombre());
@@ -63,12 +65,12 @@ public class PersonaMySQL implements PersonaDAO{
     }
 
     @Override
-    public int eliminar(String numDeDocumento) {
+    public int eliminar(int _id_persona) {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call ELIMINAR_PERSONA(?)}");
-            cs.setString("_numero_de_documento", numDeDocumento);
+            cs.setInt("_id_persona", _id_persona);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -87,6 +89,7 @@ public class PersonaMySQL implements PersonaDAO{
             rs = cs.executeQuery();
             while(rs.next()){
                 Persona persona = new Persona();
+                persona.setIdPersona(rs.getInt("id_persona"));
                 persona.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_de_documento"))));
                 persona.setNumDeDocumento(rs.getString("numero_de_documento"));
                 persona.setNombre(rs.getString("nombre"));

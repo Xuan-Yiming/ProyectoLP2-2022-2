@@ -2,7 +2,7 @@
 package pe.edu.pucp.lp2soft.rrhh.model;
 import java.util.ArrayList;
 import java.util.Date;
-import pe.edu.pucp.lp2soft.ventaspagos.OrdenDeCompra;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
 
 public class Vendedor extends Usuario {
     private int cantidadVentas;
