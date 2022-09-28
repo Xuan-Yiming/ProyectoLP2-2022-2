@@ -21,10 +21,11 @@ public class AdministradorMySQL implements AdministradorDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_ADMINISTRADOR(?,?,?,?,?,?,?,?,?,?,?,?)}");
+            cs = con.prepareCall("{call INSERTAR_ADMINISTRADOR(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_usuario", java.sql.Types.INTEGER);
             cs.setString("_area", administrador.getArea());
             cs.setString("_password", administrador.getPassword());
+            cs.setString("_username", administrador.getUsername());
             cs.setDate("_fecha_de_ingreso", new java.sql.Date(administrador.getFechaIngreso().getTime()));
             cs.setString("_tipo_de_documento", administrador.getTipoDeDocumento().name());
             cs.setString("_numero_de_documento", administrador.getNumDeDocumento());
@@ -49,10 +50,11 @@ public class AdministradorMySQL implements AdministradorDAO {
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call MODIFICAR_ADMINISTRADOR(?,?,?"
-                    + ",?,?,?,?,?,?,?,?,?)}");
+                    + ",?,?,?,?,?,?,?,?,?,?,?)}");
             cs.setInt("_id_usuario", administrador.getIdUsuario());
             cs.setString("_area", administrador.getArea());
             cs.setString("_password", administrador.getPassword());
+            cs.setString("_username", administrador.getUsername());
             cs.setDate("_fecha_de_ingreso", new java.sql.Date(administrador.getFechaIngreso().getTime()));
             cs.setString("_tipo_de_documento", administrador.getTipoDeDocumento().name());
             cs.setString("_numero_de_documento", administrador.getNumDeDocumento());
@@ -62,6 +64,7 @@ public class AdministradorMySQL implements AdministradorDAO {
             cs.setString("_telefono", administrador.getTelefono());
             cs.setString("_direccion", administrador.getDireccion());
             cs.setString("_email", administrador.getEmail());
+            cs.setBoolean("_activo", administrador.getActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -76,9 +79,8 @@ public class AdministradorMySQL implements AdministradorDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call ELIMINAR_ADMINISTRADOR(?,?)}");
+            cs = con.prepareCall("{call ELIMINAR_ADMINISTRADOR(?)}");
             cs.setInt("_id_usuario", id_usuario);
-            cs.setString("_area", area);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -100,6 +102,7 @@ public class AdministradorMySQL implements AdministradorDAO {
                 administrador.setIdUsuario(rs.getInt("id_usuario"));
                 administrador.setArea(rs.getString("area"));
                 administrador.setPassword(rs.getString("password"));
+                administrador.setUsername(rs.getString("username"));
                 administrador.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
                 administrador.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_documento"))));
                 administrador.setNumDeDocumento(rs.getString("numero_de_documento"));
@@ -109,6 +112,7 @@ public class AdministradorMySQL implements AdministradorDAO {
                 administrador.setTelefono(rs.getString("telefono"));
                 administrador.setDireccion(rs.getString("direccion"));
                 administrador.setEmail(rs.getString("email"));
+                administrador.setActivo(rs.getBoolean("activo"));
                 administradores.add(administrador);
             }
         }catch(Exception ex){

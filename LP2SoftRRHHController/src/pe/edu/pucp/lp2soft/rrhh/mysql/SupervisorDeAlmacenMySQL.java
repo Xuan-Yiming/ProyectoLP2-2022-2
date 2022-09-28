@@ -26,10 +26,11 @@ public class SupervisorDeAlmacenMySQL implements SupervisorDeAlmacenDAO  {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_SUPERVISOR_DE_ALMACEN(?,?,?,?,?,?,?,?,?,?,?,?)}");
+            cs = con.prepareCall("{call INSERTAR_SUPERVISOR_DE_ALMACEN(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_usuario", java.sql.Types.INTEGER);
             cs.setInt("_fid_almacen", supervisorAlmacen.getAlmacen().getId());
             cs.setString("_password", supervisorAlmacen.getPassword());
+            cs.setString("_username", supervisorAlmacen.getUsername());
             cs.setDate("_fecha_de_ingreso", new java.sql.Date(supervisorAlmacen.getFechaIngreso().getTime()));
             cs.setString("_tipo_de_documento", supervisorAlmacen.getTipoDeDocumento().name());
             cs.setString("_numero_de_documento", supervisorAlmacen.getNumDeDocumento());
@@ -54,10 +55,11 @@ public class SupervisorDeAlmacenMySQL implements SupervisorDeAlmacenDAO  {
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call MODIFICAR_SUPERVISOR_DE_ALMACEN(?,?,?"
-                    + ",?,?,?,?,?,?,?,?,?)}");
+                    + ",?,?,?,?,?,?,?,?,?,?,?)}");
             cs.setInt("_id_usuario", supervisorAlmacen.getIdUsuario());
             cs.setInt("_fid_almacen", supervisorAlmacen.getAlmacen().getId());
             cs.setString("_password", supervisorAlmacen.getPassword());
+            cs.setString("_username", supervisorAlmacen.getUsername());
             cs.setDate("_fecha_de_ingreso", new java.sql.Date(supervisorAlmacen.getFechaIngreso().getTime()));
             cs.setString("_tipo_de_documento", supervisorAlmacen.getTipoDeDocumento().name());
             cs.setString("_numero_de_documento", supervisorAlmacen.getNumDeDocumento());
@@ -67,6 +69,7 @@ public class SupervisorDeAlmacenMySQL implements SupervisorDeAlmacenDAO  {
             cs.setString("_telefono", supervisorAlmacen.getTelefono());
             cs.setString("_direccion", supervisorAlmacen.getDireccion());
             cs.setString("_email", supervisorAlmacen.getEmail());
+            cs.setBoolean("_activo", supervisorAlmacen.getActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -81,9 +84,8 @@ public class SupervisorDeAlmacenMySQL implements SupervisorDeAlmacenDAO  {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call ELIMINAR_SUPERVISOR_DE_ALMACEN(?,?)}");
+            cs = con.prepareCall("{call ELIMINAR_SUPERVISOR_DE_ALMACEN(?)}");
             cs.setInt("_id_usuario", id_usuario);
-            cs.setInt("_fid_almacen", id_almacen);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -106,6 +108,7 @@ public class SupervisorDeAlmacenMySQL implements SupervisorDeAlmacenDAO  {
                 supervisorAlmacen.setAlmacen(new Almacen());
                 supervisorAlmacen.getAlmacen().setId(rs.getInt("fid_almacen"));
                 supervisorAlmacen.setPassword(rs.getString("password"));
+                supervisorAlmacen.setUsername(rs.getString("username"));
                 supervisorAlmacen.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
                 supervisorAlmacen.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_documento"))));
                 supervisorAlmacen.setNumDeDocumento(rs.getString("numero_de_documento"));
@@ -115,6 +118,7 @@ public class SupervisorDeAlmacenMySQL implements SupervisorDeAlmacenDAO  {
                 supervisorAlmacen.setTelefono(rs.getString("telefono"));
                 supervisorAlmacen.setDireccion(rs.getString("direccion"));
                 supervisorAlmacen.setEmail(rs.getString("email"));
+                supervisorAlmacen.setActivo(rs.getBoolean("activo"));
                 supervisoresAlmacen.add(supervisorAlmacen);
             }
         }catch(Exception ex){

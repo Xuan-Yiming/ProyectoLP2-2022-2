@@ -22,10 +22,11 @@ public class VendedorMySQL implements VendedorDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_VENDEDOR(?,?,?,?,?,?,?,?,?,?,?,?)}");
+            cs = con.prepareCall("{call INSERTAR_VENDEDOR(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_usuario", java.sql.Types.INTEGER);
             cs.setInt("_cantidad_ventas", vendedor.getCantidadVentas());
             cs.setString("_password", vendedor.getPassword());
+            cs.setString("_username", vendedor.getUsername());
             cs.setDate("_fecha_de_ingreso", new java.sql.Date(vendedor.getFechaIngreso().getTime()));
             cs.setString("_tipo_de_documento", vendedor.getTipoDeDocumento().name());
             cs.setString("_numero_de_documento", vendedor.getNumDeDocumento());
@@ -50,10 +51,11 @@ public class VendedorMySQL implements VendedorDAO {
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call MODIFICAR_VENDEDOR(?,?,?"
-                    + ",?,?,?,?,?,?,?,?,?)}");
+                    + ",?,?,?,?,?,?,?,?,?,?,?)}");
             cs.setInt("_id_usuario", vendedor.getIdUsuario());
             cs.setInt("_cantidad_ventas", vendedor.getCantidadVentas());
             cs.setString("_password", vendedor.getPassword());
+            cs.setString("_username", vendedor.getUsername());
             cs.setDate("_fecha_de_ingreso", new java.sql.Date(vendedor.getFechaIngreso().getTime()));
             cs.setString("_tipo_de_documento", vendedor.getTipoDeDocumento().name());
             cs.setString("_numero_de_documento", vendedor.getNumDeDocumento());
@@ -63,6 +65,7 @@ public class VendedorMySQL implements VendedorDAO {
             cs.setString("_telefono", vendedor.getTelefono());
             cs.setString("_direccion", vendedor.getDireccion());
             cs.setString("_email", vendedor.getEmail());
+            cs.setBoolean("_activo", vendedor.getActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -77,9 +80,8 @@ public class VendedorMySQL implements VendedorDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call ELIMINAR_VENDEDOR(?,?)}");
+            cs = con.prepareCall("{call ELIMINAR_VENDEDOR(?)}");
             cs.setInt("_id_usuario", id_usuario);
-            cs.setInt("_cantidad_ventas", cantidadVentas);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -101,6 +103,7 @@ public class VendedorMySQL implements VendedorDAO {
                 vendedor.setIdUsuario(rs.getInt("id_usuario"));
                 vendedor.setCantidadVentas(rs.getInt("cantidad_ventas"));
                 vendedor.setPassword(rs.getString("password"));
+                vendedor.setUsername(rs.getString("username"));
                 vendedor.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
                 vendedor.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_documento"))));
                 vendedor.setNumDeDocumento(rs.getString("numero_de_documento"));
@@ -110,6 +113,7 @@ public class VendedorMySQL implements VendedorDAO {
                 vendedor.setTelefono(rs.getString("telefono"));
                 vendedor.setDireccion(rs.getString("direccion"));
                 vendedor.setEmail(rs.getString("email"));
+                vendedor.setActivo(rs.getBoolean("activo"));
                 vendedores.add(vendedor);
             }
         }catch(Exception ex){
