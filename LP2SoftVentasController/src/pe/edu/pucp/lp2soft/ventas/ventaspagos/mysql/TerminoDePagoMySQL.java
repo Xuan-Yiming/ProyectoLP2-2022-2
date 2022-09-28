@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql;
 
 import java.sql.CallableStatement;
@@ -12,10 +8,6 @@ import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.TerminoDePagoDAO;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.TerminoDePago;
 
-/**
- *
- * @author xuany
- */
 public class TerminoDePagoMySQL implements TerminoDePagoDAO {
     private Connection con;
     private CallableStatement cs;
@@ -27,10 +19,10 @@ public class TerminoDePagoMySQL implements TerminoDePagoDAO {
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call insertar_terminoDePago(?,?,?,?,?)}");
-            cs.registerOutParameter("_id_terminoDePago", java.sql.Types.INTEGER);
-            cs.setDate("_fechaLimite", new java.sql.Date(terminoDePago.getFechaLimite().getTime()));
-            cs.setInt("_numeroCuota", terminoDePago.getNumeroCuota());
-            cs.setDouble("_montoCuota", terminoDePago.getMontoCuota());
+            cs.registerOutParameter("_id_termino_de_pago", java.sql.Types.INTEGER);
+            cs.setDate("_fecha_limite", new java.sql.Date(terminoDePago.getFechaLimite().getTime()));
+            cs.setInt("_numero_cuota", terminoDePago.getNumeroCuota());
+            cs.setDouble("_monto_cuota", terminoDePago.getMontoCuota());
             cs.setBoolean("_activo", true);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
@@ -52,10 +44,10 @@ public class TerminoDePagoMySQL implements TerminoDePagoDAO {
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call modificar_terminoDePago(?,?,?,?,?)}");
-            cs.setInt("_id_terminoDePago", terminoDePago.getId());
-            cs.setDate("_fechaLimite", new java.sql.Date(terminoDePago.getFechaLimite().getTime()));
-            cs.setInt("_numeroCuota", terminoDePago.getNumeroCuota());
-            cs.setDouble("_montoCuota", terminoDePago.getMontoCuota());
+            cs.setInt("_id_termino_de_pago", terminoDePago.getId());
+            cs.setDate("_fecha_limite", new java.sql.Date(terminoDePago.getFechaLimite().getTime()));
+            cs.setInt("_numero_cuota", terminoDePago.getNumeroCuota());
+            cs.setDouble("_monto_cuota", terminoDePago.getMontoCuota());
             cs.setBoolean("_activo", terminoDePago.isActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
@@ -77,7 +69,7 @@ public class TerminoDePagoMySQL implements TerminoDePagoDAO {
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call eliminar_terminoDePago(?)}");
-            cs.setInt("_id_terminoDePago", id);
+            cs.setInt("_id_termino_de_pago", id);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -101,10 +93,10 @@ public class TerminoDePagoMySQL implements TerminoDePagoDAO {
             rs = cs.executeQuery();
             while(rs.next()){
                 TerminoDePago terminoDePago = new TerminoDePago();
-                terminoDePago.setId(rs.getInt("id_terminoDePago"));
-                terminoDePago.setFechaLimite(rs.getDate("fechaLimite"));
-                terminoDePago.setNumeroCuota(rs.getInt("numeroCuota"));
-                terminoDePago.setMontoCuota(rs.getDouble("montoCuota"));
+                terminoDePago.setId(rs.getInt("id_termino_de_pago"));
+                terminoDePago.setFechaLimite(rs.getDate("fecha_limite"));
+                terminoDePago.setNumeroCuota(rs.getInt("numero_cuota"));
+                terminoDePago.setMontoCuota(rs.getDouble("monto_cuota"));
                 terminoDePago.setActivo(rs.getBoolean("activo"));
                 terminosDePago.add(terminoDePago);
             }

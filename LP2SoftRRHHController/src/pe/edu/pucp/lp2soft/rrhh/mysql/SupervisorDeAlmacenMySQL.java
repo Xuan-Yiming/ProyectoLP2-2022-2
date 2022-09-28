@@ -28,7 +28,7 @@ public class SupervisorDeAlmacenMySQL implements SupervisorDeAlmacenDAO  {
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call INSERTAR_SUPERVISOR_DE_ALMACEN(?,?,?,?,?,?,?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_usuario", java.sql.Types.INTEGER);
-            cs.setInt("_id_almacen", supervisorAlmacen.getAlmacen().getId());
+            cs.setInt("_fid_almacen", supervisorAlmacen.getAlmacen().getId());
             cs.setString("_password", supervisorAlmacen.getPassword());
             cs.setDate("_fecha_de_ingreso", new java.sql.Date(supervisorAlmacen.getFechaIngreso().getTime()));
             cs.setString("_tipo_de_documento", supervisorAlmacen.getTipoDeDocumento().name());
@@ -56,7 +56,7 @@ public class SupervisorDeAlmacenMySQL implements SupervisorDeAlmacenDAO  {
             cs = con.prepareCall("{call MODIFICAR_SUPERVISOR_DE_ALMACEN(?,?,?"
                     + ",?,?,?,?,?,?,?,?,?)}");
             cs.setInt("_id_usuario", supervisorAlmacen.getIdUsuario());
-            cs.setInt("_id_almacen", supervisorAlmacen.getAlmacen().getId());
+            cs.setInt("_fid_almacen", supervisorAlmacen.getAlmacen().getId());
             cs.setString("_password", supervisorAlmacen.getPassword());
             cs.setDate("_fecha_de_ingreso", new java.sql.Date(supervisorAlmacen.getFechaIngreso().getTime()));
             cs.setString("_tipo_de_documento", supervisorAlmacen.getTipoDeDocumento().name());
@@ -83,7 +83,7 @@ public class SupervisorDeAlmacenMySQL implements SupervisorDeAlmacenDAO  {
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call ELIMINAR_SUPERVISOR_DE_ALMACEN(?,?)}");
             cs.setInt("_id_usuario", id_usuario);
-            cs.setInt("_id_almacen", id_almacen);
+            cs.setInt("_fid_almacen", id_almacen);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -104,7 +104,7 @@ public class SupervisorDeAlmacenMySQL implements SupervisorDeAlmacenDAO  {
                 SupervisorDeAlmacen supervisorAlmacen = new SupervisorDeAlmacen();
                 supervisorAlmacen.setIdUsuario(rs.getInt("id_usuario"));
                 supervisorAlmacen.setAlmacen(new Almacen());
-                supervisorAlmacen.getAlmacen().setId(rs.getInt("id_almacen"));
+                supervisorAlmacen.getAlmacen().setId(rs.getInt("fid_almacen"));
                 supervisorAlmacen.setPassword(rs.getString("password"));
                 supervisorAlmacen.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
                 supervisorAlmacen.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_documento"))));

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql;
 
 import java.sql.CallableStatement;
@@ -12,10 +8,6 @@ import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Reclamo;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.ReclamoDAO;
 
-/**
- *
- * @author xuany
- */
 public class ReclamoMySQL implements ReclamoDAO {
     private Connection con;
     private CallableStatement cs;
@@ -28,7 +20,7 @@ public class ReclamoMySQL implements ReclamoDAO {
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call INSERTAR_RECLAMO(?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_reclamo", java.sql.Types.INTEGER);
-            cs.setInt("_id_ordendecompra", reclamo.getIdOrdenDeCompra());
+            cs.setInt("_fid_orden_de_compra", reclamo.getIdOrdenDeCompra());
             cs.setDate("_fecha", new java.sql.Date(reclamo.getFecha().getTime()));
             cs.setBoolean("_atenido", reclamo.isAtendido());
             cs.setString("_justificacion", reclamo.getJustificacion());
@@ -50,7 +42,7 @@ public class ReclamoMySQL implements ReclamoDAO {
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call MODIFICAR_RECLAMO(?,?,?,?,?,?)}");
             cs.setInt("_id_reclamo", reclamo.getId());
-            cs.setInt("_id_ordendecompra", reclamo.getIdOrdenDeCompra());
+            cs.setInt("_fid_orden_de_compra", reclamo.getIdOrdenDeCompra());
             cs.setDate("_fecha", new java.sql.Date(reclamo.getFecha().getTime()));
             cs.setBoolean("_atenido", reclamo.isAtendido());
             cs.setString("_justificacion", reclamo.getJustificacion());
@@ -92,7 +84,7 @@ public class ReclamoMySQL implements ReclamoDAO {
             while(rs.next()){
                 Reclamo reclamo = new Reclamo();
                 reclamo.setId(rs.getInt("id_reclamo"));
-                reclamo.setIdOrdenDeCompra(rs.getInt("id_ordendecompra"));
+                reclamo.setIdOrdenDeCompra(rs.getInt("fid_orden_de_compra"));
                 reclamo.setFecha(rs.getDate("fecha"));
                 reclamo.setAtendido(rs.getBoolean("atenido"));
                 reclamo.setJustificacion(rs.getString("justificacion"));

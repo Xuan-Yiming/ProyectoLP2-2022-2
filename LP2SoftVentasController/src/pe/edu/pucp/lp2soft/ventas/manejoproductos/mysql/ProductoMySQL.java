@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql;
 
 import java.sql.CallableStatement;
@@ -12,10 +8,6 @@ import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Producto;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.ProductoDAO;
 
-/**
- *
- * @author xuany
- */
 public class ProductoMySQL implements ProductoDAO{
     private Connection con;
     private CallableStatement cs;
@@ -28,7 +20,7 @@ public class ProductoMySQL implements ProductoDAO{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call INSERTAR_PRODUCTO(?,?,?,?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_producto", java.sql.Types.INTEGER);
-            cs.setInt("_id_almacen", producto.getIdAlamcen());
+            cs.setInt("_fid_almacen", producto.getIdAlamcen());
             cs.setString("_codigo_lote", producto.getCodigoLote());
             cs.setString("_nombre", producto.getNombre());
             cs.setDouble("_costo", producto.getCosto());
@@ -53,7 +45,7 @@ public class ProductoMySQL implements ProductoDAO{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call MODIFICAR_PRODUCTO(?,?,?,?,?,?,?,?,?)}");
             cs.setInt("_id_producto", producto.getId());
-            cs.setInt("_id_almacen", producto.getIdAlamcen());
+            cs.setInt("_fid_almacen", producto.getIdAlamcen());
             cs.setString("_codigo_lote", producto.getCodigoLote());
             cs.setString("_nombre", producto.getNombre());
             cs.setDouble("_costo", producto.getCosto());
@@ -98,10 +90,10 @@ public class ProductoMySQL implements ProductoDAO{
             while(rs.next()){
                 Producto producto = new Producto();
                 producto.setId(rs.getInt("id_producto"));
-                producto.setIdAlamcen(rs.getInt("id_almacen"));
+                producto.setIdAlamcen(rs.getInt("fid_almacen"));
                 producto.setCodigoLote(rs.getString("codigo_lote"));
                 producto.setNombre(rs.getString("nombre"));
-                producto.setCosto(rs.getDouble("costo"));
+                //producto.setCosto(rs.getDouble("costo"));
                 producto.setPrecio(rs.getDouble("precio"));
                 producto.setFechaDeIngreso(rs.getDate("fecha_ingreso"));
                 producto.setDevuelto(rs.getBoolean("devuelto"));

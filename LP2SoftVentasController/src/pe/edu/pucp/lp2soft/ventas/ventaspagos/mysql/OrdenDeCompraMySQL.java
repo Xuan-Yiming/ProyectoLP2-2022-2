@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql;
 
 import java.sql.CallableStatement;
@@ -12,10 +8,6 @@ import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.OrdenDeCompraDAO;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
 
-/**
- *
- * @author xuany
- */
 public class OrdenDeCompraMySQL implements OrdenDeCompraDAO {
     private Connection con;
     private CallableStatement cs;
@@ -28,14 +20,14 @@ public class OrdenDeCompraMySQL implements OrdenDeCompraDAO {
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call insertar_orden_de_compra(?,?,?,?,?,?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_orden_de_compra", java.sql.Types.INTEGER);
-            cs.setInt("_id_cliente", ordenDeCompra.getCliente().getId());
-            cs.setInt("_id_vendedor", ordenDeCompra.getVendedor().getId());
+            cs.setInt("_fid_cliente", ordenDeCompra.getCliente().getId());
+            cs.setInt("_fid_vendedor", ordenDeCompra.getVendedor().getId());
             cs.setDouble("_monto", ordenDeCompra.getMonto());
-            cs.setInt("_id_moneda", ordenDeCompra.getMoneda().getId());
-            cs.setString("_direccionDeEntrega", ordenDeCompra.getDireccionDeEntrega());
-            cs.setInt("_formaDeEntrega", ordenDeCompra.getFormaDeEntrega().value().ordinal());
-            cs.setDate("_fechaDeCompra", new java.sql.Date(ordenDeCompra.getFechaDeCompra().getTime()));
-            cs.setDate("_fechaDeEntrega", new java.sql.Date(ordenDeCompra.getFechaDeEntrega().getTime()));
+            cs.setInt("_fid_moneda", ordenDeCompra.getMoneda().getId());
+            cs.setString("_direccion_de_entrega", ordenDeCompra.getDireccionDeEntrega());
+            cs.setInt("_forma_de_entrega", ordenDeCompra.getFormaDeEntrega().value().ordinal());
+            cs.setDate("_fecha_de_compra", new java.sql.Date(ordenDeCompra.getFechaDeCompra().getTime()));
+            cs.setDate("_fecha_de_entrega", new java.sql.Date(ordenDeCompra.getFechaDeEntrega().getTime()));
             cs.setBoolean("_pagado", ordenDeCompra.isPagado());
             cs.setBoolean("_activo", true);
             resultado = cs.executeUpdate();
@@ -60,14 +52,14 @@ public class OrdenDeCompraMySQL implements OrdenDeCompraDAO {
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call modificar_orden_de_compra(?,?,?,?,?,?,?,?,?,?,?)}");
             cs.setInt("_id_orden_de_compra", ordenDeCompra.getId());
-            cs.setInt("_id_cliente", ordenDeCompra.getCliente().getId());
-            cs.setInt("_id_vendedor", ordenDeCompra.getVendedor().getId());
+            cs.setInt("_fid_cliente", ordenDeCompra.getCliente().getId());
+            cs.setInt("_fid_vendedor", ordenDeCompra.getVendedor().getId());
             cs.setDouble("_monto", ordenDeCompra.getMonto());
-            cs.setInt("_id_moneda", ordenDeCompra.getMoneda().getId());
-            cs.setString("_direccionDeEntrega", ordenDeCompra.getDireccionDeEntrega());
-            cs.setInt("_formaDeEntrega", ordenDeCompra.getFormaDeEntrega().value().ordinal());
-            cs.setDate("_fechaDeCompra", new java.sql.Date(ordenDeCompra.getFechaDeCompra().getTime()));
-            cs.setDate("_fechaDeEntrega", new java.sql.Date(ordenDeCompra.getFechaDeEntrega().getTime()));
+            cs.setInt("_fid_moneda", ordenDeCompra.getMoneda().getId());
+            cs.setString("_direccion_de_entrega", ordenDeCompra.getDireccionDeEntrega());
+            cs.setInt("_forma_de_entrega", ordenDeCompra.getFormaDeEntrega().value().ordinal());
+            cs.setDate("_fecha_de_compra", new java.sql.Date(ordenDeCompra.getFechaDeCompra().getTime()));
+            cs.setDate("_fecha_de_entrega", new java.sql.Date(ordenDeCompra.getFechaDeEntrega().getTime()));
             cs.setBoolean("_pagado", ordenDeCompra.isPagado());
             cs.setBoolean("_activo", ordenDeCompra.isActivo());
             resultado = cs.executeUpdate();
@@ -115,17 +107,17 @@ public class OrdenDeCompraMySQL implements OrdenDeCompraDAO {
             while(rs.next()){
                 OrdenDeCompra orden = new OrdenDeCompra();
                 orden.setId(rs.getInt("id_orden_de_compra"));
-                orden.setIdCliente(rs.getInt("id_cliente"));
-                orden.setIdVendedor(rs.getInt("id_vendedor"));
+                orden.setIdCliente(rs.getInt("fid_cliente"));
+                orden.setIdVendedor(rs.getInt("fid_vendedor"));
                 orden.setMonto(rs.getDouble("monto"));
 
                 Moneda moneda = new Moneda();
-                moneda.setId(rs.getInt("id_moneda"));
+                moneda.setId(rs.getInt("fid_moneda"));
                 orden.setMoneda(moneda);
-                orden.setDireccionDeEntrega(rs.getString("direccionDeEntrega"));
-                orden.setFormaDeEntrega(FormaDeEntrega.fromInt(rs.getInt("formaDeEntrega")));
-                orden.setFechaDeCompra(rs.getDate("fechaDeCompra"));
-                orden.setFechaDeEntrega(rs.getDate("fechaDeEntrega"));
+                orden.setDireccionDeEntrega(rs.getString("direccion_de_entrega"));
+                orden.setFormaDeEntrega(FormaDeEntrega.fromInt(rs.getInt("forma_de_entrega")));
+                orden.setFechaDeCompra(rs.getDate("fecha_de_compra"));
+                orden.setFechaDeEntrega(rs.getDate("fecha_de_entrega"));
                 orden.setPagado(rs.getBoolean("pagado"));
                 orden.setActivo(rs.getBoolean("activo"));
                 

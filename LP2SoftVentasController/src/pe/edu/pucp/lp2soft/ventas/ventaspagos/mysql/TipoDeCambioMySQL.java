@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql;
 
 import java.sql.CallableStatement;
@@ -12,10 +8,6 @@ import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.TipoDeCambioDAO;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.TipoDeCambio;
 
-/**
- *
- * @author xuany
- */
 public class TipoDeCambioMySQL implements TipoDeCambioDAO {
     private Connection con;
     private CallableStatement cs;
@@ -28,8 +20,8 @@ public class TipoDeCambioMySQL implements TipoDeCambioDAO {
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call insertar_tipoDeCambio(?,?,?,?,?)}");
-            cs.registerOutParameter("_id_tipoDeCambio", java.sql.Types.INTEGER);
-            cs.setInt("_id_moneda", tipoDeCambio.getIdMoneda());
+            cs.registerOutParameter("_id_tipo_de_cambio", java.sql.Types.INTEGER);
+            cs.setInt("_fid_moneda", tipoDeCambio.getIdMoneda());
             cs.setDate("_fecha", new java.sql.Date(tipoDeCambio.getFecha().getTime()));
             cs.setDouble("_cambio", tipoDeCambio.getCambio());
             cs.setBoolean("_activo", true);
@@ -53,8 +45,8 @@ public class TipoDeCambioMySQL implements TipoDeCambioDAO {
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call modificar_tipoDeCambio(?,?,?,?,?)}");
-            cs.setInt("_id_tipoDeCambio", tipoDeCambio.getId());
-            cs.setInt("_id_moneda", tipoDeCambio.getIdMoneda());
+            cs.setInt("_id_tipo_de_cambio", tipoDeCambio.getId());
+            cs.setInt("_fid_moneda", tipoDeCambio.getIdMoneda());
             cs.setDate("_fecha", new java.sql.Date(tipoDeCambio.getFecha().getTime()));
             cs.setDouble("_cambio", tipoDeCambio.getCambio());
             cs.setBoolean("_activo", tipoDeCambio.isActivo());
@@ -78,7 +70,7 @@ public class TipoDeCambioMySQL implements TipoDeCambioDAO {
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call eliminar_tipoDeCambio(?)}");
-            cs.setInt("_id_tipoDeCambio", id);
+            cs.setInt("_id_tipo_de_cambio", id);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -102,8 +94,8 @@ public class TipoDeCambioMySQL implements TipoDeCambioDAO {
             rs = cs.executeQuery();
             while(rs.next()){
                 TipoDeCambio tipoDeCambio = new TipoDeCambio();
-                tipoDeCambio.setId(rs.getInt("id_tipoDeCambio"));
-                tipoDeCambio.setIdMoneda(rs.getInt("id_moneda"));
+                tipoDeCambio.setId(rs.getInt("id_tipo_de_cambio"));
+                tipoDeCambio.setIdMoneda(rs.getInt("fid_moneda"));
                 tipoDeCambio.setFecha(rs.getDate("fecha"));
                 tipoDeCambio.setCambio(rs.getDouble("cambio"));
                 tipoDeCambio.setActivo(rs.getBoolean("activo"));

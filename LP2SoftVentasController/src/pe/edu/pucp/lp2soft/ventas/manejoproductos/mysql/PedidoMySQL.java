@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql;
 
 import java.sql.CallableStatement;
@@ -12,10 +8,6 @@ import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Pedido;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.PedidoDAO;
 
-/**
- *
- * @author xuany
- */
 public class PedidoMySQL implements PedidoDAO {
     private Connection con;
     private CallableStatement cs;
@@ -28,7 +20,7 @@ public class PedidoMySQL implements PedidoDAO {
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call INSERTAR_PEDIDO(?,?,?,?,?)}");
             cs.registerOutParameter("_id_pedido", java.sql.Types.INTEGER);
-            cs.setInt("_id_producto", pedido.getIdProducto());
+            cs.setInt("_fid_producto", pedido.getIdProducto());
             cs.setInt("_id_orden_de_compra", pedido.getIdOrdenDeCompra());
             cs.setDouble("_descuento", pedido.getDescuento());
             cs.setBoolean("_activo", true);
@@ -49,7 +41,7 @@ public class PedidoMySQL implements PedidoDAO {
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call MODIFICAR_PEDIDO(?,?,?,?,?)}");
             cs.setInt("_id_pedido", pedido.getId());
-            cs.setInt("_id_producto", pedido.getIdProducto());
+            cs.setInt("_fid_producto", pedido.getIdProducto());
             cs.setInt("_id_orden_de_compra", pedido.getIdOrdenDeCompra());
             cs.setDouble("_descuento", pedido.getDescuento());
             cs.setBoolean("_activo", pedido.isActivo());
@@ -90,7 +82,7 @@ public class PedidoMySQL implements PedidoDAO {
             while(rs.next()){
                 Pedido pedido = new Pedido();
                 pedido.setId(rs.getInt("id_pedido"));
-                pedido.setIdProducto(rs.getInt("id_producto"));
+                pedido.setIdProducto(rs.getInt("fid_producto"));
                 pedido.setIdOrdenDeCompra(rs.getInt("id_orden_de_compra"));
                 pedido.setDescuento(rs.getDouble("descuento"));
                 pedido.setActivo(rs.getBoolean("activo"));

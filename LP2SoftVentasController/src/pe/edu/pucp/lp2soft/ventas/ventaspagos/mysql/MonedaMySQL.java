@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql;
 
 import java.sql.CallableStatement;
@@ -12,10 +8,6 @@ import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.MonedaDAO;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.Moneda;
 
-/**
- *
- * @author xuany
- */
 public class MonedaMySQL implements MonedaDAO {
     private Connection con;
     private CallableStatement cs;

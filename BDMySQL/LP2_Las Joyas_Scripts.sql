@@ -1,23 +1,50 @@
-/*DROP TABLE IF EXISTS stock;*/
-DROP TABLE IF EXISTS almacen;
-DROP TABLE IF EXISTS producto;
-DROP TABLE IF EXISTS devolucion;
-DROP TABLE IF EXISTS reclamo;
 DROP TABLE IF EXISTS pedido;
+DROP TABLE IF EXISTS devolucion;
+DROP TABLE IF EXISTS producto;
+DROP TABLE IF EXISTS almacen;
+DROP TABLE IF EXISTS reclamo;
 DROP TABLE IF EXISTS documentoCredito;
 DROP TABLE IF EXISTS documentoDebito;
 DROP TABLE IF EXISTS ordenDeCompra;
-DROP TABLE IF EXISTS cliente;
-DROP TABLE IF EXISTS empresa;
-DROP TABLE IF EXISTS personaNatural;
 DROP TABLE IF EXISTS tipoDeCambio;
 DROP TABLE IF EXISTS moneda;
 DROP TABLE IF EXISTS terminoDePago;
+DROP TABLE IF EXISTS empresa;
+DROP TABLE IF EXISTS personaNatural;
+DROP TABLE IF EXISTS cliente;
 DROP TABLE IF EXISTS supervisorDeAlmacen;
 DROP TABLE IF EXISTS vendedor;
 DROP TABLE IF EXISTS administrador;
 DROP TABLE IF EXISTS usuario;
 DROP TABLE IF EXISTS persona;
+
+CREATE TABLE cliente(
+	id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+    categoria varchar(100)
+    #activo TINYINT
+)ENGINE=InnoDB;
+
+CREATE TABLE empresa(
+	id_empresa int PRIMARY KEY,
+    RUC int,
+    razon_social varchar(100),
+    direccion varchar(200),
+    activo TINYINT,
+	FOREIGN KEY (id_empresa) REFERENCES cliente(id_cliente)
+)ENGINE=InnoDB;
+
+CREATE TABLE personaNatural(
+    id_persona_natural int PRIMARY KEY,
+	numero_de_documento varchar(50),
+    nombre varchar(100),
+    apellido varchar(100),
+    fecha_de_nacimiento date,
+    telefono varchar(15),
+    direccion varchar(200),
+    email varchar(100),
+    activo TINYINT,
+    FOREIGN KEY (id_persona_natural) REFERENCES cliente(id_cliente)
+)ENGINE=InnoDB;
 
 CREATE TABLE persona(
 	id_persona INT PRIMARY KEY AUTO_INCREMENT,
@@ -28,167 +55,161 @@ CREATE TABLE persona(
     fecha_de_nacimiento date,
     telefono varchar(15),
     direccion varchar(200),
-    email varchar(100)
-)ENGINE=InnoDB;
-
-CREATE TABLE cliente(
-	id_cliente INT PRIMARY KEY AUTO_INCREMENT,
-    categoria varchar(100)
+    email varchar(100),
+    activo TINYINT
 )ENGINE=InnoDB;
 
 CREATE TABLE usuario(
 	id_usuario INT PRIMARY KEY,
-    password Varchar(100),
+    password varchar(100),
     fecha_de_ingreso date,
+    activo TINYINT,
     FOREIGN KEY (id_usuario) REFERENCES persona(id_persona)
-)ENGINE=InnoDB;
-
-CREATE TABLE empresa(
-	RUC int,
-    razon_social varchar(100),
-    direccion varchar(200),
-    categoria varchar(100),
-    id_empresa int,
-	FOREIGN KEY (id_empresa) REFERENCES cliente(id_cliente)
-)ENGINE=InnoDB;
-
-CREATE TABLE personaNatural(
-    id_persona_natural int,
-    categoria varchar(100),
-	numero_de_documento varchar(50),
-    nombre varchar(100),
-    apellido varchar(100),
-    fecha_de_nacimiento date,
-    telefono varchar(15),
-    direccion varchar(200),
-    email varchar(100),
-    FOREIGN KEY (id_persona_natural) REFERENCES cliente(id_cliente)
 )ENGINE=InnoDB;
 
 CREATE TABLE supervisorDeAlmacen(
 	id_usuario INT PRIMARY KEY,
+    /*fid_almacen INT,*/
+    activo TINYINT,
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+    /*FOREIGN KEY (fid_almacen) REFERENCES almacen(id_almacen)*/
 )ENGINE=InnoDB;
 
 CREATE TABLE vendedor(
 	id_usuario INT PRIMARY KEY,
 	cantidad_ventas int,
+    activo TINYINT,
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 )ENGINE=InnoDB;
 
 CREATE TABLE administrador(
 	id_usuario INT PRIMARY KEY,
 	area varchar(100),
+    activo TINYINT,
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 )ENGINE=InnoDB;
 
 CREATE TABLE almacen(
 	id_almacen INT PRIMARY KEY AUTO_INCREMENT,
+    fid_supervisor_de_almacen INT,
 	nombre VARCHAR(100),
     direccion VARCHAR(200),
-    id_supervisor_de_almacen INT,
-    FOREIGN KEY (id_supervisor_de_almacen) REFERENCES supervisorDeAlmacen(id_usuario)
+    activo TINYINT,
+    FOREIGN KEY (fid_supervisor_de_almacen) REFERENCES supervisorDeAlmacen(id_usuario)
 )ENGINE=InnoDB;
 
 CREATE TABLE producto(
 	id_producto INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(100),
+    fid_almacen INT,
+    codigo_lote varchar(50),
+    nombre varchar(100),
     precio DOUBLE,
-    unidad INT,
-    stock_minimo int,
-    devuelto BOOLEAN
-)ENGINE=InnoDB;
-
-CREATE TABLE ordenDeCompra(
-	id_orden_de_compra INT PRIMARY KEY AUTO_INCREMENT,
-	monto double,
-    id_moneda INT,
-    FOREIGN KEY (id_moneda) REFERENCES moneda(id_moneda),
-    direccion_de_entrega varchar(200),
-    forma_de_entrega int,
-    fecha_de_compra date,
-    fecha_de_entrega date,
-    pagado boolean,
-    id_cliente int,
-    id_vendedor int,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
-    FOREIGN KEY (id_vendedor) REFERENCES vendedor(id_usuario)
-)ENGINE=InnoDB;
-
-CREATE TABLE reclamo(
-	id_reclamo INT PRIMARY KEY AUTO_INCREMENT,
-    fecha DATE,
-    atendido boolean,
-    justificacion varchar(500),
-    id_orden_de_compra int,
-    FOREIGN KEY (id_orden_de_compra) REFERENCES ordenDeCompra(id_orden_de_compra)
-)ENGINE=InnoDB;
-
-CREATE TABLE devolucion(
-	id_devolucion INT PRIMARY KEY AUTO_INCREMENT,
-    cantidad INT,
-    fecha DATE,
-    unidad INT,
-    id_producto INT,
-    id_reclamo INT,
-    FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
-    FOREIGN KEY (id_reclamo) REFERENCES reclamo(id_reclamo)
+    devuelto BOOLEAN,
+    fecha_ingreso date,
+    activo TINYINT,
+    FOREIGN KEY (fid_almacen) REFERENCES almacen(id_almacen)
 )ENGINE=InnoDB;
 
 CREATE TABLE moneda(
 	id_moneda INT PRIMARY KEY AUTO_INCREMENT,
     nombre varchar(50),
-    abreviatura varchar(10)
+    abreviatura varchar(10),
+    activo TINYINT
 )ENGINE=InnoDB;
 
-CREATE TABLE tipoDeCambio(
-	id_tipo_de_cambio INT,
-    fecha date,
-    cambio double,
-    FOREIGN KEY (id_tipo_de_cambio) REFERENCES moneda(id_moneda)
+CREATE TABLE ordenDeCompra(
+	id_orden_de_compra INT PRIMARY KEY AUTO_INCREMENT,
+    fid_cliente int,
+    fid_vendedor int,
+    fid_moneda INT,
+	monto double,
+    direccion_de_entrega varchar(200),
+    forma_de_entrega int,
+    fecha_de_compra date,
+    fecha_de_entrega date,
+    pagado boolean,
+    activo TINYINT,
+    FOREIGN KEY (fid_moneda) REFERENCES moneda(id_moneda),
+    FOREIGN KEY (fid_cliente) REFERENCES cliente(id_cliente),
+    FOREIGN KEY (fid_vendedor) REFERENCES vendedor(id_usuario)
 )ENGINE=InnoDB;
 
 CREATE TABLE pedido(
 	id_pedido INT PRIMARY KEY AUTO_INCREMENT,
-	cantidad INT,
+    fid_producto int,
+    fid_orden_de_compra int,
     descuento double,
-    unidad TINYINT,
-    id_producto int,
-    id_orden_de_compra int, 
-    FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
-    FOREIGN KEY (id_orden_de_compra) REFERENCES ordenDeCompra(id_orden_de_compra)
+    activo TINYINT,
+    FOREIGN KEY (fid_producto) REFERENCES producto(id_producto),
+    FOREIGN KEY (fid_orden_de_compra) REFERENCES ordenDeCompra(id_orden_de_compra)
+)ENGINE=InnoDB;
+
+CREATE TABLE reclamo(
+	id_reclamo INT PRIMARY KEY AUTO_INCREMENT,
+    fid_orden_de_compra int,
+    fecha DATE,
+    atendido boolean,
+    justificacion varchar(500),
+    activo TINYINT,
+    FOREIGN KEY (fid_orden_de_compra) REFERENCES ordenDeCompra(id_orden_de_compra)
+)ENGINE=InnoDB;
+
+CREATE TABLE devolucion(
+	id_devolucion INT PRIMARY KEY AUTO_INCREMENT,
+    fid_producto INT,
+    fid_reclamo INT,
+    activo TINYINT,
+    FOREIGN KEY (fid_producto) REFERENCES producto(id_producto),
+    FOREIGN KEY (fid_reclamo) REFERENCES reclamo(id_reclamo)
+)ENGINE=InnoDB;
+
+CREATE TABLE tipoDeCambio(
+	id_tipo_de_cambio INT PRIMARY KEY AUTO_INCREMENT,
+    fid_moneda int,
+    fecha date,
+    cambio double,
+    activo TINYINT,
+    FOREIGN KEY (fid_moneda) REFERENCES moneda(id_moneda)
 )ENGINE=InnoDB;
 
 CREATE TABLE terminoDePago(
 	id_termino_de_pago INT PRIMARY KEY AUTO_INCREMENT,
     fecha_limite date,
     numero_cuota int,
-	monto_cuota double
+	monto_cuota double,
+    activo TINYINT
 )ENGINE=InnoDB;
 
 CREATE TABLE documentoDebito(
 	id_documento_debito INT PRIMARY KEY AUTO_INCREMENT,
+    fid_orden_de_compra int,
+    fid_moneda int,
+    fid_termino_de_pago int,
     fecha_creacion date,
     fecha_vencimiento date,
     impuesto double,
     monto double,
-    id_moneda int,
     saldo double,
     anulado boolean,
-    id_termino_de_pago int,
-    FOREIGN KEY (id_moneda) REFERENCES moneda(id_moneda),
-    FOREIGN KEY (id_termino_de_pago) REFERENCES terminoDePago(id_termino_de_pago)
+    activo TINYINT,
+    FOREIGN KEY (fid_orden_de_compra) REFERENCES ordenDeCompra(id_orden_de_compra),
+    FOREIGN KEY (fid_moneda) REFERENCES moneda(id_moneda),
+    FOREIGN KEY (fid_termino_de_pago) REFERENCES terminoDePago(id_termino_de_pago)
 )ENGINE=InnoDB;
 
 CREATE TABLE documentoCredito(
 	id_documento_credito INT PRIMARY KEY AUTO_INCREMENT,
+    fid_orden_de_compra int,
+    fid_documento_debito int,
+    fid_moneda int,
     fecha_creacion date,
+    fecha_vencimiento date,
     monto double,
     anulado boolean,
-    id_orden_de_compra int,
-    id_documentDebito int,
-    FOREIGN KEY (id_orden_de_compra) REFERENCES ordenDeCompra(id_orden_de_compra),
-    FOREIGN KEY (id_documento_debito) REFERENCES documentoDebito(id_documento_debito)
+    activo TINYINT,
+    FOREIGN KEY (fid_orden_de_compra) REFERENCES ordenDeCompra(id_orden_de_compra),
+    FOREIGN KEY (fid_documento_debito) REFERENCES documentoDebito(id_documento_debito),
+    FOREIGN KEY (fid_moneda) REFERENCES moneda(id_moneda)
 )ENGINE=InnoDB;
 
 
@@ -291,6 +312,85 @@ DROP PROCEDURE IF EXISTS INSERTAR_ADMINISTRADOR;
 DROP PROCEDURE IF EXISTS LISTAR_TODOS_ADMINISTRADORES;
 DROP PROCEDURE IF EXISTS MODIFICAR_ADMINISTRADOR;
 DROP PROCEDURE IF EXISTS ELIMINAR_ADMINISTRADOR;
+
+/*
+DELIMITER $
+CREATE PROCEDURE INSERTAR_CLIENTE(
+	OUT _id_cliente INT ,
+    IN _categoria varchar(100)
+)
+BEGIN
+	SET _id_cliente = @@last_insert_id;
+    INSERT INTO empleado(id_cliente,categoria) VALUES(_id_cliente,_categoria);
+END$
+
+DELIMITER $
+CREATE PROCEDURE LISTAR_CLIENTES()
+BEGIN
+	SELECT id_cliente,categoria 
+    FROM cliente;
+END$
+
+DELIMITER $
+CREATE PROCEDURE MODIFICAR_CLIENTE(
+	IN _id_cliente INT ,
+    IN _categoria varchar(100)
+)
+BEGIN
+	UPDATE cliente SET categoria = _categoria WHERE id_cliente = _id_cliente;
+END$
+
+DELIMITER $
+CREATE PROCEDURE ELIMINAR_CLIENTE(
+	IN _id_empleado INT
+)
+BEGIN
+	UPDATE cliente SET _id_cliente = 0 WHERE id_cliente = _id_cliente;
+END$
+*/
+
+DELIMITER $
+CREATE PROCEDURE INSERTAR_EMPRESA(
+	OUT _id_empresa int,
+    IN _RUC int,
+    IN _razon_social varchar(100),
+    IN _direccion varchar(200),
+    IN _categoria varchar(100)
+)
+BEGIN
+	INSERT INTO cliente(categoria,activo) VALUES(_categoria,1);
+	SET _id_empresa = @@last_insert_id;
+    INSERT INTO empresa(id_empresa,RUC,razon_social,direccion,activo) VALUES(_id_empresa,_RUC,_razon_social,_direccion,1);
+END$
+
+DELIMITER $
+CREATE PROCEDURE LISTAR_EMPRESAS()
+BEGIN
+    SELECT  c.id_cliente, e.RUC, e.razon_social, e.direccion ,c.categoria 
+    FROM cliente c INNER JOIN empresa e ON c.id_cliente = e.id_empresa 
+    WHERE e.activo = 1;
+END$
+
+DELIMITER $
+CREATE PROCEDURE MODIFICAR_EMPRESA(
+	IN _id_empresa int,
+	IN _RUC int,
+    IN _razon_social varchar(100),
+    IN _direccion varchar(200),
+    IN _categoria varchar(100)
+)
+BEGIN
+	UPDATE cliente SET categoria = _categoria WHERE id_cliente = _id_empresa;
+    UPDATE empresa SET RUC = _RUC, razon_social = _razon_social, direccion = _direccion, activo=_activo WHERE id_empresa=_id_empresa;
+END$
+
+DELIMITER $
+CREATE PROCEDURE ELIMINAR_EMPRESA(
+	IN _id_empresa INT
+)
+BEGIN
+	UPDATE empresa SET activo = 0 WHERE id_empresa=_id_empresa;
+END$
 
 DELIMITER $
 CREATE PROCEDURE INSERTAR_ALMACEN(
@@ -657,81 +757,6 @@ CREATE PROCEDURE ELIMINAR_ORDEN_DE_COMPRA(
 )
 BEGIN
 	UPDATE ordenDeCompra SET id_orden_de_compra = 0 WHERE id_orden_de_compra=_id_orden_de_compra;
-END$
-
-DELIMITER $
-CREATE PROCEDURE INSERTAR_CLIENTE(
-	OUT _id_cliente INT ,
-    IN _categoria varchar(100)
-)
-BEGIN
-	SET _id_cliente = @@last_insert_id;
-    INSERT INTO empleado(id_cliente,categoria) VALUES(_id_cliente,_categoria);
-END$
-
-DELIMITER $
-CREATE PROCEDURE LISTAR_CLIENTES()
-BEGIN
-	SELECT id_cliente,categoria 
-    FROM cliente;
-END$
-
-DELIMITER $
-CREATE PROCEDURE MODIFICAR_CLIENTE(
-	IN _id_cliente INT ,
-    IN _categoria varchar(100)
-)
-BEGIN
-	UPDATE cliente SET categoria = _categoria WHERE id_cliente = _id_cliente;
-END$
-
-DELIMITER $
-CREATE PROCEDURE ELIMINAR_CLIENTE(
-	IN _id_empleado INT
-)
-BEGIN
-	UPDATE cliente SET _id_cliente = 0 WHERE id_cliente = _id_cliente;
-END$
-
-DELIMITER $
-CREATE PROCEDURE INSERTAR_EMPRESA(
-	OUT _id_empresa int,
-    IN _RUC int,
-    IN _razon_social varchar(100),
-    IN _direccion varchar(200),
-    IN _categoria varchar(100)
-)
-BEGIN
-	SET _id_empresa = @@last_insert_id;
-    INSERT INTO empresa(id_empresa,RUC,razon_social,direccion,categoria) VALUES(_id_empresa,_RUC,_razon_social,_direccion,_categoria);
-END$
-
-DELIMITER $
-CREATE PROCEDURE LISTAR_EMPRESAS()
-BEGIN
-	SELECT id_empresa,RUC,razon_social,direccion,categoria
-    FROM empresa ;
-END$
-
-DELIMITER $
-CREATE PROCEDURE MODIFICAR_EMPRESA(
-	IN _id_empresa int,
-	IN _RUC int,
-    IN _razonSocial varchar(100),
-    IN _direccion varchar(200),
-    IN _categoria varchar(100)
-)
-BEGIN
-	UPDATE empresa SET RUC = _RUC, razonSocial = _razonSocial, direccion = _direccion, categoria=_categoria
-    WHERE id_empresa=_id_empresa;
-END$
-
-DELIMITER $
-CREATE PROCEDURE ELIMINAR_EMPRESA(
-	IN _id_empresa INT
-)
-BEGIN
-	UPDATE empresa SET id_empresa = 0 WHERE id_empresa=_id_empresa;
 END$
 
 DELIMITER $

@@ -1,8 +1,3 @@
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql;
 
 import java.sql.CallableStatement;
@@ -13,10 +8,6 @@ import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Almacen;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.AlmacenDAO;
 
-/**
- *
- * @author xuany
- */
 public class AlmacenMySQL implements AlmacenDAO {
     private Connection con;
     private CallableStatement cs;
@@ -31,7 +22,7 @@ public class AlmacenMySQL implements AlmacenDAO {
             cs.registerOutParameter("_id_almacen", java.sql.Types.INTEGER);
             cs.setString("_nombre", almacen.getNombre());
             cs.setString("_direccion", almacen.getDireccion());
-            cs.setInt("_id_supervisor", almacen.getIdSupervisorDeAlmacen());
+            cs.setInt("_fid_supervisor_de_almacen", almacen.getIdSupervisorDeAlmacen());
             cs.setBoolean("_activo", true);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
@@ -49,7 +40,7 @@ public class AlmacenMySQL implements AlmacenDAO {
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call MODIFICAR_ALMACEN(?,?,?,?,?)}");
             cs.setInt("_id_almacen", almacen.getId());
-            cs.setInt("_id_supervisor", almacen.getIdSupervisorDeAlmacen());
+            cs.setInt("_fid_supervisor_de_almacen", almacen.getIdSupervisorDeAlmacen());
             cs.setString("_nombre", almacen.getNombre());
             cs.setString("_direccion", almacen.getDireccion());
             cs.setBoolean("_activo", almacen.isActivo());
@@ -93,7 +84,7 @@ public class AlmacenMySQL implements AlmacenDAO {
                 almacen.setId(rs.getInt("id_almacen"));
                 almacen.setNombre(rs.getString("nombre"));
                 almacen.setDireccion(rs.getString("direccion"));
-                almacen.setIdSupervisorDeAlmacen(rs.getInt("id_supervisor"));
+                almacen.setIdSupervisorDeAlmacen(rs.getInt("fid_supervisor_de_almacen"));
                 almacen.setActivo(rs.getBoolean("activo"));
                 almacenes.add(almacen);
             }

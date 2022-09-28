@@ -86,7 +86,7 @@ public class PersonaNaturalMySQL implements PersonaNaturalDAO{
             rs = cs.executeQuery();
             while(rs.next()){
                 PersonaNatural personaNatural = new PersonaNatural();
-                personaNatural.setIdCliente(rs.getInt("id_cliente"));
+                personaNatural.setIdCliente(rs.getInt("id_persona_natural"));
                 personaNatural.setCategoria(rs.getString("categoria"));
                 personaNatural.setNumDeDocumento(rs.getString("numero_de_documento"));
                 personaNatural.setNombre(rs.getString("nombre"));
