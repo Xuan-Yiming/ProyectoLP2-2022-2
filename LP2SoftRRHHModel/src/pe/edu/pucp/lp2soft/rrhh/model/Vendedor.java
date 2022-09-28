@@ -11,8 +11,8 @@ public class Vendedor extends Usuario {
 	//Constructor vacio
     public Vendedor(){}
 	
-    public Vendedor( TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email,String password, Date fechaIngreso, int cantidadVentas) {
-        super( tipoDeDocumento, numDeDocumento, nombre, apellido, fechaDeNacimiento, telefono, direccion, email, password, fechaIngreso);
+    public Vendedor( TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email,Boolean activo,String username,String password, Date fechaIngreso, int cantidadVentas) {
+        super( tipoDeDocumento, numDeDocumento, nombre, apellido, fechaDeNacimiento, telefono, direccion, email,activo,username, password, fechaIngreso);
         this.cantidadVentas = cantidadVentas;
     }
 

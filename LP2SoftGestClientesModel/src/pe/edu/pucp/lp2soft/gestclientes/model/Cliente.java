@@ -8,12 +8,22 @@ import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
 public abstract class Cliente implements CConsultable{
     private int idCliente;
     private String categoria;
+    private Boolean activo;
     private ArrayList<OrdenDeCompra> ordenesCompras;
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
     
     public Cliente(){}
     
-    public Cliente(String categoria) {
+    public Cliente(String categoria, Boolean activo) {
         this.categoria = categoria;
+        this.activo = activo;
     }
 
     public void setIdCliente(int idCliente) {

@@ -10,8 +10,8 @@ public class SupervisorDeAlmacen extends Usuario {
 	//Constructor vacio
     public SupervisorDeAlmacen(){}
 	
-    public SupervisorDeAlmacen(TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email,String password, Date fechaIngreso, Almacen almacen) {
-        super(tipoDeDocumento, numDeDocumento, nombre, apellido, fechaDeNacimiento, telefono, direccion, email, password, fechaIngreso);
+    public SupervisorDeAlmacen(TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email,Boolean activo,String username,String password, Date fechaIngreso, Almacen almacen) {
+        super(tipoDeDocumento, numDeDocumento, nombre, apellido, fechaDeNacimiento, telefono, direccion, email,activo,username, password, fechaIngreso);
         this.almacen = almacen;
     }
 

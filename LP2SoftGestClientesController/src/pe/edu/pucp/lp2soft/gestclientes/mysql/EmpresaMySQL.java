@@ -38,12 +38,13 @@ public class EmpresaMySQL implements EmpresaDAO{
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call MODIFICAR_EMPRESA(?,?,?,?,?)}");
+            cs = con.prepareCall("{call MODIFICAR_EMPRESA(?,?,?,?,?,?)}");
             cs.setInt("_id_empresa", empresa.getIdCliente());
             cs.setString("_categoria", empresa.getCategoria());
             cs.setString("_RUC", empresa.getRUC());
             cs.setString("_razon_social", empresa.getRazonSocial());
             cs.setString("_direccion", empresa.getDireccion());
+            cs.setBoolean("_activo", empresa.getActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -83,6 +84,7 @@ public class EmpresaMySQL implements EmpresaDAO{
                 empresa.setRUC(rs.getString("RUC"));
                 empresa.setRazonSocial(rs.getString("razon_social"));
                 empresa.setDireccion(rs.getString("direccion"));
+                empresa.setActivo(rs.getBoolean("activo"));
                 empresas.add(empresa);
             }
         }catch(Exception ex){

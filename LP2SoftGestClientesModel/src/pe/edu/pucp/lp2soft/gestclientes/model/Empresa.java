@@ -7,8 +7,8 @@ public class Empresa extends Cliente {
 
     public Empresa(){}
     
-    public Empresa(String categoria,String RUC, String razonSocial, String direccion) {
-        super(categoria);
+    public Empresa(String categoria, Boolean activo,String RUC, String razonSocial, String direccion) {
+        super(categoria,activo);
         this.RUC = RUC;
         this.razonSocial = razonSocial;
         this.direccion = direccion;
