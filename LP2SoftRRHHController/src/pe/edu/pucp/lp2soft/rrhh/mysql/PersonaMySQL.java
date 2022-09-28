@@ -45,7 +45,7 @@ public class PersonaMySQL implements PersonaDAO{
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call MODIFICAR_PERSONA(?,?,?,?"
-                    + ",?,?,?,?,?)}");
+                    + ",?,?,?,?,?,?)}");
             cs.setInt("_id_persona", persona.getIdPersona());
             cs.setString("_tipo_de_documento", persona.getTipoDeDocumento().name());
             cs.setString("_numero_de_documento", persona.getNumDeDocumento());
@@ -55,6 +55,7 @@ public class PersonaMySQL implements PersonaDAO{
             cs.setString("_telefono", persona.getTelefono());
             cs.setString("_direccion", persona.getDireccion());
             cs.setString("_email", persona.getEmail());
+            cs.setBoolean("_activo", persona.getActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -98,6 +99,7 @@ public class PersonaMySQL implements PersonaDAO{
                 persona.setTelefono(rs.getString("telefono"));
                 persona.setDireccion(rs.getString("direccion"));
                 persona.setEmail(rs.getString("email"));
+                persona.setActivo(rs.getBoolean("activo"));
                 personas.add(persona);
             }
         }catch(Exception ex){

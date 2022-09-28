@@ -22,9 +22,10 @@ public class UsuarioMySQL implements UsuarioDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_USUARIO(?,?,?,?,?,?,?,?,?,?,?)}");
+            cs = con.prepareCall("{call INSERTAR_USUARIO(?,?,?,?,?,?,?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_usuario", java.sql.Types.INTEGER);
             cs.setString("_password", usuario.getPassword());
+            cs.setString("_username", usuario.getUsername());
             cs.setDate("_fecha_de_ingreso", new java.sql.Date(usuario.getFechaIngreso().getTime()));
             cs.setString("_tipo_de_documento", usuario.getTipoDeDocumento().name());
             cs.setString("_numero_de_documento", usuario.getNumDeDocumento());
@@ -49,8 +50,9 @@ public class UsuarioMySQL implements UsuarioDAO {
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call MODIFICAR_USUARIO(?,?,?"
-                    + ",?,?,?,?,?,?,?,?)}");
+                    + ",?,?,?,?,?,?,?,?,?,?)}");
             cs.setInt("_id_usuario", usuario.getIdUsuario());
+            cs.setString("_username", usuario.getUsername());
             cs.setString("_password", usuario.getPassword());
             cs.setDate("_fecha_de_ingreso", new java.sql.Date(usuario.getFechaIngreso().getTime()));
             cs.setString("_tipo_de_documento", usuario.getTipoDeDocumento().name());
@@ -61,6 +63,7 @@ public class UsuarioMySQL implements UsuarioDAO {
             cs.setString("_telefono", usuario.getTelefono());
             cs.setString("_direccion", usuario.getDireccion());
             cs.setString("_email", usuario.getEmail());
+            cs.setBoolean("_activo", usuario.getActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -96,6 +99,7 @@ public class UsuarioMySQL implements UsuarioDAO {
             while(rs.next()){
                 Usuario usuario = new Usuario() {};
                 usuario.setIdUsuario(rs.getInt("id_usuario"));
+                usuario.setUsername(rs.getString("username"));
                 usuario.setPassword(rs.getString("password"));
                 usuario.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
                 usuario.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_documento"))));
@@ -106,6 +110,7 @@ public class UsuarioMySQL implements UsuarioDAO {
                 usuario.setTelefono(rs.getString("telefono"));
                 usuario.setDireccion(rs.getString("direccion"));
                 usuario.setEmail(rs.getString("email"));
+                usuario.setActivo(rs.getBoolean("activo"));
                 usuarios.add(usuario);
             }
         }catch(Exception ex){
