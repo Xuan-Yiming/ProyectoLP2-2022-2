@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Almacen {
     private int id;
-    private int idSupervisorDeAlmacen;
     private String  nombre;
     private String  direccion;
     private ArrayList<Producto> productos;
@@ -29,13 +28,6 @@ public class Almacen {
         this.id = id;
     }
 
-    public int getIdSupervisorDeAlmacen() {
-        return idSupervisorDeAlmacen;
-    }
-
-    public void setIdSupervisorDeAlmacen(int idSupervisorDeAlmacen) {
-        this.idSupervisorDeAlmacen = idSupervisorDeAlmacen;
-    }
 
     public String getNombre() {
         return nombre;

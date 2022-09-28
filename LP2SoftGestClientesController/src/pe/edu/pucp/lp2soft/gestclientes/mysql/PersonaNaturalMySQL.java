@@ -42,7 +42,7 @@ public class PersonaNaturalMySQL implements PersonaNaturalDAO{
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call MODIFICAR_PERSONA_NATURAL(?,?,?,?,?,?,?,?,?)}");
+            cs = con.prepareCall("{call MODIFICAR_PERSONA_NATURAL(?,?,?,?,?,?,?,?,?,?)}");
             cs.setInt("_id_persona_natural", personaNatural.getIdCliente());
             cs.setString("_categoria", personaNatural.getCategoria());
             cs.setString("_numero_de_documento", personaNatural.getNumDeDocumento());
@@ -52,6 +52,7 @@ public class PersonaNaturalMySQL implements PersonaNaturalDAO{
             cs.setString("_telefono", personaNatural.getTelefono());
             cs.setString("_direccion", personaNatural.getDireccion());
             cs.setString("_email", personaNatural.getEmail());
+            cs.setBoolean("_activo", personaNatural.getActivo());
             resultado = cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -95,6 +96,7 @@ public class PersonaNaturalMySQL implements PersonaNaturalDAO{
                 personaNatural.setTelefono(rs.getString("telefono"));
                 personaNatural.setDireccion(rs.getString("direccion"));
                 personaNatural.setEmail(rs.getString("email"));
+                personaNatural.setActivo(rs.getBoolean("activo"));
                 personasNaturales.add(personaNatural);
             }
         }catch(Exception ex){

@@ -14,12 +14,21 @@ public class Persona {
     private String telefono;
     private String direccion;
     private String email;
+    private Boolean activo;
     private ArrayList<OrdenDeCompra> ordenesDeCompra;
 
     public int getIdPersona() {
         return idPersona;
     }
 
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
+        
     public void setIdPersona(int idPersona) {
         this.idPersona = idPersona;
     }
@@ -27,7 +36,7 @@ public class Persona {
     //Constructor vacio
     public Persona(){}
     
-    public Persona(TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email) {
+    public Persona(TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email,Boolean activo) {
         this.tipoDeDocumento = tipoDeDocumento;
         this.numDeDocumento = numDeDocumento;
         this.nombre = nombre;
@@ -36,6 +45,7 @@ public class Persona {
         this.telefono = telefono;
         this.direccion = direccion;
         this.email = email;
+        this.activo = activo;
     }
 
     public TipoDeDocumento getTipoDeDocumento() {
