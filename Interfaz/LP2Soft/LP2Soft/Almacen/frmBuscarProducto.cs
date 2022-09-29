@@ -19,15 +19,8 @@ namespace LP2Soft.Almacen
 
         private void BtnSeleccionar_Click(object sender, EventArgs e)
         {
-            frmProducto frmproducto = new frmProducto();
-            frmproducto.Show();
             this.DialogResult = DialogResult.OK;
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            frmProducto frmproducto = new frmProducto();
-            frmproducto.Show();
-        }
     }
 }

@@ -28,8 +28,8 @@ namespace LP2Soft.Almacen
 
         private void btnListarProductos_Click(object sender, EventArgs e)
         {
-            frmBuscarProducto frmbuscarproducto = new frmBuscarProducto();
-            frmbuscarproducto.Show();
+            frmListarProductos frmlistarProductos = new frmListarProductos();
+            frmlistarProductos.Show();
         }
     }
 }
