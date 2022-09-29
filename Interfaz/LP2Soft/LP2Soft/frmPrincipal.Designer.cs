@@ -68,7 +68,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(667, 46);
             this.panel1.TabIndex = 0;
@@ -80,7 +80,7 @@
             this.panel9.Controls.Add(this.panel8);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel9.Location = new System.Drawing.Point(482, 0);
-            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(185, 46);
             this.panel9.TabIndex = 8;
@@ -89,7 +89,7 @@
             // 
             this.btnCerrar.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnCerrar.Location = new System.Drawing.Point(135, 0);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(50, 46);
             this.btnCerrar.TabIndex = 1;
@@ -103,7 +103,7 @@
             this.panel8.Controls.Add(this.lblUsuario);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 0);
-            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(185, 46);
             this.panel8.TabIndex = 7;
@@ -135,7 +135,7 @@
             this.panel7.Controls.Add(this.pictureBox1);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(177, 46);
             this.panel7.TabIndex = 6;
@@ -156,7 +156,7 @@
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(47, 46);
             this.pictureBox1.TabIndex = 3;
@@ -180,7 +180,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 46);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(143, 474);
             this.panel2.TabIndex = 1;
@@ -190,7 +190,7 @@
             this.panel6.Controls.Add(this.btnClientes);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 138);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(143, 46);
             this.panel6.TabIndex = 3;
@@ -199,7 +199,7 @@
             // 
             this.btnClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClientes.Location = new System.Drawing.Point(0, 0);
-            this.btnClientes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClientes.Margin = new System.Windows.Forms.Padding(2);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(143, 46);
             this.btnClientes.TabIndex = 0;
@@ -212,7 +212,7 @@
             this.panel5.Controls.Add(this.btnEmpleados);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 92);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(143, 46);
             this.panel5.TabIndex = 2;
@@ -221,7 +221,7 @@
             // 
             this.btnEmpleados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEmpleados.Location = new System.Drawing.Point(0, 0);
-            this.btnEmpleados.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEmpleados.Margin = new System.Windows.Forms.Padding(2);
             this.btnEmpleados.Name = "btnEmpleados";
             this.btnEmpleados.Size = new System.Drawing.Size(143, 46);
             this.btnEmpleados.TabIndex = 0;
@@ -233,7 +233,7 @@
             this.panel4.Controls.Add(this.btnAlmacen);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 46);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(143, 46);
             this.panel4.TabIndex = 1;
@@ -242,7 +242,7 @@
             // 
             this.btnAlmacen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAlmacen.Location = new System.Drawing.Point(0, 0);
-            this.btnAlmacen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAlmacen.Margin = new System.Windows.Forms.Padding(2);
             this.btnAlmacen.Name = "btnAlmacen";
             this.btnAlmacen.Size = new System.Drawing.Size(143, 46);
             this.btnAlmacen.TabIndex = 0;
@@ -255,7 +255,7 @@
             this.panel3.Controls.Add(this.btnVenta);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(143, 46);
             this.panel3.TabIndex = 0;
@@ -264,18 +264,19 @@
             // 
             this.btnVenta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnVenta.Location = new System.Drawing.Point(0, 0);
-            this.btnVenta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnVenta.Margin = new System.Windows.Forms.Padding(2);
             this.btnVenta.Name = "btnVenta";
             this.btnVenta.Size = new System.Drawing.Size(143, 46);
             this.btnVenta.TabIndex = 0;
             this.btnVenta.Text = "Ventas";
             this.btnVenta.UseVisualStyleBackColor = true;
+            this.btnVenta.Click += new System.EventHandler(this.btnVenta_Click);
             // 
             // panelPrincipal
             // 
             this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPrincipal.Location = new System.Drawing.Point(143, 46);
-            this.panelPrincipal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelPrincipal.Margin = new System.Windows.Forms.Padding(2);
             this.panelPrincipal.Name = "panelPrincipal";
             this.panelPrincipal.Size = new System.Drawing.Size(524, 474);
             this.panelPrincipal.TabIndex = 2;
@@ -289,7 +290,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmPrincipal";
             this.Text = "frmPrincipal";
             this.panel1.ResumeLayout(false);

@@ -1,4 +1,5 @@
 ﻿using LP2Soft.Almacen;
+using LP2Soft.Ventas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,6 +43,16 @@ namespace LP2Soft
             frmalmacen.Dock = DockStyle.Fill;
             panelPrincipal.Controls.Add(frmalmacen);
             frmalmacen.Show();
+        }
+
+        private void btnVenta_Click(object sender, EventArgs e)
+        {
+            frmVentas frmventas = new frmVentas();
+            frmventas.TopLevel = false;
+            frmventas.FormBorderStyle = FormBorderStyle.None;
+            frmventas.Dock = DockStyle.Fill;
+            panelPrincipal.Controls.Add(frmventas);
+            frmventas.Show();
         }
     }
 }
