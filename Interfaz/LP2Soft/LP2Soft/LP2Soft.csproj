@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,11 +58,11 @@
     <Compile Include="frmBusquedaUsuario.Designer.cs">
       <DependentUpon>frmBusquedaUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEliminarUsuario.cs">
+    <Compile Include="frmIniciaSeccion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEliminarUsuario.Designer.cs">
-      <DependentUpon>frmEliminarUsuario.cs</DependentUpon>
+    <Compile Include="frmIniciaSeccion.Designer.cs">
+      <DependentUpon>frmIniciaSeccion.cs</DependentUpon>
     </Compile>
     <Compile Include="frmModificarUsuario.cs">
       <SubType>Form</SubType>
@@ -102,17 +96,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmAdministrador.resx">
       <DependentUpon>frmAdministrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBusquedaUsuario.resx">
       <DependentUpon>frmBusquedaUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEliminarUsuario.resx">
-      <DependentUpon>frmEliminarUsuario.cs</DependentUpon>
+    <EmbeddedResource Include="frmIniciaSeccion.resx">
+      <DependentUpon>frmIniciaSeccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmModificarUsuario.resx">
       <DependentUpon>frmModificarUsuario.cs</DependentUpon>
