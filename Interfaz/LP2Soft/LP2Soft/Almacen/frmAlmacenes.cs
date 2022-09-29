@@ -8,15 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LP2Soft
+namespace LP2Soft.Almacen
 {
-    public partial class frmRegistroUsuario : Form
+    public partial class frmAlmacenes : Form
     {
-        public frmRegistroUsuario()
+        public frmAlmacenes()
         {
             InitializeComponent();
         }
-
-    
     }
 }

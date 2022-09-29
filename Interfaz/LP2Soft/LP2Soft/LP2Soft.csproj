@@ -46,22 +46,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmAdministrador.cs">
+    <Compile Include="Almacen\frmAlmacenes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAdministrador.Designer.cs">
+    <Compile Include="Almacen\frmAlmacenes.Designer.cs">
+      <DependentUpon>frmAlmacenes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usurios\frmAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usurios\frmAdministrador.Designer.cs">
       <DependentUpon>frmAdministrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBusquedaUsuario.cs">
+    <Compile Include="Usurios\frmBusquedaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBusquedaUsuario.Designer.cs">
+    <Compile Include="Usurios\frmBusquedaUsuario.Designer.cs">
       <DependentUpon>frmBusquedaUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGestionUsuario.cs">
+    <Compile Include="Usurios\frmGestionUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGestionUsuario.Designer.cs">
+    <Compile Include="Usurios\frmGestionUsuario.Designer.cs">
       <DependentUpon>frmGestionUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="frmIniciaSeccion.cs">
@@ -70,10 +76,10 @@
     <Compile Include="frmIniciaSeccion.Designer.cs">
       <DependentUpon>frmIniciaSeccion.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmModificarUsuario.cs">
+    <Compile Include="Usurios\frmModificarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmModificarUsuario.Designer.cs">
+    <Compile Include="Usurios\frmModificarUsuario.Designer.cs">
       <DependentUpon>frmModificarUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPrincipal.cs">
@@ -82,52 +88,64 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRegistroUsuario.cs">
+    <Compile Include="Usurios\frmRegistroUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRegistroUsuario.Designer.cs">
+    <Compile Include="Usurios\frmRegistroUsuario.Designer.cs">
       <DependentUpon>frmRegistroUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSupervisorAlmacen.cs">
+    <Compile Include="Usurios\frmSupervisorAlmacen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSupervisorAlmacen.Designer.cs">
+    <Compile Include="Usurios\frmSupervisorAlmacen.Designer.cs">
       <DependentUpon>frmSupervisorAlmacen.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmVendedor.cs">
+    <Compile Include="Usurios\frmVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmVendedor.Designer.cs">
+    <Compile Include="Usurios\frmVendedor.Designer.cs">
       <DependentUpon>frmVendedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\frmVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmVentas.Designer.cs">
+      <DependentUpon>frmVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmAdministrador.resx">
+    <EmbeddedResource Include="Almacen\frmAlmacenes.resx">
+      <DependentUpon>frmAlmacenes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usurios\frmAdministrador.resx">
       <DependentUpon>frmAdministrador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBusquedaUsuario.resx">
+    <EmbeddedResource Include="Usurios\frmBusquedaUsuario.resx">
       <DependentUpon>frmBusquedaUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGestionUsuario.resx">
+    <EmbeddedResource Include="Usurios\frmGestionUsuario.resx">
       <DependentUpon>frmGestionUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIniciaSeccion.resx">
       <DependentUpon>frmIniciaSeccion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmModificarUsuario.resx">
+    <EmbeddedResource Include="Usurios\frmModificarUsuario.resx">
       <DependentUpon>frmModificarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRegistroUsuario.resx">
+    <EmbeddedResource Include="Usurios\frmRegistroUsuario.resx">
       <DependentUpon>frmRegistroUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSupervisorAlmacen.resx">
+    <EmbeddedResource Include="Usurios\frmSupervisorAlmacen.resx">
       <DependentUpon>frmSupervisorAlmacen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmVendedor.resx">
+    <EmbeddedResource Include="Usurios\frmVendedor.resx">
       <DependentUpon>frmVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\frmVentas.resx">
+      <DependentUpon>frmVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -150,6 +168,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Clientes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
