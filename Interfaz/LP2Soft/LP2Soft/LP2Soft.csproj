@@ -76,6 +76,12 @@
     <Compile Include="frmModificarUsuario.Designer.cs">
       <DependentUpon>frmModificarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRegistroUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmModificarUsuario.resx">
       <DependentUpon>frmModificarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegistroUsuario.resx">
       <DependentUpon>frmRegistroUsuario.cs</DependentUpon>
