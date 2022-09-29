@@ -127,6 +127,7 @@
             this.btAceptar.TabIndex = 25;
             this.btAceptar.Text = "Aceptar";
             this.btAceptar.UseVisualStyleBackColor = false;
+            this.btAceptar.Click += new System.EventHandler(this.btAceptar_Click);
             // 
             // lblFechaIngreso
             // 
@@ -153,6 +154,7 @@
             this.btRegresar.TabIndex = 28;
             this.btRegresar.Text = "Regresar";
             this.btRegresar.UseVisualStyleBackColor = false;
+            this.btRegresar.Click += new System.EventHandler(this.btRegresar_Click);
             // 
             // frmSupervisorAlmacen
             // 
