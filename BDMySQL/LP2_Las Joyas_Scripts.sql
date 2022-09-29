@@ -26,7 +26,7 @@ CREATE TABLE cliente(
 
 CREATE TABLE empresa(
 	id_empresa int PRIMARY KEY,
-    RUC int,
+    RUC varchar(100),
     razon_social varchar(100),
     direccion varchar(200),
 	FOREIGN KEY (id_empresa) REFERENCES cliente(id_cliente)
@@ -292,7 +292,7 @@ DROP PROCEDURE IF EXISTS ELIMINAR_TERMINO_DE_PAGO;
 DELIMITER $
 CREATE PROCEDURE INSERTAR_EMPRESA(
 	OUT _id_empresa int,
-    IN _RUC int,
+    IN _RUC varchar(100),
     IN _razon_social varchar(100),
     IN _direccion varchar(200),
     IN _categoria varchar(100)
@@ -306,7 +306,7 @@ END$
 DELIMITER $
 CREATE PROCEDURE LISTAR_EMPRESAS()
 BEGIN
-    SELECT  c.id_cliente, e.RUC, e.razon_social, e.direccion ,c.categoria 
+    SELECT  e.id_empresa, e.RUC, e.razon_social, e.direccion ,c.categoria
     FROM cliente c INNER JOIN empresa e ON c.id_cliente = e.id_empresa 
     WHERE c.activo = 1;
 END$
@@ -314,7 +314,7 @@ END$
 DELIMITER $
 CREATE PROCEDURE MODIFICAR_EMPRESA(
 	IN _id_empresa int,
-	IN _RUC int,
+	IN _RUC varchar(100),
     IN _razon_social varchar(100),
     IN _direccion varchar(200),
     IN _categoria varchar(100),
@@ -349,14 +349,14 @@ CREATE PROCEDURE INSERTAR_PERSONA_NATURAL(
 BEGIN
 	INSERT INTO cliente(categoria,activo) VALUES(_categoria,1);
 	SET _id_persona_natural = @@last_insert_id;
-    INSERT INTO personaNatural(id_persona_natural,_tipo_de_documento,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email) 
+    INSERT INTO personaNatural(id_persona_natural,tipo_de_documento,numero_de_documento,nombre,apellido,fecha_de_nacimiento,telefono,direccion,email) 
 		VALUES (_id_persona_natural,_tipo_de_documento,_numero_de_documento,_nombre,_apellido,_fecha_de_nacimiento,_telefono,_direccion,_email);
 END$
 
 DELIMITER $
 CREATE PROCEDURE LISTAR_PERSONAS_NATURALES()
 BEGIN
-	SELECT  c.id_cliente, p.nombre, p.apellido, p.fecha_de_nacimiento, p.telefono, p.direccion, p.email, p.tipo_de_documento, p.numero_de_documento ,c.categoria 
+	SELECT  p.id_persona_natural, p.nombre, p.apellido, p.fecha_de_nacimiento, p.telefono, p.direccion, p.email, p.tipo_de_documento, p.numero_de_documento ,c.categoria
     FROM cliente c INNER JOIN personaNatural p ON c.id_cliente = p.id_persona_natural WHERE c.activo = 1;
 END$
 
