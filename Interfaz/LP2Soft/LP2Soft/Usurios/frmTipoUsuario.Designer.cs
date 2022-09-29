@@ -48,10 +48,10 @@
             // btRegresar
             // 
             this.btRegresar.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.btRegresar.Location = new System.Drawing.Point(159, 300);
-            this.btRegresar.Margin = new System.Windows.Forms.Padding(2);
+            this.btRegresar.Location = new System.Drawing.Point(212, 369);
+            this.btRegresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btRegresar.Name = "btRegresar";
-            this.btRegresar.Size = new System.Drawing.Size(77, 34);
+            this.btRegresar.Size = new System.Drawing.Size(103, 42);
             this.btRegresar.TabIndex = 54;
             this.btRegresar.Text = "Regresar";
             this.btRegresar.UseVisualStyleBackColor = false;
@@ -60,30 +60,29 @@
             // lblFechaIngreso
             // 
             this.lblFechaIngreso.AutoSize = true;
-            this.lblFechaIngreso.Location = new System.Drawing.Point(95, 246);
-            this.lblFechaIngreso.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFechaIngreso.Location = new System.Drawing.Point(127, 303);
             this.lblFechaIngreso.Name = "lblFechaIngreso";
-            this.lblFechaIngreso.Size = new System.Drawing.Size(93, 13);
+            this.lblFechaIngreso.Size = new System.Drawing.Size(115, 16);
             this.lblFechaIngreso.TabIndex = 53;
             this.lblFechaIngreso.Text = "Fecha de Ingreso:";
             this.lblFechaIngreso.Click += new System.EventHandler(this.lblFechaIngreso_Click);
             // 
             // dtpFechaIngreso
             // 
-            this.dtpFechaIngreso.Location = new System.Drawing.Point(192, 240);
-            this.dtpFechaIngreso.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpFechaIngreso.Location = new System.Drawing.Point(256, 295);
+            this.dtpFechaIngreso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
-            this.dtpFechaIngreso.Size = new System.Drawing.Size(192, 20);
+            this.dtpFechaIngreso.Size = new System.Drawing.Size(255, 22);
             this.dtpFechaIngreso.TabIndex = 52;
             this.dtpFechaIngreso.ValueChanged += new System.EventHandler(this.dtpFechaIngreso_ValueChanged);
             // 
             // btAceptar
             // 
             this.btAceptar.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.btAceptar.Location = new System.Drawing.Point(307, 300);
-            this.btAceptar.Margin = new System.Windows.Forms.Padding(2);
+            this.btAceptar.Location = new System.Drawing.Point(389, 369);
+            this.btAceptar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btAceptar.Name = "btAceptar";
-            this.btAceptar.Size = new System.Drawing.Size(77, 34);
+            this.btAceptar.Size = new System.Drawing.Size(103, 42);
             this.btAceptar.TabIndex = 51;
             this.btAceptar.Text = "Aceptar";
             this.btAceptar.UseVisualStyleBackColor = false;
@@ -92,79 +91,75 @@
             // lblNombreArea
             // 
             this.lblNombreArea.AutoSize = true;
-            this.lblNombreArea.Location = new System.Drawing.Point(156, 212);
-            this.lblNombreArea.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNombreArea.Location = new System.Drawing.Point(208, 261);
             this.lblNombreArea.Name = "lblNombreArea";
-            this.lblNombreArea.Size = new System.Drawing.Size(32, 13);
+            this.lblNombreArea.Size = new System.Drawing.Size(39, 16);
             this.lblNombreArea.TabIndex = 50;
             this.lblNombreArea.Text = "Área:";
             this.lblNombreArea.Click += new System.EventHandler(this.lblNombreArea_Click);
             // 
             // txtArea
             // 
-            this.txtArea.Location = new System.Drawing.Point(192, 209);
-            this.txtArea.Margin = new System.Windows.Forms.Padding(2);
+            this.txtArea.Location = new System.Drawing.Point(256, 257);
+            this.txtArea.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtArea.Name = "txtArea";
-            this.txtArea.Size = new System.Drawing.Size(152, 20);
+            this.txtArea.Size = new System.Drawing.Size(201, 22);
             this.txtArea.TabIndex = 49;
             this.txtArea.TextChanged += new System.EventHandler(this.txtArea_TextChanged);
             // 
             // lblConfirmaciónContraseña
             // 
             this.lblConfirmaciónContraseña.AutoSize = true;
-            this.lblConfirmaciónContraseña.Location = new System.Drawing.Point(78, 151);
-            this.lblConfirmaciónContraseña.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblConfirmaciónContraseña.Location = new System.Drawing.Point(104, 186);
             this.lblConfirmaciónContraseña.Name = "lblConfirmaciónContraseña";
-            this.lblConfirmaciónContraseña.Size = new System.Drawing.Size(110, 13);
+            this.lblConfirmaciónContraseña.Size = new System.Drawing.Size(137, 16);
             this.lblConfirmaciónContraseña.TabIndex = 48;
             this.lblConfirmaciónContraseña.Text = "Confirmar contraseña:";
             this.lblConfirmaciónContraseña.Click += new System.EventHandler(this.lblConfirmaciónContraseña_Click);
             // 
             // txtConfirmarPassword
             // 
-            this.txtConfirmarPassword.Location = new System.Drawing.Point(192, 148);
-            this.txtConfirmarPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.txtConfirmarPassword.Location = new System.Drawing.Point(256, 182);
+            this.txtConfirmarPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtConfirmarPassword.Name = "txtConfirmarPassword";
-            this.txtConfirmarPassword.Size = new System.Drawing.Size(152, 20);
+            this.txtConfirmarPassword.Size = new System.Drawing.Size(201, 22);
             this.txtConfirmarPassword.TabIndex = 47;
             this.txtConfirmarPassword.TextChanged += new System.EventHandler(this.txtConfirmarPassword_TextChanged);
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(124, 120);
-            this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPassword.Location = new System.Drawing.Point(165, 148);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(64, 13);
+            this.lblPassword.Size = new System.Drawing.Size(79, 16);
             this.lblPassword.TabIndex = 46;
             this.lblPassword.Text = "Contraseña:";
             this.lblPassword.Click += new System.EventHandler(this.lblPassword_Click);
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(192, 117);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPassword.Location = new System.Drawing.Point(256, 144);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(152, 20);
+            this.txtPassword.Size = new System.Drawing.Size(201, 22);
             this.txtPassword.TabIndex = 45;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(192, 83);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUsername.Location = new System.Drawing.Point(256, 102);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(152, 20);
+            this.txtUsername.Size = new System.Drawing.Size(201, 22);
             this.txtUsername.TabIndex = 44;
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(132, 86);
-            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUsername.Location = new System.Drawing.Point(176, 106);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(58, 13);
+            this.lblUsername.Size = new System.Drawing.Size(73, 16);
             this.lblUsername.TabIndex = 43;
             this.lblUsername.Text = "Username:";
             this.lblUsername.Click += new System.EventHandler(this.lblUsername_Click);
@@ -174,10 +169,9 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.Black;
-            this.lblTitulo.Location = new System.Drawing.Point(156, 22);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitulo.Location = new System.Drawing.Point(208, 27);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(188, 17);
+            this.lblTitulo.Size = new System.Drawing.Size(223, 20);
             this.lblTitulo.TabIndex = 55;
             this.lblTitulo.Text = "REGISTRO DE USUARIO";
             this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
@@ -185,9 +179,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(103, 182);
+            this.label1.Location = new System.Drawing.Point(137, 224);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.Size = new System.Drawing.Size(104, 16);
             this.label1.TabIndex = 56;
             this.label1.Text = "Tipo de usuario:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -195,17 +190,18 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(192, 179);
+            this.comboBox1.Location = new System.Drawing.Point(256, 220);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(152, 21);
+            this.comboBox1.Size = new System.Drawing.Size(201, 24);
             this.comboBox1.TabIndex = 57;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // frmTipoUsuario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 372);
+            this.ClientSize = new System.Drawing.Size(656, 458);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTitulo);
@@ -221,7 +217,7 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblUsername);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmTipoUsuario";
             this.Text = "frmAdministrador";
             this.ResumeLayout(false);
