@@ -25,6 +25,8 @@ public class EmpresaMySQL implements EmpresaDAO{
             cs.setString("_razon_social", empresa.getRazonSocial());
             cs.setString("_direccion", empresa.getDireccion());
             resultado = cs.executeUpdate();
+            empresa.setIdCliente(cs.getInt("_id_empresa"));
+            
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -84,7 +86,6 @@ public class EmpresaMySQL implements EmpresaDAO{
                 empresa.setRUC(rs.getString("RUC"));
                 empresa.setRazonSocial(rs.getString("razon_social"));
                 empresa.setDireccion(rs.getString("direccion"));
-                empresa.setActivo(rs.getBoolean("activo"));
                 empresas.add(empresa);
             }
         }catch(Exception ex){

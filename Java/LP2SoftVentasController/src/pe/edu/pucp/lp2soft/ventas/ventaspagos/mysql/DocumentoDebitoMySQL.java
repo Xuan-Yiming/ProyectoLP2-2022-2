@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.DocumentoDebitoDAO;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.DocumentoDebito;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.Moneda;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.TerminoDePago;
 
 public class DocumentoDebitoMySQL implements DocumentoDebitoDAO {
     private Connection con;
@@ -18,19 +20,19 @@ public class DocumentoDebitoMySQL implements DocumentoDebitoDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call insertar_documento_debito(?,?,?,?,?,?,?,?,?,?,?)}");
+            cs = con.prepareCall("{call insertar_documento_debito(?,?,?,?,?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_documento_debito", java.sql.Types.INTEGER);
             cs.setInt("_fid_orden_de_compra", documentoDebito.getIdOrdenDeCompra());
-            cs.setDate("_fecha_creacion", documentoDebito.getFechaCreacion());
-            cs.setDate("_fecha_vencimiento", documentoDebito.getFechaVencimiento());
+            cs.setDate("_fecha_creacion", new java.sql.Date(documentoDebito.getFechaCreacion().getTime()));
+            cs.setDate("_fecha_vencimiento", new java.sql.Date(documentoDebito.getFechaVencimiento().getTime()));
             cs.setDouble("_impuesto", documentoDebito.getImpuesto());
             cs.setDouble("_monto", documentoDebito.getMonto());
             cs.setInt("_fid_moneda", documentoDebito.getMoneda().getId());
             cs.setDouble("_saldo", documentoDebito.getSaldo());
             cs.setBoolean("_anulado", false);
             cs.setInt("_fid_termino_de_pago", documentoDebito.getTerminoDePago().getId());
-            cs.setBoolean("_activo", true);
             resultado = cs.executeUpdate();
+            documentoDebito.setId(cs.getInt("_id_documento_debito"));
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -52,8 +54,8 @@ public class DocumentoDebitoMySQL implements DocumentoDebitoDAO {
             cs = con.prepareCall("{call modificar_documento_debito(?,?,?,?,?,?,?,?,?,?,?)}");
             cs.setInt("_id_documento_debito", documentoDebito.getId());
             cs.setInt("_fid_orden_de_compra", documentoDebito.getIdOrdenDeCompra());
-            cs.setDate("_fecha_creacion", documentoDebito.getFechaCreacion());
-            cs.setDate("_fecha_vencimiento", documentoDebito.getFechaVencimiento());
+            cs.setDate("_fecha_creacion", new java.sql.Date(documentoDebito.getFechaCreacion().getTime()));
+            cs.setDate("_fecha_vencimiento", new java.sql.Date(documentoDebito.getFechaVencimiento().getTime()));
             cs.setDouble("_impuesto", documentoDebito.getImpuesto());
             cs.setDouble("_monto", documentoDebito.getMonto());
             cs.setInt("_fid_moneda", documentoDebito.getMoneda().getId());
@@ -119,7 +121,6 @@ public class DocumentoDebitoMySQL implements DocumentoDebitoDAO {
                 TerminoDePago terminoDePago = new TerminoDePago();
                 terminoDePago.setId(rs.getInt("fid_termino_de_pago"));
                 documentoDebito.setTerminoDePago(terminoDePago);
-                documentoDebito.setActivo(rs.getBoolean("activo"));
                 documentosDebito.add(documentoDebito);
             }
         }catch(Exception ex){

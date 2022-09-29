@@ -2,6 +2,7 @@ package pe.edu.pucp.lp2soft.ventas.ventaspagos;
 import java.util.Date;
 
 public class TerminoDePago {
+
     private int id;
     private Date fechaLimite;
     private int numeroCuota;
@@ -17,6 +18,13 @@ public class TerminoDePago {
     }
 
     public TerminoDePago() {
+    }
+    
+    public TerminoDePago(Date fechaLimite, int numeroCuota, double montoCuota, Boolean activo) {
+        this.fechaLimite = fechaLimite;
+        this.numeroCuota = numeroCuota;
+        this.montoCuota = montoCuota;
+        this.activo = activo;
     }
 
     public int getId() {

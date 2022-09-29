@@ -41,6 +41,8 @@ public class SupervisorDeAlmacenMySQL implements SupervisorDeAlmacenDAO  {
             cs.setString("_direccion", supervisorAlmacen.getDireccion());
             cs.setString("_email", supervisorAlmacen.getEmail());
             resultado = cs.executeUpdate();
+            supervisorAlmacen.setIdUsuario(cs.getInt("_id_usuario"));
+            
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -110,7 +112,7 @@ public class SupervisorDeAlmacenMySQL implements SupervisorDeAlmacenDAO  {
                 supervisorAlmacen.setPassword(rs.getString("password"));
                 supervisorAlmacen.setUsername(rs.getString("username"));
                 supervisorAlmacen.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
-                supervisorAlmacen.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_documento"))));
+                supervisorAlmacen.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_de_documento"))));
                 supervisorAlmacen.setNumDeDocumento(rs.getString("numero_de_documento"));
                 supervisorAlmacen.setNombre(rs.getString("nombre"));
                 supervisorAlmacen.setApellido(rs.getString("apellido"));
@@ -118,7 +120,6 @@ public class SupervisorDeAlmacenMySQL implements SupervisorDeAlmacenDAO  {
                 supervisorAlmacen.setTelefono(rs.getString("telefono"));
                 supervisorAlmacen.setDireccion(rs.getString("direccion"));
                 supervisorAlmacen.setEmail(rs.getString("email"));
-                supervisorAlmacen.setActivo(rs.getBoolean("activo"));
                 supervisoresAlmacen.add(supervisorAlmacen);
             }
         }catch(Exception ex){

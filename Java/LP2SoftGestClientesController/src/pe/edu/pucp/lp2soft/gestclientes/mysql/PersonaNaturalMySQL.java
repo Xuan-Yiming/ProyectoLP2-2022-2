@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.gestclientes.dao.PersonaNaturalDAO;
 import pe.edu.pucp.lp2soft.gestclientes.model.PersonaNatural;
+import pe.edu.pucp.lp2soft.rrhh.model.TipoDeDocumento;
 
 public class PersonaNaturalMySQL implements PersonaNaturalDAO{
     private Connection con;
@@ -18,10 +19,11 @@ public class PersonaNaturalMySQL implements PersonaNaturalDAO{
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_PERSONA_NATURAL(?,?,?,?,?,?,?,?,?)}");
+            cs = con.prepareCall("{call INSERTAR_PERSONA_NATURAL(?,?,?,?,?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_persona_natural", java.sql.Types.INTEGER);
             cs.setString("_categoria",  personaNatural.getCategoria());
             cs.setString("_numero_de_documento", personaNatural.getNumDeDocumento());
+            cs.setString("_tipo_de_documento", personaNatural.getTipoDeDocumento().name());
             cs.setString("_nombre", personaNatural.getNombre());
             cs.setString("_apellido", personaNatural.getApellido());
             cs.setDate("_fecha_de_nacimiento", new java.sql.Date(personaNatural.getFechaDeNacimiento().getTime()));
@@ -29,6 +31,7 @@ public class PersonaNaturalMySQL implements PersonaNaturalDAO{
             cs.setString("_direccion", personaNatural.getDireccion());
             cs.setString("_email", personaNatural.getEmail());
             resultado = cs.executeUpdate();
+            personaNatural.setIdCliente(cs.getInt("_id_persona_natural"));
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -42,10 +45,11 @@ public class PersonaNaturalMySQL implements PersonaNaturalDAO{
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call MODIFICAR_PERSONA_NATURAL(?,?,?,?,?,?,?,?,?,?)}");
+            cs = con.prepareCall("{call MODIFICAR_PERSONA_NATURAL(?,?,?,?,?,?,?,?,?,?,?)}");
             cs.setInt("_id_persona_natural", personaNatural.getIdCliente());
             cs.setString("_categoria", personaNatural.getCategoria());
             cs.setString("_numero_de_documento", personaNatural.getNumDeDocumento());
+            cs.setString("_tipo_de_documento", personaNatural.getTipoDeDocumento().name());
             cs.setString("_nombre", personaNatural.getNombre());
             cs.setString("_apellido", personaNatural.getApellido());
             cs.setDate("_fecha_de_nacimiento", new java.sql.Date(personaNatural.getFechaDeNacimiento().getTime()));
@@ -90,13 +94,13 @@ public class PersonaNaturalMySQL implements PersonaNaturalDAO{
                 personaNatural.setIdCliente(rs.getInt("id_persona_natural"));
                 personaNatural.setCategoria(rs.getString("categoria"));
                 personaNatural.setNumDeDocumento(rs.getString("numero_de_documento"));
+                personaNatural.setTipoDeDocumento(TipoDeDocumento.valueOf(rs.getString("tipo_de_documento")));
                 personaNatural.setNombre(rs.getString("nombre"));
                 personaNatural.setApellido(rs.getString("apellido"));
                 personaNatural.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
                 personaNatural.setTelefono(rs.getString("telefono"));
                 personaNatural.setDireccion(rs.getString("direccion"));
                 personaNatural.setEmail(rs.getString("email"));
-                personaNatural.setActivo(rs.getBoolean("activo"));
                 personasNaturales.add(personaNatural);
             }
         }catch(Exception ex){

@@ -18,14 +18,16 @@ public class ReclamoMySQL implements ReclamoDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_RECLAMO(?,?,?,?,?,?)}");
+            cs = con.prepareCall("{call INSERTAR_RECLAMO(?,?,?,?,?)}");
             cs.registerOutParameter("_id_reclamo", java.sql.Types.INTEGER);
             cs.setInt("_fid_orden_de_compra", reclamo.getIdOrdenDeCompra());
             cs.setDate("_fecha", new java.sql.Date(reclamo.getFecha().getTime()));
-            cs.setBoolean("_atenido", reclamo.isAtendido());
+            cs.setBoolean("_atendido", reclamo.isAtendido());
             cs.setString("_justificacion", reclamo.getJustificacion());
-            cs.setBoolean("_activo", true);
+         
             resultado = cs.executeUpdate();
+            reclamo.setId(cs.getInt("_id_reclamo"));
+            
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -44,7 +46,7 @@ public class ReclamoMySQL implements ReclamoDAO {
             cs.setInt("_id_reclamo", reclamo.getId());
             cs.setInt("_fid_orden_de_compra", reclamo.getIdOrdenDeCompra());
             cs.setDate("_fecha", new java.sql.Date(reclamo.getFecha().getTime()));
-            cs.setBoolean("_atenido", reclamo.isAtendido());
+            cs.setBoolean("_atendido", reclamo.isAtendido());
             cs.setString("_justificacion", reclamo.getJustificacion());
             cs.setBoolean("_activo", reclamo.isActivo());
             resultado = cs.executeUpdate();
@@ -86,9 +88,8 @@ public class ReclamoMySQL implements ReclamoDAO {
                 reclamo.setId(rs.getInt("id_reclamo"));
                 reclamo.setIdOrdenDeCompra(rs.getInt("fid_orden_de_compra"));
                 reclamo.setFecha(rs.getDate("fecha"));
-                reclamo.setAtendido(rs.getBoolean("atenido"));
+                reclamo.setAtendido(rs.getBoolean("atendido"));
                 reclamo.setJustificacion(rs.getString("justificacion"));
-                reclamo.setActivo(rs.getBoolean("activo"));
                 reclamos.add(reclamo);
             }
         }catch(Exception ex){

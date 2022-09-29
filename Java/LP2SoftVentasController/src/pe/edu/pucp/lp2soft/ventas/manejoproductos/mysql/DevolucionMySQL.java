@@ -19,13 +19,14 @@ public class DevolucionMySQL implements DevolucionDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_DEVOLUCION(?,?,?,?)}");
+            cs = con.prepareCall("{call INSERTAR_DEVOLUCION(?,?,?)}");
             cs.registerOutParameter("_id_devolucion", java.sql.Types.INTEGER);
             cs.setInt("_fid_producto", devolucion.getIdProducto());
             cs.setInt("_fid_reclamo", devolucion.getIdReclamo());
-            cs.setBoolean("_activo", true);
+            
             cs.executeUpdate();
             resultado = cs.executeUpdate();
+            devolucion.setId(cs.getInt("_id_devolucion"));
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -83,7 +84,6 @@ public class DevolucionMySQL implements DevolucionDAO {
                 devolucion.setId(rs.getInt("id_devolucion"));
                 devolucion.setIdProducto(rs.getInt("fid_producto"));
                 devolucion.setIdReclamo(rs.getInt("fid_reclamo"));
-                devolucion.setActivo(rs.getBoolean("activo"));
                 devoluciones.add(devolucion);
             }
         }catch(Exception ex){

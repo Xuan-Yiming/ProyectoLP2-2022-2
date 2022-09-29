@@ -3,6 +3,8 @@ package pe.edu.pucp.lp2soft.ventas.manejoproductos;
 import java.util.Date;
 
 public class Producto {
+
+    
     private int id;
     private int idAlamcen;
     private String codigoLote;
@@ -10,9 +12,22 @@ public class Producto {
     private double costo;
     private double precio;
     private Date fechaDeIngreso;
-    private boolean devuelto;
+    private Boolean devuelto;
     private Boolean activo;
-
+    
+    
+    public Producto(int idAlmacen,String codigoLote, String nombre, double costo, double precio, Date fechaDeIngreso) {
+        this.idAlamcen=idAlmacen;
+        this.codigoLote = codigoLote;
+        this.nombre = nombre;
+        this.costo = costo;
+        this.precio = precio;
+        this.fechaDeIngreso = fechaDeIngreso;
+        this.devuelto=false;
+        this.activo=true;
+    }
+    
+    
     public Boolean isActivo() {
         return activo;
     }

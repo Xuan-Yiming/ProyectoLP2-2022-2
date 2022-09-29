@@ -2,6 +2,7 @@ package pe.edu.pucp.lp2soft.ventas.ventaspagos;
 import java.util.ArrayList;
 
 public class Moneda {
+
     private int id;
     private String nombre;
     private String abreviatura;
@@ -19,6 +20,12 @@ public class Moneda {
     public Moneda() {
     }
 
+    public Moneda(String nombre, String abreviatura, Boolean activo) {
+        this.nombre = nombre;
+        this.abreviatura = abreviatura;
+        this.activo = activo;
+    }
+    
     public int getId() {
         return id;
     }

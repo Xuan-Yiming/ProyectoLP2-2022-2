@@ -29,6 +29,9 @@ public class ProductoMySQL implements ProductoDAO{
             cs.setBoolean("_devuelto", producto.isDevuelto());
             cs.setBoolean("_activo", true);
             resultado = cs.executeUpdate();
+            producto.setId(cs.getInt("_id_producto"));
+            
+            
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -93,11 +96,10 @@ public class ProductoMySQL implements ProductoDAO{
                 producto.setIdAlamcen(rs.getInt("fid_almacen"));
                 producto.setCodigoLote(rs.getString("codigo_lote"));
                 producto.setNombre(rs.getString("nombre"));
-                //producto.setCosto(rs.getDouble("costo"));
+                producto.setCosto(rs.getDouble("costo"));
                 producto.setPrecio(rs.getDouble("precio"));
                 producto.setFechaDeIngreso(rs.getDate("fecha_ingreso"));
                 producto.setDevuelto(rs.getBoolean("devuelto"));
-                producto.setActivo(rs.getBoolean("activo"));
                 productos.add(producto);
             }
         }catch(Exception ex){

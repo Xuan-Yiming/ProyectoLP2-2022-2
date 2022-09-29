@@ -25,8 +25,8 @@ public class VendedorMySQL implements VendedorDAO {
             cs = con.prepareCall("{call INSERTAR_VENDEDOR(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_usuario", java.sql.Types.INTEGER);
             cs.setInt("_cantidad_ventas", vendedor.getCantidadVentas());
-            cs.setString("_password", vendedor.getPassword());
             cs.setString("_username", vendedor.getUsername());
+            cs.setString("_password", vendedor.getPassword());
             cs.setDate("_fecha_de_ingreso", new java.sql.Date(vendedor.getFechaIngreso().getTime()));
             cs.setString("_tipo_de_documento", vendedor.getTipoDeDocumento().name());
             cs.setString("_numero_de_documento", vendedor.getNumDeDocumento());
@@ -37,6 +37,8 @@ public class VendedorMySQL implements VendedorDAO {
             cs.setString("_direccion", vendedor.getDireccion());
             cs.setString("_email", vendedor.getEmail());
             resultado = cs.executeUpdate();
+            vendedor.setIdUsuario(cs.getInt("_id_usuario"));
+            
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -105,7 +107,7 @@ public class VendedorMySQL implements VendedorDAO {
                 vendedor.setPassword(rs.getString("password"));
                 vendedor.setUsername(rs.getString("username"));
                 vendedor.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
-                vendedor.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_documento"))));
+                vendedor.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_de_documento"))));
                 vendedor.setNumDeDocumento(rs.getString("numero_de_documento"));
                 vendedor.setNombre(rs.getString("nombre"));
                 vendedor.setApellido(rs.getString("apellido"));
@@ -113,7 +115,6 @@ public class VendedorMySQL implements VendedorDAO {
                 vendedor.setTelefono(rs.getString("telefono"));
                 vendedor.setDireccion(rs.getString("direccion"));
                 vendedor.setEmail(rs.getString("email"));
-                vendedor.setActivo(rs.getBoolean("activo"));
                 vendedores.add(vendedor);
             }
         }catch(Exception ex){

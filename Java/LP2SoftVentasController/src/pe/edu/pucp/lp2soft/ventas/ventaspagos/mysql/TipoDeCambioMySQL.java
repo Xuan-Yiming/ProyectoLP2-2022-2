@@ -19,13 +19,14 @@ public class TipoDeCambioMySQL implements TipoDeCambioDAO {
         //insertar fecha (Date) y cambio (double)
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call insertar_tipoDeCambio(?,?,?,?,?)}");
+            cs = con.prepareCall("{call INSERTAR_TIPO_DE_CAMBIO(?,?,?,?)}");
             cs.registerOutParameter("_id_tipo_de_cambio", java.sql.Types.INTEGER);
             cs.setInt("_fid_moneda", tipoDeCambio.getIdMoneda());
             cs.setDate("_fecha", new java.sql.Date(tipoDeCambio.getFecha().getTime()));
             cs.setDouble("_cambio", tipoDeCambio.getCambio());
-            cs.setBoolean("_activo", true);
+            
             resultado = cs.executeUpdate();
+            tipoDeCambio.setId(cs.getInt("_id_tipo_de_cambio"));
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -36,6 +37,7 @@ public class TipoDeCambioMySQL implements TipoDeCambioDAO {
             }
         }
         return resultado;
+        
         // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -44,7 +46,7 @@ public class TipoDeCambioMySQL implements TipoDeCambioDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call modificar_tipoDeCambio(?,?,?,?,?)}");
+            cs = con.prepareCall("{call MODIFICAR_TIPO_DE_CAMBIO(?,?,?,?,?)}");
             cs.setInt("_id_tipo_de_cambio", tipoDeCambio.getId());
             cs.setInt("_fid_moneda", tipoDeCambio.getIdMoneda());
             cs.setDate("_fecha", new java.sql.Date(tipoDeCambio.getFecha().getTime()));
@@ -69,7 +71,7 @@ public class TipoDeCambioMySQL implements TipoDeCambioDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call eliminar_tipoDeCambio(?)}");
+            cs = con.prepareCall("{call ELIMINAR_TIPO_DE_CAMBIO(?)}");
             cs.setInt("_id_tipo_de_cambio", id);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
@@ -90,7 +92,7 @@ public class TipoDeCambioMySQL implements TipoDeCambioDAO {
         ArrayList<TipoDeCambio> tiposDeCambio = new ArrayList<>();
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call listarTodos_tipoDeCambio()}");
+            cs = con.prepareCall("{call LISTAR_TIPOS_DE_CAMBIO()}");
             rs = cs.executeQuery();
             while(rs.next()){
                 TipoDeCambio tipoDeCambio = new TipoDeCambio();
@@ -98,7 +100,6 @@ public class TipoDeCambioMySQL implements TipoDeCambioDAO {
                 tipoDeCambio.setIdMoneda(rs.getInt("fid_moneda"));
                 tipoDeCambio.setFecha(rs.getDate("fecha"));
                 tipoDeCambio.setCambio(rs.getDouble("cambio"));
-                tipoDeCambio.setActivo(rs.getBoolean("activo"));
                 tiposDeCambio.add(tipoDeCambio);
             }
         }catch(Exception ex){

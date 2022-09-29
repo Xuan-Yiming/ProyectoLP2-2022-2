@@ -15,7 +15,6 @@ public class AdministradorMySQL implements AdministradorDAO {
     private CallableStatement cs;
     private ResultSet rs;
     
-    
     @Override
     public int insertar(Administrador administrador) {
         int resultado = 0;
@@ -27,8 +26,8 @@ public class AdministradorMySQL implements AdministradorDAO {
             cs.setString("_password", administrador.getPassword());
             cs.setString("_username", administrador.getUsername());
             cs.setDate("_fecha_de_ingreso", new java.sql.Date(administrador.getFechaIngreso().getTime()));
-            cs.setString("_tipo_de_documento", administrador.getTipoDeDocumento().name());
             cs.setString("_numero_de_documento", administrador.getNumDeDocumento());
+            cs.setString("_tipo_de_documento", administrador.getTipoDeDocumento().name());
             cs.setString("_nombre", administrador.getNombre());
             cs.setString("_apellido", administrador.getApellido());
             cs.setDate("_fecha_de_nacimiento", new java.sql.Date(administrador.getFechaDeNacimiento().getTime()));
@@ -36,6 +35,7 @@ public class AdministradorMySQL implements AdministradorDAO {
             cs.setString("_direccion", administrador.getDireccion());
             cs.setString("_email", administrador.getEmail());
             resultado = cs.executeUpdate();
+            administrador.setIdUsuario(cs.getInt("_id_usuario"));
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -104,7 +104,7 @@ public class AdministradorMySQL implements AdministradorDAO {
                 administrador.setPassword(rs.getString("password"));
                 administrador.setUsername(rs.getString("username"));
                 administrador.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
-                administrador.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_documento"))));
+                administrador.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_de_documento"))));
                 administrador.setNumDeDocumento(rs.getString("numero_de_documento"));
                 administrador.setNombre(rs.getString("nombre"));
                 administrador.setApellido(rs.getString("apellido"));
@@ -112,7 +112,6 @@ public class AdministradorMySQL implements AdministradorDAO {
                 administrador.setTelefono(rs.getString("telefono"));
                 administrador.setDireccion(rs.getString("direccion"));
                 administrador.setEmail(rs.getString("email"));
-                administrador.setActivo(rs.getBoolean("activo"));
                 administradores.add(administrador);
             }
         }catch(Exception ex){

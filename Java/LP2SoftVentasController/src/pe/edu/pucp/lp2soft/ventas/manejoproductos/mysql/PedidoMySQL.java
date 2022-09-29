@@ -18,13 +18,13 @@ public class PedidoMySQL implements PedidoDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_PEDIDO(?,?,?,?,?)}");
+            cs = con.prepareCall("{call INSERTAR_PEDIDO(?,?,?,?)}");
             cs.registerOutParameter("_id_pedido", java.sql.Types.INTEGER);
             cs.setInt("_fid_producto", pedido.getIdProducto());
-            cs.setInt("_id_orden_de_compra", pedido.getIdOrdenDeCompra());
+            cs.setInt("_fid_orden_de_compra", pedido.getIdOrdenDeCompra());
             cs.setDouble("_descuento", pedido.getDescuento());
-            cs.setBoolean("_activo", true);
             resultado = cs.executeUpdate();
+            pedido.setId(cs.getInt("_id_pedido"));
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -39,10 +39,10 @@ public class PedidoMySQL implements PedidoDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call MODIFICAR_PEDIDO(?,?,?,?,?)}");
+            cs = con.prepareCall("{call MODIFICAR_PEDIDOS(?,?,?,?,?)}");
             cs.setInt("_id_pedido", pedido.getId());
             cs.setInt("_fid_producto", pedido.getIdProducto());
-            cs.setInt("_id_orden_de_compra", pedido.getIdOrdenDeCompra());
+            cs.setInt("_fid_orden_de_compra", pedido.getIdOrdenDeCompra());
             cs.setDouble("_descuento", pedido.getDescuento());
             cs.setBoolean("_activo", pedido.isActivo());
             resultado = cs.executeUpdate();
@@ -60,7 +60,7 @@ public class PedidoMySQL implements PedidoDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call ELIMINAR_PEDIDO(?)}");
+            cs = con.prepareCall("{call ELIMINAR_PEDIDOS(?)}");
             cs.setInt("_id_pedido", id);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
@@ -83,9 +83,8 @@ public class PedidoMySQL implements PedidoDAO {
                 Pedido pedido = new Pedido();
                 pedido.setId(rs.getInt("id_pedido"));
                 pedido.setIdProducto(rs.getInt("fid_producto"));
-                pedido.setIdOrdenDeCompra(rs.getInt("id_orden_de_compra"));
+                pedido.setIdOrdenDeCompra(rs.getInt("fid_orden_de_compra"));
                 pedido.setDescuento(rs.getDouble("descuento"));
-                pedido.setActivo(rs.getBoolean("activo"));
                 pedidos.add(pedido);
             }
         }catch(Exception ex){

@@ -2,6 +2,7 @@ package pe.edu.pucp.lp2soft.ventas.ventaspagos;
 import java.util.Date;
 
 public class DocumentoCredito {
+
     private int id;
     private int idOrdenDeCompra;
     private int idDocumentoDebito;
@@ -23,6 +24,17 @@ public class DocumentoCredito {
     public DocumentoCredito() {
     }
 
+    public DocumentoCredito(int idOrdenDeCompra, int idDocumentoDebito, Date fechaCreacion, Date fechaVencimiento, double monto, Moneda moneda, boolean anulado, Boolean activo) {
+        this.idOrdenDeCompra = idOrdenDeCompra;
+        this.idDocumentoDebito = idDocumentoDebito;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaVencimiento = fechaVencimiento;
+        this.monto = monto;
+        this.moneda = moneda;
+        this.anulado = anulado;
+        this.activo = activo;
+    }
+    
     public int getId() {
         return id;
     }

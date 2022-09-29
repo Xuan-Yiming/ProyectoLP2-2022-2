@@ -7,6 +7,7 @@ import pe.edu.pucp.lp2soft.ventas.manejoproductos.Reclamo;
 
 public class OrdenDeCompra{
     private int id;
+
     private int idCliente;
     private int idVendedor;
     private double monto;
@@ -31,6 +32,21 @@ public class OrdenDeCompra{
     }
 
     public OrdenDeCompra() {
+    }
+    
+    public OrdenDeCompra(int idCliente, int idVendedor, double monto, Moneda moneda,
+            String direccionDeEntrega, FormaDeEntrega formaDeEntrega, Date fechaDeCompra, Date fechaDeEntrega,
+            boolean pagado, Boolean activo) {
+        this.idCliente = idCliente;
+        this.idVendedor = idVendedor;
+        this.monto = monto;
+        this.moneda = moneda;
+        this.direccionDeEntrega = direccionDeEntrega;
+        this.formaDeEntrega = formaDeEntrega;
+        this.fechaDeCompra = fechaDeCompra;
+        this.fechaDeEntrega = fechaDeEntrega;
+        this.pagado = pagado;
+        this.activo = activo;
     }
 
     public int getId() {

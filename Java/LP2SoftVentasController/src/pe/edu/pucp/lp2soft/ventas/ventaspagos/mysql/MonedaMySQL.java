@@ -18,12 +18,12 @@ public class MonedaMySQL implements MonedaDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call insertar_moneda(?,?,?,?)}");
+            cs = con.prepareCall("{CALL INSERTAR_MONEDA(?,?,?)}");
             cs.registerOutParameter("_id_moneda", java.sql.Types.INTEGER);
             cs.setString("_nombre", moneda.getNombre());
             cs.setString("_abreviatura", moneda.getAbreviatura());
-            cs.setBoolean("_activo", true);
             resultado = cs.executeUpdate();
+            moneda.setId(cs.getInt("_id_moneda"));
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -42,7 +42,7 @@ public class MonedaMySQL implements MonedaDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call modificar_moneda(?,?,?,?)}");
+            cs = con.prepareCall("{CALL MODIFICAR_MONEDA(?,?,?,?)}");
             cs.setInt("_id_moneda", moneda.getId());
             cs.setString("_nombre", moneda.getNombre());
             cs.setString("_abreviatura", moneda.getAbreviatura());
@@ -66,7 +66,7 @@ public class MonedaMySQL implements MonedaDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call eliminar_moneda(?)}");
+            cs = con.prepareCall("{CALL ELIMINAR_MONEDA(?)}");
             cs.setInt("_id_moneda", id);
             resultado = cs.executeUpdate();
         }catch(Exception ex){
@@ -87,14 +87,13 @@ public class MonedaMySQL implements MonedaDAO {
         ArrayList<Moneda> monedas = new ArrayList<>();
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call listar_todas_monedas()}");
+            cs = con.prepareCall("{CALL LISTAR_MONEDAS()}");
             rs = cs.executeQuery();
             while(rs.next()){
                 Moneda moneda = new Moneda();
                 moneda.setId(rs.getInt("id_moneda"));
                 moneda.setNombre(rs.getString("nombre"));
                 moneda.setAbreviatura(rs.getString("abreviatura"));
-                moneda.setActivo(rs.getBoolean("activo"));
                 monedas.add(moneda);
             }
         }catch(Exception ex){

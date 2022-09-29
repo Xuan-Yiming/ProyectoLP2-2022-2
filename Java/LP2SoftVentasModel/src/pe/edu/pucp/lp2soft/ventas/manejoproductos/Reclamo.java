@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Reclamo {
     private int id;//numero de reclamo
+
     private int idOrdenDeCompra;
     private Date fecha;
     private boolean atendido;
@@ -11,6 +12,15 @@ public class Reclamo {
     ArrayList<Devolucion> devoluciones;
     private Boolean activo;
 
+    public Reclamo(int idOrdenDeCompra, Date fecha, String justificacion) {
+    this.idOrdenDeCompra = idOrdenDeCompra;
+    this.fecha = fecha;
+    this.atendido = false;
+    this.justificacion = justificacion;
+    this.activo=true;
+    }
+
+    
     public Boolean isActivo() {
         return activo;
     }

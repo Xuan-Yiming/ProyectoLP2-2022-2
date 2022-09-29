@@ -2,12 +2,20 @@
 package pe.edu.pucp.lp2soft.ventas.manejoproductos;
 
 public class Pedido {
+
+ 
     private int id;
     private int idProducto;
     private int idOrdenDeCompra;
     private double descuento;
     private Boolean activo;
-
+    
+    public Pedido(int idProducto, int idOrdenDeCompra, double descuento) {
+        this.idProducto = idProducto;
+        this.idOrdenDeCompra = idOrdenDeCompra;
+        this.descuento = descuento;
+        this.activo=true;
+    }
     public Boolean isActivo() {
         return activo;
     }

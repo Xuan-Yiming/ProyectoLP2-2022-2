@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.DocumentoCreditoDAO;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.DocumentoCredito;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.Moneda;
 
 public class DocumentoCreditoMySQL implements DocumentoCreditoDAO {
     private Connection con;
@@ -17,17 +18,18 @@ public class DocumentoCreditoMySQL implements DocumentoCreditoDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call insertar_documento_credito(?,?,?,?,?,?,?,?,?)}");
+            cs = con.prepareCall("{call insertar_documento_credito(?,?,?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_documento_credito", java.sql.Types.INTEGER);
             cs.setInt("_fid_orden_de_compra", documentoCredito.getIdOrdenDeCompra());
             cs.setInt("_fid_documento_debito", documentoCredito.getIdDocumentoDebito());
             cs.setDate("_fecha_creacion", new java.sql.Date(documentoCredito.getFechaCreacion().getTime()));
             cs.setDate("_fecha_vencimiento", new java.sql.Date(documentoCredito.getFechaVencimiento().getTime()));
             cs.setDouble("_monto", documentoCredito.getMonto());
-            cs.setInt("_fid_moneda", documentoCredito.getIdMoneda().getId());
+            cs.setInt("_fid_moneda", documentoCredito.getMoneda().getId());
             cs.setBoolean("_anulado", false);
-            cs.setBoolean("_activo", true);
+            
             resultado = cs.executeUpdate();
+            documentoCredito.setId(cs.getInt("_id_documento_credito"));
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -53,7 +55,7 @@ public class DocumentoCreditoMySQL implements DocumentoCreditoDAO {
             cs.setDate("_fecha_creacion", new java.sql.Date(documentoCredito.getFechaCreacion().getTime()));
             cs.setDate("_fecha_vencimiento", new java.sql.Date(documentoCredito.getFechaVencimiento().getTime()));
             cs.setDouble("_monto", documentoCredito.getMonto());
-            cs.setInt("_fid_moneda", documentoCredito.getIdMoneda().getId());
+            cs.setInt("_fid_moneda", documentoCredito.getMoneda().getId());
             cs.setBoolean("_anulado", documentoCredito.isAnulado());
             cs.setBoolean("_activo", documentoCredito.isActivo());
             resultado = cs.executeUpdate();
@@ -109,9 +111,8 @@ public class DocumentoCreditoMySQL implements DocumentoCreditoDAO {
                 Moneda moneda = new Moneda();
                 //falta listar todos los tipo de cambios
                 moneda.setId(rs.getInt("fid_moneda"));
-                documento.setIdMoneda(moneda);
+                documento.setMoneda(moneda);
                 documento.setAnulado(rs.getBoolean("anulado"));
-                documento.setActivo(rs.getBoolean("activo"));
                 documentos.add(documento);
             }
         }catch(Exception ex){

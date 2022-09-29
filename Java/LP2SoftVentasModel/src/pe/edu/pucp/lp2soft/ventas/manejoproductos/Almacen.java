@@ -19,7 +19,13 @@ public class Almacen {
 
     public Almacen() {
     }
-
+    
+    public Almacen(String nombre,String direccion) {
+        this.nombre=nombre;
+        this.direccion=direccion;
+        this.activo=true;
+    }
+    
     public int getId() {
         return id;
     }

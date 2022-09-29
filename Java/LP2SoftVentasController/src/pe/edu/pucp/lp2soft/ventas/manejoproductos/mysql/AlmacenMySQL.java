@@ -24,6 +24,8 @@ public class AlmacenMySQL implements AlmacenDAO {
             cs.setString("_direccion", almacen.getDireccion());
             cs.setBoolean("_activo", true);
             resultado = cs.executeUpdate();
+            almacen.setId(cs.getInt("_id_almacen"));
+            
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -61,6 +63,7 @@ public class AlmacenMySQL implements AlmacenDAO {
             cs = con.prepareCall("{call ELIMINAR_ALMACEN(?)}");
             cs.setInt("_id_almacen", id);
             resultado = cs.executeUpdate();
+            
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
@@ -82,7 +85,6 @@ public class AlmacenMySQL implements AlmacenDAO {
                 almacen.setId(rs.getInt("id_almacen"));
                 almacen.setNombre(rs.getString("nombre"));
                 almacen.setDireccion(rs.getString("direccion"));
-                almacen.setActivo(rs.getBoolean("activo"));
                 almacenes.add(almacen);
             }
         }catch(Exception ex){

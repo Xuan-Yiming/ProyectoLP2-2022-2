@@ -2,6 +2,7 @@ package pe.edu.pucp.lp2soft.ventas.ventaspagos;
 import java.util.Date;
 
 public class TipoDeCambio {
+
     private int id;
     private int idMoneda;
     private Date fecha;
@@ -17,6 +18,13 @@ public class TipoDeCambio {
     }
 
     public TipoDeCambio() {
+    }
+    
+    public TipoDeCambio(int idMoneda, Date fecha, double cambio, Boolean activo) {
+        this.idMoneda = idMoneda;
+        this.fecha = fecha;
+        this.cambio = cambio;
+        this.activo = activo;
     }
 
     public int getId() {

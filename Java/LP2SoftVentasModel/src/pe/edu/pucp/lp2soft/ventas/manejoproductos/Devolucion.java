@@ -2,6 +2,8 @@ package pe.edu.pucp.lp2soft.ventas.manejoproductos;
 import java.util.Date;
 
 public class Devolucion {
+
+
     private int id;
     private int idProducto;
     private int idReclamo;
@@ -18,6 +20,12 @@ public class Devolucion {
     public Devolucion() {
     }
 
+    public Devolucion(int idProducto, int idReclamo, Boolean activo){
+        this.idProducto = idProducto;
+        this.idReclamo = idReclamo;
+        this.activo = activo;
+    }
+    
     public int getId() {
         return id;
     }

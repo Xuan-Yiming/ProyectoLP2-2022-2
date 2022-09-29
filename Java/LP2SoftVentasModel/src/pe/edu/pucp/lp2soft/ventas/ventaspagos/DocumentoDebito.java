@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class DocumentoDebito {
+
     private int id;
     private int idOrdenDeCompra;
     private Date fechaCreacion;
@@ -26,6 +27,21 @@ public class DocumentoDebito {
 
     public DocumentoDebito() {
     }
+    
+    public DocumentoDebito(int idOrdenDeCompra, Date fechaCreacion, Date fechaVencimiento, double impuesto, double monto,
+            Moneda moneda, double saldo, boolean anulado, TerminoDePago terminoDePago, Boolean activo) {
+        this.idOrdenDeCompra = idOrdenDeCompra;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaVencimiento = fechaVencimiento;
+        this.impuesto = impuesto;
+        this.monto = monto;
+        this.moneda = moneda;
+        this.saldo = saldo;
+        this.anulado = anulado;
+        this.terminoDePago = terminoDePago;
+        this.activo = activo;
+    }
+    
 
     public int getId() {
         return id;
