@@ -64,6 +64,12 @@
     <Compile Include="Almacen\frmBuscarProducto.Designer.cs">
       <DependentUpon>frmBuscarProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Almacen\frmListarProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\frmListarProductos.Designer.cs">
+      <DependentUpon>frmListarProductos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Almacen\frmProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Almacen\frmBuscarProducto.resx">
       <DependentUpon>frmBuscarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\frmListarProductos.resx">
+      <DependentUpon>frmListarProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Almacen\frmProducto.resx">
       <DependentUpon>frmProducto.cs</DependentUpon>

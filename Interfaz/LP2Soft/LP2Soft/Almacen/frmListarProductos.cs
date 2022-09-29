@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace LP2Soft.Almacen
 {
-    public partial class frmBuscarAlmacen : Form
+    public partial class frmListarProductos : Form
     {
-        public frmBuscarAlmacen()
+        public frmListarProductos()
         {
             InitializeComponent();
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.OK;
         }
     }
 }

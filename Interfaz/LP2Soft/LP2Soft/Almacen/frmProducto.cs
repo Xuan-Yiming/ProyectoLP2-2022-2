@@ -16,5 +16,14 @@ namespace LP2Soft.Almacen
         {
             InitializeComponent();
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            frmBuscarProducto frmbuscarproducto = new frmBuscarProducto();
+            if (frmbuscarproducto.ShowDialog() == DialogResult.OK)
+            {
+               
+            }
+        }
     }
 }

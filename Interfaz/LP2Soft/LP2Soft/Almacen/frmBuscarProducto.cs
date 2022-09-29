@@ -21,6 +21,7 @@ namespace LP2Soft.Almacen
         {
             frmProducto frmproducto = new frmProducto();
             frmproducto.Show();
+            this.DialogResult = DialogResult.OK;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)

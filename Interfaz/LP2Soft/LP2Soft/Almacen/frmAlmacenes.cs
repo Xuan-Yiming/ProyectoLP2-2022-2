@@ -20,7 +20,10 @@ namespace LP2Soft.Almacen
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             frmBuscarAlmacen frmbuscaralmacen = new frmBuscarAlmacen();
-            frmbuscaralmacen.Show();
+            if (frmbuscaralmacen.ShowDialog() == DialogResult.OK)
+            {
+
+            }
         }
 
         private void btnListarProductos_Click(object sender, EventArgs e)
