@@ -25,14 +25,20 @@ namespace LP2Soft.Ventas
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-            frmBusquedaClientes formBusqClientes = new frmBusquedaClientes();
-            formBusqClientes.Show();
+            //frmBusquedaClientes formBusqClientes = new frmBusquedaClientes();
+            //formBusqClientes.Show();
         }
 
         private void btnBuscarProducto_Click(object sender, EventArgs e)
         {
             frmBuscarProducto formBusqProductos = new frmBuscarProducto();
             formBusqProductos.Show();
+        }
+
+        private void btnDebito_Click(object sender, EventArgs e)
+        {
+            frmDocumentoDebito formDocumentoDebito= new frmDocumentoDebito();
+            formDocumentoDebito.Show();
         }
     }
 }
