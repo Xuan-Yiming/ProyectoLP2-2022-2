@@ -48,7 +48,7 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.Black;
-            this.lblTitulo.Location = new System.Drawing.Point(195, 28);
+            this.lblTitulo.Location = new System.Drawing.Point(74, 32);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(385, 20);
             this.lblTitulo.TabIndex = 1;
@@ -57,7 +57,7 @@
             // lblIDalmacen
             // 
             this.lblIDalmacen.AutoSize = true;
-            this.lblIDalmacen.Location = new System.Drawing.Point(249, 228);
+            this.lblIDalmacen.Location = new System.Drawing.Point(128, 232);
             this.lblIDalmacen.Name = "lblIDalmacen";
             this.lblIDalmacen.Size = new System.Drawing.Size(100, 16);
             this.lblIDalmacen.TabIndex = 21;
@@ -65,7 +65,7 @@
             // 
             // txtIDalmacen
             // 
-            this.txtIDalmacen.Location = new System.Drawing.Point(355, 222);
+            this.txtIDalmacen.Location = new System.Drawing.Point(234, 226);
             this.txtIDalmacen.Name = "txtIDalmacen";
             this.txtIDalmacen.Size = new System.Drawing.Size(120, 22);
             this.txtIDalmacen.TabIndex = 20;
@@ -73,7 +73,7 @@
             // lblConfirmaciónContraseña
             // 
             this.lblConfirmaciónContraseña.AutoSize = true;
-            this.lblConfirmaciónContraseña.Location = new System.Drawing.Point(212, 185);
+            this.lblConfirmaciónContraseña.Location = new System.Drawing.Point(91, 189);
             this.lblConfirmaciónContraseña.Name = "lblConfirmaciónContraseña";
             this.lblConfirmaciónContraseña.Size = new System.Drawing.Size(137, 16);
             this.lblConfirmaciónContraseña.TabIndex = 19;
@@ -81,7 +81,7 @@
             // 
             // txtConfirmarPassword
             // 
-            this.txtConfirmarPassword.Location = new System.Drawing.Point(355, 182);
+            this.txtConfirmarPassword.Location = new System.Drawing.Point(234, 186);
             this.txtConfirmarPassword.Name = "txtConfirmarPassword";
             this.txtConfirmarPassword.Size = new System.Drawing.Size(148, 22);
             this.txtConfirmarPassword.TabIndex = 18;
@@ -89,7 +89,7 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(270, 147);
+            this.lblPassword.Location = new System.Drawing.Point(149, 151);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(79, 16);
             this.lblPassword.TabIndex = 17;
@@ -97,14 +97,14 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(355, 144);
+            this.txtPassword.Location = new System.Drawing.Point(234, 148);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(148, 22);
             this.txtPassword.TabIndex = 16;
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(355, 102);
+            this.txtUsername.Location = new System.Drawing.Point(234, 106);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(120, 22);
             this.txtUsername.TabIndex = 15;
@@ -112,7 +112,7 @@
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(276, 105);
+            this.lblUsername.Location = new System.Drawing.Point(155, 109);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(73, 16);
             this.lblUsername.TabIndex = 14;
@@ -121,7 +121,7 @@
             // btAceptar
             // 
             this.btAceptar.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.btAceptar.Location = new System.Drawing.Point(638, 361);
+            this.btAceptar.Location = new System.Drawing.Point(460, 365);
             this.btAceptar.Name = "btAceptar";
             this.btAceptar.Size = new System.Drawing.Size(103, 42);
             this.btAceptar.TabIndex = 25;
@@ -131,7 +131,7 @@
             // lblFechaIngreso
             // 
             this.lblFechaIngreso.AutoSize = true;
-            this.lblFechaIngreso.Location = new System.Drawing.Point(234, 267);
+            this.lblFechaIngreso.Location = new System.Drawing.Point(113, 271);
             this.lblFechaIngreso.Name = "lblFechaIngreso";
             this.lblFechaIngreso.Size = new System.Drawing.Size(115, 16);
             this.lblFechaIngreso.TabIndex = 27;
@@ -139,7 +139,7 @@
             // 
             // dtpFechaIngreso
             // 
-            this.dtpFechaIngreso.Location = new System.Drawing.Point(355, 262);
+            this.dtpFechaIngreso.Location = new System.Drawing.Point(234, 266);
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
             this.dtpFechaIngreso.Size = new System.Drawing.Size(255, 22);
             this.dtpFechaIngreso.TabIndex = 26;
@@ -147,7 +147,7 @@
             // btRegresar
             // 
             this.btRegresar.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.btRegresar.Location = new System.Drawing.Point(529, 361);
+            this.btRegresar.Location = new System.Drawing.Point(326, 365);
             this.btRegresar.Name = "btRegresar";
             this.btRegresar.Size = new System.Drawing.Size(103, 42);
             this.btRegresar.TabIndex = 28;
@@ -158,7 +158,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(602, 450);
             this.Controls.Add(this.btRegresar);
             this.Controls.Add(this.lblFechaIngreso);
             this.Controls.Add(this.dtpFechaIngreso);

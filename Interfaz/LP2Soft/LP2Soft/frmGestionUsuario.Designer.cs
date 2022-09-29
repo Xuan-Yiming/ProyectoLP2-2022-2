@@ -38,7 +38,7 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.Black;
-            this.lblTitulo.Location = new System.Drawing.Point(280, 63);
+            this.lblTitulo.Location = new System.Drawing.Point(207, 83);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(222, 20);
             this.lblTitulo.TabIndex = 27;
@@ -48,7 +48,7 @@
             // 
             this.btnRegistrar.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrar.Location = new System.Drawing.Point(162, 153);
+            this.btnRegistrar.Location = new System.Drawing.Point(89, 173);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(199, 103);
             this.btnRegistrar.TabIndex = 29;
@@ -60,7 +60,7 @@
             // 
             this.btnModificar.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(436, 153);
+            this.btnModificar.Location = new System.Drawing.Point(363, 173);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(199, 103);
             this.btnModificar.TabIndex = 30;
@@ -72,7 +72,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(620, 450);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnRegistrar);

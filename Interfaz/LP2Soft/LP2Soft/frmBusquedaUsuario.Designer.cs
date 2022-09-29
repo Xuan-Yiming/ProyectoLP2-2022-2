@@ -52,23 +52,23 @@
             // 
             this.txtNombreID.Location = new System.Drawing.Point(231, 20);
             this.txtNombreID.Name = "txtNombreID";
-            this.txtNombreID.Size = new System.Drawing.Size(321, 22);
+            this.txtNombreID.Size = new System.Drawing.Size(259, 22);
             this.txtNombreID.TabIndex = 1;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(579, 18);
+            this.btnBuscar.Location = new System.Drawing.Point(496, 20);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(101, 26);
+            this.btnBuscar.Size = new System.Drawing.Size(78, 26);
             this.btnBuscar.TabIndex = 2;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             // 
             // btnSeleccionar
             // 
-            this.btnSeleccionar.Location = new System.Drawing.Point(686, 18);
+            this.btnSeleccionar.Location = new System.Drawing.Point(580, 20);
             this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(101, 26);
+            this.btnSeleccionar.Size = new System.Drawing.Size(89, 26);
             this.btnSeleccionar.TabIndex = 3;
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = true;
@@ -87,7 +87,7 @@
             this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersWidth = 51;
             this.dgvUsuarios.RowTemplate.Height = 24;
-            this.dgvUsuarios.Size = new System.Drawing.Size(772, 374);
+            this.dgvUsuarios.Size = new System.Drawing.Size(654, 374);
             this.dgvUsuarios.TabIndex = 4;
             // 
             // ID
@@ -118,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(681, 450);
             this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.btnBuscar);
