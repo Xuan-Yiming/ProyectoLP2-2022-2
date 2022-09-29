@@ -132,6 +132,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ventas\frmDocumentoDebito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmDocumentoDebito.Designer.cs">
+      <DependentUpon>frmDocumentoDebito.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventas\frmVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Ventas\frmDocumentoDebito.resx">
+      <DependentUpon>frmDocumentoDebito.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventas\frmVentas.resx">
       <DependentUpon>frmVentas.cs</DependentUpon>
     </EmbeddedResource>

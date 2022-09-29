@@ -34,5 +34,11 @@ namespace LP2Soft.Ventas
             frmBuscarProducto formBusqProductos = new frmBuscarProducto();
             formBusqProductos.Show();
         }
+
+        private void btnDebito_Click(object sender, EventArgs e)
+        {
+            frmDocumentoDebito formDocumentoDebito= new frmDocumentoDebito();
+            formDocumentoDebito.Show();
+        }
     }
 }

@@ -16,5 +16,15 @@ namespace LP2Soft
         {
             InitializeComponent();
         }
+
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

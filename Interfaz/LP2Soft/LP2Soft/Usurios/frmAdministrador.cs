@@ -16,5 +16,27 @@ namespace LP2Soft
         {
             InitializeComponent();
         }
+
+        public void limpiarComponentes()
+        {
+            txtUsername.Text = "";
+            txtPassword.Text = "";
+            txtConfirmarPassword.Text = "";
+            dtpFechaIngreso.Value = DateTime.Now;
+            txtArea.Text = "";
+
+        }
+
+        private void btAceptar_Click(object sender, EventArgs e)
+        {
+            limpiarComponentes();
+            this.Close();
+        }
+
+        private void btRegresar_Click(object sender, EventArgs e)
+        {
+            limpiarComponentes();
+            this.Close();
+        }
     }
 }
