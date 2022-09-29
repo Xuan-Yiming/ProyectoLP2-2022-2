@@ -16,5 +16,17 @@ namespace LP2Soft.Almacen
         {
             InitializeComponent();
         }
+
+        private void BtnSeleccionar_Click(object sender, EventArgs e)
+        {
+            frmProducto frmproducto = new frmProducto();
+            frmproducto.Show();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmProducto frmproducto = new frmProducto();
+            frmproducto.Show();
+        }
     }
 }

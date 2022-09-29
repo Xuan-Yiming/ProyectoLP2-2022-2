@@ -52,6 +52,7 @@
             this.btRegresar.TabIndex = 41;
             this.btRegresar.Text = "Regresar";
             this.btRegresar.UseVisualStyleBackColor = false;
+            this.btRegresar.Click += new System.EventHandler(this.btRegresar_Click);
             // 
             // lblFechaIngreso
             // 
@@ -78,6 +79,7 @@
             this.btAceptar.TabIndex = 38;
             this.btAceptar.Text = "Aceptar";
             this.btAceptar.UseVisualStyleBackColor = false;
+            this.btAceptar.Click += new System.EventHandler(this.btAceptar_Click);
             // 
             // lblCantVentas
             // 
