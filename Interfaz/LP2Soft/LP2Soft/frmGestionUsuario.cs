@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LP2Soft
 {
-    public partial class frmEliminarUsuario : Form
+    public partial class frmGestionUsuario : Form
     {
-        public frmEliminarUsuario()
+        public frmGestionUsuario()
         {
             InitializeComponent();
         }
