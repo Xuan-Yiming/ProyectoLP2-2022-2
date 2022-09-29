@@ -16,5 +16,7 @@ namespace LP2Soft
         {
             InitializeComponent();
         }
+
+      
     }
 }
