@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace LP2Soft.Ventas
 {
-    public partial class frmReclamo : Form
+    public partial class frmDocumentoCredito : Form
     {
-        public frmReclamo()
+        public frmDocumentoCredito()
         {
             InitializeComponent();
+        }
+
+        private void frmDocumentoCredito_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void btGuardar_Click(object sender, EventArgs e)

@@ -14,12 +14,13 @@ namespace LP2Soft.Ventas
     {
         public frmDocumentoDebito()
         {
+            
             InitializeComponent();
         }
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-
+            gbPedido.Visible = true;
         }
 
         private void dtpFechaOrdenVenta_ValueChanged(object sender, EventArgs e)
@@ -30,6 +31,16 @@ namespace LP2Soft.Ventas
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmDocumentoDebito_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

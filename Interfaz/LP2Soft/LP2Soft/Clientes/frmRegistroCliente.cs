@@ -17,6 +17,10 @@ namespace LP2Soft.Clientes
             InitializeComponent();
         }
 
-        
+        private void btSiguiente_Click(object sender, EventArgs e)
+        {
+            frmEmpresaCliente frmempresaCliente = new frmEmpresaCliente();
+            frmempresaCliente.ShowDialog();
+        }
     }
 }

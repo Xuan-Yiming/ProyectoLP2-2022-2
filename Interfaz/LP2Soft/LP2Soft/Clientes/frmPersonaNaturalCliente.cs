@@ -16,5 +16,15 @@ namespace LP2Soft.Clientes
         {
             InitializeComponent();
         }
+
+        private void btAceptar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Yes;
+        }
+
+        private void btRegresar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.No;
+        }
     }
 }

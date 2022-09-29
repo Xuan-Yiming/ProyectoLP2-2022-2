@@ -16,5 +16,17 @@ namespace LP2Soft.Clientes
         {
             InitializeComponent();
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmRegistroCliente frmregistrocliente = new frmRegistroCliente();
+            frmregistrocliente.ShowDialog();
+        }
+
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            frmRegistroCliente frmregistroCliente = new frmRegistroCliente();
+            frmregistroCliente.ShowDialog();
+        }
     }
 }

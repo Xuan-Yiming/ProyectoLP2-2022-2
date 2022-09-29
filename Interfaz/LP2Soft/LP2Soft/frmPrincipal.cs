@@ -1,4 +1,5 @@
 ﻿using LP2Soft.Almacen;
+using LP2Soft.Clientes;
 using LP2Soft.Ventas;
 using System;
 using System.Collections.Generic;
@@ -49,7 +50,7 @@ namespace LP2Soft
         private void btnVenta_Click(object sender, EventArgs e)
         {
             panelPrincipal.Controls.Clear();
-            frmVentas frmventas = new frmVentas();
+            frmOrdenDeCompra frmventas = new frmOrdenDeCompra();
             frmventas.TopLevel = false;
             frmventas.FormBorderStyle = FormBorderStyle.None;
             frmventas.Dock = DockStyle.Fill;
@@ -66,6 +67,17 @@ namespace LP2Soft
             frmregistroUsuario.Dock = DockStyle.Fill;
             panelPrincipal.Controls.Add(frmregistroUsuario);
             frmregistroUsuario.Show();
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            panelPrincipal.Controls.Clear();
+            frmBusquedaCliente frmbusquedaCliente = new frmBusquedaCliente();
+            frmbusquedaCliente.TopLevel = false;
+            frmbusquedaCliente.FormBorderStyle = FormBorderStyle.None;
+            frmbusquedaCliente.Dock = DockStyle.Fill;
+            panelPrincipal.Controls.Add(frmbusquedaCliente);
+            frmbusquedaCliente.Show();
         }
     }
 }

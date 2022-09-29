@@ -100,6 +100,30 @@
     <Compile Include="Clientes\frmRegistroCliente.Designer.cs">
       <DependentUpon>frmRegistroCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventas\busquedaDocCre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\busquedaDocCre.Designer.cs">
+      <DependentUpon>busquedaDocCre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\busquedaDocDeb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\busquedaDocDeb.Designer.cs">
+      <DependentUpon>busquedaDocDeb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\frmDocumentoCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmDocumentoCredito.Designer.cs">
+      <DependentUpon>frmDocumentoCredito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\frmOrdenDeCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmOrdenDeCompra.Designer.cs">
+      <DependentUpon>frmOrdenDeCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usurios\frmTipoUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,12 +135,6 @@
     </Compile>
     <Compile Include="Usurios\frmBusquedaUsuario.Designer.cs">
       <DependentUpon>frmBusquedaUsuario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Usurios\frmGestionUsuario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Usurios\frmGestionUsuario.Designer.cs">
-      <DependentUpon>frmGestionUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="frmIniciaSeccion.cs">
       <SubType>Form</SubType>
@@ -144,11 +162,17 @@
     <Compile Include="Ventas\frmDocumentoDebito.Designer.cs">
       <DependentUpon>frmDocumentoDebito.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventas\frmVentas.cs">
+    <Compile Include="Ventas\frmPedido.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventas\frmVentas.Designer.cs">
-      <DependentUpon>frmVentas.cs</DependentUpon>
+    <Compile Include="Ventas\frmPedido.Designer.cs">
+      <DependentUpon>frmPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\frmReclamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmReclamo.Designer.cs">
+      <DependentUpon>frmReclamo.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Almacen\frmAlmacenes.resx">
       <DependentUpon>frmAlmacenes.cs</DependentUpon>
@@ -168,17 +192,32 @@
     <EmbeddedResource Include="Clientes\frmBusquedaCliente.resx">
       <DependentUpon>frmBusquedaCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\frmEmpresaCliente.resx">
+      <DependentUpon>frmEmpresaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\frmPersonaNaturalCliente.resx">
+      <DependentUpon>frmPersonaNaturalCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clientes\frmRegistroCliente.resx">
       <DependentUpon>frmRegistroCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\busquedaDocCre.resx">
+      <DependentUpon>busquedaDocCre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\busquedaDocDeb.resx">
+      <DependentUpon>busquedaDocDeb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\frmDocumentoCredito.resx">
+      <DependentUpon>frmDocumentoCredito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\frmOrdenDeCompra.resx">
+      <DependentUpon>frmOrdenDeCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usurios\frmTipoUsuario.resx">
       <DependentUpon>frmTipoUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usurios\frmBusquedaUsuario.resx">
       <DependentUpon>frmBusquedaUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Usurios\frmGestionUsuario.resx">
-      <DependentUpon>frmGestionUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIniciaSeccion.resx">
       <DependentUpon>frmIniciaSeccion.cs</DependentUpon>
@@ -201,8 +240,11 @@
     <EmbeddedResource Include="Ventas\frmDocumentoDebito.resx">
       <DependentUpon>frmDocumentoDebito.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventas\frmVentas.resx">
-      <DependentUpon>frmVentas.cs</DependentUpon>
+    <EmbeddedResource Include="Ventas\frmPedido.resx">
+      <DependentUpon>frmPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\frmReclamo.resx">
+      <DependentUpon>frmReclamo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

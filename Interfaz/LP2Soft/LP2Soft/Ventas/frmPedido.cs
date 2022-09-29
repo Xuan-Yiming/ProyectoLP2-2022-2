@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LP2Soft.Almacen;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,17 @@ namespace LP2Soft.Ventas
         public frmPedido()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmBuscarProducto frmbuscarProducto = new frmBuscarProducto();
+            frmbuscarProducto.ShowDialog();
         }
     }
 }
