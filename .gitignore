@@ -22,3 +22,4 @@ private.properties
 /LP2SoftRRHHModel/build/
 *.vsidx
 *.cache
+*.suo
