@@ -29,7 +29,7 @@ namespace LP2Soft
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            frmModificarUsuario formModificarUsuarios= new frmModificarUsuario();
+            frmBusquedaUsuario formModificarUsuarios= new frmBusquedaUsuario();
             formModificarUsuarios.ShowDialog();
         }
     }

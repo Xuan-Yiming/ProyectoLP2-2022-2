@@ -89,12 +89,12 @@
             this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersWidth = 51;
             this.dgvUsuarios.RowTemplate.Height = 24;
-<<<<<<<< HEAD:Interfaz/LP2Soft/LP2Soft/Usuarios/frmBusquedaUsuario.Designer.cs
+
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsuarios.Size = new System.Drawing.Size(654, 374);
-========
+
             this.dgvUsuarios.Size = new System.Drawing.Size(772, 374);
->>>>>>>> d8c56c5a7d2a3428e6f499df88abba64899700e0:Interfaz/LP2Soft/LP2Soft/Usurios/frmBusquedaUsuario.Designer.cs
+
             this.dgvUsuarios.TabIndex = 4;
             // 
             // ID

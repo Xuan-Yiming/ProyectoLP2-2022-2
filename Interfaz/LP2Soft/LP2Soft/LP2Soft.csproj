@@ -76,11 +76,11 @@
     <Compile Include="Almacen\frmProducto.Designer.cs">
       <DependentUpon>frmProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Usurios\frmAdministrador.cs">
+    <Compile Include="Usurios\frmTipoUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Usurios\frmAdministrador.Designer.cs">
-      <DependentUpon>frmAdministrador.cs</DependentUpon>
+    <Compile Include="Usurios\frmTipoUsuario.Designer.cs">
+      <DependentUpon>frmTipoUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Usurios\frmBusquedaUsuario.cs">
       <SubType>Form</SubType>
@@ -100,12 +100,6 @@
     <Compile Include="frmIniciaSeccion.Designer.cs">
       <DependentUpon>frmIniciaSeccion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Usurios\frmModificarUsuario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Usurios\frmModificarUsuario.Designer.cs">
-      <DependentUpon>frmModificarUsuario.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,18 +111,6 @@
     </Compile>
     <Compile Include="Usurios\frmRegistroUsuario.Designer.cs">
       <DependentUpon>frmRegistroUsuario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Usurios\frmSupervisorAlmacen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Usurios\frmSupervisorAlmacen.Designer.cs">
-      <DependentUpon>frmSupervisorAlmacen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Usurios\frmVendedor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Usurios\frmVendedor.Designer.cs">
-      <DependentUpon>frmVendedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -159,8 +141,8 @@
     <EmbeddedResource Include="Almacen\frmProducto.resx">
       <DependentUpon>frmProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Usurios\frmAdministrador.resx">
-      <DependentUpon>frmAdministrador.cs</DependentUpon>
+    <EmbeddedResource Include="Usurios\frmTipoUsuario.resx">
+      <DependentUpon>frmTipoUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usurios\frmBusquedaUsuario.resx">
       <DependentUpon>frmBusquedaUsuario.cs</DependentUpon>
@@ -171,20 +153,11 @@
     <EmbeddedResource Include="frmIniciaSeccion.resx">
       <DependentUpon>frmIniciaSeccion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Usurios\frmModificarUsuario.resx">
-      <DependentUpon>frmModificarUsuario.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usurios\frmRegistroUsuario.resx">
       <DependentUpon>frmRegistroUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Usurios\frmSupervisorAlmacen.resx">
-      <DependentUpon>frmSupervisorAlmacen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Usurios\frmVendedor.resx">
-      <DependentUpon>frmVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

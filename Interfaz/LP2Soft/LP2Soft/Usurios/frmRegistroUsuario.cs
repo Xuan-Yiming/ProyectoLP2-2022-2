@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LP2Soft.Almacen;
+using LP2Soft.Ventas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,5 +19,20 @@ namespace LP2Soft
             InitializeComponent();
         }
 
+        private void btSiguiente_Click(object sender, EventArgs e)
+        {
+            frmTipoUsuario frmtipoUsuario = new frmTipoUsuario();
+            DialogResult result =  frmtipoUsuario.ShowDialog();
+            
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            frmBusquedaUsuario frmbusquedaUsuario = new frmBusquedaUsuario();
+            if(frmbusquedaUsuario.ShowDialog() == DialogResult.OK)
+            {
+                
+            }
+        }
     }
 }

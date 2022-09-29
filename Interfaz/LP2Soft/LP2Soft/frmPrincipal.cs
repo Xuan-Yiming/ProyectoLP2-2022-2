@@ -37,6 +37,7 @@ namespace LP2Soft
 
         private void btnAlmacen_Click(object sender, EventArgs e)
         {
+            panelPrincipal.Controls.Clear();
             frmAlmacenes frmalmacen = new frmAlmacenes();
             frmalmacen.TopLevel = false;
             frmalmacen.FormBorderStyle = FormBorderStyle.None;
@@ -47,12 +48,24 @@ namespace LP2Soft
 
         private void btnVenta_Click(object sender, EventArgs e)
         {
+            panelPrincipal.Controls.Clear();
             frmVentas frmventas = new frmVentas();
             frmventas.TopLevel = false;
             frmventas.FormBorderStyle = FormBorderStyle.None;
             frmventas.Dock = DockStyle.Fill;
             panelPrincipal.Controls.Add(frmventas);
             frmventas.Show();
+        }
+
+        private void btnEmpleados_Click(object sender, EventArgs e)
+        {
+            panelPrincipal.Controls.Clear();
+            frmRegistroUsuario frmregistroUsuario = new frmRegistroUsuario();
+            frmregistroUsuario.TopLevel = false;
+            frmregistroUsuario.FormBorderStyle = FormBorderStyle.None;
+            frmregistroUsuario.Dock = DockStyle.Fill;
+            panelPrincipal.Controls.Add(frmregistroUsuario);
+            frmregistroUsuario.Show();
         }
     }
 }

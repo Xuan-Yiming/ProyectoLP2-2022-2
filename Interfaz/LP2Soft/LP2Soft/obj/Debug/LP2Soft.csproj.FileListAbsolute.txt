@@ -15,15 +15,11 @@ C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.Almacen.frmBuscarAlmacen.resources
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.Almacen.frmBuscarProducto.resources
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.Almacen.frmProducto.resources
-C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.frmAdministrador.resources
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.frmBusquedaUsuario.resources
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.frmGestionUsuario.resources
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.frmIniciaSeccion.resources
-C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.frmModificarUsuario.resources
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.frmPrincipal.resources
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.frmRegistroUsuario.resources
-C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.frmSupervisorAlmacen.resources
-C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.frmVendedor.resources
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.Properties.Resources.resources
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.csproj.GenerateResource.cache
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.csproj.CoreCompileInputs.cache
@@ -34,3 +30,5 @@ C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.pdb
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.Almacen.frmListarProductos.resources
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.Ventas.frmVentas.resources
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.frmTipoUsuario.resources
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\Interfaz\LP2Soft\LP2Soft\obj\Debug\LP2Soft.Ventas.frmDocumentoDebito.resources

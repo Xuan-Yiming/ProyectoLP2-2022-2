@@ -227,6 +227,7 @@
             this.btnEmpleados.TabIndex = 0;
             this.btnEmpleados.Text = "Empleados";
             this.btnEmpleados.UseVisualStyleBackColor = true;
+            this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
             // 
             // panel4
             // 
