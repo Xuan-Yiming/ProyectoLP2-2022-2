@@ -20,3 +20,4 @@ private.properties
 /LP2SoftGestClientesModel/build
 *.properties
 /LP2SoftRRHHModel/build/
+*.vsidx
