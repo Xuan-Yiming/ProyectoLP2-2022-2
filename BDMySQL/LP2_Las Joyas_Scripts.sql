@@ -416,7 +416,7 @@ END$
 DELIMITER $
 CREATE PROCEDURE LISTAR_SUPERVISORES_DE_ALMACEN()
 BEGIN
-	SELECT p.id_persona, p.nombre, p.apellido, p.telefono, p.direccion, p.email, p.fecha_de_nacimiento, p.tipo_de_documento, p.numero_de_documento,
+	SELECT s.id_usuario, p.nombre, p.apellido, p.telefono, p.direccion, p.email, p.fecha_de_nacimiento, p.tipo_de_documento, p.numero_de_documento,
 			u.username, u.fecha_de_ingreso, s._fid_almacen
     FROM persona p INNER JOIN usuario u ON p.id_persona = u.id_usuario INNER JOIN supervisorDeAlmacen s ON u.id_usuario = s.id_usuario WHERE p.activo = 1;
 END$
@@ -480,7 +480,7 @@ END$
 DELIMITER $
 CREATE PROCEDURE LISTAR_VENDEDORES()
 BEGIN
-	SELECT p.id_persona, p.nombre, p.apellido, p.telefono, p.direccion, p.email, p.fecha_de_nacimiento, p.tipo_de_documento, p.numero_de_documento,
+	SELECT v.id_usuario, p.nombre, p.apellido, p.telefono, p.direccion, p.email, p.fecha_de_nacimiento, p.tipo_de_documento, p.numero_de_documento,
 			u.username, u.fecha_de_ingreso, v.cantidad_ventas
     FROM persona p INNER JOIN usuario u ON p.id_persona = u.id_usuario INNER JOIN vendedor v ON u.id_usuario = v.id_usuario WHERE p.activo = 1;
 END$
@@ -542,7 +542,7 @@ END$
 DELIMITER $
 CREATE PROCEDURE LISTAR_ADMINISTRADORES()
 BEGIN
-	SELECT p.id_persona, p.nombre, p.apellido, p.telefono, p.direccion, p.email, p.fecha_de_nacimiento, p.tipo_de_documento, p.numero_de_documento,
+	SELECT a.id_usuario, p.nombre, p.apellido, p.telefono, p.direccion, p.email, p.fecha_de_nacimiento, p.tipo_de_documento, p.numero_de_documento,
 			u.username, u.fecha_de_ingreso, a.area
     FROM persona p INNER JOIN usuario u ON p.id_persona = u.id_usuario INNER JOIN administrador a ON u.id_usuario = a.id_usuario WHERE p.activo = 1;
 END$
