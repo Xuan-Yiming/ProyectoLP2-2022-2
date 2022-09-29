@@ -52,6 +52,24 @@
     <Compile Include="Almacen\frmAlmacenes.Designer.cs">
       <DependentUpon>frmAlmacenes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Almacen\frmBuscarAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\frmBuscarAlmacen.Designer.cs">
+      <DependentUpon>frmBuscarAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\frmBuscarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\frmBuscarProducto.Designer.cs">
+      <DependentUpon>frmBuscarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\frmProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\frmProducto.Designer.cs">
+      <DependentUpon>frmProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usurios\frmAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +134,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Almacen\frmAlmacenes.resx">
       <DependentUpon>frmAlmacenes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\frmBuscarAlmacen.resx">
+      <DependentUpon>frmBuscarAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\frmBuscarProducto.resx">
+      <DependentUpon>frmBuscarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\frmProducto.resx">
+      <DependentUpon>frmProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usurios\frmAdministrador.resx">
       <DependentUpon>frmAdministrador.cs</DependentUpon>

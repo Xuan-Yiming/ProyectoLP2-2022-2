@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LP2Soft.Almacen;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,6 +32,16 @@ namespace LP2Soft
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0xA1, 0x2, 0);
+        }
+
+        private void btnAlmacen_Click(object sender, EventArgs e)
+        {
+            frmAlmacenes frmalmacen = new frmAlmacenes();
+            frmalmacen.TopLevel = false;
+            frmalmacen.FormBorderStyle = FormBorderStyle.None;
+            frmalmacen.Dock = DockStyle.Fill;
+            panelPrincipal.Controls.Add(frmalmacen);
+            frmalmacen.Show();
         }
     }
 }

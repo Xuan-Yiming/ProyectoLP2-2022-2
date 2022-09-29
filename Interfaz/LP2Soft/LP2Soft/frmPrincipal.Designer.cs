@@ -68,8 +68,9 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1000, 70);
+            this.panel1.Size = new System.Drawing.Size(667, 46);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
@@ -78,17 +79,19 @@
             this.panel9.Controls.Add(this.btnCerrar);
             this.panel9.Controls.Add(this.panel8);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel9.Location = new System.Drawing.Point(723, 0);
+            this.panel9.Location = new System.Drawing.Point(482, 0);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(277, 70);
+            this.panel9.Size = new System.Drawing.Size(185, 46);
             this.panel9.TabIndex = 8;
             // 
             // btnCerrar
             // 
             this.btnCerrar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnCerrar.Location = new System.Drawing.Point(202, 0);
+            this.btnCerrar.Location = new System.Drawing.Point(135, 0);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(75, 70);
+            this.btnCerrar.Size = new System.Drawing.Size(50, 46);
             this.btnCerrar.TabIndex = 1;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
@@ -100,16 +103,18 @@
             this.panel8.Controls.Add(this.lblUsuario);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(277, 70);
+            this.panel8.Size = new System.Drawing.Size(185, 46);
             this.panel8.TabIndex = 7;
             // 
             // lblBienvenida
             // 
             this.lblBienvenida.AutoSize = true;
-            this.lblBienvenida.Location = new System.Drawing.Point(3, 9);
+            this.lblBienvenida.Location = new System.Drawing.Point(2, 6);
+            this.lblBienvenida.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBienvenida.Name = "lblBienvenida";
-            this.lblBienvenida.Size = new System.Drawing.Size(164, 20);
+            this.lblBienvenida.Size = new System.Drawing.Size(112, 13);
             this.lblBienvenida.TabIndex = 4;
             this.lblBienvenida.Text = "Bienvenido, usuario 1!";
             // 
@@ -117,7 +122,8 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(4, 31);
+            this.lblUsuario.Location = new System.Drawing.Point(3, 20);
+            this.lblUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(90, 16);
             this.lblUsuario.TabIndex = 5;
@@ -129,8 +135,9 @@
             this.panel7.Controls.Add(this.pictureBox1);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(265, 70);
+            this.panel7.Size = new System.Drawing.Size(177, 46);
             this.panel7.TabIndex = 6;
             // 
             // label2
@@ -138,7 +145,8 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(76, 9);
+            this.label2.Location = new System.Drawing.Point(51, 6);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 20);
             this.label2.TabIndex = 2;
@@ -148,17 +156,19 @@
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(70, 70);
+            this.pictureBox1.Size = new System.Drawing.Size(47, 46);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(84, 27);
+            this.label1.Location = new System.Drawing.Point(56, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 20);
+            this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 0;
             // 
             // panel2
@@ -169,26 +179,29 @@
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 70);
+            this.panel2.Location = new System.Drawing.Point(0, 46);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(214, 730);
+            this.panel2.Size = new System.Drawing.Size(143, 474);
             this.panel2.TabIndex = 1;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.btnClientes);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 210);
+            this.panel6.Location = new System.Drawing.Point(0, 138);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(214, 70);
+            this.panel6.Size = new System.Drawing.Size(143, 46);
             this.panel6.TabIndex = 3;
             // 
             // btnClientes
             // 
             this.btnClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClientes.Location = new System.Drawing.Point(0, 0);
+            this.btnClientes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(214, 70);
+            this.btnClientes.Size = new System.Drawing.Size(143, 46);
             this.btnClientes.TabIndex = 0;
             this.btnClientes.Text = "Clientes";
             this.btnClientes.UseVisualStyleBackColor = true;
@@ -198,17 +211,19 @@
             this.panel5.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel5.Controls.Add(this.btnEmpleados);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 140);
+            this.panel5.Location = new System.Drawing.Point(0, 92);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(214, 70);
+            this.panel5.Size = new System.Drawing.Size(143, 46);
             this.panel5.TabIndex = 2;
             // 
             // btnEmpleados
             // 
             this.btnEmpleados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEmpleados.Location = new System.Drawing.Point(0, 0);
+            this.btnEmpleados.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEmpleados.Name = "btnEmpleados";
-            this.btnEmpleados.Size = new System.Drawing.Size(214, 70);
+            this.btnEmpleados.Size = new System.Drawing.Size(143, 46);
             this.btnEmpleados.TabIndex = 0;
             this.btnEmpleados.Text = "Empleados";
             this.btnEmpleados.UseVisualStyleBackColor = true;
@@ -217,36 +232,41 @@
             // 
             this.panel4.Controls.Add(this.btnAlmacen);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 70);
+            this.panel4.Location = new System.Drawing.Point(0, 46);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(214, 70);
+            this.panel4.Size = new System.Drawing.Size(143, 46);
             this.panel4.TabIndex = 1;
             // 
             // btnAlmacen
             // 
             this.btnAlmacen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAlmacen.Location = new System.Drawing.Point(0, 0);
+            this.btnAlmacen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAlmacen.Name = "btnAlmacen";
-            this.btnAlmacen.Size = new System.Drawing.Size(214, 70);
+            this.btnAlmacen.Size = new System.Drawing.Size(143, 46);
             this.btnAlmacen.TabIndex = 0;
             this.btnAlmacen.Text = "Almacen";
             this.btnAlmacen.UseVisualStyleBackColor = true;
+            this.btnAlmacen.Click += new System.EventHandler(this.btnAlmacen_Click);
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnVenta);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(214, 70);
+            this.panel3.Size = new System.Drawing.Size(143, 46);
             this.panel3.TabIndex = 0;
             // 
             // btnVenta
             // 
             this.btnVenta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnVenta.Location = new System.Drawing.Point(0, 0);
+            this.btnVenta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnVenta.Name = "btnVenta";
-            this.btnVenta.Size = new System.Drawing.Size(214, 70);
+            this.btnVenta.Size = new System.Drawing.Size(143, 46);
             this.btnVenta.TabIndex = 0;
             this.btnVenta.Text = "Ventas";
             this.btnVenta.UseVisualStyleBackColor = true;
@@ -254,20 +274,22 @@
             // panelPrincipal
             // 
             this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPrincipal.Location = new System.Drawing.Point(214, 70);
+            this.panelPrincipal.Location = new System.Drawing.Point(143, 46);
+            this.panelPrincipal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(786, 730);
+            this.panelPrincipal.Size = new System.Drawing.Size(524, 474);
             this.panelPrincipal.TabIndex = 2;
             // 
             // frmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 800);
+            this.ClientSize = new System.Drawing.Size(667, 520);
             this.Controls.Add(this.panelPrincipal);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmPrincipal";
             this.Text = "frmPrincipal";
             this.panel1.ResumeLayout(false);

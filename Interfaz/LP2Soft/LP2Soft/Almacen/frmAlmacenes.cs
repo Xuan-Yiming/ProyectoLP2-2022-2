@@ -16,5 +16,17 @@ namespace LP2Soft.Almacen
         {
             InitializeComponent();
         }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            frmBuscarAlmacen frmbuscaralmacen = new frmBuscarAlmacen();
+            frmbuscaralmacen.Show();
+        }
+
+        private void btnListarProductos_Click(object sender, EventArgs e)
+        {
+            frmBuscarProducto frmbuscarproducto = new frmBuscarProducto();
+            frmbuscarproducto.Show();
+        }
     }
 }
