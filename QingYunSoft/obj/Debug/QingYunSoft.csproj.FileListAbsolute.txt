@@ -1,0 +1,12 @@
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\bin\Debug\QingYunSoft.exe.config
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\bin\Debug\QingYunSoft.exe
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\bin\Debug\QingYunSoft.pdb
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.csproj.AssemblyReference.cache
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.csproj.SuggestedBindingRedirects.cache
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.frmPrincipal.resources
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Properties.Resources.resources
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.csproj.GenerateResource.cache
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.csproj.CoreCompileInputs.cache
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.exe
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.pdb
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.frmInicio.resources
