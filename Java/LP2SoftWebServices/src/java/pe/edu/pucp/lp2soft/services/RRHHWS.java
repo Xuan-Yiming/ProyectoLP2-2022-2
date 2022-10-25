@@ -1,14 +1,137 @@
 package pe.edu.pucp.lp2soft.services;
 
+import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import pe.edu.pucp.lp2soft.rrhh.dao.AdministradorDAO;
+import pe.edu.pucp.lp2soft.rrhh.dao.SupervisorDeAlmacenDAO;
+import pe.edu.pucp.lp2soft.rrhh.dao.VendedorDAO;
+import pe.edu.pucp.lp2soft.rrhh.model.Administrador;
+import pe.edu.pucp.lp2soft.rrhh.model.SupervisorDeAlmacen;
+import pe.edu.pucp.lp2soft.rrhh.model.Vendedor;
+import pe.edu.pucp.lp2soft.rrhh.mysql.AdministradorMySQL;
+import pe.edu.pucp.lp2soft.rrhh.mysql.SupervisorDeAlmacenMySQL;
+import pe.edu.pucp.lp2soft.rrhh.mysql.VendedorMySQL;
 
 @WebService(serviceName = "RRHHWS")
 public class RRHHWS {
-
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
+    AdministradorDAO daoAdministrador = new AdministradorMySQL();
+    VendedorDAO daoVendedor = new VendedorMySQL();
+    SupervisorDeAlmacenDAO daoSupervisor = new SupervisorDeAlmacenMySQL();
+    
+    /*Gestionar Adminisrador*/
+    @WebMethod(operationName = "insertarAdministrador")
+    public int insertarAdministrador(@WebParam(name = "administrador") Administrador administrador) {
+        int resultado = 0;
+        try{
+            resultado = daoAdministrador.insertar(administrador);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
     }
+    @WebMethod(operationName = "modificarAdministrador")
+    public int modificarAdministrador(@WebParam(name = "administrador") Administrador administrador) {
+        int resultado = 0;
+        try{
+            resultado = daoAdministrador.modificar(administrador);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "eliminarAdministrador")
+    public int eliminarAdministrador(@WebParam(name = "administrador") int idUsuario, @WebParam(name = "area") String area) {
+        int resultado = 0;
+        try{
+            resultado = daoAdministrador.eliminar(idUsuario,area);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "listarAdministradores")
+    public ArrayList<Administrador> listarAdministradores() {
+        ArrayList<Administrador> administradores = null;
+        try{
+            administradores = daoAdministrador.listarTodos();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return administradores;
+    }
+    @WebMethod(operationName = "listarAdministradoresPorDocumentoNombre")
+    public ArrayList<Administrador> listarAdministradoresPorDocumentoNombre(@WebParam(name = "docNombre") String docNombre) {
+        ArrayList<Administrador> administradores = null;
+        try{
+            administradores = daoAdministrador.listarPorDocumentoNombre(docNombre);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return administradores;
+    }
+    /*Gestionar Vendedor*/
+    @WebMethod(operationName = "insertarVendedor")
+    public int insertarVendedor(@WebParam(name = "vendedor") Vendedor vendedor) {
+        int resultado = 0;
+        try{
+            resultado = daoVendedor.insertar(vendedor);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "modificarVendedor")
+    public int modificarVendedor(@WebParam(name = "vendedor") Vendedor vendedor) {
+        int resultado = 0;
+        try{
+            resultado = daoVendedor.modificar(vendedor);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "eliminarVendedor")
+    public int eliminarVendedor(@WebParam(name = "vendedor") int idUsuario, @WebParam(name = "cantidad") int cantidad) {
+        int resultado = 0;
+        try{
+            resultado = daoVendedor.eliminar(idUsuario,cantidad);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    /*Gestionar Supervisor de almacen*/
+    @WebMethod(operationName = "insertarSupervisor")
+    public int insertarSupervisor(@WebParam(name = "supervisor") SupervisorDeAlmacen supervisor) {
+        int resultado = 0;
+        try{
+            resultado = daoSupervisor.insertar(supervisor);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "modificarSupervisor")
+    public int modificarSupervisor(@WebParam(name = "supervisor") SupervisorDeAlmacen supervisor) {
+        int resultado = 0;
+        try{
+            resultado = daoSupervisor.modificar(supervisor);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "eliminarSupervisor")
+    public int eliminarSupervisor(@WebParam(name = "supervisor") int idUsuario, @WebParam(name = "almacen") int idAlmacen) {
+        int resultado = 0;
+        try{
+            resultado = daoSupervisor.eliminar(idUsuario,idAlmacen);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    
 }

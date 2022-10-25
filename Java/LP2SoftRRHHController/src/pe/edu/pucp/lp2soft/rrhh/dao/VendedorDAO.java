@@ -10,4 +10,5 @@ public interface VendedorDAO {
     public int modificar(Vendedor vendedor);
     public int eliminar(int id_usuario,int cantidadVentas);
     public ArrayList<Vendedor> listarTodos();
+    public ArrayList<Vendedor> listarPorDocumentoNombre(String docNombre);
 }

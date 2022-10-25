@@ -126,5 +126,39 @@ public class VendedorMySQL implements VendedorDAO {
         }
         return vendedores;
     }
-    
+
+    @Override
+    public ArrayList<Vendedor> listarPorDocumentoNombre(String docNombre) {
+        ArrayList<Vendedor> vendedores = new ArrayList<>();
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("call LISTAR_VENDEDORES_X_DOCUMENTO_NOMBRE(?)");
+            cs.setString("_doc_nombre",docNombre);
+            rs = cs.executeQuery();
+            while(rs.next()){
+                Vendedor vendedor = new Vendedor();
+                vendedor.setIdUsuario(rs.getInt("id_usuario"));
+                vendedor.setCantidadVentas(rs.getInt("cantidad_ventas"));
+                vendedor.setPassword(rs.getString("password"));
+                vendedor.setUsername(rs.getString("username"));
+                vendedor.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
+                vendedor.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_de_documento"))));
+                vendedor.setNumDeDocumento(rs.getString("numero_de_documento"));
+                vendedor.setNombre(rs.getString("nombre"));
+                vendedor.setApellido(rs.getString("apellido"));
+                vendedor.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
+                vendedor.setTelefono(rs.getString("telefono"));
+                vendedor.setDireccion(rs.getString("direccion"));
+                vendedor.setEmail(rs.getString("email"));
+                vendedores.add(vendedor);
+            }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        return vendedores;
+    }
 }

@@ -123,5 +123,39 @@ public class AdministradorMySQL implements AdministradorDAO {
         }
         return administradores;
     }
+
+    @Override
+    public ArrayList<Administrador> listarPorDocumentoNombre(String docNombre) {
+        ArrayList<Administrador> administradores = new ArrayList<>();
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("call LISTAR_ADMINISTRADORES_X_DOCUMENTO_NOMBRE(?)");
+            cs.setString("_doc_nombre",docNombre);
+            rs = cs.executeQuery();
+            while(rs.next()){
+                Administrador administrador = new Administrador();
+                administrador.setIdUsuario(rs.getInt("id_usuario"));
+                administrador.setArea(rs.getString("area"));
+                administrador.setPassword(rs.getString("password"));
+                administrador.setUsername(rs.getString("username"));
+                administrador.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
+                administrador.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_de_documento"))));
+                administrador.setNumDeDocumento(rs.getString("numero_de_documento"));
+                administrador.setNombre(rs.getString("nombre"));
+                administrador.setApellido(rs.getString("apellido"));
+                administrador.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
+                administrador.setTelefono(rs.getString("telefono"));
+                administrador.setDireccion(rs.getString("direccion"));
+                administrador.setEmail(rs.getString("email"));
+                administradores.add(administrador);
+            }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{rs.close();}catch(Exception ex){System.out.println(ex.getMessage());}
+            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
+        }
+        return administradores;
+    }
     
 }

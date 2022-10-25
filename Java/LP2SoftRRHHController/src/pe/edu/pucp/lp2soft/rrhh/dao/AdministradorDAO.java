@@ -10,5 +10,5 @@ public interface AdministradorDAO {
     public int modificar(Administrador administrador);
     public int eliminar(int id_usuario,String area);
     public ArrayList<Administrador> listarTodos();
-    
+    public ArrayList<Administrador> listarPorDocumentoNombre(String docNombre);
 }

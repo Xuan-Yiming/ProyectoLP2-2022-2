@@ -10,4 +10,5 @@ public interface SupervisorDeAlmacenDAO {
     public int modificar(SupervisorDeAlmacen supervisorAlmacen);
     public int eliminar(int id_usuario,int id_almacen);
     public ArrayList<SupervisorDeAlmacen> listarTodos();
+    public ArrayList<SupervisorDeAlmacen> listarPorDocumentoNombre(String docNombre);
 }

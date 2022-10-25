@@ -131,5 +131,41 @@ public class SupervisorDeAlmacenMySQL implements SupervisorDeAlmacenDAO  {
         }
         return supervisoresAlmacen;
     }
+
+    @Override
+    public ArrayList<SupervisorDeAlmacen> listarPorDocumentoNombre(String docNombre) {
+        ArrayList<SupervisorDeAlmacen> supervisoresAlmacen = new ArrayList<>();
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("call LISTAR_SUPERVISORES_DE_ALMACEN_X_DOCUMENTO_NOMBRE(?)");
+            cs.setString("_doc_nombre",docNombre);
+            rs = cs.executeQuery();
+            while(rs.next()){
+                SupervisorDeAlmacen supervisorAlmacen = new SupervisorDeAlmacen();
+                supervisorAlmacen.setIdUsuario(rs.getInt("id_usuario"));
+                supervisorAlmacen.setAlmacen(new Almacen());
+                supervisorAlmacen.getAlmacen().setId(rs.getInt("fid_almacen"));
+                supervisorAlmacen.setPassword(rs.getString("password"));
+                supervisorAlmacen.setUsername(rs.getString("username"));
+                supervisorAlmacen.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
+                supervisorAlmacen.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_de_documento"))));
+                supervisorAlmacen.setNumDeDocumento(rs.getString("numero_de_documento"));
+                supervisorAlmacen.setNombre(rs.getString("nombre"));
+                supervisorAlmacen.setApellido(rs.getString("apellido"));
+                supervisorAlmacen.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
+                supervisorAlmacen.setTelefono(rs.getString("telefono"));
+                supervisorAlmacen.setDireccion(rs.getString("direccion"));
+                supervisorAlmacen.setEmail(rs.getString("email"));
+                supervisoresAlmacen.add(supervisorAlmacen);
+            }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        return supervisoresAlmacen;
+    }
     
 }
