@@ -1,1 +1,4 @@
 ~/Java
+*.jar
+*.class
+*.vsidx
