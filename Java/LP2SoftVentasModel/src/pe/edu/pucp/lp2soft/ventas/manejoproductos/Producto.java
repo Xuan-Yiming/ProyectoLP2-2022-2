@@ -14,6 +14,7 @@ public class Producto {
     private Date fechaDeIngreso;
     private Boolean devuelto;
     private Boolean activo;
+    private int cantidad;
     
     
     public Producto(int idAlmacen,String codigoLote, String nombre, double costo, double precio, Date fechaDeIngreso) {
@@ -101,6 +102,14 @@ public class Producto {
 
     public void setDevuelto(boolean devuelto) {
         this.devuelto = devuelto;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
     
     

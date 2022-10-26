@@ -97,5 +97,32 @@ public class EmpresaMySQL implements EmpresaDAO{
         }
         return empresas;
     }
+
+    @Override
+    public ArrayList<Empresa> listarPorRUCNombre(String rucNombre) {
+        ArrayList<Empresa> empresas = new ArrayList<>();
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("call LISTAR_EMPRESAS_X_RUC_NOMBRE(?)");
+            cs.setString("_RUC_nombre",rucNombre);
+            rs = cs.executeQuery();
+            while(rs.next()){
+                Empresa empresa = new Empresa();
+                empresa.setIdCliente(rs.getInt("id_empresa"));
+                empresa.setCategoria(rs.getString("categoria"));
+                empresa.setRUC(rs.getString("RUC"));
+                empresa.setRazonSocial(rs.getString("razon_social"));
+                empresa.setDireccion(rs.getString("direccion"));
+                empresas.add(empresa);
+            }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        return empresas;
+    }
     
 }

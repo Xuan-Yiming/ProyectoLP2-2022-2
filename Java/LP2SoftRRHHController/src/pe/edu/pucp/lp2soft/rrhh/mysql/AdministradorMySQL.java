@@ -153,7 +153,6 @@ public class AdministradorMySQL implements AdministradorDAO {
             System.out.println(ex.getMessage());
         }finally{
             try{rs.close();}catch(Exception ex){System.out.println(ex.getMessage());}
-            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
         }
         return administradores;
     }

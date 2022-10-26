@@ -102,6 +102,26 @@ public class RRHHWS {
         }
         return resultado;
     }
+    @WebMethod(operationName = "listarVendedores")
+    public ArrayList<Vendedor> listarVendedores() {
+        ArrayList<Vendedor> vendedores = null;
+        try{
+            vendedores = daoVendedor.listarTodos();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return vendedores;
+    }
+    @WebMethod(operationName = "listarVendedoresPorDocumentoNombre")
+    public ArrayList<Vendedor> listarVendedoresPorDocumentoNombre(@WebParam(name = "docNombre") String docNombre) {
+        ArrayList<Vendedor> vendedores = null;
+        try{
+            vendedores = daoVendedor.listarPorDocumentoNombre(docNombre);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return vendedores;
+    }
     /*Gestionar Supervisor de almacen*/
     @WebMethod(operationName = "insertarSupervisor")
     public int insertarSupervisor(@WebParam(name = "supervisor") SupervisorDeAlmacen supervisor) {
@@ -133,5 +153,24 @@ public class RRHHWS {
         }
         return resultado;
     }
-    
+    @WebMethod(operationName = "listarSupervisores")
+    public ArrayList<SupervisorDeAlmacen> listarSupervisores() {
+        ArrayList<SupervisorDeAlmacen> supervisores = null;
+        try{
+            supervisores = daoSupervisor.listarTodos();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return supervisores;
+    }
+    @WebMethod(operationName = "listarSupervisoresPorDocumentoNombre")
+    public ArrayList<SupervisorDeAlmacen> listarSupervisoresPorDocumentoNombre(@WebParam(name = "docNombre") String docNombre) {
+        ArrayList<SupervisorDeAlmacen> supervisores = null;
+        try{
+            supervisores = daoSupervisor.listarPorDocumentoNombre(docNombre);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return supervisores;
+    }
 }

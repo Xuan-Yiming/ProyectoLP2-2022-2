@@ -8,4 +8,5 @@ public interface PersonaNaturalDAO {
     int modificar(PersonaNatural personaNatural);
     int eliminar(int idCliente);    //DEVUELVE
     ArrayList<PersonaNatural> listarTodas();
+    ArrayList<PersonaNatural> listarPorDocumentoNombre(String docNombre);
 }

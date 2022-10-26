@@ -112,5 +112,37 @@ public class PersonaNaturalMySQL implements PersonaNaturalDAO{
         }
         return personasNaturales;
     }
+
+    @Override
+    public ArrayList<PersonaNatural> listarPorDocumentoNombre(String docNombre) {
+        ArrayList<PersonaNatural> personasNaturales = new ArrayList<>();
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("call LISTAR_PERSONAS_NATURALES_X_DOCUMENTO_NOMBRE(?)");
+            cs.setString("_doc_nombre",docNombre);
+            rs = cs.executeQuery();
+            while(rs.next()){
+                PersonaNatural personaNatural = new PersonaNatural();
+                personaNatural.setIdCliente(rs.getInt("id_persona_natural"));
+                personaNatural.setCategoria(rs.getString("categoria"));
+                personaNatural.setNumDeDocumento(rs.getString("numero_de_documento"));
+                personaNatural.setTipoDeDocumento(TipoDeDocumento.valueOf(rs.getString("tipo_de_documento")));
+                personaNatural.setNombre(rs.getString("nombre"));
+                personaNatural.setApellido(rs.getString("apellido"));
+                personaNatural.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
+                personaNatural.setTelefono(rs.getString("telefono"));
+                personaNatural.setDireccion(rs.getString("direccion"));
+                personaNatural.setEmail(rs.getString("email"));
+                personasNaturales.add(personaNatural);
+            }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        return personasNaturales;
+    }
     
 }

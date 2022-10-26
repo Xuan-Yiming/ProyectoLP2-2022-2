@@ -51,8 +51,6 @@ public class AlmacenMySQL implements AlmacenDAO {
             try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
         }
         return resultado;
-
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -69,7 +67,6 @@ public class AlmacenMySQL implements AlmacenDAO {
         }finally{
             try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
         }
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         return resultado;
     }
 
@@ -93,7 +90,28 @@ public class AlmacenMySQL implements AlmacenDAO {
             try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
         }
         return almacenes;
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
+    @Override
+    public ArrayList<Almacen> listarPorNombre(String nombre) {
+        ArrayList<Almacen> almacenes = new ArrayList<>();
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("{call LISTAR_ALMACENES_X_NOMBRE(?)}");
+            cs.setString("_nombre",nombre);
+            rs = cs.executeQuery();
+            while(rs.next()){
+                Almacen almacen = new Almacen();
+                almacen.setId(rs.getInt("id_almacen"));
+                almacen.setNombre(rs.getString("nombre"));
+                almacen.setDireccion(rs.getString("direccion"));
+                almacenes.add(almacen);
+            }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
+        }
+        return almacenes;
+    }
 }

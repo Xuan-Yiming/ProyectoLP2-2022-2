@@ -8,4 +8,5 @@ public interface EmpresaDAO {
     int modificar(Empresa empresa);
     int eliminar(int idCliente);    //DEVUELVE
     ArrayList<Empresa> listarTodas();
+    ArrayList<Empresa> listarPorRUCNombre(String rucNombre);
 }
