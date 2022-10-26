@@ -46,17 +46,72 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmInfoVenta.cs">
+    <Compile Include="Almacen\frmAlmacen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmInfoVenta.Designer.cs">
+    <Compile Include="Almacen\frmAlmacen.Designer.cs">
+      <DependentUpon>frmAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\frmBuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\frmBuscarCliente.Designer.cs">
+      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\frmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\frmClientes.Designer.cs">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\frmEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\frmEmpresa.Designer.cs">
+      <DependentUpon>frmEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\frmInfoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\frmInfoCliente.Designer.cs">
+      <DependentUpon>frmInfoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\frmPersonaNatural.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\frmPersonaNatural.Designer.cs">
+      <DependentUpon>frmPersonaNatural.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Estado.cs" />
+    <Compile Include="Usuario\frmEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuario\frmEmpleados.Designer.cs">
+      <DependentUpon>frmEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\frmBuscarVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Venta\frmBuscarVenta.Designer.cs">
+      <DependentUpon>frmBuscarVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\frmInfoVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Venta\frmInfoVenta.Designer.cs">
       <DependentUpon>frmInfoVenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmInicio.cs">
+    <Compile Include="frmIniciarSeccion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmInicio.Designer.cs">
-      <DependentUpon>frmInicio.cs</DependentUpon>
+    <Compile Include="frmIniciarSeccion.Designer.cs">
+      <DependentUpon>frmIniciarSeccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\frmVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Venta\frmVentas.Designer.cs">
+      <DependentUpon>frmVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -66,11 +121,35 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmInfoVenta.resx">
+    <EmbeddedResource Include="Cliente\frmBuscarCliente.resx">
+      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente\frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente\frmEmpresa.resx">
+      <DependentUpon>frmEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente\frmInfoCliente.resx">
+      <DependentUpon>frmInfoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente\frmPersonaNatural.resx">
+      <DependentUpon>frmPersonaNatural.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuario\frmEmpleados.resx">
+      <DependentUpon>frmEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Venta\frmBuscarVenta.resx">
+      <DependentUpon>frmBuscarVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Venta\frmInfoVenta.resx">
       <DependentUpon>frmInfoVenta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmInicio.resx">
-      <DependentUpon>frmInicio.cs</DependentUpon>
+    <EmbeddedResource Include="frmIniciarSeccion.resx">
+      <DependentUpon>frmIniciarSeccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Venta\frmVentas.resx">
+      <DependentUpon>frmVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
@@ -154,6 +233,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\multiply.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\square.and.pencil.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\person.badge.plus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

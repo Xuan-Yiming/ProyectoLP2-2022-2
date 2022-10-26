@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QingYunSoft
+namespace QingYunSoft.Cliente
 {
-    public partial class frmInicio : Form
+    public partial class frmEmpresa : Form
     {
-        public frmInicio()
+        public frmEmpresa()
         {
             InitializeComponent();
-        }
-
-        private void frmInicio_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -9,4 +9,12 @@ C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYun
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.csproj.CoreCompileInputs.cache
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.exe
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.pdb
-C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.frmInicio.resources
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.frmInfoVenta.resources
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.frmIniciarSeccion.resources
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Venta.frmBuscarVenta.resources
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.frmVentas.resources
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Cliente.frmClientes.resources
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Cliente.frmBuscarCliente.resources
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Cliente.frmInfoCliente.resources
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Cliente.frmEmpresa.resources
+C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Cliente.frmPersonaNatural.resources

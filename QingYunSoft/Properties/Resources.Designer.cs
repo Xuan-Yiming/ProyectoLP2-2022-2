@@ -213,6 +213,16 @@ namespace QingYunSoft.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap person_badge_plus {
+            get {
+                object obj = ResourceManager.GetObject("person.badge.plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap person_crop_circle_badge_plus {
             get {
                 object obj = ResourceManager.GetObject("person.crop.circle.badge.plus", resourceCulture);
@@ -236,6 +246,16 @@ namespace QingYunSoft.Properties {
         internal static System.Drawing.Bitmap rectangle_stack_person_crop {
             get {
                 object obj = ResourceManager.GetObject("rectangle.stack.person.crop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap square_and_pencil {
+            get {
+                object obj = ResourceManager.GetObject("square.and.pencil", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
