@@ -10,8 +10,11 @@ using System.Windows.Forms;
 
 namespace QingYunSoft.Usuario
 {
+
     public partial class frmEmpleados : Form
     {
+        private RRHHWS.RRHHWSClient daoRRHH;
+
         public frmEmpleados()
         {
             InitializeComponent();
