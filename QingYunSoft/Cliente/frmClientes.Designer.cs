@@ -72,7 +72,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel9.Location = new System.Drawing.Point(687, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel9.Padding = new System.Windows.Forms.Padding(5);
             this.panel9.Size = new System.Drawing.Size(40, 40);
             this.panel9.TabIndex = 1;
             // 
@@ -86,7 +86,7 @@
             this.btBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btBuscar.Location = new System.Drawing.Point(5, 5);
             this.btBuscar.Name = "btBuscar";
-            this.btBuscar.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.btBuscar.Padding = new System.Windows.Forms.Padding(10);
             this.btBuscar.Size = new System.Drawing.Size(30, 30);
             this.btBuscar.TabIndex = 1;
             this.btBuscar.UseVisualStyleBackColor = true;
@@ -201,7 +201,7 @@
             this.panel2.Controls.Add(this.btNuevoCiente);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(33, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
             this.panel2.Size = new System.Drawing.Size(107, 129);
@@ -215,7 +215,7 @@
             this.btNuevoCiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btNuevoCiente.Image = global::QingYunSoft.Properties.Resources.person_badge_plus;
             this.btNuevoCiente.Location = new System.Drawing.Point(7, 13);
-            this.btNuevoCiente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btNuevoCiente.Margin = new System.Windows.Forms.Padding(2);
             this.btNuevoCiente.Name = "btNuevoCiente";
             this.btNuevoCiente.Size = new System.Drawing.Size(73, 103);
             this.btNuevoCiente.TabIndex = 0;
@@ -240,7 +240,7 @@
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(33, 0, 33, 0);
             this.panel1.Size = new System.Drawing.Size(827, 130);

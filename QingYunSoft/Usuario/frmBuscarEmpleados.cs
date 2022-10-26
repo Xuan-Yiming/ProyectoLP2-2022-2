@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace QingYunSoft.Usuario
 {
-    public partial class frmEmpleados : Form
+    public partial class frmBuscarEmpleados : Form
     {
-        public frmEmpleados()
+        public frmBuscarEmpleados()
         {
             InitializeComponent();
-        }
-
-        private void btNuevoUsuario_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

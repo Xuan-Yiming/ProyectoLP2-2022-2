@@ -44,5 +44,10 @@ namespace QingYunSoft
         {
             _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmVentas(_frmPrincipal));
         }
+
+        private void btEditarGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

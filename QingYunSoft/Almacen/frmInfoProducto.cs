@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QingYunSoft.Usuario
+namespace QingYunSoft.Almacen
 {
-    public partial class frmEmpleados : Form
+    public partial class frmInfoProducto : Form
     {
-        public frmEmpleados()
+        public frmInfoProducto()
         {
             InitializeComponent();
-        }
-
-        private void btNuevoUsuario_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

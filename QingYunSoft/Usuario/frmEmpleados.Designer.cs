@@ -31,6 +31,11 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nmrDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btBuscar = new System.Windows.Forms.Button();
@@ -41,11 +46,6 @@
             this.btNuevoUsuario = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nmrDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
@@ -81,7 +81,7 @@
             // 
             this.dgvVentas.AllowUserToAddRows = false;
             this.dgvVentas.AllowUserToDeleteRows = false;
-            this.dgvVentas.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvVentas.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -100,6 +100,45 @@
             this.dgvVentas.RowHeadersWidth = 62;
             this.dgvVentas.Size = new System.Drawing.Size(727, 398);
             this.dgvVentas.TabIndex = 1;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.MinimumWidth = 8;
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            this.nombre.Width = 200;
+            // 
+            // cargo
+            // 
+            this.cargo.HeaderText = "Cargo";
+            this.cargo.MinimumWidth = 8;
+            this.cargo.Name = "cargo";
+            this.cargo.ReadOnly = true;
+            this.cargo.Width = 80;
+            // 
+            // tipoDocumento
+            // 
+            this.tipoDocumento.HeaderText = "Tipo de documento";
+            this.tipoDocumento.MinimumWidth = 8;
+            this.tipoDocumento.Name = "tipoDocumento";
+            this.tipoDocumento.ReadOnly = true;
+            this.tipoDocumento.Width = 130;
+            // 
+            // nmrDocumento
+            // 
+            this.nmrDocumento.HeaderText = "Numero de documento";
+            this.nmrDocumento.MinimumWidth = 8;
+            this.nmrDocumento.Name = "nmrDocumento";
+            this.nmrDocumento.ReadOnly = true;
+            this.nmrDocumento.Width = 150;
+            // 
+            // fechaIngreso
+            // 
+            this.fechaIngreso.HeaderText = "Fecha ingreso";
+            this.fechaIngreso.MinimumWidth = 8;
+            this.fechaIngreso.Name = "fechaIngreso";
+            this.fechaIngreso.ReadOnly = true;
             // 
             // panel7
             // 
@@ -196,6 +235,7 @@
             this.btNuevoUsuario.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btNuevoUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btNuevoUsuario.UseVisualStyleBackColor = false;
+            this.btNuevoUsuario.Click += new System.EventHandler(this.btNuevoUsuario_Click);
             // 
             // panel5
             // 
@@ -215,49 +255,11 @@
             this.panel3.Size = new System.Drawing.Size(827, 458);
             this.panel3.TabIndex = 7;
             // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.MinimumWidth = 8;
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            this.nombre.Width = 200;
-            // 
-            // cargo
-            // 
-            this.cargo.HeaderText = "Cargo";
-            this.cargo.MinimumWidth = 8;
-            this.cargo.Name = "cargo";
-            this.cargo.ReadOnly = true;
-            this.cargo.Width = 80;
-            // 
-            // tipoDocumento
-            // 
-            this.tipoDocumento.HeaderText = "Tipo de documento";
-            this.tipoDocumento.MinimumWidth = 8;
-            this.tipoDocumento.Name = "tipoDocumento";
-            this.tipoDocumento.ReadOnly = true;
-            this.tipoDocumento.Width = 130;
-            // 
-            // nmrDocumento
-            // 
-            this.nmrDocumento.HeaderText = "Numero de documento";
-            this.nmrDocumento.MinimumWidth = 8;
-            this.nmrDocumento.Name = "nmrDocumento";
-            this.nmrDocumento.ReadOnly = true;
-            this.nmrDocumento.Width = 150;
-            // 
-            // fechaIngreso
-            // 
-            this.fechaIngreso.HeaderText = "Fecha ingreso";
-            this.fechaIngreso.MinimumWidth = 8;
-            this.fechaIngreso.Name = "fechaIngreso";
-            this.fechaIngreso.ReadOnly = true;
-            // 
             // frmEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(827, 588);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);

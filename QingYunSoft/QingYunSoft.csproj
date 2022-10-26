@@ -52,6 +52,30 @@
     <Compile Include="Almacen\frmAlmacen.Designer.cs">
       <DependentUpon>frmAlmacen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Almacen\frmBuscarAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\frmBuscarAlmacen.Designer.cs">
+      <DependentUpon>frmBuscarAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\frmBuscarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\frmBuscarProducto.Designer.cs">
+      <DependentUpon>frmBuscarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\frmInfoAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\frmInfoAlmacen.Designer.cs">
+      <DependentUpon>frmInfoAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\frmInfoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\frmInfoProducto.Designer.cs">
+      <DependentUpon>frmInfoProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cliente\frmBuscarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,11 +107,23 @@
       <DependentUpon>frmPersonaNatural.cs</DependentUpon>
     </Compile>
     <Compile Include="Estado.cs" />
+    <Compile Include="Usuario\frmBuscarEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuario\frmBuscarEmpleados.Designer.cs">
+      <DependentUpon>frmBuscarEmpleados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuario\frmEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Usuario\frmEmpleados.Designer.cs">
       <DependentUpon>frmEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario\frmInfoEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuario\frmInfoEmpleado.Designer.cs">
+      <DependentUpon>frmInfoEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="Venta\frmBuscarVenta.cs">
       <SubType>Form</SubType>
@@ -121,6 +157,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Almacen\frmAlmacen.resx">
+      <DependentUpon>frmAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\frmBuscarAlmacen.resx">
+      <DependentUpon>frmBuscarAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\frmBuscarProducto.resx">
+      <DependentUpon>frmBuscarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\frmInfoAlmacen.resx">
+      <DependentUpon>frmInfoAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\frmInfoProducto.resx">
+      <DependentUpon>frmInfoProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cliente\frmBuscarCliente.resx">
       <DependentUpon>frmBuscarCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,8 +187,14 @@
     <EmbeddedResource Include="Cliente\frmPersonaNatural.resx">
       <DependentUpon>frmPersonaNatural.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Usuario\frmBuscarEmpleados.resx">
+      <DependentUpon>frmBuscarEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Usuario\frmEmpleados.resx">
       <DependentUpon>frmEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuario\frmInfoEmpleado.resx">
+      <DependentUpon>frmInfoEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Venta\frmBuscarVenta.resx">
       <DependentUpon>frmBuscarVenta.cs</DependentUpon>
@@ -237,7 +294,9 @@
   <ItemGroup>
     <None Include="Resources\square.and.pencil.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\person.badge.plus.png" />
   </ItemGroup>
