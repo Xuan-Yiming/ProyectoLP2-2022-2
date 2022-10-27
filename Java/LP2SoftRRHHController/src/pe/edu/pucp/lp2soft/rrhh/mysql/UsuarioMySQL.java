@@ -6,8 +6,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.rrhh.dao.UsuarioDAO;
+import pe.edu.pucp.lp2soft.rrhh.model.Administrador;
+import pe.edu.pucp.lp2soft.rrhh.model.SupervisorDeAlmacen;
 import pe.edu.pucp.lp2soft.rrhh.model.TipoDeDocumento;
 import pe.edu.pucp.lp2soft.rrhh.model.Usuario;
+import pe.edu.pucp.lp2soft.rrhh.model.Vendedor;
 
 
 public class UsuarioMySQL implements UsuarioDAO {
@@ -123,8 +126,9 @@ public class UsuarioMySQL implements UsuarioDAO {
         return usuarios;
     }
     
-    public int verificar(Usuario cuentaUsuario) {
-        int resultado = 0;
+    @Override
+    public Usuario verificar(Usuario cuentaUsuario) {
+        
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call VERIFICAR_CUENTA_USUARIO(?,?)}");
@@ -132,14 +136,78 @@ public class UsuarioMySQL implements UsuarioDAO {
             cs.setString("_password", cuentaUsuario.getPassword());
             rs = cs.executeQuery();
             rs.next();
-            resultado = rs.getInt("id_cuenta_usuario");
+            if(rs.getString("cantidad_ventas")!=null){
+                Vendedor vendedor = new Vendedor();
+                vendedor.setIdUsuario(rs.getInt("id_usuario"));
+                vendedor.setUsername(rs.getString("username"));
+                vendedor.setPassword(rs.getString("password"));
+                vendedor.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
+                vendedor.setIdPersona(rs.getInt("id_persona"));
+                vendedor.setNumDeDocumento(rs.getString("numero_de_documento"));
+                
+                vendedor.setNombre(rs.getString("nombre"));
+                vendedor.setApellido(rs.getString("apellido"));
+                vendedor.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
+                vendedor.setTelefono(rs.getString("telefono"));
+                vendedor.setDireccion(rs.getString("direccion"));
+                vendedor.setEmail(rs.getString("email"));
+                vendedor.setActivo(true);
+                
+                vendedor.setCantidadVentas(rs.getInt("cantidad_ventas"));
+                
+                return vendedor;
+            }
+            if(rs.getString("fid_almacen")!=null){
+                SupervisorDeAlmacen supervisor = new SupervisorDeAlmacen();
+                
+                supervisor.setIdUsuario(rs.getInt("id_usuario"));
+                supervisor.setUsername(rs.getString("username"));
+                supervisor.setPassword(rs.getString("password"));
+                supervisor.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
+                supervisor.setIdPersona(rs.getInt("id_persona"));
+                supervisor.setNumDeDocumento(rs.getString("numero_de_documento"));
+                
+                supervisor.setNombre(rs.getString("nombre"));
+                supervisor.setApellido(rs.getString("apellido"));
+                supervisor.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
+                supervisor.setTelefono(rs.getString("telefono"));
+                supervisor.setDireccion(rs.getString("direccion"));
+                supervisor.setEmail(rs.getString("email"));
+                supervisor.setActivo(true);
+   
+                return supervisor;
+            }
+            if(rs.getString("area")!=null){
+                Administrador administrador = new Administrador();
+                
+                administrador.setIdUsuario(rs.getInt("id_usuario"));
+                administrador.setUsername(rs.getString("username"));
+                administrador.setPassword(rs.getString("password"));
+                administrador.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
+                administrador.setIdPersona(rs.getInt("id_persona"));
+                administrador.setNumDeDocumento(rs.getString("numero_de_documento"));
+                
+                administrador.setNombre(rs.getString("nombre"));
+                administrador.setApellido(rs.getString("apellido"));
+                administrador.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
+                administrador.setTelefono(rs.getString("telefono"));
+                administrador.setDireccion(rs.getString("direccion"));
+                administrador.setEmail(rs.getString("email"));
+                administrador.setActivo(true);
+                
+                administrador.setArea(rs.getString("area"));
+                
+                return administrador;
+            }
+            
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
             try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
         }
-        return resultado;
+        return null;
     }
+
     
     
 }
