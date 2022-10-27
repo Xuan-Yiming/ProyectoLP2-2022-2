@@ -1,8 +1,8 @@
 package pe.edu.pucp.lp2soft.ventas.ventaspagos.dao;
-
 import java.util.ArrayList;
+import java.util.Date;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
-import java.uti.Date;
+
 
 public interface OrdenDeCompraDAO {
     public int insertar(OrdenDeCompra ordenDeCompra);

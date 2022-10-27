@@ -180,15 +180,39 @@ public class RRHHWS {
     
     //Iniciar sesion
     @WebMethod(operationName = "verificarCuentaUsuario")
-    public int verificarCuentaUsuario(
+    public Usuario verificarCuentaUsuario(
             @WebParam(name = "cuentaUsuario")
             Usuario cuentaUsuario) {
-        int resultado = 0;
+        
         try{
-            resultado = daoUsuario.verificar(cuentaUsuario);
+             Usuario usuario = daoUsuario.verificar(cuentaUsuario);
+             
+             return usuario;
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }
-        return resultado;
+        
+        return null;
+    }
+    @WebMethod(operationName = "listarUsuarios")
+    public ArrayList<Usuario> listarUsuarios(){
+        ArrayList<Usuario> usuarios =  null;
+        try{
+            usuarios = daoUsuario.listarUsuarios();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return usuarios;
+    }
+    
+    @WebMethod(operationName = "listarPorDocumentoNombre")
+    public ArrayList<Usuario> listarPorDocumentoNombre(@WebParam(name = "docNombre") String docNombre) {
+        ArrayList<Usuario> usuarios = null;
+        try{
+            usuarios = daoUsuario.listarPorDocumentoNombre(docNombre);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return usuarios;
     }
 }

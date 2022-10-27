@@ -27,7 +27,8 @@ public class VentasWS {
     ProductoDAO daoProducto = new ProductoMySQL();
     AlmacenDAO daoAlmacen = new AlmacenMySQL();
     TerminoDePagoDAO daoTerminoPago = new TerminoDePagoMySQL();
-    
+    PedidoDAO daoPedido = new PedidoMySQL();
+    OrdenDeCompraDAO daoOrdenDeCompra = new OrdenDeCompraMySQL();
     /*Gestionar Productos*/
     @WebMethod(operationName = "insertarProducto")
     public int insertarProducto(@WebParam(name = "producto") Producto producto) {
