@@ -8,6 +8,6 @@ namespace QingYunSoft
 {
     public enum Estado
     {
-        Nuevo, Modificar
+        Nuevo, Modificar, Resultado
     }
 }

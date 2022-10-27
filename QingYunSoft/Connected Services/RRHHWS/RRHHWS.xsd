@@ -30,6 +30,8 @@
   <xs:element name="modificarSupervisorResponse" type="tns:modificarSupervisorResponse" />
   <xs:element name="modificarVendedor" type="tns:modificarVendedor" />
   <xs:element name="modificarVendedorResponse" type="tns:modificarVendedorResponse" />
+  <xs:element name="verificarCuentaUsuario" type="tns:verificarCuentaUsuario" />
+  <xs:element name="verificarCuentaUsuarioResponse" type="tns:verificarCuentaUsuarioResponse" />
   <xs:complexType name="insertarAdministrador">
     <xs:sequence>
       <xs:element minOccurs="0" name="administrador" type="tns:administrador" />
@@ -285,17 +287,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:supervisorDeAlmacen" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="eliminarSupervisor">
-    <xs:sequence>
-      <xs:element name="supervisor" type="xs:int" />
-      <xs:element name="almacen" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarSupervisorResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="eliminarVendedor">
     <xs:sequence>
       <xs:element name="vendedor" type="xs:int" />
@@ -303,6 +294,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarVendedorResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarSupervisor">
+    <xs:sequence>
+      <xs:element name="supervisor" type="xs:int" />
+      <xs:element name="almacen" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarSupervisorResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
@@ -323,6 +325,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarVendedorResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verificarCuentaUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cuentaUsuario" type="tns:usuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verificarCuentaUsuarioResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>

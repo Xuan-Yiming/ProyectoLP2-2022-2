@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="9eef84b1-f44a-443a-bf48-49e837d83be0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="f1face92-d443-4dbd-a293-5b8f9d2963f6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8080/LP2SoftWebServices/RRHHWS?WSDL" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://3.84.119.115:8080/LP2SoftWebServices/RRHHWS?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="RRHHWS.wsdl" MetadataType="Wsdl" ID="e31a6278-c99a-44ad-bcc1-dec38dca1fd2" SourceId="1" SourceUrl="http://localhost:8080/LP2SoftWebServices/RRHHWS?WSDL" />
-    <MetadataFile FileName="RRHHWS.xsd" MetadataType="Schema" ID="be66fecc-97d9-416e-8aa8-2c2c6a0256f4" SourceId="1" SourceUrl="http://localhost:8080/LP2SoftWebServices/RRHHWS?xsd=1" />
+    <MetadataFile FileName="RRHHWS.wsdl" MetadataType="Wsdl" ID="c841679f-8cba-4abe-90ef-3ba8b4d837c0" SourceId="1" SourceUrl="http://3.84.119.115:8080/LP2SoftWebServices/RRHHWS?WSDL" />
+    <MetadataFile FileName="RRHHWS.xsd" MetadataType="Schema" ID="a5648e8d-6ff5-44b6-8d66-98770f70d4ae" SourceId="1" SourceUrl="http://3.84.119.115:8080/LP2SoftWebServices/RRHHWS?xsd=1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

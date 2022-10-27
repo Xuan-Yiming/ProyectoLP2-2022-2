@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="b2b875a6-bed0-4264-92e0-744b1ef65b75" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="edc0a23e-60d0-4cf1-91a8-83fd737671cd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8080/LP2SoftWebServices/GestClientesWS?WSDL" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://3.84.119.115:8080/LP2SoftWebServices/GestClientesWS?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="GestClientesWS.wsdl" MetadataType="Wsdl" ID="4533c687-58c7-424e-9265-6195a38d21b8" SourceId="1" SourceUrl="http://localhost:8080/LP2SoftWebServices/GestClientesWS?WSDL" />
-    <MetadataFile FileName="GestClientesWS.xsd" MetadataType="Schema" ID="e1ae8414-b37a-4fbc-89a6-f1c14edf727a" SourceId="1" SourceUrl="http://localhost:8080/LP2SoftWebServices/GestClientesWS?xsd=1" />
+    <MetadataFile FileName="GestClientesWS.xsd" MetadataType="Schema" ID="b242dc3c-bcbe-453e-a583-4339f2e57f4d" SourceId="1" SourceUrl="http://3.84.119.115:8080/LP2SoftWebServices/GestClientesWS?xsd=1" />
+    <MetadataFile FileName="GestClientesWS.wsdl" MetadataType="Wsdl" ID="c52929ed-1cbd-4233-ab7b-6ef9946ebdb9" SourceId="1" SourceUrl="http://3.84.119.115:8080/LP2SoftWebServices/GestClientesWS?WSDL" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

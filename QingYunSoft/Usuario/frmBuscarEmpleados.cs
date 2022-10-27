@@ -53,7 +53,7 @@ namespace QingYunSoft.Usuario
             dgvUsuarios.Rows[e.RowIndex].Cells[4].Value = usuario.fechaIngreso;
             if (usuario is RRHHWS.supervisorDeAlmacen)
             {
-                dgvUsuarios.Rows[e.RowIndex].Cells[1].Value = "Supervisor de almacen";
+                dgvUsuarios.Rows[e.RowIndex].Cells[1].Value = "Sup. almacen";
 
             }
             else if(usuario is RRHHWS.vendedor)
@@ -72,8 +72,6 @@ namespace QingYunSoft.Usuario
             {
                 usuarioSeleccionado = (RRHHWS.usuario)dgvUsuarios.CurrentRow.DataBoundItem;
                 this.DialogResult = DialogResult.OK;
-                frmInfoEmpleado _frmInfoEmpleados = new frmInfoEmpleado(_frmPrincipal, Estado.Nuevo);
-                _frmPrincipal.mostrarFormularioEnPnlPrincipal(_frmInfoEmpleados);
             }
         }
     }
