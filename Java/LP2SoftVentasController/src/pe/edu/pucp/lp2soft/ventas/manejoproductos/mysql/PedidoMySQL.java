@@ -95,5 +95,30 @@ public class PedidoMySQL implements PedidoDAO {
         return pedidos;
         // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+	
+	@Override
+    public ArrayList<Pedido> listarPorOrdenDeCompra(int idOrdenDeCompra) {
+        ArrayList<Pedido> pedidos = new ArrayList<>();
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("{call LISTAR_PEDIDOS_X_ORDEN_DE_COMPRA(?)}");
+            cs.setInt("_id_orden_de_compra",idOrdenDeCompra);
+            rs = cs.executeQuery();
+            while(rs.next()){
+                Pedido pedido = new Pedido();
+                pedido.setId(rs.getInt("id_pedido"));
+                pedido.setIdProducto(rs.getInt("fid_producto"));
+                pedido.setIdOrdenDeCompra(rs.getInt("fid_orden_de_compra"));
+                pedido.setDescuento(rs.getDouble("descuento"));
+                pedidos.add(pedido);
+            }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
+        }
+        return pedidos;
+    }
+ 
+ 
 }

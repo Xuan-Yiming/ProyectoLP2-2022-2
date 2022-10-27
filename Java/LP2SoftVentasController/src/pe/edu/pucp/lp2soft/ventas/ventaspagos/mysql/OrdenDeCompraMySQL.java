@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.uti.Date;
 import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.FormaDeEntrega;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.Moneda;
@@ -135,5 +136,108 @@ public class OrdenDeCompraMySQL implements OrdenDeCompraDAO {
         return ordenes;
         // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+	
+	@Override
+    public ArrayList<OrdenDeCompra> listarPorCliente(int idCliente) {
+        ArrayList<OrdenDeCompra> ordenes = new ArrayList<>();
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("{call LISTAR_ORDENES_DE_COMPRA_X_CLIENTE(?)}");
+            cs.setInt("_id_cliente",idCliente);
+            rs = cs.executeQuery();
+            while(rs.next()){
+                OrdenDeCompra orden = new OrdenDeCompra();
+                orden.setId(rs.getInt("id_orden_de_compra"));
+                orden.setIdCliente(rs.getInt("fid_cliente"));
+                orden.setIdVendedor(rs.getInt("fid_vendedor"));
+                orden.setMonto(rs.getDouble("monto"));
+
+                Moneda moneda = new Moneda();
+                moneda.setId(rs.getInt("fid_moneda"));
+                orden.setMoneda(moneda);
+                orden.setDireccionDeEntrega(rs.getString("direccion_de_entrega"));
+                orden.setFormaDeEntrega(FormaDeEntrega.valueOf(rs.getString("forma_de_entrega")));
+                orden.setFechaDeCompra(rs.getDate("fecha_de_compra"));
+                orden.setFechaDeEntrega(rs.getDate("fecha_de_entrega"));
+                orden.setPagado(rs.getBoolean("pagado"));       
+                ordenes.add(orden);
+            }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
+        }
+        return ordenes;
+    }
+	
+	@Override
+    public ArrayList<OrdenDeCompra> listarPorFecha(Date fecha) {
+        ArrayList<OrdenDeCompra> ordenes = new ArrayList<>();
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("{call LISTAR_ORDENES_DE_COMPRA_X_FECHA(?)}");
+            cs.setDate("_fecha",fecha);
+            rs = cs.executeQuery();
+            while(rs.next()){
+                OrdenDeCompra orden = new OrdenDeCompra();
+                orden.setId(rs.getInt("id_orden_de_compra"));
+                orden.setIdCliente(rs.getInt("fid_cliente"));
+                orden.setIdVendedor(rs.getInt("fid_vendedor"));
+                orden.setMonto(rs.getDouble("monto"));
+
+                Moneda moneda = new Moneda();
+                moneda.setId(rs.getInt("fid_moneda"));
+                orden.setMoneda(moneda);
+                orden.setDireccionDeEntrega(rs.getString("direccion_de_entrega"));
+                orden.setFormaDeEntrega(FormaDeEntrega.valueOf(rs.getString("forma_de_entrega")));
+                orden.setFechaDeCompra(rs.getDate("fecha_de_compra"));
+                orden.setFechaDeEntrega(rs.getDate("fecha_de_entrega"));
+                orden.setPagado(rs.getBoolean("pagado"));       
+                ordenes.add(orden);
+            }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
+        }
+        return ordenes;
+    }
     
+	@Override
+    public ArrayList<OrdenDeCompra> listarUltimas50() {
+        ArrayList<OrdenDeCompra> ordenes = new ArrayList<>();
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("{call LISTAR_ORDENES_DE_COMPRA_ULTIMAS_50()}");
+            rs = cs.executeQuery();
+            while(rs.next()){
+                OrdenDeCompra orden = new OrdenDeCompra();
+                orden.setId(rs.getInt("id_orden_de_compra"));
+                orden.setIdCliente(rs.getInt("fid_cliente"));
+                orden.setIdVendedor(rs.getInt("fid_vendedor"));
+                orden.setMonto(rs.getDouble("monto"));
+
+                Moneda moneda = new Moneda();
+                moneda.setId(rs.getInt("fid_moneda"));
+                orden.setMoneda(moneda);
+                orden.setDireccionDeEntrega(rs.getString("direccion_de_entrega"));
+                orden.setFormaDeEntrega(FormaDeEntrega.valueOf(rs.getString("forma_de_entrega")));
+                orden.setFechaDeCompra(rs.getDate("fecha_de_compra"));
+                orden.setFechaDeEntrega(rs.getDate("fecha_de_entrega"));
+                orden.setPagado(rs.getBoolean("pagado"));       
+                ordenes.add(orden);
+            }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{
+                con.close();
+            }catch(Exception ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        return ordenes;
+        // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+	
 }
