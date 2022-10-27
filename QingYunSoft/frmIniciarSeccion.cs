@@ -13,6 +13,7 @@ namespace QingYunSoft
 {
     public partial class frmIniciarSeccion : Form
     {
+        //round border
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -23,26 +24,22 @@ namespace QingYunSoft
             int nWidthEllipse, // height of ellipse
             int nHeightEllipse // width of ellipse
         );
-
+        
+        //out drop shadow
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         private static extern void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
-
         [DllImport("dwmapi.dll")]
         public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarInset);
-
         [DllImport("dwmapi.dll")]
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
-
         [DllImport("dwmapi.dll")]
         public static extern int DwmIsCompositionEnabled(ref int pfEnabled);
-
         private bool m_aeroEnabled;                     // variables for box shadow
         private const int CS_DROPSHADOW = 0x00020000;
         private const int WM_NCPAINT = 0x0085;
         private const int WM_ACTIVATEAPP = 0x001C;
-
         public struct MARGINS                           // struct for box shadow
         {
             public int leftWidth;
@@ -50,11 +47,9 @@ namespace QingYunSoft
             public int topHeight;
             public int bottomHeight;
         }
-
         private const int WM_NCHITTEST = 0x84;          // variables for dragging the form
         private const int HTCLIENT = 0x1;
         private const int HTCAPTION = 0x2;
-
         protected override CreateParams CreateParams
         {
             get
@@ -68,7 +63,6 @@ namespace QingYunSoft
                 return cp;
             }
         }
-
         private bool CheckAeroEnabled()
         {
             if (Environment.OSVersion.Version.Major >= 6)
@@ -79,7 +73,6 @@ namespace QingYunSoft
             }
             return false;
         }
-
         protected override void WndProc(ref Message m)
         {
             switch (m.Msg)
@@ -109,21 +102,30 @@ namespace QingYunSoft
                 m.Result = (IntPtr)HTCAPTION;
 
         }
+        //out drop shadow done
+
+        private RRHHWS.usuario _usuario;
+
         public frmIniciarSeccion()
         {
             InitializeComponent();
+            this.CenterToScreen();
             //round form border
             this.FormBorderStyle = FormBorderStyle.None;
             this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
 
             //
 
-            this.CenterToScreen();
+            this._usuario = new RRHHWS.administrador();
+            this._usuario.nombre = "Jarumy";
         }
 
         private void btIngresar_Click(object sender, EventArgs e)
         {
-            frmPrincipal _frmPrincipal = new frmPrincipal();
+
+            
+            
+            frmPrincipal _frmPrincipal = new frmPrincipal(this._usuario);
             this.Hide();
             _frmPrincipal.ShowDialog();
             if(_frmPrincipal.DialogResult == DialogResult.Cancel)

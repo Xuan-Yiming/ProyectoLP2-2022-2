@@ -214,7 +214,7 @@
             this.dgvVentas.RowHeadersWidth = 62;
             this.dgvVentas.Size = new System.Drawing.Size(727, 398);
             this.dgvVentas.TabIndex = 1;
-            this.dgvVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellContentClick);
+            this.dgvVentas.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellContentDoubleClick);
             // 
             // ID
             // 
@@ -254,7 +254,6 @@
             this.monto.MinimumWidth = 8;
             this.monto.Name = "monto";
             this.monto.ReadOnly = true;
-            this.monto.Width = 150;
             // 
             // anulado
             // 
@@ -331,7 +330,6 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmVentas";
-            this.Load += new System.EventHandler(this.frmInicio_Load);
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

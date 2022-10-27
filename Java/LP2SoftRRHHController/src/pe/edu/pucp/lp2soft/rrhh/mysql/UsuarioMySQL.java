@@ -123,4 +123,23 @@ public class UsuarioMySQL implements UsuarioDAO {
         return usuarios;
     }
     
+    public int verificar(Usuario cuentaUsuario) {
+        int resultado = 0;
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("{call VERIFICAR_CUENTA_USUARIO(?,?)}");
+            cs.setString("_username", cuentaUsuario.getUsername());
+            cs.setString("_password", cuentaUsuario.getPassword());
+            rs = cs.executeQuery();
+            rs.next();
+            resultado = rs.getInt("id_cuenta_usuario");
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
+        }
+        return resultado;
+    }
+    
+    
 }

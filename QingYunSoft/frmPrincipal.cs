@@ -16,18 +16,8 @@ namespace QingYunSoft
 {
     public partial class frmPrincipal : Form
     {
-        /*
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect, // x-coordinate of upper-left corner
-            int nTopRect, // y-coordinate of upper-left corner
-            int nRightRect, // x-coordinate of lower-right corner
-            int nBottomRect, // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );
-        */
+
+        //Mover la pantalla
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
@@ -39,23 +29,31 @@ namespace QingYunSoft
         private System.Windows.Forms.Button btnClientes = new System.Windows.Forms.Button();
         private System.Windows.Forms.Button btnUsuarios = new System.Windows.Forms.Button();
 
-        //private Usuario usuario;
+        private RRHHWS.usuario _usuario;
+        
 
-        public frmPrincipal()
+        public frmPrincipal(){
+            InitializeComponent();
+            this.CenterToScreen();
+        }
+
+        public frmPrincipal(RRHHWS.usuario usuarioI)
         {
             InitializeComponent();
-            //round form border
-            //this.FormBorderStyle = FormBorderStyle.None;
-            //this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
+            this.CenterToScreen();
 
+            this._usuario = usuarioI;
+            mensajeDeSalud();
             //round picturebox
             System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
             gp.AddEllipse(0, 0, pcbFotoPerfil.Width - 3, pcbFotoPerfil.Height - 3);
             Region rg = new Region(gp);
             pcbFotoPerfil.Region = rg;
 
-            this.CenterToScreen();
-            inicializarBotones();
+            txtNombreUsuario.Text = this._usuario.nombre;
+            //pcbFotoPerfil.Image = Image.FromFile(usuario.foto);
+
+            crearBotones();
             establecerMenu();
             
         }
@@ -68,7 +66,19 @@ namespace QingYunSoft
             pnlPrincipal.Controls.Add(_frm);
             _frm.Show();
         }
-        private void inicializarBotones()
+        private void mensajeDeSalud()
+        {
+            //actualizar el mensaje de salud en lbltitulo segun la hora del dia
+            System.DateTime time = System.DateTime.Now;
+            if (time.Hour < 12)
+                lbltitulo.Text = "Buenos dias";
+            else if (time.Hour < 19)
+                lbltitulo.Text = "Buenas tardes";
+            else
+                lbltitulo.Text = "Buenas noches";
+
+        }
+        private void crearBotones()
         {
             //btn clientes
             this.btnClientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -81,12 +91,13 @@ namespace QingYunSoft
             this.btnClientes.Location = new System.Drawing.Point(0, 0);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(133, 98);
-            this.btnClientes.TabIndex = 1;
+            //this.btnClientes.TabIndex = 1;
             this.btnClientes.Text = "Clientes";
             this.btnClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnClientes.UseVisualStyleBackColor = true;
             this.btnClientes.Click += new System.EventHandler(this.btClientes_Click);
+            
 
             //btn almacen
             this.btnAlmacen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -99,7 +110,7 @@ namespace QingYunSoft
             this.btnAlmacen.Location = new System.Drawing.Point(0, 0);
             this.btnAlmacen.Name = "btAlmacen";
             this.btnAlmacen.Size = new System.Drawing.Size(133, 98);
-            this.btnAlmacen.TabIndex = 1;
+            //this.btnAlmacen.TabIndex = 1;
             this.btnAlmacen.Text = "Almacen";
             this.btnAlmacen.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAlmacen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -118,12 +129,12 @@ namespace QingYunSoft
             this.btnVentas.Location = new System.Drawing.Point(0, 0);
             this.btnVentas.Name = "btVentas";
             this.btnVentas.Size = new System.Drawing.Size(133, 98);
-            this.btnVentas.TabIndex = 0;
+            //this.btnVentas.TabIndex = 0;
             this.btnVentas.Text = "Ventas";
             this.btnVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnVentas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnVentas.UseVisualStyleBackColor = true;
-            this.btnVentas.Click += new System.EventHandler(this.btInicio_Click);
+            this.btnVentas.Click += new System.EventHandler(this.btVentas_Click);
 
             //btn empleados
             this.btnUsuarios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -136,7 +147,7 @@ namespace QingYunSoft
             this.btnUsuarios.Location = new System.Drawing.Point(0, 0);
             this.btnUsuarios.Name = "btEmpleados";
             this.btnUsuarios.Size = new System.Drawing.Size(133, 98);
-            this.btnUsuarios.TabIndex = 4;
+            //this.btnUsuarios.TabIndex = 4;
             this.btnUsuarios.Text = "Empleados";
             this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnUsuarios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -145,42 +156,53 @@ namespace QingYunSoft
         }
         private void establecerMenu()
         {
-            
+            //limpiar menu
+            pnlBt1.Controls.Clear();
+            pnlBt2.Controls.Clear();
+            pnlBt3.Controls.Clear();
+            pnlBt4.Controls.Clear();
+
+
+            if (this._usuario is RRHHWS.administrador)
+            {
+                pnlBt1.Controls.Add(btnAlmacen);
+                pnlBt2.Controls.Add(btnVentas);
+                pnlBt3.Controls.Add(btnClientes);
+                pnlBt4.Controls.Add(btnUsuarios);
+            }else if (this._usuario is RRHHWS.supervisorDeAlmacen)
+            {
+                pnlBt1.Controls.Add(btnAlmacen);
+            }
+            else if (this._usuario is RRHHWS.vendedor){
+                pnlBt1.Controls.Add(btnVentas);
+                pnlBt2.Controls.Add(btnClientes);
+            }
         }
-        private void btInicio_Click(object sender, EventArgs e)
+        //255; 157; 36
+        private void resetColor()
+        {
+            btnVentas.BackColor = Color.FromArgb(255, 157, 36);
+            btnClientes.BackColor = Color.FromArgb(255, 157, 36);
+            btnAlmacen.BackColor = Color.FromArgb(255, 157, 36);
+            btnUsuarios.BackColor = Color.FromArgb(255, 157, 36);
+        }
+        private void btVentas_Click(object sender, EventArgs e)
         {
             lbltitulo.Text = "Ventas";
             frmVentas _frmInicio = new frmVentas(this);
             mostrarFormularioEnPnlPrincipal(_frmInicio);
-        }
-
-        private void frmPrincipal_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0xA1, 0x2, 0);
-        }
-
-        private void panelTop_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0xA1, 0x2, 0);
-        }
-
-        private void btIniciarSeccion_Click(object sender, EventArgs e)
-        {
+            resetColor();
+            btnVentas.BackColor = Color.FromArgb(182, 111, 11);
+            
 
         }
-
-        private void frmPrincipal_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btClientes_Click(object sender, EventArgs e)
         {
             lbltitulo.Text = "Clientes";
             frmClientes _frmClientes = new frmClientes(this);
             mostrarFormularioEnPnlPrincipal(_frmClientes);
+            resetColor();
+            btnClientes.BackColor = Color.FromArgb(182, 111, 11);
         }
 
         private void btAlmacen_Click(object sender, EventArgs e)
@@ -188,6 +210,8 @@ namespace QingYunSoft
             lbltitulo.Text = "Almacen";
             frmAlmacen _frmAlmacen = new frmAlmacen();
             mostrarFormularioEnPnlPrincipal(_frmAlmacen);
+            resetColor();
+            btnAlmacen.BackColor = Color.FromArgb(182, 111, 11);
         }
 
         private void btEmpleados_Click(object sender, EventArgs e)
@@ -195,6 +219,8 @@ namespace QingYunSoft
             lbltitulo.Text = "Empleados";
             frmEmpleados _frmEmpleados = new frmEmpleados();
             mostrarFormularioEnPnlPrincipal(_frmEmpleados);
+            resetColor();
+            btnUsuarios.BackColor = Color.FromArgb(182, 111, 11);
         }
 
         private void btCerrarSeccion_Click(object sender, EventArgs e)

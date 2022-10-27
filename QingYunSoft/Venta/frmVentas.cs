@@ -14,31 +14,21 @@ namespace QingYunSoft
     public partial class frmVentas : Form
     {
         private Estado estado;
-        public Estado Estado { get => estado; set => estado = value; }
+        private frmPrincipal _frmPrincipal;
+        //private BindingList<VentasWS> _detallesVenta;
         public frmVentas()
         {
             InitializeComponent();
         }
-        private frmPrincipal _frmPrincipal;
+        
         public frmVentas(frmPrincipal _frmPrincipal)
         {
             InitializeComponent();
             this._frmPrincipal = _frmPrincipal;
         }
 
-        private void frmInicio_Load(object sender, EventArgs e)
-        {
-
-        }
-        
-        private void dgvVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
         private void btNuevaVenta_Click(object sender, EventArgs e)
         {
-            
             _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoVenta(_frmPrincipal,Estado.Nuevo));
         }
 
@@ -46,6 +36,11 @@ namespace QingYunSoft
         {
             frmBuscarVenta _frmBuscarVenta = new frmBuscarVenta();
             _frmBuscarVenta.ShowDialog();
+        }
+
+        private void dgvVentas_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
