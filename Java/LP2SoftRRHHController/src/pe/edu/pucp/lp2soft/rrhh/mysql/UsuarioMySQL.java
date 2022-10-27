@@ -11,6 +11,7 @@ import pe.edu.pucp.lp2soft.rrhh.model.SupervisorDeAlmacen;
 import pe.edu.pucp.lp2soft.rrhh.model.TipoDeDocumento;
 import pe.edu.pucp.lp2soft.rrhh.model.Usuario;
 import pe.edu.pucp.lp2soft.rrhh.model.Vendedor;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.Almacen;
 
 
 public class UsuarioMySQL implements UsuarioDAO {
@@ -206,6 +207,159 @@ public class UsuarioMySQL implements UsuarioDAO {
             try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
         }
         return null;
+    }
+
+    @Override
+    public ArrayList<Usuario> listarUsuarios() {
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("call LISTAR_USUARIOS()");
+            rs = cs.executeQuery();
+            while(rs.next()){
+                
+                
+                if(rs.getString("_cantidad_ventas") != null){
+                    Vendedor vendedor = new Vendedor();
+                    vendedor.setIdUsuario(rs.getInt("id_usuario"));
+                    vendedor.setIdPersona(rs.getInt("id_persona"));
+                    vendedor.setCantidadVentas(rs.getInt("cantidad_ventas"));
+                    vendedor.setPassword(rs.getString("password"));
+                    vendedor.setUsername(rs.getString("username"));
+                    vendedor.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
+                    vendedor.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_de_documento"))));
+                    vendedor.setNumDeDocumento(rs.getString("numero_de_documento"));
+                    vendedor.setNombre(rs.getString("nombre"));
+                    vendedor.setApellido(rs.getString("apellido"));
+                    vendedor.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
+                    vendedor.setTelefono(rs.getString("telefono"));
+                    vendedor.setDireccion(rs.getString("direccion"));
+                    vendedor.setEmail(rs.getString("email"));
+                    vendedor.setActivo(true);
+                    usuarios.add(vendedor);
+                }else if(rs.getString("area") != null){
+                    Administrador administrador = new Administrador();
+                    administrador.setIdUsuario(rs.getInt("id_usuario"));
+                    administrador.setIdUsuario(rs.getInt("id_persona"));
+                    administrador.setArea(rs.getString("area"));
+                    administrador.setPassword(rs.getString("password"));
+                    administrador.setUsername(rs.getString("username"));
+                    administrador.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
+                    administrador.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_de_documento"))));
+                    administrador.setNumDeDocumento(rs.getString("numero_de_documento"));
+                    administrador.setNombre(rs.getString("nombre"));
+                    administrador.setApellido(rs.getString("apellido"));
+                    administrador.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
+                    administrador.setTelefono(rs.getString("telefono"));
+                    administrador.setDireccion(rs.getString("direccion"));
+                    administrador.setEmail(rs.getString("email"));
+                    administrador.setActivo(true);
+                    usuarios.add(administrador);
+                }else{
+                    SupervisorDeAlmacen supervisorAlmacen = new SupervisorDeAlmacen();
+                    supervisorAlmacen.setIdUsuario(rs.getInt("id_usuario"));
+                    supervisorAlmacen.setIdPersona(rs.getInt("id_persona"));
+                    supervisorAlmacen.setAlmacen(new Almacen());
+                    supervisorAlmacen.getAlmacen().setId(rs.getInt("fid_almacen"));
+                    supervisorAlmacen.setPassword(rs.getString("password"));
+                    supervisorAlmacen.setUsername(rs.getString("username"));
+                    supervisorAlmacen.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
+                    supervisorAlmacen.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_de_documento"))));
+                    supervisorAlmacen.setNumDeDocumento(rs.getString("numero_de_documento"));
+                    supervisorAlmacen.setNombre(rs.getString("nombre"));
+                    supervisorAlmacen.setApellido(rs.getString("apellido"));
+                    supervisorAlmacen.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
+                    supervisorAlmacen.setTelefono(rs.getString("telefono"));
+                    supervisorAlmacen.setDireccion(rs.getString("direccion"));
+                    supervisorAlmacen.setEmail(rs.getString("email"));
+                    supervisorAlmacen.setActivo(true);
+                    usuarios.add(supervisorAlmacen);
+                }
+            }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        return usuarios;
+    }
+
+    @Override
+    public ArrayList<Usuario> listarPorDocumentoNombre(String docNombre) {
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("call LISTAR_USUARIOS_X_DOCUMENTO_NOMBRE(?)");
+            cs.setString("_doc_nombre",docNombre);
+            rs = cs.executeQuery();
+            while(rs.next()){
+                if(rs.getString("_cantidad_ventas") != null){
+                    Vendedor vendedor = new Vendedor();
+                    vendedor.setIdUsuario(rs.getInt("id_usuario"));
+                    vendedor.setIdPersona(rs.getInt("id_persona"));
+                    vendedor.setCantidadVentas(rs.getInt("cantidad_ventas"));
+                    vendedor.setPassword(rs.getString("password"));
+                    vendedor.setUsername(rs.getString("username"));
+                    vendedor.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
+                    vendedor.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_de_documento"))));
+                    vendedor.setNumDeDocumento(rs.getString("numero_de_documento"));
+                    vendedor.setNombre(rs.getString("nombre"));
+                    vendedor.setApellido(rs.getString("apellido"));
+                    vendedor.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
+                    vendedor.setTelefono(rs.getString("telefono"));
+                    vendedor.setDireccion(rs.getString("direccion"));
+                    vendedor.setEmail(rs.getString("email"));
+                    vendedor.setActivo(true);
+                    usuarios.add(vendedor);
+                }else if(rs.getString("area") != null){
+                    Administrador administrador = new Administrador();
+                    administrador.setIdUsuario(rs.getInt("id_usuario"));
+                    administrador.setIdUsuario(rs.getInt("id_persona"));
+                    administrador.setArea(rs.getString("area"));
+                    administrador.setPassword(rs.getString("password"));
+                    administrador.setUsername(rs.getString("username"));
+                    administrador.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
+                    administrador.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_de_documento"))));
+                    administrador.setNumDeDocumento(rs.getString("numero_de_documento"));
+                    administrador.setNombre(rs.getString("nombre"));
+                    administrador.setApellido(rs.getString("apellido"));
+                    administrador.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
+                    administrador.setTelefono(rs.getString("telefono"));
+                    administrador.setDireccion(rs.getString("direccion"));
+                    administrador.setEmail(rs.getString("email"));
+                    administrador.setActivo(true);
+                    usuarios.add(administrador);
+                }else{
+                    SupervisorDeAlmacen supervisorAlmacen = new SupervisorDeAlmacen();
+                    supervisorAlmacen.setIdUsuario(rs.getInt("id_usuario"));
+                    supervisorAlmacen.setIdPersona(rs.getInt("id_persona"));
+                    supervisorAlmacen.setAlmacen(new Almacen());
+                    supervisorAlmacen.getAlmacen().setId(rs.getInt("fid_almacen"));
+                    supervisorAlmacen.setPassword(rs.getString("password"));
+                    supervisorAlmacen.setUsername(rs.getString("username"));
+                    supervisorAlmacen.setFechaIngreso(rs.getDate("fecha_de_ingreso"));
+                    supervisorAlmacen.setTipoDeDocumento(TipoDeDocumento.valueOf((rs.getString("tipo_de_documento"))));
+                    supervisorAlmacen.setNumDeDocumento(rs.getString("numero_de_documento"));
+                    supervisorAlmacen.setNombre(rs.getString("nombre"));
+                    supervisorAlmacen.setApellido(rs.getString("apellido"));
+                    supervisorAlmacen.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
+                    supervisorAlmacen.setTelefono(rs.getString("telefono"));
+                    supervisorAlmacen.setDireccion(rs.getString("direccion"));
+                    supervisorAlmacen.setEmail(rs.getString("email"));
+                    supervisorAlmacen.setActivo(true);
+                    usuarios.add(supervisorAlmacen);
+                }       
+                
+                
+            }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{rs.close();}catch(Exception ex){System.out.println(ex.getMessage());}
+        }
+        return usuarios;
     }
 
     

@@ -9,4 +9,5 @@ public interface ClienteDAO {
     int eliminar(int idCliente);
     ArrayList<Cliente> listarTodas();
     ArrayList<Cliente> listarClientes();
+    public ArrayList<Cliente> listarPorDocumentoNombre(String docNombre);
 }

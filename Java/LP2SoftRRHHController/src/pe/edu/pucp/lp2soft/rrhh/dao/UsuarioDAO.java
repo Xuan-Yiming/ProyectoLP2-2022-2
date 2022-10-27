@@ -11,4 +11,6 @@ public interface UsuarioDAO {
     public int eliminar(int idUsuario);
     public ArrayList<Usuario> listarTodos();
     public Usuario verificar(Usuario cuentaUsuario);
+    public ArrayList<Usuario> listarUsuarios();
+    public ArrayList<Usuario> listarPorDocumentoNombre(String docNombre);
 }
