@@ -132,4 +132,14 @@ public class GestClientesWS {
         }
         return clientes;
     }
+    @WebMethod(operationName = "listarPorDocumentoNombre")
+    public ArrayList<Cliente> listarPorDocumentoNombre(@WebParam(name = "docNombre") String docNombre) {
+        ArrayList<Cliente> clientes = null;
+        try{
+            clientes = daoCliente.listarPorDocumentoNombre(docNombre);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return clientes;
+    }
 }

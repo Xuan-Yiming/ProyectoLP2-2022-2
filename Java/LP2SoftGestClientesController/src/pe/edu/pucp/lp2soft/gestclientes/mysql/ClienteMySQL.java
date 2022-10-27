@@ -138,4 +138,48 @@ public class ClienteMySQL implements ClienteDAO{
         }
         return clientes;
     }
+
+    @Override
+    public ArrayList<Cliente> listarPorDocumentoNombre(String docNombre) {
+        ArrayList<Cliente> clientes = new ArrayList<>();
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("call LISTAR_CLIENTES_X_DOCUMENTO_NOMBRE(?)");
+            cs.setString("_doc_nombre",docNombre);
+            rs = cs.executeQuery();
+            while(rs.next()){
+                if(rs.getString("razon_social") != null){
+                    Empresa empresa = new Empresa();
+                    empresa.setIdCliente(rs.getInt("id_cliente"));
+                    empresa.setCategoria(rs.getString("categoria"));
+                    empresa.setRUC(rs.getString("RUC"));
+                    empresa.setRazonSocial(rs.getString("razon_social"));
+                    empresa.setDireccion(rs.getString("direccion"));
+                    empresa.setActivo(true);
+                    clientes.add(empresa);
+                }else{
+                    PersonaNatural personaNatural = new PersonaNatural();
+                    personaNatural.setIdCliente(rs.getInt("id_cliente"));
+                    personaNatural.setCategoria(rs.getString("categoria"));
+                    personaNatural.setNumDeDocumento(rs.getString("numero_de_documento"));
+                    personaNatural.setTipoDeDocumento(TipoDeDocumento.valueOf(rs.getString("tipo_de_documento")));
+                    personaNatural.setNombre(rs.getString("nombre"));
+                    personaNatural.setApellido(rs.getString("apellido"));
+                    personaNatural.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
+                    personaNatural.setTelefono(rs.getString("telefono"));
+                    personaNatural.setDireccion(rs.getString("direccion"));
+                    personaNatural.setEmail(rs.getString("email"));
+                    personaNatural.setActivo(true);
+                    clientes.add(personaNatural);
+                }       
+                
+                
+            }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{rs.close();}catch(Exception ex){System.out.println(ex.getMessage());}
+        }
+        return clientes;
+    }
 }
