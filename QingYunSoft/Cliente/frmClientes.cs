@@ -12,17 +12,28 @@ namespace QingYunSoft.Cliente
 {
     public partial class frmClientes : Form
     {
+        private frmPrincipal _frmPrincipal;
+        private GestClientesWS.GestClientesWSClient daoClientes;
         public frmClientes()
         {
             InitializeComponent();
             this.CenterToParent();
         }
-        private frmPrincipal _frmPrincipal;
         public frmClientes(frmPrincipal _frmPrincipal)
         {
             InitializeComponent();
             this.CenterToParent();
             this._frmPrincipal = _frmPrincipal;
+
+            //inicializar el datagridview
+            dgvClientes.AutoGenerateColumns = false;
+            dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvClientes.MultiSelect = false;
+
+            //inicializar el dao
+            daoClientes = new GestClientesWS.GestClientesWSClient();
+            dgvClientes.DataSource = daoClientes.listarClientes();
+
         }
 
         private void btBuscar_Click(object sender, EventArgs e)
@@ -37,6 +48,9 @@ namespace QingYunSoft.Cliente
             _frmPrincipal.mostrarFormularioEnPnlPrincipal(_frmInfoClientes);
         }
 
-        
+        private void dgvClientes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+        }
     }
 }

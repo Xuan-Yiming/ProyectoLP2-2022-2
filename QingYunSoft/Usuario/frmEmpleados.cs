@@ -14,8 +14,6 @@ namespace QingYunSoft.Usuario
 
     public partial class frmEmpleados : Form
     {
- 
-
         public frmEmpleados()
         {
             InitializeComponent();
