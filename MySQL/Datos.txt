@@ -13,3 +13,5 @@ CALL INSERTAR_EMPRESA(@id_empresa1,"20601208416","GALVASA S.R.L.","Av. Proceres 
 CALL INSERTAR_MONEDA(@id_moneda,"Nuevo Sol","PEN");
 
 CALL INSERTAR_ORDEN_DE_COMPRA(@id_orden_de_compra1,5,65,35,2000.0,"Av. Universitaria 4155","ADestino",'2022-10-03','2022-10-07',False);
+
+call INSERTAR_PRODUCTO(@id_producto,1,"2204","Sabana",15.2,16,5,False,'2000-03-10');

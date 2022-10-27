@@ -4,7 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.uti.Date;
+import java.util.Date;
 import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.FormaDeEntrega;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.Moneda;
@@ -176,7 +176,7 @@ public class OrdenDeCompraMySQL implements OrdenDeCompraDAO {
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("{call LISTAR_ORDENES_DE_COMPRA_X_FECHA(?)}");
-            cs.setDate("_fecha",fecha);
+            cs.setDate("_fecha", (java.sql.Date) fecha);
             rs = cs.executeQuery();
             while(rs.next()){
                 OrdenDeCompra orden = new OrdenDeCompra();
