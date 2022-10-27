@@ -14,156 +14,128 @@ namespace QingYunSoft.Usuario
 {
     public partial class frmInfoEmpleado : Form
     {
+        private frmPrincipal _frmPrincipal;
+        
+        private Estado estado;
         //El objeto empleado que manejaremos a lo largo del uso del formulario
-        private RRHHWS.usuario usuario;
-        public usuario Usuario { get => usuario; set => usuario = value; }
+        private RRHHWS.usuario _usuario;
+        //Los DAOs de conexión
+        private RRHHWS.RRHHWSClient daoRRHH; 
         public frmInfoEmpleado()
         {
             InitializeComponent();
-            this.estado = estado;
-            usuario = frmBusqEmpleados.UsuarioSeleccionado;
-            if (usuario == null)
-                estado = Estado.Nuevo;
-            else
-            {
-                estado = Estado.Modificar;
-                if (frmBusqEmpleados.UsuarioSeleccionado is RRHHWS.supervisorDeAlmacen)
-                {
-                    usuario = new RRHHWS.supervisorDeAlmacen();
-                }
-                else if (frmBusqEmpleados.UsuarioSeleccionado is RRHHWS.vendedor)
-                {
-                    usuario = new RRHHWS.vendedor();
-                }
-                else
-                {
-                    usuario = new RRHHWS.administrador();
-                }
-            }
-            if (estado == Estado.Nuevo)
-            {
-                establecerEstadoComponentes();
-            }
-            else
-            {
-                txtID.Text = usuario.idPersona.ToString();
-                txtUsername.Text = usuario.username;
-                txtContrasena.Text = usuario.password;
-                if (usuario is RRHHWS.supervisorDeAlmacen)
-                {
-                    cbTipoUsuario.Text = "Supervisor de almacen";
-                    lblVariableTipo.Text = "Nombre del Almacen";
-                    txtVariableTipo.Text = ((RRHHWS.supervisorDeAlmacen)usuario).almacen.nombre;
-                }
-                else if (usuario is RRHHWS.vendedor)
-                {
-                    cbTipoUsuario.Text = "Vendedor";
-                    lblVariableTipo.Text = "Cantidad de ventas";
-                    txtVariableTipo.Text = ((RRHHWS.vendedor)usuario).cantidadVentas.ToString();
-                }
-                else
-                {
-                    cbTipoUsuario.Text = "Administrador";
-                    lblVariableTipo.Text = "Area";
-                    txtVariableTipo.Text = ((RRHHWS.administrador)usuario).area;
-                }
-                dtpFechaIngreso.Value = usuario.fechaIngreso;
-                cbTipoDocumento.SelectedValue = usuario.tipoDeDocumento.ToString();
-                txtNumeroDocumento.Text = usuario.numDeDocumento;
-                txtNombre.Text = usuario.nombre;
-                txtApellido.Text = usuario.apellido;
-                txtTelefono.Text = usuario.telefono;
-                txtCorreo.Text = usuario.email;
-                txtDireccion.Text = usuario.direccion;
-                dtpFechaNacimiento.Value = usuario.fechaDeNacimiento;
 
-                establecerEstadoComponentes();
-            }
         }
-
-
-        
-        //Los DAOs de conexión
-        private RRHHWS.RRHHWSClient daoRRHH;
- 
-        private frmPrincipal _frmPrincipal;
-        private Estado estado;
-
-        frmBuscarEmpleados frmBusqEmpleados = new frmBuscarEmpleados();
-
-        
-
         public void establecerEstadoComponentes()
         {
             switch (estado)
             {
                 
                 case Estado.Nuevo:
+                    txtID.Enabled = false;
+                    txtUsername.Enabled = true;
+                    cbTipoUsuario.Enabled = true;
+                    txtContrasena.Enabled = true;
+                    txtVariableTipo.Enabled = true;
+                    dtpFechaIngreso.Enabled = false;
+
+                    cbTipoDocumento.Enabled = true;
+                    txtNumeroDocumento.Enabled = true;
+                    txtNombre.Enabled = true;
+                    txtApellido.Enabled = true;
+                    txtTelefono.Enabled = true;
+                    txtCorreo.Enabled = true;
+                    txtDireccion.Enabled = true;
+                    dtpFechaNacimiento.Enabled = true;
+                    
+                    txtID.Enabled = false;
                     btAnular.Enabled = false;
                     btEditarGuardar.Enabled = true;
                     btRegresar.Enabled = true;
                     btCancelar.Enabled = true;
+                    btEditarGuardar.Text = "Guardar";
                     break;
                 case Estado.Modificar:
+                    txtID.Enabled = false;
+                    txtUsername.Enabled = true;
+                    cbTipoUsuario.Enabled = true;
+                    txtContrasena.Enabled = true;
+                    txtVariableTipo.Enabled = true;
+                    dtpFechaIngreso.Enabled = false;
+
+                    cbTipoDocumento.Enabled = true;
+                    txtNumeroDocumento.Enabled = true;
+                    txtNombre.Enabled = true;
+                    txtApellido.Enabled = true;
+                    txtTelefono.Enabled = true;
+                    txtCorreo.Enabled = true;
+                    txtDireccion.Enabled = true;
+                    dtpFechaNacimiento.Enabled = true;
                     
+                    txtID.Enabled = true;
                     btAnular.Enabled = true;
-                    btEditarGuardar.Enabled = true;
+                    btEditarGuardar.Enabled = true;                    
                     btRegresar.Enabled = true;
                     btCancelar.Enabled = true;
+                    btEditarGuardar.Text = "Guardar";
                     break;
-                
+                case Estado.Resultado:
+                    //disable all txtbox
+                    txtID.Enabled = false;
+                    txtUsername.Enabled = false;
+                    cbTipoUsuario.Enabled = false;
+                    txtContrasena.Enabled = false;
+                    txtVariableTipo.Enabled = false;
+                    dtpFechaIngreso.Enabled = false;
+                    
+                    cbTipoDocumento.Enabled = false;
+                    txtNumeroDocumento.Enabled = false;
+                    txtNombre.Enabled = false;
+                    txtApellido.Enabled = false;
+                    txtTelefono.Enabled = false;
+                    txtCorreo.Enabled = false;
+                    txtDireccion.Enabled = false;
+                    dtpFechaNacimiento.Enabled = false;
+
+                    btAnular.Enabled = true;
+                    btEditarGuardar.Enabled = false;
+                    btRegresar.Enabled = true;
+                    btCancelar.Enabled = false;
+                    btEditarGuardar.Text = "Editar";
+                    break;
+
             }
         }
-
-
-        public frmInfoEmpleado(frmPrincipal _frmPrincipal, Estado estado)
+        public frmInfoEmpleado(frmPrincipal _frmPrincipal, Estado estado, RRHHWS.usuario usuario)
         {
             InitializeComponent();
             this._frmPrincipal = _frmPrincipal;
             this.estado = estado;
-            usuario = frmBusqEmpleados.UsuarioSeleccionado;
-            if (usuario == null)
-                estado = Estado.Nuevo;
-            else {
-                estado = Estado.Modificar;
-                if (frmBusqEmpleados.UsuarioSeleccionado is RRHHWS.supervisorDeAlmacen)
-                {
-                    usuario = new RRHHWS.supervisorDeAlmacen();
-                }
-                else if(frmBusqEmpleados.UsuarioSeleccionado is RRHHWS.vendedor)
-                {
-                    usuario = new RRHHWS.vendedor();
-                }
-                else
-                {
-                    usuario = new RRHHWS.administrador();
-                }
-            }                
-
-            if (estado == Estado.Nuevo)
+            
+            if (this.estado == Estado.Nuevo)
             {
                 establecerEstadoComponentes();
             }
-            else
+            else if (this.estado == Estado.Resultado)
             {
-                txtID.Text = usuario.idPersona.ToString();
+                txtID.Text = usuario.idUsuario.ToString();
                 txtUsername.Text = usuario.username;
                 txtContrasena.Text = usuario.password;
-                if(usuario is RRHHWS.supervisorDeAlmacen)
+                if (usuario is RRHHWS.supervisorDeAlmacen)
                 {
-                    cbTipoUsuario.Text = "Supervisor de almacen";
-                    lblVariableTipo.Text = "Nombre del Almacen";
-                    txtVariableTipo.Text = ((RRHHWS.supervisorDeAlmacen)usuario).almacen.nombre;
+                    cbTipoUsuario.SelectedIndex = 2;
+                    lblVariableTipo.Text = "";
+                    txtVariableTipo.Enabled = false;
                 }
-                else if(usuario is RRHHWS.vendedor)
+                else if (usuario is RRHHWS.vendedor)
                 {
-                    cbTipoUsuario.Text = "Vendedor";
+                    cbTipoUsuario.SelectedIndex = 1;
                     lblVariableTipo.Text = "Cantidad de ventas";
                     txtVariableTipo.Text = ((RRHHWS.vendedor)usuario).cantidadVentas.ToString();
                 }
-                else
+                else if (usuario is RRHHWS.administrador)
                 {
-                    cbTipoUsuario.Text = "Administrador";
+                    cbTipoUsuario.SelectedIndex = 0;
                     lblVariableTipo.Text = "Area";
                     txtVariableTipo.Text = ((RRHHWS.administrador)usuario).area;
                 }
@@ -177,124 +149,114 @@ namespace QingYunSoft.Usuario
                 txtDireccion.Text = usuario.direccion;
                 dtpFechaNacimiento.Value = usuario.fechaDeNacimiento;
                 
-                establecerEstadoComponentes();
+                this._usuario = usuario;
             }
-        }
-
-        private void textBox9_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
         private void btEditarGuardar_Click(object sender, EventArgs e)
         {
-            if (cbTipoUsuario.Text == "Supervisor de almacen")
+            if (this.estado == Estado.Resultado)
             {
-
-                usuario = new RRHHWS.supervisorDeAlmacen();
-                ((RRHHWS.supervisorDeAlmacen)usuario).almacen.nombre = txtVariableTipo.Text;
-
-            }
-            else if (cbTipoUsuario.Text == "Administrador")
-            {
-                usuario = new RRHHWS.administrador();
-                ((RRHHWS.administrador)usuario).area = txtVariableTipo.Text;
+                this.estado = Estado.Modificar;
+                btEditarGuardar.Text = "Guardar";
+                establecerEstadoComponentes();
             }
             else
             {
-                usuario = new RRHHWS.vendedor();
-                ((RRHHWS.vendedor)usuario).cantidadVentas = Int32.Parse(txtVariableTipo.Text);
-            }
+                if (txtNumeroDocumento.Text.Trim().Length < 1)
+                {
+                    MessageBox.Show("El documento ingresado es inválido", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                try
+                {
+                    Int32.Parse(txtNumeroDocumento.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("El DNI debe ser un número", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (txtNombre.Text.Trim() == "")
+                {
+                    MessageBox.Show("Debe ingresar un nombre", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (txtApellido.Text.Trim() == "")
+                {
+                    MessageBox.Show("Debe ingresar un apellido", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (txtUsername.Text.Trim() == "")
+                {
+                    MessageBox.Show("Debe indicar el nombre de usuario", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (cbTipoUsuario.SelectedIndex == -1)
+                {
+                    MessageBox.Show("No ha seleccionado tipo de usuario", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (cbTipoDocumento.SelectedIndex == -1)
+                {
+                    MessageBox.Show("No ha seleccionado tipo de documento", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (txtContrasena.Text == "")
+                {
+                    MessageBox.Show("No ha ingresado la contraseña", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (txtTelefono.Text == "")
+                {
+                    MessageBox.Show("No ha ingresado el numero de telefono", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (txtDireccion.Text == "")
+                {
+                    MessageBox.Show("No ha ingresado la direccion", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (txtCorreo.Text == "")
+                {
+                    MessageBox.Show("No ha ingresado el correo electrónico", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                //Se inicializa el objeto empleado y se completan todos sus datos
+                
+                if (cbTipoUsuario.SelectedIndex == 0)
+                {
+                    this._usuario = new RRHHWS.administrador();
+                    ((RRHHWS.administrador)this._usuario).area = txtVariableTipo.Text;
+                }
+                else if (cbTipoUsuario.SelectedIndex == 1)
+                {
+                    this._usuario = new RRHHWS.vendedor();
+                    ((RRHHWS.vendedor)this._usuario).cantidadVentas = Int32.Parse(txtVariableTipo.Text);
+                }
+                else
+                {
+                    this._usuario = new RRHHWS.supervisorDeAlmacen();
+                }
+                this._usuario.username = txtUsername.Text;
+                this._usuario.password = txtContrasena.Text;
+                this._usuario.fechaIngreso = dtpFechaIngreso.Value;
+                
+                
+                this._usuario.tipoDeDocumento = (RRHHWS.tipoDeDocumento)cbTipoDocumento.SelectedItem;                
+                this._usuario.numDeDocumento = txtNumeroDocumento.Text;
+                this._usuario.nombre = txtNombre.Text;
+                this._usuario.apellido = txtApellido.Text;
+                this._usuario.telefono = txtTelefono.Text;
+                this._usuario.email = txtCorreo.Text;
+                this._usuario.direccion = txtDireccion.Text;
+                this._usuario.fechaDeNacimiento = dtpFechaNacimiento.Value;
+                
+                this._usuario.fechaDeNacimientoSpecified = true;
+                this._usuario.fechaIngresoSpecified = true;
 
-            if (txtNumeroDocumento.Text.Trim().Length < 1)
-            {
-                MessageBox.Show("El documento ingresado es inválido", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
             }
-            try
-            {
-                Int32.Parse(txtNumeroDocumento.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("El DNI debe ser un número", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txtNombre.Text.Trim() == "")
-            {
-                MessageBox.Show("Debe ingresar un nombre", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txtApellido.Text.Trim() == "")
-            {
-                MessageBox.Show("Debe ingresar un apellido", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txtUsername.Text.Trim() == "")
-            {
-                MessageBox.Show("Debe indicar el nombre de usuario", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (cbTipoUsuario.SelectedIndex == -1)
-            {
-                MessageBox.Show("No ha seleccionado tipo de usuario", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (cbTipoDocumento.SelectedIndex == -1)
-            {
-                MessageBox.Show("No ha seleccionado tipo de documento", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txtContrasena.Text == "")
-            {
-                MessageBox.Show("No ha ingresado la contraseña", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txtTelefono.Text == "")
-            {
-                MessageBox.Show("No ha ingresado el numero de telefono", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txtDireccion.Text == "")
-            {
-                MessageBox.Show("No ha ingresado la direccion", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txtCorreo.Text == "")
-            {
-                MessageBox.Show("No ha ingresado el correo electrónico", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            
-            //Se inicializa el objeto empleado y se completan todos sus datos
-            usuario.nombre = txtNombre.Text;
-            usuario.numDeDocumento = txtNumeroDocumento.Text;
-            usuario.apellido = txtApellido.Text;
-
-            usuario.fechaDeNacimiento = dtpFechaNacimiento.Value;
-            usuario.fechaDeNacimientoSpecified = true;
-            usuario.fechaIngreso = dtpFechaIngreso.Value;
-            usuario.fechaIngresoSpecified = true;
-            usuario.tipoDeDocumento = (RRHHWS.tipoDeDocumento)cbTipoDocumento.SelectedItem;
-            usuario.username = txtUsername.Text;
-            usuario.password = txtContrasena.Text;
-            usuario.telefono = txtTelefono.Text;
-            usuario.email = txtCorreo.Text;
-            usuario.direccion = txtDireccion.Text;
-            
-
-
 
             if (estado == Estado.Nuevo)
             {
@@ -306,23 +268,24 @@ namespace QingYunSoft.Usuario
                 //cuentaUsuario.idCuentaUsuario = daoRRHH.insertarCuentaUsuario(cuentaUsuario);
                 //empleado.cuentaUsuario = cuentaUsuario;
                 int resultado;
-                if (usuario is RRHHWS.supervisorDeAlmacen)
+                if (this._usuario is RRHHWS.supervisorDeAlmacen)
                 {
-                     resultado = daoRRHH.insertarSupervisor((RRHHWS.supervisorDeAlmacen)usuario);
+                     resultado = daoRRHH.insertarSupervisor((RRHHWS.supervisorDeAlmacen)this._usuario);
                 }
-                else if (usuario is RRHHWS.vendedor)
+                else if (this._usuario is RRHHWS.vendedor)
                 {
-                     resultado = daoRRHH.insertarVendedor((RRHHWS.vendedor)usuario);
+                     resultado = daoRRHH.insertarVendedor((RRHHWS.vendedor)this._usuario);
                 }
                 else
                 {
-                     resultado = daoRRHH.insertarAdministrador((RRHHWS.administrador)usuario);
+                     resultado = daoRRHH.insertarAdministrador((RRHHWS.administrador)this._usuario);
                 }
 
                 if (resultado != 0)
                 {
                     MessageBox.Show("Se ha registrado exitosamente el empleado", "Mensaje de Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtID.Text = resultado.ToString();
+                    this._usuario.idUsuario = resultado;
                     establecerEstadoComponentes();
                 }
                 else
@@ -333,17 +296,17 @@ namespace QingYunSoft.Usuario
             else if (estado == Estado.Modificar)
             {
                 int resultado;
-                if (usuario is RRHHWS.supervisorDeAlmacen)
+                if (this._usuario is RRHHWS.supervisorDeAlmacen)
                 {
-                    resultado = daoRRHH.modificarSupervisor((RRHHWS.supervisorDeAlmacen)usuario);
+                    resultado = daoRRHH.modificarSupervisor((RRHHWS.supervisorDeAlmacen)this._usuario);
                 }
-                else if (usuario is RRHHWS.vendedor)
+                else if (this._usuario is RRHHWS.vendedor)
                 {
-                    resultado = daoRRHH.modificarVendedor((RRHHWS.vendedor)usuario);
+                    resultado = daoRRHH.modificarVendedor((RRHHWS.vendedor)this._usuario);
                 }
                 else
                 {
-                    resultado = daoRRHH.modificarAdministrador((RRHHWS.administrador)usuario);
+                    resultado = daoRRHH.modificarAdministrador((RRHHWS.administrador)this._usuario);
                 }
 
                 if (resultado != 0)
@@ -363,41 +326,23 @@ namespace QingYunSoft.Usuario
             {
 
                 int result;
-                if (usuario is RRHHWS.supervisorDeAlmacen)
+                if (this._usuario is RRHHWS.supervisorDeAlmacen)
                 {
-                    result = daoRRHH.eliminarSupervisor(((RRHHWS.supervisorDeAlmacen)usuario).idUsuario, ((RRHHWS.supervisorDeAlmacen)usuario).almacen.id);
+                    result = daoRRHH.eliminarSupervisor(((RRHHWS.supervisorDeAlmacen)this._usuario).idUsuario, ((RRHHWS.supervisorDeAlmacen)this._usuario).almacen.id);
                 }
-                else if (usuario is RRHHWS.vendedor)
+                else if (this._usuario is RRHHWS.vendedor)
                 {
-                    result = daoRRHH.eliminarVendedor(((RRHHWS.vendedor)usuario).idPersona, ((RRHHWS.vendedor)usuario).cantidadVentas);
+                    result = daoRRHH.eliminarVendedor(((RRHHWS.vendedor)this._usuario).idPersona, ((RRHHWS.vendedor)this._usuario).cantidadVentas);
                 }
                 else
                 {
-                    result = daoRRHH.eliminarAdministrador(((RRHHWS.administrador)usuario).idUsuario, ((RRHHWS.administrador)usuario).area);
+                    result = daoRRHH.eliminarAdministrador(((RRHHWS.administrador)this._usuario).idUsuario, ((RRHHWS.administrador)this._usuario).area);
                 }
 
                 if (result == 1)
                     MessageBox.Show("Se ha eliminado exitosamente el empleado", "Mensaje de Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("Ha ocurrido un error al momento de eliminar el empleado", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void cbTipoUsuario_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbTipoUsuario.Text == "Supervisor de almacen")
-            {
-
-                lblVariableTipo.Text = "Nombre del Almacen";
-
-            }
-            else if (cbTipoUsuario.Text == "Administrador")
-            {
-                lblVariableTipo.Text = "Area";
-            }
-            else
-            {
-                lblVariableTipo.Text = "Cantidad de Ventas";
             }
         }
     }

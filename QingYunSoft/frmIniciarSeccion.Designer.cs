@@ -81,7 +81,7 @@
             this.btIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btIngresar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btIngresar.Location = new System.Drawing.Point(110, 304);
-            this.btIngresar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btIngresar.Margin = new System.Windows.Forms.Padding(2);
             this.btIngresar.Name = "btIngresar";
             this.btIngresar.Size = new System.Drawing.Size(90, 30);
             this.btIngresar.TabIndex = 10;
@@ -92,16 +92,17 @@
             // txtClave
             // 
             this.txtClave.Location = new System.Drawing.Point(76, 270);
-            this.txtClave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtClave.Margin = new System.Windows.Forms.Padding(2);
             this.txtClave.Name = "txtClave";
             this.txtClave.PasswordChar = '*';
             this.txtClave.Size = new System.Drawing.Size(152, 20);
             this.txtClave.TabIndex = 9;
+            this.txtClave.Text = "contrasena17";
             // 
             // txtUsuario
             // 
             this.txtUsuario.Location = new System.Drawing.Point(76, 213);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(152, 20);
             this.txtUsuario.TabIndex = 8;
@@ -130,7 +131,7 @@
             // btSalir
             // 
             this.btSalir.Location = new System.Drawing.Point(119, 348);
-            this.btSalir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btSalir.Name = "btSalir";
             this.btSalir.Size = new System.Drawing.Size(70, 21);
             this.btSalir.TabIndex = 11;

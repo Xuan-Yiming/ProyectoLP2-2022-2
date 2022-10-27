@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QingYunSoft.RRHHWS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -105,6 +106,7 @@ namespace QingYunSoft
         //out drop shadow done
 
         private RRHHWS.usuario _usuario;
+        private RRHHWS.RRHHWSClient _servicio;
 
         public frmIniciarSeccion()
         {
@@ -122,20 +124,33 @@ namespace QingYunSoft
 
         private void btIngresar_Click(object sender, EventArgs e)
         {
+            _servicio = new RRHHWS.RRHHWSClient();
+
+            RRHHWS.usuario usuario = new RRHHWS.vendedor();
+            usuario.username = txtUsuario.Text;
+            usuario.password = txtClave.Text;
+            int res = _servicio.verificarCuentaUsuario(usuario);
+            if ( res != 0)
+            {
+                frmPrincipal _frmPrincipal = new frmPrincipal(this._usuario);
+                this.Hide();
+                _frmPrincipal.ShowDialog();
+                if (_frmPrincipal.DialogResult == DialogResult.Cancel)
+                {
+                    this.Close();
+                }
+                else if (_frmPrincipal.DialogResult == DialogResult.OK)
+                {
+                    this.Show();
+                }
+            }
+            else
+            {
+
+                MessageBox.Show("Usuario o contraseña incorrectos: Error Code" + res);
+            }
 
             
-            
-            frmPrincipal _frmPrincipal = new frmPrincipal(this._usuario);
-            this.Hide();
-            _frmPrincipal.ShowDialog();
-            if(_frmPrincipal.DialogResult == DialogResult.Cancel)
-            {
-                this.Close();
-            }
-            else if (_frmPrincipal.DialogResult == DialogResult.OK)
-            {
-                this.Show();
-            }
         }
 
         private void btSalir_Click(object sender, EventArgs e)

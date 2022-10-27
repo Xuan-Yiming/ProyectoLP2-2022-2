@@ -180,15 +180,19 @@ public class RRHHWS {
     
     //Iniciar sesion
     @WebMethod(operationName = "verificarCuentaUsuario")
-    public int verificarCuentaUsuario(
+    public Usuario verificarCuentaUsuario(
             @WebParam(name = "cuentaUsuario")
             Usuario cuentaUsuario) {
-        int resultado = 0;
+        
         try{
-            resultado = daoUsuario.verificar(cuentaUsuario);
+             Usuario usuario = daoUsuario.verificar(cuentaUsuario);
+             
+             return usuario;
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }
-        return resultado;
+        
+        return null;
     }
+
 }
