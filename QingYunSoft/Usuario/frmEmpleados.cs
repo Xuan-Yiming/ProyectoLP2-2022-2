@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QingYunSoft.Cliente;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,7 @@ namespace QingYunSoft.Usuario
 
     public partial class frmEmpleados : Form
     {
-        private RRHHWS.RRHHWSClient daoRRHH;
+ 
 
         public frmEmpleados()
         {
@@ -23,6 +24,12 @@ namespace QingYunSoft.Usuario
         private void btNuevoUsuario_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btBuscar_Click(object sender, EventArgs e)
+        {
+            frmBuscarEmpleados _frmBuscarEmpleados = new frmBuscarEmpleados();
+            _frmBuscarEmpleados.ShowDialog();
         }
     }
 }

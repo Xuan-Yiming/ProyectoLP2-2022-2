@@ -36,5 +36,7 @@ namespace QingYunSoft.Cliente
             frmInfoCliente _frmInfoClientes = new frmInfoCliente(_frmPrincipal, Estado.Nuevo);
             _frmPrincipal.mostrarFormularioEnPnlPrincipal(_frmInfoClientes);
         }
+
+        
     }
 }
