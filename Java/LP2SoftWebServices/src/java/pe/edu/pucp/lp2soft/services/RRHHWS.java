@@ -7,11 +7,14 @@ import javax.jws.WebParam;
 import pe.edu.pucp.lp2soft.rrhh.dao.AdministradorDAO;
 import pe.edu.pucp.lp2soft.rrhh.dao.SupervisorDeAlmacenDAO;
 import pe.edu.pucp.lp2soft.rrhh.dao.VendedorDAO;
+import pe.edu.pucp.lp2soft.rrhh.dao.UsuarioDAO;
 import pe.edu.pucp.lp2soft.rrhh.model.Administrador;
 import pe.edu.pucp.lp2soft.rrhh.model.SupervisorDeAlmacen;
+import pe.edu.pucp.lp2soft.rrhh.model.Usuario;
 import pe.edu.pucp.lp2soft.rrhh.model.Vendedor;
 import pe.edu.pucp.lp2soft.rrhh.mysql.AdministradorMySQL;
 import pe.edu.pucp.lp2soft.rrhh.mysql.SupervisorDeAlmacenMySQL;
+import pe.edu.pucp.lp2soft.rrhh.mysql.UsuarioMySQL;
 import pe.edu.pucp.lp2soft.rrhh.mysql.VendedorMySQL;
 
 @WebService(serviceName = "RRHHWS")
@@ -19,6 +22,7 @@ public class RRHHWS {
     AdministradorDAO daoAdministrador = new AdministradorMySQL();
     VendedorDAO daoVendedor = new VendedorMySQL();
     SupervisorDeAlmacenDAO daoSupervisor = new SupervisorDeAlmacenMySQL();
+    UsuarioDAO daoUsuario = new UsuarioMySQL();
     
     /*Gestionar Adminisrador*/
     @WebMethod(operationName = "insertarAdministrador")
@@ -172,5 +176,19 @@ public class RRHHWS {
             System.out.println(ex.getMessage());
         }
         return supervisores;
+    }
+    
+    //Iniciar sesion
+    @WebMethod(operationName = "verificarCuentaUsuario")
+    public int verificarCuentaUsuario(
+            @WebParam(name = "cuentaUsuario")
+            Usuario cuentaUsuario) {
+        int resultado = 0;
+        try{
+            resultado = daoUsuario.verificar(cuentaUsuario);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
     }
 }
