@@ -13,5 +13,7 @@ aW3wBHF8jfpmoahOP%zCQhevH8)nZcs.
 Dirección IPv4 pública:
 44.211.200.189
 
+asadmin start-domain
+asadmin deploy C:\LP2SoftWebServices2.war
 
 
