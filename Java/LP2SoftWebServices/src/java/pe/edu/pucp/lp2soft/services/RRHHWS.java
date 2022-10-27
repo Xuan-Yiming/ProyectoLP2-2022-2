@@ -196,7 +196,7 @@ public class RRHHWS {
     }
     @WebMethod(operationName = "listarUsuarios")
     public ArrayList<Usuario> listarUsuarios(){
-        ArrayList<Usuario> usuarios = new ArrayList<>();
+        ArrayList<Usuario> usuarios =  null;
         try{
             usuarios = daoUsuario.listarUsuarios();
         }catch(Exception ex){
