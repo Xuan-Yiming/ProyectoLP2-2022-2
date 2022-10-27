@@ -11,13 +11,16 @@ import pe.edu.pucp.lp2soft.gestclientes.mysql.EmpresaMySQL;
 import pe.edu.pucp.lp2soft.gestclientes.mysql.PersonaNaturalMySQL;
 import pe.edu.pucp.lp2soft.rrhh.dao.AdministradorDAO;
 import pe.edu.pucp.lp2soft.rrhh.dao.SupervisorDeAlmacenDAO;
+import pe.edu.pucp.lp2soft.rrhh.dao.UsuarioDAO;
 import pe.edu.pucp.lp2soft.rrhh.dao.VendedorDAO;
 import pe.edu.pucp.lp2soft.rrhh.model.Administrador;
 import pe.edu.pucp.lp2soft.rrhh.model.SupervisorDeAlmacen;
 import pe.edu.pucp.lp2soft.rrhh.model.TipoDeDocumento;
+import pe.edu.pucp.lp2soft.rrhh.model.Usuario;
 import pe.edu.pucp.lp2soft.rrhh.model.Vendedor;
 import pe.edu.pucp.lp2soft.rrhh.mysql.AdministradorMySQL;
 import pe.edu.pucp.lp2soft.rrhh.mysql.SupervisorDeAlmacenMySQL;
+import pe.edu.pucp.lp2soft.rrhh.mysql.UsuarioMySQL;
 import pe.edu.pucp.lp2soft.rrhh.mysql.VendedorMySQL;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Almacen;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Devolucion;
@@ -65,6 +68,8 @@ public class Principal {
         //Creamos objetos Empresa
         Empresa empresa1 = new Empresa("Cat1",true,"42492414144","LAIVE PERU S.A.C.","Av. Universitaria 2354");
         Empresa empresa2 = new Empresa("Cat2",true,"20489456412","D'AROMAS E.I.R.L","El Rimac, Breña 15083");
+       
+        
         
         //INSERTAR EMPRESA
         resultado1 = daoEmpresa.insertar(empresa1);
@@ -752,7 +757,7 @@ public class Principal {
             System.out.println("Se ha eliminado correctamente a: " + dev2.getId());
 
         System.out.println("##################################################################################");
-
+        
     }
     
 }
