@@ -34,9 +34,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbTipoCliente = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtCategoria = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.btEditarGuardar = new System.Windows.Forms.Button();
             this.btAnular = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -64,7 +64,7 @@
             // pnlTipoCliente
             // 
             this.pnlTipoCliente.Location = new System.Drawing.Point(3, 114);
-            this.pnlTipoCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlTipoCliente.Margin = new System.Windows.Forms.Padding(2);
             this.pnlTipoCliente.Name = "pnlTipoCliente";
             this.pnlTipoCliente.Size = new System.Drawing.Size(722, 316);
             this.pnlTipoCliente.TabIndex = 18;
@@ -74,9 +74,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cbTipoCliente);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txtCategoria);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtID);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(3, 7);
             this.groupBox1.Name = "groupBox1";
@@ -118,13 +118,13 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "Tipo de cliente";
             // 
-            // textBox2
+            // txtCategoria
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(111, 49);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(111, 20);
-            this.textBox2.TabIndex = 2;
+            this.txtCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategoria.Location = new System.Drawing.Point(111, 49);
+            this.txtCategoria.Name = "txtCategoria";
+            this.txtCategoria.Size = new System.Drawing.Size(111, 20);
+            this.txtCategoria.TabIndex = 2;
             // 
             // label1
             // 
@@ -136,13 +136,13 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "ID";
             // 
-            // textBox1
+            // txtID
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(111, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(111, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.Location = new System.Drawing.Point(111, 23);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(111, 20);
+            this.txtID.TabIndex = 0;
             // 
             // btEditarGuardar
             // 
@@ -205,6 +205,7 @@
             this.btCancelar.Size = new System.Drawing.Size(40, 50);
             this.btCancelar.TabIndex = 3;
             this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
             // 
             // btRegresar
             // 
@@ -218,6 +219,7 @@
             this.btRegresar.Size = new System.Drawing.Size(40, 50);
             this.btRegresar.TabIndex = 0;
             this.btRegresar.UseVisualStyleBackColor = true;
+            this.btRegresar.Click += new System.EventHandler(this.btRegresar_Click);
             // 
             // frmInfoCliente
             // 
@@ -228,7 +230,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmInfoCliente";
             this.Text = "frmInfoCliente";
             this.panel3.ResumeLayout(false);
@@ -249,9 +251,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtCategoria;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Button btEditarGuardar;
         private System.Windows.Forms.Button btAnular;
         private System.Windows.Forms.Panel panel2;

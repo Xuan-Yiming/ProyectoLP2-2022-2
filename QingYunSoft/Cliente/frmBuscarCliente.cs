@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QingYunSoft.GestClientesWS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -69,6 +70,7 @@ namespace QingYunSoft.Cliente
             }
         }
 
+
         private bool CheckAeroEnabled()
         {
             if (Environment.OSVersion.Version.Major >= 6)
@@ -109,10 +111,15 @@ namespace QingYunSoft.Cliente
                 m.Result = (IntPtr)HTCAPTION;
 
         }
+
+        private GestClientesWS.cliente clienteSeleccionado;
+        public cliente ClienteSeleccionado { get => clienteSeleccionado; set => clienteSeleccionado = value; }
+       
         public frmBuscarCliente()
         {
             InitializeComponent();
             this.CenterToParent();
+            dgvClientes.AutoGenerateColumns = false;
         }
 
         private void frmCBuscarCliente_MouseDown(object sender, MouseEventArgs e)
@@ -123,7 +130,48 @@ namespace QingYunSoft.Cliente
 
         private void btSeleccionar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            if(dgvClientes.CurrentRow != null)
+            {
+                clienteSeleccionado = (GestClientesWS.cliente)dgvClientes.CurrentRow.DataBoundItem;
+                this.DialogResult = DialogResult.OK;
+                }
+            else
+                {
+                    MessageBox.Show("Debe seleccionar un cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btBuscarCliente_Click(object sender, EventArgs e)
+        {
+            dgvClientes.DataSource = new GestClientesWS.GestClientesWSClient().listarClientes();
+        }
+
+        private void dgvClientes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            GestClientesWS.cliente clienteI = (GestClientesWS.cliente)dgvClientes.Rows[e.RowIndex].DataBoundItem;
+            if (clienteI is GestClientesWS.empresa)
+            {
+                dgvClientes.Rows[e.RowIndex].Cells["nombreCliente"].Value = ((GestClientesWS.empresa)clienteI).razonSocial;
+                dgvClientes.Rows[e.RowIndex].Cells["tipoCliente"].Value = "empresa";
+                dgvClientes.Rows[e.RowIndex].Cells["tipoDocumento"].Value = "RUC";
+                dgvClientes.Rows[e.RowIndex].Cells["nmrDocumento"].Value = ((GestClientesWS.empresa)clienteI).RUC;
+                dgvClientes.Rows[e.RowIndex].Cells["categoria"].Value = ((GestClientesWS.empresa)clienteI).categoria;
+
+            }
+            else
+            {
+                dgvClientes.Rows[e.RowIndex].Cells["nombreCliente"].Value = ((GestClientesWS.personaNatural)clienteI).nombre + " " + ((GestClientesWS.personaNatural)clienteI).apellido;
+                dgvClientes.Rows[e.RowIndex].Cells["tipoCliente"].Value = "Persona Natural";
+                dgvClientes.Rows[e.RowIndex].Cells["tipoDocumento"].Value = ((GestClientesWS.personaNatural)clienteI).tipoDeDocumento.ToString();
+                dgvClientes.Rows[e.RowIndex].Cells["nmrDocumento"].Value = ((GestClientesWS.personaNatural)clienteI).numDeDocumento;
+                dgvClientes.Rows[e.RowIndex].Cells["categoria"].Value = ((GestClientesWS.personaNatural)clienteI).categoria;
+
+            }
         }
     }
 }

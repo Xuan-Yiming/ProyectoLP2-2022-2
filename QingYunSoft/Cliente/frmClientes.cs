@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QingYunSoft.GestClientesWS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,7 +40,10 @@ namespace QingYunSoft.Cliente
         private void btBuscar_Click(object sender, EventArgs e)
         {
             frmBuscarCliente _frmBuscarCliente = new frmBuscarCliente();
-            _frmBuscarCliente.ShowDialog();
+            if(_frmBuscarCliente.ShowDialog() == DialogResult.OK)
+            {
+                _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoCliente(_frmPrincipal, Estado.Resultado, _frmBuscarCliente.ClienteSeleccionado));
+            }
         }
 
         private void btNuevoCiente_Click(object sender, EventArgs e)
@@ -50,6 +54,30 @@ namespace QingYunSoft.Cliente
 
         private void dgvClientes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            GestClientesWS.cliente clienteSeleccionado = (GestClientesWS.cliente)dgvClientes.CurrentRow.DataBoundItem;
+            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoCliente(_frmPrincipal, Estado.Resultado, clienteSeleccionado));
+        }
+
+        private void dgvClientes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            GestClientesWS.cliente clienteI = (GestClientesWS.cliente)dgvClientes.Rows[e.RowIndex].DataBoundItem;
+            if (clienteI is GestClientesWS.empresa)
+            {
+                dgvClientes.Rows[e.RowIndex].Cells["nombreCliente"].Value = ((GestClientesWS.empresa)clienteI).razonSocial;
+                dgvClientes.Rows[e.RowIndex].Cells["tipoCliente"].Value = "empresa";
+                dgvClientes.Rows[e.RowIndex].Cells["tipoDocumento"].Value = "RUC";
+                dgvClientes.Rows[e.RowIndex].Cells["nmrDocumento"].Value = ((GestClientesWS.empresa)clienteI).RUC;
+                dgvClientes.Rows[e.RowIndex].Cells["categoria"].Value = ((GestClientesWS.empresa)clienteI).categoria;
+
+            }
+            else {
+                dgvClientes.Rows[e.RowIndex].Cells["nombreCliente"].Value = ((GestClientesWS.personaNatural)clienteI).nombre + " " + ((GestClientesWS.personaNatural)clienteI).apellido;
+                dgvClientes.Rows[e.RowIndex].Cells["tipoCliente"].Value = "Persona Natural";
+                dgvClientes.Rows[e.RowIndex].Cells["tipoDocumento"].Value = ((GestClientesWS.personaNatural)clienteI).tipoDeDocumento.ToString();
+                dgvClientes.Rows[e.RowIndex].Cells["nmrDocumento"].Value = ((GestClientesWS.personaNatural)clienteI).numDeDocumento;
+                dgvClientes.Rows[e.RowIndex].Cells["categoria"].Value = ((GestClientesWS.personaNatural)clienteI).categoria;
+
+            }
 
         }
     }

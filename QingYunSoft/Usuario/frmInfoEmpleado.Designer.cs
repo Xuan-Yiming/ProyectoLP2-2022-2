@@ -353,6 +353,7 @@
             this.cbTipoUsuario.Name = "cbTipoUsuario";
             this.cbTipoUsuario.Size = new System.Drawing.Size(197, 21);
             this.cbTipoUsuario.TabIndex = 17;
+            this.cbTipoUsuario.SelectedIndexChanged += new System.EventHandler(this.cbTipoUsuario_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -452,6 +453,7 @@
             this.btCancelar.Size = new System.Drawing.Size(40, 50);
             this.btCancelar.TabIndex = 3;
             this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
             // 
             // btRegresar
             // 
@@ -465,6 +467,7 @@
             this.btRegresar.Size = new System.Drawing.Size(40, 50);
             this.btRegresar.TabIndex = 0;
             this.btRegresar.UseVisualStyleBackColor = true;
+            this.btRegresar.Click += new System.EventHandler(this.btRegresar_Click);
             // 
             // frmInfoEmpleado
             // 

@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://3.84.119.115:8080/LP2SoftWebServices/GestClientesWS?WSDL" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://44.211.200.189:8080/LP2SoftWebServices3/GestClientesWS?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="GestClientesWS.xsd" MetadataType="Schema" ID="b242dc3c-bcbe-453e-a583-4339f2e57f4d" SourceId="1" SourceUrl="http://3.84.119.115:8080/LP2SoftWebServices/GestClientesWS?xsd=1" />
-    <MetadataFile FileName="GestClientesWS.wsdl" MetadataType="Wsdl" ID="c52929ed-1cbd-4233-ab7b-6ef9946ebdb9" SourceId="1" SourceUrl="http://3.84.119.115:8080/LP2SoftWebServices/GestClientesWS?WSDL" />
+    <MetadataFile FileName="GestClientesWS.wsdl" MetadataType="Wsdl" ID="fed2693b-dcb4-4e6e-81c8-3c59c799f159" SourceId="1" SourceUrl="http://44.211.200.189:8080/LP2SoftWebServices3/GestClientesWS?WSDL" />
+    <MetadataFile FileName="GestClientesWS.xsd" MetadataType="Schema" ID="a2729cab-546f-49fa-b8d7-3f79ea683461" SourceId="1" SourceUrl="http://44.211.200.189:8080/LP2SoftWebServices3/GestClientesWS?xsd=1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -37,11 +37,10 @@ namespace QingYunSoft.Usuario
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            //RRHHWS.usuario[] empleados = daoRRHH.listarUsuariosPorDocumentoNombre(txtDNINombre.Text);
-            //if (empleados != null)
-            //    dgvUsuarios.DataSource = empleados.ToList();
-            //else
-            //    dgvUsuarios.DataSource = null;
+            daoRRHH = new RRHHWS.RRHHWSClient();
+
+            dgvUsuarios.DataSource = daoRRHH.listarUsuarios();
+
         }
 
         private void dgvUsuarios_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -72,6 +71,10 @@ namespace QingYunSoft.Usuario
             {
                 usuarioSeleccionado = (RRHHWS.usuario)dgvUsuarios.CurrentRow.DataBoundItem;
                 this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un usuario", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

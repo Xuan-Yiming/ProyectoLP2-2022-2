@@ -18,6 +18,8 @@
   <xs:element name="listarPersonasNaturalesPorDocumentoNombre" type="tns:listarPersonasNaturalesPorDocumentoNombre" />
   <xs:element name="listarPersonasNaturalesPorDocumentoNombreResponse" type="tns:listarPersonasNaturalesPorDocumentoNombreResponse" />
   <xs:element name="listarPersonasNaturalesResponse" type="tns:listarPersonasNaturalesResponse" />
+  <xs:element name="listarPorDocumentoNombre" type="tns:listarPorDocumentoNombre" />
+  <xs:element name="listarPorDocumentoNombreResponse" type="tns:listarPorDocumentoNombreResponse" />
   <xs:element name="modificarEmpresa" type="tns:modificarEmpresa" />
   <xs:element name="modificarEmpresaResponse" type="tns:modificarEmpresaResponse" />
   <xs:element name="modificarPersonaNatural" type="tns:modificarPersonaNatural" />
@@ -236,14 +238,14 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:personaNatural" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="insertarEmpresa">
+  <xs:complexType name="listarPorDocumentoNombre">
     <xs:sequence>
-      <xs:element minOccurs="0" name="empresa" type="tns:empresa" />
+      <xs:element minOccurs="0" name="docNombre" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="insertarEmpresaResponse">
+  <xs:complexType name="listarPorDocumentoNombreResponse">
     <xs:sequence>
-      <xs:element name="return" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:cliente" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarClientes">
@@ -252,6 +254,16 @@
   <xs:complexType name="listarClientesResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:cliente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarEmpresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="empresa" type="tns:empresa" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarEmpresaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarEmpresa">

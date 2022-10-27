@@ -217,7 +217,7 @@ namespace QingYunSoft
         private void btEmpleados_Click(object sender, EventArgs e)
         {
             lbltitulo.Text = "Empleados";
-            frmEmpleados _frmEmpleados = new frmEmpleados();
+            frmEmpleados _frmEmpleados = new frmEmpleados(this);
             mostrarFormularioEnPnlPrincipal(_frmEmpleados);
             resetColor();
             btnUsuarios.BackColor = Color.FromArgb(182, 111, 11);

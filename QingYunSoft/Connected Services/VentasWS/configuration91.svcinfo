@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="4TtWDR//UtkKD2oOaM8BNWy7d4ubaLW2Sv8z4i5Vxu0=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="poQLQN5sztbYlmOdutTsjJb92qGSsGOpYjV4IbdgbDU=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="VentasWSPortBinding">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="VentasWSPort" contract="VentasWS.VentasWS" bindingType="basicHttpBinding" address="http://3.84.119.115:8080/LP2SoftWebServices/VentasWS" bindingConfiguration="VentasWSPortBinding">
+    <endpoint name="VentasWSPort" contract="VentasWS.VentasWS" bindingType="basicHttpBinding" address="http://44.211.200.189:8080/LP2SoftWebServices3/VentasWS" bindingConfiguration="VentasWSPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://3.84.119.115:8080/LP2SoftWebServices/VentasWS</serializedValue>
+          <serializedValue>http://44.211.200.189:8080/LP2SoftWebServices3/VentasWS</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

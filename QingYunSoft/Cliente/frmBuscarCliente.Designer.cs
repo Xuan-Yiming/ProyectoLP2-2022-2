@@ -28,40 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvVentas = new System.Windows.Forms.DataGridView();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.nombreCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nmrDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btSeleccionar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btBuscarCliente = new System.Windows.Forms.Button();
+            this.txtNombreDNI = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvVentas
+            // dgvClientes
             // 
-            this.dgvVentas.AllowUserToAddRows = false;
-            this.dgvVentas.AllowUserToDeleteRows = false;
-            this.dgvVentas.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvClientes.AllowUserToAddRows = false;
+            this.dgvClientes.AllowUserToDeleteRows = false;
+            this.dgvClientes.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombreCliente,
             this.tipoCliente,
             this.tipoDocumento,
             this.nmrDocumento,
             this.categoria});
-            this.dgvVentas.GridColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dgvVentas.Location = new System.Drawing.Point(15, 71);
-            this.dgvVentas.Name = "dgvVentas";
-            this.dgvVentas.ReadOnly = true;
-            this.dgvVentas.RowHeadersVisible = false;
-            this.dgvVentas.Size = new System.Drawing.Size(723, 265);
-            this.dgvVentas.TabIndex = 2;
+            this.dgvClientes.GridColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dgvClientes.Location = new System.Drawing.Point(15, 71);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.ReadOnly = true;
+            this.dgvClientes.RowHeadersVisible = false;
+            this.dgvClientes.Size = new System.Drawing.Size(723, 265);
+            this.dgvClientes.TabIndex = 2;
+            this.dgvClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellContentClick);
+            this.dgvClientes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvClientes_CellFormatting);
             // 
             // nombreCliente
             // 
@@ -112,21 +114,22 @@
             this.btSeleccionar.UseVisualStyleBackColor = false;
             this.btSeleccionar.Click += new System.EventHandler(this.btSeleccionar_Click);
             // 
-            // button1
+            // btBuscarCliente
             // 
-            this.button1.Location = new System.Drawing.Point(406, 31);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(162, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Buscar por Nombre o DNI";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btBuscarCliente.Location = new System.Drawing.Point(406, 31);
+            this.btBuscarCliente.Name = "btBuscarCliente";
+            this.btBuscarCliente.Size = new System.Drawing.Size(162, 23);
+            this.btBuscarCliente.TabIndex = 15;
+            this.btBuscarCliente.Text = "Buscar por Nombre o DNI";
+            this.btBuscarCliente.UseVisualStyleBackColor = true;
+            this.btBuscarCliente.Click += new System.EventHandler(this.btBuscarCliente_Click);
             // 
-            // textBox1
+            // txtNombreDNI
             // 
-            this.textBox1.Location = new System.Drawing.Point(153, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 12;
+            this.txtNombreDNI.Location = new System.Drawing.Point(153, 34);
+            this.txtNombreDNI.Name = "txtNombreDNI";
+            this.txtNombreDNI.Size = new System.Drawing.Size(200, 20);
+            this.txtNombreDNI.TabIndex = 12;
             // 
             // label1
             // 
@@ -137,22 +140,22 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Nombre o DNI del cliente";
             // 
-            // frmCBuscarCliente
+            // frmBuscarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(750, 380);
             this.Controls.Add(this.btSeleccionar);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btBuscarCliente);
+            this.Controls.Add(this.txtNombreDNI);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgvVentas);
+            this.Controls.Add(this.dgvClientes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmCBuscarCliente";
+            this.Name = "frmBuscarCliente";
             this.Text = "frmCBuscarCliente";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmCBuscarCliente_MouseDown);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,15 +163,15 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvVentas;
+        private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoDocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn nmrDocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoria;
         private System.Windows.Forms.Button btSeleccionar;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btBuscarCliente;
+        private System.Windows.Forms.TextBox txtNombreDNI;
         private System.Windows.Forms.Label label1;
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QingYunSoft.Cliente;
+using QingYunSoft.VentasWS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -70,6 +72,7 @@ namespace QingYunSoft.Venta
             }
         }
 
+
         private bool CheckAeroEnabled()
         {
             if (Environment.OSVersion.Version.Major >= 6)
@@ -111,6 +114,9 @@ namespace QingYunSoft.Venta
 
         }
 
+        private VentasWS.ordenDeCompra ordenDeCompraSeleccionado;
+        public ordenDeCompra OrdenDeCompraSeleccionado { get => ordenDeCompraSeleccionado; set => ordenDeCompraSeleccionado = value; }
+        private GestClientesWS.cliente clienteSeleccionado;
         public frmBuscarVenta()
         {
             InitializeComponent();
@@ -129,7 +135,52 @@ namespace QingYunSoft.Venta
 
         private void btSeleccionar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            if (dgvVentas.CurrentRow != null)
+            {
+                OrdenDeCompraSeleccionado = (VentasWS.ordenDeCompra)dgvVentas.CurrentRow.DataBoundItem;
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una venta", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void dgvVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            VentasWS.ordenDeCompra venta = (VentasWS.ordenDeCompra)dgvVentas.Rows[e.RowIndex].DataBoundItem;
+            dgvVentas.Rows[e.RowIndex].Cells["ID"].Value = venta.id;
+            dgvVentas.Rows[e.RowIndex].Cells["idCliente"].Value = venta.idCliente;
+            dgvVentas.Rows[e.RowIndex].Cells["fechaVenta"].Value = venta.fechaDeCompra;
+            dgvVentas.Rows[e.RowIndex].Cells["moneda"].Value = venta.moneda;
+            dgvVentas.Rows[e.RowIndex].Cells["monto"].Value = venta.monto;
+        }
+
+        private void btBuscarPorCliente_Click(object sender, EventArgs e)
+        {
+            dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorCliente(this.clienteSeleccionado.idCliente);            
+        }
+
+        private void btBuscarPorFecha_Click(object sender, EventArgs e)
+        {
+            dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorFecha(dtpFecha.Value);
+        }
+
+        private void btBuscarCliente_Click(object sender, EventArgs e)
+        {
+            frmBuscarCliente _frmBuscarCliente = new frmBuscarCliente();
+            if (_frmBuscarCliente.ShowDialog() == DialogResult.OK)
+            {
+                this.clienteSeleccionado = _frmBuscarCliente.ClienteSeleccionado;
+                if (clienteSeleccionado is GestClientesWS.personaNatural)
+                {
+                    txtCliente.Text = ((GestClientesWS.personaNatural)clienteSeleccionado).nombre + " " + ((GestClientesWS.personaNatural)clienteSeleccionado).apellido;
+                }else if(clienteSeleccionado is GestClientesWS.empresa)
+                {
+                    txtCliente.Text = ((GestClientesWS.empresa)clienteSeleccionado).razonSocial;
+                }
+                
+            }
         }
     }
 }

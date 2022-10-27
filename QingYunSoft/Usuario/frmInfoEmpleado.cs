@@ -54,6 +54,7 @@ namespace QingYunSoft.Usuario
                     btRegresar.Enabled = true;
                     btCancelar.Enabled = true;
                     btEditarGuardar.Text = "Guardar";
+                    
                     break;
                 case Estado.Modificar:
                     txtID.Enabled = false;
@@ -106,12 +107,33 @@ namespace QingYunSoft.Usuario
 
             }
         }
+        public frmInfoEmpleado(frmPrincipal _frmPrincipal, Estado estado)
+        {
+            InitializeComponent();
+            this._frmPrincipal = _frmPrincipal;
+            this.estado = estado;
+
+            if (this.estado == Estado.Nuevo)
+            {
+                establecerEstadoComponentes();
+            }
+
+            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.DNI);
+            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.CE);
+            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.Pasaporte);
+            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.PNAC);
+            daoRRHH = new RRHHWS.RRHHWSClient();
+        }
         public frmInfoEmpleado(frmPrincipal _frmPrincipal, Estado estado, RRHHWS.usuario usuario)
         {
             InitializeComponent();
             this._frmPrincipal = _frmPrincipal;
             this.estado = estado;
-            
+            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.DNI);
+            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.CE);
+            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.Pasaporte);
+            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.PNAC);
+            daoRRHH = new RRHHWS.RRHHWSClient();
             if (this.estado == Estado.Nuevo)
             {
                 establecerEstadoComponentes();
@@ -156,6 +178,7 @@ namespace QingYunSoft.Usuario
 
         private void btEditarGuardar_Click(object sender, EventArgs e)
         {
+            daoRRHH = new RRHHWS.RRHHWSClient();
             if (this.estado == Estado.Resultado)
             {
                 this.estado = Estado.Modificar;
@@ -267,6 +290,7 @@ namespace QingYunSoft.Usuario
                 //cuentaUsuario.password = "123456";
                 //cuentaUsuario.idCuentaUsuario = daoRRHH.insertarCuentaUsuario(cuentaUsuario);
                 //empleado.cuentaUsuario = cuentaUsuario;
+                daoRRHH = new RRHHWSClient();
                 int resultado;
                 if (this._usuario is RRHHWS.supervisorDeAlmacen)
                 {
@@ -317,11 +341,12 @@ namespace QingYunSoft.Usuario
                 else
                     MessageBox.Show("Ha ocurrido un error al momento de modificar el empleado", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            
         }
 
         private void btAnular_Click(object sender, EventArgs e)
         {
+            daoRRHH = new RRHHWS.RRHHWSClient();
             if (MessageBox.Show("¿Esta seguro que desea eliminar este empleado?", "Mensaje de confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
 
@@ -343,6 +368,35 @@ namespace QingYunSoft.Usuario
                     MessageBox.Show("Se ha eliminado exitosamente el empleado", "Mensaje de Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("Ha ocurrido un error al momento de eliminar el empleado", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btRegresar_Click(object sender, EventArgs e)
+        {
+            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmEmpleados(_frmPrincipal));
+        }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmEmpleados(_frmPrincipal));
+        }
+
+        private void cbTipoUsuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbTipoUsuario.SelectedIndex == 0)
+            {
+                lblVariableTipo.Text = "Area";
+            }
+            else if (cbTipoUsuario.SelectedIndex == 1)
+            {
+                lblVariableTipo.Text = "Cantidad de ventas";
+                txtVariableTipo.Enabled = false;
+                if (this.estado == Estado.Nuevo) txtVariableTipo.Text = "0";
+            }
+            else
+            {
+                lblVariableTipo.Text = "";
+                txtVariableTipo.Enabled = false;
             }
         }
     }

@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://3.84.119.115:8080/LP2SoftWebServices/RRHHWS?WSDL" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://44.211.200.189:8080/LP2SoftWebServices3/RRHHWS?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="RRHHWS.wsdl" MetadataType="Wsdl" ID="c841679f-8cba-4abe-90ef-3ba8b4d837c0" SourceId="1" SourceUrl="http://3.84.119.115:8080/LP2SoftWebServices/RRHHWS?WSDL" />
-    <MetadataFile FileName="RRHHWS.xsd" MetadataType="Schema" ID="a5648e8d-6ff5-44b6-8d66-98770f70d4ae" SourceId="1" SourceUrl="http://3.84.119.115:8080/LP2SoftWebServices/RRHHWS?xsd=1" />
+    <MetadataFile FileName="RRHHWS.wsdl" MetadataType="Wsdl" ID="790caa7a-aeb3-4b65-a851-2a3117fa2c59" SourceId="1" SourceUrl="http://44.211.200.189:8080/LP2SoftWebServices3/RRHHWS?WSDL" />
+    <MetadataFile FileName="RRHHWS.xsd" MetadataType="Schema" ID="d62e04c6-fb79-4b43-ad12-0932c0f90af3" SourceId="1" SourceUrl="http://44.211.200.189:8080/LP2SoftWebServices3/RRHHWS?xsd=1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

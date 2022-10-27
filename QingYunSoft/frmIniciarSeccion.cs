@@ -129,8 +129,8 @@ namespace QingYunSoft
             RRHHWS.usuario usuario = new RRHHWS.vendedor();
             usuario.username = txtUsuario.Text;
             usuario.password = txtClave.Text;
-            int res = _servicio.verificarCuentaUsuario(usuario);
-            if ( res != 0)
+            this._usuario = _servicio.verificarCuentaUsuario(usuario);
+            if (this._usuario != null)
             {
                 frmPrincipal _frmPrincipal = new frmPrincipal(this._usuario);
                 this.Hide();
@@ -147,7 +147,7 @@ namespace QingYunSoft
             else
             {
 
-                MessageBox.Show("Usuario o contraseña incorrectos: Error Code" + res);
+                MessageBox.Show("Usuario o contraseña incorrectos: Error Code");
             }
 
             

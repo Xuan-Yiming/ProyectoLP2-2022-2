@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCliente = new System.Windows.Forms.TextBox();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.moneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.anulado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.btBuscarPorCliente = new System.Windows.Forms.Button();
+            this.btBuscarPorFecha = new System.Windows.Forms.Button();
             this.btSeleccionar = new System.Windows.Forms.Button();
+            this.btBuscarCliente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,16 +50,16 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 13);
+            this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Nombre o DNI del cliente";
+            this.label1.Text = "Cliente";
             // 
-            // textBox1
+            // txtCliente
             // 
-            this.textBox1.Location = new System.Drawing.Point(144, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtCliente.Location = new System.Drawing.Point(144, 30);
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.Size = new System.Drawing.Size(163, 20);
+            this.txtCliente.TabIndex = 1;
             // 
             // dgvVentas
             // 
@@ -74,8 +74,7 @@
             this.nombreCliente,
             this.fechaVenta,
             this.moneda,
-            this.monto,
-            this.anulado});
+            this.monto});
             this.dgvVentas.GridColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgvVentas.Location = new System.Drawing.Point(12, 105);
             this.dgvVentas.Name = "dgvVentas";
@@ -83,6 +82,7 @@
             this.dgvVentas.RowHeadersVisible = false;
             this.dgvVentas.Size = new System.Drawing.Size(703, 284);
             this.dgvVentas.TabIndex = 2;
+            this.dgvVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvVentas_CellFormatting);
             // 
             // ID
             // 
@@ -117,13 +117,6 @@
             this.monto.Name = "monto";
             this.monto.ReadOnly = true;
             // 
-            // anulado
-            // 
-            this.anulado.HeaderText = "Anulado";
-            this.anulado.Name = "anulado";
-            this.anulado.ReadOnly = true;
-            this.anulado.Width = 50;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -133,31 +126,33 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Fecha de la venta";
             // 
-            // dateTimePicker1
+            // dtpFecha
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(144, 65);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 7;
+            this.dtpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFecha.Location = new System.Drawing.Point(144, 65);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(200, 20);
+            this.dtpFecha.TabIndex = 7;
             // 
-            // button1
+            // btBuscarPorCliente
             // 
-            this.button1.Location = new System.Drawing.Point(386, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Buscar por cliente";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btBuscarPorCliente.Location = new System.Drawing.Point(386, 27);
+            this.btBuscarPorCliente.Name = "btBuscarPorCliente";
+            this.btBuscarPorCliente.Size = new System.Drawing.Size(110, 23);
+            this.btBuscarPorCliente.TabIndex = 8;
+            this.btBuscarPorCliente.Text = "Buscar por cliente";
+            this.btBuscarPorCliente.UseVisualStyleBackColor = true;
+            this.btBuscarPorCliente.Click += new System.EventHandler(this.btBuscarPorCliente_Click);
             // 
-            // button2
+            // btBuscarPorFecha
             // 
-            this.button2.Location = new System.Drawing.Point(386, 62);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Buscar por fecha";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btBuscarPorFecha.Location = new System.Drawing.Point(386, 62);
+            this.btBuscarPorFecha.Name = "btBuscarPorFecha";
+            this.btBuscarPorFecha.Size = new System.Drawing.Size(110, 23);
+            this.btBuscarPorFecha.TabIndex = 9;
+            this.btBuscarPorFecha.Text = "Buscar por fecha";
+            this.btBuscarPorFecha.UseVisualStyleBackColor = true;
+            this.btBuscarPorFecha.Click += new System.EventHandler(this.btBuscarPorFecha_Click);
             // 
             // btSeleccionar
             // 
@@ -173,19 +168,33 @@
             this.btSeleccionar.UseVisualStyleBackColor = false;
             this.btSeleccionar.Click += new System.EventHandler(this.btSeleccionar_Click);
             // 
+            // btBuscarCliente
+            // 
+            this.btBuscarCliente.BackgroundImage = global::QingYunSoft.Properties.Resources.magnifyingglass_circle;
+            this.btBuscarCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btBuscarCliente.FlatAppearance.BorderSize = 0;
+            this.btBuscarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btBuscarCliente.Location = new System.Drawing.Point(314, 24);
+            this.btBuscarCliente.Name = "btBuscarCliente";
+            this.btBuscarCliente.Size = new System.Drawing.Size(30, 30);
+            this.btBuscarCliente.TabIndex = 11;
+            this.btBuscarCliente.UseVisualStyleBackColor = true;
+            this.btBuscarCliente.Click += new System.EventHandler(this.btBuscarCliente_Click);
+            // 
             // frmBuscarVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(728, 447);
+            this.Controls.Add(this.btBuscarCliente);
             this.Controls.Add(this.btSeleccionar);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.btBuscarPorFecha);
+            this.Controls.Add(this.btBuscarPorCliente);
+            this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvVentas);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCliente);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -202,18 +211,18 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.DataGridView dgvVentas;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.Button btBuscarPorCliente;
+        private System.Windows.Forms.Button btBuscarPorFecha;
+        private System.Windows.Forms.Button btSeleccionar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn moneda;
         private System.Windows.Forms.DataGridViewTextBoxColumn monto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn anulado;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btSeleccionar;
+        private System.Windows.Forms.Button btBuscarCliente;
     }
 }

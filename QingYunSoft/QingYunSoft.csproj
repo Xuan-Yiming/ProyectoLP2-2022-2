@@ -275,6 +275,9 @@
     <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.listarPersonasNaturalesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.listarPorDocumentoNombreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.modificarEmpresaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -285,6 +288,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.administrador.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.cliente.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.eliminarAdministradorResponse.datasource">
@@ -311,10 +317,16 @@
     <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.listarAdministradoresResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.listarPorDocumentoNombreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.listarSupervisoresPorDocumentoNombreResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.listarSupervisoresResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.listarUsuariosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.listarVendedoresPorDocumentoNombreResponse.datasource">
@@ -333,6 +345,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.supervisorDeAlmacen.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.usuario.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.vendedor.datasource">

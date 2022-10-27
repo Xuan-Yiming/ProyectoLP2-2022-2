@@ -30,7 +30,7 @@
         {
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.dgvVentas = new System.Windows.Forms.DataGridView();
+            this.dgvEmpleados = new System.Windows.Forms.DataGridView();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +48,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -70,36 +70,39 @@
             // 
             // panel10
             // 
-            this.panel10.Controls.Add(this.dgvVentas);
+            this.panel10.Controls.Add(this.dgvEmpleados);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(50, 40);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(727, 398);
             this.panel10.TabIndex = 1;
             // 
-            // dgvVentas
+            // dgvEmpleados
             // 
-            this.dgvVentas.AllowUserToAddRows = false;
-            this.dgvVentas.AllowUserToDeleteRows = false;
-            this.dgvVentas.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvEmpleados.AllowUserToAddRows = false;
+            this.dgvEmpleados.AllowUserToDeleteRows = false;
+            this.dgvEmpleados.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvEmpleados.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvEmpleados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombre,
             this.cargo,
             this.tipoDocumento,
             this.nmrDocumento,
             this.fechaIngreso});
-            this.dgvVentas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvVentas.GridColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dgvVentas.Location = new System.Drawing.Point(0, 0);
-            this.dgvVentas.Name = "dgvVentas";
-            this.dgvVentas.ReadOnly = true;
-            this.dgvVentas.RowHeadersVisible = false;
-            this.dgvVentas.RowHeadersWidth = 62;
-            this.dgvVentas.Size = new System.Drawing.Size(727, 398);
-            this.dgvVentas.TabIndex = 1;
+            this.dgvEmpleados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvEmpleados.GridColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dgvEmpleados.Location = new System.Drawing.Point(0, 0);
+            this.dgvEmpleados.Name = "dgvEmpleados";
+            this.dgvEmpleados.ReadOnly = true;
+            this.dgvEmpleados.RowHeadersVisible = false;
+            this.dgvEmpleados.RowHeadersWidth = 62;
+            this.dgvEmpleados.Size = new System.Drawing.Size(727, 398);
+            this.dgvEmpleados.TabIndex = 1;
+            this.dgvEmpleados.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmpleados_CellContentDoubleClick);
+            this.dgvEmpleados.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvEmpleados_CellFormatting);
+            this.dgvEmpleados.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvEmpleados_CellMouseDoubleClick);
             // 
             // nombre
             // 
@@ -270,7 +273,7 @@
             this.Text = "frmEmpleados";
             this.panel6.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
@@ -285,7 +288,7 @@
         #endregion
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.DataGridView dgvVentas;
+        private System.Windows.Forms.DataGridView dgvEmpleados;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btBuscar;

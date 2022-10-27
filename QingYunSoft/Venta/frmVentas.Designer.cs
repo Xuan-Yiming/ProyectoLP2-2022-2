@@ -40,11 +40,10 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.moneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.anulado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btBuscar = new System.Windows.Forms.Button();
@@ -200,11 +199,10 @@
             this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
-            this.nombreCliente,
+            this.idCliente,
             this.fechaVenta,
             this.moneda,
-            this.monto,
-            this.anulado});
+            this.monto});
             this.dgvVentas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvVentas.GridColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgvVentas.Location = new System.Drawing.Point(0, 0);
@@ -215,6 +213,7 @@
             this.dgvVentas.Size = new System.Drawing.Size(727, 398);
             this.dgvVentas.TabIndex = 1;
             this.dgvVentas.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellContentDoubleClick);
+            this.dgvVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvVentas_CellFormatting);
             // 
             // ID
             // 
@@ -224,13 +223,13 @@
             this.ID.ReadOnly = true;
             this.ID.Width = 150;
             // 
-            // nombreCliente
+            // idCliente
             // 
-            this.nombreCliente.HeaderText = "Nombre Cliente";
-            this.nombreCliente.MinimumWidth = 8;
-            this.nombreCliente.Name = "nombreCliente";
-            this.nombreCliente.ReadOnly = true;
-            this.nombreCliente.Width = 200;
+            this.idCliente.HeaderText = "ID Cliente";
+            this.idCliente.MinimumWidth = 8;
+            this.idCliente.Name = "idCliente";
+            this.idCliente.ReadOnly = true;
+            this.idCliente.Width = 200;
             // 
             // fechaVenta
             // 
@@ -254,14 +253,6 @@
             this.monto.MinimumWidth = 8;
             this.monto.Name = "monto";
             this.monto.ReadOnly = true;
-            // 
-            // anulado
-            // 
-            this.anulado.HeaderText = "Anulado";
-            this.anulado.MinimumWidth = 8;
-            this.anulado.Name = "anulado";
-            this.anulado.ReadOnly = true;
-            this.anulado.Width = 50;
             // 
             // panel7
             // 
@@ -364,10 +355,9 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.DataGridView dgvVentas;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn moneda;
         private System.Windows.Forms.DataGridViewTextBoxColumn monto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn anulado;
     }
 }

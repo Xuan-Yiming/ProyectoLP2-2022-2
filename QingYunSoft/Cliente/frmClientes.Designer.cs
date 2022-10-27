@@ -144,6 +144,7 @@
             this.dgvClientes.RowHeadersWidth = 62;
             this.dgvClientes.Size = new System.Drawing.Size(727, 398);
             this.dgvClientes.TabIndex = 1;
+            this.dgvClientes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvClientes_CellFormatting);
             this.dgvClientes.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvClientes_CellMouseDoubleClick);
             // 
             // nombreCliente

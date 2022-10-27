@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="wnuaQr1U3IinJ8SHRhOdAsA9Tk13Gxz5ttfHKWCCE/Y=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="XSw04K0MwTEVn4HOXNUbjA6BfF3g0RUe2TKVTti18Qo=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="GestClientesWSPortBinding">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="GestClientesWSPort" contract="GestClientesWS.GestClientesWS" bindingType="basicHttpBinding" address="http://3.84.119.115:8080/LP2SoftWebServices/GestClientesWS" bindingConfiguration="GestClientesWSPortBinding">
+    <endpoint name="GestClientesWSPort" contract="GestClientesWS.GestClientesWS" bindingType="basicHttpBinding" address="http://44.211.200.189:8080/LP2SoftWebServices3/GestClientesWS" bindingConfiguration="GestClientesWSPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://3.84.119.115:8080/LP2SoftWebServices/GestClientesWS</serializedValue>
+          <serializedValue>http://44.211.200.189:8080/LP2SoftWebServices3/GestClientesWS</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
