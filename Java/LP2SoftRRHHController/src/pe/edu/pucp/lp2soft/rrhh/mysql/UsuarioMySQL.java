@@ -214,7 +214,7 @@ public class UsuarioMySQL implements UsuarioDAO {
         ArrayList<Usuario> usuarios = new ArrayList<>();
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("call LISTAR_TODOS_USUARIOS()");
+            cs = con.prepareCall("call LISTAR_USUARIOS()");
             rs = cs.executeQuery();
             while(rs.next()){
                 
