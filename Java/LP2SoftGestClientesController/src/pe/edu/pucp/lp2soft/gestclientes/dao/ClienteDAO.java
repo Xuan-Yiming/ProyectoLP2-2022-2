@@ -8,4 +8,5 @@ public interface ClienteDAO {
     int modificar(Cliente cliente);
     int eliminar(int idCliente);
     ArrayList<Cliente> listarTodas();
+    ArrayList<Cliente> listarClientes();
 }

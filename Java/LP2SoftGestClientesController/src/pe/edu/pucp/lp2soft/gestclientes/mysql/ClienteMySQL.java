@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.gestclientes.dao.ClienteDAO;
 import pe.edu.pucp.lp2soft.gestclientes.model.Cliente;
+import pe.edu.pucp.lp2soft.gestclientes.model.Empresa;
+import pe.edu.pucp.lp2soft.gestclientes.model.PersonaNatural;
+import pe.edu.pucp.lp2soft.rrhh.model.TipoDeDocumento;
 
 public class ClienteMySQL implements ClienteDAO{
     private Connection con;
@@ -78,6 +81,53 @@ public class ClienteMySQL implements ClienteDAO{
                 cliente.setCategoria(rs.getString("categoria"));
                 cliente.setActivo(rs.getBoolean("activo"));
                 clientes.add(cliente);
+            }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        return clientes;
+    }
+
+    @Override
+    public ArrayList<Cliente> listarClientes(){
+        ArrayList<Cliente> clientes = new ArrayList<>();
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("call LISTAR_TODOS_CLIENTES()");
+            rs = cs.executeQuery();
+            while(rs.next()){
+                Cliente _cliente = new Cliente(){};
+                _cliente.setIdCliente(rs.getInt("id_cliente"));
+                _cliente.setCategoria(rs.getString("categoria"));
+
+                if(rs.getString("razon_social") != null){
+                    Empresa empresa = new Empresa();
+                    empresa.setIdCliente(rs.getInt("id_cliente"));
+                    empresa.setCategoria(rs.getString("categoria"));
+                    empresa.setRUC(rs.getString("RUC"));
+                    empresa.setRazonSocial(rs.getString("razon_social"));
+                    empresa.setDireccion(rs.getString("direccion"));
+                    empresa.setActivo(true);
+                    clientes.add(empresa);
+                }else{
+                    PersonaNatural personaNatural = new PersonaNatural();
+                    personaNatural.setIdCliente(rs.getInt("id_cliente"));
+                    personaNatural.setCategoria(rs.getString("categoria"));
+                    personaNatural.setNumDeDocumento(rs.getString("numero_de_documento"));
+                    personaNatural.setTipoDeDocumento(TipoDeDocumento.valueOf(rs.getString("tipo_de_documento")));
+                    personaNatural.setNombre(rs.getString("nombre"));
+                    personaNatural.setApellido(rs.getString("apellido"));
+                    personaNatural.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
+                    personaNatural.setTelefono(rs.getString("telefono"));
+                    personaNatural.setDireccion(rs.getString("direccion"));
+                    personaNatural.setEmail(rs.getString("email"));
+                    personaNatural.setActivo(true);
+                    clientes.add(personaNatural);
+                }
             }
         }catch(Exception ex){
             System.out.println(ex.getMessage());

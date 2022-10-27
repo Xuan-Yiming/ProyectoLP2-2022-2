@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import pe.edu.pucp.lp2soft.gestclientes.dao.ClienteDAO;
 import pe.edu.pucp.lp2soft.gestclientes.dao.EmpresaDAO;
 import pe.edu.pucp.lp2soft.gestclientes.dao.PersonaNaturalDAO;
+import pe.edu.pucp.lp2soft.gestclientes.model.Cliente;
 import pe.edu.pucp.lp2soft.gestclientes.model.Empresa;
 import pe.edu.pucp.lp2soft.gestclientes.model.PersonaNatural;
+import pe.edu.pucp.lp2soft.gestclientes.mysql.ClienteMySQL;
 import pe.edu.pucp.lp2soft.gestclientes.mysql.EmpresaMySQL;
 import pe.edu.pucp.lp2soft.gestclientes.mysql.PersonaNaturalMySQL;
 
@@ -15,6 +18,7 @@ import pe.edu.pucp.lp2soft.gestclientes.mysql.PersonaNaturalMySQL;
 public class GestClientesWS {
     EmpresaDAO daoEmpresa = new EmpresaMySQL();
     PersonaNaturalDAO daoPersonaNatural = new PersonaNaturalMySQL();
+    ClienteDAO daoCliente = new ClienteMySQL();
     
     /*Gestionar Empresa*/
     @WebMethod(operationName = "insertarEmpresa")
@@ -118,5 +122,14 @@ public class GestClientesWS {
         }
         return personasNaturales;
     }
-    
+    @WebMethod(operationName = "listarClientes")
+    public ArrayList<Cliente> listarClientes(){
+        ArrayList<Cliente> clientes = new ArrayList<>();
+        try{
+            clientes = daoCliente.listarClientes();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return clientes;
+    }
 }
