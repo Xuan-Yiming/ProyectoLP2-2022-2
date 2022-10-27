@@ -10,11 +10,15 @@ import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.AlmacenDAO;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.ProductoDAO;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.AlmacenMySQL;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.ProductoMySQL;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.TerminoDePago;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.TerminoDePagoDAO;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.TerminoDePagoMySQL;
 
 @WebService(serviceName = "VentasWS")
 public class VentasWS {
     ProductoDAO daoProducto = new ProductoMySQL();
     AlmacenDAO daoAlmacen = new AlmacenMySQL();
+    TerminoDePagoDAO daoTerminoPago = new TerminoDePagoMySQL();
     
     /*Gestionar Productos*/
     @WebMethod(operationName = "insertarProducto")
@@ -118,4 +122,48 @@ public class VentasWS {
         }
         return almacenes;
     }
+    
+    @WebMethod(operationName = "insertarTerminoPago")
+    public int insertarTerminoPago(@WebParam(name = "terminoPago") TerminoDePago terminoPago) {
+        int resultado = 0;
+        try{
+            resultado = daoTerminoPago.insertar(terminoPago);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    
+    @WebMethod(operationName = "modificarTerminoPago")
+    public int modificarTerminoPago(@WebParam(name = "terminoPago") TerminoDePago terminoPago) {
+        int resultado = 0;
+        try{
+            resultado = daoTerminoPago.modificar(terminoPago);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "eliminarTerminoPago")
+    public int eliminarTerminoPago(@WebParam(name = "terminoPago") int idTerminoPago) {
+        int resultado = 0;
+        try{
+            resultado = daoTerminoPago.eliminar(idTerminoPago);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "listarTerminoPago")
+    public ArrayList<TerminoDePago> listarTerminoDePagos() {
+        ArrayList<TerminoDePago> terminoPagos = null;
+        try{
+            terminoPagos = daoTerminoPago.listarTodos();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return terminoPagos;
+    }
+    
+    
 }
