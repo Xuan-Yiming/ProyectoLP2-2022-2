@@ -1,0 +1,15 @@
+CALL INSERTAR_ADMINISTRADOR(@id_usuario1,"RRHH","jar2000","contrasena17",'2022-05-10',"DNI","76633613","Jarumy","Novoa",'2000-11-13',"991779835","Jr. Constantino Bayle 3177","jarumyaracelli13@gmail.com");
+
+CALL INSERTAR_ALMACEN(@id_almacen1,"Las Joyas","Jr. Cusco 3177",True);
+
+CALL INSERTAR_DEVOLUCION(@id_devolucion1,61,28);
+
+CALL INSERTAR_DOCUMENTO_CREDITO(@id_documento_credito1,89,15,111,'2022-10-03','2022-11-03',125.5,False);
+
+CALL INSERTAR_DOCUMENTO_DEBITO(@id_documento_debito1,69,91,11,'2022-10-18','2022-11-18',3.8,55.5,30.0,False);
+
+CALL INSERTAR_EMPRESA(@id_empresa1,"20601208416","GALVASA S.R.L.","Av. Proceres 245", "VIP");
+
+CALL INSERTAR_MONEDA(@id_moneda,"Nuevo Sol","PEN");
+
+CALL INSERTAR_ORDEN_DE_COMPRA(@id_orden_de_compra1,5,65,35,2000.0,"Av. Universitaria 4155","ADestino",'2022-10-03','2022-10-07',False);
