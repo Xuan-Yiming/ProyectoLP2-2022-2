@@ -8,4 +8,5 @@ public interface PedidoDAO {
     public int modificar(Pedido pedido);
     public int eliminar(int id);
     public ArrayList<Pedido> listarTodos();
+	public ArrayList<Pedido> listarPorOrdenDeCompra(int idOrdenDeCompra);
 }
