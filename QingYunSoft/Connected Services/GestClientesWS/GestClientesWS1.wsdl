@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://services.lp2soft.pucp.edu.pe/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="GestClientesWS" targetNamespace="http://services.lp2soft.pucp.edu.pe/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/LP2SoftWebServices/GestClientesWS?xsd=1" namespace="http://services.lp2soft.pucp.edu.pe/" />
+    </xsd:schema>
+  </types>
+  <message name="insertarEmpresa">
+    <part name="parameters" element="tns:insertarEmpresa" />
+  </message>
+  <message name="insertarEmpresaResponse">
+    <part name="parameters" element="tns:insertarEmpresaResponse" />
+  </message>
+  <message name="listarEmpresas">
+    <part name="parameters" element="tns:listarEmpresas" />
+  </message>
+  <message name="listarEmpresasResponse">
+    <part name="parameters" element="tns:listarEmpresasResponse" />
+  </message>
+  <message name="eliminarEmpresa">
+    <part name="parameters" element="tns:eliminarEmpresa" />
+  </message>
+  <message name="eliminarEmpresaResponse">
+    <part name="parameters" element="tns:eliminarEmpresaResponse" />
+  </message>
+  <message name="listarClientes">
+    <part name="parameters" element="tns:listarClientes" />
+  </message>
+  <message name="listarClientesResponse">
+    <part name="parameters" element="tns:listarClientesResponse" />
+  </message>
+  <message name="modificarEmpresa">
+    <part name="parameters" element="tns:modificarEmpresa" />
+  </message>
+  <message name="modificarEmpresaResponse">
+    <part name="parameters" element="tns:modificarEmpresaResponse" />
+  </message>
+  <message name="listarPorDocumentoNombre">
+    <part name="parameters" element="tns:listarPorDocumentoNombre" />
+  </message>
+  <message name="listarPorDocumentoNombreResponse">
+    <part name="parameters" element="tns:listarPorDocumentoNombreResponse" />
+  </message>
+  <message name="listarEmpresasPorRUCNombre">
+    <part name="parameters" element="tns:listarEmpresasPorRUCNombre" />
+  </message>
+  <message name="listarEmpresasPorRUCNombreResponse">
+    <part name="parameters" element="tns:listarEmpresasPorRUCNombreResponse" />
+  </message>
+  <message name="eliminarPersonaNatural">
+    <part name="parameters" element="tns:eliminarPersonaNatural" />
+  </message>
+  <message name="eliminarPersonaNaturalResponse">
+    <part name="parameters" element="tns:eliminarPersonaNaturalResponse" />
+  </message>
+  <message name="listarPersonasNaturales">
+    <part name="parameters" element="tns:listarPersonasNaturales" />
+  </message>
+  <message name="listarPersonasNaturalesResponse">
+    <part name="parameters" element="tns:listarPersonasNaturalesResponse" />
+  </message>
+  <message name="insertarPersonaNatural">
+    <part name="parameters" element="tns:insertarPersonaNatural" />
+  </message>
+  <message name="insertarPersonaNaturalResponse">
+    <part name="parameters" element="tns:insertarPersonaNaturalResponse" />
+  </message>
+  <message name="modificarPersonaNatural">
+    <part name="parameters" element="tns:modificarPersonaNatural" />
+  </message>
+  <message name="modificarPersonaNaturalResponse">
+    <part name="parameters" element="tns:modificarPersonaNaturalResponse" />
+  </message>
+  <message name="listarPersonasNaturalesPorDocumentoNombre">
+    <part name="parameters" element="tns:listarPersonasNaturalesPorDocumentoNombre" />
+  </message>
+  <message name="listarPersonasNaturalesPorDocumentoNombreResponse">
+    <part name="parameters" element="tns:listarPersonasNaturalesPorDocumentoNombreResponse" />
+  </message>
+  <portType name="GestClientesWS">
+    <operation name="insertarEmpresa">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarEmpresaRequest" message="tns:insertarEmpresa" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarEmpresaResponse" message="tns:insertarEmpresaResponse" />
+    </operation>
+    <operation name="listarEmpresas">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarEmpresasRequest" message="tns:listarEmpresas" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarEmpresasResponse" message="tns:listarEmpresasResponse" />
+    </operation>
+    <operation name="eliminarEmpresa">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarEmpresaRequest" message="tns:eliminarEmpresa" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarEmpresaResponse" message="tns:eliminarEmpresaResponse" />
+    </operation>
+    <operation name="listarClientes">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarClientesRequest" message="tns:listarClientes" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarClientesResponse" message="tns:listarClientesResponse" />
+    </operation>
+    <operation name="modificarEmpresa">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/modificarEmpresaRequest" message="tns:modificarEmpresa" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/modificarEmpresaResponse" message="tns:modificarEmpresaResponse" />
+    </operation>
+    <operation name="listarPorDocumentoNombre">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPorDocumentoNombreRequest" message="tns:listarPorDocumentoNombre" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPorDocumentoNombreResponse" message="tns:listarPorDocumentoNombreResponse" />
+    </operation>
+    <operation name="listarEmpresasPorRUCNombre">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarEmpresasPorRUCNombreRequest" message="tns:listarEmpresasPorRUCNombre" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarEmpresasPorRUCNombreResponse" message="tns:listarEmpresasPorRUCNombreResponse" />
+    </operation>
+    <operation name="eliminarPersonaNatural">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarPersonaNaturalRequest" message="tns:eliminarPersonaNatural" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarPersonaNaturalResponse" message="tns:eliminarPersonaNaturalResponse" />
+    </operation>
+    <operation name="listarPersonasNaturales">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPersonasNaturalesRequest" message="tns:listarPersonasNaturales" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPersonasNaturalesResponse" message="tns:listarPersonasNaturalesResponse" />
+    </operation>
+    <operation name="insertarPersonaNatural">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarPersonaNaturalRequest" message="tns:insertarPersonaNatural" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarPersonaNaturalResponse" message="tns:insertarPersonaNaturalResponse" />
+    </operation>
+    <operation name="modificarPersonaNatural">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/modificarPersonaNaturalRequest" message="tns:modificarPersonaNatural" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/modificarPersonaNaturalResponse" message="tns:modificarPersonaNaturalResponse" />
+    </operation>
+    <operation name="listarPersonasNaturalesPorDocumentoNombre">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPersonasNaturalesPorDocumentoNombreRequest" message="tns:listarPersonasNaturalesPorDocumentoNombre" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPersonasNaturalesPorDocumentoNombreResponse" message="tns:listarPersonasNaturalesPorDocumentoNombreResponse" />
+    </operation>
+  </portType>
+  <binding name="GestClientesWSPortBinding" type="tns:GestClientesWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="insertarEmpresa">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarEmpresas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eliminarEmpresa">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarClientes">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarEmpresa">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarPorDocumentoNombre">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarEmpresasPorRUCNombre">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eliminarPersonaNatural">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarPersonasNaturales">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarPersonaNatural">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarPersonaNatural">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarPersonasNaturalesPorDocumentoNombre">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="GestClientesWS">
+    <port name="GestClientesWSPort" binding="tns:GestClientesWSPortBinding">
+      <soap:address location="http://localhost:8080/LP2SoftWebServices/GestClientesWS" />
+    </port>
+  </service>
+</definitions>

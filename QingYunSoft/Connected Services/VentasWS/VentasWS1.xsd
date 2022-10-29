@@ -201,22 +201,22 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ordenDeCompra" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="eliminarTerminoPago">
-    <xs:sequence>
-      <xs:element name="terminoPago" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarTerminoPagoResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="eliminarAlmacen">
     <xs:sequence>
       <xs:element name="almacen" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarAlmacenResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarTerminoPago">
+    <xs:sequence>
+      <xs:element name="terminoPago" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarTerminoPagoResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
@@ -282,14 +282,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="productos" nillable="true" type="tns:producto" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarTerminoPago">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarTerminoPagoResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:terminoDePago" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="insertarAlmacen">
     <xs:sequence>
       <xs:element minOccurs="0" name="almacen" type="tns:almacen" />
@@ -298,6 +290,14 @@
   <xs:complexType name="insertarAlmacenResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarTerminoPago">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarTerminoPagoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:terminoDePago" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarAlmacen">

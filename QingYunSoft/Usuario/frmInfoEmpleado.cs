@@ -14,23 +14,85 @@ namespace QingYunSoft.Usuario
 {
     public partial class frmInfoEmpleado : Form
     {
+        //objetos
         private frmPrincipal _frmPrincipal;
-        
         private Estado estado;
-        //El objeto empleado que manejaremos a lo largo del uso del formulario
         private RRHHWS.usuario _usuario;
-        //Los DAOs de conexión
+        
+        //dao
         private RRHHWS.RRHHWSClient daoRRHH; 
+        
+        //constrcutores
         public frmInfoEmpleado()
         {
             InitializeComponent();
 
         }
-        public void establecerEstadoComponentes()
+
+        public frmInfoEmpleado(frmPrincipal _frmPrincipal, Estado estado)
+        {
+            InitializeComponent();
+            this._frmPrincipal = _frmPrincipal;
+            this.estado = estado;
+            establecerEstadoComponentes();
+            cbTipoDocumento.DataSource = Enum.GetValues(typeof(RRHHWS.tipoDeDocumento));
+            daoRRHH = new RRHHWS.RRHHWSClient();
+        }
+        public frmInfoEmpleado(frmPrincipal _frmPrincipal, Estado estado, RRHHWS.usuario usuario)
+        {
+            InitializeComponent();
+            this._frmPrincipal = _frmPrincipal;
+            this.estado = estado;
+            cbTipoDocumento.DataSource = Enum.GetValues(typeof(RRHHWS.tipoDeDocumento));
+            daoRRHH = new RRHHWS.RRHHWSClient();
+
+            establecerEstadoComponentes();
+
+            txtID.Text = usuario.idUsuario.ToString();
+            txtUsername.Text = usuario.username;
+            txtContrasena.Text = usuario.password;
+            if (usuario is RRHHWS.supervisorDeAlmacen)
+            {
+                cbTipoUsuario.SelectedIndex = 2;
+                lblVariableTipo.Text = "Almacen";
+                txtVariableTipo.Enabled = false;
+                txtVariableTipo.Text = "";
+                btBuscarAlmacen.Enabled = true;
+            }
+            else if (usuario is RRHHWS.vendedor)
+            {
+                cbTipoUsuario.SelectedIndex = 1;
+                lblVariableTipo.Text = "Cantidad de ventas";
+                txtVariableTipo.Text = ((RRHHWS.vendedor)usuario).cantidadVentas.ToString();
+                txtVariableTipo.Text = "";
+            }
+            else if (usuario is RRHHWS.administrador)
+            {
+                cbTipoUsuario.SelectedIndex = 0;
+                lblVariableTipo.Text = "Area";
+                txtVariableTipo.Text = ((RRHHWS.administrador)usuario).area;
+                txtVariableTipo.Text = "";
+            }
+            dtpFechaIngreso.Value = usuario.fechaIngreso;
+            cbTipoDocumento.SelectedValue = usuario.tipoDeDocumento;
+            txtNumeroDocumento.Text = usuario.numDeDocumento;
+            txtNombre.Text = usuario.nombre;
+            txtApellido.Text = usuario.apellido;
+            txtTelefono.Text = usuario.telefono;
+            txtCorreo.Text = usuario.email;
+            txtDireccion.Text = usuario.direccion;
+            dtpFechaNacimiento.Value = usuario.fechaDeNacimiento;
+                
+            this._usuario = usuario;
+            
+        
+        }
+        //metodos
+        private void establecerEstadoComponentes()
         {
             switch (estado)
             {
-                
+
                 case Estado.Nuevo:
                     txtID.Enabled = false;
                     txtUsername.Enabled = true;
@@ -47,14 +109,15 @@ namespace QingYunSoft.Usuario
                     txtCorreo.Enabled = true;
                     txtDireccion.Enabled = true;
                     dtpFechaNacimiento.Enabled = true;
-                    
+
                     txtID.Enabled = false;
                     btAnular.Enabled = false;
                     btEditarGuardar.Enabled = true;
                     btRegresar.Enabled = true;
                     btCancelar.Enabled = true;
                     btEditarGuardar.Text = "Guardar";
-                    
+                    btBuscarAlmacen.Enabled = false;
+
                     break;
                 case Estado.Modificar:
                     txtID.Enabled = false;
@@ -72,13 +135,14 @@ namespace QingYunSoft.Usuario
                     txtCorreo.Enabled = true;
                     txtDireccion.Enabled = true;
                     dtpFechaNacimiento.Enabled = true;
-                    
+
                     txtID.Enabled = true;
                     btAnular.Enabled = true;
-                    btEditarGuardar.Enabled = true;                    
+                    btEditarGuardar.Enabled = true;
                     btRegresar.Enabled = true;
                     btCancelar.Enabled = true;
                     btEditarGuardar.Text = "Guardar";
+                    btBuscarAlmacen.Enabled = false;
                     break;
                 case Estado.Resultado:
                     //disable all txtbox
@@ -88,7 +152,7 @@ namespace QingYunSoft.Usuario
                     txtContrasena.Enabled = false;
                     txtVariableTipo.Enabled = false;
                     dtpFechaIngreso.Enabled = false;
-                    
+
                     cbTipoDocumento.Enabled = false;
                     txtNumeroDocumento.Enabled = false;
                     txtNombre.Enabled = false;
@@ -103,79 +167,11 @@ namespace QingYunSoft.Usuario
                     btRegresar.Enabled = true;
                     btCancelar.Enabled = false;
                     btEditarGuardar.Text = "Editar";
+                    btBuscarAlmacen.Enabled = false;
                     break;
 
             }
         }
-        public frmInfoEmpleado(frmPrincipal _frmPrincipal, Estado estado)
-        {
-            InitializeComponent();
-            this._frmPrincipal = _frmPrincipal;
-            this.estado = estado;
-
-            if (this.estado == Estado.Nuevo)
-            {
-                establecerEstadoComponentes();
-            }
-
-            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.DNI);
-            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.CE);
-            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.Pasaporte);
-            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.PNAC);
-            daoRRHH = new RRHHWS.RRHHWSClient();
-        }
-        public frmInfoEmpleado(frmPrincipal _frmPrincipal, Estado estado, RRHHWS.usuario usuario)
-        {
-            InitializeComponent();
-            this._frmPrincipal = _frmPrincipal;
-            this.estado = estado;
-            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.DNI);
-            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.CE);
-            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.Pasaporte);
-            cbTipoDocumento.Items.Add(RRHHWS.tipoDeDocumento.PNAC);
-            daoRRHH = new RRHHWS.RRHHWSClient();
-            if (this.estado == Estado.Nuevo)
-            {
-                establecerEstadoComponentes();
-            }
-            else if (this.estado == Estado.Resultado)
-            {
-                txtID.Text = usuario.idUsuario.ToString();
-                txtUsername.Text = usuario.username;
-                txtContrasena.Text = usuario.password;
-                if (usuario is RRHHWS.supervisorDeAlmacen)
-                {
-                    cbTipoUsuario.SelectedIndex = 2;
-                    lblVariableTipo.Text = "";
-                    txtVariableTipo.Enabled = false;
-                }
-                else if (usuario is RRHHWS.vendedor)
-                {
-                    cbTipoUsuario.SelectedIndex = 1;
-                    lblVariableTipo.Text = "Cantidad de ventas";
-                    txtVariableTipo.Text = ((RRHHWS.vendedor)usuario).cantidadVentas.ToString();
-                }
-                else if (usuario is RRHHWS.administrador)
-                {
-                    cbTipoUsuario.SelectedIndex = 0;
-                    lblVariableTipo.Text = "Area";
-                    txtVariableTipo.Text = ((RRHHWS.administrador)usuario).area;
-                }
-                dtpFechaIngreso.Value = usuario.fechaIngreso;
-                cbTipoDocumento.SelectedValue = usuario.tipoDeDocumento.ToString();
-                txtNumeroDocumento.Text = usuario.numDeDocumento;
-                txtNombre.Text = usuario.nombre;
-                txtApellido.Text = usuario.apellido;
-                txtTelefono.Text = usuario.telefono;
-                txtCorreo.Text = usuario.email;
-                txtDireccion.Text = usuario.direccion;
-                dtpFechaNacimiento.Value = usuario.fechaDeNacimiento;
-                
-                this._usuario = usuario;
-            }
-
-        }
-
         private void btEditarGuardar_Click(object sender, EventArgs e)
         {
             daoRRHH = new RRHHWS.RRHHWSClient();

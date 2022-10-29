@@ -16,133 +16,13 @@ namespace QingYunSoft.RRHHWS {
     public interface RRHHWS {
         
         // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarSupervisorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarSupervisorResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarVendedorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarVendedorResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.RRHHWS.eliminarSupervisorResponse eliminarSupervisor(QingYunSoft.RRHHWS.eliminarSupervisorRequest request);
+        QingYunSoft.RRHHWS.eliminarVendedorResponse eliminarVendedor(QingYunSoft.RRHHWS.eliminarVendedorRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarSupervisorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarSupervisorResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.eliminarSupervisorResponse> eliminarSupervisorAsync(QingYunSoft.RRHHWS.eliminarSupervisorRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarAdministradorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarAdministradorResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.RRHHWS.insertarAdministradorResponse insertarAdministrador(QingYunSoft.RRHHWS.insertarAdministradorRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarAdministradorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarAdministradorResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarAdministradorResponse> insertarAdministradorAsync(QingYunSoft.RRHHWS.insertarAdministradorRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarAdministradorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarAdministradorResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.RRHHWS.eliminarAdministradorResponse eliminarAdministrador(QingYunSoft.RRHHWS.eliminarAdministradorRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarAdministradorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarAdministradorResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.eliminarAdministradorResponse> eliminarAdministradorAsync(QingYunSoft.RRHHWS.eliminarAdministradorRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/verificarCuentaUsuarioRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/verificarCuentaUsuarioResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.RRHHWS.verificarCuentaUsuarioResponse verificarCuentaUsuario(QingYunSoft.RRHHWS.verificarCuentaUsuarioRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/verificarCuentaUsuarioRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/verificarCuentaUsuarioResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.verificarCuentaUsuarioResponse> verificarCuentaUsuarioAsync(QingYunSoft.RRHHWS.verificarCuentaUsuarioRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarAdministradorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarAdministradorResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.RRHHWS.modificarAdministradorResponse modificarAdministrador(QingYunSoft.RRHHWS.modificarAdministradorRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarAdministradorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarAdministradorResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.modificarAdministradorResponse> modificarAdministradorAsync(QingYunSoft.RRHHWS.modificarAdministradorRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.RRHHWS.listarAdministradoresResponse listarAdministradores(QingYunSoft.RRHHWS.listarAdministradoresRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarAdministradoresResponse> listarAdministradoresAsync(QingYunSoft.RRHHWS.listarAdministradoresRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarSupervisorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarSupervisorResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.RRHHWS.insertarSupervisorResponse insertarSupervisor(QingYunSoft.RRHHWS.insertarSupervisorRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarSupervisorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarSupervisorResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarSupervisorResponse> insertarSupervisorAsync(QingYunSoft.RRHHWS.insertarSupervisorRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarVendedorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarVendedorResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.RRHHWS.modificarVendedorResponse modificarVendedor(QingYunSoft.RRHHWS.modificarVendedorRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarVendedorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarVendedorResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.modificarVendedorResponse> modificarVendedorAsync(QingYunSoft.RRHHWS.modificarVendedorRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarPorDocumentoNombreRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarPorDocumentoNombreResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.RRHHWS.listarPorDocumentoNombreResponse listarPorDocumentoNombre(QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarPorDocumentoNombreRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarPorDocumentoNombreResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarPorDocumentoNombreResponse> listarPorDocumentoNombreAsync(QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarSupervisorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarSupervisorResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.RRHHWS.modificarSupervisorResponse modificarSupervisor(QingYunSoft.RRHHWS.modificarSupervisorRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarSupervisorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarSupervisorResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.modificarSupervisorResponse> modificarSupervisorAsync(QingYunSoft.RRHHWS.modificarSupervisorRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarSupervisoresRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarSupervisoresResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.RRHHWS.listarSupervisoresResponse listarSupervisores(QingYunSoft.RRHHWS.listarSupervisoresRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarSupervisoresRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarSupervisoresResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarSupervisoresResponse> listarSupervisoresAsync(QingYunSoft.RRHHWS.listarSupervisoresRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarUsuariosRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarUsuariosResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.RRHHWS.listarUsuariosResponse listarUsuarios(QingYunSoft.RRHHWS.listarUsuariosRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarUsuariosRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarUsuariosResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarUsuariosResponse> listarUsuariosAsync(QingYunSoft.RRHHWS.listarUsuariosRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarVendedoresRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarVendedoresResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.RRHHWS.listarVendedoresResponse listarVendedores(QingYunSoft.RRHHWS.listarVendedoresRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarVendedoresRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarVendedoresResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarVendedoresResponse> listarVendedoresAsync(QingYunSoft.RRHHWS.listarVendedoresRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarVendedorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarVendedorResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.eliminarVendedorResponse> eliminarVendedorAsync(QingYunSoft.RRHHWS.eliminarVendedorRequest request);
         
         // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarVendedorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarVendedorResponse")]
@@ -155,28 +35,144 @@ namespace QingYunSoft.RRHHWS {
         System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarVendedorResponse> insertarVendedorAsync(QingYunSoft.RRHHWS.insertarVendedorRequest request);
         
         // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarVendedorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarVendedorResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarVendedoresRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarVendedoresResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.RRHHWS.eliminarVendedorResponse eliminarVendedor(QingYunSoft.RRHHWS.eliminarVendedorRequest request);
+        QingYunSoft.RRHHWS.listarVendedoresResponse listarVendedores(QingYunSoft.RRHHWS.listarVendedoresRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarVendedorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarVendedorResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.eliminarVendedorResponse> eliminarVendedorAsync(QingYunSoft.RRHHWS.eliminarVendedorRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarVendedoresRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarVendedoresResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarVendedoresResponse> listarVendedoresAsync(QingYunSoft.RRHHWS.listarVendedoresRequest request);
         
         // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresPorDocumentoNombr" +
-            "eRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresPorDocumentoNombr" +
-            "eResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarUsuariosRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarUsuariosResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreResponse listarAdministradoresPorDocumentoNombre(QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest request);
+        QingYunSoft.RRHHWS.listarUsuariosResponse listarUsuarios(QingYunSoft.RRHHWS.listarUsuariosRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresPorDocumentoNombr" +
-            "eRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresPorDocumentoNombr" +
-            "eResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreResponse> listarAdministradoresPorDocumentoNombreAsync(QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarUsuariosRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarUsuariosResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarUsuariosResponse> listarUsuariosAsync(QingYunSoft.RRHHWS.listarUsuariosRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarPorDocumentoNombreRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarPorDocumentoNombreResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.RRHHWS.listarPorDocumentoNombreResponse listarPorDocumentoNombre(QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarPorDocumentoNombreRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarPorDocumentoNombreResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarPorDocumentoNombreResponse> listarPorDocumentoNombreAsync(QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarVendedorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarVendedorResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.RRHHWS.modificarVendedorResponse modificarVendedor(QingYunSoft.RRHHWS.modificarVendedorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarVendedorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarVendedorResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.modificarVendedorResponse> modificarVendedorAsync(QingYunSoft.RRHHWS.modificarVendedorRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.RRHHWS.listarAdministradoresResponse listarAdministradores(QingYunSoft.RRHHWS.listarAdministradoresRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarAdministradoresResponse> listarAdministradoresAsync(QingYunSoft.RRHHWS.listarAdministradoresRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarAdministradorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarAdministradorResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.RRHHWS.modificarAdministradorResponse modificarAdministrador(QingYunSoft.RRHHWS.modificarAdministradorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarAdministradorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarAdministradorResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.modificarAdministradorResponse> modificarAdministradorAsync(QingYunSoft.RRHHWS.modificarAdministradorRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarAdministradorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarAdministradorResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.RRHHWS.eliminarAdministradorResponse eliminarAdministrador(QingYunSoft.RRHHWS.eliminarAdministradorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarAdministradorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarAdministradorResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.eliminarAdministradorResponse> eliminarAdministradorAsync(QingYunSoft.RRHHWS.eliminarAdministradorRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarSupervisorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarSupervisorResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.RRHHWS.eliminarSupervisorResponse eliminarSupervisor(QingYunSoft.RRHHWS.eliminarSupervisorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarSupervisorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarSupervisorResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.eliminarSupervisorResponse> eliminarSupervisorAsync(QingYunSoft.RRHHWS.eliminarSupervisorRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/buscarSupervisorPorAlmacenRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/buscarSupervisorPorAlmacenResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenResponse buscarSupervisorPorAlmacen(QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/buscarSupervisorPorAlmacenRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/buscarSupervisorPorAlmacenResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenResponse> buscarSupervisorPorAlmacenAsync(QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarAdministradorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarAdministradorResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.RRHHWS.insertarAdministradorResponse insertarAdministrador(QingYunSoft.RRHHWS.insertarAdministradorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarAdministradorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarAdministradorResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarAdministradorResponse> insertarAdministradorAsync(QingYunSoft.RRHHWS.insertarAdministradorRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/verificarCuentaUsuarioRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/verificarCuentaUsuarioResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.RRHHWS.verificarCuentaUsuarioResponse verificarCuentaUsuario(QingYunSoft.RRHHWS.verificarCuentaUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/verificarCuentaUsuarioRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/verificarCuentaUsuarioResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.verificarCuentaUsuarioResponse> verificarCuentaUsuarioAsync(QingYunSoft.RRHHWS.verificarCuentaUsuarioRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarSupervisorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarSupervisorResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.RRHHWS.modificarSupervisorResponse modificarSupervisor(QingYunSoft.RRHHWS.modificarSupervisorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarSupervisorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarSupervisorResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.modificarSupervisorResponse> modificarSupervisorAsync(QingYunSoft.RRHHWS.modificarSupervisorRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarSupervisorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarSupervisorResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.RRHHWS.insertarSupervisorResponse insertarSupervisor(QingYunSoft.RRHHWS.insertarSupervisorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarSupervisorRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarSupervisorResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarSupervisorResponse> insertarSupervisorAsync(QingYunSoft.RRHHWS.insertarSupervisorRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarSupervisoresRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarSupervisoresResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.RRHHWS.listarSupervisoresResponse listarSupervisores(QingYunSoft.RRHHWS.listarSupervisoresRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarSupervisoresRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarSupervisoresResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarSupervisoresResponse> listarSupervisoresAsync(QingYunSoft.RRHHWS.listarSupervisoresRequest request);
         
         // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarVendedoresPorDocumentoNombreRequ" +
@@ -205,45 +201,59 @@ namespace QingYunSoft.RRHHWS {
             "quest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarSupervisoresPorDocumentoNombreRe" +
             "sponse")]
         System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarSupervisoresPorDocumentoNombreResponse> listarSupervisoresPorDocumentoNombreAsync(QingYunSoft.RRHHWS.listarSupervisoresPorDocumentoNombreRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresPorDocumentoNombr" +
+            "eRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresPorDocumentoNombr" +
+            "eResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreResponse listarAdministradoresPorDocumentoNombre(QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresPorDocumentoNombr" +
+            "eRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarAdministradoresPorDocumentoNombr" +
+            "eResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreResponse> listarAdministradoresPorDocumentoNombreAsync(QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarSupervisor", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarSupervisorRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarVendedor", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class eliminarVendedorRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int supervisor;
+        public int vendedor;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int almacen;
+        public int cantidad;
         
-        public eliminarSupervisorRequest() {
+        public eliminarVendedorRequest() {
         }
         
-        public eliminarSupervisorRequest(int supervisor, int almacen) {
-            this.supervisor = supervisor;
-            this.almacen = almacen;
+        public eliminarVendedorRequest(int vendedor, int cantidad) {
+            this.vendedor = vendedor;
+            this.cantidad = cantidad;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarSupervisorResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarSupervisorResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarVendedorResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class eliminarVendedorResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int @return;
         
-        public eliminarSupervisorResponse() {
+        public eliminarVendedorResponse() {
         }
         
-        public eliminarSupervisorResponse(int @return) {
+        public eliminarVendedorResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -254,19 +264,19 @@ namespace QingYunSoft.RRHHWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
-    public partial class administrador : usuario {
+    public partial class vendedor : usuario {
         
-        private string areaField;
+        private int cantidadVentasField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string area {
+        public int cantidadVentas {
             get {
-                return this.areaField;
+                return this.cantidadVentasField;
             }
             set {
-                this.areaField = value;
-                this.RaisePropertyChanged("area");
+                this.cantidadVentasField = value;
+                this.RaisePropertyChanged("cantidadVentas");
             }
         }
     }
@@ -2351,29 +2361,6 @@ namespace QingYunSoft.RRHHWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
-    public partial class vendedor : usuario {
-        
-        private int cantidadVentasField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public int cantidadVentas {
-            get {
-                return this.cantidadVentasField;
-            }
-            set {
-                this.cantidadVentasField = value;
-                this.RaisePropertyChanged("cantidadVentas");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
     public partial class supervisorDeAlmacen : usuario {
         
         private almacen almacenField;
@@ -2391,20 +2378,235 @@ namespace QingYunSoft.RRHHWS {
         }
     }
     
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
+    public partial class administrador : usuario {
+        
+        private string areaField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string area {
+            get {
+                return this.areaField;
+            }
+            set {
+                this.areaField = value;
+                this.RaisePropertyChanged("area");
+            }
+        }
+    }
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarAdministrador", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class insertarAdministradorRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarVendedor", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class insertarVendedorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public QingYunSoft.RRHHWS.vendedor vendedor;
+        
+        public insertarVendedorRequest() {
+        }
+        
+        public insertarVendedorRequest(QingYunSoft.RRHHWS.vendedor vendedor) {
+            this.vendedor = vendedor;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarVendedorResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class insertarVendedorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarVendedorResponse() {
+        }
+        
+        public insertarVendedorResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarVendedores", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarVendedoresRequest {
+        
+        public listarVendedoresRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarVendedoresResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarVendedoresResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public QingYunSoft.RRHHWS.vendedor[] @return;
+        
+        public listarVendedoresResponse() {
+        }
+        
+        public listarVendedoresResponse(QingYunSoft.RRHHWS.vendedor[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarUsuarios", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarUsuariosRequest {
+        
+        public listarUsuariosRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarUsuariosResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarUsuariosResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public QingYunSoft.RRHHWS.usuario[] @return;
+        
+        public listarUsuariosResponse() {
+        }
+        
+        public listarUsuariosResponse(QingYunSoft.RRHHWS.usuario[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPorDocumentoNombre", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarPorDocumentoNombreRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string docNombre;
+        
+        public listarPorDocumentoNombreRequest() {
+        }
+        
+        public listarPorDocumentoNombreRequest(string docNombre) {
+            this.docNombre = docNombre;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPorDocumentoNombreResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarPorDocumentoNombreResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public QingYunSoft.RRHHWS.cliente[] @return;
+        
+        public listarPorDocumentoNombreResponse() {
+        }
+        
+        public listarPorDocumentoNombreResponse(QingYunSoft.RRHHWS.cliente[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarVendedor", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class modificarVendedorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public QingYunSoft.RRHHWS.vendedor vendedor;
+        
+        public modificarVendedorRequest() {
+        }
+        
+        public modificarVendedorRequest(QingYunSoft.RRHHWS.vendedor vendedor) {
+            this.vendedor = vendedor;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarVendedorResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class modificarVendedorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public modificarVendedorResponse() {
+        }
+        
+        public modificarVendedorResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAdministradores", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarAdministradoresRequest {
+        
+        public listarAdministradoresRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAdministradoresResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarAdministradoresResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public QingYunSoft.RRHHWS.administrador[] @return;
+        
+        public listarAdministradoresResponse() {
+        }
+        
+        public listarAdministradoresResponse(QingYunSoft.RRHHWS.administrador[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarAdministrador", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class modificarAdministradorRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public QingYunSoft.RRHHWS.administrador administrador;
         
-        public insertarAdministradorRequest() {
+        public modificarAdministradorRequest() {
         }
         
-        public insertarAdministradorRequest(QingYunSoft.RRHHWS.administrador administrador) {
+        public modificarAdministradorRequest(QingYunSoft.RRHHWS.administrador administrador) {
             this.administrador = administrador;
         }
     }
@@ -2412,17 +2614,17 @@ namespace QingYunSoft.RRHHWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarAdministradorResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class insertarAdministradorResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarAdministradorResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class modificarAdministradorResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int @return;
         
-        public insertarAdministradorResponse() {
+        public modificarAdministradorResponse() {
         }
         
-        public insertarAdministradorResponse(int @return) {
+        public modificarAdministradorResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -2471,6 +2673,119 @@ namespace QingYunSoft.RRHHWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarSupervisor", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class eliminarSupervisorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int supervisor;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int almacen;
+        
+        public eliminarSupervisorRequest() {
+        }
+        
+        public eliminarSupervisorRequest(int supervisor, int almacen) {
+            this.supervisor = supervisor;
+            this.almacen = almacen;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarSupervisorResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class eliminarSupervisorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarSupervisorResponse() {
+        }
+        
+        public eliminarSupervisorResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarSupervisorPorAlmacen", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class buscarSupervisorPorAlmacenRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int id_almacen;
+        
+        public buscarSupervisorPorAlmacenRequest() {
+        }
+        
+        public buscarSupervisorPorAlmacenRequest(int id_almacen) {
+            this.id_almacen = id_almacen;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarSupervisorPorAlmacenResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class buscarSupervisorPorAlmacenResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public QingYunSoft.RRHHWS.supervisorDeAlmacen @return;
+        
+        public buscarSupervisorPorAlmacenResponse() {
+        }
+        
+        public buscarSupervisorPorAlmacenResponse(QingYunSoft.RRHHWS.supervisorDeAlmacen @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarAdministrador", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class insertarAdministradorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public QingYunSoft.RRHHWS.administrador administrador;
+        
+        public insertarAdministradorRequest() {
+        }
+        
+        public insertarAdministradorRequest(QingYunSoft.RRHHWS.administrador administrador) {
+            this.administrador = administrador;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarAdministradorResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class insertarAdministradorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarAdministradorResponse() {
+        }
+        
+        public insertarAdministradorResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="verificarCuentaUsuario", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
     public partial class verificarCuentaUsuarioRequest {
         
@@ -2500,178 +2815,6 @@ namespace QingYunSoft.RRHHWS {
         }
         
         public verificarCuentaUsuarioResponse(QingYunSoft.RRHHWS.usuario @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarAdministrador", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class modificarAdministradorRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.RRHHWS.administrador administrador;
-        
-        public modificarAdministradorRequest() {
-        }
-        
-        public modificarAdministradorRequest(QingYunSoft.RRHHWS.administrador administrador) {
-            this.administrador = administrador;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarAdministradorResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class modificarAdministradorResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public modificarAdministradorResponse() {
-        }
-        
-        public modificarAdministradorResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAdministradores", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarAdministradoresRequest {
-        
-        public listarAdministradoresRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAdministradoresResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarAdministradoresResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.RRHHWS.administrador[] @return;
-        
-        public listarAdministradoresResponse() {
-        }
-        
-        public listarAdministradoresResponse(QingYunSoft.RRHHWS.administrador[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarSupervisor", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class insertarSupervisorRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.RRHHWS.supervisorDeAlmacen supervisor;
-        
-        public insertarSupervisorRequest() {
-        }
-        
-        public insertarSupervisorRequest(QingYunSoft.RRHHWS.supervisorDeAlmacen supervisor) {
-            this.supervisor = supervisor;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarSupervisorResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class insertarSupervisorResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public insertarSupervisorResponse() {
-        }
-        
-        public insertarSupervisorResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarVendedor", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class modificarVendedorRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.RRHHWS.vendedor vendedor;
-        
-        public modificarVendedorRequest() {
-        }
-        
-        public modificarVendedorRequest(QingYunSoft.RRHHWS.vendedor vendedor) {
-            this.vendedor = vendedor;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarVendedorResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class modificarVendedorResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public modificarVendedorResponse() {
-        }
-        
-        public modificarVendedorResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPorDocumentoNombre", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarPorDocumentoNombreRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string docNombre;
-        
-        public listarPorDocumentoNombreRequest() {
-        }
-        
-        public listarPorDocumentoNombreRequest(string docNombre) {
-            this.docNombre = docNombre;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPorDocumentoNombreResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarPorDocumentoNombreResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.RRHHWS.cliente[] @return;
-        
-        public listarPorDocumentoNombreResponse() {
-        }
-        
-        public listarPorDocumentoNombreResponse(QingYunSoft.RRHHWS.cliente[] @return) {
             this.@return = @return;
         }
     }
@@ -2715,6 +2858,42 @@ namespace QingYunSoft.RRHHWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarSupervisor", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class insertarSupervisorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public QingYunSoft.RRHHWS.supervisorDeAlmacen supervisor;
+        
+        public insertarSupervisorRequest() {
+        }
+        
+        public insertarSupervisorRequest(QingYunSoft.RRHHWS.supervisorDeAlmacen supervisor) {
+            this.supervisor = supervisor;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarSupervisorResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class insertarSupervisorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarSupervisorResponse() {
+        }
+        
+        public insertarSupervisorResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="listarSupervisores", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
     public partial class listarSupervisoresRequest {
         
@@ -2736,175 +2915,6 @@ namespace QingYunSoft.RRHHWS {
         }
         
         public listarSupervisoresResponse(QingYunSoft.RRHHWS.supervisorDeAlmacen[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarUsuarios", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarUsuariosRequest {
-        
-        public listarUsuariosRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarUsuariosResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarUsuariosResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.RRHHWS.usuario[] @return;
-        
-        public listarUsuariosResponse() {
-        }
-        
-        public listarUsuariosResponse(QingYunSoft.RRHHWS.usuario[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarVendedores", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarVendedoresRequest {
-        
-        public listarVendedoresRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarVendedoresResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarVendedoresResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.RRHHWS.vendedor[] @return;
-        
-        public listarVendedoresResponse() {
-        }
-        
-        public listarVendedoresResponse(QingYunSoft.RRHHWS.vendedor[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarVendedor", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class insertarVendedorRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.RRHHWS.vendedor vendedor;
-        
-        public insertarVendedorRequest() {
-        }
-        
-        public insertarVendedorRequest(QingYunSoft.RRHHWS.vendedor vendedor) {
-            this.vendedor = vendedor;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarVendedorResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class insertarVendedorResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public insertarVendedorResponse() {
-        }
-        
-        public insertarVendedorResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarVendedor", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarVendedorRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int vendedor;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int cantidad;
-        
-        public eliminarVendedorRequest() {
-        }
-        
-        public eliminarVendedorRequest(int vendedor, int cantidad) {
-            this.vendedor = vendedor;
-            this.cantidad = cantidad;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarVendedorResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarVendedorResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public eliminarVendedorResponse() {
-        }
-        
-        public eliminarVendedorResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAdministradoresPorDocumentoNombre", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarAdministradoresPorDocumentoNombreRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string docNombre;
-        
-        public listarAdministradoresPorDocumentoNombreRequest() {
-        }
-        
-        public listarAdministradoresPorDocumentoNombreRequest(string docNombre) {
-            this.docNombre = docNombre;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAdministradoresPorDocumentoNombreResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarAdministradoresPorDocumentoNombreResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.RRHHWS.administrador[] @return;
-        
-        public listarAdministradoresPorDocumentoNombreResponse() {
-        }
-        
-        public listarAdministradoresPorDocumentoNombreResponse(QingYunSoft.RRHHWS.administrador[] @return) {
             this.@return = @return;
         }
     }
@@ -2981,6 +2991,42 @@ namespace QingYunSoft.RRHHWS {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAdministradoresPorDocumentoNombre", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarAdministradoresPorDocumentoNombreRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string docNombre;
+        
+        public listarAdministradoresPorDocumentoNombreRequest() {
+        }
+        
+        public listarAdministradoresPorDocumentoNombreRequest(string docNombre) {
+            this.docNombre = docNombre;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarAdministradoresPorDocumentoNombreResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarAdministradoresPorDocumentoNombreResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public QingYunSoft.RRHHWS.administrador[] @return;
+        
+        public listarAdministradoresPorDocumentoNombreResponse() {
+        }
+        
+        public listarAdministradoresPorDocumentoNombreResponse(QingYunSoft.RRHHWS.administrador[] @return) {
+            this.@return = @return;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface RRHHWSChannel : QingYunSoft.RRHHWS.RRHHWS, System.ServiceModel.IClientChannel {
     }
@@ -3009,51 +3055,183 @@ namespace QingYunSoft.RRHHWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.RRHHWS.eliminarSupervisorResponse QingYunSoft.RRHHWS.RRHHWS.eliminarSupervisor(QingYunSoft.RRHHWS.eliminarSupervisorRequest request) {
-            return base.Channel.eliminarSupervisor(request);
+        QingYunSoft.RRHHWS.eliminarVendedorResponse QingYunSoft.RRHHWS.RRHHWS.eliminarVendedor(QingYunSoft.RRHHWS.eliminarVendedorRequest request) {
+            return base.Channel.eliminarVendedor(request);
         }
         
-        public int eliminarSupervisor(int supervisor, int almacen) {
-            QingYunSoft.RRHHWS.eliminarSupervisorRequest inValue = new QingYunSoft.RRHHWS.eliminarSupervisorRequest();
-            inValue.supervisor = supervisor;
-            inValue.almacen = almacen;
-            QingYunSoft.RRHHWS.eliminarSupervisorResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).eliminarSupervisor(inValue);
+        public int eliminarVendedor(int vendedor, int cantidad) {
+            QingYunSoft.RRHHWS.eliminarVendedorRequest inValue = new QingYunSoft.RRHHWS.eliminarVendedorRequest();
+            inValue.vendedor = vendedor;
+            inValue.cantidad = cantidad;
+            QingYunSoft.RRHHWS.eliminarVendedorResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).eliminarVendedor(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.eliminarSupervisorResponse> QingYunSoft.RRHHWS.RRHHWS.eliminarSupervisorAsync(QingYunSoft.RRHHWS.eliminarSupervisorRequest request) {
-            return base.Channel.eliminarSupervisorAsync(request);
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.eliminarVendedorResponse> QingYunSoft.RRHHWS.RRHHWS.eliminarVendedorAsync(QingYunSoft.RRHHWS.eliminarVendedorRequest request) {
+            return base.Channel.eliminarVendedorAsync(request);
         }
         
-        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.eliminarSupervisorResponse> eliminarSupervisorAsync(int supervisor, int almacen) {
-            QingYunSoft.RRHHWS.eliminarSupervisorRequest inValue = new QingYunSoft.RRHHWS.eliminarSupervisorRequest();
-            inValue.supervisor = supervisor;
-            inValue.almacen = almacen;
-            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).eliminarSupervisorAsync(inValue);
+        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.eliminarVendedorResponse> eliminarVendedorAsync(int vendedor, int cantidad) {
+            QingYunSoft.RRHHWS.eliminarVendedorRequest inValue = new QingYunSoft.RRHHWS.eliminarVendedorRequest();
+            inValue.vendedor = vendedor;
+            inValue.cantidad = cantidad;
+            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).eliminarVendedorAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.RRHHWS.insertarAdministradorResponse QingYunSoft.RRHHWS.RRHHWS.insertarAdministrador(QingYunSoft.RRHHWS.insertarAdministradorRequest request) {
-            return base.Channel.insertarAdministrador(request);
+        QingYunSoft.RRHHWS.insertarVendedorResponse QingYunSoft.RRHHWS.RRHHWS.insertarVendedor(QingYunSoft.RRHHWS.insertarVendedorRequest request) {
+            return base.Channel.insertarVendedor(request);
         }
         
-        public int insertarAdministrador(QingYunSoft.RRHHWS.administrador administrador) {
-            QingYunSoft.RRHHWS.insertarAdministradorRequest inValue = new QingYunSoft.RRHHWS.insertarAdministradorRequest();
-            inValue.administrador = administrador;
-            QingYunSoft.RRHHWS.insertarAdministradorResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).insertarAdministrador(inValue);
+        public int insertarVendedor(QingYunSoft.RRHHWS.vendedor vendedor) {
+            QingYunSoft.RRHHWS.insertarVendedorRequest inValue = new QingYunSoft.RRHHWS.insertarVendedorRequest();
+            inValue.vendedor = vendedor;
+            QingYunSoft.RRHHWS.insertarVendedorResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).insertarVendedor(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarAdministradorResponse> QingYunSoft.RRHHWS.RRHHWS.insertarAdministradorAsync(QingYunSoft.RRHHWS.insertarAdministradorRequest request) {
-            return base.Channel.insertarAdministradorAsync(request);
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarVendedorResponse> QingYunSoft.RRHHWS.RRHHWS.insertarVendedorAsync(QingYunSoft.RRHHWS.insertarVendedorRequest request) {
+            return base.Channel.insertarVendedorAsync(request);
         }
         
-        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarAdministradorResponse> insertarAdministradorAsync(QingYunSoft.RRHHWS.administrador administrador) {
-            QingYunSoft.RRHHWS.insertarAdministradorRequest inValue = new QingYunSoft.RRHHWS.insertarAdministradorRequest();
+        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarVendedorResponse> insertarVendedorAsync(QingYunSoft.RRHHWS.vendedor vendedor) {
+            QingYunSoft.RRHHWS.insertarVendedorRequest inValue = new QingYunSoft.RRHHWS.insertarVendedorRequest();
+            inValue.vendedor = vendedor;
+            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).insertarVendedorAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.RRHHWS.listarVendedoresResponse QingYunSoft.RRHHWS.RRHHWS.listarVendedores(QingYunSoft.RRHHWS.listarVendedoresRequest request) {
+            return base.Channel.listarVendedores(request);
+        }
+        
+        public QingYunSoft.RRHHWS.vendedor[] listarVendedores() {
+            QingYunSoft.RRHHWS.listarVendedoresRequest inValue = new QingYunSoft.RRHHWS.listarVendedoresRequest();
+            QingYunSoft.RRHHWS.listarVendedoresResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarVendedores(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarVendedoresResponse> QingYunSoft.RRHHWS.RRHHWS.listarVendedoresAsync(QingYunSoft.RRHHWS.listarVendedoresRequest request) {
+            return base.Channel.listarVendedoresAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarVendedoresResponse> listarVendedoresAsync() {
+            QingYunSoft.RRHHWS.listarVendedoresRequest inValue = new QingYunSoft.RRHHWS.listarVendedoresRequest();
+            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarVendedoresAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.RRHHWS.listarUsuariosResponse QingYunSoft.RRHHWS.RRHHWS.listarUsuarios(QingYunSoft.RRHHWS.listarUsuariosRequest request) {
+            return base.Channel.listarUsuarios(request);
+        }
+        
+        public QingYunSoft.RRHHWS.usuario[] listarUsuarios() {
+            QingYunSoft.RRHHWS.listarUsuariosRequest inValue = new QingYunSoft.RRHHWS.listarUsuariosRequest();
+            QingYunSoft.RRHHWS.listarUsuariosResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarUsuarios(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarUsuariosResponse> QingYunSoft.RRHHWS.RRHHWS.listarUsuariosAsync(QingYunSoft.RRHHWS.listarUsuariosRequest request) {
+            return base.Channel.listarUsuariosAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarUsuariosResponse> listarUsuariosAsync() {
+            QingYunSoft.RRHHWS.listarUsuariosRequest inValue = new QingYunSoft.RRHHWS.listarUsuariosRequest();
+            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarUsuariosAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.RRHHWS.listarPorDocumentoNombreResponse QingYunSoft.RRHHWS.RRHHWS.listarPorDocumentoNombre(QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest request) {
+            return base.Channel.listarPorDocumentoNombre(request);
+        }
+        
+        public QingYunSoft.RRHHWS.cliente[] listarPorDocumentoNombre(string docNombre) {
+            QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest inValue = new QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest();
+            inValue.docNombre = docNombre;
+            QingYunSoft.RRHHWS.listarPorDocumentoNombreResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarPorDocumentoNombre(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarPorDocumentoNombreResponse> QingYunSoft.RRHHWS.RRHHWS.listarPorDocumentoNombreAsync(QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest request) {
+            return base.Channel.listarPorDocumentoNombreAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarPorDocumentoNombreResponse> listarPorDocumentoNombreAsync(string docNombre) {
+            QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest inValue = new QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest();
+            inValue.docNombre = docNombre;
+            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarPorDocumentoNombreAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.RRHHWS.modificarVendedorResponse QingYunSoft.RRHHWS.RRHHWS.modificarVendedor(QingYunSoft.RRHHWS.modificarVendedorRequest request) {
+            return base.Channel.modificarVendedor(request);
+        }
+        
+        public int modificarVendedor(QingYunSoft.RRHHWS.vendedor vendedor) {
+            QingYunSoft.RRHHWS.modificarVendedorRequest inValue = new QingYunSoft.RRHHWS.modificarVendedorRequest();
+            inValue.vendedor = vendedor;
+            QingYunSoft.RRHHWS.modificarVendedorResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).modificarVendedor(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.modificarVendedorResponse> QingYunSoft.RRHHWS.RRHHWS.modificarVendedorAsync(QingYunSoft.RRHHWS.modificarVendedorRequest request) {
+            return base.Channel.modificarVendedorAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.modificarVendedorResponse> modificarVendedorAsync(QingYunSoft.RRHHWS.vendedor vendedor) {
+            QingYunSoft.RRHHWS.modificarVendedorRequest inValue = new QingYunSoft.RRHHWS.modificarVendedorRequest();
+            inValue.vendedor = vendedor;
+            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).modificarVendedorAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.RRHHWS.listarAdministradoresResponse QingYunSoft.RRHHWS.RRHHWS.listarAdministradores(QingYunSoft.RRHHWS.listarAdministradoresRequest request) {
+            return base.Channel.listarAdministradores(request);
+        }
+        
+        public QingYunSoft.RRHHWS.administrador[] listarAdministradores() {
+            QingYunSoft.RRHHWS.listarAdministradoresRequest inValue = new QingYunSoft.RRHHWS.listarAdministradoresRequest();
+            QingYunSoft.RRHHWS.listarAdministradoresResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarAdministradores(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarAdministradoresResponse> QingYunSoft.RRHHWS.RRHHWS.listarAdministradoresAsync(QingYunSoft.RRHHWS.listarAdministradoresRequest request) {
+            return base.Channel.listarAdministradoresAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarAdministradoresResponse> listarAdministradoresAsync() {
+            QingYunSoft.RRHHWS.listarAdministradoresRequest inValue = new QingYunSoft.RRHHWS.listarAdministradoresRequest();
+            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarAdministradoresAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.RRHHWS.modificarAdministradorResponse QingYunSoft.RRHHWS.RRHHWS.modificarAdministrador(QingYunSoft.RRHHWS.modificarAdministradorRequest request) {
+            return base.Channel.modificarAdministrador(request);
+        }
+        
+        public int modificarAdministrador(QingYunSoft.RRHHWS.administrador administrador) {
+            QingYunSoft.RRHHWS.modificarAdministradorRequest inValue = new QingYunSoft.RRHHWS.modificarAdministradorRequest();
             inValue.administrador = administrador;
-            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).insertarAdministradorAsync(inValue);
+            QingYunSoft.RRHHWS.modificarAdministradorResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).modificarAdministrador(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.modificarAdministradorResponse> QingYunSoft.RRHHWS.RRHHWS.modificarAdministradorAsync(QingYunSoft.RRHHWS.modificarAdministradorRequest request) {
+            return base.Channel.modificarAdministradorAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.modificarAdministradorResponse> modificarAdministradorAsync(QingYunSoft.RRHHWS.administrador administrador) {
+            QingYunSoft.RRHHWS.modificarAdministradorRequest inValue = new QingYunSoft.RRHHWS.modificarAdministradorRequest();
+            inValue.administrador = administrador;
+            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).modificarAdministradorAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -3082,6 +3260,77 @@ namespace QingYunSoft.RRHHWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.RRHHWS.eliminarSupervisorResponse QingYunSoft.RRHHWS.RRHHWS.eliminarSupervisor(QingYunSoft.RRHHWS.eliminarSupervisorRequest request) {
+            return base.Channel.eliminarSupervisor(request);
+        }
+        
+        public int eliminarSupervisor(int supervisor, int almacen) {
+            QingYunSoft.RRHHWS.eliminarSupervisorRequest inValue = new QingYunSoft.RRHHWS.eliminarSupervisorRequest();
+            inValue.supervisor = supervisor;
+            inValue.almacen = almacen;
+            QingYunSoft.RRHHWS.eliminarSupervisorResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).eliminarSupervisor(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.eliminarSupervisorResponse> QingYunSoft.RRHHWS.RRHHWS.eliminarSupervisorAsync(QingYunSoft.RRHHWS.eliminarSupervisorRequest request) {
+            return base.Channel.eliminarSupervisorAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.eliminarSupervisorResponse> eliminarSupervisorAsync(int supervisor, int almacen) {
+            QingYunSoft.RRHHWS.eliminarSupervisorRequest inValue = new QingYunSoft.RRHHWS.eliminarSupervisorRequest();
+            inValue.supervisor = supervisor;
+            inValue.almacen = almacen;
+            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).eliminarSupervisorAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenResponse QingYunSoft.RRHHWS.RRHHWS.buscarSupervisorPorAlmacen(QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenRequest request) {
+            return base.Channel.buscarSupervisorPorAlmacen(request);
+        }
+        
+        public QingYunSoft.RRHHWS.supervisorDeAlmacen buscarSupervisorPorAlmacen(int id_almacen) {
+            QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenRequest inValue = new QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenRequest();
+            inValue.id_almacen = id_almacen;
+            QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).buscarSupervisorPorAlmacen(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenResponse> QingYunSoft.RRHHWS.RRHHWS.buscarSupervisorPorAlmacenAsync(QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenRequest request) {
+            return base.Channel.buscarSupervisorPorAlmacenAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenResponse> buscarSupervisorPorAlmacenAsync(int id_almacen) {
+            QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenRequest inValue = new QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenRequest();
+            inValue.id_almacen = id_almacen;
+            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).buscarSupervisorPorAlmacenAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.RRHHWS.insertarAdministradorResponse QingYunSoft.RRHHWS.RRHHWS.insertarAdministrador(QingYunSoft.RRHHWS.insertarAdministradorRequest request) {
+            return base.Channel.insertarAdministrador(request);
+        }
+        
+        public int insertarAdministrador(QingYunSoft.RRHHWS.administrador administrador) {
+            QingYunSoft.RRHHWS.insertarAdministradorRequest inValue = new QingYunSoft.RRHHWS.insertarAdministradorRequest();
+            inValue.administrador = administrador;
+            QingYunSoft.RRHHWS.insertarAdministradorResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).insertarAdministrador(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarAdministradorResponse> QingYunSoft.RRHHWS.RRHHWS.insertarAdministradorAsync(QingYunSoft.RRHHWS.insertarAdministradorRequest request) {
+            return base.Channel.insertarAdministradorAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarAdministradorResponse> insertarAdministradorAsync(QingYunSoft.RRHHWS.administrador administrador) {
+            QingYunSoft.RRHHWS.insertarAdministradorRequest inValue = new QingYunSoft.RRHHWS.insertarAdministradorRequest();
+            inValue.administrador = administrador;
+            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).insertarAdministradorAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         QingYunSoft.RRHHWS.verificarCuentaUsuarioResponse QingYunSoft.RRHHWS.RRHHWS.verificarCuentaUsuario(QingYunSoft.RRHHWS.verificarCuentaUsuarioRequest request) {
             return base.Channel.verificarCuentaUsuario(request);
         }
@@ -3102,119 +3351,6 @@ namespace QingYunSoft.RRHHWS {
             QingYunSoft.RRHHWS.verificarCuentaUsuarioRequest inValue = new QingYunSoft.RRHHWS.verificarCuentaUsuarioRequest();
             inValue.cuentaUsuario = cuentaUsuario;
             return ((QingYunSoft.RRHHWS.RRHHWS)(this)).verificarCuentaUsuarioAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.RRHHWS.modificarAdministradorResponse QingYunSoft.RRHHWS.RRHHWS.modificarAdministrador(QingYunSoft.RRHHWS.modificarAdministradorRequest request) {
-            return base.Channel.modificarAdministrador(request);
-        }
-        
-        public int modificarAdministrador(QingYunSoft.RRHHWS.administrador administrador) {
-            QingYunSoft.RRHHWS.modificarAdministradorRequest inValue = new QingYunSoft.RRHHWS.modificarAdministradorRequest();
-            inValue.administrador = administrador;
-            QingYunSoft.RRHHWS.modificarAdministradorResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).modificarAdministrador(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.modificarAdministradorResponse> QingYunSoft.RRHHWS.RRHHWS.modificarAdministradorAsync(QingYunSoft.RRHHWS.modificarAdministradorRequest request) {
-            return base.Channel.modificarAdministradorAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.modificarAdministradorResponse> modificarAdministradorAsync(QingYunSoft.RRHHWS.administrador administrador) {
-            QingYunSoft.RRHHWS.modificarAdministradorRequest inValue = new QingYunSoft.RRHHWS.modificarAdministradorRequest();
-            inValue.administrador = administrador;
-            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).modificarAdministradorAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.RRHHWS.listarAdministradoresResponse QingYunSoft.RRHHWS.RRHHWS.listarAdministradores(QingYunSoft.RRHHWS.listarAdministradoresRequest request) {
-            return base.Channel.listarAdministradores(request);
-        }
-        
-        public QingYunSoft.RRHHWS.administrador[] listarAdministradores() {
-            QingYunSoft.RRHHWS.listarAdministradoresRequest inValue = new QingYunSoft.RRHHWS.listarAdministradoresRequest();
-            QingYunSoft.RRHHWS.listarAdministradoresResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarAdministradores(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarAdministradoresResponse> QingYunSoft.RRHHWS.RRHHWS.listarAdministradoresAsync(QingYunSoft.RRHHWS.listarAdministradoresRequest request) {
-            return base.Channel.listarAdministradoresAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarAdministradoresResponse> listarAdministradoresAsync() {
-            QingYunSoft.RRHHWS.listarAdministradoresRequest inValue = new QingYunSoft.RRHHWS.listarAdministradoresRequest();
-            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarAdministradoresAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.RRHHWS.insertarSupervisorResponse QingYunSoft.RRHHWS.RRHHWS.insertarSupervisor(QingYunSoft.RRHHWS.insertarSupervisorRequest request) {
-            return base.Channel.insertarSupervisor(request);
-        }
-        
-        public int insertarSupervisor(QingYunSoft.RRHHWS.supervisorDeAlmacen supervisor) {
-            QingYunSoft.RRHHWS.insertarSupervisorRequest inValue = new QingYunSoft.RRHHWS.insertarSupervisorRequest();
-            inValue.supervisor = supervisor;
-            QingYunSoft.RRHHWS.insertarSupervisorResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).insertarSupervisor(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarSupervisorResponse> QingYunSoft.RRHHWS.RRHHWS.insertarSupervisorAsync(QingYunSoft.RRHHWS.insertarSupervisorRequest request) {
-            return base.Channel.insertarSupervisorAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarSupervisorResponse> insertarSupervisorAsync(QingYunSoft.RRHHWS.supervisorDeAlmacen supervisor) {
-            QingYunSoft.RRHHWS.insertarSupervisorRequest inValue = new QingYunSoft.RRHHWS.insertarSupervisorRequest();
-            inValue.supervisor = supervisor;
-            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).insertarSupervisorAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.RRHHWS.modificarVendedorResponse QingYunSoft.RRHHWS.RRHHWS.modificarVendedor(QingYunSoft.RRHHWS.modificarVendedorRequest request) {
-            return base.Channel.modificarVendedor(request);
-        }
-        
-        public int modificarVendedor(QingYunSoft.RRHHWS.vendedor vendedor) {
-            QingYunSoft.RRHHWS.modificarVendedorRequest inValue = new QingYunSoft.RRHHWS.modificarVendedorRequest();
-            inValue.vendedor = vendedor;
-            QingYunSoft.RRHHWS.modificarVendedorResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).modificarVendedor(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.modificarVendedorResponse> QingYunSoft.RRHHWS.RRHHWS.modificarVendedorAsync(QingYunSoft.RRHHWS.modificarVendedorRequest request) {
-            return base.Channel.modificarVendedorAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.modificarVendedorResponse> modificarVendedorAsync(QingYunSoft.RRHHWS.vendedor vendedor) {
-            QingYunSoft.RRHHWS.modificarVendedorRequest inValue = new QingYunSoft.RRHHWS.modificarVendedorRequest();
-            inValue.vendedor = vendedor;
-            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).modificarVendedorAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.RRHHWS.listarPorDocumentoNombreResponse QingYunSoft.RRHHWS.RRHHWS.listarPorDocumentoNombre(QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest request) {
-            return base.Channel.listarPorDocumentoNombre(request);
-        }
-        
-        public QingYunSoft.RRHHWS.cliente[] listarPorDocumentoNombre(string docNombre) {
-            QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest inValue = new QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest();
-            inValue.docNombre = docNombre;
-            QingYunSoft.RRHHWS.listarPorDocumentoNombreResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarPorDocumentoNombre(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarPorDocumentoNombreResponse> QingYunSoft.RRHHWS.RRHHWS.listarPorDocumentoNombreAsync(QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest request) {
-            return base.Channel.listarPorDocumentoNombreAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarPorDocumentoNombreResponse> listarPorDocumentoNombreAsync(string docNombre) {
-            QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest inValue = new QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest();
-            inValue.docNombre = docNombre;
-            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarPorDocumentoNombreAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -3241,6 +3377,29 @@ namespace QingYunSoft.RRHHWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.RRHHWS.insertarSupervisorResponse QingYunSoft.RRHHWS.RRHHWS.insertarSupervisor(QingYunSoft.RRHHWS.insertarSupervisorRequest request) {
+            return base.Channel.insertarSupervisor(request);
+        }
+        
+        public int insertarSupervisor(QingYunSoft.RRHHWS.supervisorDeAlmacen supervisor) {
+            QingYunSoft.RRHHWS.insertarSupervisorRequest inValue = new QingYunSoft.RRHHWS.insertarSupervisorRequest();
+            inValue.supervisor = supervisor;
+            QingYunSoft.RRHHWS.insertarSupervisorResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).insertarSupervisor(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarSupervisorResponse> QingYunSoft.RRHHWS.RRHHWS.insertarSupervisorAsync(QingYunSoft.RRHHWS.insertarSupervisorRequest request) {
+            return base.Channel.insertarSupervisorAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarSupervisorResponse> insertarSupervisorAsync(QingYunSoft.RRHHWS.supervisorDeAlmacen supervisor) {
+            QingYunSoft.RRHHWS.insertarSupervisorRequest inValue = new QingYunSoft.RRHHWS.insertarSupervisorRequest();
+            inValue.supervisor = supervisor;
+            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).insertarSupervisorAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         QingYunSoft.RRHHWS.listarSupervisoresResponse QingYunSoft.RRHHWS.RRHHWS.listarSupervisores(QingYunSoft.RRHHWS.listarSupervisoresRequest request) {
             return base.Channel.listarSupervisores(request);
         }
@@ -3259,119 +3418,6 @@ namespace QingYunSoft.RRHHWS {
         public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarSupervisoresResponse> listarSupervisoresAsync() {
             QingYunSoft.RRHHWS.listarSupervisoresRequest inValue = new QingYunSoft.RRHHWS.listarSupervisoresRequest();
             return ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarSupervisoresAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.RRHHWS.listarUsuariosResponse QingYunSoft.RRHHWS.RRHHWS.listarUsuarios(QingYunSoft.RRHHWS.listarUsuariosRequest request) {
-            return base.Channel.listarUsuarios(request);
-        }
-        
-        public QingYunSoft.RRHHWS.usuario[] listarUsuarios() {
-            QingYunSoft.RRHHWS.listarUsuariosRequest inValue = new QingYunSoft.RRHHWS.listarUsuariosRequest();
-            QingYunSoft.RRHHWS.listarUsuariosResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarUsuarios(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarUsuariosResponse> QingYunSoft.RRHHWS.RRHHWS.listarUsuariosAsync(QingYunSoft.RRHHWS.listarUsuariosRequest request) {
-            return base.Channel.listarUsuariosAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarUsuariosResponse> listarUsuariosAsync() {
-            QingYunSoft.RRHHWS.listarUsuariosRequest inValue = new QingYunSoft.RRHHWS.listarUsuariosRequest();
-            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarUsuariosAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.RRHHWS.listarVendedoresResponse QingYunSoft.RRHHWS.RRHHWS.listarVendedores(QingYunSoft.RRHHWS.listarVendedoresRequest request) {
-            return base.Channel.listarVendedores(request);
-        }
-        
-        public QingYunSoft.RRHHWS.vendedor[] listarVendedores() {
-            QingYunSoft.RRHHWS.listarVendedoresRequest inValue = new QingYunSoft.RRHHWS.listarVendedoresRequest();
-            QingYunSoft.RRHHWS.listarVendedoresResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarVendedores(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarVendedoresResponse> QingYunSoft.RRHHWS.RRHHWS.listarVendedoresAsync(QingYunSoft.RRHHWS.listarVendedoresRequest request) {
-            return base.Channel.listarVendedoresAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarVendedoresResponse> listarVendedoresAsync() {
-            QingYunSoft.RRHHWS.listarVendedoresRequest inValue = new QingYunSoft.RRHHWS.listarVendedoresRequest();
-            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarVendedoresAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.RRHHWS.insertarVendedorResponse QingYunSoft.RRHHWS.RRHHWS.insertarVendedor(QingYunSoft.RRHHWS.insertarVendedorRequest request) {
-            return base.Channel.insertarVendedor(request);
-        }
-        
-        public int insertarVendedor(QingYunSoft.RRHHWS.vendedor vendedor) {
-            QingYunSoft.RRHHWS.insertarVendedorRequest inValue = new QingYunSoft.RRHHWS.insertarVendedorRequest();
-            inValue.vendedor = vendedor;
-            QingYunSoft.RRHHWS.insertarVendedorResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).insertarVendedor(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarVendedorResponse> QingYunSoft.RRHHWS.RRHHWS.insertarVendedorAsync(QingYunSoft.RRHHWS.insertarVendedorRequest request) {
-            return base.Channel.insertarVendedorAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.insertarVendedorResponse> insertarVendedorAsync(QingYunSoft.RRHHWS.vendedor vendedor) {
-            QingYunSoft.RRHHWS.insertarVendedorRequest inValue = new QingYunSoft.RRHHWS.insertarVendedorRequest();
-            inValue.vendedor = vendedor;
-            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).insertarVendedorAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.RRHHWS.eliminarVendedorResponse QingYunSoft.RRHHWS.RRHHWS.eliminarVendedor(QingYunSoft.RRHHWS.eliminarVendedorRequest request) {
-            return base.Channel.eliminarVendedor(request);
-        }
-        
-        public int eliminarVendedor(int vendedor, int cantidad) {
-            QingYunSoft.RRHHWS.eliminarVendedorRequest inValue = new QingYunSoft.RRHHWS.eliminarVendedorRequest();
-            inValue.vendedor = vendedor;
-            inValue.cantidad = cantidad;
-            QingYunSoft.RRHHWS.eliminarVendedorResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).eliminarVendedor(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.eliminarVendedorResponse> QingYunSoft.RRHHWS.RRHHWS.eliminarVendedorAsync(QingYunSoft.RRHHWS.eliminarVendedorRequest request) {
-            return base.Channel.eliminarVendedorAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.eliminarVendedorResponse> eliminarVendedorAsync(int vendedor, int cantidad) {
-            QingYunSoft.RRHHWS.eliminarVendedorRequest inValue = new QingYunSoft.RRHHWS.eliminarVendedorRequest();
-            inValue.vendedor = vendedor;
-            inValue.cantidad = cantidad;
-            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).eliminarVendedorAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreResponse QingYunSoft.RRHHWS.RRHHWS.listarAdministradoresPorDocumentoNombre(QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest request) {
-            return base.Channel.listarAdministradoresPorDocumentoNombre(request);
-        }
-        
-        public QingYunSoft.RRHHWS.administrador[] listarAdministradoresPorDocumentoNombre(string docNombre) {
-            QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest inValue = new QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest();
-            inValue.docNombre = docNombre;
-            QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarAdministradoresPorDocumentoNombre(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreResponse> QingYunSoft.RRHHWS.RRHHWS.listarAdministradoresPorDocumentoNombreAsync(QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest request) {
-            return base.Channel.listarAdministradoresPorDocumentoNombreAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreResponse> listarAdministradoresPorDocumentoNombreAsync(string docNombre) {
-            QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest inValue = new QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest();
-            inValue.docNombre = docNombre;
-            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarAdministradoresPorDocumentoNombreAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -3418,6 +3464,29 @@ namespace QingYunSoft.RRHHWS {
             QingYunSoft.RRHHWS.listarSupervisoresPorDocumentoNombreRequest inValue = new QingYunSoft.RRHHWS.listarSupervisoresPorDocumentoNombreRequest();
             inValue.docNombre = docNombre;
             return ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarSupervisoresPorDocumentoNombreAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreResponse QingYunSoft.RRHHWS.RRHHWS.listarAdministradoresPorDocumentoNombre(QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest request) {
+            return base.Channel.listarAdministradoresPorDocumentoNombre(request);
+        }
+        
+        public QingYunSoft.RRHHWS.administrador[] listarAdministradoresPorDocumentoNombre(string docNombre) {
+            QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest inValue = new QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest();
+            inValue.docNombre = docNombre;
+            QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarAdministradoresPorDocumentoNombre(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreResponse> QingYunSoft.RRHHWS.RRHHWS.listarAdministradoresPorDocumentoNombreAsync(QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest request) {
+            return base.Channel.listarAdministradoresPorDocumentoNombreAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreResponse> listarAdministradoresPorDocumentoNombreAsync(string docNombre) {
+            QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest inValue = new QingYunSoft.RRHHWS.listarAdministradoresPorDocumentoNombreRequest();
+            inValue.docNombre = docNombre;
+            return ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarAdministradoresPorDocumentoNombreAsync(inValue);
         }
     }
 }

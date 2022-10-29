@@ -92,7 +92,7 @@ namespace QingYunSoft
             this.btnClientes.Click += new System.EventHandler(this.btClientes_Click);
             
 
-            //btn almacen
+            //btn almacenSeleccionado
             this.btnAlmacen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAlmacen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAlmacen.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -198,8 +198,8 @@ namespace QingYunSoft
         private void btAlmacen_Click(object sender, EventArgs e)
         {
             lbltitulo.Text = "Almacen";
-            frmAlmacen _frmAlmacen = new frmAlmacen();
-            mostrarFormularioEnPnlPrincipal(_frmAlmacen);
+            //frmAlmacen _frmAlmacen = new frmAlmacen();
+            //mostrarFormularioEnPnlPrincipal(_frmAlmacen);
             resetColor();
             btnAlmacen.BackColor = Color.FromArgb(182, 111, 11);
         }

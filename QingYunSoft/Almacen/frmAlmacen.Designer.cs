@@ -33,7 +33,7 @@
             this.btBuscar = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.dgvVentas = new System.Windows.Forms.DataGridView();
+            this.dgvAlmacenes = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supervisor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,14 +42,14 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btNuevaVenta = new System.Windows.Forms.Button();
+            this.btNuevoAlmacen = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btRegistrarReclamo = new System.Windows.Forms.Button();
+            this.btRegistrarProducto = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel9.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacenes)).BeginInit();
             this.panel10.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -92,6 +92,7 @@
             this.btBuscar.Size = new System.Drawing.Size(30, 30);
             this.btBuscar.TabIndex = 1;
             this.btBuscar.UseVisualStyleBackColor = true;
+            this.btBuscar.Click += new System.EventHandler(this.btBuscar_Click);
             // 
             // panel7
             // 
@@ -113,28 +114,30 @@
             this.panel8.Size = new System.Drawing.Size(304, 40);
             this.panel8.TabIndex = 0;
             // 
-            // dgvVentas
+            // dgvAlmacenes
             // 
-            this.dgvVentas.AllowUserToAddRows = false;
-            this.dgvVentas.AllowUserToDeleteRows = false;
-            this.dgvVentas.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvAlmacenes.AllowUserToAddRows = false;
+            this.dgvAlmacenes.AllowUserToDeleteRows = false;
+            this.dgvAlmacenes.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvAlmacenes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAlmacenes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvAlmacenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlmacenes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.nombre,
             this.supervisor,
             this.direccion});
-            this.dgvVentas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvVentas.GridColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dgvVentas.Location = new System.Drawing.Point(0, 0);
-            this.dgvVentas.Name = "dgvVentas";
-            this.dgvVentas.ReadOnly = true;
-            this.dgvVentas.RowHeadersVisible = false;
-            this.dgvVentas.RowHeadersWidth = 62;
-            this.dgvVentas.Size = new System.Drawing.Size(727, 398);
-            this.dgvVentas.TabIndex = 1;
+            this.dgvAlmacenes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAlmacenes.GridColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dgvAlmacenes.Location = new System.Drawing.Point(0, 0);
+            this.dgvAlmacenes.Name = "dgvAlmacenes";
+            this.dgvAlmacenes.ReadOnly = true;
+            this.dgvAlmacenes.RowHeadersVisible = false;
+            this.dgvAlmacenes.RowHeadersWidth = 62;
+            this.dgvAlmacenes.Size = new System.Drawing.Size(727, 398);
+            this.dgvAlmacenes.TabIndex = 1;
+            this.dgvAlmacenes.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentDoubleClick);
+            this.dgvAlmacenes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductos_CellFormatting);
             // 
             // id
             // 
@@ -170,7 +173,7 @@
             // 
             // panel10
             // 
-            this.panel10.Controls.Add(this.dgvVentas);
+            this.panel10.Controls.Add(this.dgvAlmacenes);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(50, 40);
             this.panel10.Name = "panel10";
@@ -199,7 +202,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.btNuevaVenta);
+            this.panel2.Controls.Add(this.btNuevoAlmacen);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(33, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
@@ -208,26 +211,27 @@
             this.panel2.Size = new System.Drawing.Size(107, 129);
             this.panel2.TabIndex = 0;
             // 
-            // btNuevaVenta
+            // btNuevoAlmacen
             // 
-            this.btNuevaVenta.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btNuevaVenta.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btNuevaVenta.FlatAppearance.BorderSize = 0;
-            this.btNuevaVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btNuevaVenta.Image = global::QingYunSoft.Properties.Resources.plus;
-            this.btNuevaVenta.Location = new System.Drawing.Point(7, 13);
-            this.btNuevaVenta.Margin = new System.Windows.Forms.Padding(2);
-            this.btNuevaVenta.Name = "btNuevaVenta";
-            this.btNuevaVenta.Size = new System.Drawing.Size(73, 103);
-            this.btNuevaVenta.TabIndex = 0;
-            this.btNuevaVenta.Text = "Almacen Nuevo";
-            this.btNuevaVenta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btNuevaVenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btNuevaVenta.UseVisualStyleBackColor = false;
+            this.btNuevoAlmacen.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btNuevoAlmacen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btNuevoAlmacen.FlatAppearance.BorderSize = 0;
+            this.btNuevoAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btNuevoAlmacen.Image = global::QingYunSoft.Properties.Resources.plus;
+            this.btNuevoAlmacen.Location = new System.Drawing.Point(7, 13);
+            this.btNuevoAlmacen.Margin = new System.Windows.Forms.Padding(2);
+            this.btNuevoAlmacen.Name = "btNuevoAlmacen";
+            this.btNuevoAlmacen.Size = new System.Drawing.Size(73, 103);
+            this.btNuevoAlmacen.TabIndex = 0;
+            this.btNuevoAlmacen.Text = "Almacen Nuevo";
+            this.btNuevoAlmacen.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btNuevoAlmacen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btNuevoAlmacen.UseVisualStyleBackColor = false;
+            this.btNuevoAlmacen.Click += new System.EventHandler(this.btNuevoAlmacen_Click);
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btRegistrarReclamo);
+            this.panel3.Controls.Add(this.btRegistrarProducto);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(140, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
@@ -236,22 +240,23 @@
             this.panel3.Size = new System.Drawing.Size(107, 129);
             this.panel3.TabIndex = 1;
             // 
-            // btRegistrarReclamo
+            // btRegistrarProducto
             // 
-            this.btRegistrarReclamo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btRegistrarReclamo.FlatAppearance.BorderSize = 0;
-            this.btRegistrarReclamo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btRegistrarReclamo.Image = global::QingYunSoft.Properties.Resources.cube_box;
-            this.btRegistrarReclamo.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btRegistrarReclamo.Location = new System.Drawing.Point(7, 13);
-            this.btRegistrarReclamo.Margin = new System.Windows.Forms.Padding(2);
-            this.btRegistrarReclamo.Name = "btRegistrarReclamo";
-            this.btRegistrarReclamo.Size = new System.Drawing.Size(73, 103);
-            this.btRegistrarReclamo.TabIndex = 0;
-            this.btRegistrarReclamo.Text = "Registrar Producto";
-            this.btRegistrarReclamo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btRegistrarReclamo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btRegistrarReclamo.UseVisualStyleBackColor = true;
+            this.btRegistrarProducto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btRegistrarProducto.FlatAppearance.BorderSize = 0;
+            this.btRegistrarProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btRegistrarProducto.Image = global::QingYunSoft.Properties.Resources.cube_box;
+            this.btRegistrarProducto.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btRegistrarProducto.Location = new System.Drawing.Point(7, 13);
+            this.btRegistrarProducto.Margin = new System.Windows.Forms.Padding(2);
+            this.btRegistrarProducto.Name = "btRegistrarProducto";
+            this.btRegistrarProducto.Size = new System.Drawing.Size(73, 103);
+            this.btRegistrarProducto.TabIndex = 0;
+            this.btRegistrarProducto.Text = "Registrar Producto";
+            this.btRegistrarProducto.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btRegistrarProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btRegistrarProducto.UseVisualStyleBackColor = true;
+            this.btRegistrarProducto.Click += new System.EventHandler(this.btRegistrarProducto_Click);
             // 
             // panel1
             // 
@@ -281,7 +286,7 @@
             this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacenes)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -298,13 +303,13 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.DataGridView dgvVentas;
+        private System.Windows.Forms.DataGridView dgvAlmacenes;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button btNuevaVenta;
+        private System.Windows.Forms.Button btNuevoAlmacen;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btRegistrarReclamo;
+        private System.Windows.Forms.Button btRegistrarProducto;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
