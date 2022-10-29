@@ -167,5 +167,25 @@ public class SupervisorDeAlmacenMySQL implements SupervisorDeAlmacenDAO  {
         }
         return supervisoresAlmacen;
     }
+
+    @Override
+    public SupervisorDeAlmacen buscarPorAlmacen(int id_almacen) {
+        SupervisorDeAlmacen supervisorAlmacen = new SupervisorDeAlmacen();
+        try{
+            con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("{call BUSCAR_SUPERVISOR_X_ALMACEN(?)}");
+            cs.setInt("_id_almacen", id_almacen);
+            rs = cs.executeQuery();
+            supervisorAlmacen.setIdUsuario(rs.getInt("id_usuario"));
+            supervisorAlmacen.setNombre(rs.getString("nombre"));
+            supervisorAlmacen.setApellido(rs.getString("apellido"));                
+
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
+        }
+        return supervisorAlmacen;
+    }
     
 }
