@@ -11,4 +11,5 @@ public interface SupervisorDeAlmacenDAO {
     public int eliminar(int id_usuario,int id_almacen);
     public ArrayList<SupervisorDeAlmacen> listarTodos();
     public ArrayList<SupervisorDeAlmacen> listarPorDocumentoNombre(String docNombre);
+    public SupervisorDeAlmacen buscarPorAlmacen(int id_almacen);
 }
