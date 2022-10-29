@@ -52,7 +52,7 @@ namespace QingYunSoft.Usuario
             dgvUsuarios.Rows[e.RowIndex].Cells[4].Value = usuario.fechaIngreso;
             if (usuario is RRHHWS.supervisorDeAlmacen)
             {
-                dgvUsuarios.Rows[e.RowIndex].Cells[1].Value = "Sup. almacen";
+                dgvUsuarios.Rows[e.RowIndex].Cells[1].Value = "Sup. almacenSeleccionado";
 
             }
             else if(usuario is RRHHWS.vendedor)

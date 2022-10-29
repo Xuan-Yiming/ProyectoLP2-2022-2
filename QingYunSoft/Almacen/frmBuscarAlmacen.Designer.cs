@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.btSeleccionar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btBuscarAlmacen = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvVentas = new System.Windows.Forms.DataGridView();
+            this.dgvAlmacenes = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supervisor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacenes)).BeginInit();
             this.SuspendLayout();
             // 
             // btSeleccionar
@@ -52,15 +52,16 @@
             this.btSeleccionar.TabIndex = 21;
             this.btSeleccionar.Text = "Seleccionar";
             this.btSeleccionar.UseVisualStyleBackColor = false;
+            this.btSeleccionar.Click += new System.EventHandler(this.btSeleccionar_Click);
             // 
-            // button1
+            // btBuscarAlmacen
             // 
-            this.button1.Location = new System.Drawing.Point(406, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(162, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Buscar por Nombre o DNI";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btBuscarAlmacen.Location = new System.Drawing.Point(406, 20);
+            this.btBuscarAlmacen.Name = "btBuscarAlmacen";
+            this.btBuscarAlmacen.Size = new System.Drawing.Size(162, 23);
+            this.btBuscarAlmacen.TabIndex = 20;
+            this.btBuscarAlmacen.Text = "Buscar por Nombre";
+            this.btBuscarAlmacen.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -74,31 +75,32 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 13);
+            this.label1.Size = new System.Drawing.Size(104, 13);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Nombre o Codigo del almacen";
+            this.label1.Text = "Nombre del almacenSeleccionado";
             // 
-            // dgvVentas
+            // dgvAlmacenes
             // 
-            this.dgvVentas.AllowUserToAddRows = false;
-            this.dgvVentas.AllowUserToDeleteRows = false;
-            this.dgvVentas.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvAlmacenes.AllowUserToAddRows = false;
+            this.dgvAlmacenes.AllowUserToDeleteRows = false;
+            this.dgvAlmacenes.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dgvAlmacenes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAlmacenes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvAlmacenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlmacenes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.nombre,
             this.supervisor,
             this.direccion});
-            this.dgvVentas.GridColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dgvVentas.Location = new System.Drawing.Point(15, 61);
-            this.dgvVentas.Name = "dgvVentas";
-            this.dgvVentas.ReadOnly = true;
-            this.dgvVentas.RowHeadersVisible = false;
-            this.dgvVentas.RowHeadersWidth = 62;
-            this.dgvVentas.Size = new System.Drawing.Size(723, 264);
-            this.dgvVentas.TabIndex = 22;
+            this.dgvAlmacenes.GridColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dgvAlmacenes.Location = new System.Drawing.Point(15, 61);
+            this.dgvAlmacenes.Name = "dgvAlmacenes";
+            this.dgvAlmacenes.ReadOnly = true;
+            this.dgvAlmacenes.RowHeadersVisible = false;
+            this.dgvAlmacenes.RowHeadersWidth = 62;
+            this.dgvAlmacenes.Size = new System.Drawing.Size(723, 264);
+            this.dgvAlmacenes.TabIndex = 22;
+            this.dgvAlmacenes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAlmacenes_CellFormatting);
             // 
             // id
             // 
@@ -131,15 +133,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(750, 380);
-            this.Controls.Add(this.dgvVentas);
+            this.Controls.Add(this.dgvAlmacenes);
             this.Controls.Add(this.btSeleccionar);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btBuscarAlmacen);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmBuscarAlmacen";
             this.Text = "frmBuscarAlmacen";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacenes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,10 +150,10 @@
         #endregion
 
         private System.Windows.Forms.Button btSeleccionar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btBuscarAlmacen;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgvVentas;
+        private System.Windows.Forms.DataGridView dgvAlmacenes;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn supervisor;

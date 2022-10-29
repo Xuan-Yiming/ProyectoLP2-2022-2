@@ -128,7 +128,7 @@
             this.groupBox1.Size = new System.Drawing.Size(335, 152);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Informacion del almacen";
+            this.groupBox1.Text = "Informacion del almacenSeleccionado";
             // 
             // label3
             // 

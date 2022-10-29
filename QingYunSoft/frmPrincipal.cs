@@ -92,7 +92,7 @@ namespace QingYunSoft
             this.btnClientes.Click += new System.EventHandler(this.btClientes_Click);
             
 
-            //btn almacen
+            //btn almacenSeleccionado
             this.btnAlmacen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAlmacen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAlmacen.Dock = System.Windows.Forms.DockStyle.Fill;

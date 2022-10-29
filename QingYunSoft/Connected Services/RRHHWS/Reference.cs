@@ -2386,7 +2386,7 @@ namespace QingYunSoft.RRHHWS {
             }
             set {
                 this.almacenField = value;
-                this.RaisePropertyChanged("almacen");
+                this.RaisePropertyChanged("almacenSeleccionado");
             }
         }
     }
