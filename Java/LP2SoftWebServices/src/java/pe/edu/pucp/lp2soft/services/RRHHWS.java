@@ -1,5 +1,6 @@
 package pe.edu.pucp.lp2soft.services;
 
+import com.oracle.wls.shaded.org.apache.xpath.axes.SubContextList;
 import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -214,5 +215,16 @@ public class RRHHWS {
             System.out.println(ex.getMessage());
         }
         return usuarios;
+    }
+    
+    @WebMethod(operationName = "buscarSupervisorPorAlmacen")
+    public SupervisorDeAlmacen buscarSupervisorPorAlmacen(@WebParam(name = "id_almacen") int id_almacen) {
+        SupervisorDeAlmacen supervisor =new SupervisorDeAlmacen();
+        try{
+            supervisor = daoSupervisor.buscarPorAlmacen(id_almacen);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return supervisor;
     }
 }
