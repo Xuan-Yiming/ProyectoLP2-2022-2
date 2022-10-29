@@ -14,6 +14,7 @@ namespace QingYunSoft.Almacen
     {
         private frmPrincipal _frmPrincipal;
         private VentasWS.VentasWSClient daoVentasWS;
+        private RRHHWS.RRHHWSClient daoRRHHWS;
         public frmAlmacen(frmPrincipal _frmPrincipal)
         {
             InitializeComponent();
@@ -21,6 +22,7 @@ namespace QingYunSoft.Almacen
             
             dgvAlmacenes.AutoGenerateColumns = false;
             daoVentasWS = new VentasWS.VentasWSClient();
+            daoRRHHWS = new RRHHWS.RRHHWSClient();
             dgvAlmacenes.DataSource = daoVentasWS.listarAlmacen();
             dgvAlmacenes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
@@ -30,23 +32,23 @@ namespace QingYunSoft.Almacen
             VentasWS.almacen almacen = (VentasWS.almacen)dgvAlmacenes.CurrentRow.DataBoundItem;
             dgvAlmacenes.Rows[e.RowIndex].Cells["id"].Value = almacen.id;
             dgvAlmacenes.Rows[e.RowIndex].Cells["nombre"].Value = almacen.nombre;
-            //dgvProductos.Rows[e.RowIndex].Cells["supervisor"].Value = almacenSeleccionado.idSupervisor;
+            //dgvProductos.Rows[e.RowIndex].Cells["supervisor"].Value = daoRRHHWS.lisar;
             dgvAlmacenes.Rows[e.RowIndex].Cells["direccion"].Value = almacen.direccion;
         }
 
         private void dgvProductos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Resultado, (VentasWS.almacen)dgvAlmacenes.CurrentRow.DataBoundItem));
         }
 
         private void btRegistrarProducto_Click(object sender, EventArgs e)
         {
-
+            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoProducto(_frmPrincipal, Estado.Nuevo));
         }
 
         private void btNuevoAlmacen_Click(object sender, EventArgs e)
         {
-
+            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Nuevo));
         }
 
         private void btBuscar_Click(object sender, EventArgs e)

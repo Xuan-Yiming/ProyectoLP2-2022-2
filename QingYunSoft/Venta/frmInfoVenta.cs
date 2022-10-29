@@ -73,7 +73,7 @@ namespace QingYunSoft
                     this.btEliminar.Enabled = true;
 
                     this.cbMoneda.Enabled = true;
-                    this.txtTipoDeCambio.Enabled = true;
+                    this.txtTipoDeCambio.Enabled = false;
 
                     this.txtCuotas.Enabled = true;
                     this.dtpFechaLimite.Enabled = true;
@@ -139,7 +139,7 @@ namespace QingYunSoft
                     this.btEliminar.Enabled = true;
 
                     this.cbMoneda.Enabled = true;
-                    this.txtTipoDeCambio.Enabled = true;
+                    this.txtTipoDeCambio.Enabled = false;
 
                     this.txtCuotas.Enabled = true;
                     this.dtpFechaLimite.Enabled = true;
@@ -201,22 +201,14 @@ namespace QingYunSoft
                 this._venta.formaDeEntrega = (VentasWS.formaDeEntrega)this.cbFormaDeEntrega.SelectedItem;
                 this._venta.fechaDeEntrega = this.dtpFechaEntrega.Value;
                 this._venta.fechaDeCompra = this.dtpFechaCompra.Value;
+                this._venta.monto = Double.Parse(txtMontoTotal.Text);
+
+                this._venta.moneda = (VentasWS.moneda)this.cbMoneda.SelectedItem;
+
+                this._terminoDePago.numeroCuota = Int32.Parse(this.txtCuotas.Text);
+                this._terminoDePago.montoCuota = double.Parse(this.txtMontoCuota.Text);
+                this._terminoDePago.fechaLimite = this.dtpFechaLimite.Value;
             }
-
-            if (cbFormaDeEntrega.SelectedText == VentasWS.formaDeEntrega.EnAlmacen.ToString())
-                this._venta.formaDeEntrega = VentasWS.formaDeEntrega.EnAlmacen;
-            else
-                this._venta.formaDeEntrega = VentasWS.formaDeEntrega.ADestino;
-            this._venta.fechaDeEntrega = dtpFechaEntrega.Value;
-            this._venta.direccionDeEntrega = txtDireccion.Text;
-
-            //termino de pago
-            this._terminoDePago.numeroCuota =  Int32.Parse(this.txtCuotas.Text);
-            this._terminoDePago.montoCuota = double.Parse(this.txtMontoTotal.Text) / this._terminoDePago.numeroCuota;
-            
-            
-            //moneda
-            
         }
 
         private void btBuscarCliente_Click(object sender, EventArgs e)

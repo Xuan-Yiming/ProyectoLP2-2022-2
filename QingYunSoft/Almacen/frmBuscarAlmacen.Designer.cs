@@ -30,7 +30,7 @@
         {
             this.btSeleccionar = new System.Windows.Forms.Button();
             this.btBuscarAlmacen = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNombreAlmacen = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvAlmacenes = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,13 +62,14 @@
             this.btBuscarAlmacen.TabIndex = 20;
             this.btBuscarAlmacen.Text = "Buscar por Nombre";
             this.btBuscarAlmacen.UseVisualStyleBackColor = true;
+            this.btBuscarAlmacen.Click += new System.EventHandler(this.btBuscarAlmacen_Click);
             // 
-            // textBox1
+            // txtNombreAlmacen
             // 
-            this.textBox1.Location = new System.Drawing.Point(167, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 19;
+            this.txtNombreAlmacen.Location = new System.Drawing.Point(122, 22);
+            this.txtNombreAlmacen.Name = "txtNombreAlmacen";
+            this.txtNombreAlmacen.Size = new System.Drawing.Size(200, 20);
+            this.txtNombreAlmacen.TabIndex = 19;
             // 
             // label1
             // 
@@ -77,7 +78,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 13);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Nombre del almacenSeleccionado";
+            this.label1.Text = "Nombre del almacen";
             // 
             // dgvAlmacenes
             // 
@@ -136,7 +137,7 @@
             this.Controls.Add(this.dgvAlmacenes);
             this.Controls.Add(this.btSeleccionar);
             this.Controls.Add(this.btBuscarAlmacen);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNombreAlmacen);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmBuscarAlmacen";
@@ -151,7 +152,7 @@
 
         private System.Windows.Forms.Button btSeleccionar;
         private System.Windows.Forms.Button btBuscarAlmacen;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNombreAlmacen;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvAlmacenes;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
