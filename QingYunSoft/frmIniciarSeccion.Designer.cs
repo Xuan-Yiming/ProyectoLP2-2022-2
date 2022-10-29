@@ -30,12 +30,12 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btSalir = new System.Windows.Forms.Button();
             this.btIngresar = new System.Windows.Forms.Button();
             this.txtClave = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btSalir = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -69,6 +69,20 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Qing Yun";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btSalir
+            // 
+            this.btSalir.BackgroundImage = global::QingYunSoft.Properties.Resources.multiply_square;
+            this.btSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btSalir.FlatAppearance.BorderSize = 0;
+            this.btSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btSalir.Location = new System.Drawing.Point(249, 11);
+            this.btSalir.Margin = new System.Windows.Forms.Padding(2);
+            this.btSalir.Name = "btSalir";
+            this.btSalir.Size = new System.Drawing.Size(40, 40);
+            this.btSalir.TabIndex = 11;
+            this.btSalir.UseVisualStyleBackColor = true;
+            this.btSalir.Click += new System.EventHandler(this.btSalir_Click);
             // 
             // btIngresar
             // 
@@ -123,20 +137,6 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Usuario:";
             // 
-            // btSalir
-            // 
-            this.btSalir.BackgroundImage = global::QingYunSoft.Properties.Resources.multiply_square;
-            this.btSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btSalir.FlatAppearance.BorderSize = 0;
-            this.btSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btSalir.Location = new System.Drawing.Point(249, 11);
-            this.btSalir.Margin = new System.Windows.Forms.Padding(2);
-            this.btSalir.Name = "btSalir";
-            this.btSalir.Size = new System.Drawing.Size(40, 40);
-            this.btSalir.TabIndex = 11;
-            this.btSalir.UseVisualStyleBackColor = true;
-            this.btSalir.Click += new System.EventHandler(this.btSalir_Click);
-            // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = global::QingYunSoft.Properties.Resources.Background;
@@ -147,6 +147,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(300, 400);
             this.pictureBox2.TabIndex = 12;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // panel2
             // 

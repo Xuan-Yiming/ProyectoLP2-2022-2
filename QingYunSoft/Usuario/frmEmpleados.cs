@@ -14,15 +14,28 @@ namespace QingYunSoft.Usuario
 
     public partial class frmEmpleados : Form
     {
+        //objetos
         private frmPrincipal _frmPrincipal;
+
+        //daos
         private RRHHWS.RRHHWSClient daoEmpleados;
+            
         public frmEmpleados(frmPrincipal _frmPrincipal)
         {
             InitializeComponent();
             this._frmPrincipal = _frmPrincipal;
-            dgvEmpleados.AutoGenerateColumns = false;
-            daoEmpleados = new RRHHWS.RRHHWSClient();
-            dgvEmpleados.DataSource = daoEmpleados.listarUsuarios();
+            //empleados
+            try
+            {
+                dgvEmpleados.AutoGenerateColumns = false;
+                daoEmpleados = new RRHHWS.RRHHWSClient();
+                dgvEmpleados.DataSource = daoEmpleados.listarUsuarios();
+                dgvEmpleados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }            
         }
 
         private void btNuevoUsuario_Click(object sender, EventArgs e)
@@ -61,13 +74,6 @@ namespace QingYunSoft.Usuario
             }
         
         }
-
-        private void dgvEmpleados_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            RRHHWS.usuario usurioSeleccionado = (RRHHWS.usuario)dgvEmpleados.CurrentRow.DataBoundItem;
-            frmInfoEmpleado _frmInfoEmpleado = new frmInfoEmpleado(_frmPrincipal, Estado.Resultado, usurioSeleccionado);
-        }
-
         private void dgvEmpleados_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             RRHHWS.usuario usurioSeleccionado = (RRHHWS.usuario)dgvEmpleados.CurrentRow.DataBoundItem;

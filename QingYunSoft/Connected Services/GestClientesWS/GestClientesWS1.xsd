@@ -230,14 +230,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:personaNatural" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarPersonasNaturales">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarPersonasNaturalesResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:personaNatural" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="listarPorDocumentoNombre">
     <xs:sequence>
       <xs:element minOccurs="0" name="docNombre" type="xs:string" />
@@ -248,12 +240,12 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:cliente" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarClientes">
+  <xs:complexType name="listarPersonasNaturales">
     <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="listarClientesResponse">
+  <xs:complexType name="listarPersonasNaturalesResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:cliente" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:personaNatural" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarEmpresa">
@@ -264,6 +256,14 @@
   <xs:complexType name="insertarEmpresaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarClientes">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarClientesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:cliente" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarEmpresa">

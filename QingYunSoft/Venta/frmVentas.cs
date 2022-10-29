@@ -39,7 +39,7 @@ namespace QingYunSoft
 
         private void btNuevaVenta_Click(object sender, EventArgs e)
         {
-            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoVenta(_frmPrincipal,Estado.Nuevo));
+            //_frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoVenta(_frmPrincipal,Estado.Nuevo));
         }
 
         private void btBuscar_Click(object sender, EventArgs e)
@@ -47,14 +47,14 @@ namespace QingYunSoft
             frmBuscarVenta _frmBuscarVenta = new frmBuscarVenta();
             if (_frmBuscarVenta.ShowDialog() == DialogResult.OK)
             {
-                _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoVenta(_frmPrincipal, Estado.Resultado, _frmBuscarVenta.OrdenDeCompraSeleccionado));
+                //_frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoVenta(_frmPrincipal, Estado.Resultado, _frmBuscarVenta.OrdenDeCompraSeleccionado));
             }
         }
 
         private void dgvVentas_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             VentasWS.ordenDeCompra ventSeleccionado = (VentasWS.ordenDeCompra)dgvVentas.CurrentRow.DataBoundItem;
-            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoVenta(_frmPrincipal, Estado.Resultado, ventSeleccionado));
+            //_frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoVenta(_frmPrincipal, Estado.Resultado, ventSeleccionado));
         }
 
         private void dgvVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

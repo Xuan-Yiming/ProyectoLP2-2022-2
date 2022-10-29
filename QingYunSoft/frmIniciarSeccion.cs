@@ -28,8 +28,8 @@ namespace QingYunSoft
             this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
             
             //prueba
-            //this._usuario = new RRHHWS.administrador();
-            //this._usuario.nombre = "Jarumy";
+            this._usuario = new RRHHWS.administrador();
+            this._usuario.nombre = "Jarumy";
         }
 
         //metodos
@@ -165,6 +165,24 @@ namespace QingYunSoft
             if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
                 m.Result = (IntPtr)HTCAPTION;
 
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            //prueba
+            this._usuario = new RRHHWS.administrador();
+            this._usuario.nombre = "Jarumy";
+            frmPrincipal _frmPrincipal = new frmPrincipal(this._usuario);
+            this.Hide();
+            _frmPrincipal.ShowDialog();
+            if (_frmPrincipal.DialogResult == DialogResult.Cancel)
+            {
+                this.Close();
+            }
+            else if (_frmPrincipal.DialogResult == DialogResult.OK)
+            {
+                this.Show();
+            }
         }
         //out drop shadow done
 

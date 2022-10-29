@@ -238,8 +238,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Connected Services\GestClientesWS\GestClientesWS.wsdl" />
-    <None Include="Connected Services\GestClientesWS\GestClientesWS.xsd">
+    <None Include="Connected Services\GestClientesWS\GestClientesWS1.wsdl" />
+    <None Include="Connected Services\GestClientesWS\GestClientesWS1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.cliente.datasource">
@@ -288,6 +288,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.administrador.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.cliente.datasource">
@@ -356,8 +359,8 @@
     <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.verificarCuentaUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\RRHHWS\RRHHWS.wsdl" />
-    <None Include="Connected Services\RRHHWS\RRHHWS.xsd">
+    <None Include="Connected Services\RRHHWS\RRHHWS1.wsdl" />
+    <None Include="Connected Services\RRHHWS\RRHHWS1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.almacen.datasource">
@@ -453,8 +456,8 @@
     <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.terminoDePago.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\VentasWS\VentasWS.wsdl" />
-    <None Include="Connected Services\VentasWS\VentasWS.xsd">
+    <None Include="Connected Services\VentasWS\VentasWS1.wsdl" />
+    <None Include="Connected Services\VentasWS\VentasWS1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">

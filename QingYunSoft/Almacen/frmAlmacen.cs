@@ -38,17 +38,17 @@ namespace QingYunSoft.Almacen
 
         private void dgvProductos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Resultado, (VentasWS.almacen)dgvAlmacenes.CurrentRow.DataBoundItem));
+            //_frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Resultado, (VentasWS.almacen)dgvAlmacenes.CurrentRow.DataBoundItem));
         }
 
         private void btRegistrarProducto_Click(object sender, EventArgs e)
         {
-            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoProducto(_frmPrincipal, Estado.Nuevo));
+           // _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoProducto(_frmPrincipal, Estado.Nuevo));
         }
 
         private void btNuevoAlmacen_Click(object sender, EventArgs e)
         {
-            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Nuevo));
+            //_frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Nuevo));
         }
 
         private void btBuscar_Click(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace QingYunSoft.Almacen
             frmBuscarAlmacen _frmBuscarAlmacen = new frmBuscarAlmacen();
             if (_frmBuscarAlmacen.ShowDialog() == DialogResult.OK)
             {
-                _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Resultado, _frmBuscarAlmacen.AlmacenSeleccionado));
+                //_frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Resultado, _frmBuscarAlmacen.AlmacenSeleccionado));
             }
         }
     }
