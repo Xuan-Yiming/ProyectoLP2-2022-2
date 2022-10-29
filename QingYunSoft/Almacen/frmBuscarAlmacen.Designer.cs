@@ -64,7 +64,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(153, 23);
+            this.textBox1.Location = new System.Drawing.Point(167, 23);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(200, 20);
             this.textBox1.TabIndex = 19;
@@ -74,15 +74,15 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 13);
+            this.label1.Size = new System.Drawing.Size(149, 13);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Nombre o DNI del cliente";
+            this.label1.Text = "Nombre o Codigo del almacen";
             // 
             // dgvVentas
             // 
             this.dgvVentas.AllowUserToAddRows = false;
             this.dgvVentas.AllowUserToDeleteRows = false;
-            this.dgvVentas.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvVentas.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dgvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

@@ -42,10 +42,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btEmpleados = new System.Windows.Forms.Button();
-            this.btClientes = new System.Windows.Forms.Button();
-            this.btVentas = new System.Windows.Forms.Button();
-            this.btAlmacen = new System.Windows.Forms.Button();
             this.panelTop = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbltitulo = new System.Windows.Forms.Label();
@@ -221,34 +217,6 @@
             this.label1.Text = "Qing Yun";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btEmpleados
-            // 
-            this.btEmpleados.Location = new System.Drawing.Point(0, 0);
-            this.btEmpleados.Name = "btEmpleados";
-            this.btEmpleados.Size = new System.Drawing.Size(75, 23);
-            this.btEmpleados.TabIndex = 0;
-            // 
-            // btClientes
-            // 
-            this.btClientes.Location = new System.Drawing.Point(0, 0);
-            this.btClientes.Name = "btClientes";
-            this.btClientes.Size = new System.Drawing.Size(75, 23);
-            this.btClientes.TabIndex = 0;
-            // 
-            // btVentas
-            // 
-            this.btVentas.Location = new System.Drawing.Point(0, 0);
-            this.btVentas.Name = "btVentas";
-            this.btVentas.Size = new System.Drawing.Size(75, 23);
-            this.btVentas.TabIndex = 0;
-            // 
-            // btAlmacen
-            // 
-            this.btAlmacen.Location = new System.Drawing.Point(0, 0);
-            this.btAlmacen.Name = "btAlmacen";
-            this.btAlmacen.Size = new System.Drawing.Size(75, 23);
-            this.btAlmacen.TabIndex = 0;
-            // 
             // panelTop
             // 
             this.panelTop.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -411,13 +379,10 @@
         private System.Windows.Forms.Panel pnlBt3;
         private System.Windows.Forms.Panel pnlBt1;
         private System.Windows.Forms.Panel pnlBt2;
-        private System.Windows.Forms.Button btVentas;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.Label lbltitulo;
-        private System.Windows.Forms.Button btClientes;
-        private System.Windows.Forms.Button btAlmacen;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel14;
@@ -429,7 +394,6 @@
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Button btCerrarSeccion;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button btEmpleados;
         private System.Windows.Forms.Panel pnlPrincipal;
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Label txtNombreUsuario;

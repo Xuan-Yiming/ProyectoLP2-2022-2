@@ -74,7 +74,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel9.Location = new System.Drawing.Point(687, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel9.Padding = new System.Windows.Forms.Padding(5);
             this.panel9.Size = new System.Drawing.Size(40, 40);
             this.panel9.TabIndex = 1;
             // 
@@ -88,7 +88,7 @@
             this.btBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btBuscar.Location = new System.Drawing.Point(5, 5);
             this.btBuscar.Name = "btBuscar";
-            this.btBuscar.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.btBuscar.Padding = new System.Windows.Forms.Padding(10);
             this.btBuscar.Size = new System.Drawing.Size(30, 30);
             this.btBuscar.TabIndex = 1;
             this.btBuscar.UseVisualStyleBackColor = true;
@@ -202,7 +202,7 @@
             this.panel2.Controls.Add(this.btNuevaVenta);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(33, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
             this.panel2.Size = new System.Drawing.Size(107, 129);
@@ -216,7 +216,7 @@
             this.btNuevaVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btNuevaVenta.Image = global::QingYunSoft.Properties.Resources.plus;
             this.btNuevaVenta.Location = new System.Drawing.Point(7, 13);
-            this.btNuevaVenta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btNuevaVenta.Margin = new System.Windows.Forms.Padding(2);
             this.btNuevaVenta.Name = "btNuevaVenta";
             this.btNuevaVenta.Size = new System.Drawing.Size(73, 103);
             this.btNuevaVenta.TabIndex = 0;
@@ -230,7 +230,7 @@
             this.panel3.Controls.Add(this.btRegistrarReclamo);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(140, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
             this.panel3.Size = new System.Drawing.Size(107, 129);
@@ -244,7 +244,7 @@
             this.btRegistrarReclamo.Image = global::QingYunSoft.Properties.Resources.cube_box;
             this.btRegistrarReclamo.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btRegistrarReclamo.Location = new System.Drawing.Point(7, 13);
-            this.btRegistrarReclamo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btRegistrarReclamo.Margin = new System.Windows.Forms.Padding(2);
             this.btRegistrarReclamo.Name = "btRegistrarReclamo";
             this.btRegistrarReclamo.Size = new System.Drawing.Size(73, 103);
             this.btRegistrarReclamo.TabIndex = 0;
@@ -260,7 +260,7 @@
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(33, 0, 33, 0);
             this.panel1.Size = new System.Drawing.Size(827, 130);

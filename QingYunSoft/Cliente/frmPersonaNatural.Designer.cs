@@ -67,9 +67,9 @@
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(9, 9);
+            this.groupBox1.Location = new System.Drawing.Point(12, 9);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(371, 272);
+            this.groupBox1.Size = new System.Drawing.Size(302, 239);
             this.groupBox1.TabIndex = 110;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Persona Natural";
@@ -89,7 +89,7 @@
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Location = new System.Drawing.Point(146, 198);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(197, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(138, 20);
             this.dateTimePicker1.TabIndex = 27;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -108,7 +108,7 @@
             this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox6.Location = new System.Drawing.Point(146, 174);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(197, 20);
+            this.textBox6.Size = new System.Drawing.Size(138, 20);
             this.textBox6.TabIndex = 25;
             this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
@@ -127,7 +127,7 @@
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.Location = new System.Drawing.Point(146, 151);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(197, 20);
+            this.textBox5.Size = new System.Drawing.Size(138, 20);
             this.textBox5.TabIndex = 23;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
@@ -146,7 +146,7 @@
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(146, 126);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(197, 20);
+            this.textBox1.Size = new System.Drawing.Size(138, 20);
             this.textBox1.TabIndex = 21;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -165,7 +165,7 @@
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.Location = new System.Drawing.Point(146, 103);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(197, 20);
+            this.textBox4.Size = new System.Drawing.Size(138, 20);
             this.textBox4.TabIndex = 19;
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
@@ -175,7 +175,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(146, 32);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(197, 21);
+            this.comboBox2.Size = new System.Drawing.Size(138, 21);
             this.comboBox2.TabIndex = 18;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
@@ -194,7 +194,7 @@
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(146, 79);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(197, 20);
+            this.textBox3.Size = new System.Drawing.Size(138, 20);
             this.textBox3.TabIndex = 6;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
@@ -213,7 +213,7 @@
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(146, 56);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(197, 20);
+            this.textBox2.Size = new System.Drawing.Size(138, 20);
             this.textBox2.TabIndex = 4;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
@@ -232,7 +232,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(705, 316);
+            this.ClientSize = new System.Drawing.Size(330, 260);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);

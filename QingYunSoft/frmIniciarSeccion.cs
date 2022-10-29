@@ -14,6 +14,70 @@ namespace QingYunSoft
 {
     public partial class frmIniciarSeccion : Form
     {
+        //objetos
+        private RRHHWS.usuario _usuario;
+        private RRHHWS.RRHHWSClient daoRRHHWSClient;
+
+        //constructor
+        public frmIniciarSeccion()
+        {
+            InitializeComponent();
+            this.CenterToScreen();
+            //round form border
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
+            
+            //prueba
+            //this._usuario = new RRHHWS.administrador();
+            //this._usuario.nombre = "Jarumy";
+        }
+
+        //metodos
+        private void btIngresar_Click(object sender, EventArgs e)
+        {
+            daoRRHHWSClient = new RRHHWS.RRHHWSClient();
+            RRHHWS.usuario usuario = new RRHHWS.administrador();
+            usuario.username = txtUsuario.Text;
+            usuario.password = txtClave.Text;
+            try
+            {
+                this._usuario = daoRRHHWSClient.verificarCuentaUsuario(usuario);
+                if (this._usuario != null)
+                {
+                    frmPrincipal _frmPrincipal = new frmPrincipal(this._usuario);
+                    this.Hide();
+                    _frmPrincipal.ShowDialog();
+                    if (_frmPrincipal.DialogResult == DialogResult.Cancel)
+                    {
+                        this.Close();
+                    }
+                    else if (_frmPrincipal.DialogResult == DialogResult.OK)
+                    {
+                        this.Show();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o contraseña incorrectos: Error Code");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }                       
+        }
+
+        private void btSalir_Click(object sender, EventArgs e)
+        {
+            //confirmar antes de cerrar la aplicacion
+            if (MessageBox.Show("¿Está seguro que desea salir de la aplicación?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.Close();
+            }        
+        }
+
+        //otros
+
         //round border
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -25,7 +89,6 @@ namespace QingYunSoft
             int nWidthEllipse, // height of ellipse
             int nHeightEllipse // width of ellipse
         );
-        
         //out drop shadow
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -105,57 +168,5 @@ namespace QingYunSoft
         }
         //out drop shadow done
 
-        private RRHHWS.usuario _usuario;
-        private RRHHWS.RRHHWSClient _servicio;
-
-        public frmIniciarSeccion()
-        {
-            InitializeComponent();
-            this.CenterToScreen();
-            //round form border
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
-
-            //
-
-            this._usuario = new RRHHWS.administrador();
-            this._usuario.nombre = "Jarumy";
-        }
-
-        private void btIngresar_Click(object sender, EventArgs e)
-        {
-            _servicio = new RRHHWS.RRHHWSClient();
-
-            RRHHWS.usuario usuario = new RRHHWS.vendedor();
-            usuario.username = txtUsuario.Text;
-            usuario.password = txtClave.Text;
-            this._usuario = _servicio.verificarCuentaUsuario(usuario);
-            if (this._usuario != null)
-            {
-                frmPrincipal _frmPrincipal = new frmPrincipal(this._usuario);
-                this.Hide();
-                _frmPrincipal.ShowDialog();
-                if (_frmPrincipal.DialogResult == DialogResult.Cancel)
-                {
-                    this.Close();
-                }
-                else if (_frmPrincipal.DialogResult == DialogResult.OK)
-                {
-                    this.Show();
-                }
-            }
-            else
-            {
-
-                MessageBox.Show("Usuario o contraseña incorrectos: Error Code");
-            }
-
-            
-        }
-
-        private void btSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
     }
 }

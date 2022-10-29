@@ -103,6 +103,16 @@ namespace QingYunSoft.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Background {
+            get {
+                object obj = ResourceManager.GetObject("Background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap creditcard {
             get {
                 object obj = ResourceManager.GetObject("creditcard", resourceCulture);
@@ -146,6 +156,16 @@ namespace QingYunSoft.Properties {
         internal static System.Drawing.Bitmap house {
             get {
                 object obj = ResourceManager.GetObject("house", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icloud_and_arrow_up {
+            get {
+                object obj = ResourceManager.GetObject("icloud.and.arrow.up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

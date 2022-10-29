@@ -12,7 +12,7 @@ namespace QingYunSoft.Almacen
 {
     public partial class frmAlmacen : Form
     {
-        public frmAlmacen()
+        public frmAlmacen(frmPrincipal _frmPrincipal)
         {
             InitializeComponent();
         }

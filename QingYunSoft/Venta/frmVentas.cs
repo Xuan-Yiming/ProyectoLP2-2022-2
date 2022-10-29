@@ -13,13 +13,16 @@ namespace QingYunSoft
 {
     public partial class frmVentas : Form
     {
-        private Estado estado;
+
+        //Objetos
         private frmPrincipal _frmPrincipal;
         private VentasWS.VentasWSClient daoVentas;
-        //private BindingList<VentasWS> _detallesVenta;
+        
+        //Constructores
         public frmVentas()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
         
         public frmVentas(frmPrincipal _frmPrincipal)
@@ -27,10 +30,11 @@ namespace QingYunSoft
             InitializeComponent();
             this._frmPrincipal = _frmPrincipal;
 
+            //inicializar ventas
             dgvVentas.AutoGenerateColumns = false;
-
             daoVentas = new VentasWS.VentasWSClient();
             dgvVentas.DataSource = daoVentas.listarOrdenesDeCompraUltimas50();
+            dgvVentas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void btNuevaVenta_Click(object sender, EventArgs e)
@@ -59,8 +63,8 @@ namespace QingYunSoft
             dgvVentas.Rows[e.RowIndex].Cells["ID"].Value = venta.id;
             dgvVentas.Rows[e.RowIndex].Cells["idCliente"].Value = venta.idCliente;
             dgvVentas.Rows[e.RowIndex].Cells["fechaVenta"].Value = venta.fechaDeCompra;
-            dgvVentas.Rows[e.RowIndex].Cells["moneda"].Value = ((VentasWS.moneda)venta.moneda).id;
-            dgvVentas.Rows[e.RowIndex].Cells["monto"].Value = venta.monto;
+            dgvVentas.Rows[e.RowIndex].Cells["moneda"].Value = ((VentasWS.moneda)venta.moneda).abreviatura;
+            dgvVentas.Rows[e.RowIndex].Cells["monto"].Value = (double)venta.monto;
         }
     }
 }

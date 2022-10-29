@@ -89,6 +89,7 @@
             // btRegistrarPago
             // 
             this.btRegistrarPago.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btRegistrarPago.Enabled = false;
             this.btRegistrarPago.FlatAppearance.BorderSize = 0;
             this.btRegistrarPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btRegistrarPago.Image = global::QingYunSoft.Properties.Resources.creditcard;
@@ -117,6 +118,7 @@
             // btRegistrarReclamo
             // 
             this.btRegistrarReclamo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btRegistrarReclamo.Enabled = false;
             this.btRegistrarReclamo.FlatAppearance.BorderSize = 0;
             this.btRegistrarReclamo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btRegistrarReclamo.Image = global::QingYunSoft.Properties.Resources.exclamationmark_triangle;
@@ -210,6 +212,7 @@
             this.dgvVentas.ReadOnly = true;
             this.dgvVentas.RowHeadersVisible = false;
             this.dgvVentas.RowHeadersWidth = 62;
+            this.dgvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVentas.Size = new System.Drawing.Size(727, 398);
             this.dgvVentas.TabIndex = 1;
             this.dgvVentas.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellContentDoubleClick);

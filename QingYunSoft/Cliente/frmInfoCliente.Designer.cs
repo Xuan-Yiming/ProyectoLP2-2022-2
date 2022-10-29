@@ -43,14 +43,21 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btCancelar = new System.Windows.Forms.Button();
             this.btRegresar = new System.Windows.Forms.Button();
+            this.dgvVentas = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.dgvVentas);
             this.panel3.Controls.Add(this.pnlTipoCliente);
             this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Controls.Add(this.btEditarGuardar);
@@ -66,7 +73,7 @@
             this.pnlTipoCliente.Location = new System.Drawing.Point(3, 114);
             this.pnlTipoCliente.Margin = new System.Windows.Forms.Padding(2);
             this.pnlTipoCliente.Name = "pnlTipoCliente";
-            this.pnlTipoCliente.Size = new System.Drawing.Size(722, 316);
+            this.pnlTipoCliente.Size = new System.Drawing.Size(330, 260);
             this.pnlTipoCliente.TabIndex = 18;
             // 
             // groupBox1
@@ -150,7 +157,7 @@
             this.btEditarGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btEditarGuardar.ForeColor = System.Drawing.Color.White;
             this.btEditarGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btEditarGuardar.Location = new System.Drawing.Point(605, 435);
+            this.btEditarGuardar.Location = new System.Drawing.Point(572, 435);
             this.btEditarGuardar.Name = "btEditarGuardar";
             this.btEditarGuardar.Size = new System.Drawing.Size(117, 23);
             this.btEditarGuardar.TabIndex = 12;
@@ -163,7 +170,7 @@
             // 
             this.btAnular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAnular.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btAnular.Location = new System.Drawing.Point(482, 435);
+            this.btAnular.Location = new System.Drawing.Point(377, 435);
             this.btAnular.Name = "btAnular";
             this.btAnular.Size = new System.Drawing.Size(117, 23);
             this.btAnular.TabIndex = 15;
@@ -221,6 +228,59 @@
             this.btRegresar.UseVisualStyleBackColor = true;
             this.btRegresar.Click += new System.EventHandler(this.btRegresar_Click);
             // 
+            // dgvVentas
+            // 
+            this.dgvVentas.AllowUserToAddRows = false;
+            this.dgvVentas.AllowUserToDeleteRows = false;
+            this.dgvVentas.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dgvVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.fechaVenta,
+            this.moneda,
+            this.monto});
+            this.dgvVentas.GridColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dgvVentas.Location = new System.Drawing.Point(338, 7);
+            this.dgvVentas.Name = "dgvVentas";
+            this.dgvVentas.ReadOnly = true;
+            this.dgvVentas.RowHeadersVisible = false;
+            this.dgvVentas.RowHeadersWidth = 62;
+            this.dgvVentas.Size = new System.Drawing.Size(382, 422);
+            this.dgvVentas.TabIndex = 19;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "# Venta";
+            this.ID.MinimumWidth = 8;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 80;
+            // 
+            // fechaVenta
+            // 
+            this.fechaVenta.HeaderText = "Fecha de Venta";
+            this.fechaVenta.MinimumWidth = 8;
+            this.fechaVenta.Name = "fechaVenta";
+            this.fechaVenta.ReadOnly = true;
+            this.fechaVenta.Width = 150;
+            // 
+            // moneda
+            // 
+            this.moneda.HeaderText = "Moneda";
+            this.moneda.MinimumWidth = 8;
+            this.moneda.Name = "moneda";
+            this.moneda.ReadOnly = true;
+            this.moneda.Width = 50;
+            // 
+            // monto
+            // 
+            this.monto.HeaderText = "Monto Total";
+            this.monto.MinimumWidth = 8;
+            this.monto.Name = "monto";
+            this.monto.ReadOnly = true;
+            // 
             // frmInfoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,6 +298,7 @@
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -259,5 +320,10 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btCancelar;
+        private System.Windows.Forms.DataGridView dgvVentas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn moneda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn monto;
     }
 }

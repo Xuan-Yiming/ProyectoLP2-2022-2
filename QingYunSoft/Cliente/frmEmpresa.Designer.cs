@@ -49,7 +49,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(9, 9);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(355, 116);
+            this.groupBox1.Size = new System.Drawing.Size(309, 116);
             this.groupBox1.TabIndex = 109;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Empresa";
@@ -69,7 +69,7 @@
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(119, 79);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(224, 20);
+            this.textBox3.Size = new System.Drawing.Size(171, 20);
             this.textBox3.TabIndex = 6;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
@@ -88,7 +88,7 @@
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(119, 56);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(224, 20);
+            this.textBox2.Size = new System.Drawing.Size(171, 20);
             this.textBox2.TabIndex = 4;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
@@ -107,7 +107,7 @@
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(119, 32);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(224, 20);
+            this.textBox1.Size = new System.Drawing.Size(171, 20);
             this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -116,10 +116,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(705, 316);
+            this.ClientSize = new System.Drawing.Size(330, 260);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmEmpresa";
             this.Text = "frmEmpresa";
             this.groupBox1.ResumeLayout(false);

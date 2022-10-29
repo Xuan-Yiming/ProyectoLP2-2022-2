@@ -16,6 +16,88 @@ namespace QingYunSoft.Venta
 {
     public partial class frmBuscarVenta : Form
     {
+        //objetos
+        private VentasWS.ordenDeCompra ordenDeCompraSeleccionado;
+        public ordenDeCompra OrdenDeCompraSeleccionado { get => ordenDeCompraSeleccionado; set => ordenDeCompraSeleccionado = value; }
+        private GestClientesWS.cliente clienteSeleccionado;
+        public frmBuscarVenta()
+        {
+            InitializeComponent();
+            this.CenterToParent();
+            //round form border
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));            
+        }
+
+        private void frmBuscarVenta_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0xA1, 0x2, 0);
+        }
+
+        private void btSeleccionar_Click(object sender, EventArgs e)
+        {
+            if (dgvVentas.CurrentRow != null)
+            {
+                OrdenDeCompraSeleccionado = (VentasWS.ordenDeCompra)dgvVentas.CurrentRow.DataBoundItem;
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una venta", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void dgvVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            VentasWS.ordenDeCompra venta = (VentasWS.ordenDeCompra)dgvVentas.Rows[e.RowIndex].DataBoundItem;
+            dgvVentas.Rows[e.RowIndex].Cells["ID"].Value = venta.id;
+            dgvVentas.Rows[e.RowIndex].Cells["idCliente"].Value = venta.idCliente;
+            dgvVentas.Rows[e.RowIndex].Cells["fechaVenta"].Value = venta.fechaDeCompra;
+            dgvVentas.Rows[e.RowIndex].Cells["moneda"].Value = ((VentasWS.moneda)venta.moneda).abreviatura;
+            dgvVentas.Rows[e.RowIndex].Cells["monto"].Value = (double)venta.monto;
+        }
+
+        private void btBuscarPorCliente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorCliente(this.clienteSeleccionado.idCliente);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btBuscarPorFecha_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorFecha(dtpFecha.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }            
+        }
+
+        private void btBuscarCliente_Click(object sender, EventArgs e)
+        {
+            frmBuscarCliente _frmBuscarCliente = new frmBuscarCliente();
+            if (_frmBuscarCliente.ShowDialog() == DialogResult.OK)
+            {
+                this.clienteSeleccionado = _frmBuscarCliente.ClienteSeleccionado;
+                if (clienteSeleccionado is GestClientesWS.personaNatural)
+                {
+                    txtCliente.Text = ((GestClientesWS.personaNatural)clienteSeleccionado).nombre + ", " + ((GestClientesWS.personaNatural)clienteSeleccionado).apellido;
+                }else if(clienteSeleccionado is GestClientesWS.empresa)
+                {
+                    txtCliente.Text = ((GestClientesWS.empresa)clienteSeleccionado).razonSocial;
+                }                
+            }
+        }
+
+        //otros
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -112,75 +194,6 @@ namespace QingYunSoft.Venta
             if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
                 m.Result = (IntPtr)HTCAPTION;
 
-        }
-
-        private VentasWS.ordenDeCompra ordenDeCompraSeleccionado;
-        public ordenDeCompra OrdenDeCompraSeleccionado { get => ordenDeCompraSeleccionado; set => ordenDeCompraSeleccionado = value; }
-        private GestClientesWS.cliente clienteSeleccionado;
-        public frmBuscarVenta()
-        {
-            InitializeComponent();
-            //round form border
-            this.FormBorderStyle = FormBorderStyle.None;
-            //this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
-
-            this.CenterToParent();
-        }
-
-        private void frmBuscarVenta_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0xA1, 0x2, 0);
-        }
-
-        private void btSeleccionar_Click(object sender, EventArgs e)
-        {
-            if (dgvVentas.CurrentRow != null)
-            {
-                OrdenDeCompraSeleccionado = (VentasWS.ordenDeCompra)dgvVentas.CurrentRow.DataBoundItem;
-                this.DialogResult = DialogResult.OK;
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar una venta", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void dgvVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            VentasWS.ordenDeCompra venta = (VentasWS.ordenDeCompra)dgvVentas.Rows[e.RowIndex].DataBoundItem;
-            dgvVentas.Rows[e.RowIndex].Cells["ID"].Value = venta.id;
-            dgvVentas.Rows[e.RowIndex].Cells["idCliente"].Value = venta.idCliente;
-            dgvVentas.Rows[e.RowIndex].Cells["fechaVenta"].Value = venta.fechaDeCompra;
-            dgvVentas.Rows[e.RowIndex].Cells["moneda"].Value = venta.moneda;
-            dgvVentas.Rows[e.RowIndex].Cells["monto"].Value = venta.monto;
-        }
-
-        private void btBuscarPorCliente_Click(object sender, EventArgs e)
-        {
-            dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorCliente(this.clienteSeleccionado.idCliente);            
-        }
-
-        private void btBuscarPorFecha_Click(object sender, EventArgs e)
-        {
-            dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorFecha(dtpFecha.Value);
-        }
-
-        private void btBuscarCliente_Click(object sender, EventArgs e)
-        {
-            frmBuscarCliente _frmBuscarCliente = new frmBuscarCliente();
-            if (_frmBuscarCliente.ShowDialog() == DialogResult.OK)
-            {
-                this.clienteSeleccionado = _frmBuscarCliente.ClienteSeleccionado;
-                if (clienteSeleccionado is GestClientesWS.personaNatural)
-                {
-                    txtCliente.Text = ((GestClientesWS.personaNatural)clienteSeleccionado).nombre + " " + ((GestClientesWS.personaNatural)clienteSeleccionado).apellido;
-                }else if(clienteSeleccionado is GestClientesWS.empresa)
-                {
-                    txtCliente.Text = ((GestClientesWS.empresa)clienteSeleccionado).razonSocial;
-                }
-                
-            }
         }
     }
 }

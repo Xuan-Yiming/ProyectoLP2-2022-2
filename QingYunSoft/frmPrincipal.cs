@@ -16,46 +16,39 @@ namespace QingYunSoft
 {
     public partial class frmPrincipal : Form
     {
-
-        //Mover la pantalla
-        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.dll", EntryPoint = "SendMessage")]
-        private static extern void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
-
         //buttons
         private System.Windows.Forms.Button btnAlmacen = new System.Windows.Forms.Button();
         private System.Windows.Forms.Button btnVentas = new System.Windows.Forms.Button();
         private System.Windows.Forms.Button btnClientes = new System.Windows.Forms.Button();
         private System.Windows.Forms.Button btnUsuarios = new System.Windows.Forms.Button();
 
-        private RRHHWS.usuario _usuario;
-        
+        //objetos
+        private RRHHWS.usuario _usuario;       
 
+        //constructores
         public frmPrincipal(){
             InitializeComponent();
             this.CenterToScreen();
         }
-
-        public frmPrincipal(RRHHWS.usuario usuarioI)
+        public frmPrincipal(RRHHWS.usuario _usuario)
         {
+            //Establecer UI
             InitializeComponent();
             this.CenterToScreen();
-
-            this._usuario = usuarioI;
-            mensajeDeSalud();
             //round picturebox
             System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
             gp.AddEllipse(0, 0, pcbFotoPerfil.Width - 3, pcbFotoPerfil.Height - 3);
             Region rg = new Region(gp);
             pcbFotoPerfil.Region = rg;
+            
+            crearBotones();            
 
+            //llenar datos segun el usuario
+            this._usuario = _usuario;
+            mensajeDeSalud();
             txtNombreUsuario.Text = this._usuario.nombre;
             //pcbFotoPerfil.Image = Image.FromFile(usuario.foto);
-
-            crearBotones();
             establecerMenu();
-            
         }
         public void mostrarFormularioEnPnlPrincipal(Form _frm)
         {
@@ -108,7 +101,7 @@ namespace QingYunSoft
             this.btnAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlmacen.Image = global::QingYunSoft.Properties.Resources.cube_box;
             this.btnAlmacen.Location = new System.Drawing.Point(0, 0);
-            this.btnAlmacen.Name = "btAlmacen";
+            this.btnAlmacen.Name = "btnAlmacen";
             this.btnAlmacen.Size = new System.Drawing.Size(133, 98);
             //this.btnAlmacen.TabIndex = 1;
             this.btnAlmacen.Text = "Almacen";
@@ -127,7 +120,7 @@ namespace QingYunSoft
             this.btnVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVentas.Image = global::QingYunSoft.Properties.Resources.house;
             this.btnVentas.Location = new System.Drawing.Point(0, 0);
-            this.btnVentas.Name = "btVentas";
+            this.btnVentas.Name = "btnVentas";
             this.btnVentas.Size = new System.Drawing.Size(133, 98);
             //this.btnVentas.TabIndex = 0;
             this.btnVentas.Text = "Ventas";
@@ -145,7 +138,7 @@ namespace QingYunSoft
             this.btnUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsuarios.Image = global::QingYunSoft.Properties.Resources.person_3;
             this.btnUsuarios.Location = new System.Drawing.Point(0, 0);
-            this.btnUsuarios.Name = "btEmpleados";
+            this.btnUsuarios.Name = "btnEmpleados";
             this.btnUsuarios.Size = new System.Drawing.Size(133, 98);
             //this.btnUsuarios.TabIndex = 4;
             this.btnUsuarios.Text = "Empleados";
@@ -161,7 +154,6 @@ namespace QingYunSoft
             pnlBt2.Controls.Clear();
             pnlBt3.Controls.Clear();
             pnlBt4.Controls.Clear();
-
 
             if (this._usuario is RRHHWS.administrador)
             {
@@ -193,8 +185,6 @@ namespace QingYunSoft
             mostrarFormularioEnPnlPrincipal(_frmInicio);
             resetColor();
             btnVentas.BackColor = Color.FromArgb(182, 111, 11);
-            
-
         }
         private void btClientes_Click(object sender, EventArgs e)
         {
@@ -225,7 +215,16 @@ namespace QingYunSoft
 
         private void btCerrarSeccion_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            if (MessageBox.Show("¿Desea cerrar la sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.DialogResult = DialogResult.OK;
+            }            
         }
+
+        //Mover la pantalla
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.dll", EntryPoint = "SendMessage")]
+        private static extern void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
     }
 }
