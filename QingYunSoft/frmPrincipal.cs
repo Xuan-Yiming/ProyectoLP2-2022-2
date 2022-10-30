@@ -181,7 +181,7 @@ namespace QingYunSoft
         private void btVentas_Click(object sender, EventArgs e)
         {
             lbltitulo.Text = "Ventas";
-            frmVentas _frmInicio = new frmVentas(this);
+            frmVentas _frmInicio = new frmVentas(this,this._usuario);
             mostrarFormularioEnPnlPrincipal(_frmInicio);
             resetColor();
             btnVentas.BackColor = Color.FromArgb(182, 111, 11);
