@@ -295,7 +295,7 @@ public class UsuarioMySQL implements UsuarioDAO {
             cs.setString("_doc_nombre",docNombre);
             rs = cs.executeQuery();
             while(rs.next()){
-                if(rs.getString("_cantidad_ventas") != null){
+                if(rs.getString("cantidad_ventas") != null){
                     Vendedor vendedor = new Vendedor();
                     vendedor.setIdUsuario(rs.getInt("id_usuario"));
                     vendedor.setIdPersona(rs.getInt("id_persona"));
