@@ -16,8 +16,6 @@ C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYun
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Cliente.frmClientes.resources
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Cliente.frmBuscarCliente.resources
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Cliente.frmInfoCliente.resources
-C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Cliente.frmEmpresa.resources
-C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Cliente.frmPersonaNatural.resources
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Almacen.frmAlmacen.resources
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Almacen.frmBuscarAlmacen.resources
 C:\Users\xuany\Documents\Github\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Almacen.frmBuscarProducto.resources

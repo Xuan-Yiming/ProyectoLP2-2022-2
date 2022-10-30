@@ -90,23 +90,11 @@
     <Compile Include="Cliente\frmClientes.Designer.cs">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cliente\frmEmpresa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cliente\frmEmpresa.Designer.cs">
-      <DependentUpon>frmEmpresa.cs</DependentUpon>
-    </Compile>
     <Compile Include="Cliente\frmInfoCliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Cliente\frmInfoCliente.Designer.cs">
       <DependentUpon>frmInfoCliente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Cliente\frmPersonaNatural.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cliente\frmPersonaNatural.Designer.cs">
-      <DependentUpon>frmPersonaNatural.cs</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\GestClientesWS\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -195,14 +183,8 @@
     <EmbeddedResource Include="Cliente\frmClientes.resx">
       <DependentUpon>frmClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cliente\frmEmpresa.resx">
-      <DependentUpon>frmEmpresa.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Cliente\frmInfoCliente.resx">
       <DependentUpon>frmInfoCliente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cliente\frmPersonaNatural.resx">
-      <DependentUpon>frmPersonaNatural.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuario\frmBuscarEmpleados.resx">
       <DependentUpon>frmBuscarEmpleados.cs</DependentUpon>
@@ -291,9 +273,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.buscarSupervisorPorAlmacenResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.cliente.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.eliminarAdministradorResponse.datasource">

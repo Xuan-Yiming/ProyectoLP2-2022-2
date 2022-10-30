@@ -28,8 +28,8 @@ namespace QingYunSoft
             this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
             
             //prueba
-            this._usuario = new RRHHWS.administrador();
-            this._usuario.nombre = "Jarumy";
+            //this._usuario = new RRHHWS.administrador();
+            //this._usuario.nombre = "Jarumy";
         }
 
         //metodos
@@ -39,32 +39,26 @@ namespace QingYunSoft
             RRHHWS.usuario usuario = new RRHHWS.administrador();
             usuario.username = txtUsuario.Text;
             usuario.password = txtClave.Text;
-            try
+            this._usuario = daoRRHHWSClient.verificarCuentaUsuario(usuario);
+            if (this._usuario != null)
             {
-                this._usuario = daoRRHHWSClient.verificarCuentaUsuario(usuario);
-                if (this._usuario != null)
+                frmPrincipal _frmPrincipal = new frmPrincipal(this._usuario);
+                this.Hide();
+                _frmPrincipal.ShowDialog();
+                if (_frmPrincipal.DialogResult == DialogResult.Cancel)
                 {
-                    frmPrincipal _frmPrincipal = new frmPrincipal(this._usuario);
-                    this.Hide();
-                    _frmPrincipal.ShowDialog();
-                    if (_frmPrincipal.DialogResult == DialogResult.Cancel)
-                    {
-                        this.Close();
-                    }
-                    else if (_frmPrincipal.DialogResult == DialogResult.OK)
-                    {
-                        this.Show();
-                    }
+                    this.Close();
                 }
-                else
+                else if (_frmPrincipal.DialogResult == DialogResult.OK)
                 {
-                    MessageBox.Show("Usuario o contraseña incorrectos: Error Code");
+                    this.Show();
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-            }                       
+                MessageBox.Show("Usuario o contraseña incorrectos: Error Code");
+            }
+                    
         }
 
         private void btSalir_Click(object sender, EventArgs e)
@@ -183,6 +177,11 @@ namespace QingYunSoft
             {
                 this.Show();
             }
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
         }
         //out drop shadow done
 

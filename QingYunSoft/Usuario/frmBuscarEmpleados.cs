@@ -27,7 +27,7 @@ namespace QingYunSoft.Usuario
             this.CenterToParent();
             daoRRHH = new RRHHWS.RRHHWSClient();
             dgvUsuarios.AutoGenerateColumns = false;
-
+            dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //round form border
             this.FormBorderStyle = FormBorderStyle.None;
             this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));

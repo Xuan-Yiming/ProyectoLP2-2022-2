@@ -319,15 +319,7 @@
   </xs:complexType>
   <xs:complexType name="listarPorDocumentoNombreResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:cliente" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="cliente" abstract="true">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
-      <xs:element minOccurs="0" name="categoria" type="xs:string" />
-      <xs:element name="idCliente" type="xs:int" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ordenesCompras" nillable="true" type="tns:ordenDeCompra" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:usuario" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarSupervisor">

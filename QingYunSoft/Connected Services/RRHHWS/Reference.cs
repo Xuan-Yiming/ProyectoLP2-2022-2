@@ -1275,94 +1275,6 @@ namespace QingYunSoft.RRHHWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
-    public abstract partial class cliente : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private bool activoField;
-        
-        private bool activoFieldSpecified;
-        
-        private string categoriaField;
-        
-        private int idClienteField;
-        
-        private ordenDeCompra[] ordenesComprasField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public bool activo {
-            get {
-                return this.activoField;
-            }
-            set {
-                this.activoField = value;
-                this.RaisePropertyChanged("activo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool activoSpecified {
-            get {
-                return this.activoFieldSpecified;
-            }
-            set {
-                this.activoFieldSpecified = value;
-                this.RaisePropertyChanged("activoSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string categoria {
-            get {
-                return this.categoriaField;
-            }
-            set {
-                this.categoriaField = value;
-                this.RaisePropertyChanged("categoria");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public int idCliente {
-            get {
-                return this.idClienteField;
-            }
-            set {
-                this.idClienteField = value;
-                this.RaisePropertyChanged("idCliente");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ordenesCompras", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=3)]
-        public ordenDeCompra[] ordenesCompras {
-            get {
-                return this.ordenesComprasField;
-            }
-            set {
-                this.ordenesComprasField = value;
-                this.RaisePropertyChanged("ordenesCompras");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
     public partial class producto : object, System.ComponentModel.INotifyPropertyChanged {
         
         private bool activoField;
@@ -2519,12 +2431,12 @@ namespace QingYunSoft.RRHHWS {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.RRHHWS.cliente[] @return;
+        public QingYunSoft.RRHHWS.usuario[] @return;
         
         public listarPorDocumentoNombreResponse() {
         }
         
-        public listarPorDocumentoNombreResponse(QingYunSoft.RRHHWS.cliente[] @return) {
+        public listarPorDocumentoNombreResponse(QingYunSoft.RRHHWS.usuario[] @return) {
             this.@return = @return;
         }
     }
@@ -3149,7 +3061,7 @@ namespace QingYunSoft.RRHHWS {
             return base.Channel.listarPorDocumentoNombre(request);
         }
         
-        public QingYunSoft.RRHHWS.cliente[] listarPorDocumentoNombre(string docNombre) {
+        public QingYunSoft.RRHHWS.usuario[] listarPorDocumentoNombre(string docNombre) {
             QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest inValue = new QingYunSoft.RRHHWS.listarPorDocumentoNombreRequest();
             inValue.docNombre = docNombre;
             QingYunSoft.RRHHWS.listarPorDocumentoNombreResponse retVal = ((QingYunSoft.RRHHWS.RRHHWS)(this)).listarPorDocumentoNombre(inValue);

@@ -60,25 +60,12 @@ namespace QingYunSoft.Venta
 
         private void btBuscarPorCliente_Click(object sender, EventArgs e)
         {
-            try
-            {
-                dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorCliente(this.clienteSeleccionado.idCliente);
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorCliente(this.clienteSeleccionado.idCliente);
         }
 
         private void btBuscarPorFecha_Click(object sender, EventArgs e)
         {
-            try
-            {
-                dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorFecha(dtpFecha.Value);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }            
+            dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorFecha(dtpFecha.Value);       
         }
 
         private void btBuscarCliente_Click(object sender, EventArgs e)

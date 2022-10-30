@@ -19,6 +19,7 @@ namespace QingYunSoft
         private VentasWS.ordenDeCompra _venta;
         private GestClientesWS.cliente _cliente;
         private VentasWS.terminoDePago _terminoDePago;
+        private VentasWS.pedido _pedidos;
         private RRHHWS.usuario _usuario;
 
         //constructores
@@ -162,15 +163,6 @@ namespace QingYunSoft
             
         }
 
-        private void btReclamo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btPago_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
@@ -239,6 +231,16 @@ namespace QingYunSoft
         private void btEliminar_Click(object sender, EventArgs e)
         {
 
+        }        
+        private void btReclamo_Click(object sender, EventArgs e)
+        {
+
         }
+
+        private void btPago_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

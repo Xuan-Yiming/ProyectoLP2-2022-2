@@ -79,5 +79,11 @@ namespace QingYunSoft.Usuario
             RRHHWS.usuario usurioSeleccionado = (RRHHWS.usuario)dgvEmpleados.CurrentRow.DataBoundItem;
             _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoEmpleado(_frmPrincipal, Estado.Resultado, usurioSeleccionado));
         }
+
+        private void dgvEmpleados_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            RRHHWS.usuario usurioSeleccionado = (RRHHWS.usuario)dgvEmpleados.CurrentRow.DataBoundItem;
+            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoEmpleado(_frmPrincipal, Estado.Resultado, usurioSeleccionado));
+        }
     }
 }

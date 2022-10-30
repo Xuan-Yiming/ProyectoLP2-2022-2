@@ -62,7 +62,6 @@
             this.dgvClientes.RowHeadersVisible = false;
             this.dgvClientes.Size = new System.Drawing.Size(723, 265);
             this.dgvClientes.TabIndex = 2;
-            this.dgvClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellContentClick);
             this.dgvClientes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvClientes_CellFormatting);
             // 
             // nombreCliente
@@ -120,13 +119,13 @@
             this.btBuscarCliente.Name = "btBuscarCliente";
             this.btBuscarCliente.Size = new System.Drawing.Size(162, 23);
             this.btBuscarCliente.TabIndex = 15;
-            this.btBuscarCliente.Text = "Buscar por Nombre o DNI";
+            this.btBuscarCliente.Text = "Buscar Cliente";
             this.btBuscarCliente.UseVisualStyleBackColor = true;
             this.btBuscarCliente.Click += new System.EventHandler(this.btBuscarCliente_Click);
             // 
             // txtNombreDNI
             // 
-            this.txtNombreDNI.Location = new System.Drawing.Point(153, 34);
+            this.txtNombreDNI.Location = new System.Drawing.Point(172, 34);
             this.txtNombreDNI.Name = "txtNombreDNI";
             this.txtNombreDNI.Size = new System.Drawing.Size(200, 20);
             this.txtNombreDNI.TabIndex = 12;
@@ -136,9 +135,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 13);
+            this.label1.Size = new System.Drawing.Size(154, 13);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Nombre o DNI del cliente";
+            this.label1.Text = "Nombre o DNI/RUC del cliente";
             // 
             // frmBuscarCliente
             // 

@@ -145,7 +145,7 @@ public class ClienteMySQL implements ClienteDAO{
         try{
             con = DBManager.getInstance().getConnection();
             cs = con.prepareCall("call LISTAR_CLIENTE_X_NOMBRE_DNI_RAZON_RUC(?)");
-            cs.setString("_doc_nombre",docNombre);
+            cs.setString(1,docNombre);
             rs = cs.executeQuery();
             while(rs.next()){
                 if(rs.getString("razon_social") != null){

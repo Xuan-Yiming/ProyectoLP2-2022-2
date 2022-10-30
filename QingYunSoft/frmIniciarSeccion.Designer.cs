@@ -106,7 +106,7 @@
             this.txtClave.PasswordChar = '*';
             this.txtClave.Size = new System.Drawing.Size(152, 20);
             this.txtClave.TabIndex = 9;
-            this.txtClave.Text = "pollo17";
+            this.txtClave.Text = "123456";
             // 
             // txtUsuario
             // 
@@ -115,7 +115,8 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(152, 20);
             this.txtUsuario.TabIndex = 8;
-            this.txtUsuario.Text = "jgalvez1";
+            this.txtUsuario.Text = "xuan";
+            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             // 
             // label2
             // 

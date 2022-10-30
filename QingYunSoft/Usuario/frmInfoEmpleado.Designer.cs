@@ -501,9 +501,9 @@
             this.btBuscarAlmacen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btBuscarAlmacen.FlatAppearance.BorderSize = 0;
             this.btBuscarAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btBuscarAlmacen.Location = new System.Drawing.Point(252, 289);
+            this.btBuscarAlmacen.Location = new System.Drawing.Point(254, 296);
             this.btBuscarAlmacen.Name = "btBuscarAlmacen";
-            this.btBuscarAlmacen.Size = new System.Drawing.Size(30, 30);
+            this.btBuscarAlmacen.Size = new System.Drawing.Size(25, 25);
             this.btBuscarAlmacen.TabIndex = 33;
             this.btBuscarAlmacen.UseVisualStyleBackColor = true;
             // 

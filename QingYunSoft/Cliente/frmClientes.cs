@@ -13,8 +13,11 @@ namespace QingYunSoft.Cliente
 {
     public partial class frmClientes : Form
     {
+        //objetos
         private frmPrincipal _frmPrincipal;
         private GestClientesWS.GestClientesWSClient daoClientes;
+
+        //constructores
         public frmClientes()
         {
             InitializeComponent();
@@ -64,7 +67,7 @@ namespace QingYunSoft.Cliente
             if (clienteI is GestClientesWS.empresa)
             {
                 dgvClientes.Rows[e.RowIndex].Cells["nombreCliente"].Value = ((GestClientesWS.empresa)clienteI).razonSocial;
-                dgvClientes.Rows[e.RowIndex].Cells["tipoCliente"].Value = "empresa";
+                dgvClientes.Rows[e.RowIndex].Cells["tipoCliente"].Value = "Empresa";
                 dgvClientes.Rows[e.RowIndex].Cells["tipoDocumento"].Value = "RUC";
                 dgvClientes.Rows[e.RowIndex].Cells["nmrDocumento"].Value = ((GestClientesWS.empresa)clienteI).RUC;
                 dgvClientes.Rows[e.RowIndex].Cells["categoria"].Value = ((GestClientesWS.empresa)clienteI).categoria;

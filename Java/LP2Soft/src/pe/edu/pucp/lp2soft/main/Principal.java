@@ -3,12 +3,15 @@
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import pe.edu.pucp.lp2soft.gestclientes.dao.ClienteDAO;
 import pe.edu.pucp.lp2soft.gestclientes.dao.EmpresaDAO;
 import pe.edu.pucp.lp2soft.gestclientes.dao.PersonaNaturalDAO;
+import pe.edu.pucp.lp2soft.gestclientes.model.Cliente;
 import pe.edu.pucp.lp2soft.gestclientes.model.Empresa;
 import pe.edu.pucp.lp2soft.gestclientes.model.PersonaNatural;
 import pe.edu.pucp.lp2soft.gestclientes.mysql.EmpresaMySQL;
 import pe.edu.pucp.lp2soft.gestclientes.mysql.PersonaNaturalMySQL;
+import pe.edu.pucp.lp2soft.gestclientes.mysql.ClienteMySQL;
 import pe.edu.pucp.lp2soft.rrhh.dao.AdministradorDAO;
 import pe.edu.pucp.lp2soft.rrhh.dao.SupervisorDeAlmacenDAO;
 import pe.edu.pucp.lp2soft.rrhh.dao.UsuarioDAO;
@@ -56,13 +59,16 @@ import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.MonedaMySQL;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.OrdenDeCompraMySQL;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.TerminoDePagoMySQL;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.TipoDeCambioMySQL;
-
 public class Principal {
     public static void main(String[] args) throws Exception{
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         int resultado1, resultado2;
         
-        
+        ClienteDAO daocliente = new ClienteMySQL();
+        ArrayList<Cliente> resultado = daocliente.listarPorDocumentoNombre("");
+        for(Cliente cl: resultado){
+            System.out.println(cl.getIdCliente() );
+        }
 //        //Creamos un dao de conexión con Empresa
 //        EmpresaDAO daoEmpresa = new EmpresaMySQL();
 //        //Creamos objetos Empresa
@@ -193,9 +199,9 @@ public class Principal {
 //        //###########################################################################################################################################
         
         //Creamos un dao de conexión con Administrador
-        AdministradorDAO daoAdministrador = new AdministradorMySQL();
+//        AdministradorDAO daoAdministrador = new AdministradorMySQL();
         //Creamos objetos Administrador
-        Administrador admin1 = new Administrador(TipoDeDocumento.Pasaporte, "P1200254", "Pedro", "Aquino",sdf.parse("10-03-1998"),"987771135","Av. Castillo 182", "jkl123@gmail.com", true,"jaq1998","contrasena17", sdf.parse("10-03-2022"), "RECURSOS HUMANOS");
+//        Administrador admin1 = new Administrador(TipoDeDocumento.Pasaporte, "P1200254", "Pedro", "Aquino",sdf.parse("10-03-1998"),"987771135","Av. Castillo 182", "jkl123@gmail.com", true,"jaq1998","contrasena17", sdf.parse("10-03-2022"), "RECURSOS HUMANOS");
         //Administrador admin2 = new Administrador(TipoDeDocumento.DNI, "74623938", "Juana", "Galvez",sdf.parse("10-10-1988"),"987234561","Av. Arequipa 112", "juana123@gmail.com", true,"jgalvez1","pollo17", sdf.parse("15-09-2022"), "FINANZAS");
         
         //INSERTAR ADMINISTRADOR
@@ -209,16 +215,16 @@ public class Principal {
 //            System.out.println("El insert Administrador ha fallado...");
 //        
 //        //LISTAR ADMINISTRADORES
-    UsuarioDAO daoUsuario = new UsuarioMySQL();
-        ArrayList<Usuario> usuarios = daoUsuario.listarPorDocumentoNombre("");
-        for(Usuario usuario : usuarios){
-            System.out.println(usuario.getIdUsuario()+ " " + 
-                    usuario.getTipoDeDocumento()+ " : " +
-                    usuario.getNumDeDocumento()+ " " +
-                    usuario.getNombre()+ " " +
-                    usuario.getApellido()+ " " +
-                    usuario.getUsername());
-        }
+//    UsuarioDAO daoUsuario = new UsuarioMySQL();
+//        ArrayList<Usuario> usuarios = daoUsuario.listarPorDocumentoNombre("");
+//        for(Usuario usuario : usuarios){
+//            System.out.println(usuario.getIdUsuario()+ " " + 
+//                    usuario.getTipoDeDocumento()+ " : " +
+//                    usuario.getNumDeDocumento()+ " " +
+//                    usuario.getNombre()+ " " +
+//                    usuario.getApellido()+ " " +
+//                    usuario.getUsername());
+//        }
 //        
 
 //        admin1.setTipoDeDocumento(TipoDeDocumento.DNI);
