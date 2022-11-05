@@ -158,7 +158,7 @@ namespace QingYunSoft
         {
             if ((MessageBox.Show("¿Está seguro que desea salir sin guardar el cambio?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
-                _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmVentas(_frmPrincipal));
+                _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmVentas(_frmPrincipal,this._usuario));
             }
             
         }
@@ -168,7 +168,7 @@ namespace QingYunSoft
         {
             if ((MessageBox.Show("¿Está seguro que desea salir sin guardar el cambio?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
-                _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmVentas(_frmPrincipal));
+                _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmVentas(_frmPrincipal, this._usuario));
             }
         }
 

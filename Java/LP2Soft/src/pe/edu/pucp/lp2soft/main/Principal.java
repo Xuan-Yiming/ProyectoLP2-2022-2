@@ -67,7 +67,7 @@ public class Principal {
         ClienteDAO daocliente = new ClienteMySQL();
         ArrayList<Cliente> resultado = daocliente.listarPorDocumentoNombre("");
         for(Cliente cl: resultado){
-            System.out.println(cl.getIdCliente() );
+            System.out.println("id:" + cl.getIdCliente() );
         }
 //        //Creamos un dao de conexión con Empresa
 //        EmpresaDAO daoEmpresa = new EmpresaMySQL();

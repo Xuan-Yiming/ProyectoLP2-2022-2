@@ -64,7 +64,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbTipoCliente = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtCategoria = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.btEditarGuardar = new System.Windows.Forms.Button();
@@ -73,6 +72,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btCancelar = new System.Windows.Forms.Button();
             this.btRegresar = new System.Windows.Forms.Button();
+            this.cbSexo = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cbCategoria = new System.Windows.Forms.ComboBox();
             this.panel3.SuspendLayout();
             this.pnlPersonaNatural.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -104,11 +106,13 @@
             this.pnlPersonaNatural.Location = new System.Drawing.Point(3, 115);
             this.pnlPersonaNatural.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPersonaNatural.Name = "pnlPersonaNatural";
-            this.pnlPersonaNatural.Size = new System.Drawing.Size(330, 260);
+            this.pnlPersonaNatural.Size = new System.Drawing.Size(330, 288);
             this.pnlPersonaNatural.TabIndex = 111;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cbSexo);
+            this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.dtpFecha);
             this.groupBox3.Controls.Add(this.label9);
@@ -128,7 +132,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(14, 11);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(302, 239);
+            this.groupBox3.Size = new System.Drawing.Size(302, 265);
             this.groupBox3.TabIndex = 111;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Persona Natural";
@@ -137,7 +141,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(22, 201);
+            this.label10.Location = new System.Drawing.Point(22, 230);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(108, 13);
             this.label10.TabIndex = 28;
@@ -146,7 +150,7 @@
             // dtpFecha
             // 
             this.dtpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFecha.Location = new System.Drawing.Point(146, 198);
+            this.dtpFecha.Location = new System.Drawing.Point(146, 227);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(138, 20);
             this.dtpFecha.TabIndex = 27;
@@ -155,7 +159,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(22, 176);
+            this.label9.Location = new System.Drawing.Point(22, 205);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 13);
             this.label9.TabIndex = 26;
@@ -164,7 +168,7 @@
             // txtDirecionP
             // 
             this.txtDirecionP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDirecionP.Location = new System.Drawing.Point(146, 174);
+            this.txtDirecionP.Location = new System.Drawing.Point(146, 203);
             this.txtDirecionP.Name = "txtDirecionP";
             this.txtDirecionP.Size = new System.Drawing.Size(138, 20);
             this.txtDirecionP.TabIndex = 25;
@@ -173,7 +177,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(22, 153);
+            this.label8.Location = new System.Drawing.Point(22, 182);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(94, 13);
             this.label8.TabIndex = 24;
@@ -182,7 +186,7 @@
             // TxtCorreo
             // 
             this.TxtCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCorreo.Location = new System.Drawing.Point(146, 151);
+            this.TxtCorreo.Location = new System.Drawing.Point(146, 180);
             this.TxtCorreo.Name = "TxtCorreo";
             this.TxtCorreo.Size = new System.Drawing.Size(138, 20);
             this.TxtCorreo.TabIndex = 23;
@@ -191,7 +195,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(22, 128);
+            this.label7.Location = new System.Drawing.Point(22, 157);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 13);
             this.label7.TabIndex = 22;
@@ -200,7 +204,7 @@
             // txtTelefono
             // 
             this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefono.Location = new System.Drawing.Point(146, 126);
+            this.txtTelefono.Location = new System.Drawing.Point(146, 155);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(138, 20);
             this.txtTelefono.TabIndex = 21;
@@ -412,10 +416,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbCategoria);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cbTipoCliente);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtCategoria);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtID);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -458,14 +462,6 @@
             this.label6.Size = new System.Drawing.Size(77, 13);
             this.label6.TabIndex = 16;
             this.label6.Text = "Tipo de cliente";
-            // 
-            // txtCategoria
-            // 
-            this.txtCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCategoria.Location = new System.Drawing.Point(111, 49);
-            this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.Size = new System.Drawing.Size(197, 20);
-            this.txtCategoria.TabIndex = 2;
             // 
             // label1
             // 
@@ -563,6 +559,37 @@
             this.btRegresar.UseVisualStyleBackColor = true;
             this.btRegresar.Click += new System.EventHandler(this.btRegresar_Click);
             // 
+            // cbSexo
+            // 
+            this.cbSexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSexo.FormattingEnabled = true;
+            this.cbSexo.Location = new System.Drawing.Point(146, 129);
+            this.cbSexo.Name = "cbSexo";
+            this.cbSexo.Size = new System.Drawing.Size(138, 21);
+            this.cbSexo.TabIndex = 30;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(22, 131);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(31, 13);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Sexo";
+            // 
+            // cbCategoria
+            // 
+            this.cbCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCategoria.FormattingEnabled = true;
+            this.cbCategoria.Items.AddRange(new object[] {
+            "Empresa",
+            "Persona Natural"});
+            this.cbCategoria.Location = new System.Drawing.Point(111, 48);
+            this.cbCategoria.Name = "cbCategoria";
+            this.cbCategoria.Size = new System.Drawing.Size(197, 21);
+            this.cbCategoria.TabIndex = 18;
+            // 
             // frmInfoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -600,7 +627,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtCategoria;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Button btEditarGuardar;
@@ -638,5 +664,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtNumDocumento;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cbSexo;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox cbCategoria;
     }
 }

@@ -1,15 +1,39 @@
-
 package pe.edu.pucp.lp2soft.gestclientes.model;
+
 import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
 
-
-
-public abstract class Cliente implements CConsultable{
+public abstract class Cliente{
     private int idCliente;
-    private String categoria;
+    private Categoria categoria;
     private Boolean activo;
     private ArrayList<OrdenDeCompra> ordenesCompras;
+
+    public Cliente(int idCliente, Categoria categoria, Boolean activo, ArrayList<OrdenDeCompra> ordenesCompras) {
+        this.idCliente = idCliente;
+        this.categoria = categoria;
+        this.activo = activo;
+        this.ordenesCompras = ordenesCompras;
+    }
+
+    public Cliente() {
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
     public Boolean getActivo() {
         return activo;
@@ -17,29 +41,6 @@ public abstract class Cliente implements CConsultable{
 
     public void setActivo(Boolean activo) {
         this.activo = activo;
-    }
-    
-    public Cliente(){}
-    
-    public Cliente(String categoria, Boolean activo) {
-        this.categoria = categoria;
-        this.activo = activo;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-    
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
     }
 
     public ArrayList<OrdenDeCompra> getOrdenesCompras() {
@@ -49,4 +50,6 @@ public abstract class Cliente implements CConsultable{
     public void setOrdenesCompras(ArrayList<OrdenDeCompra> ordenesCompras) {
         this.ordenesCompras = ordenesCompras;
     }
+    
+    
 }

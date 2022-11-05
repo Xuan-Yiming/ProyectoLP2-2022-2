@@ -25,24 +25,6 @@ namespace QingYunSoft.GestClientesWS {
         System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.insertarEmpresaResponse> insertarEmpresaAsync(QingYunSoft.GestClientesWS.insertarEmpresaRequest request);
         
         // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarEmpresasRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarEmpresasResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.GestClientesWS.listarEmpresasResponse listarEmpresas(QingYunSoft.GestClientesWS.listarEmpresasRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarEmpresasRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarEmpresasResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarEmpresasResponse> listarEmpresasAsync(QingYunSoft.GestClientesWS.listarEmpresasRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarEmpresaRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarEmpresaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.GestClientesWS.eliminarEmpresaResponse eliminarEmpresa(QingYunSoft.GestClientesWS.eliminarEmpresaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarEmpresaRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarEmpresaResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.eliminarEmpresaResponse> eliminarEmpresaAsync(QingYunSoft.GestClientesWS.eliminarEmpresaRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarClientesRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarClientesResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -61,6 +43,15 @@ namespace QingYunSoft.GestClientesWS {
         System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.modificarEmpresaResponse> modificarEmpresaAsync(QingYunSoft.GestClientesWS.modificarEmpresaRequest request);
         
         // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarClienteRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarClienteResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.GestClientesWS.eliminarClienteResponse eliminarCliente(QingYunSoft.GestClientesWS.eliminarClienteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarClienteRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarClienteResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.eliminarClienteResponse> eliminarClienteAsync(QingYunSoft.GestClientesWS.eliminarClienteRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPorDocumentoNombreReques" +
             "t", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPorDocumentoNombreRespon" +
             "se")]
@@ -72,43 +63,6 @@ namespace QingYunSoft.GestClientesWS {
             "t", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPorDocumentoNombreRespon" +
             "se")]
         System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarPorDocumentoNombreResponse> listarPorDocumentoNombreAsync(QingYunSoft.GestClientesWS.listarPorDocumentoNombreRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarEmpresasPorRUCNombreRequ" +
-            "est", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarEmpresasPorRUCNombreResp" +
-            "onse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.GestClientesWS.listarEmpresasPorRUCNombreResponse listarEmpresasPorRUCNombre(QingYunSoft.GestClientesWS.listarEmpresasPorRUCNombreRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarEmpresasPorRUCNombreRequ" +
-            "est", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarEmpresasPorRUCNombreResp" +
-            "onse")]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarEmpresasPorRUCNombreResponse> listarEmpresasPorRUCNombreAsync(QingYunSoft.GestClientesWS.listarEmpresasPorRUCNombreRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarPersonaNaturalRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarPersonaNaturalResponse" +
-            "")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.GestClientesWS.eliminarPersonaNaturalResponse eliminarPersonaNatural(QingYunSoft.GestClientesWS.eliminarPersonaNaturalRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarPersonaNaturalRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarPersonaNaturalResponse" +
-            "")]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.eliminarPersonaNaturalResponse> eliminarPersonaNaturalAsync(QingYunSoft.GestClientesWS.eliminarPersonaNaturalRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPersonasNaturalesRequest" +
-            "", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPersonasNaturalesRespons" +
-            "e")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.GestClientesWS.listarPersonasNaturalesResponse listarPersonasNaturales(QingYunSoft.GestClientesWS.listarPersonasNaturalesRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPersonasNaturalesRequest" +
-            "", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPersonasNaturalesRespons" +
-            "e")]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarPersonasNaturalesResponse> listarPersonasNaturalesAsync(QingYunSoft.GestClientesWS.listarPersonasNaturalesRequest request);
         
         // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarPersonaNaturalRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarPersonaNaturalResponse" +
@@ -133,19 +87,6 @@ namespace QingYunSoft.GestClientesWS {
             "", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/modificarPersonaNaturalRespons" +
             "e")]
         System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.modificarPersonaNaturalResponse> modificarPersonaNaturalAsync(QingYunSoft.GestClientesWS.modificarPersonaNaturalRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPersonasNaturalesPorDocu" +
-            "mentoNombreRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPersonasNaturalesPorDocu" +
-            "mentoNombreResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreResponse listarPersonasNaturalesPorDocumentoNombre(QingYunSoft.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPersonasNaturalesPorDocu" +
-            "mentoNombreRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarPersonasNaturalesPorDocu" +
-            "mentoNombreResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreResponse> listarPersonasNaturalesPorDocumentoNombreAsync(QingYunSoft.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreRequest request);
     }
     
     /// <remarks/>
@@ -200,8 +141,8 @@ namespace QingYunSoft.GestClientesWS {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(personaNatural))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(empresa))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(personaNatural))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -213,7 +154,9 @@ namespace QingYunSoft.GestClientesWS {
         
         private bool activoFieldSpecified;
         
-        private string categoriaField;
+        private categoria categoriaField;
+        
+        private bool categoriaFieldSpecified;
         
         private int idClienteField;
         
@@ -245,13 +188,25 @@ namespace QingYunSoft.GestClientesWS {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string categoria {
+        public categoria categoria {
             get {
                 return this.categoriaField;
             }
             set {
                 this.categoriaField = value;
                 this.RaisePropertyChanged("categoria");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool categoriaSpecified {
+            get {
+                return this.categoriaFieldSpecified;
+            }
+            set {
+                this.categoriaFieldSpecified = value;
+                this.RaisePropertyChanged("categoriaSpecified");
             }
         }
         
@@ -287,6 +242,28 @@ namespace QingYunSoft.GestClientesWS {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
+    public enum categoria {
+        
+        /// <remarks/>
+        A,
+        
+        /// <remarks/>
+        B,
+        
+        /// <remarks/>
+        C,
+        
+        /// <remarks/>
+        D,
+        
+        /// <remarks/>
+        E,
     }
     
     /// <remarks/>
@@ -1690,6 +1667,10 @@ namespace QingYunSoft.GestClientesWS {
         
         private string numDeDocumentoField;
         
+        private sexo sexoField;
+        
+        private bool sexoFieldSpecified;
+        
         private string telefonoField;
         
         private tipoDeDocumento tipoDeDocumentoField;
@@ -1782,6 +1763,30 @@ namespace QingYunSoft.GestClientesWS {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        public sexo sexo {
+            get {
+                return this.sexoField;
+            }
+            set {
+                this.sexoField = value;
+                this.RaisePropertyChanged("sexo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool sexoSpecified {
+            get {
+                return this.sexoFieldSpecified;
+            }
+            set {
+                this.sexoFieldSpecified = value;
+                this.RaisePropertyChanged("sexoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
         public string telefono {
             get {
                 return this.telefonoField;
@@ -1793,7 +1798,7 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
         public tipoDeDocumento tipoDeDocumento {
             get {
                 return this.tipoDeDocumentoField;
@@ -1815,6 +1820,22 @@ namespace QingYunSoft.GestClientesWS {
                 this.RaisePropertyChanged("tipoDeDocumentoSpecified");
             }
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
+    public enum sexo {
+        
+        /// <remarks/>
+        Masculino,
+        
+        /// <remarks/>
+        Femenino,
+        
+        /// <remarks/>
+        Otro,
     }
     
     /// <remarks/>
@@ -1868,70 +1889,6 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         public insertarEmpresaResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEmpresas", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarEmpresasRequest {
-        
-        public listarEmpresasRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEmpresasResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarEmpresasResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.GestClientesWS.empresa[] @return;
-        
-        public listarEmpresasResponse() {
-        }
-        
-        public listarEmpresasResponse(QingYunSoft.GestClientesWS.empresa[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarEmpresa", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarEmpresaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int empresa;
-        
-        public eliminarEmpresaRequest() {
-        }
-        
-        public eliminarEmpresaRequest(int empresa) {
-            this.empresa = empresa;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarEmpresaResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarEmpresaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public eliminarEmpresaResponse() {
-        }
-        
-        public eliminarEmpresaResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -2003,6 +1960,42 @@ namespace QingYunSoft.GestClientesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarCliente", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class eliminarClienteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idCliente;
+        
+        public eliminarClienteRequest() {
+        }
+        
+        public eliminarClienteRequest(int idCliente) {
+            this.idCliente = idCliente;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarClienteResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class eliminarClienteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarClienteResponse() {
+        }
+        
+        public eliminarClienteResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="listarPorDocumentoNombre", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
     public partial class listarPorDocumentoNombreRequest {
         
@@ -2032,106 +2025,6 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         public listarPorDocumentoNombreResponse(QingYunSoft.GestClientesWS.cliente[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEmpresasPorRUCNombre", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarEmpresasPorRUCNombreRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string rucNombre;
-        
-        public listarEmpresasPorRUCNombreRequest() {
-        }
-        
-        public listarEmpresasPorRUCNombreRequest(string rucNombre) {
-            this.rucNombre = rucNombre;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEmpresasPorRUCNombreResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarEmpresasPorRUCNombreResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.GestClientesWS.empresa[] @return;
-        
-        public listarEmpresasPorRUCNombreResponse() {
-        }
-        
-        public listarEmpresasPorRUCNombreResponse(QingYunSoft.GestClientesWS.empresa[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarPersonaNatural", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarPersonaNaturalRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int personaNatural;
-        
-        public eliminarPersonaNaturalRequest() {
-        }
-        
-        public eliminarPersonaNaturalRequest(int personaNatural) {
-            this.personaNatural = personaNatural;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarPersonaNaturalResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarPersonaNaturalResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public eliminarPersonaNaturalResponse() {
-        }
-        
-        public eliminarPersonaNaturalResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPersonasNaturales", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarPersonasNaturalesRequest {
-        
-        public listarPersonasNaturalesRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPersonasNaturalesResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarPersonasNaturalesResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.GestClientesWS.personaNatural[] @return;
-        
-        public listarPersonasNaturalesResponse() {
-        }
-        
-        public listarPersonasNaturalesResponse(QingYunSoft.GestClientesWS.personaNatural[] @return) {
             this.@return = @return;
         }
     }
@@ -2208,42 +2101,6 @@ namespace QingYunSoft.GestClientesWS {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPersonasNaturalesPorDocumentoNombre", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarPersonasNaturalesPorDocumentoNombreRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string docNombre;
-        
-        public listarPersonasNaturalesPorDocumentoNombreRequest() {
-        }
-        
-        public listarPersonasNaturalesPorDocumentoNombreRequest(string docNombre) {
-            this.docNombre = docNombre;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarPersonasNaturalesPorDocumentoNombreResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarPersonasNaturalesPorDocumentoNombreResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.GestClientesWS.personaNatural[] @return;
-        
-        public listarPersonasNaturalesPorDocumentoNombreResponse() {
-        }
-        
-        public listarPersonasNaturalesPorDocumentoNombreResponse(QingYunSoft.GestClientesWS.personaNatural[] @return) {
-            this.@return = @return;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface GestClientesWSChannel : QingYunSoft.GestClientesWS.GestClientesWS, System.ServiceModel.IClientChannel {
     }
@@ -2295,50 +2152,6 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.GestClientesWS.listarEmpresasResponse QingYunSoft.GestClientesWS.GestClientesWS.listarEmpresas(QingYunSoft.GestClientesWS.listarEmpresasRequest request) {
-            return base.Channel.listarEmpresas(request);
-        }
-        
-        public QingYunSoft.GestClientesWS.empresa[] listarEmpresas() {
-            QingYunSoft.GestClientesWS.listarEmpresasRequest inValue = new QingYunSoft.GestClientesWS.listarEmpresasRequest();
-            QingYunSoft.GestClientesWS.listarEmpresasResponse retVal = ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarEmpresas(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarEmpresasResponse> QingYunSoft.GestClientesWS.GestClientesWS.listarEmpresasAsync(QingYunSoft.GestClientesWS.listarEmpresasRequest request) {
-            return base.Channel.listarEmpresasAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarEmpresasResponse> listarEmpresasAsync() {
-            QingYunSoft.GestClientesWS.listarEmpresasRequest inValue = new QingYunSoft.GestClientesWS.listarEmpresasRequest();
-            return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarEmpresasAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.GestClientesWS.eliminarEmpresaResponse QingYunSoft.GestClientesWS.GestClientesWS.eliminarEmpresa(QingYunSoft.GestClientesWS.eliminarEmpresaRequest request) {
-            return base.Channel.eliminarEmpresa(request);
-        }
-        
-        public int eliminarEmpresa(int empresa) {
-            QingYunSoft.GestClientesWS.eliminarEmpresaRequest inValue = new QingYunSoft.GestClientesWS.eliminarEmpresaRequest();
-            inValue.empresa = empresa;
-            QingYunSoft.GestClientesWS.eliminarEmpresaResponse retVal = ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).eliminarEmpresa(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.eliminarEmpresaResponse> QingYunSoft.GestClientesWS.GestClientesWS.eliminarEmpresaAsync(QingYunSoft.GestClientesWS.eliminarEmpresaRequest request) {
-            return base.Channel.eliminarEmpresaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.eliminarEmpresaResponse> eliminarEmpresaAsync(int empresa) {
-            QingYunSoft.GestClientesWS.eliminarEmpresaRequest inValue = new QingYunSoft.GestClientesWS.eliminarEmpresaRequest();
-            inValue.empresa = empresa;
-            return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).eliminarEmpresaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         QingYunSoft.GestClientesWS.listarClientesResponse QingYunSoft.GestClientesWS.GestClientesWS.listarClientes(QingYunSoft.GestClientesWS.listarClientesRequest request) {
             return base.Channel.listarClientes(request);
         }
@@ -2383,6 +2196,29 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.GestClientesWS.eliminarClienteResponse QingYunSoft.GestClientesWS.GestClientesWS.eliminarCliente(QingYunSoft.GestClientesWS.eliminarClienteRequest request) {
+            return base.Channel.eliminarCliente(request);
+        }
+        
+        public int eliminarCliente(int idCliente) {
+            QingYunSoft.GestClientesWS.eliminarClienteRequest inValue = new QingYunSoft.GestClientesWS.eliminarClienteRequest();
+            inValue.idCliente = idCliente;
+            QingYunSoft.GestClientesWS.eliminarClienteResponse retVal = ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).eliminarCliente(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.eliminarClienteResponse> QingYunSoft.GestClientesWS.GestClientesWS.eliminarClienteAsync(QingYunSoft.GestClientesWS.eliminarClienteRequest request) {
+            return base.Channel.eliminarClienteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.eliminarClienteResponse> eliminarClienteAsync(int idCliente) {
+            QingYunSoft.GestClientesWS.eliminarClienteRequest inValue = new QingYunSoft.GestClientesWS.eliminarClienteRequest();
+            inValue.idCliente = idCliente;
+            return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).eliminarClienteAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         QingYunSoft.GestClientesWS.listarPorDocumentoNombreResponse QingYunSoft.GestClientesWS.GestClientesWS.listarPorDocumentoNombre(QingYunSoft.GestClientesWS.listarPorDocumentoNombreRequest request) {
             return base.Channel.listarPorDocumentoNombre(request);
         }
@@ -2403,73 +2239,6 @@ namespace QingYunSoft.GestClientesWS {
             QingYunSoft.GestClientesWS.listarPorDocumentoNombreRequest inValue = new QingYunSoft.GestClientesWS.listarPorDocumentoNombreRequest();
             inValue.docNombre = docNombre;
             return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarPorDocumentoNombreAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.GestClientesWS.listarEmpresasPorRUCNombreResponse QingYunSoft.GestClientesWS.GestClientesWS.listarEmpresasPorRUCNombre(QingYunSoft.GestClientesWS.listarEmpresasPorRUCNombreRequest request) {
-            return base.Channel.listarEmpresasPorRUCNombre(request);
-        }
-        
-        public QingYunSoft.GestClientesWS.empresa[] listarEmpresasPorRUCNombre(string rucNombre) {
-            QingYunSoft.GestClientesWS.listarEmpresasPorRUCNombreRequest inValue = new QingYunSoft.GestClientesWS.listarEmpresasPorRUCNombreRequest();
-            inValue.rucNombre = rucNombre;
-            QingYunSoft.GestClientesWS.listarEmpresasPorRUCNombreResponse retVal = ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarEmpresasPorRUCNombre(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarEmpresasPorRUCNombreResponse> QingYunSoft.GestClientesWS.GestClientesWS.listarEmpresasPorRUCNombreAsync(QingYunSoft.GestClientesWS.listarEmpresasPorRUCNombreRequest request) {
-            return base.Channel.listarEmpresasPorRUCNombreAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarEmpresasPorRUCNombreResponse> listarEmpresasPorRUCNombreAsync(string rucNombre) {
-            QingYunSoft.GestClientesWS.listarEmpresasPorRUCNombreRequest inValue = new QingYunSoft.GestClientesWS.listarEmpresasPorRUCNombreRequest();
-            inValue.rucNombre = rucNombre;
-            return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarEmpresasPorRUCNombreAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.GestClientesWS.eliminarPersonaNaturalResponse QingYunSoft.GestClientesWS.GestClientesWS.eliminarPersonaNatural(QingYunSoft.GestClientesWS.eliminarPersonaNaturalRequest request) {
-            return base.Channel.eliminarPersonaNatural(request);
-        }
-        
-        public int eliminarPersonaNatural(int personaNatural) {
-            QingYunSoft.GestClientesWS.eliminarPersonaNaturalRequest inValue = new QingYunSoft.GestClientesWS.eliminarPersonaNaturalRequest();
-            inValue.personaNatural = personaNatural;
-            QingYunSoft.GestClientesWS.eliminarPersonaNaturalResponse retVal = ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).eliminarPersonaNatural(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.eliminarPersonaNaturalResponse> QingYunSoft.GestClientesWS.GestClientesWS.eliminarPersonaNaturalAsync(QingYunSoft.GestClientesWS.eliminarPersonaNaturalRequest request) {
-            return base.Channel.eliminarPersonaNaturalAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.eliminarPersonaNaturalResponse> eliminarPersonaNaturalAsync(int personaNatural) {
-            QingYunSoft.GestClientesWS.eliminarPersonaNaturalRequest inValue = new QingYunSoft.GestClientesWS.eliminarPersonaNaturalRequest();
-            inValue.personaNatural = personaNatural;
-            return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).eliminarPersonaNaturalAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.GestClientesWS.listarPersonasNaturalesResponse QingYunSoft.GestClientesWS.GestClientesWS.listarPersonasNaturales(QingYunSoft.GestClientesWS.listarPersonasNaturalesRequest request) {
-            return base.Channel.listarPersonasNaturales(request);
-        }
-        
-        public QingYunSoft.GestClientesWS.personaNatural[] listarPersonasNaturales() {
-            QingYunSoft.GestClientesWS.listarPersonasNaturalesRequest inValue = new QingYunSoft.GestClientesWS.listarPersonasNaturalesRequest();
-            QingYunSoft.GestClientesWS.listarPersonasNaturalesResponse retVal = ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarPersonasNaturales(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarPersonasNaturalesResponse> QingYunSoft.GestClientesWS.GestClientesWS.listarPersonasNaturalesAsync(QingYunSoft.GestClientesWS.listarPersonasNaturalesRequest request) {
-            return base.Channel.listarPersonasNaturalesAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarPersonasNaturalesResponse> listarPersonasNaturalesAsync() {
-            QingYunSoft.GestClientesWS.listarPersonasNaturalesRequest inValue = new QingYunSoft.GestClientesWS.listarPersonasNaturalesRequest();
-            return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarPersonasNaturalesAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2516,29 +2285,6 @@ namespace QingYunSoft.GestClientesWS {
             QingYunSoft.GestClientesWS.modificarPersonaNaturalRequest inValue = new QingYunSoft.GestClientesWS.modificarPersonaNaturalRequest();
             inValue.personaNatural = personaNatural;
             return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).modificarPersonaNaturalAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreResponse QingYunSoft.GestClientesWS.GestClientesWS.listarPersonasNaturalesPorDocumentoNombre(QingYunSoft.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreRequest request) {
-            return base.Channel.listarPersonasNaturalesPorDocumentoNombre(request);
-        }
-        
-        public QingYunSoft.GestClientesWS.personaNatural[] listarPersonasNaturalesPorDocumentoNombre(string docNombre) {
-            QingYunSoft.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreRequest inValue = new QingYunSoft.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreRequest();
-            inValue.docNombre = docNombre;
-            QingYunSoft.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreResponse retVal = ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarPersonasNaturalesPorDocumentoNombre(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreResponse> QingYunSoft.GestClientesWS.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreAsync(QingYunSoft.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreRequest request) {
-            return base.Channel.listarPersonasNaturalesPorDocumentoNombreAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreResponse> listarPersonasNaturalesPorDocumentoNombreAsync(string docNombre) {
-            QingYunSoft.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreRequest inValue = new QingYunSoft.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreRequest();
-            inValue.docNombre = docNombre;
-            return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarPersonasNaturalesPorDocumentoNombreAsync(inValue);
         }
     }
 }

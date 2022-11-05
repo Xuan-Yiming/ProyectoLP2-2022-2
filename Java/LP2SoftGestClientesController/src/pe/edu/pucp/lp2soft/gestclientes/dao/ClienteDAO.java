@@ -7,7 +7,6 @@ public interface ClienteDAO {
     int insertar(Cliente cliente);
     int modificar(Cliente cliente);
     int eliminar(int idCliente);
-    ArrayList<Cliente> listarTodas();
-    ArrayList<Cliente> listarClientes();
+    ArrayList<Cliente> listarTodos();
     public ArrayList<Cliente> listarPorDocumentoNombre(String docNombre);
 }

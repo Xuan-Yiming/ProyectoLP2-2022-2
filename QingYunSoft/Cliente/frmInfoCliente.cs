@@ -1,4 +1,5 @@
-﻿using QingYunSoft.Usuario;
+﻿using QingYunSoft.GestClientesWS;
+using QingYunSoft.Usuario;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +27,8 @@ namespace QingYunSoft.Cliente
             pnlEmpresa.Visible = false;
             pnlPersonaNatural.Visible = false;
             cbTipoDeDocumento.DataSource = Enum.GetValues(typeof(GestClientesWS.tipoDeDocumento));
-
+            cbCategoria.DataSource = Enum.GetValues(typeof(GestClientesWS.categoria));
+            cbSexo.DataSource = Enum.GetValues(typeof(GestClientesWS.sexo));
         }
 
         public frmInfoCliente(frmPrincipal _frmPrincipal, Estado estado)//nuevo
@@ -38,6 +40,8 @@ namespace QingYunSoft.Cliente
             pnlEmpresa.Visible = false;
             pnlPersonaNatural.Visible = false;
             cbTipoDeDocumento.DataSource = Enum.GetValues(typeof(GestClientesWS.tipoDeDocumento));
+            cbCategoria.DataSource = Enum.GetValues(typeof(GestClientesWS.categoria));
+            cbSexo.DataSource = Enum.GetValues(typeof(GestClientesWS.sexo));
         }
         public frmInfoCliente(frmPrincipal _frmPrincipal, Estado estado, GestClientesWS.cliente cliente)//resultado
         {
@@ -49,9 +53,11 @@ namespace QingYunSoft.Cliente
             pnlEmpresa.Visible = false;
             pnlPersonaNatural.Visible = false;
             cbTipoDeDocumento.DataSource = Enum.GetValues(typeof(GestClientesWS.tipoDeDocumento));
+            cbCategoria.DataSource = Enum.GetValues(typeof(GestClientesWS.categoria));
+            cbSexo.DataSource = Enum.GetValues(typeof(GestClientesWS.sexo));
 
             txtID.Text = cliente.idCliente.ToString();
-            txtCategoria.Text = cliente.categoria;
+            cbCategoria.SelectedIndex = (int)cliente.categoria;
             if (cliente is GestClientesWS.empresa)
             {
                 pnlEmpresa.Visible = true;
@@ -67,11 +73,13 @@ namespace QingYunSoft.Cliente
                 pnlEmpresa.Visible = false;
                 pnlPersonaNatural.Visible = true;
                 cbTipoCliente.SelectedIndex = 1;
-
+                
+                cbSexo.SelectedIndex = (int)((GestClientesWS.personaNatural)cliente).sexo;
                 cbTipoDeDocumento.SelectedIndex = (int)((GestClientesWS.personaNatural)cliente).tipoDeDocumento;
                 txtNumDocumento.Text = ((GestClientesWS.personaNatural)cliente).numDeDocumento;
                 txtNombre.Text = ((GestClientesWS.personaNatural)cliente).nombre;
                 txtApellido.Text = ((GestClientesWS.personaNatural)cliente).apellido;
+                cbSexo.SelectedItem = ((GestClientesWS.personaNatural)cliente).sexo;
                 txtTelefono.Text = ((GestClientesWS.personaNatural)cliente).telefono;
                 TxtCorreo.Text = ((GestClientesWS.personaNatural)cliente).email;
                 txtDirecionP.Text = ((GestClientesWS.personaNatural)cliente).direccion;
@@ -86,7 +94,7 @@ namespace QingYunSoft.Cliente
 
                 case Estado.Nuevo:
                     txtID.Enabled = false;
-                    txtCategoria.Enabled = true;
+                    cbCategoria.Enabled = true;
                     cbTipoCliente.Enabled = true;
                     pnlEmpresa.Enabled = true;
                     pnlPersonaNatural.Enabled = true;
@@ -99,7 +107,7 @@ namespace QingYunSoft.Cliente
                     break;
                 case Estado.Modificar:
                     txtID.Enabled = false;
-                    txtCategoria.Enabled = true;
+                    cbCategoria.Enabled = true;
                     cbTipoCliente.Enabled = true;
                     pnlEmpresa.Enabled = true;
                     pnlPersonaNatural.Enabled = true;
@@ -113,7 +121,7 @@ namespace QingYunSoft.Cliente
                 case Estado.Resultado:
                     //disable all txtbox
                     txtID.Enabled = false;
-                    txtCategoria.Enabled = false;
+                    cbCategoria.Enabled = false;
                     cbTipoCliente.Enabled = false;
                     pnlEmpresa.Enabled = false;
                     pnlPersonaNatural.Enabled = false;
@@ -174,9 +182,12 @@ namespace QingYunSoft.Cliente
                     ((GestClientesWS.personaNatural)this._cliente).direccion = txtDirecionP.Text;
                     ((GestClientesWS.personaNatural)this._cliente).telefono = txtTelefono.Text;
                     ((GestClientesWS.personaNatural)this._cliente).email = TxtCorreo.Text;
-                    this._cliente.categoria = txtCategoria.Text;
+                    ((GestClientesWS.personaNatural)this._cliente).sexo = (GestClientesWS.sexo)cbSexo.SelectedItem;
+                    this._cliente.categoria = (GestClientesWS.categoria)cbCategoria.SelectedItem;
                     this._cliente.activoSpecified = true;
                     this._cliente.activo = true;
+                    ((GestClientesWS.personaNatural)this._cliente).sexoSpecified = true;
+                    ((GestClientesWS.personaNatural)this._cliente).categoriaSpecified = true;
                     ((GestClientesWS.personaNatural)this._cliente).tipoDeDocumentoSpecified = true;
                     ((GestClientesWS.personaNatural)this._cliente).fechaDeNacimientoSpecified = true;
                     if (txtID.Text != "")
@@ -215,7 +226,8 @@ namespace QingYunSoft.Cliente
                     ((GestClientesWS.empresa)this._cliente).RUC = txtRuc.Text;
                     ((GestClientesWS.empresa)this._cliente).razonSocial = txtRazonSocial.Text;
                     ((GestClientesWS.empresa)this._cliente).direccion = txtDireccion.Text;
-                    this._cliente.categoria = txtCategoria.Text;
+                    this._cliente.categoria = (GestClientesWS.categoria)cbCategoria.SelectedItem;
+                    this._cliente.categoriaSpecified = true;
                     this._cliente.activo = true;
                     ((GestClientesWS.empresa)this._cliente).activoSpecified = true;
                     if (txtID.Text != "")
@@ -270,14 +282,7 @@ namespace QingYunSoft.Cliente
             {
 
                 int result = 0;
-                if (cbTipoCliente.Text == "Persona Natural")
-                {
-                    result = daoCliente.eliminarPersonaNatural(this._cliente.idCliente);
-                }
-                else if (cbTipoCliente.Text == "Empresa")
-                {
-                    result = daoCliente.eliminarEmpresa(this._cliente.idCliente);
-                }
+                result = daoCliente.eliminarCliente(this._cliente.idCliente);
                 if (result == 1)
                     MessageBox.Show("Se ha eliminado exitosamente el cliente", "Mensaje de Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else

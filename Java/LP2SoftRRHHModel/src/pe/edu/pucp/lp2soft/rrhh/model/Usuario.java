@@ -1,21 +1,23 @@
-
 package pe.edu.pucp.lp2soft.rrhh.model;
 
 import java.util.Date;
 
-public abstract class Usuario extends Persona implements UConsultable {
-    private static int correlativo = 1;
+public abstract class Usuario extends Persona {
     private int idUsuario;
     private String username;
     private String password;
     private Date fechaIngreso;
+    private byte[] fotoPerfil;
 
-    public static int getCorrelativo() {
-        return correlativo;
+    public Usuario() {
     }
 
-    public static void setCorrelativo(int correlativo) {
-        Usuario.correlativo = correlativo;
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getUsername() {
@@ -25,27 +27,6 @@ public abstract class Usuario extends Persona implements UConsultable {
     public void setUsername(String username) {
         this.username = username;
     }
-    
-    //Constructor vacio
-    public Usuario(){}
-    
-    public Usuario( TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email,Boolean activo,String username,String password, Date fechaIngreso) {
-        super(tipoDeDocumento, numDeDocumento, nombre, apellido, fechaDeNacimiento, telefono, direccion, email,activo);
-        idUsuario = correlativo;
-        this.username = username;
-        this.password = password;
-        this.fechaIngreso = fechaIngreso;
-        correlativo++;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-    
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-       
 
     public String getPassword() {
         return password;
@@ -62,7 +43,14 @@ public abstract class Usuario extends Persona implements UConsultable {
     public void setFechaIngreso(Date fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
-    
+
+    public byte[] getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(byte[] fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
+    }
     
     
 }

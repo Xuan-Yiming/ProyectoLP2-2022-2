@@ -1,8 +1,6 @@
-
 package pe.edu.pucp.lp2soft.rrhh.model;
-import java.util.ArrayList;
+
 import java.util.Date;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
 
 public class Persona {
     private int idPersona;
@@ -11,41 +9,21 @@ public class Persona {
     private String nombre;
     private String apellido;
     private Date fechaDeNacimiento;
+    private Sexo sexo;
     private String telefono;
     private String direccion;
     private String email;
     private Boolean activo;
-    private ArrayList<OrdenDeCompra> ordenesDeCompra;
+
+    public Persona() {
+    }
 
     public int getIdPersona() {
         return idPersona;
     }
 
-    public Boolean getActivo() {
-        return activo;
-    }
-
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
-    }
-        
     public void setIdPersona(int idPersona) {
         this.idPersona = idPersona;
-    }
-    
-    //Constructor vacio
-    public Persona(){}
-    
-    public Persona(TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email,Boolean activo) {
-        this.tipoDeDocumento = tipoDeDocumento;
-        this.numDeDocumento = numDeDocumento;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.fechaDeNacimiento = fechaDeNacimiento;
-        this.telefono = telefono;
-        this.direccion = direccion;
-        this.email = email;
-        this.activo = activo;
     }
 
     public TipoDeDocumento getTipoDeDocumento() {
@@ -88,6 +66,14 @@ public class Persona {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
+    public Sexo getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
+    }
+
     public String getTelefono() {
         return telefono;
     }
@@ -112,11 +98,13 @@ public class Persona {
         this.email = email;
     }
 
-    public ArrayList<OrdenDeCompra> getOrdenesDeCompra() {
-        return ordenesDeCompra;
+    public Boolean getActivo() {
+        return activo;
     }
 
-    public void setOrdenesDeCompra(ArrayList<OrdenDeCompra> ordenesDeCompra) {
-        this.ordenesDeCompra = ordenesDeCompra;
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
+
+    
 }

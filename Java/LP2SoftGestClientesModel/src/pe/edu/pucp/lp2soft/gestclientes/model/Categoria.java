@@ -1,6 +1,5 @@
-
 package pe.edu.pucp.lp2soft.gestclientes.model;
 
-public interface CConsultable {
-    
+public enum Categoria {
+    A,B,C,D,E
 }

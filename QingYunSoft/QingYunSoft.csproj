@@ -227,13 +227,7 @@
     <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.cliente.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.eliminarEmpresaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.eliminarPersonaNaturalResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.empresa.datasource">
+    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.eliminarClienteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.insertarEmpresaResponse.datasource">
@@ -245,18 +239,6 @@
     <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.listarClientesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.listarEmpresasPorRUCNombreResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.listarEmpresasResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.listarPersonasNaturalesPorDocumentoNombreResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.listarPersonasNaturalesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.listarPorDocumentoNombreResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -264,9 +246,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.modificarPersonaNaturalResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.personaNatural.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.administrador.datasource">

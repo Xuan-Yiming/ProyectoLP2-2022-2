@@ -1,17 +1,21 @@
-
 package pe.edu.pucp.lp2soft.gestclientes.model;
+
+import java.util.ArrayList;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
+
 public class Empresa extends Cliente {
     private String RUC;
     private String razonSocial;
     private String direccion;
 
-    public Empresa(){}
-    
-    public Empresa(String categoria, Boolean activo,String RUC, String razonSocial, String direccion) {
-        super(categoria,activo);
+    public Empresa(String RUC, String razonSocial, String direccion, int idCliente, Categoria categoria, Boolean activo, ArrayList<OrdenDeCompra> ordenesCompras) {
+        super(idCliente, categoria, activo, ordenesCompras);
         this.RUC = RUC;
         this.razonSocial = razonSocial;
         this.direccion = direccion;
+    }
+
+    public Empresa() {
     }
 
     public String getRUC() {
@@ -21,7 +25,7 @@ public class Empresa extends Cliente {
     public void setRUC(String RUC) {
         this.RUC = RUC;
     }
-   
+
     public String getRazonSocial() {
         return razonSocial;
     }
@@ -37,4 +41,6 @@ public class Empresa extends Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+    
+    
 }

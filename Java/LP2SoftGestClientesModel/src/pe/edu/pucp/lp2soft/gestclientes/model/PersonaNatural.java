@@ -1,8 +1,9 @@
-
 package pe.edu.pucp.lp2soft.gestclientes.model;
+
+import java.util.ArrayList;
 import java.util.Date;
 import pe.edu.pucp.lp2soft.rrhh.model.TipoDeDocumento;
-
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
 
 public class PersonaNatural extends Cliente {
     private TipoDeDocumento tipoDeDocumento;
@@ -10,27 +11,29 @@ public class PersonaNatural extends Cliente {
     private String nombre;
     private String apellido;
     private Date fechaDeNacimiento;
+    private Sexo sexo;
     private String telefono;
     private String direccion;
     private String email;
-    
-    public PersonaNatural(){}
-    
-    public PersonaNatural( String categoria,Boolean activo, TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, String telefono, String direccion, String email) {
-        super(categoria,activo);
+
+    public PersonaNatural(TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, Sexo sexo, String telefono, String direccion, String email, int idCliente, Categoria categoria, Boolean activo, ArrayList<OrdenDeCompra> ordenesCompras) {
+        super(idCliente, categoria, activo, ordenesCompras);
         this.tipoDeDocumento = tipoDeDocumento;
         this.numDeDocumento = numDeDocumento;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaDeNacimiento = fechaDeNacimiento;
+        this.sexo = sexo;
         this.telefono = telefono;
         this.direccion = direccion;
         this.email = email;
     }
 
-    
-    
-    
+
+
+    public PersonaNatural() {
+    }
+
     public TipoDeDocumento getTipoDeDocumento() {
         return tipoDeDocumento;
     }
@@ -79,7 +82,6 @@ public class PersonaNatural extends Cliente {
         this.telefono = telefono;
     }
 
-
     public String getDireccion() {
         return direccion;
     }
@@ -96,5 +98,13 @@ public class PersonaNatural extends Cliente {
         this.email = email;
     }
 
+    public Sexo getSexo() {
+        return sexo;
+    }
 
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
+    }
+    
+    
 }

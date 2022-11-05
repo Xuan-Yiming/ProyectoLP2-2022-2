@@ -16,7 +16,7 @@ namespace QingYunSoft.Cliente
     {
         //objetos
         private GestClientesWS.cliente clienteSeleccionado;
-        
+        private GestClientesWS.GestClientesWSClient daoCliente;
         //constructor
         public frmBuscarCliente()
         {
@@ -42,7 +42,9 @@ namespace QingYunSoft.Cliente
 
         private void btBuscarCliente_Click(object sender, EventArgs e)
         {
-            dgvClientes.DataSource = new GestClientesWS.GestClientesWSClient().listarPorDocumentoNombre(txtNombreDNI.Text);
+            daoCliente = new GestClientesWS.GestClientesWSClient();
+            dgvClientes.DataSource = daoCliente.listarPorDocumentoNombre(txtNombreDNI.Text);
+            
         }
 
         private void dgvClientes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
