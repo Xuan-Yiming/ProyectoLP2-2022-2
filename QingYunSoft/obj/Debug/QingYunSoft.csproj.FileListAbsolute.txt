@@ -36,9 +36,7 @@ C:\Users\jaqui\Documents\LP2\TA\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYun
 C:\Users\jaqui\Documents\LP2\TA\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Almacen.frmInfoProducto.resources
 C:\Users\jaqui\Documents\LP2\TA\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Cliente.frmBuscarCliente.resources
 C:\Users\jaqui\Documents\LP2\TA\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Cliente.frmClientes.resources
-C:\Users\jaqui\Documents\LP2\TA\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Cliente.frmEmpresa.resources
 C:\Users\jaqui\Documents\LP2\TA\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Cliente.frmInfoCliente.resources
-C:\Users\jaqui\Documents\LP2\TA\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Cliente.frmPersonaNatural.resources
 C:\Users\jaqui\Documents\LP2\TA\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Usuario.frmBuscarEmpleados.resources
 C:\Users\jaqui\Documents\LP2\TA\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Usuario.frmEmpleados.resources
 C:\Users\jaqui\Documents\LP2\TA\ProyectoLP2-2022-2\QingYunSoft\obj\Debug\QingYunSoft.Usuario.frmInfoEmpleado.resources
