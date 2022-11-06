@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,8 @@ namespace QingYunSoft.Usuario
         private Estado estado;
         private RRHHWS.usuario _usuario;
         private VentasWS.almacen _almacenSeleccionado;
-        
+        private System.Windows.Forms.OpenFileDialog ofdFoto;
+        private String _rutaFoto;
         //dao
         private RRHHWS.RRHHWSClient daoRRHH; 
         
@@ -36,9 +38,13 @@ namespace QingYunSoft.Usuario
             this._frmPrincipal = _frmPrincipal;
             this.estado = estado;            
             cbTipoDocumento.DataSource = Enum.GetValues(typeof(RRHHWS.tipoDeDocumento));
+            cbArea.DataSource = Enum.GetValues(typeof(RRHHWS.area));
+            cbSexo.DataSource = Enum.GetValues(typeof(RRHHWS.sexo));
+            
             daoRRHH = new RRHHWS.RRHHWSClient();
 
             establecerEstadoComponentes();
+            limpiar();
         }
         public frmInfoEmpleado(frmPrincipal _frmPrincipal, Estado estado, RRHHWS.usuario usuario)
         {
@@ -46,8 +52,10 @@ namespace QingYunSoft.Usuario
             this._frmPrincipal = _frmPrincipal;
             this.estado = estado;
             cbTipoDocumento.DataSource = Enum.GetValues(typeof(RRHHWS.tipoDeDocumento));
+            cbArea.DataSource = Enum.GetValues(typeof(RRHHWS.area));
+            cbSexo.DataSource = Enum.GetValues(typeof(RRHHWS.sexo));
             daoRRHH = new RRHHWS.RRHHWSClient();
-
+            this._usuario = usuario;
             establecerEstadoComponentes();
 
             txtID.Text = usuario.idUsuario.ToString();
@@ -56,24 +64,14 @@ namespace QingYunSoft.Usuario
             if (usuario is RRHHWS.supervisorDeAlmacen)
             {
                 cbTipoUsuario.SelectedIndex = 2;
-                lblVariableTipo.Text = "Almacen";
-                txtVariableTipo.Enabled = false;
-                txtVariableTipo.Text = "";
-                btBuscarAlmacen.Enabled = true;
             }
             else if (usuario is RRHHWS.vendedor)
             {
-                cbTipoUsuario.SelectedIndex = 1;
-                lblVariableTipo.Text = "Cantidad de ventas";
-                txtVariableTipo.Text = ((RRHHWS.vendedor)usuario).cantidadVentas.ToString();
-                btBuscarAlmacen.Enabled = true;
+                cbTipoUsuario.SelectedIndex = 1;        
             }
             else if (usuario is RRHHWS.administrador)
             {
                 cbTipoUsuario.SelectedIndex = 0;
-                lblVariableTipo.Text = "Area";
-                txtVariableTipo.Text = ((RRHHWS.administrador)usuario).area;
-                btBuscarAlmacen.Enabled = true;
             }
             dtpFechaIngreso.Value = usuario.fechaIngreso;
             cbTipoDocumento.SelectedIndex = (int)usuario.tipoDeDocumento;
@@ -85,6 +83,14 @@ namespace QingYunSoft.Usuario
             txtDireccion.Text = usuario.direccion;
             dtpFechaNacimiento.Value = usuario.fechaDeNacimiento;
             txtID.Text = usuario.idUsuario.ToString();
+            cbSexo.SelectedIndex = (int)usuario.sexo;
+            if(usuario.fotoPerfil!= null)
+            {
+                MemoryStream ms = new MemoryStream(usuario.fotoPerfil);
+                pbFotPerfil.Image = new Bitmap(ms);
+            }
+            
+
             this._usuario = usuario;           
         }
         //metodos
@@ -109,6 +115,8 @@ namespace QingYunSoft.Usuario
                     txtCorreo.Enabled = true;
                     txtDireccion.Enabled = true;
                     dtpFechaNacimiento.Enabled = true;
+                    cbSexo.Enabled = true;
+                    cbArea.Enabled = true;
 
                     txtID.Enabled = false;
                     btAnular.Enabled = false;
@@ -117,13 +125,14 @@ namespace QingYunSoft.Usuario
                     btCancelar.Enabled = true;
                     btEditarGuardar.Text = "Guardar";
                     btBuscarAlmacen.Enabled = false;
+                    btSubirFoto.Enabled = true;
 
                     break;
                 case Estado.Modificar:
                     txtID.Enabled = false;
                     txtUsername.Enabled = true;
-                    cbTipoUsuario.Enabled = true;
-                    txtContrasena.Enabled = false;
+                    cbTipoUsuario.Enabled = false;
+                    txtContrasena.Enabled = true;
                     txtVariableTipo.Enabled = true;
                     dtpFechaIngreso.Enabled = false;
 
@@ -135,6 +144,8 @@ namespace QingYunSoft.Usuario
                     txtCorreo.Enabled = true;
                     txtDireccion.Enabled = true;
                     dtpFechaNacimiento.Enabled = true;
+                    cbSexo.Enabled = true;
+                    cbArea.Enabled = true;
 
                     txtID.Enabled = true;
                     btAnular.Enabled = true;
@@ -143,6 +154,7 @@ namespace QingYunSoft.Usuario
                     btCancelar.Enabled = true;
                     btEditarGuardar.Text = "Guardar";
                     btBuscarAlmacen.Enabled = false;
+                    btSubirFoto.Enabled = true;
                     break;
                 case Estado.Resultado:
                     //disable all txtbox
@@ -161,6 +173,8 @@ namespace QingYunSoft.Usuario
                     txtCorreo.Enabled = false;
                     txtDireccion.Enabled = false;
                     dtpFechaNacimiento.Enabled = false;
+                    cbSexo.Enabled = false;
+                    cbArea.Enabled = false;
 
                     btAnular.Enabled = true;
                     btEditarGuardar.Enabled = true;
@@ -168,6 +182,7 @@ namespace QingYunSoft.Usuario
                     btCancelar.Enabled = false;
                     btEditarGuardar.Text = "Editar";
                     btBuscarAlmacen.Enabled = false;
+                    btSubirFoto.Enabled = false;
                     break;
 
             }
@@ -187,22 +202,30 @@ namespace QingYunSoft.Usuario
                 if (cbTipoUsuario.SelectedIndex == 0)
                 {
                     this._usuario = new RRHHWS.administrador();
-                    ((RRHHWS.administrador)this._usuario).area = txtVariableTipo.Text;
+                    ((RRHHWS.administrador)this._usuario).area = (RRHHWS.area)cbArea.SelectedItem;
+                    ((RRHHWS.administrador)this._usuario).areaSpecified = true;
                 }
                 else if (cbTipoUsuario.SelectedIndex == 1)
                 {
                     this._usuario = new RRHHWS.vendedor();
                     ((RRHHWS.vendedor)this._usuario).cantidadVentas = Int32.Parse(txtVariableTipo.Text);
                 }
-                else
+                else if (cbTipoUsuario.SelectedIndex == 2)
                 {
                     this._usuario = new RRHHWS.supervisorDeAlmacen();
                     //((RRHHWS.supervisorDeAlmacen)this._usuario).almacen = this._almacenSeleccionado;
                 }
                 this._usuario.username = txtUsername.Text;
-                this._usuario.password = txtContrasena.Text;
+                if(this._usuario.password != txtContrasena.Text)
+                    this._usuario.password = txtContrasena.Text;
                 this._usuario.fechaIngreso = dtpFechaIngreso.Value;
-                
+
+                FileStream fs = new FileStream(_rutaFoto, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+                this._usuario.fotoPerfil = br.ReadBytes((int)fs.Length);
+                fs.Close();
+
+
                 this._usuario.tipoDeDocumento = (RRHHWS.tipoDeDocumento)cbTipoDocumento.SelectedItem;                
                 this._usuario.numDeDocumento = txtNumeroDocumento.Text;
                 this._usuario.nombre = txtNombre.Text;
@@ -211,11 +234,13 @@ namespace QingYunSoft.Usuario
                 this._usuario.email = txtCorreo.Text;
                 this._usuario.direccion = txtDireccion.Text;
                 this._usuario.fechaDeNacimiento = dtpFechaNacimiento.Value;
-                
+                this._usuario.sexo = (RRHHWS.sexo)cbSexo.SelectedItem;
+
+                this._usuario.sexoSpecified = true;
                 this._usuario.fechaDeNacimientoSpecified = true;
                 this._usuario.fechaIngresoSpecified = true;
                 this._usuario.activo = true;
-
+                
                 this._usuario.tipoDeDocumentoSpecified = true;
                 this._usuario.activoSpecified = true;
                
@@ -248,6 +273,10 @@ namespace QingYunSoft.Usuario
                         this.estado = Estado.Resultado;
                         establecerEstadoComponentes();
                     }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else if (estado == Estado.Modificar)
                 {
@@ -272,6 +301,10 @@ namespace QingYunSoft.Usuario
                         txtID.Text = resultado.ToString();
                         this._usuario.idUsuario = resultado;
                     }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
 
@@ -285,19 +318,7 @@ namespace QingYunSoft.Usuario
             if (MessageBox.Show("¿Esta seguro que desea eliminar este empleado?", "Mensaje de confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
 
-                int result;
-                if (this._usuario is RRHHWS.supervisorDeAlmacen)
-                {
-                    result = daoRRHH.eliminarSupervisor(((RRHHWS.supervisorDeAlmacen)this._usuario).idUsuario, ((RRHHWS.supervisorDeAlmacen)this._usuario).almacen.id);
-                }
-                else if (this._usuario is RRHHWS.vendedor)
-                {
-                    result = daoRRHH.eliminarVendedor(((RRHHWS.vendedor)this._usuario).idPersona, ((RRHHWS.vendedor)this._usuario).cantidadVentas);
-                }
-                else
-                {
-                    result = daoRRHH.eliminarAdministrador(((RRHHWS.administrador)this._usuario).idUsuario, ((RRHHWS.administrador)this._usuario).area);
-                }
+                int result = daoRRHH.eliminarUsuario(this._usuario);
 
                 if (result == 1)
                     MessageBox.Show("Se ha eliminado exitosamente el empleado", "Mensaje de Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -314,7 +335,48 @@ namespace QingYunSoft.Usuario
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
-            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmEmpleados(_frmPrincipal));
+            this.estado = Estado.Nuevo;
+            establecerEstadoComponentes();
+            limpiar();
+        }
+        
+        private void limpiar()
+        {
+            this.pbFotPerfil.Image = null;
+            this.txtID.Text = "";
+            this.txtUsername.Text = "";
+            this.txtContrasena.Text = "";
+            this.cbTipoUsuario.SelectedItem = null;
+            this.cbArea.SelectedItem = null;
+            this.txtVariableTipo.Text = "";
+            this.cbTipoDocumento.SelectedItem = null;
+            this.txtNumeroDocumento.Text = "";
+            this.txtNombre.Text = "";
+            this.txtApellido.Text = "";
+            this.txtTelefono.Text = "";
+            this.txtCorreo.Text = "";
+            this.txtDireccion.Text = "";
+            this.dtpFechaNacimiento.Value = DateTime.Today;
+            this.cbSexo.SelectedItem = null;
+            this._usuario = null;
+        }
+
+        private void btSubirFoto_Click(object sender, EventArgs e)
+        {
+            this.ofdFoto = new System.Windows.Forms.OpenFileDialog();
+            this.ofdFoto.FileName = "openFileDialog1";
+            try
+            {
+                if (ofdFoto.ShowDialog() == DialogResult.OK)
+                {
+                    this._rutaFoto = ofdFoto.FileName;
+                    pbFotPerfil.Image = Image.FromFile(this._rutaFoto);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
+            }
         }
 
         private void cbTipoUsuario_SelectedIndexChanged(object sender, EventArgs e)
@@ -323,7 +385,9 @@ namespace QingYunSoft.Usuario
             {
                 lblVariableTipo.Text = "Area";
                 txtVariableTipo.Text = "";
+                txtVariableTipo.Visible = false;
                 btBuscarAlmacen.Enabled = false;
+                cbArea.Visible = true;
             }
             else if (cbTipoUsuario.SelectedIndex == 1)
             {
@@ -333,14 +397,18 @@ namespace QingYunSoft.Usuario
                     txtVariableTipo.Text = "0";
                 else
                     txtVariableTipo.Text = ((RRHHWS.vendedor)this._usuario).cantidadVentas.ToString();
+                txtVariableTipo.Visible = true;
                 btBuscarAlmacen.Enabled = false;
+                cbArea.Visible = false;
             }
-            else
+            else if (cbTipoUsuario.SelectedIndex == 2)
             {
                 lblVariableTipo.Text = "Almacen";
                 txtVariableTipo.Text = "";
                 txtVariableTipo.Enabled = false;
                 btBuscarAlmacen.Enabled = true;
+                txtVariableTipo.Visible = true;
+                cbArea.Visible = false;
             }
         }
 
@@ -407,5 +475,7 @@ namespace QingYunSoft.Usuario
             }
             //Se inicializa el objeto empleado y se completan todos sus datos
         }
+
+        
     }
 }

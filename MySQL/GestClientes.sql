@@ -108,8 +108,8 @@ DELIMITER ;;
 CREATE DEFINER=`adminjoya`@`%` PROCEDURE `LISTAR_CLIENTES`()
 BEGIN
 	SELECT  c.id_cliente, c.categoria,
-            e.RUC, e.razon_social, e.direccion ,
-            p.nombre, p.apellido, p.fecha_de_nacimiento, p.telefono, p.direccion, p.email, p.tipo_de_documento, p.numero_de_documento, p.sexo
+            e.RUC, e.razon_social, e.direccion as direccionE,
+            p.nombre, p.apellido, p.fecha_de_nacimiento, p.telefono, p.direccion as direccionP, p.email, p.tipo_de_documento, p.numero_de_documento, p.sexo
     FROM cliente c LEFT JOIN personaNatural p ON c.id_cliente = p.id_persona_natural 
 	LEFT JOIN empresa e ON c.id_cliente = e.id_empresa 
     WHERE c.activo = 1;
@@ -123,8 +123,8 @@ CREATE DEFINER=`adminjoya`@`%` PROCEDURE `LISTAR_CLIENTE_X_NOMBRE_DNI_RAZON_RUC`
 )
 BEGIN
 	SELECT  c.id_cliente, c.categoria,
-            e.RUC, e.razon_social, e.direccion ,
-            p.nombre, p.apellido, p.fecha_de_nacimiento, p.telefono, p.direccion, p.email, p.tipo_de_documento, p.numero_de_documento, p.sexo
+            e.RUC, e.razon_social, e.direccion as direccionE,
+            p.nombre, p.apellido, p.fecha_de_nacimiento, p.telefono, p.direccion as direccionP, p.email, p.tipo_de_documento, p.numero_de_documento, p.sexo
     FROM cliente c LEFT JOIN personaNatural p ON c.id_cliente = p.id_persona_natural 
 	LEFT JOIN empresa e ON c.id_cliente = e.id_empresa 
 	where activo=1

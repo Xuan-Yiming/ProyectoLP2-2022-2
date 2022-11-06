@@ -11,7 +11,7 @@ import pe.edu.pucp.lp2soft.gestclientes.model.Cliente;
 import pe.edu.pucp.lp2soft.gestclientes.model.Empresa;
 import pe.edu.pucp.lp2soft.gestclientes.model.PersonaNatural;
 import pe.edu.pucp.lp2soft.gestclientes.model.Sexo;
-import pe.edu.pucp.lp2soft.rrhh.model.TipoDeDocumento;
+import pe.edu.pucp.lp2soft.gestclientes.model.TipoDeDocumento;
 
 public class ClienteMySQL implements ClienteDAO{
     private Connection con;
@@ -25,14 +25,14 @@ public class ClienteMySQL implements ClienteDAO{
             con = DBManager.getInstance().getConnection();
 
             if(cliente instanceof PersonaNatural){
-                cs = con.prepareCall("{call INSERTAR_PERSONA_NATURAL(?,?,?,?,?,?,?,?,?,?,?)}");
+                cs = con.prepareCall("{call INSERTAR_PERSONA_NATURAL(?,?,?,?,?,?,?,?,?,?,?,?)}");
                 cs.registerOutParameter("_id_persona_natural", java.sql.Types.INTEGER);
                 cs.setString("_categoria", cliente.getCategoria().name());
                 cs.setBoolean("_activo", true);
                 
                 cs.setString("_tipo_de_documento", ((PersonaNatural)cliente).getTipoDeDocumento().name());
                 cs.setString("_numero_de_documento", ((PersonaNatural)cliente).getNumDeDocumento());
-                cs.setString("_nombres", ((PersonaNatural)cliente).getNombre());
+                cs.setString("_nombre", ((PersonaNatural)cliente).getNombre());
                 cs.setString("_apellido", ((PersonaNatural)cliente).getApellido());
                 cs.setDate("_fecha_de_nacimiento", new java.sql.Date(((PersonaNatural)cliente).getFechaDeNacimiento().getTime()));
                 cs.setString("_sexo", ((PersonaNatural)cliente).getSexo().name());
@@ -69,14 +69,14 @@ public class ClienteMySQL implements ClienteDAO{
             con = DBManager.getInstance().getConnection();
 
             if(cliente instanceof PersonaNatural){
-                cs = con.prepareCall("{call MODIFICAR_PERSONA_NATURAL(?,?,?,?,?,?,?,?,?,?,?)}");
+                cs = con.prepareCall("{call MODIFICAR_PERSONA_NATURAL(?,?,?,?,?,?,?,?,?,?,?,?)}");
                 cs.setInt("_id_persona_natural", cliente.getIdCliente());
                 cs.setString("_categoria", cliente.getCategoria().name());
                 cs.setBoolean("_activo", true);
                 
                 cs.setString("_tipo_de_documento", ((PersonaNatural)cliente).getTipoDeDocumento().name());
                 cs.setString("_numero_de_documento", ((PersonaNatural)cliente).getNumDeDocumento());
-                cs.setString("_nombres", ((PersonaNatural)cliente).getNombre());
+                cs.setString("_nombre", ((PersonaNatural)cliente).getNombre());
                 cs.setString("_apellido", ((PersonaNatural)cliente).getApellido());
                 cs.setDate("_fecha_de_nacimiento", new java.sql.Date(((PersonaNatural)cliente).getFechaDeNacimiento().getTime()));
                 cs.setString("_sexo", ((PersonaNatural)cliente).getSexo().name());
@@ -137,7 +137,7 @@ public class ClienteMySQL implements ClienteDAO{
                     empresa.setCategoria(Categoria.valueOf(rs.getString("categoria")));
                     empresa.setRUC(rs.getString("RUC"));
                     empresa.setRazonSocial(rs.getString("razon_social"));
-                    empresa.setDireccion(rs.getString("direccion"));
+                    empresa.setDireccion(rs.getString("direccionE"));
                     empresa.setActivo(true);
                     clientes.add(empresa);
                 }else{
@@ -152,7 +152,7 @@ public class ClienteMySQL implements ClienteDAO{
                     personaNatural.setSexo(Sexo.valueOf(rs.getString("sexo")));
                     personaNatural.setSexo(Sexo.valueOf(rs.getString("sexo")));
                     personaNatural.setTelefono(rs.getString("telefono"));
-                    personaNatural.setDireccion(rs.getString("direccion"));
+                    personaNatural.setDireccion(rs.getString("direccionP"));
                     personaNatural.setEmail(rs.getString("email"));
                     personaNatural.setActivo(true);
                     clientes.add(personaNatural);
@@ -183,7 +183,7 @@ public class ClienteMySQL implements ClienteDAO{
                     empresa.setCategoria(Categoria.valueOf(rs.getString("categoria")));
                     empresa.setRUC(rs.getString("RUC"));
                     empresa.setRazonSocial(rs.getString("razon_social"));
-                    empresa.setDireccion(rs.getString("direccion"));
+                    empresa.setDireccion(rs.getString("direccionE"));
                     empresa.setActivo(true);
                     clientes.add(empresa);
                 }else{
@@ -197,7 +197,7 @@ public class ClienteMySQL implements ClienteDAO{
                     personaNatural.setFechaDeNacimiento(rs.getDate("fecha_de_nacimiento"));
                     personaNatural.setSexo(Sexo.valueOf(rs.getString("sexo")));
                     personaNatural.setTelefono(rs.getString("telefono"));
-                    personaNatural.setDireccion(rs.getString("direccion"));
+                    personaNatural.setDireccion(rs.getString("direccionP"));
                     personaNatural.setEmail(rs.getString("email"));
                     personaNatural.setActivo(true);
                     clientes.add(personaNatural);

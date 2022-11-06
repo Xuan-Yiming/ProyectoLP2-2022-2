@@ -1,5 +1,4 @@
-﻿using QingYunSoft.Cliente;
-using QingYunSoft.RRHHWS;
+﻿using QingYunSoft.RRHHWS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,8 +37,7 @@ namespace QingYunSoft.Usuario
         {
             try
             {
-                daoRRHH = new RRHHWS.RRHHWSClient();
-                dgvUsuarios.DataSource = daoRRHH.listarPorDocumentoNombre(txtDNINombre.Text);
+                dgvUsuarios.DataSource = daoRRHH.listarUsuarioPorDocumentoNombre(txtDNINombre.Text);
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -48,23 +46,22 @@ namespace QingYunSoft.Usuario
 
         private void dgvUsuarios_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            RRHHWS.usuario usuario = (RRHHWS.usuario)dgvUsuarios.Rows[e.RowIndex].DataBoundItem;
-            dgvUsuarios.Rows[e.RowIndex].Cells[0].Value = usuario.nombre + " " + usuario.apellido;
-            dgvUsuarios.Rows[e.RowIndex].Cells[2].Value = usuario.tipoDeDocumento.ToString();
-            dgvUsuarios.Rows[e.RowIndex].Cells[3].Value = usuario.numDeDocumento;
-            dgvUsuarios.Rows[e.RowIndex].Cells[4].Value = usuario.fechaIngreso;
-            if (usuario is RRHHWS.supervisorDeAlmacen)
+            RRHHWS.usuario empleado = (RRHHWS.usuario)dgvUsuarios.Rows[e.RowIndex].DataBoundItem;
+            dgvUsuarios.Rows[e.RowIndex].Cells["nombre"].Value = empleado.nombre + " " + empleado.apellido;
+            dgvUsuarios.Rows[e.RowIndex].Cells["tipoDocumento"].Value = empleado.tipoDeDocumento.ToString();
+            dgvUsuarios.Rows[e.RowIndex].Cells["nmrDocumento"].Value = empleado.numDeDocumento;
+            dgvUsuarios.Rows[e.RowIndex].Cells["fechaIngreso"].Value = empleado.fechaIngreso;
+            if (empleado is RRHHWS.administrador)
             {
-                dgvUsuarios.Rows[e.RowIndex].Cells[1].Value = "Sup. almacen";
-
+                dgvUsuarios.Rows[e.RowIndex].Cells["cargo"].Value = "Administrador";
             }
-            else if(usuario is RRHHWS.vendedor)
+            else if (empleado is RRHHWS.vendedor)
             {
-                dgvUsuarios.Rows[e.RowIndex].Cells[1].Value = "Vendedor";
+                dgvUsuarios.Rows[e.RowIndex].Cells["cargo"].Value = "Vendedor";
             }
-            else
+            else if (empleado is RRHHWS.supervisorDeAlmacen)
             {
-                dgvUsuarios.Rows[e.RowIndex].Cells[1].Value = "Administrador";
+                dgvUsuarios.Rows[e.RowIndex].Cells["cargo"].Value = "Sup. Almacen";
             }
         }
 

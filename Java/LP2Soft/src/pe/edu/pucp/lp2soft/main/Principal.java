@@ -3,72 +3,55 @@
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+   
 import pe.edu.pucp.lp2soft.gestclientes.dao.ClienteDAO;
-import pe.edu.pucp.lp2soft.gestclientes.dao.EmpresaDAO;
-import pe.edu.pucp.lp2soft.gestclientes.dao.PersonaNaturalDAO;
-import pe.edu.pucp.lp2soft.gestclientes.model.Cliente;
-import pe.edu.pucp.lp2soft.gestclientes.model.Empresa;
+
 import pe.edu.pucp.lp2soft.gestclientes.model.PersonaNatural;
-import pe.edu.pucp.lp2soft.gestclientes.mysql.EmpresaMySQL;
-import pe.edu.pucp.lp2soft.gestclientes.mysql.PersonaNaturalMySQL;
 import pe.edu.pucp.lp2soft.gestclientes.mysql.ClienteMySQL;
-import pe.edu.pucp.lp2soft.rrhh.dao.AdministradorDAO;
-import pe.edu.pucp.lp2soft.rrhh.dao.SupervisorDeAlmacenDAO;
-import pe.edu.pucp.lp2soft.rrhh.dao.UsuarioDAO;
-import pe.edu.pucp.lp2soft.rrhh.dao.VendedorDAO;
-import pe.edu.pucp.lp2soft.rrhh.model.Administrador;
-import pe.edu.pucp.lp2soft.rrhh.model.SupervisorDeAlmacen;
+   
+import pe.edu.pucp.lp2soft.gestclientes.model.Categoria;
 import pe.edu.pucp.lp2soft.rrhh.model.TipoDeDocumento;
+import pe.edu.pucp.lp2soft.rrhh.dao.UsuarioDAO;
+import pe.edu.pucp.lp2soft.rrhh.model.Administrador;
+import pe.edu.pucp.lp2soft.rrhh.mysql.UsuarioMySQL;
+import pe.edu.pucp.lp2soft.rrhh.model.Sexo;
+import pe.edu.pucp.lp2soft.rrhh.model.Area;
+import pe.edu.pucp.lp2soft.rrhh.model.SupervisorDeAlmacen;
 import pe.edu.pucp.lp2soft.rrhh.model.Usuario;
 import pe.edu.pucp.lp2soft.rrhh.model.Vendedor;
-import pe.edu.pucp.lp2soft.rrhh.mysql.AdministradorMySQL;
-import pe.edu.pucp.lp2soft.rrhh.mysql.SupervisorDeAlmacenMySQL;
-import pe.edu.pucp.lp2soft.rrhh.mysql.UsuarioMySQL;
-import pe.edu.pucp.lp2soft.rrhh.mysql.VendedorMySQL;
-import pe.edu.pucp.lp2soft.ventas.manejoproductos.Almacen;
-import pe.edu.pucp.lp2soft.ventas.manejoproductos.Devolucion;
-import pe.edu.pucp.lp2soft.ventas.manejoproductos.Pedido;
-import pe.edu.pucp.lp2soft.ventas.manejoproductos.Producto;
-import pe.edu.pucp.lp2soft.ventas.manejoproductos.Reclamo;
-import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.AlmacenDAO;
-import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.DevolucionDAO;
-import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.PedidoDAO;
-import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.ProductoDAO;
-import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.ReclamoDAO;
-import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.AlmacenMySQL;
-import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.DevolucionMySQL;
-import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.PedidoMySQL;
-import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.ProductoMySQL;
-import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.ReclamoMySQL;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.DocumentoCredito;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.DocumentoDebito;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.FormaDeEntrega;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.Moneda;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.TerminoDePago;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.TipoDeCambio;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.DocumentoCreditoDAO;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.DocumentoDebitoDAO;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.MonedaDAO;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.OrdenDeCompraDAO;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.TerminoDePagoDAO;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.TipoDeCambioDAO;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.DocumentoCreditoMySQL;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.DocumentoDebitoMySQL;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.MonedaMySQL;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.OrdenDeCompraMySQL;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.TerminoDePagoMySQL;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.TipoDeCambioMySQL;
 public class Principal {
     public static void main(String[] args) throws Exception{
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         int resultado1, resultado2;
         
-        ClienteDAO daocliente = new ClienteMySQL();
-        ArrayList<Cliente> resultado = daocliente.listarPorDocumentoNombre("");
-        for(Cliente cl: resultado){
-            System.out.println("id:" + cl.getIdCliente() );
-        }
+        UsuarioDAO daocliente = new UsuarioMySQL();
+        SupervisorDeAlmacen p = new SupervisorDeAlmacen();
+        p.setActivo(true);
+        p.setApellido("Xuan");
+
+        p.setDireccion("san isidro");
+        p.setEmail("yxuan@pucp.edu.pe");
+        Date date = new Date();  
+        p.setFechaDeNacimiento(date);
+        p.setNombre("yiming");
+        p.setNumDeDocumento("20190768");
+        p.setSexo(Sexo.Masculino);
+        p.setTelefono("933754567");
+        p.setTipoDeDocumento(TipoDeDocumento.CE);
+        //p.setCantidadVentas(100);
+        
+        //p.setArea(Area.Sistemas);
+        p.setIdPersona(250);
+        p.setIdUsuario(250);
+        p.setUsername("almacen");
+        p.setPassword("123456");
+        p.setFechaIngreso(date);       
+        p.setFotoPerfil(null);
+        daocliente.modificarUsuario(p);
+        ArrayList<Usuario> u = daocliente.listarPorDocumentoNombre("");
+        //Administrador a = (Administrador) daocliente.verificar(p);
+        //System.out.println(a);
+        
 //        //Creamos un dao de conexión con Empresa
 //        EmpresaDAO daoEmpresa = new EmpresaMySQL();
 //        //Creamos objetos Empresa

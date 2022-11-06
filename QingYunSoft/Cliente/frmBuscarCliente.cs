@@ -43,7 +43,7 @@ namespace QingYunSoft.Cliente
         private void btBuscarCliente_Click(object sender, EventArgs e)
         {
             daoCliente = new GestClientesWS.GestClientesWSClient();
-            dgvClientes.DataSource = daoCliente.listarPorDocumentoNombre(txtNombreDNI.Text);
+            dgvClientes.DataSource = daoCliente.listarClientePorDocumentoNombre(txtNombreDNI.Text);
             
         }
 

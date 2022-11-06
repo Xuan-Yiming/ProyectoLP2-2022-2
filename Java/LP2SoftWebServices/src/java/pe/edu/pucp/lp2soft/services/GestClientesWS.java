@@ -80,8 +80,8 @@ public class GestClientesWS {
         }
         return clientes;
     }
-    @WebMethod(operationName = "listarPorDocumentoNombre")
-    public ArrayList<Cliente> listarPorDocumentoNombre(@WebParam(name = "docNombre") String docNombre) {
+    @WebMethod(operationName = "listarClientePorDocumentoNombre")
+    public ArrayList<Cliente> listarClientePorDocumentoNombre(@WebParam(name = "docNombre") String docNombre) {
         ArrayList<Cliente> clientes;
         try{
             clientes = daoCliente.listarPorDocumentoNombre(docNombre);

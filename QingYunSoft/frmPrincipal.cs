@@ -1,5 +1,6 @@
 ﻿using QingYunSoft.Almacen;
 using QingYunSoft.Cliente;
+using QingYunSoft.RRHHWS;
 using QingYunSoft.Usuario;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,9 @@ namespace QingYunSoft
         public frmPrincipal(){
             InitializeComponent();
             this.CenterToScreen();
+            crearBotones();
+            this._usuario = new administrador();
+            establecerMenu();
         }
         public frmPrincipal(RRHHWS.usuario _usuario)
         {

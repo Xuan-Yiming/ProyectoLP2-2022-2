@@ -6,10 +6,10 @@
   <xs:element name="insertarEmpresaResponse" type="tns:insertarEmpresaResponse" />
   <xs:element name="insertarPersonaNatural" type="tns:insertarPersonaNatural" />
   <xs:element name="insertarPersonaNaturalResponse" type="tns:insertarPersonaNaturalResponse" />
+  <xs:element name="listarClientePorDocumentoNombre" type="tns:listarClientePorDocumentoNombre" />
+  <xs:element name="listarClientePorDocumentoNombreResponse" type="tns:listarClientePorDocumentoNombreResponse" />
   <xs:element name="listarClientes" type="tns:listarClientes" />
   <xs:element name="listarClientesResponse" type="tns:listarClientesResponse" />
-  <xs:element name="listarPorDocumentoNombre" type="tns:listarPorDocumentoNombre" />
-  <xs:element name="listarPorDocumentoNombreResponse" type="tns:listarPorDocumentoNombreResponse" />
   <xs:element name="modificarEmpresa" type="tns:modificarEmpresa" />
   <xs:element name="modificarEmpresaResponse" type="tns:modificarEmpresaResponse" />
   <xs:element name="modificarPersonaNatural" type="tns:modificarPersonaNatural" />
@@ -172,16 +172,6 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarPorDocumentoNombre">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="docNombre" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarPorDocumentoNombreResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:cliente" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="insertarEmpresa">
     <xs:sequence>
       <xs:element minOccurs="0" name="empresa" type="tns:empresa" />
@@ -207,6 +197,16 @@
     <xs:sequence />
   </xs:complexType>
   <xs:complexType name="listarClientesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:cliente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarClientePorDocumentoNombre">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="docNombre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarClientePorDocumentoNombreResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:cliente" />
     </xs:sequence>

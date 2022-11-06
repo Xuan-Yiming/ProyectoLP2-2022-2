@@ -29,6 +29,7 @@ namespace QingYunSoft.Cliente
             cbTipoDeDocumento.DataSource = Enum.GetValues(typeof(GestClientesWS.tipoDeDocumento));
             cbCategoria.DataSource = Enum.GetValues(typeof(GestClientesWS.categoria));
             cbSexo.DataSource = Enum.GetValues(typeof(GestClientesWS.sexo));
+            limpiar();
         }
 
         public frmInfoCliente(frmPrincipal _frmPrincipal, Estado estado)//nuevo
@@ -42,6 +43,7 @@ namespace QingYunSoft.Cliente
             cbTipoDeDocumento.DataSource = Enum.GetValues(typeof(GestClientesWS.tipoDeDocumento));
             cbCategoria.DataSource = Enum.GetValues(typeof(GestClientesWS.categoria));
             cbSexo.DataSource = Enum.GetValues(typeof(GestClientesWS.sexo));
+            limpiar();
         }
         public frmInfoCliente(frmPrincipal _frmPrincipal, Estado estado, GestClientesWS.cliente cliente)//resultado
         {
@@ -79,7 +81,6 @@ namespace QingYunSoft.Cliente
                 txtNumDocumento.Text = ((GestClientesWS.personaNatural)cliente).numDeDocumento;
                 txtNombre.Text = ((GestClientesWS.personaNatural)cliente).nombre;
                 txtApellido.Text = ((GestClientesWS.personaNatural)cliente).apellido;
-                cbSexo.SelectedItem = ((GestClientesWS.personaNatural)cliente).sexo;
                 txtTelefono.Text = ((GestClientesWS.personaNatural)cliente).telefono;
                 TxtCorreo.Text = ((GestClientesWS.personaNatural)cliente).email;
                 txtDirecionP.Text = ((GestClientesWS.personaNatural)cliente).direccion;
@@ -186,6 +187,7 @@ namespace QingYunSoft.Cliente
                     this._cliente.categoria = (GestClientesWS.categoria)cbCategoria.SelectedItem;
                     this._cliente.activoSpecified = true;
                     this._cliente.activo = true;
+                    this._cliente.categoriaSpecified = true;
                     ((GestClientesWS.personaNatural)this._cliente).sexoSpecified = true;
                     ((GestClientesWS.personaNatural)this._cliente).categoriaSpecified = true;
                     ((GestClientesWS.personaNatural)this._cliente).tipoDeDocumentoSpecified = true;
@@ -206,6 +208,10 @@ namespace QingYunSoft.Cliente
                             this.estado = Estado.Resultado;
                             establecerEstadoComponentes();
                         }
+                        else
+                        {
+                            MessageBox.Show("Ha ocurrido un error al momento de eliminar el cliente", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
@@ -217,6 +223,10 @@ namespace QingYunSoft.Cliente
                             this._cliente.idCliente = resultado;
                             this.estado = Estado.Resultado;
                             establecerEstadoComponentes();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ha ocurrido un error al momento de eliminar el cliente", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -246,6 +256,10 @@ namespace QingYunSoft.Cliente
                             this.estado = Estado.Resultado;
                             establecerEstadoComponentes();
                         }
+                        else
+                        {
+                            MessageBox.Show("Ha ocurrido un error al momento de eliminar el cliente", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
@@ -257,6 +271,10 @@ namespace QingYunSoft.Cliente
                             this._cliente.idCliente = resultado;
                             this.estado = Estado.Resultado;
                             establecerEstadoComponentes();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ha ocurrido un error al momento de eliminar el cliente", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -271,8 +289,31 @@ namespace QingYunSoft.Cliente
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
-            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmClientes(_frmPrincipal));
+            this.estado = Estado.Nuevo;
+            establecerEstadoComponentes();
+            limpiar();
         }
+        
+        private void limpiar()
+        {
+            this.txtID.Text = "";
+            this.txtNombre.Text = "";
+            this.txtRazonSocial.Text = "";
+            this.txtRuc.Text = "";
+            this.txtApellido.Text = "";
+            this.txtDirecionP.Text = "";
+            this.txtDireccion.Text = "";
+            this.txtTelefono.Text = "";
+            this.TxtCorreo.Text = "";
+            this.cbCategoria.SelectedIndex = -1;
+            this.cbSexo.SelectedIndex = -1;
+            this.cbTipoCliente.SelectedIndex = -1;
+            this.cbTipoDeDocumento.SelectedIndex = -1;
+            this.dtpFecha.Value = DateTime.Now;
+            this.txtID.Focus();
+            this._cliente = null;
+        }
+    
 
         private void btAnular_Click(object sender, EventArgs e)
         {

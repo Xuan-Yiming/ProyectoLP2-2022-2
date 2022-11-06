@@ -30,6 +30,8 @@
         {
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbSexo = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
@@ -47,8 +49,10 @@
             this.txtNumeroDocumento = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cbArea = new System.Windows.Forms.ComboBox();
+            this.btBuscarAlmacen = new System.Windows.Forms.Button();
+            this.btSubirFoto = new System.Windows.Forms.Button();
+            this.pbFotPerfil = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.dtpFechaIngreso = new System.Windows.Forms.DateTimePicker();
             this.lblVariableTipo = new System.Windows.Forms.Label();
@@ -67,11 +71,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btCancelar = new System.Windows.Forms.Button();
             this.btRegresar = new System.Windows.Forms.Button();
-            this.btBuscarAlmacen = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFotPerfil)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -90,6 +93,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cbSexo);
+            this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.dtpFechaNacimiento);
             this.groupBox2.Controls.Add(this.label9);
@@ -109,16 +114,35 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(372, 25);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(323, 238);
+            this.groupBox2.Size = new System.Drawing.Size(323, 258);
             this.groupBox2.TabIndex = 111;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informacion personal";
+            // 
+            // cbSexo
+            // 
+            this.cbSexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSexo.FormattingEnabled = true;
+            this.cbSexo.Location = new System.Drawing.Point(146, 129);
+            this.cbSexo.Name = "cbSexo";
+            this.cbSexo.Size = new System.Drawing.Size(152, 21);
+            this.cbSexo.TabIndex = 32;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(22, 132);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(31, 13);
+            this.label15.TabIndex = 31;
+            this.label15.Text = "Sexo";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(22, 201);
+            this.label10.Location = new System.Drawing.Point(22, 235);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(108, 13);
             this.label10.TabIndex = 28;
@@ -127,7 +151,7 @@
             // dtpFechaNacimiento
             // 
             this.dtpFechaNacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaNacimiento.Location = new System.Drawing.Point(146, 198);
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(146, 232);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(152, 20);
             this.dtpFechaNacimiento.TabIndex = 27;
@@ -136,7 +160,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(22, 176);
+            this.label9.Location = new System.Drawing.Point(22, 210);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 13);
             this.label9.TabIndex = 26;
@@ -145,7 +169,7 @@
             // txtDireccion
             // 
             this.txtDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDireccion.Location = new System.Drawing.Point(146, 174);
+            this.txtDireccion.Location = new System.Drawing.Point(146, 208);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(152, 20);
             this.txtDireccion.TabIndex = 25;
@@ -154,7 +178,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(22, 153);
+            this.label8.Location = new System.Drawing.Point(22, 187);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(94, 13);
             this.label8.TabIndex = 24;
@@ -163,7 +187,7 @@
             // txtCorreo
             // 
             this.txtCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCorreo.Location = new System.Drawing.Point(146, 151);
+            this.txtCorreo.Location = new System.Drawing.Point(146, 185);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(152, 20);
             this.txtCorreo.TabIndex = 23;
@@ -172,7 +196,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(22, 128);
+            this.label7.Location = new System.Drawing.Point(22, 161);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 13);
             this.label7.TabIndex = 22;
@@ -181,7 +205,7 @@
             // txtTelefono
             // 
             this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefono.Location = new System.Drawing.Point(146, 126);
+            this.txtTelefono.Location = new System.Drawing.Point(146, 159);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(152, 20);
             this.txtTelefono.TabIndex = 21;
@@ -190,7 +214,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(22, 105);
+            this.label3.Location = new System.Drawing.Point(22, 106);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 20;
@@ -261,9 +285,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbArea);
             this.groupBox1.Controls.Add(this.btBuscarAlmacen);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.btSubirFoto);
+            this.groupBox1.Controls.Add(this.pbFotPerfil);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.dtpFechaIngreso);
             this.groupBox1.Controls.Add(this.lblVariableTipo);
@@ -284,24 +309,50 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cuenta usuario";
             // 
-            // button1
+            // cbArea
             // 
-            this.button1.BackgroundImage = global::QingYunSoft.Properties.Resources.icloud_and_arrow_up;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Location = new System.Drawing.Point(187, 136);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 32;
-            this.button1.UseVisualStyleBackColor = true;
+            this.cbArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbArea.FormattingEnabled = true;
+            this.cbArea.Items.AddRange(new object[] {
+            "Administrador",
+            "Vendedor",
+            "Supervisor de Almacen"});
+            this.cbArea.Location = new System.Drawing.Point(134, 296);
+            this.cbArea.Name = "cbArea";
+            this.cbArea.Size = new System.Drawing.Size(114, 21);
+            this.cbArea.TabIndex = 34;
             // 
-            // pictureBox1
+            // btBuscarAlmacen
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(97, 46);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 31;
-            this.pictureBox1.TabStop = false;
+            this.btBuscarAlmacen.BackgroundImage = global::QingYunSoft.Properties.Resources.magnifyingglass_circle;
+            this.btBuscarAlmacen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btBuscarAlmacen.FlatAppearance.BorderSize = 0;
+            this.btBuscarAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btBuscarAlmacen.Location = new System.Drawing.Point(254, 296);
+            this.btBuscarAlmacen.Name = "btBuscarAlmacen";
+            this.btBuscarAlmacen.Size = new System.Drawing.Size(25, 25);
+            this.btBuscarAlmacen.TabIndex = 33;
+            this.btBuscarAlmacen.UseVisualStyleBackColor = true;
+            // 
+            // btSubirFoto
+            // 
+            this.btSubirFoto.BackgroundImage = global::QingYunSoft.Properties.Resources.icloud_and_arrow_up;
+            this.btSubirFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btSubirFoto.Location = new System.Drawing.Point(187, 136);
+            this.btSubirFoto.Name = "btSubirFoto";
+            this.btSubirFoto.Size = new System.Drawing.Size(30, 30);
+            this.btSubirFoto.TabIndex = 32;
+            this.btSubirFoto.UseVisualStyleBackColor = true;
+            this.btSubirFoto.Click += new System.EventHandler(this.btSubirFoto_Click);
+            // 
+            // pbFotPerfil
+            // 
+            this.pbFotPerfil.Location = new System.Drawing.Point(97, 46);
+            this.pbFotPerfil.Name = "pbFotPerfil";
+            this.pbFotPerfil.Size = new System.Drawing.Size(120, 120);
+            this.pbFotPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFotPerfil.TabIndex = 31;
+            this.pbFotPerfil.TabStop = false;
             // 
             // label14
             // 
@@ -325,7 +376,7 @@
             // 
             this.lblVariableTipo.AutoSize = true;
             this.lblVariableTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVariableTipo.Location = new System.Drawing.Point(17, 296);
+            this.lblVariableTipo.Location = new System.Drawing.Point(17, 299);
             this.lblVariableTipo.Name = "lblVariableTipo";
             this.lblVariableTipo.Size = new System.Drawing.Size(29, 13);
             this.lblVariableTipo.TabIndex = 21;
@@ -495,18 +546,6 @@
             this.btRegresar.UseVisualStyleBackColor = true;
             this.btRegresar.Click += new System.EventHandler(this.btRegresar_Click);
             // 
-            // btBuscarAlmacen
-            // 
-            this.btBuscarAlmacen.BackgroundImage = global::QingYunSoft.Properties.Resources.magnifyingglass_circle;
-            this.btBuscarAlmacen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btBuscarAlmacen.FlatAppearance.BorderSize = 0;
-            this.btBuscarAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btBuscarAlmacen.Location = new System.Drawing.Point(254, 296);
-            this.btBuscarAlmacen.Name = "btBuscarAlmacen";
-            this.btBuscarAlmacen.Size = new System.Drawing.Size(25, 25);
-            this.btBuscarAlmacen.TabIndex = 33;
-            this.btBuscarAlmacen.UseVisualStyleBackColor = true;
-            // 
             // frmInfoEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -523,7 +562,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFotPerfil)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -569,8 +608,11 @@
         private System.Windows.Forms.TextBox txtVariableTipo;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtContrasena;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btSubirFoto;
+        private System.Windows.Forms.PictureBox pbFotPerfil;
         private System.Windows.Forms.Button btBuscarAlmacen;
+        private System.Windows.Forms.ComboBox cbSexo;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox cbArea;
     }
 }
