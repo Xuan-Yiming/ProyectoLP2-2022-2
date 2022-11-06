@@ -1,0 +1,515 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5E1743CB-A77C-4372-A450-5377ACD62260}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>QingYunSoft</RootNamespace>
+    <AssemblyName>QingYunSoft</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Almacen\frmAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\frmAlmacen.Designer.cs">
+      <DependentUpon>frmAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\frmBuscarAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\frmBuscarAlmacen.Designer.cs">
+      <DependentUpon>frmBuscarAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\frmBuscarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\frmBuscarProducto.Designer.cs">
+      <DependentUpon>frmBuscarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\frmInfoAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\frmInfoAlmacen.Designer.cs">
+      <DependentUpon>frmInfoAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen\frmInfoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Almacen\frmInfoProducto.Designer.cs">
+      <DependentUpon>frmInfoProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\frmBuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\frmBuscarCliente.Designer.cs">
+      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\frmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\frmClientes.Designer.cs">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\frmInfoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\frmInfoCliente.Designer.cs">
+      <DependentUpon>frmInfoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\GestClientesWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\RRHHWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\VentasWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Estado.cs" />
+    <Compile Include="Usuario\frmBuscarEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuario\frmBuscarEmpleados.Designer.cs">
+      <DependentUpon>frmBuscarEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario\frmEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuario\frmEmpleados.Designer.cs">
+      <DependentUpon>frmEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario\frmInfoEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuario\frmInfoEmpleado.Designer.cs">
+      <DependentUpon>frmInfoEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\frmBuscarVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Venta\frmBuscarVenta.Designer.cs">
+      <DependentUpon>frmBuscarVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\frmInfoVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Venta\frmInfoVenta.Designer.cs">
+      <DependentUpon>frmInfoVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmIniciarSeccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIniciarSeccion.Designer.cs">
+      <DependentUpon>frmIniciarSeccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\frmVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Venta\frmVentas.Designer.cs">
+      <DependentUpon>frmVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Almacen\frmAlmacen.resx">
+      <DependentUpon>frmAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\frmBuscarAlmacen.resx">
+      <DependentUpon>frmBuscarAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\frmBuscarProducto.resx">
+      <DependentUpon>frmBuscarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\frmInfoAlmacen.resx">
+      <DependentUpon>frmInfoAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Almacen\frmInfoProducto.resx">
+      <DependentUpon>frmInfoProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente\frmBuscarCliente.resx">
+      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente\frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente\frmInfoCliente.resx">
+      <DependentUpon>frmInfoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuario\frmBuscarEmpleados.resx">
+      <DependentUpon>frmBuscarEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuario\frmEmpleados.resx">
+      <DependentUpon>frmEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuario\frmInfoEmpleado.resx">
+      <DependentUpon>frmInfoEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Venta\frmBuscarVenta.resx">
+      <DependentUpon>frmBuscarVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Venta\frmInfoVenta.resx">
+      <DependentUpon>frmInfoVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIniciarSeccion.resx">
+      <DependentUpon>frmIniciarSeccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Venta\frmVentas.resx">
+      <DependentUpon>frmVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Connected Services\GestClientesWS\GestClientesWS1.wsdl" />
+    <None Include="Connected Services\GestClientesWS\GestClientesWS1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.cliente.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.eliminarClienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.insertarEmpresaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.insertarPersonaNaturalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.listarClientesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.modificarEmpresaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.modificarPersonaNaturalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.eliminarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.insertarAdministradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.insertarSupervisorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.insertarVendedorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.listarUsuarioPorDocumentoNombreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.listarUsuariosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.modificarAdministradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.modificarSupervisorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.modificarVendedorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.usuario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.verificarCuentaUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RRHHWS\RRHHWS1.wsdl" />
+    <None Include="Connected Services\RRHHWS\RRHHWS1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.almacen.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.eliminarAlmacenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.eliminarOrdenDeCompraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.eliminarPedidoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.eliminarProductoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.eliminarTerminoPagoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.insertarAlmacenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.insertarOrdenDeCompraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.insertarPedidoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.insertarProductoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.insertarTerminoPagoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarAlmacenPorNombreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarAlmacenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarOrdenesDeCompraPorClienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarOrdenesDeCompraPorFechaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarOrdenesDeCompraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarOrdenesDeCompraUltimas50Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarPedidosPorOrdenDeCompraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarPedidosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarProductosPorNombreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarProductosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarTerminoPagoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.modificarAlmacenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.modificarOrdenDeCompraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.modificarPedidoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.modificarProductoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.modificarTerminoPagoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.ordenDeCompra.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.pedido.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.producto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.terminoDePago.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\VentasWS1.wsdl" />
+    <None Include="Connected Services\VentasWS\VentasWS1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\house.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cube.box.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rectangle.stack.person.crop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multiply.square.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus.square.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avatar-6faa16fd5e7ee02fdf8b03dbba5fdd8f.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avatar-cdb00abd11449e869b92aec79b1d3be2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person.3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exclamationmark.triangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\creditcard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magnifyingglass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow.left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow.up.doc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magnifyingglass.circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person.crop.circle.badge.plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multiply.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\square.and.pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person.badge.plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\GestClientesWS\" />
+    <WCFMetadataStorage Include="Connected Services\RRHHWS\" />
+    <WCFMetadataStorage Include="Connected Services\VentasWS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\VentasWS\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\VentasWS\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\VentasWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RRHHWS\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RRHHWS\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RRHHWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\GestClientesWS\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\GestClientesWS\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\GestClientesWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icloud.and.arrow.up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

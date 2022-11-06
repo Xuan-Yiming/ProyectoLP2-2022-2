@@ -1,0 +1,35 @@
+~/Java
+*.jar
+*.class
+*.vsidx
+/Java/LP2SoftGestClientesController/build/
+/Java/LP2SoftDBManager/dist/
+/Java/LP2SoftDBManager/build/
+/Java/LP2SoftRRHHModel/build/
+/Java/LP2SoftGestClientesModel/build/
+/Java/LP2SoftVentasModel/dist/
+/Java/LP2SoftVentasModel/build/
+/Java/LP2SoftRRHHModel/dist/
+/Java/LP2SoftGestClientesController/dist/
+/Java/LP2SoftGestClientesModel/dist/
+/Java/LP2SoftRRHHController/build/
+/Java/LP2SoftRRHHController/dist/
+/Java/LP2SoftWebServices/build/
+/Java/LP2SoftVentasController/dist/
+/Java/LP2SoftVentasController/build/
+<<<<<<< HEAD
+/Java/LP2SoftRRHHModel/build
+/Java/LP2SoftWebServices/dist/
+=======
+/Java/LP2Soft/nbproject/private/
+/Java/LP2SoftDBManager/nbproject/private/
+/Java/LP2SoftGestClientesController/nbproject/private/
+/Java/LP2SoftGestClientesModel/nbproject/private/
+/Java/LP2SoftRRHHController/nbproject/private/
+/Java/LP2SoftRRHHModel/nbproject/private/
+/Java/LP2SoftVentasController/nbproject/private/
+/Java/LP2SoftVentasModel/nbproject/private/
+/Java/LP2SoftWebServices/nbproject/private/
+/Java/LP2Soft/build/
+>>>>>>> 6efe47e2332a8e6b14426f50967d1d6a49f8041b
+/Java/LP2Soft/dist/
