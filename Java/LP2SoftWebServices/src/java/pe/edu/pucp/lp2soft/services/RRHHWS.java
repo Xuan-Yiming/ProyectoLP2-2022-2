@@ -4,16 +4,19 @@ import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import pe.edu.pucp.lp2soft.rrhh.dao.SupervisorDeAlmacenDAO;
 import pe.edu.pucp.lp2soft.rrhh.dao.UsuarioDAO;
 import pe.edu.pucp.lp2soft.rrhh.model.Administrador;
 import pe.edu.pucp.lp2soft.rrhh.model.SupervisorDeAlmacen;
 import pe.edu.pucp.lp2soft.rrhh.model.Usuario;
 import pe.edu.pucp.lp2soft.rrhh.model.Vendedor;
+import pe.edu.pucp.lp2soft.rrhh.mysql.SupervisorDeAlmacenMySQL;
 import pe.edu.pucp.lp2soft.rrhh.mysql.UsuarioMySQL;
 
 @WebService(serviceName = "RRHHWS")
 public class RRHHWS {
     UsuarioDAO daoUsuario = new UsuarioMySQL();
+
     
     /*Gestionar Adminisrador*/
     @WebMethod(operationName = "insertarAdministrador")
@@ -131,4 +134,6 @@ public class RRHHWS {
         
         return result;
     }
+    
+
 }

@@ -5,35 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/LP2SoftWebServices/VentasWS?xsd=1" namespace="http://services.lp2soft.pucp.edu.pe/" />
     </xsd:schema>
   </types>
-  <message name="listarOrdenesDeCompra">
-    <part name="parameters" element="tns:listarOrdenesDeCompra" />
+  <message name="modificarProducto">
+    <part name="parameters" element="tns:modificarProducto" />
   </message>
-  <message name="listarOrdenesDeCompraResponse">
-    <part name="parameters" element="tns:listarOrdenesDeCompraResponse" />
-  </message>
-  <message name="listarOrdenesDeCompraPorFecha">
-    <part name="parameters" element="tns:listarOrdenesDeCompraPorFecha" />
-  </message>
-  <message name="listarOrdenesDeCompraPorFechaResponse">
-    <part name="parameters" element="tns:listarOrdenesDeCompraPorFechaResponse" />
-  </message>
-  <message name="listarOrdenesDeCompraUltimas50">
-    <part name="parameters" element="tns:listarOrdenesDeCompraUltimas50" />
-  </message>
-  <message name="listarOrdenesDeCompraUltimas50Response">
-    <part name="parameters" element="tns:listarOrdenesDeCompraUltimas50Response" />
-  </message>
-  <message name="eliminarOrdenDeCompra">
-    <part name="parameters" element="tns:eliminarOrdenDeCompra" />
-  </message>
-  <message name="eliminarOrdenDeCompraResponse">
-    <part name="parameters" element="tns:eliminarOrdenDeCompraResponse" />
-  </message>
-  <message name="listarOrdenesDeCompraPorCliente">
-    <part name="parameters" element="tns:listarOrdenesDeCompraPorCliente" />
-  </message>
-  <message name="listarOrdenesDeCompraPorClienteResponse">
-    <part name="parameters" element="tns:listarOrdenesDeCompraPorClienteResponse" />
+  <message name="modificarProductoResponse">
+    <part name="parameters" element="tns:modificarProductoResponse" />
   </message>
   <message name="listarAlmacenPorNombre">
     <part name="parameters" element="tns:listarAlmacenPorNombre" />
@@ -47,95 +23,11 @@
   <message name="listarProductosPorNombreResponse">
     <part name="parameters" element="tns:listarProductosPorNombreResponse" />
   </message>
-  <message name="insertarTerminoPago">
-    <part name="parameters" element="tns:insertarTerminoPago" />
+  <message name="buscarProductoPorID">
+    <part name="parameters" element="tns:buscarProductoPorID" />
   </message>
-  <message name="insertarTerminoPagoResponse">
-    <part name="parameters" element="tns:insertarTerminoPagoResponse" />
-  </message>
-  <message name="eliminarTerminoPago">
-    <part name="parameters" element="tns:eliminarTerminoPago" />
-  </message>
-  <message name="eliminarTerminoPagoResponse">
-    <part name="parameters" element="tns:eliminarTerminoPagoResponse" />
-  </message>
-  <message name="modificarTerminoPago">
-    <part name="parameters" element="tns:modificarTerminoPago" />
-  </message>
-  <message name="modificarTerminoPagoResponse">
-    <part name="parameters" element="tns:modificarTerminoPagoResponse" />
-  </message>
-  <message name="modificarProducto">
-    <part name="parameters" element="tns:modificarProducto" />
-  </message>
-  <message name="modificarProductoResponse">
-    <part name="parameters" element="tns:modificarProductoResponse" />
-  </message>
-  <message name="insertarOrdenDeCompra">
-    <part name="parameters" element="tns:insertarOrdenDeCompra" />
-  </message>
-  <message name="insertarOrdenDeCompraResponse">
-    <part name="parameters" element="tns:insertarOrdenDeCompraResponse" />
-  </message>
-  <message name="listarTerminoPago">
-    <part name="parameters" element="tns:listarTerminoPago" />
-  </message>
-  <message name="listarTerminoPagoResponse">
-    <part name="parameters" element="tns:listarTerminoPagoResponse" />
-  </message>
-  <message name="listarPedidosPorOrdenDeCompra">
-    <part name="parameters" element="tns:listarPedidosPorOrdenDeCompra" />
-  </message>
-  <message name="listarPedidosPorOrdenDeCompraResponse">
-    <part name="parameters" element="tns:listarPedidosPorOrdenDeCompraResponse" />
-  </message>
-  <message name="insertarAlmacen">
-    <part name="parameters" element="tns:insertarAlmacen" />
-  </message>
-  <message name="insertarAlmacenResponse">
-    <part name="parameters" element="tns:insertarAlmacenResponse" />
-  </message>
-  <message name="listarAlmacen">
-    <part name="parameters" element="tns:listarAlmacen" />
-  </message>
-  <message name="listarAlmacenResponse">
-    <part name="parameters" element="tns:listarAlmacenResponse" />
-  </message>
-  <message name="modificarAlmacen">
-    <part name="parameters" element="tns:modificarAlmacen" />
-  </message>
-  <message name="modificarAlmacenResponse">
-    <part name="parameters" element="tns:modificarAlmacenResponse" />
-  </message>
-  <message name="eliminarAlmacen">
-    <part name="parameters" element="tns:eliminarAlmacen" />
-  </message>
-  <message name="eliminarAlmacenResponse">
-    <part name="parameters" element="tns:eliminarAlmacenResponse" />
-  </message>
-  <message name="modificarPedido">
-    <part name="parameters" element="tns:modificarPedido" />
-  </message>
-  <message name="modificarPedidoResponse">
-    <part name="parameters" element="tns:modificarPedidoResponse" />
-  </message>
-  <message name="eliminarPedido">
-    <part name="parameters" element="tns:eliminarPedido" />
-  </message>
-  <message name="eliminarPedidoResponse">
-    <part name="parameters" element="tns:eliminarPedidoResponse" />
-  </message>
-  <message name="insertarPedido">
-    <part name="parameters" element="tns:insertarPedido" />
-  </message>
-  <message name="insertarPedidoResponse">
-    <part name="parameters" element="tns:insertarPedidoResponse" />
-  </message>
-  <message name="listarPedidos">
-    <part name="parameters" element="tns:listarPedidos" />
-  </message>
-  <message name="listarPedidosResponse">
-    <part name="parameters" element="tns:listarPedidosResponse" />
+  <message name="buscarProductoPorIDResponse">
+    <part name="parameters" element="tns:buscarProductoPorIDResponse" />
   </message>
   <message name="eliminarProducto">
     <part name="parameters" element="tns:eliminarProducto" />
@@ -143,44 +35,76 @@
   <message name="eliminarProductoResponse">
     <part name="parameters" element="tns:eliminarProductoResponse" />
   </message>
+  <message name="listarStockPorIdAlmacen">
+    <part name="parameters" element="tns:listarStockPorIdAlmacen" />
+  </message>
+  <message name="listarStockPorIdAlmacenResponse">
+    <part name="parameters" element="tns:listarStockPorIdAlmacenResponse" />
+  </message>
+  <message name="modificarAlmacen">
+    <part name="parameters" element="tns:modificarAlmacen" />
+  </message>
+  <message name="modificarAlmacenResponse">
+    <part name="parameters" element="tns:modificarAlmacenResponse" />
+  </message>
+  <message name="listarAlmacen">
+    <part name="parameters" element="tns:listarAlmacen" />
+  </message>
+  <message name="listarAlmacenResponse">
+    <part name="parameters" element="tns:listarAlmacenResponse" />
+  </message>
+  <message name="insertarAlmacen">
+    <part name="parameters" element="tns:insertarAlmacen" />
+  </message>
+  <message name="insertarAlmacenResponse">
+    <part name="parameters" element="tns:insertarAlmacenResponse" />
+  </message>
+  <message name="modificarStock">
+    <part name="parameters" element="tns:modificarStock" />
+  </message>
+  <message name="modificarStockResponse">
+    <part name="parameters" element="tns:modificarStockResponse" />
+  </message>
+  <message name="eliminarStock">
+    <part name="parameters" element="tns:eliminarStock" />
+  </message>
+  <message name="eliminarStockResponse">
+    <part name="parameters" element="tns:eliminarStockResponse" />
+  </message>
+  <message name="insertarStock">
+    <part name="parameters" element="tns:insertarStock" />
+  </message>
+  <message name="insertarStockResponse">
+    <part name="parameters" element="tns:insertarStockResponse" />
+  </message>
   <message name="insertarProducto">
     <part name="parameters" element="tns:insertarProducto" />
   </message>
   <message name="insertarProductoResponse">
     <part name="parameters" element="tns:insertarProductoResponse" />
   </message>
-  <message name="listarProductos">
-    <part name="parameters" element="tns:listarProductos" />
+  <message name="eliminarAlmacen">
+    <part name="parameters" element="tns:eliminarAlmacen" />
   </message>
-  <message name="listarProductosResponse">
-    <part name="parameters" element="tns:listarProductosResponse" />
+  <message name="eliminarAlmacenResponse">
+    <part name="parameters" element="tns:eliminarAlmacenResponse" />
   </message>
-  <message name="modificarOrdenDeCompra">
-    <part name="parameters" element="tns:modificarOrdenDeCompra" />
+  <message name="listarSupervisores">
+    <part name="parameters" element="tns:listarSupervisores" />
   </message>
-  <message name="modificarOrdenDeCompraResponse">
-    <part name="parameters" element="tns:modificarOrdenDeCompraResponse" />
+  <message name="listarSupervisoresResponse">
+    <part name="parameters" element="tns:listarSupervisoresResponse" />
+  </message>
+  <message name="listarStockPorIdAlmacenYNombre">
+    <part name="parameters" element="tns:listarStockPorIdAlmacenYNombre" />
+  </message>
+  <message name="listarStockPorIdAlmacenYNombreResponse">
+    <part name="parameters" element="tns:listarStockPorIdAlmacenYNombreResponse" />
   </message>
   <portType name="VentasWS">
-    <operation name="listarOrdenesDeCompra">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarOrdenesDeCompraRequest" message="tns:listarOrdenesDeCompra" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarOrdenesDeCompraResponse" message="tns:listarOrdenesDeCompraResponse" />
-    </operation>
-    <operation name="listarOrdenesDeCompraPorFecha">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarOrdenesDeCompraPorFechaRequest" message="tns:listarOrdenesDeCompraPorFecha" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarOrdenesDeCompraPorFechaResponse" message="tns:listarOrdenesDeCompraPorFechaResponse" />
-    </operation>
-    <operation name="listarOrdenesDeCompraUltimas50">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarOrdenesDeCompraUltimas50Request" message="tns:listarOrdenesDeCompraUltimas50" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarOrdenesDeCompraUltimas50Response" message="tns:listarOrdenesDeCompraUltimas50Response" />
-    </operation>
-    <operation name="eliminarOrdenDeCompra">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/eliminarOrdenDeCompraRequest" message="tns:eliminarOrdenDeCompra" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/eliminarOrdenDeCompraResponse" message="tns:eliminarOrdenDeCompraResponse" />
-    </operation>
-    <operation name="listarOrdenesDeCompraPorCliente">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarOrdenesDeCompraPorClienteRequest" message="tns:listarOrdenesDeCompraPorCliente" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarOrdenesDeCompraPorClienteResponse" message="tns:listarOrdenesDeCompraPorClienteResponse" />
+    <operation name="modificarProducto">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarProductoRequest" message="tns:modificarProducto" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarProductoResponse" message="tns:modificarProductoResponse" />
     </operation>
     <operation name="listarAlmacenPorNombre">
       <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarAlmacenPorNombreRequest" message="tns:listarAlmacenPorNombre" />
@@ -190,122 +114,62 @@
       <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarProductosPorNombreRequest" message="tns:listarProductosPorNombre" />
       <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarProductosPorNombreResponse" message="tns:listarProductosPorNombreResponse" />
     </operation>
-    <operation name="insertarTerminoPago">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/insertarTerminoPagoRequest" message="tns:insertarTerminoPago" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/insertarTerminoPagoResponse" message="tns:insertarTerminoPagoResponse" />
-    </operation>
-    <operation name="eliminarTerminoPago">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/eliminarTerminoPagoRequest" message="tns:eliminarTerminoPago" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/eliminarTerminoPagoResponse" message="tns:eliminarTerminoPagoResponse" />
-    </operation>
-    <operation name="modificarTerminoPago">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarTerminoPagoRequest" message="tns:modificarTerminoPago" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarTerminoPagoResponse" message="tns:modificarTerminoPagoResponse" />
-    </operation>
-    <operation name="modificarProducto">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarProductoRequest" message="tns:modificarProducto" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarProductoResponse" message="tns:modificarProductoResponse" />
-    </operation>
-    <operation name="insertarOrdenDeCompra">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/insertarOrdenDeCompraRequest" message="tns:insertarOrdenDeCompra" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/insertarOrdenDeCompraResponse" message="tns:insertarOrdenDeCompraResponse" />
-    </operation>
-    <operation name="listarTerminoPago">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarTerminoPagoRequest" message="tns:listarTerminoPago" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarTerminoPagoResponse" message="tns:listarTerminoPagoResponse" />
-    </operation>
-    <operation name="listarPedidosPorOrdenDeCompra">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarPedidosPorOrdenDeCompraRequest" message="tns:listarPedidosPorOrdenDeCompra" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarPedidosPorOrdenDeCompraResponse" message="tns:listarPedidosPorOrdenDeCompraResponse" />
-    </operation>
-    <operation name="insertarAlmacen">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/insertarAlmacenRequest" message="tns:insertarAlmacen" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/insertarAlmacenResponse" message="tns:insertarAlmacenResponse" />
-    </operation>
-    <operation name="listarAlmacen">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarAlmacenRequest" message="tns:listarAlmacen" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarAlmacenResponse" message="tns:listarAlmacenResponse" />
-    </operation>
-    <operation name="modificarAlmacen">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarAlmacenRequest" message="tns:modificarAlmacen" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarAlmacenResponse" message="tns:modificarAlmacenResponse" />
-    </operation>
-    <operation name="eliminarAlmacen">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/eliminarAlmacenRequest" message="tns:eliminarAlmacen" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/eliminarAlmacenResponse" message="tns:eliminarAlmacenResponse" />
-    </operation>
-    <operation name="modificarPedido">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarPedidoRequest" message="tns:modificarPedido" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarPedidoResponse" message="tns:modificarPedidoResponse" />
-    </operation>
-    <operation name="eliminarPedido">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/eliminarPedidoRequest" message="tns:eliminarPedido" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/eliminarPedidoResponse" message="tns:eliminarPedidoResponse" />
-    </operation>
-    <operation name="insertarPedido">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/insertarPedidoRequest" message="tns:insertarPedido" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/insertarPedidoResponse" message="tns:insertarPedidoResponse" />
-    </operation>
-    <operation name="listarPedidos">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarPedidosRequest" message="tns:listarPedidos" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarPedidosResponse" message="tns:listarPedidosResponse" />
+    <operation name="buscarProductoPorID">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/buscarProductoPorIDRequest" message="tns:buscarProductoPorID" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/buscarProductoPorIDResponse" message="tns:buscarProductoPorIDResponse" />
     </operation>
     <operation name="eliminarProducto">
       <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/eliminarProductoRequest" message="tns:eliminarProducto" />
       <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/eliminarProductoResponse" message="tns:eliminarProductoResponse" />
     </operation>
+    <operation name="listarStockPorIdAlmacen">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarStockPorIdAlmacenRequest" message="tns:listarStockPorIdAlmacen" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarStockPorIdAlmacenResponse" message="tns:listarStockPorIdAlmacenResponse" />
+    </operation>
+    <operation name="modificarAlmacen">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarAlmacenRequest" message="tns:modificarAlmacen" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarAlmacenResponse" message="tns:modificarAlmacenResponse" />
+    </operation>
+    <operation name="listarAlmacen">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarAlmacenRequest" message="tns:listarAlmacen" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarAlmacenResponse" message="tns:listarAlmacenResponse" />
+    </operation>
+    <operation name="insertarAlmacen">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/insertarAlmacenRequest" message="tns:insertarAlmacen" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/insertarAlmacenResponse" message="tns:insertarAlmacenResponse" />
+    </operation>
+    <operation name="modificarStock">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarStockRequest" message="tns:modificarStock" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarStockResponse" message="tns:modificarStockResponse" />
+    </operation>
+    <operation name="eliminarStock">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/eliminarStockRequest" message="tns:eliminarStock" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/eliminarStockResponse" message="tns:eliminarStockResponse" />
+    </operation>
+    <operation name="insertarStock">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/insertarStockRequest" message="tns:insertarStock" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/insertarStockResponse" message="tns:insertarStockResponse" />
+    </operation>
     <operation name="insertarProducto">
       <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/insertarProductoRequest" message="tns:insertarProducto" />
       <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/insertarProductoResponse" message="tns:insertarProductoResponse" />
     </operation>
-    <operation name="listarProductos">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarProductosRequest" message="tns:listarProductos" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarProductosResponse" message="tns:listarProductosResponse" />
+    <operation name="eliminarAlmacen">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/eliminarAlmacenRequest" message="tns:eliminarAlmacen" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/eliminarAlmacenResponse" message="tns:eliminarAlmacenResponse" />
     </operation>
-    <operation name="modificarOrdenDeCompra">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarOrdenDeCompraRequest" message="tns:modificarOrdenDeCompra" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/modificarOrdenDeCompraResponse" message="tns:modificarOrdenDeCompraResponse" />
+    <operation name="listarSupervisores">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarSupervisoresRequest" message="tns:listarSupervisores" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarSupervisoresResponse" message="tns:listarSupervisoresResponse" />
+    </operation>
+    <operation name="listarStockPorIdAlmacenYNombre">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarStockPorIdAlmacenYNombreRequest" message="tns:listarStockPorIdAlmacenYNombre" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/VentasWS/listarStockPorIdAlmacenYNombreResponse" message="tns:listarStockPorIdAlmacenYNombreResponse" />
     </operation>
   </portType>
   <binding name="VentasWSPortBinding" type="tns:VentasWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="listarOrdenesDeCompra">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarOrdenesDeCompraPorFecha">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarOrdenesDeCompraUltimas50">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="eliminarOrdenDeCompra">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarOrdenesDeCompraPorCliente">
+    <operation name="modificarProducto">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -332,133 +196,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarTerminoPago">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="eliminarTerminoPago">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="modificarTerminoPago">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="modificarProducto">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="insertarOrdenDeCompra">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarTerminoPago">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarPedidosPorOrdenDeCompra">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="insertarAlmacen">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarAlmacen">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="modificarAlmacen">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="eliminarAlmacen">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="modificarPedido">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="eliminarPedido">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="insertarPedido">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarPedidos">
+    <operation name="buscarProductoPorID">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -476,6 +214,69 @@
         <soap:body use="literal" />
       </output>
     </operation>
+    <operation name="listarStockPorIdAlmacen">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarAlmacen">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarAlmacen">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarAlmacen">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="modificarStock">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eliminarStock">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarStock">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="insertarProducto">
       <soap:operation soapAction="" />
       <input>
@@ -485,7 +286,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarProductos">
+    <operation name="eliminarAlmacen">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -494,7 +295,16 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="modificarOrdenDeCompra">
+    <operation name="listarSupervisores">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarStockPorIdAlmacenYNombre">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

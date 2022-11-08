@@ -87,6 +87,16 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="verificarCuentaUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cuentaUsuario" type="tns:usuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verificarCuentaUsuarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:usuario" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="insertarVendedor">
     <xs:sequence>
       <xs:element minOccurs="0" name="vendedor" type="tns:vendedor" />
@@ -104,16 +114,6 @@
   <xs:complexType name="insertarVendedorResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="verificarCuentaUsuario">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="cuentaUsuario" type="tns:usuario" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="verificarCuentaUsuarioResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:usuario" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarSupervisor">

@@ -2,66 +2,25 @@ package pe.edu.pucp.lp2soft.ventas.manejoproductos;
 
 import java.util.Date;
 
-public class Producto {
-
-    
-    private int id;
-    private int idAlamcen;
-    private String codigoLote;
+public class Producto {    
+    private int idProducto;
     private String nombre;
     private double costo;
     private double precio;
     private Date fechaDeIngreso;
+    private byte[] foto;
     private Boolean devuelto;
     private Boolean activo;
-    private int cantidad;
-    
-    
-    public Producto(int idAlmacen,String codigoLote, String nombre, double costo, double precio, Date fechaDeIngreso) {
-        this.idAlamcen=idAlmacen;
-        this.codigoLote = codigoLote;
-        this.nombre = nombre;
-        this.costo = costo;
-        this.precio = precio;
-        this.fechaDeIngreso = fechaDeIngreso;
-        this.devuelto=false;
-        this.activo=true;
-    }
-    
-    
-    public Boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
-    }
 
     public Producto() {
     }
 
-    public int getId() {
-        return id;
+    public int getIdProducto() {
+        return idProducto;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getIdAlamcen() {
-        return idAlamcen;
-    }
-
-    public void setIdAlamcen(int idAlamcen) {
-        this.idAlamcen = idAlamcen;
-    }
-
-    public String getCodigoLote() {
-        return codigoLote;
-    }
-
-    public void setCodigoLote(String codigoLote) {
-        this.codigoLote = codigoLote;
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
     }
 
     public String getNombre() {
@@ -96,20 +55,28 @@ public class Producto {
         this.fechaDeIngreso = fechaDeIngreso;
     }
 
-    public boolean isDevuelto() {
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
+    public Boolean getDevuelto() {
         return devuelto;
     }
 
-    public void setDevuelto(boolean devuelto) {
+    public void setDevuelto(Boolean devuelto) {
         this.devuelto = devuelto;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public Boolean getActivo() {
+        return activo;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
     
     

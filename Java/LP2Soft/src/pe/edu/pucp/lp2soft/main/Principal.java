@@ -4,51 +4,107 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
    
-import pe.edu.pucp.lp2soft.gestclientes.dao.ClienteDAO;
-
-import pe.edu.pucp.lp2soft.gestclientes.model.PersonaNatural;
-import pe.edu.pucp.lp2soft.gestclientes.mysql.ClienteMySQL;
-   
-import pe.edu.pucp.lp2soft.gestclientes.model.Categoria;
-import pe.edu.pucp.lp2soft.rrhh.model.TipoDeDocumento;
-import pe.edu.pucp.lp2soft.rrhh.dao.UsuarioDAO;
-import pe.edu.pucp.lp2soft.rrhh.model.Administrador;
-import pe.edu.pucp.lp2soft.rrhh.mysql.UsuarioMySQL;
-import pe.edu.pucp.lp2soft.rrhh.model.Sexo;
-import pe.edu.pucp.lp2soft.rrhh.model.Area;
+//import pe.edu.pucp.lp2soft.gestclientes.dao.ClienteDAO;
+//
+//import pe.edu.pucp.lp2soft.gestclientes.model.PersonaNatural;
+//import pe.edu.pucp.lp2soft.gestclientes.mysql.ClienteMySQL;
+//   
+//import pe.edu.pucp.lp2soft.enums.Categoria;
+//import pe.edu.pucp.lp2soft.rrhh.model.TipoDeDocumento;
+//import pe.edu.pucp.lp2soft.rrhh.dao.UsuarioDAO;
+//import pe.edu.pucp.lp2soft.rrhh.model.Administrador;
+//import pe.edu.pucp.lp2soft.rrhh.mysql.UsuarioMySQL;
+//import pe.edu.pucp.lp2soft.rrhh.model.Sexo;
+//import pe.edu.pucp.lp2soft.gestclientes.model.Area;
 import pe.edu.pucp.lp2soft.rrhh.model.SupervisorDeAlmacen;
-import pe.edu.pucp.lp2soft.rrhh.model.Usuario;
-import pe.edu.pucp.lp2soft.rrhh.model.Vendedor;
+//import pe.edu.pucp.lp2soft.rrhh.model.Usuario;
+//import pe.edu.pucp.lp2soft.rrhh.model.Vendedor;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.Almacen;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.Producto;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.Stock;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.AlmacenDAO;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.ProductoDAO;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.AlmacenMySQL;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.ProductoMySQL;
 public class Principal {
     public static void main(String[] args) throws Exception{
+        Date date = new Date(); 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         int resultado1, resultado2;
-        
-        UsuarioDAO daocliente = new UsuarioMySQL();
+        AlmacenDAO daoAlmacen = new AlmacenMySQL();
+        Almacen a = new Almacen();
+        a.setNombre("Almacen 1");
+        a.setDireccion("San Juan De Lurigancho");
         SupervisorDeAlmacen p = new SupervisorDeAlmacen();
-        p.setActivo(true);
-        p.setApellido("Xuan");
-
-        p.setDireccion("san isidro");
-        p.setEmail("yxuan@pucp.edu.pe");
-        Date date = new Date();  
-        p.setFechaDeNacimiento(date);
-        p.setNombre("yiming");
-        p.setNumDeDocumento("20190768");
-        p.setSexo(Sexo.Masculino);
-        p.setTelefono("933754567");
-        p.setTipoDeDocumento(TipoDeDocumento.CE);
+        p.setIdPersona(250);
+        p.setIdUsuario(250);
+        a.setSupervisor(p);
+        a.setActivo(true);
+        ArrayList<Stock> ps = new ArrayList<Stock>();
+        a.setProductos(ps);
+        
+        //daoAlmacen.insertar(a);
+        
+        ProductoDAO daoProducto = new ProductoMySQL();
+        Producto pro = new Producto();
+//        
+        pro.setCosto(12.5);
+        pro.setPrecio(20.0);
+        pro.setNombre("Almohada");
+        pro.setFoto(null);
+        pro.setDevuelto(true);
+        pro.setFechaDeIngreso(date);
+        pro.setIdProducto(1);
+        
+        Stock s = new Stock();
+        s.setCantidad(40);
+        s.setProducto(pro);
+        
+        a.setIdAlmacen(1);
+        a.getProductos().add(s);
+        //daoAlmacen.modificar(a);
+        
+        ArrayList<Almacen> as = daoAlmacen.listarTodos();
+        
+        for(Almacen pr : as){
+            System.out.println(pr.getNombre());
+        }
+        
+        //daoProducto.modificar(p);
+//        
+//        ArrayList<Producto> ps = new ArrayList<Producto>();
+//        ps = daoProducto.listarPorNombre("");
+//        
+//        for(Producto pr : ps){
+//            System.out.println(pr.getNombre());
+//        }
+//        UsuarioDAO daocliente = new UsuarioMySQL();
+        
+//        p.setActivo(true);
+//        p.setApellido("Xuan");
+//
+//        p.setDireccion("san isidro");
+//        p.setEmail("yxuan@pucp.edu.pe");
+//         
+//        p.setFechaDeNacimiento(date);
+//        p.setNombre("yiming");
+//        p.setNumDeDocumento("20190768");
+//        p.setSexo(Sexo.Masculino);
+//        p.setTelefono("933754567");
+//        p.setTipoDeDocumento(TipoDeDocumento.CE);
         //p.setCantidadVentas(100);
         
         //p.setArea(Area.Sistemas);
-        p.setIdPersona(250);
-        p.setIdUsuario(250);
-        p.setUsername("almacen");
-        p.setPassword("123456");
-        p.setFechaIngreso(date);       
-        p.setFotoPerfil(null);
-        daocliente.modificarUsuario(p);
-        ArrayList<Usuario> u = daocliente.listarPorDocumentoNombre("");
+
+//        p.setUsername("almacen");
+//        p.setPassword("123456");
+//        p.setFechaIngreso(date);       
+//        p.setFotoPerfil(null);
+        
+        
+        
+        //daocliente.modificarUsuario(p);
+        //ArrayList<Usuario> u = daocliente.listarPorDocumentoNombre("");
         //Administrador a = (Administrador) daocliente.verificar(p);
         //System.out.println(a);
         

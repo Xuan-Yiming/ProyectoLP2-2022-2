@@ -137,6 +137,7 @@
             this.dgvAlmacenes.Size = new System.Drawing.Size(727, 398);
             this.dgvAlmacenes.TabIndex = 1;
             this.dgvAlmacenes.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentDoubleClick);
+            this.dgvAlmacenes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAlmacenes_CellDoubleClick);
             this.dgvAlmacenes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductos_CellFormatting);
             // 
             // id
@@ -169,7 +170,7 @@
             this.direccion.MinimumWidth = 6;
             this.direccion.Name = "direccion";
             this.direccion.ReadOnly = true;
-            this.direccion.Width = 125;
+            this.direccion.Width = 250;
             // 
             // panel10
             // 

@@ -3,60 +3,22 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class DocumentoDebito {
-
-    private int id;
-    private int idOrdenDeCompra;
+    private int idDocumentoDebito;
     private Date fechaCreacion;
-    private Date fechaVencimiento;
     private double impuesto;
     private double monto;
-    private Moneda moneda;
-    private double saldo;
     private boolean anulado;
-    private TerminoDePago terminoDePago;
-    private ArrayList<DocumentoCredito> documentosCredito;
     private Boolean activo;
-
-    public Boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
-    }
 
     public DocumentoDebito() {
     }
-    
-    public DocumentoDebito(int idOrdenDeCompra, Date fechaCreacion, Date fechaVencimiento, double impuesto, double monto,
-            Moneda moneda, double saldo, boolean anulado, TerminoDePago terminoDePago, Boolean activo) {
-        this.idOrdenDeCompra = idOrdenDeCompra;
-        this.fechaCreacion = fechaCreacion;
-        this.fechaVencimiento = fechaVencimiento;
-        this.impuesto = impuesto;
-        this.monto = monto;
-        this.moneda = moneda;
-        this.saldo = saldo;
-        this.anulado = anulado;
-        this.terminoDePago = terminoDePago;
-        this.activo = activo;
-    }
-    
 
-    public int getId() {
-        return id;
+    public int getIdDocumentoDebito() {
+        return idDocumentoDebito;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getIdOrdenDeCompra() {
-        return idOrdenDeCompra;
-    }
-
-    public void setIdOrdenDeCompra(int idOrdenDeCompra) {
-        this.idOrdenDeCompra = idOrdenDeCompra;
+    public void setIdDocumentoDebito(int idDocumentoDebito) {
+        this.idDocumentoDebito = idDocumentoDebito;
     }
 
     public Date getFechaCreacion() {
@@ -65,14 +27,6 @@ public class DocumentoDebito {
 
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
-    }
-
-    public Date getFechaVencimiento() {
-        return fechaVencimiento;
-    }
-
-    public void setFechaVencimiento(Date fechaVencimiento) {
-        this.fechaVencimiento = fechaVencimiento;
     }
 
     public double getImpuesto() {
@@ -91,22 +45,6 @@ public class DocumentoDebito {
         this.monto = monto;
     }
 
-    public Moneda getMoneda() {
-        return moneda;
-    }
-
-    public void setMoneda(Moneda moneda) {
-        this.moneda = moneda;
-    }
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
     public boolean isAnulado() {
         return anulado;
     }
@@ -115,20 +53,12 @@ public class DocumentoDebito {
         this.anulado = anulado;
     }
 
-    public TerminoDePago getTerminoDePago() {
-        return terminoDePago;
+    public Boolean getActivo() {
+        return activo;
     }
 
-    public void setTerminoDePago(TerminoDePago terminoDePago) {
-        this.terminoDePago = terminoDePago;
-    }
-
-    public ArrayList<DocumentoCredito> getDocumentosCredito() {
-        return documentosCredito;
-    }
-
-    public void setDocumentosCredito(ArrayList<DocumentoCredito> documentosCredito) {
-        this.documentosCredito = documentosCredito;
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
     
     

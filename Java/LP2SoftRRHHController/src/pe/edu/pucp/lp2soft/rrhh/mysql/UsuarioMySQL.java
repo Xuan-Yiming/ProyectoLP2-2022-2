@@ -5,15 +5,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.config.DBManager;
+import pe.edu.pucp.lp2soft.enums.Area;
 import pe.edu.pucp.lp2soft.rrhh.dao.UsuarioDAO;
 import pe.edu.pucp.lp2soft.rrhh.model.Administrador;
-import pe.edu.pucp.lp2soft.rrhh.model.Area;
-import pe.edu.pucp.lp2soft.rrhh.model.Sexo;
 import pe.edu.pucp.lp2soft.rrhh.model.SupervisorDeAlmacen;
-import pe.edu.pucp.lp2soft.rrhh.model.TipoDeDocumento;
 import pe.edu.pucp.lp2soft.rrhh.model.Usuario;
 import pe.edu.pucp.lp2soft.rrhh.model.Vendedor;
-
+import pe.edu.pucp.lp2soft.enums.Sexo;
+import pe.edu.pucp.lp2soft.enums.TipoDeDocumento;
 
 
 public class UsuarioMySQL implements UsuarioDAO {

@@ -2,37 +2,21 @@ package pe.edu.pucp.lp2soft.ventas.ventaspagos;
 import java.util.Date;
 
 public class TerminoDePago {
-
-    private int id;
+    private int idTerminoDePago;
     private Date fechaLimite;
     private int numeroCuota;
     private double montoCuota;
-    private Boolean activo;
-
-    public Boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
-    }
+    private Boolean activo;    
 
     public TerminoDePago() {
     }
-    
-    public TerminoDePago(Date fechaLimite, int numeroCuota, double montoCuota, Boolean activo) {
-        this.fechaLimite = fechaLimite;
-        this.numeroCuota = numeroCuota;
-        this.montoCuota = montoCuota;
-        this.activo = activo;
+
+    public int getIdTerminoDePago() {
+        return idTerminoDePago;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setIdTerminoDePago(int idTerminoDePago) {
+        this.idTerminoDePago = idTerminoDePago;
     }
 
     public Date getFechaLimite() {
@@ -59,5 +43,13 @@ public class TerminoDePago {
         this.montoCuota = montoCuota;
     }
 
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
+    
     
 }

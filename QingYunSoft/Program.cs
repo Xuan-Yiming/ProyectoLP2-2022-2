@@ -1,4 +1,5 @@
-﻿using QingYunSoft.Cliente;
+﻿using QingYunSoft.Almacen;
+using QingYunSoft.Cliente;
 using QingYunSoft.Venta;
 using System;
 using System.Collections.Generic;

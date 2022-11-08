@@ -1,5 +1,9 @@
 package pe.edu.pucp.lp2soft.rrhh.model;
 
+import pe.edu.pucp.lp2soft.enums.Area;
+
+
+
 public class Administrador extends Usuario {
     private Area area;
 

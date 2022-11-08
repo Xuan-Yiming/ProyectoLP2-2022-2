@@ -8,11 +8,12 @@ CREATE DEFINER=`adminjoya`@`%` PROCEDURE `INSERTAR_PRODUCTO`(
     IN _costo DOUBLE,
     IN _devuelto TINYINT,
     IN _fecha_ingreso DATE,
+    IN _foto LONGBLOB,
     IN _activo TINYINT
     )
 BEGIN    
-    INSERT INTO producto(nombre,precio,costo,              devuelto,fecha_ingreso,activo)
-                VALUES(_nombre, _precio, _costo, _devuelto, _fecha_ingreso, 1);
+    INSERT INTO producto(nombre,precio,costo, devuelto,fecha_ingreso, foto,activo)
+                VALUES(_nombre, _precio, _costo, _devuelto, _fecha_ingreso, _foto, 1);
     SET _id_producto = @@LAST_INSERT_ID;
 END ;;
 DELIMITER ;
@@ -26,11 +27,12 @@ CREATE DEFINER=`adminjoya`@`%` PROCEDURE `MODIFICAR_PRODUCTO`(
     IN _costo DOUBLE,
     IN _devuelto TINYINT,
     IN _fecha_ingreso DATE,
+    IN _foto LONGBLOB,
     IN _activo TINYINT
     )
 BEGIN
     UPDATE producto SET nombre=_nombre, precio=_precio, costo=_costo, devuelto=_devuelto,
-                        fecha_ingreso=_fecha_ingreso, activo=_activo
+                        fecha_ingreso=_fecha_ingreso, activo=_activo, foto=_foto
         WHERE id_producto = _id_producto;
 END ;;
 DELIMITER ;
@@ -44,6 +46,31 @@ BEGIN
     UPDATE producto SET activo=0 WHERE id_producto = _id_producto;
 END ;;
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `LISTAR_PRODUCTOS_X_NOMBRE`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `LISTAR_PRODUCTOS_X_NOMBRE`(
+	IN _nombre VARCHAR(80)
+)
+BEGIN
+	SELECT *
+    FROM producto WHERE activo = 1
+    AND nombre LIKE CONCAT('%',_nombre,'%');
+END ;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `BUSCAR_PRODUCTO`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `BUSCAR_PRODUCTO`(
+    IN _id_producto INT
+)
+BEGIN
+    SELECT *
+    FROM producto WHERE activo = 1
+    AND id_producto = _id_producto;
+END ;;
+DELIMITER ;
+
 
 -- Almacen
 DROP PROCEDURE IF EXISTS `INSERTAR_ALMACEN`;
@@ -87,33 +114,116 @@ BEGIN
 END ;;
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS `LISTAR_ALMACENES_X_NOMBRE`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `LISTAR_ALMACENES_X_NOMBRE`(
+    IN _nombre VARCHAR(80)
+)
+BEGIN
+    SELECT *
+    FROM almacen WHERE activo = 1
+    AND nombre LIKE CONCAT('%',_nombre,'%');
+END ;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `LISTAR_ALMACENES`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `LISTAR_ALMACENES`()
+BEGIN
+    SELECT *
+    FROM almacen WHERE activo = 1;
+END ;;
+
 -- Stock
 DROP PROCEDURE IF EXISTS `INSERTAR_STOCK`;
 DELIMITER ;;
 CREATE DEFINER=`adminjoya`@`%` PROCEDURE `INSERTAR_STOCK`(
-    OUT _id_stock INT,
     IN _fid_almacen INT,
     IN _fid_producto INT,
-    IN _cantidad INT
+    IN _cantidad INT,
+    IN _activo TINYINT
     )
 BEGIN
-    INSERT INTO stock(fid_almacen,fid_producto,cantidad)
-                VALUES(_fid_almacen, _fid_producto, _cantidad);
-    SET _id_stock = @@LAST_INSERT_ID;
+    INSERT INTO stock(fid_almacen,fid_producto,cantidad,activo)
+                VALUES(_fid_almacen, _fid_producto, _cantidad,1);
 END ;;
 DELIMITER ;
 
 DROP PROCEDURE IF EXISTS `MODIFICAR_STOCK`;
 DELIMITER ;;
 CREATE DEFINER=`adminjoya`@`%` PROCEDURE `MODIFICAR_STOCK`(
-    IN _id_stock INT,
+    IN _fid_almacen INT,
+    IN _fid_producto INT,
+    IN _activo TINYINT,
     IN _cantidad INT
     )
 BEGIN
-    UPDATE stock SET cantidad=_cantidad
-        WHERE id_stock = _id_stock;
+    -- if can't finde the stock, insert it
+    IF NOT EXISTS (SELECT * FROM stock s 
+                    WHERE s.id_almacen = _fid_almacen AND s.id_producto = _fid_producto) THEN
+        INSERT INTO stock(id_almacen,id_producto,cantidad,activo)
+                VALUES(_fid_almacen, _fid_producto, _cantidad,1);
+    ELSE
+        UPDATE stock SET cantidad=_cantidad, activo=_activo
+            WHERE id_almacen = _fid_almacen AND id_producto = _fid_producto;
+    END IF;
 END ;;
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `ELIMINAR_STOCK`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `ELIMINAR_STOCK`(
+        IN _fid_almacen INT,
+        IN _fid_producto INT
+    )
+BEGIN
+    UPDATE stock SET activo=0 
+    WHERE fid_almacen = _fid_almacen AND fid_producto = _fid_producto;
+END ;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `LISTAR_STOCK_X_ALMACEN`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `LISTAR_STOCK_X_ALMACEN`(
+    IN _fid_almacen INT
+    )
+BEGIN
+    SELECT * FROM stock WHERE id_almacen = _fid_almacen AND activo = 1;
+END ;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `LISTAR_STOCK_X_PRODUCTO`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `LISTAR_STOCK_X_PRODUCTO`(
+    IN _fid_producto INT
+    )
+BEGIN
+    SELECT * FROM stock WHERE id_producto = _fid_producto AND activo = 1;
+END ;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `LISTAR_STOCK_X_ALMACEN_Y_PRODUCTO`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `LISTAR_STOCK_X_ALMACEN_Y_PRODUCTO`(
+    IN _fid_almacen INT,
+    IN _fid_producto INT
+    )
+BEGIN
+    SELECT * FROM stock WHERE id_almacen = _fid_almacen AND id_producto = _fid_producto AND activo = 1;
+END ;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `LISTAR_STOCK_X_ALMACEN_Y_NOMBRE_PRODUCTO`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `LISTAR_STOCK_X_ALMACEN_Y_NOMBRE_PRODUCTO`(
+    IN _fid_almacen INT,
+    IN _nombre VARCHAR(80)
+    )
+BEGIN
+    SELECT * FROM stock s
+    INNER JOIN producto p ON s.id_producto = p.id_producto
+    WHERE s.id_almacen = _fid_almacen AND s.activo = 1 AND p.nombre LIKE CONCAT('%',_nombre,'%');
+END ;;
 
 -- Orden De Compra
 DROP PROCEDURE IF EXISTS `INSERTAR_ORDEN_DE_COMPRA`;
@@ -235,20 +345,45 @@ BEGIN
 END ;;
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS `MODIFICAR_RECLAMO`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `MODIFICAR_RECLAMO`(
+    IN _id_reclamo INT,
+    IN _fid_orden_de_compra INT,
+    IN _fecha DATE,
+    IN _atendido TINYINT,
+    IN _justificacion VARCHAR(500),
+    IN _activo TINYINT
+    )
+BEGIN
+    UPDATE reclamo SET fid_orden_de_compra=_fid_orden_de_compra, fecha=_fecha, atendido=_atendido, justificacion=_justificacion, activo=_activo
+        WHERE id_reclamo = _id_reclamo;
+END ;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `ELIMINAR_RECLAMO`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `ELIMINAR_RECLAMO`(
+    IN _id_reclamo INT
+    )
+BEGIN
+    UPDATE reclamo SET activo=0 WHERE id_reclamo = _id_reclamo;
+END ;;
+DELIMITER ;
+
 -- devolucion
 DROP PROCEDURE IF EXISTS `INSERTAR_DEVOLUCION`;
 DELIMITER ;;
 CREATE DEFINER=`adminjoya`@`%` PROCEDURE `INSERTAR_DEVOLUCION`(
     OUT _id_devolucion INT,
-    IN _fid_orden_de_compra INT,
     IN _fid_producto INT,
     IN _fid_reclamo INT,
     IN _cantidad INT,
     IN _activo TINYINT
     )
 BEGIN
-    INSERT INTO devolucion(fid_orden_de_compra,fid_producto,fid_reclamo,cantidad,activo)
-                VALUES(_fid_orden_de_compra, _fid_producto, _fid_reclamo, _cantidad, 1);
+    INSERT INTO devolucion(fid_producto,fid_reclamo,cantidad,activo)
+                VALUES( _fid_producto, _fid_reclamo, _cantidad, 1);
     SET _id_devolucion = @@LAST_INSERT_ID;
 END ;;
 DELIMITER ;
@@ -257,7 +392,6 @@ DROP PROCEDURE IF EXISTS `MODIFICAR_DEVOLUCION`;
 DELIMITER ;;
 CREATE DEFINER=`adminjoya`@`%` PROCEDURE `MODIFICAR_DEVOLUCION`(
     IN _id_devolucion INT,
-    IN _fid_orden_de_compra INT,
     IN _fid_producto INT,
     IN _fid_reclamo INT,
     IN _cantidad INT,

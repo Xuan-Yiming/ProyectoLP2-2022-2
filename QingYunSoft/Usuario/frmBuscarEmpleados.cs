@@ -169,6 +169,11 @@ namespace QingYunSoft.Usuario
                 m.Result = (IntPtr)HTCAPTION;
 
         }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
         //out drop shadow done
     }
 }

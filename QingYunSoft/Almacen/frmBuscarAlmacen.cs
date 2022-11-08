@@ -25,6 +25,8 @@ namespace QingYunSoft.Almacen
             
             dgvAlmacenes.AutoGenerateColumns = false;
             dgvAlmacenes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            this.CenterToScreen();
         }
 
         public almacen AlmacenSeleccionado { get => almacenSeleccionado; set => almacenSeleccionado = value; }
@@ -45,9 +47,10 @@ namespace QingYunSoft.Almacen
         private void dgvAlmacenes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             VentasWS.almacen almacen = (VentasWS.almacen)dgvAlmacenes.CurrentRow.DataBoundItem;
-            dgvAlmacenes.Rows[e.RowIndex].Cells["id"].Value = almacen.id;
+            dgvAlmacenes.Rows[e.RowIndex].Cells["id"].Value = almacen.idAlmacen;
             dgvAlmacenes.Rows[e.RowIndex].Cells["nombre"].Value = almacen.nombre;
-            //dgvProductos.Rows[e.RowIndex].Cells["supervisor"].Value = almacenSeleccionado.idSupervisor;
+            dgvAlmacenes.Rows[e.RowIndex].Cells["supervisor"].Value = ((VentasWS.supervisorDeAlmacen)almacen.supervisor).nombre
+                                                            + " " + ((VentasWS.supervisorDeAlmacen)almacen.supervisor).apellido;
             dgvAlmacenes.Rows[e.RowIndex].Cells["direccion"].Value = almacen.direccion;
         }
 
@@ -153,6 +156,17 @@ namespace QingYunSoft.Almacen
             if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
                 m.Result = (IntPtr)HTCAPTION;
 
+        }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void frmBuscarAlmacen_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0xA1, 0x2, 0);
         }
         //out drop shadow done
     }

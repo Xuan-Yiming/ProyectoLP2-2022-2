@@ -866,6 +866,9 @@ exists or setup the property manually. For example like this:
         <ant antfile="${project.LP2SoftDBManager}/build.xml" inheritall="false" target="jar">
             <property name="deploy.on.save" value="false"/>
         </ant>
+        <ant antfile="${project.LP2SoftEnums}/build.xml" inheritall="false" target="jar">
+            <property name="deploy.on.save" value="false"/>
+        </ant>
         <ant antfile="${project.LP2SoftGestClientesController}/build.xml" inheritall="false" target="jar">
             <property name="deploy.on.save" value="false"/>
         </ant>
@@ -887,6 +890,9 @@ exists or setup the property manually. For example like this:
     </target>
     <target depends="init" if="dist.ear.dir" name="deps-ear-jar" unless="no.deps">
         <ant antfile="${project.LP2SoftDBManager}/build.xml" inheritall="false" target="jar">
+            <property name="deploy.on.save" value="false"/>
+        </ant>
+        <ant antfile="${project.LP2SoftEnums}/build.xml" inheritall="false" target="jar">
             <property name="deploy.on.save" value="false"/>
         </ant>
         <ant antfile="${project.LP2SoftGestClientesController}/build.xml" inheritall="false" target="jar">
@@ -1059,6 +1065,7 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${reference.LP2SoftVentasController.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${reference.LP2SoftVentasModel.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${reference.LP2SoftDBManager.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${reference.LP2SoftEnums.jar}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}/lib"/>
         <mkdir dir="${build.web.dir}/META-INF"/>
         <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update"/>
     </target>
@@ -1071,6 +1078,7 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${reference.LP2SoftVentasController.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${reference.LP2SoftVentasModel.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${reference.LP2SoftDBManager.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${reference.LP2SoftEnums.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
     </target>
     <target depends="init" if="dist.ear.dir" name="-clean-webinf-lib">
         <delete dir="${build.web.dir}/WEB-INF/lib"/>
@@ -1489,6 +1497,7 @@ exists or setup the property manually. For example like this:
             -->
     <target depends="init" name="deps-clean" unless="no.deps">
         <ant antfile="${project.LP2SoftDBManager}/build.xml" inheritall="false" target="clean"/>
+        <ant antfile="${project.LP2SoftEnums}/build.xml" inheritall="false" target="clean"/>
         <ant antfile="${project.LP2SoftGestClientesController}/build.xml" inheritall="false" target="clean"/>
         <ant antfile="${project.LP2SoftGestClientesModel}/build.xml" inheritall="false" target="clean"/>
         <ant antfile="${project.LP2SoftRRHHController}/build.xml" inheritall="false" target="clean"/>

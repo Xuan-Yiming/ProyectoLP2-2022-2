@@ -5,7 +5,7 @@ import pe.edu.pucp.lp2soft.ventas.manejoproductos.Almacen;
 public interface AlmacenDAO {
     public int insertar(Almacen almacen);
     public int modificar(Almacen almacen);
-    public int eliminar(int id);
+    public int eliminar(Almacen almacen);
     public ArrayList<Almacen> listarTodos();
     public ArrayList<Almacen> listarPorNombre(String nombre);
 }

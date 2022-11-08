@@ -1,6 +1,9 @@
 package pe.edu.pucp.lp2soft.rrhh.model;
 
 import java.util.Date;
+import pe.edu.pucp.lp2soft.enums.Sexo;
+import pe.edu.pucp.lp2soft.enums.TipoDeDocumento;
+
 
 public class Persona {
     private int idPersona;

@@ -22,7 +22,7 @@
                 <id>jar</id>
             </reference>
             <reference>
-                <foreign-project>LP2SoftRRHHModel</foreign-project>
+                <foreign-project>LP2SoftEnums</foreign-project>
                 <artifact-type>jar</artifact-type>
                 <script>build.xml</script>
                 <target>jar</target>
@@ -30,7 +30,7 @@
                 <id>jar</id>
             </reference>
             <reference>
-                <foreign-project>LP2SoftVentasModel</foreign-project>
+                <foreign-project>LP2SoftRRHHModel</foreign-project>
                 <artifact-type>jar</artifact-type>
                 <script>build.xml</script>
                 <target>jar</target>

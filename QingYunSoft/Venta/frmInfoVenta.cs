@@ -16,10 +16,10 @@ namespace QingYunSoft
         //objetos
         private Estado _estado;
         private frmPrincipal _frmPrincipal;
-        private VentasWS.ordenDeCompra _venta;
+        //private VentasWS.ordenDeCompra _venta;
         private GestClientesWS.cliente _cliente;
-        private VentasWS.terminoDePago _terminoDePago;
-        private VentasWS.pedido _pedidos;
+        //private VentasWS.terminoDePago _terminoDePago;
+        //private VentasWS.pedido _pedidos;
         private RRHHWS.usuario _usuario;
 
         //constructores
@@ -36,15 +36,15 @@ namespace QingYunSoft
             establecerEstadoComponentes();
         }
 
-        public frmInfoVenta(frmPrincipal _frmPrincipal, Estado estado, VentasWS.ordenDeCompra ordenDeCompra, RRHHWS.usuario _usuario)
-        {
-            InitializeComponent();
-            this._estado = estado;
-            this._frmPrincipal = _frmPrincipal;
-            this._venta = ordenDeCompra;
-            this._usuario = _usuario;
-            establecerEstadoComponentes();
-        }
+        //public frmInfoVenta(frmPrincipal _frmPrincipal, Estado estado, VentasWS.ordenDeCompra ordenDeCompra, RRHHWS.usuario _usuario)
+        //{
+        //    InitializeComponent();
+        //    this._estado = estado;
+        //    this._frmPrincipal = _frmPrincipal;
+        //    this._venta = ordenDeCompra;
+        //    this._usuario = _usuario;
+        //    establecerEstadoComponentes();
+        //}
         
         //metodos
         private void establecerEstadoComponentes()
@@ -182,24 +182,24 @@ namespace QingYunSoft
             else
             {
                 //si es venta nueva
-                if(this._venta == null)
-                {
-                    this._venta = new VentasWS.ordenDeCompra();
-                }
-                this._venta.idCliente = this._cliente.idCliente;
-                this._venta.idVendedor = this._usuario.idUsuario;
-                this._venta.moneda = (VentasWS.moneda)this.cbMoneda.SelectedItem;
-                this._venta.direccionDeEntrega = this.txtDireccion.Text;
-                this._venta.formaDeEntrega = (VentasWS.formaDeEntrega)this.cbFormaDeEntrega.SelectedItem;
-                this._venta.fechaDeEntrega = this.dtpFechaEntrega.Value;
-                this._venta.fechaDeCompra = this.dtpFechaCompra.Value;
-                this._venta.monto = Double.Parse(txtMontoTotal.Text);
+                //if(this._venta == null)
+                //{
+                //    this._venta = new VentasWS.ordenDeCompra();
+                //}
+                //this._venta.idCliente = this._cliente.idCliente;
+                //this._venta.idVendedor = this._usuario.idUsuario;
+                //this._venta.moneda = (VentasWS.moneda)this.cbMoneda.SelectedItem;
+                //this._venta.direccionDeEntrega = this.txtDireccion.Text;
+                //this._venta.formaDeEntrega = (VentasWS.formaDeEntrega)this.cbFormaDeEntrega.SelectedItem;
+                //this._venta.fechaDeEntrega = this.dtpFechaEntrega.Value;
+                //this._venta.fechaDeCompra = this.dtpFechaCompra.Value;
+                //this._venta.monto = Double.Parse(txtMontoTotal.Text);
 
-                this._venta.moneda = (VentasWS.moneda)this.cbMoneda.SelectedItem;
+                //this._venta.moneda = (VentasWS.moneda)this.cbMoneda.SelectedItem;
 
-                this._terminoDePago.numeroCuota = Int32.Parse(this.txtCuotas.Text);
-                this._terminoDePago.montoCuota = double.Parse(this.txtMontoCuota.Text);
-                this._terminoDePago.fechaLimite = this.dtpFechaLimite.Value;
+                //this._terminoDePago.numeroCuota = Int32.Parse(this.txtCuotas.Text);
+                //this._terminoDePago.montoCuota = double.Parse(this.txtMontoCuota.Text);
+                //this._terminoDePago.fechaLimite = this.dtpFechaLimite.Value;
             }
         }
 

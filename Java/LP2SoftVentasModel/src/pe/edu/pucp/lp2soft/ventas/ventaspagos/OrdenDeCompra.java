@@ -1,76 +1,38 @@
 package pe.edu.pucp.lp2soft.ventas.ventaspagos;
 import java.util.ArrayList;
 import java.util.Date;
+import pe.edu.pucp.lp2soft.rrhh.model.Vendedor;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Pedido;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Reclamo;
 
 
 public class OrdenDeCompra{
-    private int id;
-
-    private int idCliente;
-    private int idVendedor;
+    private int idOrdenDeCompra;
     private double monto;
+    private double saldo;
     private Moneda moneda;
     private String direccionDeEntrega;
     private FormaDeEntrega formaDeEntrega;
     private Date fechaDeCompra;
     private Date fechaDeEntrega;
     private boolean pagado;
+    private TerminoDePago terminoDePago;
     private ArrayList<DocumentoDebito> documentosDebito;
     private ArrayList<DocumentoCredito> documentosCredito;
     private ArrayList<Pedido> pedidos;
     private ArrayList<Reclamo> reclamos;
+    private Vendedor vendedor;
     private Boolean activo;
-
-    public Boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
-    }
 
     public OrdenDeCompra() {
     }
-    
-    public OrdenDeCompra(int idCliente, int idVendedor, double monto, Moneda moneda,
-            String direccionDeEntrega, FormaDeEntrega formaDeEntrega, Date fechaDeCompra, Date fechaDeEntrega,
-            boolean pagado, Boolean activo) {
-        this.idCliente = idCliente;
-        this.idVendedor = idVendedor;
-        this.monto = monto;
-        this.moneda = moneda;
-        this.direccionDeEntrega = direccionDeEntrega;
-        this.formaDeEntrega = formaDeEntrega;
-        this.fechaDeCompra = fechaDeCompra;
-        this.fechaDeEntrega = fechaDeEntrega;
-        this.pagado = pagado;
-        this.activo = activo;
+
+    public int getIdOrdenDeCompra() {
+        return idOrdenDeCompra;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public int getIdVendedor() {
-        return idVendedor;
-    }
-
-    public void setIdVendedor(int idVendedor) {
-        this.idVendedor = idVendedor;
+    public void setIdOrdenDeCompra(int idOrdenDeCompra) {
+        this.idOrdenDeCompra = idOrdenDeCompra;
     }
 
     public double getMonto() {
@@ -79,6 +41,14 @@ public class OrdenDeCompra{
 
     public void setMonto(double monto) {
         this.monto = monto;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
     public Moneda getMoneda() {
@@ -129,6 +99,14 @@ public class OrdenDeCompra{
         this.pagado = pagado;
     }
 
+    public TerminoDePago getTerminoDePago() {
+        return terminoDePago;
+    }
+
+    public void setTerminoDePago(TerminoDePago terminoDePago) {
+        this.terminoDePago = terminoDePago;
+    }
+
     public ArrayList<DocumentoDebito> getDocumentosDebito() {
         return documentosDebito;
     }
@@ -159,6 +137,22 @@ public class OrdenDeCompra{
 
     public void setReclamos(ArrayList<Reclamo> reclamos) {
         this.reclamos = reclamos;
+    }
+
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
     
     

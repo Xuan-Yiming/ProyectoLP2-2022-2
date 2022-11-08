@@ -191,6 +191,32 @@ BEGIN
 END ;;
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS `BUSCAR_SUPERVISOR_X_ID_USUARIO`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `BUSCAR_SUPERVISOR_X_ID_USUARIO`(
+    IN _id_usuario INT
+    )
+BEGIN
+	SELECT  u.*,
+            p.*
+    FROM    usuario u
+            INNER JOIN persona p ON u.id_usuario=p.id_persona
+            LEFT JOIN supervisorDeAlmacen s ON u.id_usuario=s.id_usuario
+    WHERE   u.activo = 1 AND s.id_usuario = _id_usuario;
+END ;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `LISTAR_SUPERVISORES`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `LISTAR_SUPERVISORES`()
+BEGIN
+    SELECT  u.*,
+            p.*
+    FROM    usuario u
+            INNER JOIN persona p ON u.id_usuario=p.id_persona
+            LEFT JOIN supervisorDeAlmacen s ON u.id_usuario=s.id_usuario
+    WHERE   u.activo = 1;
+END ;;
 -- Procedimientos Generales
 DROP PROCEDURE IF EXISTS `ELIMINAR_USUARIO`;
 DELIMITER ;;

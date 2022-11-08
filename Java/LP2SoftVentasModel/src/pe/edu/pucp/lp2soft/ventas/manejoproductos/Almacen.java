@@ -1,39 +1,26 @@
-
 package pe.edu.pucp.lp2soft.ventas.manejoproductos;
+
 import java.util.ArrayList;
+import pe.edu.pucp.lp2soft.rrhh.model.SupervisorDeAlmacen;
 
 public class Almacen {
-    private int id;
+    private int idAlmacen;
     private String  nombre;
     private String  direccion;
-    private ArrayList<Producto> productos;
+    private ArrayList<Stock> productos;
+    private SupervisorDeAlmacen supervisor;
     private Boolean activo;
-
-    public Boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
-    }
 
     public Almacen() {
     }
-    
-    public Almacen(String nombre,String direccion) {
-        this.nombre=nombre;
-        this.direccion=direccion;
-        this.activo=true;
-    }
-    
-    public int getId() {
-        return id;
+
+    public int getIdAlmacen() {
+        return idAlmacen;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdAlmacen(int idAlmacen) {
+        this.idAlmacen = idAlmacen;
     }
-
 
     public String getNombre() {
         return nombre;
@@ -51,15 +38,29 @@ public class Almacen {
         this.direccion = direccion;
     }
 
-    public ArrayList<Producto> getProductos() {
+    public ArrayList<Stock> getProductos() {
         return productos;
     }
 
-    public void setProductos(ArrayList<Producto> productos) {
+    public void setProductos(ArrayList<Stock> productos) {
         this.productos = productos;
     }
 
+    public SupervisorDeAlmacen getSupervisor() {
+        return supervisor;
+    }
 
-    
+    public void setSupervisor(SupervisorDeAlmacen supervisor) {
+        this.supervisor = supervisor;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
+
     
 }

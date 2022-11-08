@@ -17,9 +17,9 @@ namespace QingYunSoft.Venta
     public partial class frmBuscarVenta : Form
     {
         //objetos
-        private VentasWS.ordenDeCompra ordenDeCompraSeleccionado;
-        public ordenDeCompra OrdenDeCompraSeleccionado { get => ordenDeCompraSeleccionado; set => ordenDeCompraSeleccionado = value; }
-        private GestClientesWS.cliente clienteSeleccionado;
+        //private VentasWS.ordenDeCompra ordenDeCompraSeleccionado;
+        //public ordenDeCompra OrdenDeCompraSeleccionado { get => ordenDeCompraSeleccionado; set => ordenDeCompraSeleccionado = value; }
+        //private GestClientesWS.cliente clienteSeleccionado;
         public frmBuscarVenta()
         {
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace QingYunSoft.Venta
         {
             if (dgvVentas.CurrentRow != null)
             {
-                OrdenDeCompraSeleccionado = (VentasWS.ordenDeCompra)dgvVentas.CurrentRow.DataBoundItem;
+                //OrdenDeCompraSeleccionado = (VentasWS.ordenDeCompra)dgvVentas.CurrentRow.DataBoundItem;
                 this.DialogResult = DialogResult.OK;
             }
             else
@@ -50,38 +50,38 @@ namespace QingYunSoft.Venta
 
         private void dgvVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            VentasWS.ordenDeCompra venta = (VentasWS.ordenDeCompra)dgvVentas.Rows[e.RowIndex].DataBoundItem;
-            dgvVentas.Rows[e.RowIndex].Cells["ID"].Value = venta.id;
-            dgvVentas.Rows[e.RowIndex].Cells["idCliente"].Value = venta.idCliente;
-            dgvVentas.Rows[e.RowIndex].Cells["fechaVenta"].Value = venta.fechaDeCompra;
-            dgvVentas.Rows[e.RowIndex].Cells["moneda"].Value = ((VentasWS.moneda)venta.moneda).abreviatura;
-            dgvVentas.Rows[e.RowIndex].Cells["monto"].Value = (double)venta.monto;
+            //VentasWS.ordenDeCompra venta = (VentasWS.ordenDeCompra)dgvVentas.Rows[e.RowIndex].DataBoundItem;
+            //dgvVentas.Rows[e.RowIndex].Cells["ID"].Value = venta.id;
+            //dgvVentas.Rows[e.RowIndex].Cells["idCliente"].Value = venta.idCliente;
+            //dgvVentas.Rows[e.RowIndex].Cells["fechaVenta"].Value = venta.fechaDeCompra;
+            //dgvVentas.Rows[e.RowIndex].Cells["moneda"].Value = ((VentasWS.moneda)venta.moneda).abreviatura;
+            //dgvVentas.Rows[e.RowIndex].Cells["monto"].Value = (double)venta.monto;
         }
 
         private void btBuscarPorCliente_Click(object sender, EventArgs e)
         {
-            dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorCliente(this.clienteSeleccionado.idCliente);
+            //dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorCliente(this.clienteSeleccionado.idCliente);
         }
 
         private void btBuscarPorFecha_Click(object sender, EventArgs e)
         {
-            dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorFecha(dtpFecha.Value);       
+            //dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorFecha(dtpFecha.Value);       
         }
 
         private void btBuscarCliente_Click(object sender, EventArgs e)
         {
-            frmBuscarCliente _frmBuscarCliente = new frmBuscarCliente();
-            if (_frmBuscarCliente.ShowDialog() == DialogResult.OK)
-            {
-                this.clienteSeleccionado = _frmBuscarCliente.ClienteSeleccionado;
-                if (clienteSeleccionado is GestClientesWS.personaNatural)
-                {
-                    txtCliente.Text = ((GestClientesWS.personaNatural)clienteSeleccionado).nombre + ", " + ((GestClientesWS.personaNatural)clienteSeleccionado).apellido;
-                }else if(clienteSeleccionado is GestClientesWS.empresa)
-                {
-                    txtCliente.Text = ((GestClientesWS.empresa)clienteSeleccionado).razonSocial;
-                }                
-            }
+            //frmBuscarCliente _frmBuscarCliente = new frmBuscarCliente();
+            //if (_frmBuscarCliente.ShowDialog() == DialogResult.OK)
+            //{
+            //    this.clienteSeleccionado = _frmBuscarCliente.ClienteSeleccionado;
+            //    if (clienteSeleccionado is GestClientesWS.personaNatural)
+            //    {
+            //        txtCliente.Text = ((GestClientesWS.personaNatural)clienteSeleccionado).nombre + ", " + ((GestClientesWS.personaNatural)clienteSeleccionado).apellido;
+            //    }else if(clienteSeleccionado is GestClientesWS.empresa)
+            //    {
+            //        txtCliente.Text = ((GestClientesWS.empresa)clienteSeleccionado).razonSocial;
+            //    }                
+            //}
         }
 
         //otros

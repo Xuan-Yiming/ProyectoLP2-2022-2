@@ -1,15 +1,41 @@
 package pe.edu.pucp.lp2soft.ventas.manejoproductos;
+
 import java.util.Date;
 
 public class Devolucion {
-
-
-    private int id;
-    private int idProducto;
-    private int idReclamo;
+    private int idDevolucion;
+    private Producto producto;
+    private int cantidad;
     private Boolean activo;
 
-    public Boolean isActivo() {
+    public Devolucion() {
+    }
+
+    public int getIdDevolucion() {
+        return idDevolucion;
+    }
+
+    public void setIdDevolucion(int idDevolucion) {
+        this.idDevolucion = idDevolucion;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Boolean getActivo() {
         return activo;
     }
 
@@ -17,39 +43,6 @@ public class Devolucion {
         this.activo = activo;
     }
 
-    public Devolucion() {
-    }
-
-    public Devolucion(int idProducto, int idReclamo, Boolean activo){
-        this.idProducto = idProducto;
-        this.idReclamo = idReclamo;
-        this.activo = activo;
-    }
-    
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
-    }
-
-    public int getIdReclamo() {
-        return idReclamo;
-    }
-
-    public void setIdReclamo(int idReclamo) {
-        this.idReclamo = idReclamo;
-    }
-    
     
 }
 

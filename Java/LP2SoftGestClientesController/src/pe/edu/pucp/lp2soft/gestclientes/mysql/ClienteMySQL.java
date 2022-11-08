@@ -6,12 +6,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.config.DBManager;
 import pe.edu.pucp.lp2soft.gestclientes.dao.ClienteDAO;
-import pe.edu.pucp.lp2soft.gestclientes.model.Categoria;
+import pe.edu.pucp.lp2soft.enums.Categoria;
 import pe.edu.pucp.lp2soft.gestclientes.model.Cliente;
 import pe.edu.pucp.lp2soft.gestclientes.model.Empresa;
 import pe.edu.pucp.lp2soft.gestclientes.model.PersonaNatural;
-import pe.edu.pucp.lp2soft.gestclientes.model.Sexo;
-import pe.edu.pucp.lp2soft.gestclientes.model.TipoDeDocumento;
+import pe.edu.pucp.lp2soft.enums.Sexo;
+import pe.edu.pucp.lp2soft.enums.TipoDeDocumento;
 
 public class ClienteMySQL implements ClienteDAO{
     private Connection con;

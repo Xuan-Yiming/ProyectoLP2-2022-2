@@ -202,8 +202,8 @@ namespace QingYunSoft
         private void btAlmacen_Click(object sender, EventArgs e)
         {
             lbltitulo.Text = "Almacen";
-            //frmAlmacen _frmAlmacen = new frmAlmacen();
-            //mostrarFormularioEnPnlPrincipal(_frmAlmacen);
+            frmAlmacen _frmAlmacen = new frmAlmacen(this);
+            mostrarFormularioEnPnlPrincipal(_frmAlmacen);
             resetColor();
             btnAlmacen.BackColor = Color.FromArgb(182, 111, 11);
         }

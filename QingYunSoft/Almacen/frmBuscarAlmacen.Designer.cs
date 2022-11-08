@@ -37,6 +37,7 @@
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supervisor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacenes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,12 +129,27 @@
             this.direccion.Name = "direccion";
             this.direccion.ReadOnly = true;
             // 
+            // btCancelar
+            // 
+            this.btCancelar.BackgroundImage = global::QingYunSoft.Properties.Resources.multiply;
+            this.btCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btCancelar.FlatAppearance.BorderSize = 0;
+            this.btCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCancelar.Location = new System.Drawing.Point(698, 5);
+            this.btCancelar.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.btCancelar.Name = "btCancelar";
+            this.btCancelar.Size = new System.Drawing.Size(40, 50);
+            this.btCancelar.TabIndex = 32;
+            this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
+            // 
             // frmBuscarAlmacen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(750, 380);
+            this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.dgvAlmacenes);
             this.Controls.Add(this.btSeleccionar);
             this.Controls.Add(this.btBuscarAlmacen);
@@ -142,6 +158,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmBuscarAlmacen";
             this.Text = "frmBuscarAlmacen";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmBuscarAlmacen_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacenes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -159,5 +176,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn supervisor;
         private System.Windows.Forms.DataGridViewTextBoxColumn direccion;
+        private System.Windows.Forms.Button btCancelar;
     }
 }

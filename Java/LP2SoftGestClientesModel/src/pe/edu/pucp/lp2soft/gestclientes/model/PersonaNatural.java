@@ -2,6 +2,9 @@ package pe.edu.pucp.lp2soft.gestclientes.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import pe.edu.pucp.lp2soft.enums.Categoria;
+import pe.edu.pucp.lp2soft.enums.Sexo;
+import pe.edu.pucp.lp2soft.enums.TipoDeDocumento;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
 
 public class PersonaNatural extends Cliente {

@@ -16,7 +16,9 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `DBProyectoLP2` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
 USE `DBProyectoLP2` ;
-
+-- ---------------------------------------------------------------------------------------------------
+-- RRHH
+-- ---------------------------------------------------------------------------------------------------
 -- -----------------------------------------------------
 -- Table `DBProyectoLP2`.`persona`
 -- -----------------------------------------------------
@@ -35,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`persona` (
   `activo` TINYINT NULL DEFAULT NULL,
   PRIMARY KEY (`id_persona`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 248
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -90,7 +92,81 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+-- -----------------------------------------------------
+-- Table `DBProyectoLP2`.`vendedor`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `DBProyectoLP2`.`vendedor` ;
+CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`vendedor` (
+  `id_usuario` INT NOT NULL,
+  `cantidad_ventas` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`id_usuario`),
+  CONSTRAINT `vendedor_ibfk_1`
+    FOREIGN KEY (`id_usuario`)
+    REFERENCES `DBProyectoLP2`.`usuario` (`id_usuario`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
+-- ---------------------------------------------------------------------------------------------------
+-- GestCliente
+-- ---------------------------------------------------------------------------------------------------
+-- -----------------------------------------------------
+-- Table `DBProyectoLP2`.`cliente`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `DBProyectoLP2`.`cliente` ;
+CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`cliente` (
+  `id_cliente` INT NOT NULL AUTO_INCREMENT,
+  `categoria` VARCHAR(100) NULL DEFAULT NULL,
+  `activo` TINYINT NULL DEFAULT NULL,
+  PRIMARY KEY (`id_cliente`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+-- -----------------------------------------------------
+-- Table `DBProyectoLP2`.`empresa`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `DBProyectoLP2`.`empresa` ;
+CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`empresa` (
+  `id_empresa` INT NOT NULL,
+  `RUC` VARCHAR(100) NULL DEFAULT NULL,
+  `razon_social` VARCHAR(100) NULL DEFAULT NULL,
+  `direccion` VARCHAR(200) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_empresa`),
+  CONSTRAINT `empresa_ibfk_1`
+    FOREIGN KEY (`id_empresa`)
+    REFERENCES `DBProyectoLP2`.`cliente` (`id_cliente`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+-- -----------------------------------------------------
+-- Table `DBProyectoLP2`.`personaNatural`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `DBProyectoLP2`.`personaNatural` ;
+CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`personaNatural` (
+  `id_persona_natural` INT NOT NULL,
+  `tipo_de_documento` VARCHAR(50) NULL DEFAULT NULL,
+  `numero_de_documento` VARCHAR(50) NULL DEFAULT NULL,
+  `nombre` VARCHAR(100) NULL DEFAULT NULL,
+  `apellido` VARCHAR(100) NULL DEFAULT NULL,
+  `fecha_de_nacimiento` DATE NULL DEFAULT NULL,
+  `sexo` VARCHAR(100) NULL DEFAULT NULL,
+  `telefono` VARCHAR(15) NULL DEFAULT NULL,
+  `direccion` VARCHAR(200) NULL DEFAULT NULL,
+  `email` VARCHAR(100) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_persona_natural`),
+  CONSTRAINT `personaNatural_ibfk_1`
+    FOREIGN KEY (`id_persona_natural`)
+    REFERENCES `DBProyectoLP2`.`cliente` (`id_cliente`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+-- ---------------------------------------------------------------------------------------------------
+-- Ventas - manejoProducto
+-- ---------------------------------------------------------------------------------------------------
 -- -----------------------------------------------------
 -- Table `DBProyectoLP2`.`almacen`
 -- -----------------------------------------------------
@@ -109,25 +185,35 @@ CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`almacen` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 87
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-
 -- -----------------------------------------------------
--- Table `DBProyectoLP2`.`cliente`
+-- Table `DBProyectoLP2`.`stock`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `DBProyectoLP2`.`cliente` ;
-CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`cliente` (
-  `id_cliente` INT NOT NULL AUTO_INCREMENT,
-  `categoria` VARCHAR(100) NULL DEFAULT NULL,
+DROP TABLE IF EXISTS `DBProyectoLP2`.`stock` ;
+CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`stock` (
+  `id_almacen` INT NOT NULL,
+  `id_producto` INT NOT NULL,
+  `cantidad` INT NULL,
   `activo` TINYINT NULL DEFAULT NULL,
-  PRIMARY KEY (`id_cliente`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 150
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
+  INDEX `fk_stock_almacen1_idx` (`id_almacen` ASC) VISIBLE,
+  INDEX `fk_stock_producto1_idx` (`id_producto` ASC) VISIBLE,
+  CONSTRAINT `fk_stock_almacen1`
+    FOREIGN KEY (`id_almacen`)
+    REFERENCES `DBProyectoLP2`.`almacen` (`id_almacen`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_stock_producto1`
+    FOREIGN KEY (`id_producto`)
+    REFERENCES `DBProyectoLP2`.`producto` (`id_producto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
 -- Table `DBProyectoLP2`.`producto`
@@ -140,63 +226,87 @@ CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`producto` (
   `costo` DOUBLE NULL DEFAULT NULL,
   `devuelto` TINYINT NULL DEFAULT NULL,
   `fecha_ingreso` DATE NULL DEFAULT NULL,
-  `activo` TINYINT NULL DEFAULT NULL,
+  `foto` LONGBLOB NULL DEFAULT NULL,
+  `activo` TINYINT NULL DEFAULT NULL,  
   PRIMARY KEY (`id_producto`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 166
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-
 -- -----------------------------------------------------
--- Table `DBProyectoLP2`.`moneda`
+-- Table `DBProyectoLP2`.`reclamo`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `DBProyectoLP2`.`moneda` ;
-CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`moneda` (
-  `id_moneda` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(50) NULL DEFAULT NULL,
-  `abreviatura` VARCHAR(10) NULL DEFAULT NULL,
+DROP TABLE IF EXISTS `DBProyectoLP2`.`reclamo` ;
+CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`reclamo` (
+  `id_reclamo` INT NOT NULL AUTO_INCREMENT,
+  `fid_orden_de_compra` INT NULL DEFAULT NULL,
+  `fecha` DATE NULL DEFAULT NULL,
+  `atendido` TINYINT(1) NULL DEFAULT NULL,
+  `justificacion` VARCHAR(500) NULL DEFAULT NULL,
   `activo` TINYINT NULL DEFAULT NULL,
-  PRIMARY KEY (`id_moneda`))
+  PRIMARY KEY (`id_reclamo`),
+  INDEX `fid_orden_de_compra` (`fid_orden_de_compra` ASC) VISIBLE,
+  CONSTRAINT `reclamo_ibfk_1`
+    FOREIGN KEY (`fid_orden_de_compra`)
+    REFERENCES `DBProyectoLP2`.`ordenDeCompra` (`id_orden_de_compra`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 162
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-
 -- -----------------------------------------------------
--- Table `DBProyectoLP2`.`vendedor`
+-- Table `DBProyectoLP2`.`devolucion`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `DBProyectoLP2`.`vendedor` ;
-CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`vendedor` (
-  `id_usuario` INT NOT NULL,
-  `cantidad_ventas` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`id_usuario`),
-  CONSTRAINT `vendedor_ibfk_1`
-    FOREIGN KEY (`id_usuario`)
-    REFERENCES `DBProyectoLP2`.`usuario` (`id_usuario`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `DBProyectoLP2`.`terminoDePago`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `DBProyectoLP2`.`terminoDePago` ;
-CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`terminoDePago` (
-  `id_termino_de_pago` INT NOT NULL AUTO_INCREMENT,
-  `fecha_limite` DATE NULL DEFAULT NULL,
-  `numero_cuota` INT NULL DEFAULT NULL,
-  `monto_cuota` DOUBLE NULL DEFAULT NULL,
+DROP TABLE IF EXISTS `DBProyectoLP2`.`devolucion` ;
+CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`devolucion` (
+  `id_devolucion` INT NOT NULL AUTO_INCREMENT,
+  `fid_producto` INT NULL DEFAULT NULL,
+  `fid_reclamo` INT NULL DEFAULT NULL,
+  `cantidad` INT NULL,
   `activo` TINYINT NULL DEFAULT NULL,
-  PRIMARY KEY (`id_termino_de_pago`))
+  PRIMARY KEY (`id_devolucion`),
+  INDEX `fid_producto` (`fid_producto` ASC) VISIBLE,
+  INDEX `fid_reclamo` (`fid_reclamo` ASC) VISIBLE,
+  CONSTRAINT `devolucion_ibfk_1`
+    FOREIGN KEY (`fid_producto`)
+    REFERENCES `DBProyectoLP2`.`producto` (`id_producto`),
+  CONSTRAINT `devolucion_ibfk_2`
+    FOREIGN KEY (`fid_reclamo`)
+    REFERENCES `DBProyectoLP2`.`reclamo` (`id_reclamo`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 63
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+-- -----------------------------------------------------
+-- Table `DBProyectoLP2`.`pedido`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `DBProyectoLP2`.`pedido` ;
+CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`pedido` (
+  `id_pedido` INT NOT NULL AUTO_INCREMENT,
+  `fid_producto` INT NULL DEFAULT NULL,
+  `fid_orden_de_compra` INT NULL DEFAULT NULL,
+  `cantidad` INT NULL,
+  `descuento` DOUBLE NULL DEFAULT NULL,
+  `activo` TINYINT NULL DEFAULT NULL,
+  PRIMARY KEY (`id_pedido`),
+  INDEX `fid_producto` (`fid_producto` ASC) VISIBLE,
+  INDEX `fid_orden_de_compra` (`fid_orden_de_compra` ASC) VISIBLE,
+  CONSTRAINT `pedido_ibfk_1`
+    FOREIGN KEY (`fid_producto`)
+    REFERENCES `DBProyectoLP2`.`producto` (`id_producto`),
+  CONSTRAINT `pedido_ibfk_2`
+    FOREIGN KEY (`fid_orden_de_compra`)
+    REFERENCES `DBProyectoLP2`.`ordenDeCompra` (`id_orden_de_compra`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
+-- ---------------------------------------------------------------------------------------------------
+-- Ventas ventasPago
+-- ---------------------------------------------------------------------------------------------------
 -- -----------------------------------------------------
 -- Table `DBProyectoLP2`.`ordenDeCompra`
 -- -----------------------------------------------------
@@ -208,7 +318,7 @@ CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`ordenDeCompra` (
   `fid_moneda` INT NULL DEFAULT NULL,
   `fid_termino_de_pago` INT NULL,
   `monto` DOUBLE NULL DEFAULT NULL,
-  `Saldo` DOUBLE NULL,
+  `saldo` DOUBLE NULL,
   `direccion_de_entrega` VARCHAR(200) NULL DEFAULT NULL,
   `forma_de_entrega` VARCHAR(50) NULL DEFAULT NULL,
   `fecha_de_compra` DATE NULL DEFAULT NULL,
@@ -235,53 +345,60 @@ CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`ordenDeCompra` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 141
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+-- -----------------------------------------------------
+-- Table `DBProyectoLP2`.`moneda`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `DBProyectoLP2`.`moneda` ;
+CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`moneda` (
+  `id_moneda` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(50) NULL DEFAULT NULL,
+  `abreviatura` VARCHAR(10) NULL DEFAULT NULL,
+  `activo` TINYINT NULL DEFAULT NULL,
+  PRIMARY KEY (`id_moneda`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `DBProyectoLP2`.`reclamo`
+-- Table `DBProyectoLP2`.`tipoDeCambio`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `DBProyectoLP2`.`reclamo` ;
-CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`reclamo` (
-  `id_reclamo` INT NOT NULL AUTO_INCREMENT,
-  `fid_orden_de_compra` INT NULL DEFAULT NULL,
+DROP TABLE IF EXISTS `DBProyectoLP2`.`tipoDeCambio` ;
+CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`tipoDeCambio` (
+  `id_tipo_de_cambio` INT NOT NULL AUTO_INCREMENT,
+  `fid_moneda` INT NULL DEFAULT NULL,
   `fecha` DATE NULL DEFAULT NULL,
-  `atendido` TINYINT(1) NULL DEFAULT NULL,
-  `justificacion` VARCHAR(500) NULL DEFAULT NULL,
+  `cambio` DOUBLE NULL DEFAULT NULL,
   `activo` TINYINT NULL DEFAULT NULL,
-  PRIMARY KEY (`id_reclamo`),
-  INDEX `fid_orden_de_compra` (`fid_orden_de_compra` ASC) VISIBLE,
-  CONSTRAINT `reclamo_ibfk_1`
-    FOREIGN KEY (`fid_orden_de_compra`)
-    REFERENCES `DBProyectoLP2`.`ordenDeCompra` (`id_orden_de_compra`))
+  PRIMARY KEY (`id_tipo_de_cambio`),
+  INDEX `fid_moneda` (`fid_moneda` ASC) VISIBLE,
+  CONSTRAINT `tipoDeCambio_ibfk_1`
+    FOREIGN KEY (`fid_moneda`)
+    REFERENCES `DBProyectoLP2`.`moneda` (`id_moneda`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 33
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `DBProyectoLP2`.`devolucion`
+-- Table `DBProyectoLP2`.`terminoDePago`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `DBProyectoLP2`.`devolucion` ;
-CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`devolucion` (
-  `id_devolucion` INT NOT NULL AUTO_INCREMENT,
-  `fid_producto` INT NULL DEFAULT NULL,
-  `fid_reclamo` INT NULL DEFAULT NULL,
-  `cantidad` INT NULL,
+DROP TABLE IF EXISTS `DBProyectoLP2`.`terminoDePago` ;
+CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`terminoDePago` (
+  `id_termino_de_pago` INT NOT NULL AUTO_INCREMENT,
+  `fecha_limite` DATE NULL DEFAULT NULL,
+  `numero_cuota` INT NULL DEFAULT NULL,
+  `monto_cuota` DOUBLE NULL DEFAULT NULL,
   `activo` TINYINT NULL DEFAULT NULL,
-  PRIMARY KEY (`id_devolucion`),
-  INDEX `fid_producto` (`fid_producto` ASC) VISIBLE,
-  INDEX `fid_reclamo` (`fid_reclamo` ASC) VISIBLE,
-  CONSTRAINT `devolucion_ibfk_1`
-    FOREIGN KEY (`fid_producto`)
-    REFERENCES `DBProyectoLP2`.`producto` (`id_producto`),
-  CONSTRAINT `devolucion_ibfk_2`
-    FOREIGN KEY (`fid_reclamo`)
-    REFERENCES `DBProyectoLP2`.`reclamo` (`id_reclamo`))
+  PRIMARY KEY (`id_termino_de_pago`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -304,7 +421,7 @@ CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`documentoCredito` (
     FOREIGN KEY (`fid_orden_de_compra`)
     REFERENCES `DBProyectoLP2`.`ordenDeCompra` (`id_orden_de_compra`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 42
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -327,123 +444,21 @@ CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`documentoDebito` (
     FOREIGN KEY (`fid_orden_de_compra`)
     REFERENCES `DBProyectoLP2`.`ordenDeCompra` (`id_orden_de_compra`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 53
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
--- -----------------------------------------------------
--- Table `DBProyectoLP2`.`empresa`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `DBProyectoLP2`.`empresa` ;
-CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`empresa` (
-  `id_empresa` INT NOT NULL,
-  `RUC` VARCHAR(100) NULL DEFAULT NULL,
-  `razon_social` VARCHAR(100) NULL DEFAULT NULL,
-  `direccion` VARCHAR(200) NULL DEFAULT NULL,
-  PRIMARY KEY (`id_empresa`),
-  CONSTRAINT `empresa_ibfk_1`
-    FOREIGN KEY (`id_empresa`)
-    REFERENCES `DBProyectoLP2`.`cliente` (`id_cliente`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
 
 
--- -----------------------------------------------------
--- Table `DBProyectoLP2`.`pedido`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `DBProyectoLP2`.`pedido` ;
-CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`pedido` (
-  `id_pedido` INT NOT NULL AUTO_INCREMENT,
-  `fid_producto` INT NULL DEFAULT NULL,
-  `fid_orden_de_compra` INT NULL DEFAULT NULL,
-  `cantidad` INT NULL,
-  `descuento` DOUBLE NULL DEFAULT NULL,
-  `activo` TINYINT NULL DEFAULT NULL,
-  PRIMARY KEY (`id_pedido`),
-  INDEX `fid_producto` (`fid_producto` ASC) VISIBLE,
-  INDEX `fid_orden_de_compra` (`fid_orden_de_compra` ASC) VISIBLE,
-  CONSTRAINT `pedido_ibfk_1`
-    FOREIGN KEY (`fid_producto`)
-    REFERENCES `DBProyectoLP2`.`producto` (`id_producto`),
-  CONSTRAINT `pedido_ibfk_2`
-    FOREIGN KEY (`fid_orden_de_compra`)
-    REFERENCES `DBProyectoLP2`.`ordenDeCompra` (`id_orden_de_compra`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 4
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
 
 
--- -----------------------------------------------------
--- Table `DBProyectoLP2`.`personaNatural`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `DBProyectoLP2`.`personaNatural` ;
-CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`personaNatural` (
-  `id_persona_natural` INT NOT NULL,
-  `tipo_de_documento` VARCHAR(50) NULL DEFAULT NULL,
-  `numero_de_documento` VARCHAR(50) NULL DEFAULT NULL,
-  `nombre` VARCHAR(100) NULL DEFAULT NULL,
-  `apellido` VARCHAR(100) NULL DEFAULT NULL,
-  `fecha_de_nacimiento` DATE NULL DEFAULT NULL,
-  `sexo` VARCHAR(100) NULL DEFAULT NULL,
-  `telefono` VARCHAR(15) NULL DEFAULT NULL,
-  `direccion` VARCHAR(200) NULL DEFAULT NULL,
-  `email` VARCHAR(100) NULL DEFAULT NULL,
-  PRIMARY KEY (`id_persona_natural`),
-  CONSTRAINT `personaNatural_ibfk_1`
-    FOREIGN KEY (`id_persona_natural`)
-    REFERENCES `DBProyectoLP2`.`cliente` (`id_cliente`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
 
 
--- -----------------------------------------------------
--- Table `DBProyectoLP2`.`tipoDeCambio`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `DBProyectoLP2`.`tipoDeCambio` ;
-CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`tipoDeCambio` (
-  `id_tipo_de_cambio` INT NOT NULL AUTO_INCREMENT,
-  `fid_moneda` INT NULL DEFAULT NULL,
-  `fecha` DATE NULL DEFAULT NULL,
-  `cambio` DOUBLE NULL DEFAULT NULL,
-  `activo` TINYINT NULL DEFAULT NULL,
-  PRIMARY KEY (`id_tipo_de_cambio`),
-  INDEX `fid_moneda` (`fid_moneda` ASC) VISIBLE,
-  CONSTRAINT `tipoDeCambio_ibfk_1`
-    FOREIGN KEY (`fid_moneda`)
-    REFERENCES `DBProyectoLP2`.`moneda` (`id_moneda`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 28
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
 
 
--- -----------------------------------------------------
--- Table `DBProyectoLP2`.`stock`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `DBProyectoLP2`.`stock` ;
-CREATE TABLE IF NOT EXISTS `DBProyectoLP2`.`stock` (
-  `id_almacen` INT NOT NULL,
-  `id_producto` INT NOT NULL,
-  `cantidad` INT NULL,
-  INDEX `fk_stock_almacen1_idx` (`id_almacen` ASC) VISIBLE,
-  INDEX `fk_stock_producto1_idx` (`id_producto` ASC) VISIBLE,
-  CONSTRAINT `fk_stock_almacen1`
-    FOREIGN KEY (`id_almacen`)
-    REFERENCES `DBProyectoLP2`.`almacen` (`id_almacen`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_stock_producto1`
-    FOREIGN KEY (`id_producto`)
-    REFERENCES `DBProyectoLP2`.`producto` (`id_producto`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+

@@ -3,49 +3,22 @@ import java.util.Date;
 import java.util.ArrayList;
 
 public class Reclamo {
-    private int id;//numero de reclamo
-
-    private int idOrdenDeCompra;
+    private int idReclamo;
     private Date fecha;
     private boolean atendido;
     private String justificacion;
-    ArrayList<Devolucion> devoluciones;
+    private ArrayList<Devolucion> devoluciones;
     private Boolean activo;
-
-    public Reclamo(int idOrdenDeCompra, Date fecha, String justificacion) {
-    this.idOrdenDeCompra = idOrdenDeCompra;
-    this.fecha = fecha;
-    this.atendido = false;
-    this.justificacion = justificacion;
-    this.activo=true;
-    }
-
-    
-    public Boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
-    }
 
     public Reclamo() {
     }
 
-    public int getId() {
-        return id;
+    public int getIdReclamo() {
+        return idReclamo;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getIdOrdenDeCompra() {
-        return idOrdenDeCompra;
-    }
-
-    public void setIdOrdenDeCompra(int idOrdenDeCompra) {
-        this.idOrdenDeCompra = idOrdenDeCompra;
+    public void setIdReclamo(int idReclamo) {
+        this.idReclamo = idReclamo;
     }
 
     public Date getFecha() {
@@ -78,6 +51,14 @@ public class Reclamo {
 
     public void setDevoluciones(ArrayList<Devolucion> devoluciones) {
         this.devoluciones = devoluciones;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
     
     

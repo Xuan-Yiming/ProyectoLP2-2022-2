@@ -1,54 +1,37 @@
-
 package pe.edu.pucp.lp2soft.ventas.manejoproductos;
 
 public class Pedido {
-
- 
-    private int id;
-    private int idProducto;
-    private int idOrdenDeCompra;
+    private int idPedido;
+    private Producto producto;
+    private int cantidad;
     private double descuento;
     private Boolean activo;
-    
-    public Pedido(int idProducto, int idOrdenDeCompra, double descuento) {
-        this.idProducto = idProducto;
-        this.idOrdenDeCompra = idOrdenDeCompra;
-        this.descuento = descuento;
-        this.activo=true;
-    }
-    public Boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
-    }
 
     public Pedido() {
     }
 
-    public int getId() {
-        return id;
+    public int getIdPedido() {
+        return idPedido;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdPedido(int idPedido) {
+        this.idPedido = idPedido;
     }
 
-    public int getIdProducto() {
-        return idProducto;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
-    public int getIdOrdenDeCompra() {
-        return idOrdenDeCompra;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setIdOrdenDeCompra(int idOrdenDeCompra) {
-        this.idOrdenDeCompra = idOrdenDeCompra;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     public double getDescuento() {
@@ -58,6 +41,14 @@ public class Pedido {
     public void setDescuento(double descuento) {
         this.descuento = descuento;
     }
-   
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
+    
     
 }

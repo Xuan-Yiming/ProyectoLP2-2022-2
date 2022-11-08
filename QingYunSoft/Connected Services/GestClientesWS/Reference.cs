@@ -16,19 +16,6 @@ namespace QingYunSoft.GestClientesWS {
     public interface GestClientesWS {
         
         // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarClientePorDocumentoNombr" +
-            "eRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarClientePorDocumentoNombr" +
-            "eResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreResponse listarClientePorDocumentoNombre(QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarClientePorDocumentoNombr" +
-            "eRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarClientePorDocumentoNombr" +
-            "eResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreResponse> listarClientePorDocumentoNombreAsync(QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarClienteRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/eliminarClienteResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -38,26 +25,9 @@ namespace QingYunSoft.GestClientesWS {
         System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.eliminarClienteResponse> eliminarClienteAsync(QingYunSoft.GestClientesWS.eliminarClienteRequest request);
         
         // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarEmpresaRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarEmpresaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.GestClientesWS.insertarEmpresaResponse insertarEmpresa(QingYunSoft.GestClientesWS.insertarEmpresaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarEmpresaRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarEmpresaResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.insertarEmpresaResponse> insertarEmpresaAsync(QingYunSoft.GestClientesWS.insertarEmpresaRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/modificarEmpresaRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/modificarEmpresaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.GestClientesWS.modificarEmpresaResponse modificarEmpresa(QingYunSoft.GestClientesWS.modificarEmpresaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/modificarEmpresaRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/modificarEmpresaResponse")]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.modificarEmpresaResponse> modificarEmpresaAsync(QingYunSoft.GestClientesWS.modificarEmpresaRequest request);
-        
-        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarClientesRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarClientesResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
         QingYunSoft.GestClientesWS.listarClientesResponse listarClientes(QingYunSoft.GestClientesWS.listarClientesRequest request);
         
@@ -65,10 +35,33 @@ namespace QingYunSoft.GestClientesWS {
         System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarClientesResponse> listarClientesAsync(QingYunSoft.GestClientesWS.listarClientesRequest request);
         
         // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarPersonaNaturalRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarPersonaNaturalResponse" +
+            "")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.GestClientesWS.insertarPersonaNaturalResponse insertarPersonaNatural(QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarPersonaNaturalRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarPersonaNaturalResponse" +
+            "")]
+        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.insertarPersonaNaturalResponse> insertarPersonaNaturalAsync(QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarEmpresaRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarEmpresaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.GestClientesWS.insertarEmpresaResponse insertarEmpresa(QingYunSoft.GestClientesWS.insertarEmpresaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarEmpresaRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarEmpresaResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.insertarEmpresaResponse> insertarEmpresaAsync(QingYunSoft.GestClientesWS.insertarEmpresaRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/modificarPersonaNaturalRequest" +
             "", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/modificarPersonaNaturalRespons" +
             "e")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
         QingYunSoft.GestClientesWS.modificarPersonaNaturalResponse modificarPersonaNatural(QingYunSoft.GestClientesWS.modificarPersonaNaturalRequest request);
         
@@ -78,15 +71,64 @@ namespace QingYunSoft.GestClientesWS {
         System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.modificarPersonaNaturalResponse> modificarPersonaNaturalAsync(QingYunSoft.GestClientesWS.modificarPersonaNaturalRequest request);
         
         // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarPersonaNaturalRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarPersonaNaturalResponse" +
-            "")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarClientePorDocumentoNombr" +
+            "eRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarClientePorDocumentoNombr" +
+            "eResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        QingYunSoft.GestClientesWS.insertarPersonaNaturalResponse insertarPersonaNatural(QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest request);
+        QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreResponse listarClientePorDocumentoNombre(QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarPersonaNaturalRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/insertarPersonaNaturalResponse" +
-            "")]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.insertarPersonaNaturalResponse> insertarPersonaNaturalAsync(QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarClientePorDocumentoNombr" +
+            "eRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/listarClientePorDocumentoNombr" +
+            "eResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreResponse> listarClientePorDocumentoNombreAsync(QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest request);
+        
+        // CODEGEN: Parameter 'return' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/modificarEmpresaRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/modificarEmpresaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(persona))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.GestClientesWS.modificarEmpresaResponse modificarEmpresa(QingYunSoft.GestClientesWS.modificarEmpresaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/GestClientesWS/modificarEmpresaRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/GestClientesWS/modificarEmpresaResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.modificarEmpresaResponse> modificarEmpresaAsync(QingYunSoft.GestClientesWS.modificarEmpresaRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarCliente", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class eliminarClienteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idCliente;
+        
+        public eliminarClienteRequest() {
+        }
+        
+        public eliminarClienteRequest(int idCliente) {
+            this.idCliente = idCliente;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarClienteResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class eliminarClienteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarClienteResponse() {
+        }
+        
+        public eliminarClienteResponse(int @return) {
+            this.@return = @return;
+        }
     }
     
     /// <remarks/>
@@ -245,11 +287,7 @@ namespace QingYunSoft.GestClientesWS {
         
         private bool formaDeEntregaFieldSpecified;
         
-        private int idField;
-        
-        private int idClienteField;
-        
-        private int idVendedorField;
+        private int idOrdenDeCompraField;
         
         private moneda monedaField;
         
@@ -260,6 +298,12 @@ namespace QingYunSoft.GestClientesWS {
         private pedido[] pedidosField;
         
         private reclamo[] reclamosField;
+        
+        private double saldoField;
+        
+        private terminoDePago terminoDePagoField;
+        
+        private vendedor vendedorField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
@@ -395,42 +439,18 @@ namespace QingYunSoft.GestClientesWS {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
-        public int id {
+        public int idOrdenDeCompra {
             get {
-                return this.idField;
+                return this.idOrdenDeCompraField;
             }
             set {
-                this.idField = value;
-                this.RaisePropertyChanged("id");
+                this.idOrdenDeCompraField = value;
+                this.RaisePropertyChanged("idOrdenDeCompra");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
-        public int idCliente {
-            get {
-                return this.idClienteField;
-            }
-            set {
-                this.idClienteField = value;
-                this.RaisePropertyChanged("idCliente");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
-        public int idVendedor {
-            get {
-                return this.idVendedorField;
-            }
-            set {
-                this.idVendedorField = value;
-                this.RaisePropertyChanged("idVendedor");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
         public moneda moneda {
             get {
                 return this.monedaField;
@@ -442,7 +462,7 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=11)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
         public double monto {
             get {
                 return this.montoField;
@@ -454,7 +474,7 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=12)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
         public bool pagado {
             get {
                 return this.pagadoField;
@@ -466,7 +486,7 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("pedidos", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=13)]
+        [System.Xml.Serialization.XmlElementAttribute("pedidos", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=11)]
         public pedido[] pedidos {
             get {
                 return this.pedidosField;
@@ -478,7 +498,7 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("reclamos", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=14)]
+        [System.Xml.Serialization.XmlElementAttribute("reclamos", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=12)]
         public reclamo[] reclamos {
             get {
                 return this.reclamosField;
@@ -486,6 +506,42 @@ namespace QingYunSoft.GestClientesWS {
             set {
                 this.reclamosField = value;
                 this.RaisePropertyChanged("reclamos");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=13)]
+        public double saldo {
+            get {
+                return this.saldoField;
+            }
+            set {
+                this.saldoField = value;
+                this.RaisePropertyChanged("saldo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=14)]
+        public terminoDePago terminoDePago {
+            get {
+                return this.terminoDePagoField;
+            }
+            set {
+                this.terminoDePagoField = value;
+                this.RaisePropertyChanged("terminoDePago");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=15)]
+        public vendedor vendedor {
+            get {
+                return this.vendedorField;
+            }
+            set {
+                this.vendedorField = value;
+                this.RaisePropertyChanged("vendedor");
             }
         }
         
@@ -521,13 +577,7 @@ namespace QingYunSoft.GestClientesWS {
         
         private bool fechaVencimientoFieldSpecified;
         
-        private int idField;
-        
-        private int idDocumentoDebitoField;
-        
-        private int idOrdenDeCompraField;
-        
-        private moneda monedaField;
+        private int idDocumentoCreditoField;
         
         private double montoField;
         
@@ -617,54 +667,18 @@ namespace QingYunSoft.GestClientesWS {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public int id {
+        public int idDocumentoCredito {
             get {
-                return this.idField;
+                return this.idDocumentoCreditoField;
             }
             set {
-                this.idField = value;
-                this.RaisePropertyChanged("id");
+                this.idDocumentoCreditoField = value;
+                this.RaisePropertyChanged("idDocumentoCredito");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public int idDocumentoDebito {
-            get {
-                return this.idDocumentoDebitoField;
-            }
-            set {
-                this.idDocumentoDebitoField = value;
-                this.RaisePropertyChanged("idDocumentoDebito");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
-        public int idOrdenDeCompra {
-            get {
-                return this.idOrdenDeCompraField;
-            }
-            set {
-                this.idOrdenDeCompraField = value;
-                this.RaisePropertyChanged("idOrdenDeCompra");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
-        public moneda moneda {
-            get {
-                return this.monedaField;
-            }
-            set {
-                this.monedaField = value;
-                this.RaisePropertyChanged("moneda");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
         public double monto {
             get {
                 return this.montoField;
@@ -686,39 +700,47 @@ namespace QingYunSoft.GestClientesWS {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(usuario))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(vendedor))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
-    public partial class moneda : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string abreviaturaField;
+    public partial class persona : object, System.ComponentModel.INotifyPropertyChanged {
         
         private bool activoField;
         
         private bool activoFieldSpecified;
         
-        private tipoDeCambio[] cambiosField;
+        private string apellidoField;
         
-        private int idField;
+        private string direccionField;
+        
+        private string emailField;
+        
+        private System.DateTime fechaDeNacimientoField;
+        
+        private bool fechaDeNacimientoFieldSpecified;
+        
+        private int idPersonaField;
         
         private string nombreField;
         
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string abreviatura {
-            get {
-                return this.abreviaturaField;
-            }
-            set {
-                this.abreviaturaField = value;
-                this.RaisePropertyChanged("abreviatura");
-            }
-        }
+        private string numDeDocumentoField;
+        
+        private sexo sexoField;
+        
+        private bool sexoFieldSpecified;
+        
+        private string telefonoField;
+        
+        private tipoDeDocumento tipoDeDocumentoField;
+        
+        private bool tipoDeDocumentoFieldSpecified;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public bool activo {
             get {
                 return this.activoField;
@@ -742,31 +764,79 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("cambios", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=2)]
-        public tipoDeCambio[] cambios {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string apellido {
             get {
-                return this.cambiosField;
+                return this.apellidoField;
             }
             set {
-                this.cambiosField = value;
-                this.RaisePropertyChanged("cambios");
+                this.apellidoField = value;
+                this.RaisePropertyChanged("apellido");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public string direccion {
+            get {
+                return this.direccionField;
+            }
+            set {
+                this.direccionField = value;
+                this.RaisePropertyChanged("direccion");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public int id {
+        public string email {
             get {
-                return this.idField;
+                return this.emailField;
             }
             set {
-                this.idField = value;
-                this.RaisePropertyChanged("id");
+                this.emailField = value;
+                this.RaisePropertyChanged("email");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public System.DateTime fechaDeNacimiento {
+            get {
+                return this.fechaDeNacimientoField;
+            }
+            set {
+                this.fechaDeNacimientoField = value;
+                this.RaisePropertyChanged("fechaDeNacimiento");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool fechaDeNacimientoSpecified {
+            get {
+                return this.fechaDeNacimientoFieldSpecified;
+            }
+            set {
+                this.fechaDeNacimientoFieldSpecified = value;
+                this.RaisePropertyChanged("fechaDeNacimientoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public int idPersona {
+            get {
+                return this.idPersonaField;
+            }
+            set {
+                this.idPersonaField = value;
+                this.RaisePropertyChanged("idPersona");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
         public string nombre {
             get {
                 return this.nombreField;
@@ -774,6 +844,78 @@ namespace QingYunSoft.GestClientesWS {
             set {
                 this.nombreField = value;
                 this.RaisePropertyChanged("nombre");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
+        public string numDeDocumento {
+            get {
+                return this.numDeDocumentoField;
+            }
+            set {
+                this.numDeDocumentoField = value;
+                this.RaisePropertyChanged("numDeDocumento");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
+        public sexo sexo {
+            get {
+                return this.sexoField;
+            }
+            set {
+                this.sexoField = value;
+                this.RaisePropertyChanged("sexo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool sexoSpecified {
+            get {
+                return this.sexoFieldSpecified;
+            }
+            set {
+                this.sexoFieldSpecified = value;
+                this.RaisePropertyChanged("sexoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
+        public string telefono {
+            get {
+                return this.telefonoField;
+            }
+            set {
+                this.telefonoField = value;
+                this.RaisePropertyChanged("telefono");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
+        public tipoDeDocumento tipoDeDocumento {
+            get {
+                return this.tipoDeDocumentoField;
+            }
+            set {
+                this.tipoDeDocumentoField = value;
+                this.RaisePropertyChanged("tipoDeDocumento");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool tipoDeDocumentoSpecified {
+            get {
+                return this.tipoDeDocumentoFieldSpecified;
+            }
+            set {
+                this.tipoDeDocumentoFieldSpecified = value;
+                this.RaisePropertyChanged("tipoDeDocumentoSpecified");
             }
         }
         
@@ -790,24 +932,176 @@ namespace QingYunSoft.GestClientesWS {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
+    public enum sexo {
+        
+        /// <remarks/>
+        Masculino,
+        
+        /// <remarks/>
+        Femenino,
+        
+        /// <remarks/>
+        Otro,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
+    public enum tipoDeDocumento {
+        
+        /// <remarks/>
+        DNI,
+        
+        /// <remarks/>
+        CE,
+        
+        /// <remarks/>
+        Pasaporte,
+        
+        /// <remarks/>
+        PNAC,
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(vendedor))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
-    public partial class tipoDeCambio : object, System.ComponentModel.INotifyPropertyChanged {
+    public abstract partial class usuario : persona {
+        
+        private System.DateTime fechaIngresoField;
+        
+        private bool fechaIngresoFieldSpecified;
+        
+        private byte[] fotoPerfilField;
+        
+        private int idUsuarioField;
+        
+        private string passwordField;
+        
+        private string usernameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public System.DateTime fechaIngreso {
+            get {
+                return this.fechaIngresoField;
+            }
+            set {
+                this.fechaIngresoField = value;
+                this.RaisePropertyChanged("fechaIngreso");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool fechaIngresoSpecified {
+            get {
+                return this.fechaIngresoFieldSpecified;
+            }
+            set {
+                this.fechaIngresoFieldSpecified = value;
+                this.RaisePropertyChanged("fechaIngresoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="base64Binary", Order=1)]
+        public byte[] fotoPerfil {
+            get {
+                return this.fotoPerfilField;
+            }
+            set {
+                this.fotoPerfilField = value;
+                this.RaisePropertyChanged("fotoPerfil");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public int idUsuario {
+            get {
+                return this.idUsuarioField;
+            }
+            set {
+                this.idUsuarioField = value;
+                this.RaisePropertyChanged("idUsuario");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public string password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                this.passwordField = value;
+                this.RaisePropertyChanged("password");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public string username {
+            get {
+                return this.usernameField;
+            }
+            set {
+                this.usernameField = value;
+                this.RaisePropertyChanged("username");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
+    public partial class vendedor : usuario {
+        
+        private int cantidadVentasField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public int cantidadVentas {
+            get {
+                return this.cantidadVentasField;
+            }
+            set {
+                this.cantidadVentasField = value;
+                this.RaisePropertyChanged("cantidadVentas");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
+    public partial class terminoDePago : object, System.ComponentModel.INotifyPropertyChanged {
         
         private bool activoField;
         
         private bool activoFieldSpecified;
         
-        private double cambioField;
+        private System.DateTime fechaLimiteField;
         
-        private System.DateTime fechaField;
+        private bool fechaLimiteFieldSpecified;
         
-        private bool fechaFieldSpecified;
+        private int idTerminoDePagoField;
         
-        private int idField;
+        private double montoCuotaField;
         
-        private int idMonedaField;
+        private int numeroCuotaField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
@@ -835,61 +1129,61 @@ namespace QingYunSoft.GestClientesWS {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public double cambio {
+        public System.DateTime fechaLimite {
             get {
-                return this.cambioField;
+                return this.fechaLimiteField;
             }
             set {
-                this.cambioField = value;
-                this.RaisePropertyChanged("cambio");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public System.DateTime fecha {
-            get {
-                return this.fechaField;
-            }
-            set {
-                this.fechaField = value;
-                this.RaisePropertyChanged("fecha");
+                this.fechaLimiteField = value;
+                this.RaisePropertyChanged("fechaLimite");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool fechaSpecified {
+        public bool fechaLimiteSpecified {
             get {
-                return this.fechaFieldSpecified;
+                return this.fechaLimiteFieldSpecified;
             }
             set {
-                this.fechaFieldSpecified = value;
-                this.RaisePropertyChanged("fechaSpecified");
+                this.fechaLimiteFieldSpecified = value;
+                this.RaisePropertyChanged("fechaLimiteSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public int idTerminoDePago {
+            get {
+                return this.idTerminoDePagoField;
+            }
+            set {
+                this.idTerminoDePagoField = value;
+                this.RaisePropertyChanged("idTerminoDePago");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public int id {
+        public double montoCuota {
             get {
-                return this.idField;
+                return this.montoCuotaField;
             }
             set {
-                this.idField = value;
-                this.RaisePropertyChanged("id");
+                this.montoCuotaField = value;
+                this.RaisePropertyChanged("montoCuota");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public int idMoneda {
+        public int numeroCuota {
             get {
-                return this.idMonedaField;
+                return this.numeroCuotaField;
             }
             set {
-                this.idMonedaField = value;
-                this.RaisePropertyChanged("idMoneda");
+                this.numeroCuotaField = value;
+                this.RaisePropertyChanged("numeroCuota");
             }
         }
         
@@ -915,11 +1209,11 @@ namespace QingYunSoft.GestClientesWS {
         
         private bool activoFieldSpecified;
         
-        private int idField;
+        private int cantidadField;
         
-        private int idProductoField;
+        private int idDevolucionField;
         
-        private int idReclamoField;
+        private producto productoField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
@@ -947,18 +1241,178 @@ namespace QingYunSoft.GestClientesWS {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public int id {
+        public int cantidad {
             get {
-                return this.idField;
+                return this.cantidadField;
             }
             set {
-                this.idField = value;
-                this.RaisePropertyChanged("id");
+                this.cantidadField = value;
+                this.RaisePropertyChanged("cantidad");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public int idDevolucion {
+            get {
+                return this.idDevolucionField;
+            }
+            set {
+                this.idDevolucionField = value;
+                this.RaisePropertyChanged("idDevolucion");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public producto producto {
+            get {
+                return this.productoField;
+            }
+            set {
+                this.productoField = value;
+                this.RaisePropertyChanged("producto");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
+    public partial class producto : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool activoField;
+        
+        private bool activoFieldSpecified;
+        
+        private double costoField;
+        
+        private bool devueltoField;
+        
+        private bool devueltoFieldSpecified;
+        
+        private System.DateTime fechaDeIngresoField;
+        
+        private bool fechaDeIngresoFieldSpecified;
+        
+        private byte[] fotoField;
+        
+        private int idProductoField;
+        
+        private string nombreField;
+        
+        private double precioField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public bool activo {
+            get {
+                return this.activoField;
+            }
+            set {
+                this.activoField = value;
+                this.RaisePropertyChanged("activo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool activoSpecified {
+            get {
+                return this.activoFieldSpecified;
+            }
+            set {
+                this.activoFieldSpecified = value;
+                this.RaisePropertyChanged("activoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public double costo {
+            get {
+                return this.costoField;
+            }
+            set {
+                this.costoField = value;
+                this.RaisePropertyChanged("costo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public bool devuelto {
+            get {
+                return this.devueltoField;
+            }
+            set {
+                this.devueltoField = value;
+                this.RaisePropertyChanged("devuelto");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool devueltoSpecified {
+            get {
+                return this.devueltoFieldSpecified;
+            }
+            set {
+                this.devueltoFieldSpecified = value;
+                this.RaisePropertyChanged("devueltoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public System.DateTime fechaDeIngreso {
+            get {
+                return this.fechaDeIngresoField;
+            }
+            set {
+                this.fechaDeIngresoField = value;
+                this.RaisePropertyChanged("fechaDeIngreso");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool fechaDeIngresoSpecified {
+            get {
+                return this.fechaDeIngresoFieldSpecified;
+            }
+            set {
+                this.fechaDeIngresoFieldSpecified = value;
+                this.RaisePropertyChanged("fechaDeIngresoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="base64Binary", Order=4)]
+        public byte[] foto {
+            get {
+                return this.fotoField;
+            }
+            set {
+                this.fotoField = value;
+                this.RaisePropertyChanged("foto");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
         public int idProducto {
             get {
                 return this.idProductoField;
@@ -970,14 +1424,26 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public int idReclamo {
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        public string nombre {
             get {
-                return this.idReclamoField;
+                return this.nombreField;
             }
             set {
-                this.idReclamoField = value;
-                this.RaisePropertyChanged("idReclamo");
+                this.nombreField = value;
+                this.RaisePropertyChanged("nombre");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
+        public double precio {
+            get {
+                return this.precioField;
+            }
+            set {
+                this.precioField = value;
+                this.RaisePropertyChanged("precio");
             }
         }
         
@@ -1011,9 +1477,7 @@ namespace QingYunSoft.GestClientesWS {
         
         private bool fechaFieldSpecified;
         
-        private int idField;
-        
-        private int idOrdenDeCompraField;
+        private int idReclamoField;
         
         private string justificacionField;
         
@@ -1091,30 +1555,18 @@ namespace QingYunSoft.GestClientesWS {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public int id {
+        public int idReclamo {
             get {
-                return this.idField;
+                return this.idReclamoField;
             }
             set {
-                this.idField = value;
-                this.RaisePropertyChanged("id");
+                this.idReclamoField = value;
+                this.RaisePropertyChanged("idReclamo");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public int idOrdenDeCompra {
-            get {
-                return this.idOrdenDeCompraField;
-            }
-            set {
-                this.idOrdenDeCompraField = value;
-                this.RaisePropertyChanged("idOrdenDeCompra");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
         public string justificacion {
             get {
                 return this.justificacionField;
@@ -1147,13 +1599,13 @@ namespace QingYunSoft.GestClientesWS {
         
         private bool activoFieldSpecified;
         
+        private int cantidadField;
+        
         private double descuentoField;
         
-        private int idField;
+        private int idPedidoField;
         
-        private int idOrdenDeCompraField;
-        
-        private int idProductoField;
+        private producto productoField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
@@ -1181,6 +1633,18 @@ namespace QingYunSoft.GestClientesWS {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public int cantidad {
+            get {
+                return this.cantidadField;
+            }
+            set {
+                this.cantidadField = value;
+                this.RaisePropertyChanged("cantidad");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public double descuento {
             get {
                 return this.descuentoField;
@@ -1192,38 +1656,26 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("id");
-            }
-        }
-        
-        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public int idOrdenDeCompra {
+        public int idPedido {
             get {
-                return this.idOrdenDeCompraField;
+                return this.idPedidoField;
             }
             set {
-                this.idOrdenDeCompraField = value;
-                this.RaisePropertyChanged("idOrdenDeCompra");
+                this.idPedidoField = value;
+                this.RaisePropertyChanged("idPedido");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public int idProducto {
+        public producto producto {
             get {
-                return this.idProductoField;
+                return this.productoField;
             }
             set {
-                this.idProductoField = value;
-                this.RaisePropertyChanged("idProducto");
+                this.productoField = value;
+                this.RaisePropertyChanged("producto");
             }
         }
         
@@ -1243,21 +1695,19 @@ namespace QingYunSoft.GestClientesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
-    public partial class terminoDePago : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class tipoDeCambio : object, System.ComponentModel.INotifyPropertyChanged {
         
         private bool activoField;
         
         private bool activoFieldSpecified;
         
-        private System.DateTime fechaLimiteField;
+        private double cambioField;
         
-        private bool fechaLimiteFieldSpecified;
+        private System.DateTime fechaField;
         
-        private int idField;
+        private bool fechaFieldSpecified;
         
-        private double montoCuotaField;
-        
-        private int numeroCuotaField;
+        private int idTipoDeCambioField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
@@ -1285,61 +1735,151 @@ namespace QingYunSoft.GestClientesWS {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public System.DateTime fechaLimite {
+        public double cambio {
             get {
-                return this.fechaLimiteField;
+                return this.cambioField;
             }
             set {
-                this.fechaLimiteField = value;
-                this.RaisePropertyChanged("fechaLimite");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool fechaLimiteSpecified {
-            get {
-                return this.fechaLimiteFieldSpecified;
-            }
-            set {
-                this.fechaLimiteFieldSpecified = value;
-                this.RaisePropertyChanged("fechaLimiteSpecified");
+                this.cambioField = value;
+                this.RaisePropertyChanged("cambio");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public int id {
+        public System.DateTime fecha {
             get {
-                return this.idField;
+                return this.fechaField;
             }
             set {
-                this.idField = value;
-                this.RaisePropertyChanged("id");
+                this.fechaField = value;
+                this.RaisePropertyChanged("fecha");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool fechaSpecified {
+            get {
+                return this.fechaFieldSpecified;
+            }
+            set {
+                this.fechaFieldSpecified = value;
+                this.RaisePropertyChanged("fechaSpecified");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public double montoCuota {
+        public int idTipoDeCambio {
             get {
-                return this.montoCuotaField;
+                return this.idTipoDeCambioField;
             }
             set {
-                this.montoCuotaField = value;
-                this.RaisePropertyChanged("montoCuota");
+                this.idTipoDeCambioField = value;
+                this.RaisePropertyChanged("idTipoDeCambio");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
+    public partial class moneda : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string abreviaturaField;
+        
+        private bool activoField;
+        
+        private bool activoFieldSpecified;
+        
+        private tipoDeCambio[] cambiosField;
+        
+        private int idMonedaField;
+        
+        private string nombreField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string abreviatura {
+            get {
+                return this.abreviaturaField;
+            }
+            set {
+                this.abreviaturaField = value;
+                this.RaisePropertyChanged("abreviatura");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public bool activo {
+            get {
+                return this.activoField;
+            }
+            set {
+                this.activoField = value;
+                this.RaisePropertyChanged("activo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool activoSpecified {
+            get {
+                return this.activoFieldSpecified;
+            }
+            set {
+                this.activoFieldSpecified = value;
+                this.RaisePropertyChanged("activoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("cambios", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=2)]
+        public tipoDeCambio[] cambios {
+            get {
+                return this.cambiosField;
+            }
+            set {
+                this.cambiosField = value;
+                this.RaisePropertyChanged("cambios");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public int idMoneda {
+            get {
+                return this.idMonedaField;
+            }
+            set {
+                this.idMonedaField = value;
+                this.RaisePropertyChanged("idMoneda");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public int numeroCuota {
+        public string nombre {
             get {
-                return this.numeroCuotaField;
+                return this.nombreField;
             }
             set {
-                this.numeroCuotaField = value;
-                this.RaisePropertyChanged("numeroCuota");
+                this.nombreField = value;
+                this.RaisePropertyChanged("nombre");
             }
         }
         
@@ -1367,29 +1907,15 @@ namespace QingYunSoft.GestClientesWS {
         
         private bool anuladoField;
         
-        private documentoCredito[] documentosCreditoField;
-        
         private System.DateTime fechaCreacionField;
         
         private bool fechaCreacionFieldSpecified;
         
-        private System.DateTime fechaVencimientoField;
-        
-        private bool fechaVencimientoFieldSpecified;
-        
-        private int idField;
-        
-        private int idOrdenDeCompraField;
+        private int idDocumentoDebitoField;
         
         private double impuestoField;
         
-        private moneda monedaField;
-        
         private double montoField;
-        
-        private double saldoField;
-        
-        private terminoDePago terminoDePagoField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
@@ -1428,19 +1954,7 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("documentosCredito", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=2)]
-        public documentoCredito[] documentosCredito {
-            get {
-                return this.documentosCreditoField;
-            }
-            set {
-                this.documentosCreditoField = value;
-                this.RaisePropertyChanged("documentosCredito");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public System.DateTime fechaCreacion {
             get {
                 return this.fechaCreacionField;
@@ -1464,55 +1978,19 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public int idDocumentoDebito {
+            get {
+                return this.idDocumentoDebitoField;
+            }
+            set {
+                this.idDocumentoDebitoField = value;
+                this.RaisePropertyChanged("idDocumentoDebito");
+            }
+        }
+        
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public System.DateTime fechaVencimiento {
-            get {
-                return this.fechaVencimientoField;
-            }
-            set {
-                this.fechaVencimientoField = value;
-                this.RaisePropertyChanged("fechaVencimiento");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool fechaVencimientoSpecified {
-            get {
-                return this.fechaVencimientoFieldSpecified;
-            }
-            set {
-                this.fechaVencimientoFieldSpecified = value;
-                this.RaisePropertyChanged("fechaVencimientoSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("id");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
-        public int idOrdenDeCompra {
-            get {
-                return this.idOrdenDeCompraField;
-            }
-            set {
-                this.idOrdenDeCompraField = value;
-                this.RaisePropertyChanged("idOrdenDeCompra");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
         public double impuesto {
             get {
                 return this.impuestoField;
@@ -1524,19 +2002,7 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
-        public moneda moneda {
-            get {
-                return this.monedaField;
-            }
-            set {
-                this.monedaField = value;
-                this.RaisePropertyChanged("moneda");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
         public double monto {
             get {
                 return this.montoField;
@@ -1544,30 +2010,6 @@ namespace QingYunSoft.GestClientesWS {
             set {
                 this.montoField = value;
                 this.RaisePropertyChanged("monto");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
-        public double saldo {
-            get {
-                return this.saldoField;
-            }
-            set {
-                this.saldoField = value;
-                this.RaisePropertyChanged("saldo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=11)]
-        public terminoDePago terminoDePago {
-            get {
-                return this.terminoDePagoField;
-            }
-            set {
-                this.terminoDePagoField = value;
-                this.RaisePropertyChanged("terminoDePago");
             }
         }
         
@@ -1822,73 +2264,30 @@ namespace QingYunSoft.GestClientesWS {
         }
     }
     
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
-    public enum sexo {
-        
-        /// <remarks/>
-        Masculino,
-        
-        /// <remarks/>
-        Femenino,
-        
-        /// <remarks/>
-        Otro,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/")]
-    public enum tipoDeDocumento {
-        
-        /// <remarks/>
-        DNI,
-        
-        /// <remarks/>
-        CE,
-        
-        /// <remarks/>
-        Pasaporte,
-        
-        /// <remarks/>
-        PNAC,
-    }
-    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarClientePorDocumentoNombre", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarClientePorDocumentoNombreRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarClientes", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarClientesRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string docNombre;
-        
-        public listarClientePorDocumentoNombreRequest() {
-        }
-        
-        public listarClientePorDocumentoNombreRequest(string docNombre) {
-            this.docNombre = docNombre;
+        public listarClientesRequest() {
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarClientePorDocumentoNombreResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarClientePorDocumentoNombreResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarClientesResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarClientesResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public QingYunSoft.GestClientesWS.cliente[] @return;
         
-        public listarClientePorDocumentoNombreResponse() {
+        public listarClientesResponse() {
         }
         
-        public listarClientePorDocumentoNombreResponse(QingYunSoft.GestClientesWS.cliente[] @return) {
+        public listarClientesResponse(QingYunSoft.GestClientesWS.cliente[] @return) {
             this.@return = @return;
         }
     }
@@ -1896,35 +2295,35 @@ namespace QingYunSoft.GestClientesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarCliente", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarClienteRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarPersonaNatural", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class insertarPersonaNaturalRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idCliente;
+        public QingYunSoft.GestClientesWS.personaNatural personaNatural;
         
-        public eliminarClienteRequest() {
+        public insertarPersonaNaturalRequest() {
         }
         
-        public eliminarClienteRequest(int idCliente) {
-            this.idCliente = idCliente;
+        public insertarPersonaNaturalRequest(QingYunSoft.GestClientesWS.personaNatural personaNatural) {
+            this.personaNatural = personaNatural;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarClienteResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarClienteResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarPersonaNaturalResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class insertarPersonaNaturalResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int @return;
         
-        public eliminarClienteResponse() {
+        public insertarPersonaNaturalResponse() {
         }
         
-        public eliminarClienteResponse(int @return) {
+        public insertarPersonaNaturalResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -1968,70 +2367,6 @@ namespace QingYunSoft.GestClientesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarEmpresa", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class modificarEmpresaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.GestClientesWS.empresa empresa;
-        
-        public modificarEmpresaRequest() {
-        }
-        
-        public modificarEmpresaRequest(QingYunSoft.GestClientesWS.empresa empresa) {
-            this.empresa = empresa;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarEmpresaResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class modificarEmpresaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public modificarEmpresaResponse() {
-        }
-        
-        public modificarEmpresaResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarClientes", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarClientesRequest {
-        
-        public listarClientesRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarClientesResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarClientesResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.GestClientesWS.cliente[] @return;
-        
-        public listarClientesResponse() {
-        }
-        
-        public listarClientesResponse(QingYunSoft.GestClientesWS.cliente[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="modificarPersonaNatural", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
     public partial class modificarPersonaNaturalRequest {
         
@@ -2068,35 +2403,71 @@ namespace QingYunSoft.GestClientesWS {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarPersonaNatural", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class insertarPersonaNaturalRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarClientePorDocumentoNombre", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarClientePorDocumentoNombreRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public QingYunSoft.GestClientesWS.personaNatural personaNatural;
+        public string docNombre;
         
-        public insertarPersonaNaturalRequest() {
+        public listarClientePorDocumentoNombreRequest() {
         }
         
-        public insertarPersonaNaturalRequest(QingYunSoft.GestClientesWS.personaNatural personaNatural) {
-            this.personaNatural = personaNatural;
+        public listarClientePorDocumentoNombreRequest(string docNombre) {
+            this.docNombre = docNombre;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarPersonaNaturalResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
-    public partial class insertarPersonaNaturalResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarClientePorDocumentoNombreResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarClientePorDocumentoNombreResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public QingYunSoft.GestClientesWS.cliente[] @return;
+        
+        public listarClientePorDocumentoNombreResponse() {
+        }
+        
+        public listarClientePorDocumentoNombreResponse(QingYunSoft.GestClientesWS.cliente[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarEmpresa", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class modificarEmpresaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public QingYunSoft.GestClientesWS.empresa empresa;
+        
+        public modificarEmpresaRequest() {
+        }
+        
+        public modificarEmpresaRequest(QingYunSoft.GestClientesWS.empresa empresa) {
+            this.empresa = empresa;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modificarEmpresaResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class modificarEmpresaResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.lp2soft.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int @return;
         
-        public insertarPersonaNaturalResponse() {
+        public modificarEmpresaResponse() {
         }
         
-        public insertarPersonaNaturalResponse(int @return) {
+        public modificarEmpresaResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -2129,29 +2500,6 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreResponse QingYunSoft.GestClientesWS.GestClientesWS.listarClientePorDocumentoNombre(QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest request) {
-            return base.Channel.listarClientePorDocumentoNombre(request);
-        }
-        
-        public QingYunSoft.GestClientesWS.cliente[] listarClientePorDocumentoNombre(string docNombre) {
-            QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest inValue = new QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest();
-            inValue.docNombre = docNombre;
-            QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreResponse retVal = ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarClientePorDocumentoNombre(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreResponse> QingYunSoft.GestClientesWS.GestClientesWS.listarClientePorDocumentoNombreAsync(QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest request) {
-            return base.Channel.listarClientePorDocumentoNombreAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreResponse> listarClientePorDocumentoNombreAsync(string docNombre) {
-            QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest inValue = new QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest();
-            inValue.docNombre = docNombre;
-            return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarClientePorDocumentoNombreAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         QingYunSoft.GestClientesWS.eliminarClienteResponse QingYunSoft.GestClientesWS.GestClientesWS.eliminarCliente(QingYunSoft.GestClientesWS.eliminarClienteRequest request) {
             return base.Channel.eliminarCliente(request);
         }
@@ -2172,6 +2520,50 @@ namespace QingYunSoft.GestClientesWS {
             QingYunSoft.GestClientesWS.eliminarClienteRequest inValue = new QingYunSoft.GestClientesWS.eliminarClienteRequest();
             inValue.idCliente = idCliente;
             return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).eliminarClienteAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.GestClientesWS.listarClientesResponse QingYunSoft.GestClientesWS.GestClientesWS.listarClientes(QingYunSoft.GestClientesWS.listarClientesRequest request) {
+            return base.Channel.listarClientes(request);
+        }
+        
+        public QingYunSoft.GestClientesWS.cliente[] listarClientes() {
+            QingYunSoft.GestClientesWS.listarClientesRequest inValue = new QingYunSoft.GestClientesWS.listarClientesRequest();
+            QingYunSoft.GestClientesWS.listarClientesResponse retVal = ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarClientes(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarClientesResponse> QingYunSoft.GestClientesWS.GestClientesWS.listarClientesAsync(QingYunSoft.GestClientesWS.listarClientesRequest request) {
+            return base.Channel.listarClientesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarClientesResponse> listarClientesAsync() {
+            QingYunSoft.GestClientesWS.listarClientesRequest inValue = new QingYunSoft.GestClientesWS.listarClientesRequest();
+            return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarClientesAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.GestClientesWS.insertarPersonaNaturalResponse QingYunSoft.GestClientesWS.GestClientesWS.insertarPersonaNatural(QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest request) {
+            return base.Channel.insertarPersonaNatural(request);
+        }
+        
+        public int insertarPersonaNatural(QingYunSoft.GestClientesWS.personaNatural personaNatural) {
+            QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest inValue = new QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest();
+            inValue.personaNatural = personaNatural;
+            QingYunSoft.GestClientesWS.insertarPersonaNaturalResponse retVal = ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).insertarPersonaNatural(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.insertarPersonaNaturalResponse> QingYunSoft.GestClientesWS.GestClientesWS.insertarPersonaNaturalAsync(QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest request) {
+            return base.Channel.insertarPersonaNaturalAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.insertarPersonaNaturalResponse> insertarPersonaNaturalAsync(QingYunSoft.GestClientesWS.personaNatural personaNatural) {
+            QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest inValue = new QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest();
+            inValue.personaNatural = personaNatural;
+            return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).insertarPersonaNaturalAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2198,50 +2590,6 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.GestClientesWS.modificarEmpresaResponse QingYunSoft.GestClientesWS.GestClientesWS.modificarEmpresa(QingYunSoft.GestClientesWS.modificarEmpresaRequest request) {
-            return base.Channel.modificarEmpresa(request);
-        }
-        
-        public int modificarEmpresa(QingYunSoft.GestClientesWS.empresa empresa) {
-            QingYunSoft.GestClientesWS.modificarEmpresaRequest inValue = new QingYunSoft.GestClientesWS.modificarEmpresaRequest();
-            inValue.empresa = empresa;
-            QingYunSoft.GestClientesWS.modificarEmpresaResponse retVal = ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).modificarEmpresa(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.modificarEmpresaResponse> QingYunSoft.GestClientesWS.GestClientesWS.modificarEmpresaAsync(QingYunSoft.GestClientesWS.modificarEmpresaRequest request) {
-            return base.Channel.modificarEmpresaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.modificarEmpresaResponse> modificarEmpresaAsync(QingYunSoft.GestClientesWS.empresa empresa) {
-            QingYunSoft.GestClientesWS.modificarEmpresaRequest inValue = new QingYunSoft.GestClientesWS.modificarEmpresaRequest();
-            inValue.empresa = empresa;
-            return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).modificarEmpresaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.GestClientesWS.listarClientesResponse QingYunSoft.GestClientesWS.GestClientesWS.listarClientes(QingYunSoft.GestClientesWS.listarClientesRequest request) {
-            return base.Channel.listarClientes(request);
-        }
-        
-        public QingYunSoft.GestClientesWS.cliente[] listarClientes() {
-            QingYunSoft.GestClientesWS.listarClientesRequest inValue = new QingYunSoft.GestClientesWS.listarClientesRequest();
-            QingYunSoft.GestClientesWS.listarClientesResponse retVal = ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarClientes(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarClientesResponse> QingYunSoft.GestClientesWS.GestClientesWS.listarClientesAsync(QingYunSoft.GestClientesWS.listarClientesRequest request) {
-            return base.Channel.listarClientesAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarClientesResponse> listarClientesAsync() {
-            QingYunSoft.GestClientesWS.listarClientesRequest inValue = new QingYunSoft.GestClientesWS.listarClientesRequest();
-            return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarClientesAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         QingYunSoft.GestClientesWS.modificarPersonaNaturalResponse QingYunSoft.GestClientesWS.GestClientesWS.modificarPersonaNatural(QingYunSoft.GestClientesWS.modificarPersonaNaturalRequest request) {
             return base.Channel.modificarPersonaNatural(request);
         }
@@ -2265,26 +2613,49 @@ namespace QingYunSoft.GestClientesWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        QingYunSoft.GestClientesWS.insertarPersonaNaturalResponse QingYunSoft.GestClientesWS.GestClientesWS.insertarPersonaNatural(QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest request) {
-            return base.Channel.insertarPersonaNatural(request);
+        QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreResponse QingYunSoft.GestClientesWS.GestClientesWS.listarClientePorDocumentoNombre(QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest request) {
+            return base.Channel.listarClientePorDocumentoNombre(request);
         }
         
-        public int insertarPersonaNatural(QingYunSoft.GestClientesWS.personaNatural personaNatural) {
-            QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest inValue = new QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest();
-            inValue.personaNatural = personaNatural;
-            QingYunSoft.GestClientesWS.insertarPersonaNaturalResponse retVal = ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).insertarPersonaNatural(inValue);
+        public QingYunSoft.GestClientesWS.cliente[] listarClientePorDocumentoNombre(string docNombre) {
+            QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest inValue = new QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest();
+            inValue.docNombre = docNombre;
+            QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreResponse retVal = ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarClientePorDocumentoNombre(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.insertarPersonaNaturalResponse> QingYunSoft.GestClientesWS.GestClientesWS.insertarPersonaNaturalAsync(QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest request) {
-            return base.Channel.insertarPersonaNaturalAsync(request);
+        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreResponse> QingYunSoft.GestClientesWS.GestClientesWS.listarClientePorDocumentoNombreAsync(QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest request) {
+            return base.Channel.listarClientePorDocumentoNombreAsync(request);
         }
         
-        public System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.insertarPersonaNaturalResponse> insertarPersonaNaturalAsync(QingYunSoft.GestClientesWS.personaNatural personaNatural) {
-            QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest inValue = new QingYunSoft.GestClientesWS.insertarPersonaNaturalRequest();
-            inValue.personaNatural = personaNatural;
-            return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).insertarPersonaNaturalAsync(inValue);
+        public System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreResponse> listarClientePorDocumentoNombreAsync(string docNombre) {
+            QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest inValue = new QingYunSoft.GestClientesWS.listarClientePorDocumentoNombreRequest();
+            inValue.docNombre = docNombre;
+            return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).listarClientePorDocumentoNombreAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.GestClientesWS.modificarEmpresaResponse QingYunSoft.GestClientesWS.GestClientesWS.modificarEmpresa(QingYunSoft.GestClientesWS.modificarEmpresaRequest request) {
+            return base.Channel.modificarEmpresa(request);
+        }
+        
+        public int modificarEmpresa(QingYunSoft.GestClientesWS.empresa empresa) {
+            QingYunSoft.GestClientesWS.modificarEmpresaRequest inValue = new QingYunSoft.GestClientesWS.modificarEmpresaRequest();
+            inValue.empresa = empresa;
+            QingYunSoft.GestClientesWS.modificarEmpresaResponse retVal = ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).modificarEmpresa(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.modificarEmpresaResponse> QingYunSoft.GestClientesWS.GestClientesWS.modificarEmpresaAsync(QingYunSoft.GestClientesWS.modificarEmpresaRequest request) {
+            return base.Channel.modificarEmpresaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.GestClientesWS.modificarEmpresaResponse> modificarEmpresaAsync(QingYunSoft.GestClientesWS.empresa empresa) {
+            QingYunSoft.GestClientesWS.modificarEmpresaRequest inValue = new QingYunSoft.GestClientesWS.modificarEmpresaRequest();
+            inValue.empresa = empresa;
+            return ((QingYunSoft.GestClientesWS.GestClientesWS)(this)).modificarEmpresaAsync(inValue);
         }
     }
 }

@@ -38,6 +38,7 @@
             this.tipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nmrDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,10 +48,9 @@
             this.btSeleccionar.FlatAppearance.BorderSize = 0;
             this.btSeleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSeleccionar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btSeleccionar.Location = new System.Drawing.Point(843, 407);
-            this.btSeleccionar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btSeleccionar.Location = new System.Drawing.Point(632, 331);
             this.btSeleccionar.Name = "btSeleccionar";
-            this.btSeleccionar.Size = new System.Drawing.Size(141, 36);
+            this.btSeleccionar.Size = new System.Drawing.Size(106, 29);
             this.btSeleccionar.TabIndex = 22;
             this.btSeleccionar.Text = "Seleccionar";
             this.btSeleccionar.UseVisualStyleBackColor = false;
@@ -58,10 +58,9 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(541, 25);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBuscar.Location = new System.Drawing.Point(406, 20);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(216, 28);
+            this.btnBuscar.Size = new System.Drawing.Size(162, 23);
             this.btnBuscar.TabIndex = 21;
             this.btnBuscar.Text = "Buscar por Nombre o DNI";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -69,19 +68,17 @@
             // 
             // txtDNINombre
             // 
-            this.txtDNINombre.Location = new System.Drawing.Point(212, 28);
-            this.txtDNINombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDNINombre.Location = new System.Drawing.Point(159, 23);
             this.txtDNINombre.Name = "txtDNINombre";
-            this.txtDNINombre.Size = new System.Drawing.Size(265, 22);
+            this.txtDNINombre.Size = new System.Drawing.Size(200, 20);
             this.txtDNINombre.TabIndex = 20;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 31);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 16);
+            this.label1.Size = new System.Drawing.Size(141, 13);
             this.label1.TabIndex = 19;
             this.label1.Text = "Nombre o DNI del empleado";
             // 
@@ -100,13 +97,12 @@
             this.nmrDocumento,
             this.fechaIngreso});
             this.dgvUsuarios.GridColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dgvUsuarios.Location = new System.Drawing.Point(20, 80);
-            this.dgvUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvUsuarios.Location = new System.Drawing.Point(15, 65);
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersVisible = false;
             this.dgvUsuarios.RowHeadersWidth = 62;
-            this.dgvUsuarios.Size = new System.Drawing.Size(964, 320);
+            this.dgvUsuarios.Size = new System.Drawing.Size(723, 260);
             this.dgvUsuarios.TabIndex = 23;
             this.dgvUsuarios.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvUsuarios_CellFormatting);
             // 
@@ -150,19 +146,33 @@
             this.fechaIngreso.ReadOnly = true;
             this.fechaIngreso.Width = 125;
             // 
+            // btCancelar
+            // 
+            this.btCancelar.BackgroundImage = global::QingYunSoft.Properties.Resources.multiply;
+            this.btCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btCancelar.FlatAppearance.BorderSize = 0;
+            this.btCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCancelar.Location = new System.Drawing.Point(698, 9);
+            this.btCancelar.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.btCancelar.Name = "btCancelar";
+            this.btCancelar.Size = new System.Drawing.Size(40, 50);
+            this.btCancelar.TabIndex = 32;
+            this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
+            // 
             // frmBuscarEmpleados
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1000, 468);
+            this.ClientSize = new System.Drawing.Size(750, 380);
+            this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.btSeleccionar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtDNINombre);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmBuscarEmpleados";
             this.Text = "frmBuscarEmpleados";
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
@@ -182,5 +192,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoDocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn nmrDocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaIngreso;
+        private System.Windows.Forms.Button btCancelar;
     }
 }

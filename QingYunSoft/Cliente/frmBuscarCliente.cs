@@ -173,5 +173,10 @@ namespace QingYunSoft.Cliente
                 m.Result = (IntPtr)HTCAPTION;
 
         }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
     }
 }

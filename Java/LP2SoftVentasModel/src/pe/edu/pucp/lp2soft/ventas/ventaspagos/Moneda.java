@@ -2,36 +2,21 @@ package pe.edu.pucp.lp2soft.ventas.ventaspagos;
 import java.util.ArrayList;
 
 public class Moneda {
-
-    private int id;
+    private int idMoneda;
     private String nombre;
     private String abreviatura;
     private ArrayList<TipoDeCambio> cambios;
     private Boolean activo;
 
-    public Boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
-    }
-
     public Moneda() {
     }
 
-    public Moneda(String nombre, String abreviatura, Boolean activo) {
-        this.nombre = nombre;
-        this.abreviatura = abreviatura;
-        this.activo = activo;
-    }
-    
-    public int getId() {
-        return id;
+    public int getIdMoneda() {
+        return idMoneda;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdMoneda(int idMoneda) {
+        this.idMoneda = idMoneda;
     }
 
     public String getNombre() {
@@ -57,6 +42,14 @@ public class Moneda {
     public void setCambios(ArrayList<TipoDeCambio> cambios) {
         this.cambios = cambios;
     }
-    
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
+
     
 }
