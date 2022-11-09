@@ -24,30 +24,32 @@ public class StockMySQL implements StockDAO{
             cs.setInt("_fid_producto", stock.getProducto().getIdProducto());
             cs.setInt("_cantidad", stock.getCantidad());
             cs.setBoolean("_activo", true);
-            cs.executeUpdate();
+            return cs.executeUpdate();
+            
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
             try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
         }
-        return 1;
+        return 0;
     }
 
     @Override
     public int modificar(Stock stock, int idAlmacen) {
         try{
             con = DBManager.getInstance().getConnection();
+            cs = con.prepareCall("{call MODIFICAR_STOCK(?,?,?,?)}");
             cs.setInt("_fid_almacen", idAlmacen);
             cs.setInt("_fid_producto", stock.getProducto().getIdProducto());
             cs.setInt("_cantidad", stock.getCantidad());
-            cs.setBoolean("_activo", true);
-            cs.executeUpdate();
+            cs.setBoolean("_activo", true);            
+            return cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
             try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
         }
-        return 1;
+        return 0;
     }
 
     @Override
@@ -57,13 +59,13 @@ public class StockMySQL implements StockDAO{
             cs = con.prepareCall("{call ELIMINAR_STOCK(?,?)}");
             cs.setInt("_fid_almacen", idAlmacen);
             cs.setInt("_fid_producto", idProducto);
-            cs.executeUpdate();
+            return cs.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{
             try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
         }
-        return 1;
+        return 0;
     }
 
     @Override

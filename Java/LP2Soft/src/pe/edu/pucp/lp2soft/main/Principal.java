@@ -24,51 +24,41 @@ import pe.edu.pucp.lp2soft.ventas.manejoproductos.Producto;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Stock;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.AlmacenDAO;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.ProductoDAO;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.StockDAO;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.AlmacenMySQL;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.ProductoMySQL;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.StockMySQL;
 public class Principal {
     public static void main(String[] args) throws Exception{
         Date date = new Date(); 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        int resultado1, resultado2;
-        AlmacenDAO daoAlmacen = new AlmacenMySQL();
-        Almacen a = new Almacen();
-        a.setNombre("Almacen 1");
-        a.setDireccion("San Juan De Lurigancho");
-        SupervisorDeAlmacen p = new SupervisorDeAlmacen();
-        p.setIdPersona(250);
-        p.setIdUsuario(250);
-        a.setSupervisor(p);
-        a.setActivo(true);
-        ArrayList<Stock> ps = new ArrayList<Stock>();
-        a.setProductos(ps);
-        
-        //daoAlmacen.insertar(a);
-        
-        ProductoDAO daoProducto = new ProductoMySQL();
-        Producto pro = new Producto();
-//        
-        pro.setCosto(12.5);
-        pro.setPrecio(20.0);
-        pro.setNombre("Almohada");
-        pro.setFoto(null);
-        pro.setDevuelto(true);
-        pro.setFechaDeIngreso(date);
-        pro.setIdProducto(1);
-        
+
+        StockDAO daoStock = new StockMySQL();
         Stock s = new Stock();
-        s.setCantidad(40);
-        s.setProducto(pro);
+        s.setProducto(new Producto());
+        s.getProducto().setIdProducto(3);
+        s.setCantidad(10);
         
-        a.setIdAlmacen(1);
-        a.getProductos().add(s);
-        //daoAlmacen.modificar(a);
+        s.getProducto().setIdProducto(2);
+        daoStock.insertar(s, 1);
+        s.getProducto().setIdProducto(4);
+        daoStock.insertar(s, 1);
+        s.getProducto().setIdProducto(5);
+        daoStock.insertar(s, 1);
+        s.getProducto().setIdProducto(6);
+        daoStock.insertar(s, 1);
+        s.getProducto().setIdProducto(7);
+        daoStock.insertar(s, 1);
+        s.getProducto().setIdProducto(8);
+        daoStock.insertar(s, 1);
+        s.getProducto().setIdProducto(9);
+        daoStock.insertar(s, 1);
+        s.getProducto().setIdProducto(10);
+        daoStock.insertar(s, 1);
+
         
-        ArrayList<Almacen> as = daoAlmacen.listarTodos();
-        
-        for(Almacen pr : as){
-            System.out.println(pr.getNombre());
-        }
+        //daoStock.modificar(s, 1);
+
         
         //daoProducto.modificar(p);
 //        

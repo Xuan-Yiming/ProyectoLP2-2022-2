@@ -24,7 +24,8 @@ namespace QingYunSoft.Almacen
             InitializeComponent();
             this.cbSupervisores.DataSource = daoVentasWS.listarSupervisores();
             this.cbSupervisores.DisplayMember = "nombre";
-            dgvProductos.AutoGenerateColumns = false;
+            
+            
             this._frmPrincipal = (frmPrincipal)from;
             this._estado = estado;
             this._almacen = almacen;
@@ -33,7 +34,10 @@ namespace QingYunSoft.Almacen
             txtNombre.Text = almacen.nombre;
             txtDireccion.Text = almacen.direccion;
             this.cbSupervisores.SelectedItem = almacen.supervisor;
-            dgvProductos.DataSource = daoVentasWS.listarStockPorIdAlmacen(almacen.idAlmacen);
+
+            dgvStocks.AutoGenerateColumns = false;
+            dgvStocks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvStocks.DataSource = daoVentasWS.listarStockPorIdAlmacen(almacen.idAlmacen);
 
             establecarComponentes();
         }
@@ -41,22 +45,18 @@ namespace QingYunSoft.Almacen
         public frmInfoAlmacen(Form from, Estado estado)
         {
             InitializeComponent();
+            this.cbSupervisores.DataSource = daoVentasWS.listarSupervisores();
+            this.cbSupervisores.DisplayMember = "nombre";
+            this._frmPrincipal = (frmPrincipal)from;
+            this._estado = estado;
+            dgvStocks.AutoGenerateColumns = false;
+            dgvStocks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            establecarComponentes();
         }
 
         private void btRegresar_Click(object sender, EventArgs e)
         {
             _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmAlmacen(_frmPrincipal));
-        }
-
-        private void dgvProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            VentasWS.stock stock = (VentasWS.stock)dgvProductos.CurrentRow.DataBoundItem;
-            dgvProductos.Rows[e.RowIndex].Cells["ID"].Value = stock.producto.idProducto;
-            dgvProductos.Rows[e.RowIndex].Cells["nombre"].Value = stock.producto.nombre;
-            dgvProductos.Rows[e.RowIndex].Cells["precio"].Value = stock.producto.precio;
-            dgvProductos.Rows[e.RowIndex].Cells["cantidad"].Value = stock.cantidad;
-            dgvProductos.Rows[e.RowIndex].Cells["devuelto"].Value = stock.producto.devuelto;
-            dgvProductos.Rows[e.RowIndex].Cells["fechaIngreso"].Value = stock.producto.fechaDeIngreso;
         }
 
 
@@ -92,6 +92,7 @@ namespace QingYunSoft.Almacen
                     btEditarGuardar.Enabled = true;
                     btCancelar.Enabled = true;
                     btRegresar.Enabled = false;
+                    btAnular.Enabled = false;
                     break;
                 case Estado.Modificar:
                     btEditarGuardar.Text = "Guardar";
@@ -104,6 +105,7 @@ namespace QingYunSoft.Almacen
                     btEditarGuardar.Enabled = true;
                     btCancelar.Enabled = true;
                     btRegresar.Enabled = false;
+                    btAnular.Enabled = true;
                     break;
                 case Estado.Resultado:
                     btEditarGuardar.Text = "Editar";
@@ -116,6 +118,7 @@ namespace QingYunSoft.Almacen
                     btEditarGuardar.Enabled = true;
                     btCancelar.Enabled = false;
                     btRegresar.Enabled = true;
+                    btAnular.Enabled = false;
                     break;
                 default:
                     break;
@@ -126,20 +129,20 @@ namespace QingYunSoft.Almacen
         {
             frmInfoProducto _frmInfoProducto =
                     new frmInfoProducto(Estado.Nuevo, this._almacen);
-            if (_frmInfoProducto.ShowDialog() == DialogResult.Cancel)
-            {
-                dgvProductos.DataSource = daoVentasWS.listarStockPorIdAlmacen(this._almacen.idAlmacen);
-            }
+            _frmInfoProducto.ShowDialog();
+            dgvStocks.DataSource = daoVentasWS.listarStockPorIdAlmacen(this._almacen.idAlmacen);
         }
 
         private void btModificar_Click(object sender, EventArgs e)
         {
             frmInfoProducto _frmInfoProducto =
-                    new frmInfoProducto((VentasWS.stock)dgvProductos.CurrentRow.DataBoundItem,Estado.Nuevo, this._almacen);
-            if (_frmInfoProducto.ShowDialog() == DialogResult.Cancel)
-            {
-                dgvProductos.DataSource = daoVentasWS.listarStockPorIdAlmacen(this._almacen.idAlmacen);
-            }
+                    new frmInfoProducto((VentasWS.stock)dgvStocks.CurrentRow.DataBoundItem,Estado.Resultado, this._almacen);
+            _frmInfoProducto.ShowDialog();
+            dgvStocks.DataSource = daoVentasWS.listarStockPorIdAlmacen(this._almacen.idAlmacen);
+            //if (_frmInfoProducto.ShowDialog() == DialogResult.Cancel)
+            //{
+            //    dgvProductos.DataSource = daoVentasWS.listarStockPorIdAlmacen(this._almacen.idAlmacen);
+            //}
         }
 
         private void btEditarGuardar_Click(object sender, EventArgs e)
@@ -150,10 +153,52 @@ namespace QingYunSoft.Almacen
                 establecarComponentes();
                 
             }
-            else
+            else          
             {
-                
+                this._almacen.nombre = txtNombre.Text;
+                this._almacen.direccion = txtDireccion.Text;
+                this._almacen.supervisor = (VentasWS.supervisorDeAlmacen)cbSupervisores.SelectedItem;
+                if (this._estado == Estado.Nuevo)
+                {
+                    int result = daoVentasWS.insertarAlmacen(this._almacen);
+                    if (result != 0){
+                        MessageBox.Show("Se ha insertado exitosamente el almacen", "Mensaje de Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this._estado = Estado.Resultado;
+                        this._almacen.idAlmacen = result;
+                        this.txtID.Text = result.ToString();
+                        establecarComponentes();
+                    }
+                    else
+                        MessageBox.Show("Ha ocurrido un error al momento de insertar el almacen", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this._estado = Estado.Resultado;
+                    establecarComponentes();
+                }
+                else
+                {
+                    int result = daoVentasWS.modificarAlmacen(this._almacen);
+                    if (result != 0)
+                    {
+                        MessageBox.Show("Se ha modificado exitosamente el almacen", "Mensaje de Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this._estado = Estado.Resultado;
+                        establecarComponentes();
+                    }
+                    else
+                        MessageBox.Show("Ha ocurrido un error al momento de modificar el almacen", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this._estado = Estado.Resultado;
+                    establecarComponentes();
+                }
             }
+        }
+
+        private void dgvStocks_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            VentasWS.stock stock = (VentasWS.stock)dgvStocks.CurrentRow.DataBoundItem;
+            dgvStocks.Rows[e.RowIndex].Cells["ID"].Value = stock.producto.idProducto;
+            dgvStocks.Rows[e.RowIndex].Cells["nombre"].Value = stock.producto.nombre;
+            dgvStocks.Rows[e.RowIndex].Cells["precio"].Value = stock.producto.precio;
+            dgvStocks.Rows[e.RowIndex].Cells["cantidad"].Value = stock.cantidad;
+            dgvStocks.Rows[e.RowIndex].Cells["devuelto"].Value = stock.producto.devuelto;
+            dgvStocks.Rows[e.RowIndex].Cells["fechaIngreso"].Value = stock.producto.fechaDeIngreso;
         }
     }
 }

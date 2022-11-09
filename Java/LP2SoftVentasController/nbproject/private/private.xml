@@ -5,13 +5,7 @@
         <group>
             <file>file:/C:/Users/xuany/Documents/Github/ProyectoLP2-2022-2/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/manejoproductos/dao/StockDAO.java</file>
             <file>file:/C:/Users/xuany/Documents/Github/ProyectoLP2-2022-2/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/manejoproductos/mysql/AlmacenMySQL.java</file>
-            <file>file:/C:/Users/xuany/Documents/Github/ProyectoLP2-2022-2/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/manejoproductos/dao/AlmacenDAO.java</file>
-            <file>file:/C:/Users/xuany/Documents/Github/ProyectoLP2-2022-2/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/manejoproductos/dao/ProductoDAO.java</file>
-            <file>file:/C:/Users/xuany/Documents/Github/ProyectoLP2-2022-2/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/manejoproductos/mysql/DevolucionMySQL.java</file>
-            <file>file:/C:/Users/xuany/Documents/Github/ProyectoLP2-2022-2/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/manejoproductos/mysql/ProductoMySQL.java</file>
             <file>file:/C:/Users/xuany/Documents/Github/ProyectoLP2-2022-2/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/manejoproductos/mysql/StockMySQL.java</file>
-            <file>file:/C:/Users/xuany/Documents/Github/ProyectoLP2-2022-2/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/manejoproductos/mysql/PedidoMySQL.java</file>
-            <file>file:/C:/Users/xuany/Documents/Github/ProyectoLP2-2022-2/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/manejoproductos/mysql/ReclamoMySQL.java</file>
         </group>
     </open-files>
 </project-private>

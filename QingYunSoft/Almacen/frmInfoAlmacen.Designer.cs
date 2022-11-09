@@ -27,10 +27,14 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
-        {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+        {            
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.devuelto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btModificar = new System.Windows.Forms.Button();
             this.btAgregar = new System.Windows.Forms.Button();
@@ -49,23 +53,18 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btCancelar = new System.Windows.Forms.Button();
             this.btRegresar = new System.Windows.Forms.Button();
-            this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.devuelto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dgvStocks = new System.Windows.Forms.DataGridView();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(dgvStocks)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(dgvStocks);
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Controls.Add(this.btEditarGuardar);
@@ -76,15 +75,76 @@
             this.panel3.Size = new System.Drawing.Size(727, 518);
             this.panel3.TabIndex = 16;
             // 
+            // dgvStocks
+            // 
+            dgvStocks.AllowUserToAddRows = false;
+            dgvStocks.AllowUserToDeleteRows = false;
+            dgvStocks.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            dgvStocks.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dgvStocks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvStocks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.nombre,
+            this.precio,
+            this.cantidad,
+            this.devuelto,
+            this.fechaIngreso});
+            dgvStocks.GridColor = System.Drawing.SystemColors.ButtonFace;
+            dgvStocks.Location = new System.Drawing.Point(3, 161);
+            dgvStocks.Name = "dgvStocks";
+            dgvStocks.ReadOnly = true;
+            dgvStocks.RowHeadersVisible = false;
+            dgvStocks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dgvStocks.Size = new System.Drawing.Size(713, 311);
+            dgvStocks.TabIndex = 17;
+            dgvStocks.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvStocks_CellFormatting);
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "Codigo";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            this.nombre.Width = 200;
+            // 
+            // precio
+            // 
+            this.precio.HeaderText = "Precio";
+            this.precio.Name = "precio";
+            this.precio.ReadOnly = true;
+            // 
+            // cantidad
+            // 
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
+            this.cantidad.ReadOnly = true;
+            // 
+            // devuelto
+            // 
+            this.devuelto.HeaderText = "Devuelto";
+            this.devuelto.Name = "devuelto";
+            this.devuelto.ReadOnly = true;
+            // 
+            // fechaIngreso
+            // 
+            this.fechaIngreso.HeaderText = "Fecha de ingreso";
+            this.fechaIngreso.Name = "fechaIngreso";
+            this.fechaIngreso.ReadOnly = true;
+            this.fechaIngreso.Width = 150;
+            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dgvProductos);
             this.groupBox2.Controls.Add(this.btModificar);
             this.groupBox2.Controls.Add(this.btAgregar);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(3, 98);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(713, 374);
+            this.groupBox2.Size = new System.Drawing.Size(713, 57);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Productos";
@@ -286,87 +346,6 @@
             this.btRegresar.UseVisualStyleBackColor = true;
             this.btRegresar.Click += new System.EventHandler(this.btRegresar_Click);
             // 
-            // dgvProductos
-            // 
-            this.dgvProductos.AllowUserToAddRows = false;
-            this.dgvProductos.AllowUserToDeleteRows = false;
-            this.dgvProductos.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.nombre,
-            this.precio,
-            this.cantidad,
-            this.devuelto,
-            this.fechaIngreso});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dgvProductos.GridColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dgvProductos.Location = new System.Drawing.Point(7, 63);
-            this.dgvProductos.Name = "dgvProductos";
-            this.dgvProductos.ReadOnly = true;
-            this.dgvProductos.RowHeadersVisible = false;
-            this.dgvProductos.RowHeadersWidth = 62;
-            this.dgvProductos.Size = new System.Drawing.Size(701, 305);
-            this.dgvProductos.TabIndex = 31;
-            this.dgvProductos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductos_CellFormatting);
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "Codigo";
-            this.ID.MinimumWidth = 8;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            this.nombre.Width = 200;
-            // 
-            // precio
-            // 
-            this.precio.HeaderText = "Precio";
-            this.precio.Name = "precio";
-            this.precio.ReadOnly = true;
-            // 
-            // cantidad
-            // 
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.Name = "cantidad";
-            this.cantidad.ReadOnly = true;
-            // 
-            // devuelto
-            // 
-            this.devuelto.HeaderText = "Devuelto";
-            this.devuelto.Name = "devuelto";
-            this.devuelto.ReadOnly = true;
-            this.devuelto.Width = 60;
-            // 
-            // fechaIngreso
-            // 
-            this.fechaIngreso.HeaderText = "Fecha de Ingreso";
-            this.fechaIngreso.Name = "fechaIngreso";
-            this.fechaIngreso.ReadOnly = true;
-            this.fechaIngreso.Width = 150;
-            // 
             // frmInfoAlmacen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -379,12 +358,12 @@
             this.Name = "frmInfoAlmacen";
             this.Text = "frmInfoAlmacen";
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(dgvStocks)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -410,12 +389,12 @@
         private System.Windows.Forms.Button btAnular;
         private System.Windows.Forms.Button btModificar;
         private System.Windows.Forms.Button btAgregar;
-        private System.Windows.Forms.DataGridView dgvProductos;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn devuelto;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaIngreso;
+        private System.Windows.Forms.DataGridView dgvStocks;
     }
 }

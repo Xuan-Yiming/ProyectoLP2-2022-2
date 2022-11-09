@@ -114,7 +114,7 @@ public class AlmacenMySQL implements AlmacenDAO {
                almacen.setDireccion(rs.getString("direccion"));
                almacen.setActivo(rs.getBoolean("activo"));
                almacen.setSupervisor((SupervisorDeAlmacen) supAlmDAO.buscarPorID(rs.getInt("fid_supervisor")));
-               almacen.setProductos(stockDAO.listarPorAlmacen(rs.getInt("id_almacen")));
+               almacen.setProductos(null);
                              
                almacenes.add(almacen);
            }
@@ -141,7 +141,7 @@ public class AlmacenMySQL implements AlmacenDAO {
                 almacen.setDireccion(rs.getString("direccion"));
                 almacen.setSupervisor((SupervisorDeAlmacen) supAlmDAO.buscarPorID(rs.getInt("fid_supervisor")));
                 almacen.setActivo(rs.getBoolean("activo"));
-                almacen.setProductos(stockDAO.listarPorAlmacen(rs.getInt("id_almacen")));
+                almacen.setProductos(null);
                 
                 almacenes.add(almacen);
            }

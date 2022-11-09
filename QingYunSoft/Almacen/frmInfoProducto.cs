@@ -1,4 +1,5 @@
-﻿using QingYunSoft.VentasWS;
+﻿using QingYunSoft.Cliente;
+using QingYunSoft.VentasWS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,6 +30,8 @@ namespace QingYunSoft.Almacen
             daoVentasWS = new VentasWSClient();
             this.cbAlmacen.DataSource = daoVentasWS.listarAlmacen();
             this.cbAlmacen.DisplayMember = "nombre";
+            this.cbAlmacen.ValueMember = "idAlmacen";
+            this.cbAlmacen.SelectedValue = almacen;
             establecerEstadoComponentes();
             this.CenterToScreen();
         }
@@ -38,12 +41,14 @@ namespace QingYunSoft.Almacen
             InitializeComponent();
             _estado = estado;
             this._almacen = almacen;
+            this._stock = stock;
             daoVentasWS = new VentasWSClient();
             this.cbAlmacen.DataSource = daoVentasWS.listarAlmacen();
             this.cbAlmacen.DisplayMember = "nombre";
+            this.cbAlmacen.ValueMember = "idAlmacen";
             establecerEstadoComponentes();
-            this.txtID.Text = stock.producto.idProducto.ToString();
-            this.cbAlmacen.SelectedItem = almacen;
+            this.cbAlmacen.SelectedValue = almacen.idAlmacen;
+            this.txtID.Text = stock.producto.idProducto.ToString();            
             this.txtNombre.Text = stock.producto.nombre;
             this.txtCosto.Text = stock.producto.costo.ToString();
             this.txtPrecio.Text = stock.producto.precio.ToString();
@@ -55,82 +60,107 @@ namespace QingYunSoft.Almacen
                 MemoryStream ms = new MemoryStream(stock.producto.foto);
                 pbFoto.Image = new Bitmap(ms);
             }
+            
             this.CenterToScreen();
         }
     
         private void btEditarGuardar_Click(object sender, EventArgs e)
         {
-            daoVentasWS = new VentasWSClient();
-
-            _producto.nombre = txtNombre.Text;
-            _producto.precio = double.Parse(txtPrecio.Text);
-            _producto.costo = double.Parse(txtCosto.Text);
-            _producto.fechaDeIngreso = dtpFechaIngreso.Value;
-            _producto.devuelto = cbxDevuelto.Checked;
-
-            FileStream fs = new FileStream(_rutaFoto, FileMode.Open, FileAccess.Read);
-            BinaryReader br = new BinaryReader(fs);
-            _producto.foto = br.ReadBytes((int)fs.Length);
-            fs.Close();
-
-            _producto.activoSpecified = true;
-            _producto.devueltoSpecified = true;
-            _producto.fechaDeIngresoSpecified = true;
-
-            _stock.producto = this._producto;
-            _stock.cantidad = Int32.Parse(txtStock.Text);
-            _almacen = (almacen)cbAlmacen.SelectedItem;
-            if (this._estado == Estado.Nuevo)
-            {              
-                int resultado = 0;
-                resultado = daoVentasWS.insertarProducto(_producto);
-                if (resultado != 0)
-                {
-                    daoVentasWS = new VentasWSClient();
-                    int resultado2 = daoVentasWS.insertarStock(_stock, this._almacen.idAlmacen);
-                    if (resultado2 != 0)
-                    {
-                        MessageBox.Show("Se ha insertado correctamente");
-                        txtID.Text = resultado.ToString();
-                        this._producto.idProducto = resultado;
-                        this._estado = Estado.Resultado;
-                        establecerEstadoComponentes();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Ha ocurrido un error", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            if (this._estado == Estado.Resultado)
+            {
+                this._estado = Estado.Modificar;
+                establecerEstadoComponentes();
             }
             else
             {
-                this._stock.producto = _producto;
-                this._stock.cantidad = Int32.Parse(txtStock.Text);
+                daoVentasWS = new VentasWSClient();
 
-                int resultado = 0;
-                resultado = daoVentasWS.modificarProducto(_producto);
-                if (resultado != 0)
+                this._stock.producto.nombre = txtNombre.Text;
+                this._stock.producto.precio = double.Parse(txtPrecio.Text);
+                this._stock.producto.costo = double.Parse(txtCosto.Text);
+                this._stock.producto.fechaDeIngreso = dtpFechaIngreso.Value;
+                this._stock.producto.devuelto = cbxDevuelto.Checked;
+                
+                if (this._rutaFoto != null)
                 {
-                    resultado = daoVentasWS.modificarStock(_stock, this._almacen.idAlmacen);
+                    FileStream fs = new FileStream(_rutaFoto, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    this._stock.producto.foto = br.ReadBytes((int)fs.Length);
+                    fs.Close();
+                }
+
+                this._stock.producto.activo = true;
+                this._stock.producto.activoSpecified = true;
+                this._stock.producto.devueltoSpecified = true;
+                this._stock.producto.fechaDeIngresoSpecified = true;
+
+                _stock.cantidad = Int32.Parse(txtStock.Text);
+                _stock.activo = true;
+                _stock.activoSpecified = true;
+
+
+                _almacen = (almacen)cbAlmacen.SelectedItem;
+                if (this._estado == Estado.Nuevo)
+                {
+                    int resultado = 0;
+                    resultado = daoVentasWS.insertarProducto(_stock.producto);
                     if (resultado != 0)
                     {
-                        MessageBox.Show("Se ha modificado correctamente");
-                        txtID.Text = resultado.ToString();
-                        this._estado = Estado.Resultado;
-                        establecerEstadoComponentes();
+                        daoVentasWS = new VentasWSClient();
+                        int resultado2 = daoVentasWS.insertarStock(_stock, this._almacen.idAlmacen);
+                        if (resultado2 != 0)
+                        {
+                            MessageBox.Show("Se ha insertado correctamente");
+                            txtID.Text = resultado.ToString();
+                            this._producto.idProducto = resultado;
+                            this._estado = Estado.Resultado;
+                            establecerEstadoComponentes();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Ha ocurrido un error", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    int resultado = 0;
+                    resultado = daoVentasWS.modificarProducto(_stock.producto);
+                    if (resultado != 0)
+                    {
+                        resultado = daoVentasWS.modificarStock(_stock, this._almacen.idAlmacen);
+                        if (resultado != 0)
+                        {
+                            MessageBox.Show("Se ha modificado correctamente");
+                            txtID.Text = resultado.ToString();
+                            this._estado = Estado.Resultado;
+                            establecerEstadoComponentes();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
+                }
             }
+            
         }
 
         private void btEliminar_Click(object sender, EventArgs e)
         {
+            daoVentasWS = new VentasWSClient();
+            if (MessageBox.Show("¿Esta seguro que desea eliminar este producto?", "Mensaje de confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
 
+                int result = 0;
+                result = daoVentasWS.eliminarStock(this._stock.producto.idProducto, this._almacen.idAlmacen);
+                if (result == 1)
+                    MessageBox.Show("Se ha eliminado exitosamente el producto", "Mensaje de Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("Ha ocurrido un error al momento de eliminar el producto", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            this.Close();
         }
 
         private void btSubirFoto_Click(object sender, EventArgs e)

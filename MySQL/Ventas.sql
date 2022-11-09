@@ -133,7 +133,7 @@ BEGIN
     SELECT *
     FROM almacen WHERE activo = 1;
 END ;;
-
+DELIMITER ;
 -- Stock
 DROP PROCEDURE IF EXISTS `INSERTAR_STOCK`;
 DELIMITER ;;
@@ -144,7 +144,7 @@ CREATE DEFINER=`adminjoya`@`%` PROCEDURE `INSERTAR_STOCK`(
     IN _activo TINYINT
     )
 BEGIN
-    INSERT INTO stock(fid_almacen,fid_producto,cantidad,activo)
+    INSERT INTO stock(id_almacen,id_producto,cantidad,activo)
                 VALUES(_fid_almacen, _fid_producto, _cantidad,1);
 END ;;
 DELIMITER ;
@@ -158,15 +158,8 @@ CREATE DEFINER=`adminjoya`@`%` PROCEDURE `MODIFICAR_STOCK`(
     IN _cantidad INT
     )
 BEGIN
-    -- if can't finde the stock, insert it
-    IF NOT EXISTS (SELECT * FROM stock s 
-                    WHERE s.id_almacen = _fid_almacen AND s.id_producto = _fid_producto) THEN
-        INSERT INTO stock(id_almacen,id_producto,cantidad,activo)
-                VALUES(_fid_almacen, _fid_producto, _cantidad,1);
-    ELSE
-        UPDATE stock SET cantidad=_cantidad, activo=_activo
-            WHERE id_almacen = _fid_almacen AND id_producto = _fid_producto;
-    END IF;
+    UPDATE stock SET cantidad=_cantidad, activo=_activo
+        WHERE id_almacen = _fid_almacen AND id_producto = _fid_producto;
 END ;;
 DELIMITER ;
 
@@ -224,7 +217,7 @@ BEGIN
     INNER JOIN producto p ON s.id_producto = p.id_producto
     WHERE s.id_almacen = _fid_almacen AND s.activo = 1 AND p.nombre LIKE CONCAT('%',_nombre,'%');
 END ;;
-
+DELIMITER ;
 -- Orden De Compra
 DROP PROCEDURE IF EXISTS `INSERTAR_ORDEN_DE_COMPRA`;
 DELIMITER ;;

@@ -212,9 +212,9 @@ CREATE DEFINER=`adminjoya`@`%` PROCEDURE `LISTAR_SUPERVISORES`()
 BEGIN
     SELECT  u.*,
             p.*
-    FROM    usuario u
-            INNER JOIN persona p ON u.id_usuario=p.id_persona
-            LEFT JOIN supervisorDeAlmacen s ON u.id_usuario=s.id_usuario
+    FROM    supervisorDeAlmacen s
+            INNER JOIN usuario u ON s.id_usuario=u.id_usuario
+            LEFT JOIN persona p ON u.id_usuario=p.id_persona
     WHERE   u.activo = 1;
 END ;;
 -- Procedimientos Generales
