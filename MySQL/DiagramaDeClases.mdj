@@ -49,7 +49,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -3332,
-											"top": -1631,
+											"top": -1633,
 											"height": 13
 										},
 										{
@@ -60,7 +60,7 @@
 											},
 											"font": "Arial;13;1",
 											"left": 961,
-											"top": 207,
+											"top": 206,
 											"width": 1142,
 											"height": 13,
 											"text": "pe.edu.pucp.lp2soft.ventas"
@@ -74,7 +74,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -3332,
-											"top": -1631,
+											"top": -1633,
 											"width": 73.67724609375,
 											"height": 13,
 											"text": "(from Model)"
@@ -88,14 +88,14 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -3332,
-											"top": -1631,
+											"top": -1633,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 956,
-									"top": 200,
+									"top": 199,
 									"width": 1152,
 									"height": 25,
 									"stereotypeLabel": {
@@ -115,7 +115,7 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 							"left": 956,
-							"top": 185,
+							"top": 184,
 							"width": 1152,
 							"height": 1288,
 							"nameCompartment": {
