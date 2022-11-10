@@ -54,18 +54,17 @@ namespace QingYunSoft
 
         private void dgvVentas_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //VentasWS.ordenDeCompra ventSeleccionado = (VentasWS.ordenDeCompra)dgvVentas.CurrentRow.DataBoundItem;
-            //_frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoVenta(_frmPrincipal, Estado.Resultado, ventSeleccionado, this._usuario));
+            VentasWS.ordenDeCompra ventSeleccionado = (VentasWS.ordenDeCompra)dgvVentas.CurrentRow.DataBoundItem;
+            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoVenta(_frmPrincipal, Estado.Resultado, ventSeleccionado, this._usuario));
         }
 
         private void dgvVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //VentasWS.ordenDeCompra venta = (VentasWS.ordenDeCompra)dgvVentas.Rows[e.RowIndex].DataBoundItem;
-            //dgvVentas.Rows[e.RowIndex].Cells["ID"].Value = venta.id;
-            //dgvVentas.Rows[e.RowIndex].Cells["idCliente"].Value = venta.idCliente;
-            //dgvVentas.Rows[e.RowIndex].Cells["fechaVenta"].Value = venta.fechaDeCompra;
-            //dgvVentas.Rows[e.RowIndex].Cells["moneda"].Value = ((VentasWS.moneda)venta.moneda).abreviatura;
-            //dgvVentas.Rows[e.RowIndex].Cells["monto"].Value = (double)venta.monto;
+            VentasWS.ordenDeCompra venta = (VentasWS.ordenDeCompra)dgvVentas.Rows[e.RowIndex].DataBoundItem;
+            dgvVentas.Rows[e.RowIndex].Cells["ID"].Value = venta.idOrdenDeCompra;
+            dgvVentas.Rows[e.RowIndex].Cells["fechaVenta"].Value = venta.fechaDeCompra;
+            dgvVentas.Rows[e.RowIndex].Cells["moneda"].Value = ((VentasWS.moneda)venta.moneda).abreviatura;
+            dgvVentas.Rows[e.RowIndex].Cells["monto"].Value = (double)venta.monto;
         }
     }
 }

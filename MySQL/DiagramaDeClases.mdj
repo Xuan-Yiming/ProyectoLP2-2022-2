@@ -918,23 +918,6 @@
 										},
 										{
 											"_type": "UMLAttributeView",
-											"_id": "AAAAAAGEJaGnyCDFeJE=",
-											"_parent": {
-												"$ref": "AAAAAAGEJaGnyCC2G/w="
-											},
-											"model": {
-												"$ref": "AAAAAAGDhQ4KVQIoIVE="
-											},
-											"font": "Arial;13;0",
-											"left": 1077,
-											"top": 1006,
-											"width": 302.40234375,
-											"height": 13,
-											"text": "-activo: Boolean",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
 											"_id": "AAAAAAGEJaP5ZQXs7/g=",
 											"_parent": {
 												"$ref": "AAAAAAGEJaGnyCC2G/w="
@@ -944,7 +927,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1077,
-											"top": 1021,
+											"top": 1006,
 											"width": 302.40234375,
 											"height": 13,
 											"text": "-terminoDePago: TerminoDePago",
@@ -961,7 +944,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1077,
-											"top": 1036,
+											"top": 1021,
 											"width": 302.40234375,
 											"height": 13,
 											"text": "-saldo: Double",
@@ -978,7 +961,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1077,
-											"top": 1051,
+											"top": 1036,
 											"width": 302.40234375,
 											"height": 13,
 											"text": "-vendedor: Vendedor",
@@ -995,7 +978,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1077,
-											"top": 1066,
+											"top": 1051,
 											"width": 302.40234375,
 											"height": 13,
 											"text": "-activo: Boolean",
@@ -1006,7 +989,7 @@
 									"left": 1072,
 									"top": 881,
 									"width": 312.40234375,
-									"height": 203
+									"height": 188
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1019,7 +1002,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1072,
-									"top": 1084,
+									"top": 1069,
 									"width": 312.40234375,
 									"height": 10
 								},
@@ -10682,7 +10665,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -4520,
+									"left": -4384,
 									"top": -633,
 									"width": 10,
 									"height": 10
@@ -10698,7 +10681,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -4520,
+									"left": -4384,
 									"top": -633,
 									"width": 10,
 									"height": 10
@@ -15418,16 +15401,6 @@
 											"name": "documentosDebito",
 											"visibility": "private",
 											"type": "ArrayList<DocumentoDebito>"
-										},
-										{
-											"_type": "UMLAttribute",
-											"_id": "AAAAAAGDhQ4KVQIoIVE=",
-											"_parent": {
-												"$ref": "AAAAAAGC72PeuA/bb2Y="
-											},
-											"name": "activo",
-											"visibility": "private",
-											"type": "Boolean"
 										},
 										{
 											"_type": "UMLAttribute",

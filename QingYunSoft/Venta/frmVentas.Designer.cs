@@ -39,16 +39,15 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.moneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btBuscar = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -69,21 +68,21 @@
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(33, 0, 33, 0);
-            this.panel1.Size = new System.Drawing.Size(827, 130);
+            this.panel1.Padding = new System.Windows.Forms.Padding(44, 0, 44, 0);
+            this.panel1.Size = new System.Drawing.Size(1103, 160);
             this.panel1.TabIndex = 0;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.btRegistrarPago);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(247, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Location = new System.Drawing.Point(330, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
-            this.panel4.Size = new System.Drawing.Size(107, 129);
+            this.panel4.Padding = new System.Windows.Forms.Padding(9, 16, 36, 16);
+            this.panel4.Size = new System.Drawing.Size(143, 159);
             this.panel4.TabIndex = 2;
             // 
             // btRegistrarPago
@@ -94,10 +93,10 @@
             this.btRegistrarPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btRegistrarPago.Image = global::QingYunSoft.Properties.Resources.creditcard;
             this.btRegistrarPago.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btRegistrarPago.Location = new System.Drawing.Point(7, 13);
-            this.btRegistrarPago.Margin = new System.Windows.Forms.Padding(2);
+            this.btRegistrarPago.Location = new System.Drawing.Point(9, 16);
+            this.btRegistrarPago.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btRegistrarPago.Name = "btRegistrarPago";
-            this.btRegistrarPago.Size = new System.Drawing.Size(73, 103);
+            this.btRegistrarPago.Size = new System.Drawing.Size(98, 127);
             this.btRegistrarPago.TabIndex = 0;
             this.btRegistrarPago.Text = "Registrar Pago";
             this.btRegistrarPago.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -108,11 +107,11 @@
             // 
             this.panel3.Controls.Add(this.btRegistrarReclamo);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(140, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Location = new System.Drawing.Point(187, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
-            this.panel3.Size = new System.Drawing.Size(107, 129);
+            this.panel3.Padding = new System.Windows.Forms.Padding(9, 16, 36, 16);
+            this.panel3.Size = new System.Drawing.Size(143, 159);
             this.panel3.TabIndex = 1;
             // 
             // btRegistrarReclamo
@@ -123,10 +122,10 @@
             this.btRegistrarReclamo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btRegistrarReclamo.Image = global::QingYunSoft.Properties.Resources.exclamationmark_triangle;
             this.btRegistrarReclamo.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btRegistrarReclamo.Location = new System.Drawing.Point(7, 13);
-            this.btRegistrarReclamo.Margin = new System.Windows.Forms.Padding(2);
+            this.btRegistrarReclamo.Location = new System.Drawing.Point(9, 16);
+            this.btRegistrarReclamo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btRegistrarReclamo.Name = "btRegistrarReclamo";
-            this.btRegistrarReclamo.Size = new System.Drawing.Size(73, 103);
+            this.btRegistrarReclamo.Size = new System.Drawing.Size(98, 127);
             this.btRegistrarReclamo.TabIndex = 0;
             this.btRegistrarReclamo.Text = "Registrar Reclamo";
             this.btRegistrarReclamo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -137,11 +136,11 @@
             // 
             this.panel2.Controls.Add(this.btNuevaVenta);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(33, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(44, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
-            this.panel2.Size = new System.Drawing.Size(107, 129);
+            this.panel2.Padding = new System.Windows.Forms.Padding(9, 16, 36, 16);
+            this.panel2.Size = new System.Drawing.Size(143, 159);
             this.panel2.TabIndex = 0;
             // 
             // btNuevaVenta
@@ -151,10 +150,10 @@
             this.btNuevaVenta.FlatAppearance.BorderSize = 0;
             this.btNuevaVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btNuevaVenta.Image = global::QingYunSoft.Properties.Resources.doc;
-            this.btNuevaVenta.Location = new System.Drawing.Point(7, 13);
-            this.btNuevaVenta.Margin = new System.Windows.Forms.Padding(2);
+            this.btNuevaVenta.Location = new System.Drawing.Point(9, 16);
+            this.btNuevaVenta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btNuevaVenta.Name = "btNuevaVenta";
-            this.btNuevaVenta.Size = new System.Drawing.Size(73, 103);
+            this.btNuevaVenta.Size = new System.Drawing.Size(98, 127);
             this.btNuevaVenta.TabIndex = 0;
             this.btNuevaVenta.Text = "Venta Nueva";
             this.btNuevaVenta.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -166,9 +165,10 @@
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(33, 129);
+            this.panel5.Location = new System.Drawing.Point(44, 159);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(761, 1);
+            this.panel5.Size = new System.Drawing.Size(1015, 1);
             this.panel5.TabIndex = 0;
             // 
             // panel6
@@ -176,19 +176,21 @@
             this.panel6.Controls.Add(this.panel10);
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 130);
+            this.panel6.Location = new System.Drawing.Point(0, 160);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
-            this.panel6.Padding = new System.Windows.Forms.Padding(50, 0, 50, 20);
-            this.panel6.Size = new System.Drawing.Size(827, 458);
+            this.panel6.Padding = new System.Windows.Forms.Padding(67, 0, 67, 25);
+            this.panel6.Size = new System.Drawing.Size(1103, 564);
             this.panel6.TabIndex = 1;
             // 
             // panel10
             // 
             this.panel10.Controls.Add(this.dgvVentas);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(50, 40);
+            this.panel10.Location = new System.Drawing.Point(67, 49);
+            this.panel10.Margin = new System.Windows.Forms.Padding(4);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(727, 398);
+            this.panel10.Size = new System.Drawing.Size(969, 490);
             this.panel10.TabIndex = 1;
             // 
             // dgvVentas
@@ -201,22 +203,84 @@
             this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
-            this.idCliente,
             this.fechaVenta,
             this.moneda,
             this.monto});
             this.dgvVentas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvVentas.GridColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgvVentas.Location = new System.Drawing.Point(0, 0);
+            this.dgvVentas.Margin = new System.Windows.Forms.Padding(4);
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.ReadOnly = true;
             this.dgvVentas.RowHeadersVisible = false;
             this.dgvVentas.RowHeadersWidth = 62;
             this.dgvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVentas.Size = new System.Drawing.Size(727, 398);
+            this.dgvVentas.Size = new System.Drawing.Size(969, 490);
             this.dgvVentas.TabIndex = 1;
             this.dgvVentas.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellContentDoubleClick);
             this.dgvVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvVentas_CellFormatting);
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.panel9);
+            this.panel7.Controls.Add(this.panel8);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(67, 0);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(969, 49);
+            this.panel7.TabIndex = 0;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.btBuscar);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel9.Location = new System.Drawing.Point(916, 0);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4);
+            this.panel9.Name = "panel9";
+            this.panel9.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.panel9.Size = new System.Drawing.Size(53, 49);
+            this.panel9.TabIndex = 1;
+            // 
+            // btBuscar
+            // 
+            this.btBuscar.BackgroundImage = global::QingYunSoft.Properties.Resources.magnifyingglass;
+            this.btBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btBuscar.FlatAppearance.BorderSize = 0;
+            this.btBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btBuscar.Location = new System.Drawing.Point(7, 6);
+            this.btBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.btBuscar.Name = "btBuscar";
+            this.btBuscar.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.btBuscar.Size = new System.Drawing.Size(39, 37);
+            this.btBuscar.TabIndex = 1;
+            this.btBuscar.UseVisualStyleBackColor = true;
+            this.btBuscar.Click += new System.EventHandler(this.btBuscar_Click);
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.label1);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4);
+            this.panel8.Name = "panel8";
+            this.panel8.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
+            this.panel8.Size = new System.Drawing.Size(405, 49);
+            this.panel8.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(143, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Ultimas Ventas";
             // 
             // ID
             // 
@@ -225,14 +289,6 @@
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             this.ID.Width = 150;
-            // 
-            // idCliente
-            // 
-            this.idCliente.HeaderText = "ID Cliente";
-            this.idCliente.MinimumWidth = 8;
-            this.idCliente.Name = "idCliente";
-            this.idCliente.ReadOnly = true;
-            this.idCliente.Width = 200;
             // 
             // fechaVenta
             // 
@@ -248,7 +304,7 @@
             this.moneda.MinimumWidth = 8;
             this.moneda.Name = "moneda";
             this.moneda.ReadOnly = true;
-            this.moneda.Width = 50;
+            this.moneda.Width = 60;
             // 
             // monto
             // 
@@ -256,73 +312,18 @@
             this.monto.MinimumWidth = 8;
             this.monto.Name = "monto";
             this.monto.ReadOnly = true;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.panel9);
-            this.panel7.Controls.Add(this.panel8);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(50, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(727, 40);
-            this.panel7.TabIndex = 0;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.btBuscar);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel9.Location = new System.Drawing.Point(687, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Padding = new System.Windows.Forms.Padding(5);
-            this.panel9.Size = new System.Drawing.Size(40, 40);
-            this.panel9.TabIndex = 1;
-            // 
-            // btBuscar
-            // 
-            this.btBuscar.BackgroundImage = global::QingYunSoft.Properties.Resources.magnifyingglass;
-            this.btBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btBuscar.FlatAppearance.BorderSize = 0;
-            this.btBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btBuscar.Location = new System.Drawing.Point(5, 5);
-            this.btBuscar.Name = "btBuscar";
-            this.btBuscar.Padding = new System.Windows.Forms.Padding(10);
-            this.btBuscar.Size = new System.Drawing.Size(30, 30);
-            this.btBuscar.TabIndex = 1;
-            this.btBuscar.UseVisualStyleBackColor = true;
-            this.btBuscar.Click += new System.EventHandler(this.btBuscar_Click);
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.label1);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.panel8.Size = new System.Drawing.Size(304, 40);
-            this.panel8.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ultimas Ventas";
+            this.monto.Width = 125;
             // 
             // frmVentas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(827, 588);
+            this.ClientSize = new System.Drawing.Size(1103, 724);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmVentas";
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -358,7 +359,6 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.DataGridView dgvVentas;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn moneda;
         private System.Windows.Forms.DataGridViewTextBoxColumn monto;

@@ -1,4 +1,5 @@
 ﻿using QingYunSoft.Cliente;
+using QingYunSoft.GestClientesWS;
 using QingYunSoft.VentasWS;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace QingYunSoft.Venta
         //private VentasWS.ordenDeCompra ordenDeCompraSeleccionado;
         //public ordenDeCompra OrdenDeCompraSeleccionado { get => ordenDeCompraSeleccionado; set => ordenDeCompraSeleccionado = value; }
         //private GestClientesWS.cliente clienteSeleccionado;
+        private GestClientesWS.cliente _cliente;
         public frmBuscarVenta()
         {
             InitializeComponent();
@@ -70,6 +72,20 @@ namespace QingYunSoft.Venta
 
         private void btBuscarCliente_Click(object sender, EventArgs e)
         {
+            frmBuscarCliente _frmBuscarCliente = new frmBuscarCliente();
+            if (_frmBuscarCliente.ShowDialog() == DialogResult.OK)
+            {
+                this._cliente = _frmBuscarCliente.ClienteSeleccionado;
+                if (_cliente is GestClientesWS.personaNatural)
+                {
+                    txtCliente.Text = ((GestClientesWS.personaNatural)_cliente).nombre + ", " + ((GestClientesWS.personaNatural)_cliente).apellido;
+                }
+                else if (_cliente is GestClientesWS.empresa)
+                {
+                    txtCliente.Text = ((GestClientesWS.empresa)_cliente).razonSocial;
+                }
+
+            }
             //frmBuscarCliente _frmBuscarCliente = new frmBuscarCliente();
             //if (_frmBuscarCliente.ShowDialog() == DialogResult.OK)
             //{
@@ -181,6 +197,11 @@ namespace QingYunSoft.Venta
             if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
                 m.Result = (IntPtr)HTCAPTION;
 
+        }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

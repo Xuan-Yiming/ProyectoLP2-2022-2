@@ -7,6 +7,6 @@ public interface PedidoDAO {
     public int insertar(Pedido pedido);
     public int modificar(Pedido pedido);
     public int eliminar(int id);
-    public ArrayList<Pedido> listarTodos();
-	public ArrayList<Pedido> listarPorOrdenDeCompra(int idOrdenDeCompra);
+//    public ArrayList<Pedido> listarTodos();
+//	public ArrayList<Pedido> listarPorOrdenDeCompra(int idOrdenDeCompra);
 }

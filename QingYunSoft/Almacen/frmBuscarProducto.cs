@@ -1,4 +1,5 @@
-﻿using QingYunSoft.VentasWS;
+﻿using QingYunSoft.GestClientesWS;
+using QingYunSoft.VentasWS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,8 +16,13 @@ namespace QingYunSoft.Almacen
     public partial class frmBuscarProducto : Form
     {
         private VentasWS.VentasWSClient daoVentasWS;
+        private VentasWS.VentasWSClient daoProductosWS;
         private VentasWS.stock stockSeleccionado;
         private VentasWS.almacen AlmacenSeleccionado;
+        private VentasWS.producto productoSeleccionado;
+
+        public VentasWS.producto ProductoSeleccionado { get => productoSeleccionado; set => productoSeleccionado = value; }
+
         public frmBuscarProducto()
         {
             InitializeComponent();
@@ -24,10 +30,11 @@ namespace QingYunSoft.Almacen
             this.FormBorderStyle = FormBorderStyle.None;
             this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
 
-            
+
             daoVentasWS = new VentasWSClient();
+            daoProductosWS = new VentasWSClient();
             this.cbAlmacen.DataSource = daoVentasWS.listarAlmacen();
-            this.cbAlmacen.DisplayMember = "nombre";          
+            this.cbAlmacen.DisplayMember = "nombre";
 
             dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProductos.AutoGenerateColumns = false;
@@ -43,6 +50,7 @@ namespace QingYunSoft.Almacen
             {
                 this.StockSeleccionado = (VentasWS.stock)dgvProductos.CurrentRow.DataBoundItem;
                 this.AlmacenSeleccionado = (VentasWS.almacen)cbAlmacen.SelectedItem;
+                //this.productoSeleccionado = (VentasWS.producto)dgvProductos.CurrentRow.DataBoundItem;
                 this.DialogResult = DialogResult.OK;
             }
             else
@@ -64,7 +72,17 @@ namespace QingYunSoft.Almacen
 
         private void btBuscar_Click(object sender, EventArgs e)
         {
-            dgvProductos.DataSource = daoVentasWS.listarStockPorIdAlmacenYNombre(((almacen)cbAlmacen.SelectedItem).idAlmacen, txtNombreCodigo.Text);
+            try
+            {
+                daoProductosWS = new VentasWS.VentasWSClient();
+                dgvProductos.DataSource = daoVentasWS.listarStockPorIdAlmacenYNombre(((almacen)cbAlmacen.SelectedItem).idAlmacen, txtNombreCodigo.Text);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void btCancelar_Click(object sender, EventArgs e)

@@ -9,14 +9,23 @@ import pe.edu.pucp.lp2soft.rrhh.dao.SupervisorDeAlmacenDAO;
 import pe.edu.pucp.lp2soft.rrhh.model.SupervisorDeAlmacen;
 import pe.edu.pucp.lp2soft.rrhh.mysql.SupervisorDeAlmacenMySQL;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Almacen;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.Pedido;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Producto;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Stock;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.AlmacenDAO;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.PedidoDAO;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.ProductoDAO;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.StockDAO;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.AlmacenMySQL;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.PedidoMySQL;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.ProductoMySQL;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.StockMySQL;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.Moneda;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.MonedaDAO;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.OrdenDeCompraDAO;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.MonedaMySQL;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.OrdenDeCompraMySQL;
 
 
 @WebService(serviceName = "VentasWS")
@@ -24,13 +33,14 @@ public class VentasWS {
     ProductoDAO daoProducto = new ProductoMySQL();
     AlmacenDAO daoAlmacen = new AlmacenMySQL();
     StockDAO daoStock = new StockMySQL();
-    
-        SupervisorDeAlmacenDAO daoSupervisor = new SupervisorDeAlmacenMySQL();
+    MonedaDAO daoMoneda = new MonedaMySQL();
+    SupervisorDeAlmacenDAO daoSupervisor = new SupervisorDeAlmacenMySQL();
 //    TerminoDePagoDAO daoTerminoPago = new TerminoDePagoMySQL();
-//    PedidoDAO daoPedido = new PedidoMySQL();
-//    OrdenDeCompraDAO daoOrdenDeCompra = new OrdenDeCompraMySQL();
+    PedidoDAO daoPedido = new PedidoMySQL();
+    OrdenDeCompraDAO daoOrdenDeCompra = new OrdenDeCompraMySQL();
     
-        @WebMethod(operationName = "listarSupervisores")
+        
+    @WebMethod(operationName = "listarSupervisores")
     public ArrayList<SupervisorDeAlmacen> listarSupervisores() {        
         ArrayList<SupervisorDeAlmacen> supervisores = new ArrayList<SupervisorDeAlmacen>();
         try{
@@ -201,6 +211,17 @@ public class VentasWS {
         }
         return almacenes;
     }
+    @WebMethod(operationName = "listarMonedas")
+    public ArrayList<Moneda> listarMonedas() {        
+        ArrayList<Moneda> monedas = new ArrayList<Moneda>();
+        try{
+             monedas = daoMoneda.listarTodos();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        
+        return monedas;
+    }
 //    /*Gestionar Termino Pago*/
 //    @WebMethod(operationName = "insertarTerminoPago")
 //    public int insertarTerminoPago(@WebParam(name = "terminoPago") TerminoDePago terminoPago) {
@@ -246,36 +267,36 @@ public class VentasWS {
     
 	
 //    /*Gestionar Pedidos*/
-//    @WebMethod(operationName = "insertarPedido")
-//    public int insertarPedido(@WebParam(name = "pedido") Pedido pedido) {
-//        int resultado = 0;
-//        try{
-//            resultado = daoPedido.insertar(pedido);
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        return resultado;
-//    }
-//    @WebMethod(operationName = "modificarPedido")
-//    public int modificarPedido(@WebParam(name = "pedido") Pedido pedido) {
-//        int resultado = 0;
-//        try{
-//            resultado = daoPedido.modificar(pedido);
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        return resultado;
-//    }
-//    @WebMethod(operationName = "eliminarPedido")
-//    public int eliminarPedido(@WebParam(name = "pedido") int idPedido) {
-//        int resultado = 0;
-//        try{
-//            resultado = daoPedido.eliminar(idPedido);
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        return resultado;
-//    }
+    @WebMethod(operationName = "insertarPedido")
+    public int insertarPedido(@WebParam(name = "pedido") Pedido pedido) {
+        int resultado = 0;
+        try{
+            resultado = daoPedido.insertar(pedido);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "modificarPedido")
+    public int modificarPedido(@WebParam(name = "pedido") Pedido pedido) {
+        int resultado = 0;
+        try{
+            resultado = daoPedido.modificar(pedido);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "eliminarPedido")
+    public int eliminarPedido(@WebParam(name = "pedido") int idPedido) {
+        int resultado = 0;
+        try{
+            resultado = daoPedido.eliminar(idPedido);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
 //    @WebMethod(operationName = "listarPedidos")
 //    public ArrayList<Pedido> listarPedidos() {
 //        ArrayList<Pedido> pedidos = null;
@@ -298,75 +319,75 @@ public class VentasWS {
 //    }
 //    
 //    /*Gestionar Ordenes de Compra*/
-//    @WebMethod(operationName = "insertarOrdenDeCompra")
-//    public int insertarOrdenDeCompra(@WebParam(name = "ordenDeCompra") OrdenDeCompra ordenDeCompra) {
-//        int resultado = 0;
-//        try{
-//            resultado = daoOrdenDeCompra.insertar(ordenDeCompra);
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        return resultado;
-//    }
-//    @WebMethod(operationName = "modificarOrdenDeCompra")
-//    public int modificarOrdenDeCompra(@WebParam(name = "ordenDeCompra") OrdenDeCompra ordenDeCompra) {
-//        int resultado = 0;
-//        try{
-//            resultado = daoOrdenDeCompra.modificar(ordenDeCompra);
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        return resultado;
-//    }
-//    @WebMethod(operationName = "eliminarOrdenDeCompra")
-//    public int eliminarOrdenDeCompra(@WebParam(name = "idOrdenDeCompra") int idOrdenDeCompra) {
-//        int resultado = 0;
-//        try{
-//            resultado = daoOrdenDeCompra.eliminar(idOrdenDeCompra);
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        return resultado;
-//    }
-//    @WebMethod(operationName = "listarOrdenesDeCompra")
-//    public ArrayList<OrdenDeCompra> listarOrdenesDeCompra() {
-//        ArrayList<OrdenDeCompra> ordenesDeCompra = null;
-//        try{
-//            ordenesDeCompra = daoOrdenDeCompra.listarTodos();
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        return ordenesDeCompra;
-//    }
-//    @WebMethod(operationName = "listarOrdenesDeCompraPorCliente")
-//    public ArrayList<OrdenDeCompra> listarOrdenesDeCompraPorCliente(@WebParam(name = "idCliente") int idCliente) {
-//        ArrayList<OrdenDeCompra> ordenesDeCompra = null;
-//        try{
-//            ordenesDeCompra = daoOrdenDeCompra.listarPorCliente(idCliente);
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        return ordenesDeCompra;
-//    }
-//    @WebMethod(operationName = "listarOrdenesDeCompraPorFecha")
-//    public ArrayList<OrdenDeCompra> listarOrdenesDeCompraPorFecha(@WebParam(name = "fecha") Date fecha) {
-//        ArrayList<OrdenDeCompra> ordenesDeCompra = null;
-//        try{
-//            ordenesDeCompra = daoOrdenDeCompra.listarPorFecha(fecha);
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        return ordenesDeCompra;
-//    }
-//    @WebMethod(operationName = "listarOrdenesDeCompraUltimas50")
-//    public ArrayList<OrdenDeCompra> listarOrdenesDeCompraUltimas50() {
-//        ArrayList<OrdenDeCompra> ordenesDeCompra = null;
-//        try{
-//            ordenesDeCompra = daoOrdenDeCompra.listarUltimas50();
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        return ordenesDeCompra;
-//    }
-//    
+    @WebMethod(operationName = "insertarOrdenDeCompra")
+    public int insertarOrdenDeCompra(@WebParam(name = "ordenDeCompra") OrdenDeCompra ordenDeCompra, @WebParam(name = "idCliente") int idCliente) {
+        int resultado = 0;
+        try{
+            resultado = daoOrdenDeCompra.insertar(ordenDeCompra,idCliente);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "modificarOrdenDeCompra")
+    public int modificarOrdenDeCompra(@WebParam(name = "ordenDeCompra") OrdenDeCompra ordenDeCompra) {
+        int resultado = 0;
+        try{
+            resultado = daoOrdenDeCompra.modificar(ordenDeCompra);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "eliminarOrdenDeCompra")
+    public int eliminarOrdenDeCompra(@WebParam(name = "idOrdenDeCompra") int idOrdenDeCompra) {
+        int resultado = 0;
+        try{
+            resultado = daoOrdenDeCompra.eliminar(idOrdenDeCompra);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "listarOrdenesDeCompra")
+    public ArrayList<OrdenDeCompra> listarOrdenesDeCompra() {
+        ArrayList<OrdenDeCompra> ordenesDeCompra = null;
+        try{
+            ordenesDeCompra = daoOrdenDeCompra.listarTodos();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return ordenesDeCompra;
+    }
+    @WebMethod(operationName = "listarOrdenesDeCompraPorCliente")
+    public ArrayList<OrdenDeCompra> listarOrdenesDeCompraPorCliente(@WebParam(name = "idCliente") int idCliente) {
+        ArrayList<OrdenDeCompra> ordenesDeCompra = null;
+        try{
+            ordenesDeCompra = daoOrdenDeCompra.listarPorCliente(idCliente);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return ordenesDeCompra;
+    }
+    @WebMethod(operationName = "listarOrdenesDeCompraPorFecha")
+    public ArrayList<OrdenDeCompra> listarOrdenesDeCompraPorFecha(@WebParam(name = "fecha") Date fecha) {
+        ArrayList<OrdenDeCompra> ordenesDeCompra = null;
+        try{
+            ordenesDeCompra = daoOrdenDeCompra.listarPorFecha(fecha);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return ordenesDeCompra;
+    }
+    @WebMethod(operationName = "listarOrdenesDeCompraUltimas50")
+    public ArrayList<OrdenDeCompra> listarOrdenesDeCompraUltimas50() {
+        ArrayList<OrdenDeCompra> ordenesDeCompra = null;
+        try{
+            ordenesDeCompra = daoOrdenDeCompra.listarUltimas50();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return ordenesDeCompra;
+    }
+    
 }
