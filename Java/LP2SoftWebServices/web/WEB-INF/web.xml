@@ -4,9 +4,17 @@
         <servlet-name>ReporteVendedoresMasVentas</servlet-name>
         <servlet-class>pe.edu.pucp.lp2soft.servlet.ReporteVendedoresMasVentas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReporteVentasPeriodo</servlet-name>
+        <servlet-class>pe.edu.pucp.lp2soft.servlet.ReporteVentasPeriodo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ReporteVendedoresMasVentas</servlet-name>
         <url-pattern>/ReporteVendedoresMasVentas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReporteVentasPeriodo</servlet-name>
+        <url-pattern>/ReporteVentasPeriodo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
