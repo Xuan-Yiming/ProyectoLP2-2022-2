@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Reclamo;
 
 public interface ReclamoDAO {
-    public int insertar(Reclamo reclamo);
-    public int modificar(Reclamo reclamo);
-    public int eliminar(int id);
-    public ArrayList<Reclamo> listarTodos();
+    public int insertarReclamo(Reclamo reclamo);
+    public int modificarReclamo(Reclamo reclamo);
+    public int eliminarReclamo(int id);
+    public ArrayList<Reclamo> listarReclamoxOrden(int IdOrden);
+    public ArrayList<Reclamo> listarReclamoTodos();
 }

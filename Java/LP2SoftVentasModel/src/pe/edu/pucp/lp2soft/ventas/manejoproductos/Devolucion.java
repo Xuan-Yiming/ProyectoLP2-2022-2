@@ -5,6 +5,7 @@ import java.util.Date;
 public class Devolucion {
     private int idDevolucion;
     private Producto producto;
+    private int fid_reclamo;
     private int cantidad;
     private Boolean activo;
 
@@ -42,7 +43,14 @@ public class Devolucion {
     public void setActivo(Boolean activo) {
         this.activo = activo;
     }
+    
+    public int getFid_reclamo() {
+        return fid_reclamo;
+    }
 
+    public void setFid_reclamo(int fid_reclamo) {
+        this.fid_reclamo = fid_reclamo;
+    }
     
 }
 

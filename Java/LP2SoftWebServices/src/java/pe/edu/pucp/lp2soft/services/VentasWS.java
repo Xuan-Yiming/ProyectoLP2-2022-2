@@ -9,14 +9,26 @@ import pe.edu.pucp.lp2soft.rrhh.dao.SupervisorDeAlmacenDAO;
 import pe.edu.pucp.lp2soft.rrhh.model.SupervisorDeAlmacen;
 import pe.edu.pucp.lp2soft.rrhh.mysql.SupervisorDeAlmacenMySQL;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Almacen;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.Devolucion;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Producto;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.Reclamo;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.Stock;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.AlmacenDAO;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.DevolucionDAO;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.ProductoDAO;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.ReclamoDAO;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.StockDAO;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.AlmacenMySQL;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.DevolucionMySQL;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.ProductoMySQL;
+import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.ReclamoMySQL;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.StockMySQL;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.Moneda;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.TipoDeCambio;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.MonedaDAO;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.TipoDeCambioDAO;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.MonedaMySQL;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.TipoDeCambioMySQL;
 
 
 @WebService(serviceName = "VentasWS")
@@ -24,8 +36,11 @@ public class VentasWS {
     ProductoDAO daoProducto = new ProductoMySQL();
     AlmacenDAO daoAlmacen = new AlmacenMySQL();
     StockDAO daoStock = new StockMySQL();
-    
-        SupervisorDeAlmacenDAO daoSupervisor = new SupervisorDeAlmacenMySQL();
+    MonedaDAO daoMoneda = new MonedaMySQL();
+    TipoDeCambioDAO daoTipoDeCambio = new TipoDeCambioMySQL();
+    SupervisorDeAlmacenDAO daoSupervisor = new SupervisorDeAlmacenMySQL();
+    ReclamoDAO daoReclamo = new ReclamoMySQL();
+    DevolucionDAO daoDevolucion = new DevolucionMySQL();
 //    TerminoDePagoDAO daoTerminoPago = new TerminoDePagoMySQL();
 //    PedidoDAO daoPedido = new PedidoMySQL();
 //    OrdenDeCompraDAO daoOrdenDeCompra = new OrdenDeCompraMySQL();
@@ -369,4 +384,200 @@ public class VentasWS {
 //        return ordenesDeCompra;
 //    }
 //    
+    //Gestionar Moneda//
+    @WebMethod(operationName = "insertarMoneda")
+    public int insertarMoneda(@WebParam(name = "moneda") Moneda moneda) {
+        int resultado = 0;
+        try{
+            resultado = daoMoneda.insertarMoneda(moneda);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "modificarMoneda")
+    public int modificarMoneda(@WebParam(name = "moneda")Moneda moneda){
+        int resultado = 0;
+        try{
+            resultado = daoMoneda.modificarMoneda(moneda);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "eliminarMoneda")
+    public int eliminarMoneda(@WebParam(name = "producto") int id) {
+        int resultado = 0;
+        try{
+            resultado = daoMoneda.eliminarMoneda(id);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    
+    @WebMethod(operationName = "listarMonedaXNombre")
+    public ArrayList<Moneda> listarMonedaXNombre(@WebParam(name = "nombre") String nombre) {
+        ArrayList<Moneda> monedas = new ArrayList<Moneda>();
+        try{
+            monedas = daoMoneda.listarMonedaXNombre(nombre);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return monedas;
+    }
+    
+    //Gestionar tipo de cambio//
+    
+    @WebMethod(operationName = "insertarTipoDeCambio")
+    public int insertarTipoDeCambio(@WebParam(name = "tipoDeCambio")TipoDeCambio tipoDeCambio){
+        int resultado = 0;
+        try{
+            resultado = daoTipoDeCambio.insertarTipoDeCambio(tipoDeCambio);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "modificarTipoDeCambio")
+    public int modificarTipoDeCambio(@WebParam(name = "tipoDeCambio")TipoDeCambio tipoDeCambio){
+        int resultado = 0;
+        try{
+            resultado = daoTipoDeCambio.modificarTipoDeCambio(tipoDeCambio);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "eliminarTipoDeCambio")
+    public int eliminarTipoDeCambio(@WebParam(name = "tipoDeCambio") int id) {
+        int resultado = 0;
+        try{
+            resultado = daoTipoDeCambio.eliminarTipoDeCambio(id);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    
+    @WebMethod(operationName = "listarTipoDeCambioXNombre")
+    public ArrayList<TipoDeCambio> listarTipoDeCambioXNombre(@WebParam(name = "nombre") String nombre) {
+        ArrayList<TipoDeCambio> tiposDeCambio = new ArrayList<TipoDeCambio>();
+        try{
+            tiposDeCambio = daoTipoDeCambio.listarTipoDeCambioXNombre(nombre);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return tiposDeCambio;
+    }
+    
+    
+    //GESTIONAR RECLAMO//
+    @WebMethod(operationName = "insertarReclamo")
+    public int insertarReclamo(@WebParam(name = "reclamo")Reclamo reclamo){
+        int resultado = 0;
+        try{
+            resultado = daoReclamo.insertarReclamo(reclamo);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "modificarReclamo")
+    public int modificarReclamo(@WebParam(name = "reclamo")Reclamo reclamo){
+        int resultado = 0;
+        try{
+            resultado = daoReclamo.modificarReclamo(reclamo);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "eliminarReclamo")
+    public int eliminarReclamo(@WebParam(name = "reclamo") int id) {
+        int resultado = 0;
+        try{
+            resultado = daoReclamo.eliminarReclamo(id);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    
+    @WebMethod(operationName = "listarReclamoxOrden")
+    public ArrayList<Reclamo> listarReclamoxOrden(@WebParam(name = "IdOrden") int IdOrden) {
+        ArrayList<Reclamo> reclamos = new ArrayList<Reclamo>();
+        try{
+            reclamos = daoReclamo.listarReclamoxOrden(IdOrden);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return reclamos;
+    }
+    
+    @WebMethod(operationName = "listarReclamoTodos")
+    public ArrayList<Reclamo> listarReclamoTodos() {
+        ArrayList<Reclamo> reclamos = new ArrayList<Reclamo>();
+        try{
+            reclamos = daoReclamo.listarReclamoTodos();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return reclamos;
+    }
+    
+    //Gestionar devolución//
+    @WebMethod(operationName = "insertarDevolucion")
+    public int insertarDevolucion(@WebParam(name = "devolucion")Devolucion devolucion){
+        int resultado = 0;
+        try{
+            resultado = daoDevolucion.insertarDevolucion(devolucion);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "modificarDevolucion")
+    public int modificarDevolucion(@WebParam(name = "devolucion")Devolucion devolucion){
+        int resultado = 0;
+        try{
+            resultado = daoDevolucion.modificarDevolucion(devolucion);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    @WebMethod(operationName = "eliminarDevolucion")
+    public int eliminarDevolucion(@WebParam(name = "devolucion") int id) {
+        int resultado = 0;
+        try{
+            resultado = daoDevolucion.eliminarDevolucion(id);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
+    
+    @WebMethod(operationName = "listarDevolucionXReclamo")
+    public ArrayList<Devolucion> listarDevolucionXReclamo(@WebParam(name = "idReclamo") int idReclamo) {
+        ArrayList<Devolucion> devoluciones = new ArrayList<Devolucion>();
+        try{
+            devoluciones = daoDevolucion.listarDevolucionXReclamo(idReclamo);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return devoluciones;
+    }
+    
+    @WebMethod(operationName = "listarTodosDevolucion")
+    public ArrayList<Devolucion> listarTodosDevolucion() {
+        ArrayList<Devolucion> devoluciones = new ArrayList<Devolucion>();
+        try{
+            devoluciones = daoDevolucion.listarTodosDevolucion();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return devoluciones;
+    }
 }
+

@@ -12,8 +12,9 @@ import pe.edu.pucp.lp2soft.ventas.manejoproductos.Devolucion;
  * @author xuany
  */
 public interface DevolucionDAO {
-    public int insertar(Devolucion devolucion);
-    public int modificar(Devolucion devolucion);
-    public int eliminar(int id);
-    public ArrayList<Devolucion> listarTodos();
+    public int insertarDevolucion(Devolucion devolucion);
+    public int modificarDevolucion(Devolucion devolucion);
+    public int eliminarDevolucion(int id);
+    public ArrayList<Devolucion> listarTodosDevolucion();
+    public ArrayList<Devolucion> listarDevolucionXReclamo(int idReclamo);
 }
