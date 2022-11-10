@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Reclamo {
     private int idReclamo;
+    private int fid_orden_de_compra;
     private Date fecha;
     private boolean atendido;
     private String justificacion;
@@ -61,5 +62,11 @@ public class Reclamo {
         this.activo = activo;
     }
     
-    
+    public int getFid_orden_de_compra() {
+        return fid_orden_de_compra;
+    }
+
+    public void setFid_orden_de_compra(int fid_orden_de_compra) {
+        this.fid_orden_de_compra = fid_orden_de_compra;
+    }
 }

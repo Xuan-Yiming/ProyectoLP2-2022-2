@@ -4,6 +4,7 @@ import java.util.Date;
 public class TipoDeCambio {
     private int idTipoDeCambio;
     private Date fecha;
+    private int fid_Moneda;
     private double cambio;
     private Boolean activo;
 
@@ -42,5 +43,11 @@ public class TipoDeCambio {
         this.activo = activo;
     }
     
-    
+    public int getFid_Moneda() {
+        return fid_Moneda;
+    }
+
+    public void setFid_Moneda(int fid_Moneda) {
+        this.fid_Moneda = fid_Moneda;
+    }
 }
