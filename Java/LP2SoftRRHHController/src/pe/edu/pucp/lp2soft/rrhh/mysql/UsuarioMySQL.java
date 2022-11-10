@@ -150,7 +150,7 @@ public class UsuarioMySQL implements UsuarioDAO {
                 usuario.setTelefono(rs.getString("telefono"));
                 usuario.setDireccion(rs.getString("direccion"));
                 usuario.setEmail(rs.getString("email"));
-                usuario.setActivo(rs.getBoolean("activo"));
+                usuario.setActivo(true);
                 usuario.setIdPersona(usuario.getIdUsuario());
                 usuarios.add(usuario);
             }
