@@ -1,12 +1,4 @@
-﻿using QingYunSoft.Cliente;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace QingYunSoft.Usuario
@@ -19,7 +11,7 @@ namespace QingYunSoft.Usuario
 
         //daos
         private RRHHWS.RRHHWSClient daoEmpleados;
-            
+
         public frmEmpleados(frmPrincipal _frmPrincipal)
         {
             InitializeComponent();
@@ -35,7 +27,7 @@ namespace QingYunSoft.Usuario
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }            
+            }
         }
 
         private void btNuevoUsuario_Click(object sender, EventArgs e)
@@ -47,7 +39,7 @@ namespace QingYunSoft.Usuario
         private void btBuscar_Click(object sender, EventArgs e)
         {
             frmBuscarEmpleados _frmBuscarEmpleados = new frmBuscarEmpleados();
-            if(_frmBuscarEmpleados.ShowDialog() == DialogResult.OK)
+            if (_frmBuscarEmpleados.ShowDialog() == DialogResult.OK)
             {
                 frmInfoEmpleado _frmInfoEmpleado = new frmInfoEmpleado(_frmPrincipal, Estado.Resultado, _frmBuscarEmpleados.UsuarioSeleccionado);
                 _frmPrincipal.mostrarFormularioEnPnlPrincipal(_frmInfoEmpleado);
@@ -65,14 +57,15 @@ namespace QingYunSoft.Usuario
             {
                 dgvEmpleados.Rows[e.RowIndex].Cells["cargo"].Value = "Administrador";
             }
-            else if (empleado is RRHHWS.vendedor) {
+            else if (empleado is RRHHWS.vendedor)
+            {
                 dgvEmpleados.Rows[e.RowIndex].Cells["cargo"].Value = "Vendedor";
             }
             else if (empleado is RRHHWS.supervisorDeAlmacen)
             {
                 dgvEmpleados.Rows[e.RowIndex].Cells["cargo"].Value = "Sup. Almacen";
             }
-        
+
         }
         private void dgvEmpleados_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {

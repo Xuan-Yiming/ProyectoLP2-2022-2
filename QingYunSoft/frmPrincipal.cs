@@ -3,14 +3,9 @@ using QingYunSoft.Cliente;
 using QingYunSoft.RRHHWS;
 using QingYunSoft.Usuario;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
+using System.IO;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QingYunSoft
@@ -24,14 +19,17 @@ namespace QingYunSoft
         private System.Windows.Forms.Button btnUsuarios = new System.Windows.Forms.Button();
 
         //objetos
-        private RRHHWS.usuario _usuario;       
+        private RRHHWS.usuario _usuario;
 
         //constructores
-        public frmPrincipal(){
+        public frmPrincipal()
+        {
             InitializeComponent();
             this.CenterToScreen();
             crearBotones();
             this._usuario = new administrador();
+            this._usuario.idUsuario = 1;
+            this._usuario.idPersona = 1;
             establecerMenu();
         }
         public frmPrincipal(RRHHWS.usuario _usuario)
@@ -44,14 +42,18 @@ namespace QingYunSoft
             gp.AddEllipse(0, 0, pcbFotoPerfil.Width - 3, pcbFotoPerfil.Height - 3);
             Region rg = new Region(gp);
             pcbFotoPerfil.Region = rg;
-            
-            crearBotones();            
+
+            crearBotones();
 
             //llenar datos segun el usuario
             this._usuario = _usuario;
             mensajeDeSalud();
             txtNombreUsuario.Text = this._usuario.nombre;
-            //pcbFotoPerfil.Image = Image.FromFile(usuario.foto);
+            if (this._usuario.fotoPerfil != null)
+            {
+                MemoryStream ms = new MemoryStream(this._usuario.fotoPerfil);
+                pcbFotoPerfil.Image = new Bitmap(ms);
+            }
             establecerMenu();
         }
         public void mostrarFormularioEnPnlPrincipal(Form _frm)
@@ -68,11 +70,11 @@ namespace QingYunSoft
             //actualizar el mensaje de salud en lbltitulo segun la hora del dia
             System.DateTime time = System.DateTime.Now;
             if (time.Hour < 12)
-                lbltitulo.Text = "Buenos dias";
+                lbltitulo.Text = "Buenos días!";
             else if (time.Hour < 19)
-                lbltitulo.Text = "Buenas tardes";
+                lbltitulo.Text = "Buenas tardes!";
             else
-                lbltitulo.Text = "Buenas noches";
+                lbltitulo.Text = "Buenas noches!";
 
         }
         private void crearBotones()
@@ -94,7 +96,7 @@ namespace QingYunSoft
             this.btnClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnClientes.UseVisualStyleBackColor = true;
             this.btnClientes.Click += new System.EventHandler(this.btClientes_Click);
-            
+
 
             //btn almacenSeleccionado
             this.btnAlmacen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -113,8 +115,8 @@ namespace QingYunSoft
             this.btnAlmacen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAlmacen.UseVisualStyleBackColor = true;
             this.btnAlmacen.Click += new System.EventHandler(this.btAlmacen_Click);
-            
-            
+
+
             //btn ventas
             this.btnVentas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnVentas.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -150,6 +152,8 @@ namespace QingYunSoft
             this.btnUsuarios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnUsuarios.UseVisualStyleBackColor = true;
             this.btnUsuarios.Click += new System.EventHandler(this.btEmpleados_Click);
+
+
         }
         private void establecerMenu()
         {
@@ -165,11 +169,13 @@ namespace QingYunSoft
                 pnlBt2.Controls.Add(btnVentas);
                 pnlBt3.Controls.Add(btnClientes);
                 pnlBt4.Controls.Add(btnUsuarios);
-            }else if (this._usuario is RRHHWS.supervisorDeAlmacen)
+            }
+            else if (this._usuario is RRHHWS.supervisorDeAlmacen)
             {
                 pnlBt1.Controls.Add(btnAlmacen);
             }
-            else if (this._usuario is RRHHWS.vendedor){
+            else if (this._usuario is RRHHWS.vendedor)
+            {
                 pnlBt1.Controls.Add(btnVentas);
                 pnlBt2.Controls.Add(btnClientes);
             }
@@ -185,7 +191,7 @@ namespace QingYunSoft
         private void btVentas_Click(object sender, EventArgs e)
         {
             lbltitulo.Text = "Ventas";
-            frmVentas _frmInicio = new frmVentas(this,this._usuario);
+            frmVentas _frmInicio = new frmVentas(this, this._usuario);
             mostrarFormularioEnPnlPrincipal(_frmInicio);
             resetColor();
             btnVentas.BackColor = Color.FromArgb(182, 111, 11);
@@ -222,7 +228,7 @@ namespace QingYunSoft
             if (MessageBox.Show("¿Desea cerrar la sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.DialogResult = DialogResult.OK;
-            }            
+            }
         }
 
         //Mover la pantalla
@@ -230,5 +236,6 @@ namespace QingYunSoft
         private extern static void ReleaseCapture();
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         private static extern void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
+
     }
 }

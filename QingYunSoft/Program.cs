@@ -1,10 +1,4 @@
-﻿using QingYunSoft.Almacen;
-using QingYunSoft.Cliente;
-using QingYunSoft.Venta;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace QingYunSoft

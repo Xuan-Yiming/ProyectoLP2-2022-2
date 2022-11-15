@@ -5,11 +5,29 @@
       <xsd:import schemaLocation="http://localhost:8080/LP2SoftWebServices/RRHHWS?xsd=1" namespace="http://services.lp2soft.pucp.edu.pe/" />
     </xsd:schema>
   </types>
-  <message name="modificarVendedor">
-    <part name="parameters" element="tns:modificarVendedor" />
+  <message name="listarUsuarios">
+    <part name="parameters" element="tns:listarUsuarios" />
   </message>
-  <message name="modificarVendedorResponse">
-    <part name="parameters" element="tns:modificarVendedorResponse" />
+  <message name="listarUsuariosResponse">
+    <part name="parameters" element="tns:listarUsuariosResponse" />
+  </message>
+  <message name="insertarVendedor">
+    <part name="parameters" element="tns:insertarVendedor" />
+  </message>
+  <message name="insertarVendedorResponse">
+    <part name="parameters" element="tns:insertarVendedorResponse" />
+  </message>
+  <message name="eliminarUsuario">
+    <part name="parameters" element="tns:eliminarUsuario" />
+  </message>
+  <message name="eliminarUsuarioResponse">
+    <part name="parameters" element="tns:eliminarUsuarioResponse" />
+  </message>
+  <message name="insertarAdministrador">
+    <part name="parameters" element="tns:insertarAdministrador" />
+  </message>
+  <message name="insertarAdministradorResponse">
+    <part name="parameters" element="tns:insertarAdministradorResponse" />
   </message>
   <message name="modificarAdministrador">
     <part name="parameters" element="tns:modificarAdministrador" />
@@ -17,11 +35,11 @@
   <message name="modificarAdministradorResponse">
     <part name="parameters" element="tns:modificarAdministradorResponse" />
   </message>
-  <message name="insertarAdministrador">
-    <part name="parameters" element="tns:insertarAdministrador" />
+  <message name="modificarVendedor">
+    <part name="parameters" element="tns:modificarVendedor" />
   </message>
-  <message name="insertarAdministradorResponse">
-    <part name="parameters" element="tns:insertarAdministradorResponse" />
+  <message name="modificarVendedorResponse">
+    <part name="parameters" element="tns:modificarVendedorResponse" />
   </message>
   <message name="insertarSupervisor">
     <part name="parameters" element="tns:insertarSupervisor" />
@@ -47,36 +65,30 @@
   <message name="listarUsuarioPorDocumentoNombreResponse">
     <part name="parameters" element="tns:listarUsuarioPorDocumentoNombreResponse" />
   </message>
-  <message name="eliminarUsuario">
-    <part name="parameters" element="tns:eliminarUsuario" />
-  </message>
-  <message name="eliminarUsuarioResponse">
-    <part name="parameters" element="tns:eliminarUsuarioResponse" />
-  </message>
-  <message name="listarUsuarios">
-    <part name="parameters" element="tns:listarUsuarios" />
-  </message>
-  <message name="listarUsuariosResponse">
-    <part name="parameters" element="tns:listarUsuariosResponse" />
-  </message>
-  <message name="insertarVendedor">
-    <part name="parameters" element="tns:insertarVendedor" />
-  </message>
-  <message name="insertarVendedorResponse">
-    <part name="parameters" element="tns:insertarVendedorResponse" />
-  </message>
   <portType name="RRHHWS">
-    <operation name="modificarVendedor">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarVendedorRequest" message="tns:modificarVendedor" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarVendedorResponse" message="tns:modificarVendedorResponse" />
+    <operation name="listarUsuarios">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarUsuariosRequest" message="tns:listarUsuarios" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarUsuariosResponse" message="tns:listarUsuariosResponse" />
+    </operation>
+    <operation name="insertarVendedor">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarVendedorRequest" message="tns:insertarVendedor" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarVendedorResponse" message="tns:insertarVendedorResponse" />
+    </operation>
+    <operation name="eliminarUsuario">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarUsuarioRequest" message="tns:eliminarUsuario" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarUsuarioResponse" message="tns:eliminarUsuarioResponse" />
+    </operation>
+    <operation name="insertarAdministrador">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarAdministradorRequest" message="tns:insertarAdministrador" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarAdministradorResponse" message="tns:insertarAdministradorResponse" />
     </operation>
     <operation name="modificarAdministrador">
       <input wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarAdministradorRequest" message="tns:modificarAdministrador" />
       <output wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarAdministradorResponse" message="tns:modificarAdministradorResponse" />
     </operation>
-    <operation name="insertarAdministrador">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarAdministradorRequest" message="tns:insertarAdministrador" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarAdministradorResponse" message="tns:insertarAdministradorResponse" />
+    <operation name="modificarVendedor">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarVendedorRequest" message="tns:modificarVendedor" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/modificarVendedorResponse" message="tns:modificarVendedorResponse" />
     </operation>
     <operation name="insertarSupervisor">
       <input wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarSupervisorRequest" message="tns:insertarSupervisor" />
@@ -94,22 +106,37 @@
       <input wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarUsuarioPorDocumentoNombreRequest" message="tns:listarUsuarioPorDocumentoNombre" />
       <output wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarUsuarioPorDocumentoNombreResponse" message="tns:listarUsuarioPorDocumentoNombreResponse" />
     </operation>
-    <operation name="eliminarUsuario">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarUsuarioRequest" message="tns:eliminarUsuario" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/eliminarUsuarioResponse" message="tns:eliminarUsuarioResponse" />
-    </operation>
-    <operation name="listarUsuarios">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarUsuariosRequest" message="tns:listarUsuarios" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/listarUsuariosResponse" message="tns:listarUsuariosResponse" />
-    </operation>
-    <operation name="insertarVendedor">
-      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarVendedorRequest" message="tns:insertarVendedor" />
-      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/RRHHWS/insertarVendedorResponse" message="tns:insertarVendedorResponse" />
-    </operation>
   </portType>
   <binding name="RRHHWSPortBinding" type="tns:RRHHWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="modificarVendedor">
+    <operation name="listarUsuarios">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarVendedor">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eliminarUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarAdministrador">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -127,7 +154,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarAdministrador">
+    <operation name="modificarVendedor">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -164,33 +191,6 @@
       </output>
     </operation>
     <operation name="listarUsuarioPorDocumentoNombre">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="eliminarUsuario">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarUsuarios">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="insertarVendedor">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -1,12 +1,4 @@
-﻿using QingYunSoft.GestClientesWS;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace QingYunSoft.Cliente
@@ -43,7 +35,7 @@ namespace QingYunSoft.Cliente
         private void btBuscar_Click(object sender, EventArgs e)
         {
             frmBuscarCliente _frmBuscarCliente = new frmBuscarCliente();
-            if(_frmBuscarCliente.ShowDialog() == DialogResult.OK)
+            if (_frmBuscarCliente.ShowDialog() == DialogResult.OK)
             {
                 _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoCliente(_frmPrincipal, Estado.Resultado, _frmBuscarCliente.ClienteSeleccionado));
             }
@@ -73,7 +65,8 @@ namespace QingYunSoft.Cliente
                 dgvClientes.Rows[e.RowIndex].Cells["categoria"].Value = ((GestClientesWS.empresa)clienteI).categoria;
 
             }
-            else {
+            else
+            {
                 dgvClientes.Rows[e.RowIndex].Cells["nombreCliente"].Value = ((GestClientesWS.personaNatural)clienteI).nombre + " " + ((GestClientesWS.personaNatural)clienteI).apellido;
                 dgvClientes.Rows[e.RowIndex].Cells["tipoCliente"].Value = "Persona Natural";
                 dgvClientes.Rows[e.RowIndex].Cells["tipoDocumento"].Value = ((GestClientesWS.personaNatural)clienteI).tipoDeDocumento.ToString();

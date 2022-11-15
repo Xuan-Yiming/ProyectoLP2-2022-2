@@ -38,14 +38,16 @@
             this.fechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.btBuscar = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btNuevoUsuario = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btBuscar = new System.Windows.Forms.Button();
+            this.btNuevoUsuario = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btReporteMejoresVendedores = new System.Windows.Forms.Button();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
@@ -55,6 +57,7 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel6
@@ -164,22 +167,6 @@
             this.panel9.Size = new System.Drawing.Size(40, 40);
             this.panel9.TabIndex = 1;
             // 
-            // btBuscar
-            // 
-            this.btBuscar.BackgroundImage = global::QingYunSoft.Properties.Resources.magnifyingglass;
-            this.btBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btBuscar.FlatAppearance.BorderSize = 0;
-            this.btBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btBuscar.Location = new System.Drawing.Point(5, 5);
-            this.btBuscar.Name = "btBuscar";
-            this.btBuscar.Padding = new System.Windows.Forms.Padding(10);
-            this.btBuscar.Size = new System.Drawing.Size(30, 30);
-            this.btBuscar.TabIndex = 1;
-            this.btBuscar.UseVisualStyleBackColor = true;
-            this.btBuscar.Click += new System.EventHandler(this.btBuscar_Click);
-            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.label1);
@@ -203,6 +190,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -224,6 +212,40 @@
             this.panel2.Size = new System.Drawing.Size(107, 129);
             this.panel2.TabIndex = 0;
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Location = new System.Drawing.Point(33, 129);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(761, 1);
+            this.panel5.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel6);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 130);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(827, 458);
+            this.panel3.TabIndex = 7;
+            // 
+            // btBuscar
+            // 
+            this.btBuscar.BackgroundImage = global::QingYunSoft.Properties.Resources.magnifyingglass;
+            this.btBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btBuscar.FlatAppearance.BorderSize = 0;
+            this.btBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btBuscar.Location = new System.Drawing.Point(5, 5);
+            this.btBuscar.Name = "btBuscar";
+            this.btBuscar.Padding = new System.Windows.Forms.Padding(10);
+            this.btBuscar.Size = new System.Drawing.Size(30, 30);
+            this.btBuscar.TabIndex = 1;
+            this.btBuscar.UseVisualStyleBackColor = true;
+            this.btBuscar.Click += new System.EventHandler(this.btBuscar_Click);
+            // 
             // btNuevoUsuario
             // 
             this.btNuevoUsuario.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -242,23 +264,33 @@
             this.btNuevoUsuario.UseVisualStyleBackColor = false;
             this.btNuevoUsuario.Click += new System.EventHandler(this.btNuevoUsuario_Click);
             // 
-            // panel5
+            // panel4
             // 
-            this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(33, 129);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(761, 1);
-            this.panel5.TabIndex = 0;
+            this.panel4.Controls.Add(this.btReporteMejoresVendedores);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(140, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
+            this.panel4.Size = new System.Drawing.Size(107, 129);
+            this.panel4.TabIndex = 2;
             // 
-            // panel3
+            // btReporteMejoresVendedores
             // 
-            this.panel3.Controls.Add(this.panel6);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 130);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(827, 458);
-            this.panel3.TabIndex = 7;
+            this.btReporteMejoresVendedores.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btReporteMejoresVendedores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btReporteMejoresVendedores.FlatAppearance.BorderSize = 0;
+            this.btReporteMejoresVendedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btReporteMejoresVendedores.Image = global::QingYunSoft.Properties.Resources.doc_text;
+            this.btReporteMejoresVendedores.Location = new System.Drawing.Point(7, 13);
+            this.btReporteMejoresVendedores.Margin = new System.Windows.Forms.Padding(2);
+            this.btReporteMejoresVendedores.Name = "btReporteMejoresVendedores";
+            this.btReporteMejoresVendedores.Size = new System.Drawing.Size(73, 103);
+            this.btReporteMejoresVendedores.TabIndex = 0;
+            this.btReporteMejoresVendedores.Text = "Mejores Vendedores";
+            this.btReporteMejoresVendedores.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btReporteMejoresVendedores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btReporteMejoresVendedores.UseVisualStyleBackColor = false;
             // 
             // frmEmpleados
             // 
@@ -281,6 +313,7 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -304,5 +337,7 @@
         private System.Windows.Forms.Button btNuevoUsuario;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btReporteMejoresVendedores;
     }
 }

@@ -1,13 +1,6 @@
 ﻿using QingYunSoft.GestClientesWS;
-using QingYunSoft.Usuario;
+using QingYunSoft.VentasWS;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QingYunSoft.Cliente
@@ -18,6 +11,7 @@ namespace QingYunSoft.Cliente
         private frmPrincipal _frmPrincipal;
         private Estado estado;
         private GestClientesWS.cliente _cliente;
+        private VentasWS.VentasWSClient daoVentas = new VentasWSClient();
         //dao
         private GestClientesWS.GestClientesWSClient daoCliente = new GestClientesWS.GestClientesWSClient();
         //constructores
@@ -75,7 +69,7 @@ namespace QingYunSoft.Cliente
                 pnlEmpresa.Visible = false;
                 pnlPersonaNatural.Visible = true;
                 cbTipoCliente.SelectedIndex = 1;
-                
+
                 cbSexo.SelectedIndex = (int)((GestClientesWS.personaNatural)cliente).sexo;
                 cbTipoDeDocumento.SelectedIndex = (int)((GestClientesWS.personaNatural)cliente).tipoDeDocumento;
                 txtNumDocumento.Text = ((GestClientesWS.personaNatural)cliente).numDeDocumento;
@@ -86,6 +80,8 @@ namespace QingYunSoft.Cliente
                 txtDirecionP.Text = ((GestClientesWS.personaNatural)cliente).direccion;
                 dtpFecha.Value = ((GestClientesWS.personaNatural)cliente).fechaDeNacimiento;
             }
+            dgvVentas.DataSource = daoVentas.listarOrdenesDeCompraPorCliente(cliente.idCliente);
+            dgvVentas.AutoGenerateColumns = false;
         }
 
         public void establecerEstadoComponentes()
@@ -293,7 +289,7 @@ namespace QingYunSoft.Cliente
             establecerEstadoComponentes();
             limpiar();
         }
-        
+
         private void limpiar()
         {
             this.txtID.Text = "";
@@ -313,11 +309,11 @@ namespace QingYunSoft.Cliente
             this.txtID.Focus();
             this._cliente = null;
         }
-    
+
 
         private void btAnular_Click(object sender, EventArgs e)
         {
-            
+
 
             if (MessageBox.Show("¿Esta seguro que desea eliminar este cliente?", "Mensaje de confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {

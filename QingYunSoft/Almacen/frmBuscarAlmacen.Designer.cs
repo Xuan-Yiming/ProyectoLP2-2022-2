@@ -33,11 +33,11 @@
             this.txtNombreAlmacen = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvAlmacenes = new System.Windows.Forms.DataGridView();
+            this.btCancelar = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supervisor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlmacenes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,6 +104,20 @@
             this.dgvAlmacenes.TabIndex = 22;
             this.dgvAlmacenes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAlmacenes_CellFormatting);
             // 
+            // btCancelar
+            // 
+            this.btCancelar.BackgroundImage = global::QingYunSoft.Properties.Resources.multiply;
+            this.btCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btCancelar.FlatAppearance.BorderSize = 0;
+            this.btCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCancelar.Location = new System.Drawing.Point(698, 5);
+            this.btCancelar.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.btCancelar.Name = "btCancelar";
+            this.btCancelar.Size = new System.Drawing.Size(40, 50);
+            this.btCancelar.TabIndex = 32;
+            this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
+            // 
             // id
             // 
             this.id.HeaderText = "Codigo";
@@ -122,26 +136,13 @@
             this.supervisor.HeaderText = "Supervisor";
             this.supervisor.Name = "supervisor";
             this.supervisor.ReadOnly = true;
+            this.supervisor.Width = 150;
             // 
             // direccion
             // 
             this.direccion.HeaderText = "Direccion";
             this.direccion.Name = "direccion";
             this.direccion.ReadOnly = true;
-            // 
-            // btCancelar
-            // 
-            this.btCancelar.BackgroundImage = global::QingYunSoft.Properties.Resources.multiply;
-            this.btCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btCancelar.FlatAppearance.BorderSize = 0;
-            this.btCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btCancelar.Location = new System.Drawing.Point(698, 5);
-            this.btCancelar.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.btCancelar.Name = "btCancelar";
-            this.btCancelar.Size = new System.Drawing.Size(40, 50);
-            this.btCancelar.TabIndex = 32;
-            this.btCancelar.UseVisualStyleBackColor = true;
-            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
             // 
             // frmBuscarAlmacen
             // 
@@ -172,10 +173,10 @@
         private System.Windows.Forms.TextBox txtNombreAlmacen;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvAlmacenes;
+        private System.Windows.Forms.Button btCancelar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn supervisor;
         private System.Windows.Forms.DataGridViewTextBoxColumn direccion;
-        private System.Windows.Forms.Button btCancelar;
     }
 }

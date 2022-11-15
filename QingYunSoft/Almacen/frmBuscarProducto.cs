@@ -1,14 +1,6 @@
-﻿using QingYunSoft.GestClientesWS;
-using QingYunSoft.VentasWS;
+﻿using QingYunSoft.VentasWS;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QingYunSoft.Almacen
@@ -23,7 +15,7 @@ namespace QingYunSoft.Almacen
 
         public VentasWS.producto ProductoSeleccionado { get => productoSeleccionado; set => productoSeleccionado = value; }
 
-        public frmBuscarProducto()
+        public frmBuscarProducto(VentasWS.almacen almacen)
         {
             InitializeComponent();
             //round form border
@@ -33,7 +25,25 @@ namespace QingYunSoft.Almacen
 
             daoVentasWS = new VentasWSClient();
             daoProductosWS = new VentasWSClient();
-            this.cbAlmacen.DataSource = daoVentasWS.listarAlmacen();
+            this.cbAlmacen.DataSource = almacen;
+            this.cbAlmacen.DisplayMember = "nombre";
+
+            dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProductos.AutoGenerateColumns = false;
+            this.CenterToScreen();
+        }
+
+        public frmBuscarProducto(VentasWS.almacen[] almacenes)
+        {
+            InitializeComponent();
+            //round form border
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
+
+
+            daoVentasWS = new VentasWSClient();
+            daoProductosWS = new VentasWSClient();
+            this.cbAlmacen.DataSource = almacenes;
             this.cbAlmacen.DisplayMember = "nombre";
 
             dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -50,7 +60,6 @@ namespace QingYunSoft.Almacen
             {
                 this.StockSeleccionado = (VentasWS.stock)dgvProductos.CurrentRow.DataBoundItem;
                 this.AlmacenSeleccionado = (VentasWS.almacen)cbAlmacen.SelectedItem;
-                //this.productoSeleccionado = (VentasWS.producto)dgvProductos.CurrentRow.DataBoundItem;
                 this.DialogResult = DialogResult.OK;
             }
             else
@@ -61,12 +70,12 @@ namespace QingYunSoft.Almacen
 
         private void dgvProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            stock stock = (stock)dgvProductos.CurrentRow.DataBoundItem;
+            stock stock = (stock)dgvProductos.Rows[e.RowIndex].DataBoundItem;
             dgvProductos.Rows[e.RowIndex].Cells["ID"].Value = stock.producto.idProducto;
             dgvProductos.Rows[e.RowIndex].Cells["nombre"].Value = stock.producto.nombre;
             dgvProductos.Rows[e.RowIndex].Cells["precio"].Value = stock.producto.precio;
             dgvProductos.Rows[e.RowIndex].Cells["cantidad"].Value = stock.cantidad;
-            dgvProductos.Rows[e.RowIndex].Cells["devuelto"].Value = stock.producto.devuelto;
+            dgvProductos.Rows[e.RowIndex].Cells["devuelto"].Value = stock.producto.devuelto ? "Si" : "No";
             dgvProductos.Rows[e.RowIndex].Cells["fechaIngreso"].Value = stock.producto.fechaDeIngreso;
         }
 

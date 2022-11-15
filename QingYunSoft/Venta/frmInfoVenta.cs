@@ -4,13 +4,7 @@ using QingYunSoft.GestClientesWS;
 using QingYunSoft.RRHHWS;
 using QingYunSoft.VentasWS;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QingYunSoft
@@ -34,7 +28,7 @@ namespace QingYunSoft
         private VentasWS.ordenDeCompra _ordenCompra;
         //private BindingList<VentasWS.producto> _productos;
         private BindingList<VentasWS.stock> _stocks;
-        
+
         //constructores
         public frmInfoVenta()
         {
@@ -61,7 +55,7 @@ namespace QingYunSoft
             _stocks = new BindingList<VentasWS.stock>();
             //_pedidos = new BindingList<VentasWS.pedido>();
             //dgvProductos.DataSource = _pedidos;
-            
+
             limpiarComponentes();
             establecerEstadoComponentes();
         }
@@ -232,7 +226,8 @@ namespace QingYunSoft
             //_terminoDePago.montoCuota = double.Parse(txtMontoCuota.Text);
             _terminoDePago.numeroCuota = Int32.Parse(txtCuotas.Text);
             _terminoDePago.fechaLimite = dtpFechaLimite.Value;
-            
+
+            daoVentasWS.insertarTerminoPago(_terminoDePago);
 
             _ordenCompra.saldo = double.Parse(txtSaldo.Text);
             _ordenCompra.monto = double.Parse(txtMontoTotal.Text);
@@ -245,21 +240,21 @@ namespace QingYunSoft
             vendedor.nombre = _usuario.nombre;
             _ordenCompra.vendedor = vendedor;
 
-            if (rbDelivery.Checked)
-            {
-                _ordenCompra.formaDeEntrega = VentasWS.formaDeEntrega.ADestino;
-            }
-            else
-                _ordenCompra.formaDeEntrega = VentasWS.formaDeEntrega.EnAlmacen;
+            if (rbDelivery.Checked) _ordenCompra.formaDeEntrega = VentasWS.formaDeEntrega.ADestino;
+            else _ordenCompra.formaDeEntrega = VentasWS.formaDeEntrega.EnAlmacen;
+
             _ordenCompra.moneda = (VentasWS.moneda)cbMoneda.SelectedItem;
             _ordenCompra.activo = true;
             _ordenCompra.pagado = false;
-            int resultado = daoVentasWS.insertarOrdenDeCompra(_ordenCompra, _cliente.idCliente);
+            int resultado = daoVentasWS.insertarOrdenDeCompra(this._ordenCompra, _cliente.idCliente);
             if (resultado != 0)
             {
                 MessageBox.Show("Se ha registrado con éxito", "Mensaje de confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmVentas(_frmPrincipal, this._usuario));
             }
+            else
+                MessageBox.Show("Ha ocurrido un error al momento de insertar la orden de compra", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
 
         private void btBuscarCliente_Click_1(object sender, EventArgs e)
@@ -295,7 +290,7 @@ namespace QingYunSoft
             _pedidos.Add(ped);
             calcularTotal();
             _stock = null;
-            _pedido = null; 
+            _pedido = null;
             txtNombreProducto.Text = "";
             txtCodigoProducto.Text = "";
             txtPrecio.Text = "";
@@ -310,7 +305,7 @@ namespace QingYunSoft
             foreach (VentasWS.pedido ped in _pedidos)
             {
                 saldoSinDescuento += ped.producto.precio * ped.cantidad;
-                _ordenCompra.saldo += (ped.producto.precio-(ped.producto.precio*ped.descuento/100))*ped.cantidad;
+                _ordenCompra.saldo += (ped.producto.precio - (ped.producto.precio * ped.descuento / 100)) * ped.cantidad;
             }
             txtMontoTotal.Text = saldoSinDescuento.ToString("N2");
             txtSaldo.Text = _ordenCompra.saldo.ToString("N2");
@@ -333,7 +328,7 @@ namespace QingYunSoft
                 calcularTotal();
             }
         }
-        
+
 
         private void btBuscarProducto_Click_1(object sender, EventArgs e)
         {
@@ -356,7 +351,8 @@ namespace QingYunSoft
                 dgvProductos.Rows[e.RowIndex].Cells[1].Value = pedido.producto.nombre;
                 dgvProductos.Rows[e.RowIndex].Cells[2].Value = pedido.producto.precio;
                 dgvProductos.Rows[e.RowIndex].Cells[3].Value = pedido.cantidad;
-                dgvProductos.Rows[e.RowIndex].Cells[4].Value = pedido.producto.devuelto.ToString();
+                if (pedido.producto.devuelto == false) dgvProductos.Rows[e.RowIndex].Cells[4].Value = "NO";
+                else dgvProductos.Rows[e.RowIndex].Cells[4].Value = "SI";
             }
             catch (Exception ex) { }
         }
@@ -379,6 +375,6 @@ namespace QingYunSoft
             }
         }
 
-        
+
     }
 }

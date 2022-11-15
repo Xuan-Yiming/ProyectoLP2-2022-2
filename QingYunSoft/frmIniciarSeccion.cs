@@ -1,13 +1,6 @@
 ﻿using QingYunSoft.RRHHWS;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QingYunSoft
@@ -26,10 +19,7 @@ namespace QingYunSoft
             //round form border
             this.FormBorderStyle = FormBorderStyle.None;
             this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
-            
-            //prueba
-            //this._usuario = new RRHHWS.administrador();
-            //this._usuario.nombre = "Jarumy";
+
         }
 
         //metodos
@@ -58,7 +48,22 @@ namespace QingYunSoft
             {
                 MessageBox.Show("Usuario o contraseña incorrectos: Error Code");
             }
-                    
+
+        }
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            //prueba
+            frmPrincipal _frmPrincipal = new frmPrincipal();
+            this.Hide();
+            _frmPrincipal.ShowDialog();
+            if (_frmPrincipal.DialogResult == DialogResult.Cancel)
+            {
+                this.Close();
+            }
+            else if (_frmPrincipal.DialogResult == DialogResult.OK)
+            {
+                this.Show();
+            }
         }
 
         private void btSalir_Click(object sender, EventArgs e)
@@ -67,7 +72,7 @@ namespace QingYunSoft
             if (MessageBox.Show("¿Está seguro que desea salir de la aplicación?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 this.Close();
-            }        
+            }
         }
 
         //otros
@@ -161,28 +166,8 @@ namespace QingYunSoft
 
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            //prueba
-            this._usuario = new RRHHWS.administrador();
-            this._usuario.nombre = "Jarumy";
-            frmPrincipal _frmPrincipal = new frmPrincipal(this._usuario);
-            this.Hide();
-            _frmPrincipal.ShowDialog();
-            if (_frmPrincipal.DialogResult == DialogResult.Cancel)
-            {
-                this.Close();
-            }
-            else if (_frmPrincipal.DialogResult == DialogResult.OK)
-            {
-                this.Show();
-            }
-        }
 
-        private void txtUsuario_TextChanged(object sender, EventArgs e)
-        {
 
-        }
         //out drop shadow done
 
     }

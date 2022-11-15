@@ -240,6 +240,7 @@
             this.panel3.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
             this.panel3.Size = new System.Drawing.Size(107, 129);
             this.panel3.TabIndex = 1;
+            this.panel3.Visible = false;
             // 
             // btRegistrarProducto
             // 

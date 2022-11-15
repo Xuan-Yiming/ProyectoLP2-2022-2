@@ -1,13 +1,6 @@
 ﻿using QingYunSoft.VentasWS;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QingYunSoft.Almacen
@@ -22,7 +15,7 @@ namespace QingYunSoft.Almacen
             //round form border
             this.FormBorderStyle = FormBorderStyle.None;
             this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
-            
+
             dgvAlmacenes.AutoGenerateColumns = false;
             dgvAlmacenes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
@@ -60,7 +53,8 @@ namespace QingYunSoft.Almacen
             {
                 daoVentas = new VentasWS.VentasWSClient();
                 dgvAlmacenes.DataSource = daoVentas.listarAlmacenPorNombre(txtNombreAlmacen.Text);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -162,12 +156,12 @@ namespace QingYunSoft.Almacen
         {
             this.DialogResult = DialogResult.Cancel;
         }
-
+        
+        //otros
         private void frmBuscarAlmacen_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0xA1, 0x2, 0);
         }
-        //out drop shadow done
     }
 }

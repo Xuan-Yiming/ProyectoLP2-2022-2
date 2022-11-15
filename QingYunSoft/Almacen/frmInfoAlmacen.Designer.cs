@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {            
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInfoAlmacen));
             this.panel3 = new System.Windows.Forms.Panel();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,7 +54,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btCancelar = new System.Windows.Forms.Button();
             this.btRegresar = new System.Windows.Forms.Button();
-            dgvStocks = new System.Windows.Forms.DataGridView();
+            this.dgvStocks = new System.Windows.Forms.DataGridView();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(dgvStocks)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -90,14 +91,13 @@
             this.devuelto,
             this.fechaIngreso});
             dgvStocks.GridColor = System.Drawing.SystemColors.ButtonFace;
-            dgvStocks.Location = new System.Drawing.Point(3, 161);
+            dgvStocks.Location = new System.Drawing.Point(14, 161);
             dgvStocks.Name = "dgvStocks";
             dgvStocks.ReadOnly = true;
             dgvStocks.RowHeadersVisible = false;
             dgvStocks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dgvStocks.Size = new System.Drawing.Size(713, 311);
-            dgvStocks.TabIndex = 17;
-            dgvStocks.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvStocks_CellFormatting);
+            dgvStocks.Size = new System.Drawing.Size(702, 311);
+            dgvStocks.TabIndex = 18;
             // 
             // ID
             // 
@@ -129,22 +129,23 @@
             this.devuelto.HeaderText = "Devuelto";
             this.devuelto.Name = "devuelto";
             this.devuelto.ReadOnly = true;
+            this.devuelto.Width = 70;
             // 
             // fechaIngreso
             // 
             this.fechaIngreso.HeaderText = "Fecha de ingreso";
             this.fechaIngreso.Name = "fechaIngreso";
             this.fechaIngreso.ReadOnly = true;
-            this.fechaIngreso.Width = 150;
+            this.fechaIngreso.Width = 120;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btModificar);
             this.groupBox2.Controls.Add(this.btAgregar);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(3, 98);
+            this.groupBox2.Location = new System.Drawing.Point(14, 98);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(713, 57);
+            this.groupBox2.Size = new System.Drawing.Size(702, 57);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Productos";
@@ -166,7 +167,7 @@
             // 
             this.btAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btAgregar.Location = new System.Drawing.Point(590, 25);
+            this.btAgregar.Location = new System.Drawing.Point(579, 25);
             this.btAgregar.Name = "btAgregar";
             this.btAgregar.Size = new System.Drawing.Size(117, 23);
             this.btAgregar.TabIndex = 24;
@@ -186,9 +187,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtID);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 6);
+            this.groupBox1.Location = new System.Drawing.Point(14, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(713, 86);
+            this.groupBox1.Size = new System.Drawing.Size(702, 86);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informacion del almacenSeleccionado";
@@ -320,7 +321,7 @@
             // 
             // btCancelar
             // 
-            this.btCancelar.BackgroundImage = global::QingYunSoft.Properties.Resources.multiply;
+            this.btCancelar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btCancelar.BackgroundImage")));
             this.btCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btCancelar.Dock = System.Windows.Forms.DockStyle.Right;
             this.btCancelar.FlatAppearance.BorderSize = 0;
@@ -334,7 +335,7 @@
             // 
             // btRegresar
             // 
-            this.btRegresar.BackgroundImage = global::QingYunSoft.Properties.Resources.arrow_left;
+            this.btRegresar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btRegresar.BackgroundImage")));
             this.btRegresar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btRegresar.Dock = System.Windows.Forms.DockStyle.Left;
             this.btRegresar.FlatAppearance.BorderSize = 0;

@@ -41,7 +41,7 @@
             this.panel17 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblLogo = new System.Windows.Forms.Label();
             this.panelTop = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbltitulo = new System.Windows.Forms.Label();
@@ -148,7 +148,7 @@
             this.btCerrarSeccion.Name = "btCerrarSeccion";
             this.btCerrarSeccion.Size = new System.Drawing.Size(133, 33);
             this.btCerrarSeccion.TabIndex = 1;
-            this.btCerrarSeccion.Text = "Cerrar Seccion";
+            this.btCerrarSeccion.Text = "Cerrar Sesión";
             this.btCerrarSeccion.UseVisualStyleBackColor = true;
             this.btCerrarSeccion.Click += new System.EventHandler(this.btCerrarSeccion_Click);
             // 
@@ -196,26 +196,26 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.lblLogo);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(133, 52);
             this.panel3.TabIndex = 5;
             // 
-            // label1
+            // lblLogo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 16);
-            this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 20);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(20, 0, 0, 10);
-            this.label1.Size = new System.Drawing.Size(132, 36);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Qing Yun";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblLogo.AutoSize = true;
+            this.lblLogo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogo.Location = new System.Drawing.Point(0, 16);
+            this.lblLogo.Margin = new System.Windows.Forms.Padding(10, 0, 10, 20);
+            this.lblLogo.Name = "lblLogo";
+            this.lblLogo.Padding = new System.Windows.Forms.Padding(20, 0, 0, 10);
+            this.lblLogo.Size = new System.Drawing.Size(132, 36);
+            this.lblLogo.TabIndex = 0;
+            this.lblLogo.Text = "Qing Yun";
+            this.lblLogo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelTop
             // 
@@ -247,9 +247,9 @@
             this.lbltitulo.Location = new System.Drawing.Point(0, 17);
             this.lbltitulo.Name = "lbltitulo";
             this.lbltitulo.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.lbltitulo.Size = new System.Drawing.Size(114, 34);
+            this.lbltitulo.Size = new System.Drawing.Size(121, 34);
             this.lbltitulo.TabIndex = 0;
-            this.lbltitulo.Text = "Buenos dias";
+            this.lbltitulo.Text = "Modo Debug";
             // 
             // panel11
             // 
@@ -290,11 +290,11 @@
             this.txtNombreUsuario.AutoSize = true;
             this.txtNombreUsuario.Dock = System.Windows.Forms.DockStyle.Right;
             this.txtNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreUsuario.Location = new System.Drawing.Point(64, 13);
+            this.txtNombreUsuario.Location = new System.Drawing.Point(17, 13);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
-            this.txtNombreUsuario.Size = new System.Drawing.Size(62, 13);
+            this.txtNombreUsuario.Size = new System.Drawing.Size(109, 13);
             this.txtNombreUsuario.TabIndex = 2;
-            this.txtNombreUsuario.Text = "Joel Aquino";
+            this.txtNombreUsuario.Text = "Usuario Administrador";
             // 
             // label3
             // 
@@ -318,11 +318,12 @@
             // 
             // pcbFotoPerfil
             // 
-            this.pcbFotoPerfil.Image = global::QingYunSoft.Properties.Resources.avatar_cdb00abd11449e869b92aec79b1d3be2;
+            this.pcbFotoPerfil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pcbFotoPerfil.Image = global::QingYunSoft.Properties.Resources.person_circle_fill;
             this.pcbFotoPerfil.Location = new System.Drawing.Point(0, 0);
             this.pcbFotoPerfil.Name = "pcbFotoPerfil";
             this.pcbFotoPerfil.Size = new System.Drawing.Size(40, 39);
-            this.pcbFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcbFotoPerfil.TabIndex = 0;
             this.pcbFotoPerfil.TabStop = false;
             // 
@@ -380,7 +381,7 @@
         private System.Windows.Forms.Panel pnlBt1;
         private System.Windows.Forms.Panel pnlBt2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblLogo;
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.Label lbltitulo;
         private System.Windows.Forms.Panel panel11;

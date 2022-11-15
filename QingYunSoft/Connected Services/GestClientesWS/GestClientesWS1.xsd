@@ -98,6 +98,7 @@
       <xs:element minOccurs="0" name="activo" type="xs:boolean" />
       <xs:element name="cambio" type="xs:double" />
       <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      <xs:element name="fid_Moneda" type="xs:int" />
       <xs:element name="idTipoDeCambio" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
@@ -128,6 +129,7 @@
       <xs:element name="atendido" type="xs:boolean" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="devoluciones" nillable="true" type="tns:devolucion" />
       <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      <xs:element name="fid_orden_de_compra" type="xs:int" />
       <xs:element name="idReclamo" type="xs:int" />
       <xs:element minOccurs="0" name="justificacion" type="xs:string" />
     </xs:sequence>
@@ -136,6 +138,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="activo" type="xs:boolean" />
       <xs:element name="cantidad" type="xs:int" />
+      <xs:element name="fid_reclamo" type="xs:int" />
       <xs:element name="idDevolucion" type="xs:int" />
       <xs:element minOccurs="0" name="producto" type="tns:producto" />
     </xs:sequence>
@@ -211,14 +214,6 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarClientes">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarClientesResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:cliente" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="insertarEmpresa">
     <xs:sequence>
       <xs:element minOccurs="0" name="empresa" type="tns:empresa" />
@@ -240,12 +235,10 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarClientePorDocumentoNombre">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="docNombre" type="xs:string" />
-    </xs:sequence>
+  <xs:complexType name="listarClientes">
+    <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="listarClientePorDocumentoNombreResponse">
+  <xs:complexType name="listarClientesResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:cliente" />
     </xs:sequence>
@@ -258,6 +251,16 @@
   <xs:complexType name="modificarEmpresaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarClientePorDocumentoNombre">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="docNombre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarClientePorDocumentoNombreResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:cliente" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="sexo">

@@ -63,9 +63,29 @@ namespace QingYunSoft.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_2_circlepath {
+            get {
+                object obj = ResourceManager.GetObject("arrow.2.circlepath", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_left {
             get {
                 object obj = ResourceManager.GetObject("arrow.left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_up_arrow_down {
+            get {
+                object obj = ResourceManager.GetObject("arrow.up.arrow.down", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,6 +133,26 @@ namespace QingYunSoft.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bahtsign_circle {
+            get {
+                object obj = ResourceManager.GetObject("bahtsign.circle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bitcoinsign_circle {
+            get {
+                object obj = ResourceManager.GetObject("bitcoinsign.circle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap creditcard {
             get {
                 object obj = ResourceManager.GetObject("creditcard", resourceCulture);
@@ -136,6 +176,16 @@ namespace QingYunSoft.Properties {
         internal static System.Drawing.Bitmap doc {
             get {
                 object obj = ResourceManager.GetObject("doc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap doc_text {
+            get {
+                object obj = ResourceManager.GetObject("doc.text", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,6 +243,16 @@ namespace QingYunSoft.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap magnifyingglass1 {
+            get {
+                object obj = ResourceManager.GetObject("magnifyingglass1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap minus_square {
             get {
                 object obj = ResourceManager.GetObject("minus.square", resourceCulture);
@@ -236,6 +296,16 @@ namespace QingYunSoft.Properties {
         internal static System.Drawing.Bitmap person_badge_plus {
             get {
                 object obj = ResourceManager.GetObject("person.badge.plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap person_circle_fill {
+            get {
+                object obj = ResourceManager.GetObject("person.circle.fill", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

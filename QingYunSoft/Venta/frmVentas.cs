@@ -1,12 +1,5 @@
 ﻿using QingYunSoft.Venta;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QingYunSoft
@@ -18,15 +11,15 @@ namespace QingYunSoft
         private frmPrincipal _frmPrincipal;
         private VentasWS.VentasWSClient daoVentas;
         private RRHHWS.usuario _usuario;
-        
+
         //Constructores
         public frmVentas()
         {
             InitializeComponent();
             this.CenterToScreen();
         }
-        
-        public frmVentas(frmPrincipal _frmPrincipal,RRHHWS.usuario usuario)
+
+        public frmVentas(frmPrincipal _frmPrincipal, RRHHWS.usuario usuario)
         {
             InitializeComponent();
             this._frmPrincipal = _frmPrincipal;
@@ -40,7 +33,7 @@ namespace QingYunSoft
 
         private void btNuevaVenta_Click(object sender, EventArgs e)
         {
-            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoVenta(_frmPrincipal,Estado.Nuevo, this._usuario));
+            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoVenta(_frmPrincipal, Estado.Nuevo, this._usuario));
         }
 
         private void btBuscar_Click(object sender, EventArgs e)

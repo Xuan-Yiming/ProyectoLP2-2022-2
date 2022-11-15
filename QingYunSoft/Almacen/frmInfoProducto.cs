@@ -1,14 +1,7 @@
-﻿using QingYunSoft.Cliente;
-using QingYunSoft.VentasWS;
+﻿using QingYunSoft.VentasWS;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QingYunSoft.Almacen
@@ -22,20 +15,18 @@ namespace QingYunSoft.Almacen
         VentasWS.producto _producto = new VentasWS.producto();
         VentasWS.stock _stock = new VentasWS.stock();
         VentasWS.almacen _almacen = new VentasWS.almacen();
-        public frmInfoProducto(Estado estado, VentasWS.almacen almacen)
+        public frmInfoProducto(Estado estado, VentasWS.almacen almacene)
         {
             InitializeComponent();
             _estado = estado;
-            this._almacen = almacen;
             daoVentasWS = new VentasWSClient();
-            this.cbAlmacen.DataSource = daoVentasWS.listarAlmacen();
+            this.cbAlmacen.DataSource = almacene;
             this.cbAlmacen.DisplayMember = "nombre";
             this.cbAlmacen.ValueMember = "idAlmacen";
-            this.cbAlmacen.SelectedValue = almacen;
             establecerEstadoComponentes();
             this.CenterToScreen();
         }
-        
+
         public frmInfoProducto(VentasWS.stock stock, Estado estado, VentasWS.almacen almacen)
         {
             InitializeComponent();
@@ -43,12 +34,12 @@ namespace QingYunSoft.Almacen
             this._almacen = almacen;
             this._stock = stock;
             daoVentasWS = new VentasWSClient();
-            this.cbAlmacen.DataSource = daoVentasWS.listarAlmacen();
+            this.cbAlmacen.DataSource = almacen;
             this.cbAlmacen.DisplayMember = "nombre";
             this.cbAlmacen.ValueMember = "idAlmacen";
             establecerEstadoComponentes();
             this.cbAlmacen.SelectedValue = almacen.idAlmacen;
-            this.txtID.Text = stock.producto.idProducto.ToString();            
+            this.txtID.Text = stock.producto.idProducto.ToString();
             this.txtNombre.Text = stock.producto.nombre;
             this.txtCosto.Text = stock.producto.costo.ToString();
             this.txtPrecio.Text = stock.producto.precio.ToString();
@@ -60,10 +51,10 @@ namespace QingYunSoft.Almacen
                 MemoryStream ms = new MemoryStream(stock.producto.foto);
                 pbFoto.Image = new Bitmap(ms);
             }
-            
+
             this.CenterToScreen();
         }
-    
+
         private void btEditarGuardar_Click(object sender, EventArgs e)
         {
             if (this._estado == Estado.Resultado)
@@ -73,6 +64,7 @@ namespace QingYunSoft.Almacen
             }
             else
             {
+                if (cbAlmacen)
                 daoVentasWS = new VentasWSClient();
 
                 this._stock.producto.nombre = txtNombre.Text;
@@ -80,7 +72,7 @@ namespace QingYunSoft.Almacen
                 this._stock.producto.costo = double.Parse(txtCosto.Text);
                 this._stock.producto.fechaDeIngreso = dtpFechaIngreso.Value;
                 this._stock.producto.devuelto = cbxDevuelto.Checked;
-                
+
                 if (this._rutaFoto != null)
                 {
                     FileStream fs = new FileStream(_rutaFoto, FileMode.Open, FileAccess.Read);
@@ -144,7 +136,7 @@ namespace QingYunSoft.Almacen
 
                 }
             }
-            
+
         }
 
         private void btEliminar_Click(object sender, EventArgs e)
@@ -195,7 +187,8 @@ namespace QingYunSoft.Almacen
 
         private void establecerEstadoComponentes()
         {
-            switch (this._estado){
+            switch (this._estado)
+            {
                 case Estado.Nuevo:
                     this.btEditarGuardar.Text = "Guardar";
                     this.btEliminar.Enabled = false;
@@ -221,7 +214,7 @@ namespace QingYunSoft.Almacen
                     this.txtPrecio.Enabled = true;
                     this.txtStock.Enabled = true;
                     this.cbxDevuelto.Enabled = true;
-                    this.cbAlmacen.Enabled = true;
+                    this.cbAlmacen.Enabled = false;
                     this.dtpFechaIngreso.Enabled = true;
                     this.btSubirFoto.Enabled = true;
                     break;

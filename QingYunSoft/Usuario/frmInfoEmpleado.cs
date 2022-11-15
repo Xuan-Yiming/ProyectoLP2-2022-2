@@ -1,14 +1,7 @@
-﻿using QingYunSoft.Cliente;
-using QingYunSoft.RRHHWS;
+﻿using QingYunSoft.RRHHWS;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QingYunSoft.Usuario
@@ -23,8 +16,8 @@ namespace QingYunSoft.Usuario
         private System.Windows.Forms.OpenFileDialog ofdFoto;
         private String _rutaFoto;
         //dao
-        private RRHHWS.RRHHWSClient daoRRHH; 
-        
+        private RRHHWS.RRHHWSClient daoRRHH;
+
         //constrcutores
         public frmInfoEmpleado()
         {
@@ -36,11 +29,11 @@ namespace QingYunSoft.Usuario
         {
             InitializeComponent();
             this._frmPrincipal = _frmPrincipal;
-            this.estado = estado;            
+            this.estado = estado;
             cbTipoDocumento.DataSource = Enum.GetValues(typeof(RRHHWS.tipoDeDocumento));
             cbArea.DataSource = Enum.GetValues(typeof(RRHHWS.area));
             cbSexo.DataSource = Enum.GetValues(typeof(RRHHWS.sexo));
-            
+
             daoRRHH = new RRHHWS.RRHHWSClient();
 
             establecerEstadoComponentes();
@@ -67,7 +60,7 @@ namespace QingYunSoft.Usuario
             }
             else if (usuario is RRHHWS.vendedor)
             {
-                cbTipoUsuario.SelectedIndex = 1;        
+                cbTipoUsuario.SelectedIndex = 1;
             }
             else if (usuario is RRHHWS.administrador)
             {
@@ -84,14 +77,14 @@ namespace QingYunSoft.Usuario
             dtpFechaNacimiento.Value = usuario.fechaDeNacimiento;
             txtID.Text = usuario.idUsuario.ToString();
             cbSexo.SelectedIndex = (int)usuario.sexo;
-            if(usuario.fotoPerfil!= null)
+            if (usuario.fotoPerfil != null)
             {
                 MemoryStream ms = new MemoryStream(usuario.fotoPerfil);
                 pbFotPerfil.Image = new Bitmap(ms);
             }
-            
 
-            this._usuario = usuario;           
+
+            this._usuario = usuario;
         }
         //metodos
         private void establecerEstadoComponentes()
@@ -216,7 +209,7 @@ namespace QingYunSoft.Usuario
                     //((RRHHWS.supervisorDeAlmacen)this._usuario).almacen = this._almacenSeleccionado;
                 }
                 this._usuario.username = txtUsername.Text;
-                if(this._usuario.password != txtContrasena.Text)
+                if (this._usuario.password != txtContrasena.Text)
                     this._usuario.password = txtContrasena.Text;
                 this._usuario.fechaIngreso = dtpFechaIngreso.Value;
 
@@ -226,7 +219,7 @@ namespace QingYunSoft.Usuario
                 fs.Close();
 
 
-                this._usuario.tipoDeDocumento = (RRHHWS.tipoDeDocumento)cbTipoDocumento.SelectedItem;                
+                this._usuario.tipoDeDocumento = (RRHHWS.tipoDeDocumento)cbTipoDocumento.SelectedItem;
                 this._usuario.numDeDocumento = txtNumeroDocumento.Text;
                 this._usuario.nombre = txtNombre.Text;
                 this._usuario.apellido = txtApellido.Text;
@@ -240,15 +233,15 @@ namespace QingYunSoft.Usuario
                 this._usuario.fechaDeNacimientoSpecified = true;
                 this._usuario.fechaIngresoSpecified = true;
                 this._usuario.activo = true;
-                
+
                 this._usuario.tipoDeDocumentoSpecified = true;
                 this._usuario.activoSpecified = true;
-               
+
                 if (txtID.Text != "")
                 {
                     this._usuario.idUsuario = Int32.Parse(txtID.Text);
                     this._usuario.idPersona = this._usuario.idUsuario;
-                }                
+                }
                 if (estado == Estado.Nuevo)
                 {
                     daoRRHH = new RRHHWSClient();
@@ -308,8 +301,8 @@ namespace QingYunSoft.Usuario
                 }
             }
 
-            
-            
+
+
         }
 
         private void btAnular_Click(object sender, EventArgs e)
@@ -339,7 +332,7 @@ namespace QingYunSoft.Usuario
             establecerEstadoComponentes();
             limpiar();
         }
-        
+
         private void limpiar()
         {
             this.pbFotPerfil.Image = null;
@@ -393,7 +386,7 @@ namespace QingYunSoft.Usuario
             {
                 lblVariableTipo.Text = "Cantidad de ventas";
                 txtVariableTipo.Enabled = false;
-                if(!(this._usuario is RRHHWS.vendedor))
+                if (!(this._usuario is RRHHWS.vendedor))
                     txtVariableTipo.Text = "0";
                 else
                     txtVariableTipo.Text = ((RRHHWS.vendedor)this._usuario).cantidadVentas.ToString();
@@ -476,6 +469,6 @@ namespace QingYunSoft.Usuario
             //Se inicializa el objeto empleado y se completan todos sus datos
         }
 
-        
+
     }
 }
