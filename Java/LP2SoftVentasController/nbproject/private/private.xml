@@ -2,13 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-            <file>file:/D:/ARACELLI%20PUCP/CURSOS%202022-2/Lenguaje%20de%20Programación%202/TA/ProyectoLP2-2022-2/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/ventaspagos/dao/OrdenDeCompraDAO.java</file>
-            <file>file:/D:/ARACELLI%20PUCP/CURSOS%202022-2/Lenguaje%20de%20Programación%202/TA/ProyectoLP2-2022-2/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/ventaspagos/mysql/OrdenDeCompraMySQL.java</file>
+            <file>file:/C:/Users/omar/Downloads/ULTIMA_VERSION_LP2/ProyectoLP2-2022-2-test/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/ventaspagos/dao/OrdenDeCompraDAO.java</file>
+            <file>file:/C:/Users/omar/Downloads/ULTIMA_VERSION_LP2/ProyectoLP2-2022-2-test/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/ventaspagos/mysql/MonedaMySQL.java</file>
+            <file>file:/C:/Users/omar/Downloads/ULTIMA_VERSION_LP2/ProyectoLP2-2022-2-test/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/ventaspagos/dao/TerminoDePagoDAO.java</file>
+            <file>file:/C:/Users/omar/Downloads/ULTIMA_VERSION_LP2/ProyectoLP2-2022-2-test/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/ventaspagos/dao/MonedaDAO.java</file>
+            <file>file:/C:/Users/omar/Downloads/ULTIMA_VERSION_LP2/ProyectoLP2-2022-2-test/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/ventaspagos/mysql/TerminoDePagoMySQL.java</file>
+            <file>file:/C:/Users/omar/Downloads/ULTIMA_VERSION_LP2/ProyectoLP2-2022-2-test/Java/LP2SoftVentasController/src/pe/edu/pucp/lp2soft/ventas/ventaspagos/mysql/OrdenDeCompraMySQL.java</file>
         </group>
-=======
-        <group/>
->>>>>>> 5571f3f43f131e48c46d65f50e6194fdc066c615
     </open-files>
 </project-private>
