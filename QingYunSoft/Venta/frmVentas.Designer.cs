@@ -105,6 +105,7 @@
             this.btReporteReclamos.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btReporteReclamos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btReporteReclamos.UseVisualStyleBackColor = false;
+            this.btReporteReclamos.Click += new System.EventHandler(this.btReporteReclamos_Click);
             // 
             // panel11
             // 
@@ -133,6 +134,7 @@
             this.btReporteClienteAdeudados.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btReporteClienteAdeudados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btReporteClienteAdeudados.UseVisualStyleBackColor = false;
+            this.btReporteClienteAdeudados.Click += new System.EventHandler(this.btReporteClienteAdeudados_Click);
             // 
             // panel4
             // 

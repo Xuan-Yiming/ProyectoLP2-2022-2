@@ -244,6 +244,7 @@
             this.btReporteMejoresVendedores.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btReporteMejoresVendedores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btReporteMejoresVendedores.UseVisualStyleBackColor = false;
+            this.btReporteMejoresVendedores.Click += new System.EventHandler(this.btReporteMejoresVendedores_Click);
             // 
             // panel2
             // 

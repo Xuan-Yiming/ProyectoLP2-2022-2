@@ -59,5 +59,17 @@ namespace QingYunSoft
             dgvVentas.Rows[e.RowIndex].Cells["moneda"].Value = ((VentasWS.moneda)venta.moneda).abreviatura;
             dgvVentas.Rows[e.RowIndex].Cells["monto"].Value = (double)venta.monto;
         }
+
+        private void btReporteClienteAdeudados_Click(object sender, EventArgs e)
+        {
+            frmReporteViewer _frmReporteViewer = new frmReporteViewer(daoVentas.reporteDeVentas());
+            _frmReporteViewer.Show();
+        }
+
+        private void btReporteReclamos_Click(object sender, EventArgs e)
+        {
+            frmReporteViewer _frmReporteViewer = new frmReporteViewer(daoVentas.reclamos());
+            _frmReporteViewer.Show();
+        }
     }
 }

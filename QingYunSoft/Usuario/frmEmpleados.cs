@@ -78,5 +78,11 @@ namespace QingYunSoft.Usuario
             RRHHWS.usuario usurioSeleccionado = (RRHHWS.usuario)dgvEmpleados.CurrentRow.DataBoundItem;
             _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoEmpleado(_frmPrincipal, Estado.Resultado, usurioSeleccionado));
         }
+
+        private void btReporteMejoresVendedores_Click(object sender, EventArgs e)
+        {
+            frmReporteViewer _frmReporteViewer = new frmReporteViewer(daoEmpleados.mejoresVendedores());
+            _frmReporteViewer.Show();
+        }
     }
 }

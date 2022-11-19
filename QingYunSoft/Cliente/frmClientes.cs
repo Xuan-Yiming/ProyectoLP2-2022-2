@@ -76,5 +76,17 @@ namespace QingYunSoft.Cliente
             }
 
         }
+
+        private void btReporteClienteAdeudados_Click(object sender, EventArgs e)
+        {
+            frmReporteViewer _frmReporteViewer = new frmReporteViewer(daoClientes.clientesAdeudados());
+            _frmReporteViewer.Show();
+        }
+
+        private void btReporteClienteMasPedido_Click(object sender, EventArgs e)
+        {
+            frmReporteViewer _frmReporteViewer = new frmReporteViewer(daoVentas.clientesMasPdidos());
+            _frmReporteViewer.Show();
+        }
     }
 }

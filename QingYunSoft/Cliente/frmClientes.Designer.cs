@@ -283,6 +283,7 @@
             this.btReporteClienteMasPedido.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btReporteClienteMasPedido.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btReporteClienteMasPedido.UseVisualStyleBackColor = false;
+            this.btReporteClienteMasPedido.Click += new System.EventHandler(this.btReporteClienteMasPedido_Click);
             // 
             // panel3
             // 
@@ -311,6 +312,7 @@
             this.btReporteClienteAdeudados.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btReporteClienteAdeudados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btReporteClienteAdeudados.UseVisualStyleBackColor = false;
+            this.btReporteClienteAdeudados.Click += new System.EventHandler(this.btReporteClienteAdeudados_Click);
             // 
             // frmClientes
             // 
