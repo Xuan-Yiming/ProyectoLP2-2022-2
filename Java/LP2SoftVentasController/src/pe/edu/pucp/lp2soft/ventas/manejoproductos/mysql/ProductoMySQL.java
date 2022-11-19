@@ -27,7 +27,9 @@ public class ProductoMySQL implements ProductoDAO{
             cs.setBytes("_foto", producto.getFoto());
             cs.setBoolean("_devuelto", producto.getDevuelto());
             cs.setBoolean("_activo", true);
-            resultado = cs.executeUpdate();
+            cs.executeUpdate();
+            producto.setIdProducto(cs.getInt("_id_producto"));
+            resultado = producto.getIdProducto();
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }finally{

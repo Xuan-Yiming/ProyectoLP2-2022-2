@@ -8,4 +8,5 @@ public interface AlmacenDAO {
     public int eliminar(Almacen almacen);
     public ArrayList<Almacen> listarTodos();
     public ArrayList<Almacen> listarPorNombre(String nombre);
+    public String buscarAlmacenxIdUsuario(int idUsuario);
 }

@@ -32,15 +32,9 @@ public class AlmacenMySQL implements AlmacenDAO {
            cs.setString("_nombre", almacen.getNombre());            
            cs.setString("_direccion", almacen.getDireccion());
            cs.setBoolean("_activo", true);
-           resultado = cs.executeUpdate();
-        //    for (Stock stock : almacen.getProductos()){
-        //         cs = con.prepareCall("{call INSERTAR_STOCK(?,?,?,?)}");
-        //         cs.setInt("_fid_almacen", almacen.getIdAlmacen());
-        //         cs.setInt("_fid_producto", stock.getProducto().getIdProducto());
-        //         cs.setInt("_cantidad", stock.getCantidad());
-        //         cs.setBoolean("_activo",stock.getActivo());
-        //         cs.executeUpdate();
-        //    }
+           cs.executeUpdate();
+            almacen.setIdAlmacen(cs.getInt("_id_almacen"));
+            resultado = almacen.getIdAlmacen();
        }catch(Exception ex){
            System.out.println(ex.getMessage());
        }finally{
@@ -61,14 +55,6 @@ public class AlmacenMySQL implements AlmacenDAO {
            cs.setString("_direccion", almacen.getDireccion());
            cs.setBoolean("_activo", almacen.getActivo());
            resultado = cs.executeUpdate();
-        //    for (Stock stock : almacen.getProductos()){
-        //         cs = con.prepareCall("{call MODIFICAR_STOCK(?,?,?,?)}");
-        //         cs.setInt("_fid_almacen", almacen.getIdAlmacen());
-        //         cs.setInt("_fid_producto", stock.getProducto().getIdProducto());
-        //         cs.setInt("_cantidad", stock.getCantidad());
-        //         cs.setBoolean("_activo",true);
-        //         cs.executeUpdate();
-        //    }
        }catch(Exception ex){
            System.out.println(ex.getMessage());
        }finally{
@@ -151,5 +137,24 @@ public class AlmacenMySQL implements AlmacenDAO {
            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
        }
        return almacenes;
+   }
+   
+   @Override
+   public String buscarAlmacenxIdUsuario(int idUsuario){
+       String nombre="";
+       try{
+           con = DBManager.getInstance().getConnection();
+           cs = con.prepareCall("{call BUSCAR_ALMACEN_X_IDUSUARIO(?)}");
+           cs.setInt("_id_usuario",idUsuario);
+           rs = cs.executeQuery();
+           rs.next();
+           nombre=rs.getString("nombre");
+
+       }catch(Exception ex){
+           System.out.println(ex.getMessage());
+       }finally{
+           try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
+       }
+       return nombre;
    }
 }

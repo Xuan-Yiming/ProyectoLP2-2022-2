@@ -548,5 +548,17 @@ public class VentasWS {
         }
         return devoluciones;
     }
+    
+    @WebMethod(operationName = "buscarAlmacenxIdUsuario")
+    public String buscarAlmacenxIdUsuario(@WebParam(name = "idUsuario")int idUsuario){
+        String nombre="";
+
+        try{
+            nombre= daoAlmacen.buscarAlmacenxIdUsuario(idUsuario);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return nombre;
+    }
 }
 
