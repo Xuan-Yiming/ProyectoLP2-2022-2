@@ -258,6 +258,16 @@ public class VentasWS {
         }
         return resultado;
     }
+    @WebMethod(operationName = "listarPedidosPorIdOrdenDeCompra")
+    public ArrayList<Pedido> listarPedidosPorIdOrdenDeCompra(@WebParam(name = "idOrden") int idOrden) {
+        ArrayList<Pedido> pedidos = null;
+        try{
+            pedidos = daoPedido.listarPedidosPorIdOrdenDeCompra(idOrden);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return pedidos;
+    }
     /*Gestionar Ordenes de Compra*/
     @WebMethod(operationName = "insertarOrdenDeCompra")
     public int insertarOrdenDeCompra(@WebParam(name = "ordenDeCompra") OrdenDeCompra ordenDeCompra) {
