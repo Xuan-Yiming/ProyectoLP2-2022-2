@@ -8,27 +8,27 @@ namespace QingYunSoft.Almacen
         private frmPrincipal _frmPrincipal;
         private VentasWS.VentasWSClient daoVentasWS;
         private VentasWS.almacen[] almacenes;
-        
+
         public frmAlmacen(frmPrincipal _frmPrincipal)
         {
-            InitializeComponent();            
+            InitializeComponent();
             this._frmPrincipal = _frmPrincipal;
-            
+
             //instanciar dao
             daoVentasWS = new VentasWS.VentasWSClient();
-            
+
             //configurar datagrid view
             dgvAlmacenes.AutoGenerateColumns = false;
             dgvAlmacenes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //cargar datos
             almacenes = daoVentasWS.listarAlmacen();
             dgvAlmacenes.DataSource = almacenes;
-            
+
         }
         private void btNuevoAlmacen_Click(object sender, EventArgs e)
         {
             _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Nuevo, almacenes));
-        }        
+        }
         private void btBuscar_Click(object sender, EventArgs e)
         {
             frmBuscarAlmacen _frmBuscarAlmacen = new frmBuscarAlmacen();
@@ -49,6 +49,6 @@ namespace QingYunSoft.Almacen
             dgvAlmacenes.Rows[e.RowIndex].Cells["supervisor"].Value = ((VentasWS.supervisorDeAlmacen)almacen.supervisor).nombre
                                                                         + " " + ((VentasWS.supervisorDeAlmacen)almacen.supervisor).apellido;
             dgvAlmacenes.Rows[e.RowIndex].Cells["direccion"].Value = almacen.direccion;
-        }       
+        }
     }
 }

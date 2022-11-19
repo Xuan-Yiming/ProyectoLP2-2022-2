@@ -19,7 +19,7 @@ namespace QingYunSoft.Almacen
 
             //configurar datagrid view
             dgvAlmacenes.AutoGenerateColumns = false;
-            dgvAlmacenes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;   
+            dgvAlmacenes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
         public almacen AlmacenSeleccionado { get => almacenSeleccionado; set => almacenSeleccionado = value; }
         private void dgvAlmacenes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -150,7 +150,7 @@ namespace QingYunSoft.Almacen
             if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
                 m.Result = (IntPtr)HTCAPTION;
 
-        }        
+        }
         //mover ventana
         private void frmBuscarAlmacen_MouseDown(object sender, MouseEventArgs e)
         {

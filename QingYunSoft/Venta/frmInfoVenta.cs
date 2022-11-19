@@ -1,8 +1,8 @@
 ﻿using QingYunSoft.Almacen;
 using QingYunSoft.Cliente;
+using QingYunSoft.GestClientesWS;
 using QingYunSoft.VentasWS;
 using System;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -39,7 +39,7 @@ namespace QingYunSoft
             this._estado = estado;
             this._frmPrincipal = _frmPrincipal;
             this._vendedor = _usuario;
-            
+
             dgvProductos.AutoGenerateColumns = false;
             dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
@@ -87,7 +87,7 @@ namespace QingYunSoft
             {
                 rbDelivery.Checked = false;
                 rbTienda.Checked = true;
-            }           
+            }
 
             txtDireccion.Text = ordenDeCompra.direccionDeEntrega;
             dtpFechaEntrega.Value = ordenDeCompra.fechaDeEntrega;
@@ -135,9 +135,9 @@ namespace QingYunSoft
             if (_frmBuscarProducto.ShowDialog() == DialogResult.OK)
             {
                 _stock = _frmBuscarProducto.StockSeleccionado;
-                
+
                 txtNombreProducto.Text = _stock.producto.nombre;
-                txtStock.Text = _stock.cantidad.ToString();                
+                txtStock.Text = _stock.cantidad.ToString();
                 txtPrecio.Text = _stock.producto.precio.ToString();
             }
         }
@@ -153,7 +153,8 @@ namespace QingYunSoft
             {
                 txtDescuento.Text = "0.0";
             }
-            if (!Int32.TryParse(txtCantidad.Text, out int a) || !double.TryParse(txtDescuento.Text, out double b)){
+            if (!Int32.TryParse(txtCantidad.Text, out int a) || !double.TryParse(txtDescuento.Text, out double b))
+            {
                 MessageBox.Show("Debe ingresar un numero en cantidad y descuento", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -162,6 +163,12 @@ namespace QingYunSoft
             pedido.cantidad = int.Parse(txtCantidad.Text);
             pedido.producto = _stock.producto;
             pedido.descuento = double.Parse(txtDescuento.Text);
+            pedido.activo = true;
+            pedido.activoSpecified = true;
+
+            pedido.producto.activoSpecified = true;
+            pedido.producto.devueltoSpecified = true;
+            pedido.producto.fechaDeIngresoSpecified = true;
 
             _pedidos.Append(pedido);
             dgvProductos.DataSource = _pedidos;
@@ -176,7 +183,7 @@ namespace QingYunSoft
                 double montoTotal = 0;
                 foreach (VentasWS.pedido pedido in _pedidos)
                 {
-                    montoTotal += pedido.producto.precio * pedido.cantidad * (1-pedido.descuento/100);
+                    montoTotal += pedido.producto.precio * pedido.cantidad * (1 - pedido.descuento / 100);
                 }
                 return montoTotal;
             }
@@ -204,7 +211,7 @@ namespace QingYunSoft
                 return;
             }
             //verificar datos
-            if (this._cliente == null || (!rbCancelado.Checked && !rbNoCancelado.Checked) || (!rbDelivery.Checked && ! rbTienda.Checked) ||
+            if (this._cliente == null || (!rbCancelado.Checked && !rbNoCancelado.Checked) || (!rbDelivery.Checked && !rbTienda.Checked) ||
                 txtDireccion.Text == "" || cbMoneda.SelectedIndex == -1 || this._pedidos == null)
             {
                 MessageBox.Show("Debe llenar todos los campos", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -215,7 +222,8 @@ namespace QingYunSoft
             if (rbTienda.Checked)
             {
                 _ordenDeCompra.formaDeEntrega = VentasWS.formaDeEntrega.EnAlmacen;
-            }else if (rbDelivery.Checked)
+            }
+            else if (rbDelivery.Checked)
             {
                 _ordenDeCompra.formaDeEntrega = VentasWS.formaDeEntrega.ADestino;
             }
@@ -223,15 +231,23 @@ namespace QingYunSoft
             _ordenDeCompra.fechaDeEntregaSpecified = true;
             _ordenDeCompra.direccionDeEntrega = txtDireccion.Text;
 
+            _ordenDeCompra.formaDeEntregaSpecified = true;
+
+
             _ordenDeCompra.moneda = (VentasWS.moneda)cbMoneda.SelectedItem;
+            _ordenDeCompra.moneda.activoSpecified = true;
 
             _ordenDeCompra.fechaLimite = dtpFechaLimite.Value;
             _ordenDeCompra.fechaDeCompra = dtpFechaCompra.Value;
+            _ordenDeCompra.fechaDeCompraSpecified = true;
+            _ordenDeCompra.fechaLimiteSpecified = true;
             _ordenDeCompra.monto = double.Parse(txtMontoTotal.Text);
+
             if (rbCancelado.Checked)
             {
                 _ordenDeCompra.pagado = true;
-            }else if (rbNoCancelado.Checked)
+            }
+            else if (rbNoCancelado.Checked)
             {
                 _ordenDeCompra.pagado = false;
             }
@@ -240,6 +256,15 @@ namespace QingYunSoft
 
             _ordenDeCompra.vendedor = new VentasWS.vendedor();
             _ordenDeCompra.vendedor.idUsuario = this._vendedor.idUsuario;
+
+            _ordenDeCompra.vendedor.activoSpecified = true;
+            _ordenDeCompra.vendedor.fechaDeNacimientoSpecified = true;
+            _ordenDeCompra.vendedor.fechaIngresoSpecified = true;
+            _ordenDeCompra.vendedor.sexoSpecified = true;
+            _ordenDeCompra.vendedor.tipoDeDocumentoSpecified = true;
+
+            _ordenDeCompra.activo = true;
+            _ordenDeCompra.activoSpecified = true;
 
             int resultado = daoVentasWS.insertarOrdenDeCompra(this._ordenDeCompra, _cliente.idCliente);
             if (resultado != 0)
@@ -289,7 +314,7 @@ namespace QingYunSoft
             VentasWS.moneda moneda = (VentasWS.moneda)cbMoneda.SelectedItem;
             txtTipoDeCambio.Text = moneda.cambios[0].cambio.ToString();
         }
-        
+
         private void establecerEstadoComponentes()
         {
             switch (this._estado)
@@ -311,7 +336,7 @@ namespace QingYunSoft
 
                     cbMoneda.Enabled = true;
                     txtTipoDeCambio.Enabled = false;
-                    
+
                     dtpFechaLimite.Enabled = true;
 
                     txtMontoTotal.Enabled = false;
@@ -373,9 +398,9 @@ namespace QingYunSoft
             dgvProductos.Rows[e.RowIndex].Cells[0].Value = pedido.producto.idProducto;
             dgvProductos.Rows[e.RowIndex].Cells[1].Value = pedido.producto.nombre;
             dgvProductos.Rows[e.RowIndex].Cells[2].Value = pedido.cantidad;
-            dgvProductos.Rows[e.RowIndex].Cells[3].Value = pedido.cantidad*pedido.producto.precio*(1 - pedido.descuento/100);
+            dgvProductos.Rows[e.RowIndex].Cells[3].Value = pedido.cantidad * pedido.producto.precio * (1 - pedido.descuento / 100);
         }
-        
+
         public void limpiarComponentes()
         {
             txtNombreCliente.Text = "";
@@ -384,7 +409,7 @@ namespace QingYunSoft
             rbDelivery.Checked = false;
             rbTienda.Checked = false;
             txtDireccion.Text = "";
-            
+
             txtNombreProducto.Text = "";
             txtPrecio.Text = "";
             txtCantidad.Text = "";
@@ -392,7 +417,7 @@ namespace QingYunSoft
             txtStock.Text = "";
 
             cbMoneda.SelectedIndex = -1;
-            
+
             dtpFechaCompra.Value = DateTime.Now;
             dtpFechaLimite.Value = DateTime.Now;
             dtpFechaEntrega.Value = DateTime.Now;
@@ -404,7 +429,7 @@ namespace QingYunSoft
             this._moneda = null;
             this._ordenDeCompra = null;
 
-            
+
         }
     }
 }

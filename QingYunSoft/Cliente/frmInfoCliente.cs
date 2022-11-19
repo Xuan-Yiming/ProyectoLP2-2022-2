@@ -113,15 +113,15 @@ namespace QingYunSoft.Cliente
             {
                 if (cbTipoCliente.Text == "Persona Natural")
                 {
-                    if (cbCategoria.SelectedItem == null || cbSexo.SelectedItem == null || 
-                        cbTipoDeDocumento.SelectedItem == null || txtNumDocumento.Text == "" || 
-                        txtNombre.Text == "" || txtApellido.Text == "" || txtTelefono.Text == "" || 
+                    if (cbCategoria.SelectedItem == null || cbSexo.SelectedItem == null ||
+                        cbTipoDeDocumento.SelectedItem == null || txtNumDocumento.Text == "" ||
+                        txtNombre.Text == "" || txtApellido.Text == "" || txtTelefono.Text == "" ||
                         TxtCorreo.Text == "" || txtDirecionP.Text == "")
                     {
                         MessageBox.Show("Debe llenar todos los campos", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    if((GestClientesWS.tipoDeDocumento)cbTipoDeDocumento.SelectedItem == GestClientesWS.tipoDeDocumento.DNI)
+                    if ((GestClientesWS.tipoDeDocumento)cbTipoDeDocumento.SelectedItem == GestClientesWS.tipoDeDocumento.DNI)
                     {
                         if (txtNumDocumento.Text.Length != 8 || !int.TryParse(txtNumDocumento.Text, out resultado))
                         {
@@ -136,7 +136,8 @@ namespace QingYunSoft.Cliente
                             MessageBox.Show("El CE debe tener 8 digitos numericos", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-                    }else if ((GestClientesWS.tipoDeDocumento)cbTipoDeDocumento.SelectedItem == GestClientesWS.tipoDeDocumento.Pasaporte)
+                    }
+                    else if ((GestClientesWS.tipoDeDocumento)cbTipoDeDocumento.SelectedItem == GestClientesWS.tipoDeDocumento.Pasaporte)
                     {
                         if (txtNumDocumento.Text.Length != 9)
                         {
@@ -202,7 +203,7 @@ namespace QingYunSoft.Cliente
                 }
                 else if (cbTipoCliente.Text == "Empresa")
                 {
-                    if (cbCategoria.SelectedItem == null || txtRuc.Text == "" || txtRazonSocial.Text == "" || txtDireccion.Text =="")
+                    if (cbCategoria.SelectedItem == null || txtRuc.Text == "" || txtRazonSocial.Text == "" || txtDireccion.Text == "")
                     {
                         MessageBox.Show("Debe llenar todos los campos", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -293,7 +294,7 @@ namespace QingYunSoft.Cliente
                 establecarComponentes();
                 limpiarComponentes();
             }
-            
+
             limpiarComponentes();
         }
         //formatos

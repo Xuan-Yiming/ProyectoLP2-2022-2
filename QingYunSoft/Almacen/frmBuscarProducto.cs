@@ -20,7 +20,7 @@ namespace QingYunSoft.Almacen
             //inicialzar dao
             daoVentasWS = new VentasWS.VentasWSClient();
             daoProductosWS = new VentasWS.VentasWSClient();
-            
+
             //configurar dataridview
             dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProductos.AutoGenerateColumns = false;
@@ -72,9 +72,9 @@ namespace QingYunSoft.Almacen
             dgvProductos.Rows[e.RowIndex].Cells["fechaIngreso"].Value = stock.producto.fechaDeIngreso;
         }
 
-        
-        
-        
+
+
+
         //otros        
         //dropshadow
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]

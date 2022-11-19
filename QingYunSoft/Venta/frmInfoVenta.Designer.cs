@@ -260,7 +260,7 @@
             this.dtpFechaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaEntrega.Location = new System.Drawing.Point(144, 48);
             this.dtpFechaEntrega.Name = "dtpFechaEntrega";
-            this.dtpFechaEntrega.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaEntrega.Size = new System.Drawing.Size(303, 20);
             this.dtpFechaEntrega.TabIndex = 6;
             // 
             // label5
@@ -564,7 +564,7 @@
             // 
             this.rbNoCancelado.AutoSize = true;
             this.rbNoCancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbNoCancelado.Location = new System.Drawing.Point(199, 56);
+            this.rbNoCancelado.Location = new System.Drawing.Point(170, 61);
             this.rbNoCancelado.Name = "rbNoCancelado";
             this.rbNoCancelado.Size = new System.Drawing.Size(39, 17);
             this.rbNoCancelado.TabIndex = 14;
@@ -576,7 +576,7 @@
             // 
             this.rbCancelado.AutoSize = true;
             this.rbCancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbCancelado.Location = new System.Drawing.Point(149, 56);
+            this.rbCancelado.Location = new System.Drawing.Point(120, 61);
             this.rbCancelado.Name = "rbCancelado";
             this.rbCancelado.Size = new System.Drawing.Size(34, 17);
             this.rbCancelado.TabIndex = 13;
@@ -587,16 +587,16 @@
             // dtpFechaCompra
             // 
             this.dtpFechaCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaCompra.Location = new System.Drawing.Point(136, 79);
+            this.dtpFechaCompra.Location = new System.Drawing.Point(107, 84);
             this.dtpFechaCompra.Name = "dtpFechaCompra";
-            this.dtpFechaCompra.Size = new System.Drawing.Size(111, 20);
+            this.dtpFechaCompra.Size = new System.Drawing.Size(179, 20);
             this.dtpFechaCompra.TabIndex = 12;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(40, 82);
+            this.label9.Location = new System.Drawing.Point(11, 87);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 13);
             this.label9.TabIndex = 11;
@@ -606,7 +606,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(69, 55);
+            this.label17.Location = new System.Drawing.Point(40, 60);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(58, 13);
             this.label17.TabIndex = 9;
@@ -616,7 +616,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(66, 29);
+            this.label10.Location = new System.Drawing.Point(37, 34);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(64, 13);
             this.label10.TabIndex = 1;
@@ -625,7 +625,7 @@
             // txtMontoTotal
             // 
             this.txtMontoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMontoTotal.Location = new System.Drawing.Point(136, 25);
+            this.txtMontoTotal.Location = new System.Drawing.Point(107, 30);
             this.txtMontoTotal.Name = "txtMontoTotal";
             this.txtMontoTotal.Size = new System.Drawing.Size(111, 20);
             this.txtMontoTotal.TabIndex = 0;
@@ -663,9 +663,9 @@
             // dtpFechaLimite
             // 
             this.dtpFechaLimite.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaLimite.Location = new System.Drawing.Point(175, 31);
+            this.dtpFechaLimite.Location = new System.Drawing.Point(78, 31);
             this.dtpFechaLimite.Name = "dtpFechaLimite";
-            this.dtpFechaLimite.Size = new System.Drawing.Size(111, 20);
+            this.dtpFechaLimite.Size = new System.Drawing.Size(208, 20);
             this.dtpFechaLimite.TabIndex = 10;
             // 
             // label14

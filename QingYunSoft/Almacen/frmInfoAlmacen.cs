@@ -8,15 +8,15 @@ namespace QingYunSoft.Almacen
     {
         private frmPrincipal _frmPrincipal;
         private Estado _estado;
-        
-        private VentasWS.VentasWSClient daoVentasWS;        
+
+        private VentasWS.VentasWSClient daoVentasWS;
         private VentasWS.almacen _almacen;
         private VentasWS.almacen[] _almacenes;
         public frmInfoAlmacen(Form from, Estado estado, VentasWS.almacen almacen, VentasWS.almacen[] almacenes)
         {
             //almacen seleccionado
             InitializeComponent();
-            
+
             _frmPrincipal = (frmPrincipal)from;
             _estado = estado;
             _almacen = almacen;
@@ -72,7 +72,7 @@ namespace QingYunSoft.Almacen
             {
                 this._estado = Estado.Nuevo;
                 establecarComponentes();
-                limpiarComponentes();                
+                limpiarComponentes();
             }
         }
         private void btAnular_Click(object sender, EventArgs e)
@@ -97,7 +97,7 @@ namespace QingYunSoft.Almacen
 
         private void btModificar_Click(object sender, EventArgs e)
         {
-            frmInfoProducto _frmInfoProducto = new frmInfoProducto((VentasWS.stock)dgvStocks.CurrentRow.DataBoundItem, 
+            frmInfoProducto _frmInfoProducto = new frmInfoProducto((VentasWS.stock)dgvStocks.CurrentRow.DataBoundItem,
                                                     Estado.Resultado, _almacen, _almacenes);
             _frmInfoProducto.ShowDialog();
             dgvStocks.DataSource = daoVentasWS.listarStockPorIdAlmacen(_almacen.idAlmacen);
@@ -162,7 +162,7 @@ namespace QingYunSoft.Almacen
             dgvStocks.Rows[e.RowIndex].Cells["nombre"].Value = stock.producto.nombre;
             dgvStocks.Rows[e.RowIndex].Cells["precio"].Value = stock.producto.precio;
             dgvStocks.Rows[e.RowIndex].Cells["cantidad"].Value = stock.cantidad;
-            dgvStocks.Rows[e.RowIndex].Cells["devuelto"].Value = stock.producto.devuelto ?"Si":"No";
+            dgvStocks.Rows[e.RowIndex].Cells["devuelto"].Value = stock.producto.devuelto ? "Si" : "No";
             dgvStocks.Rows[e.RowIndex].Cells["fechaIngreso"].Value = stock.producto.fechaDeIngreso;
         }
         private void establecarComponentes()

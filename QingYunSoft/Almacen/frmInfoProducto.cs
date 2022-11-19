@@ -85,7 +85,7 @@ namespace QingYunSoft.Almacen
                 }
 
                 this._stock.producto.nombre = txtNombre.Text;
-                if(!double.TryParse(txtPrecio.Text, out double precio))
+                if (!double.TryParse(txtPrecio.Text, out double precio))
                 {
                     MessageBox.Show("Precio debe ser un numero", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;

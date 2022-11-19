@@ -66,7 +66,7 @@ namespace QingYunSoft.Cliente
         {
             this.DialogResult = DialogResult.Cancel;
         }
-        
+
         //otros
         //mover la ventada
         private void frmCBuscarCliente_MouseDown(object sender, MouseEventArgs e)

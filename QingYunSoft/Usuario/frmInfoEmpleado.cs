@@ -99,8 +99,8 @@ namespace QingYunSoft.Usuario
             {
                 // virificar
                 int n;
-                if (txtUsername.Text == "" || txtContrasena.Text == "" || txtNombre.Text == "" || txtApellido.Text == "" || 
-                    txtNumeroDocumento.Text == "" || txtTelefono.Text == "" || txtCorreo.Text == "" || txtDireccion.Text == ""||
+                if (txtUsername.Text == "" || txtContrasena.Text == "" || txtNombre.Text == "" || txtApellido.Text == "" ||
+                    txtNumeroDocumento.Text == "" || txtTelefono.Text == "" || txtCorreo.Text == "" || txtDireccion.Text == "" ||
                     cbTipoUsuario.SelectedIndex == -1 || cbArea.SelectedIndex == -1 || cbSexo.SelectedIndex == -1 || cbTipoDocumento.SelectedIndex == -1)
                 {
                     MessageBox.Show("Debe llenar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -113,14 +113,14 @@ namespace QingYunSoft.Usuario
                     this._usuario = new RRHHWS.administrador();
                     ((RRHHWS.administrador)this._usuario).area = (RRHHWS.area)cbArea.SelectedItem;
                     ((RRHHWS.administrador)this._usuario).areaSpecified = true;
-                    
-                    if(cbArea.SelectedIndex == -1)
+
+                    if (cbArea.SelectedIndex == -1)
                     {
                         MessageBox.Show("Debe seleccionar un area", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
-                
+
                 if ((GestClientesWS.tipoDeDocumento)cbTipoDocumento.SelectedItem == GestClientesWS.tipoDeDocumento.DNI)
                 {
                     if (txtNumeroDocumento.Text.Length != 8 || !int.TryParse(txtNumeroDocumento.Text, out n))
@@ -331,7 +331,7 @@ namespace QingYunSoft.Usuario
                 txtVariableTipo.Text = VentasWS.VentasWSClient.buscarNombreAlmacenPorIdSupervisor(((RRHHWS.supervisorDeAlmacen)this._usuario).idUsuario);
                 txtVariableTipo.Enabled = false;
                 txtVariableTipo.Visible = true;
-                
+
                 cbArea.Visible = false;
             }
         }
