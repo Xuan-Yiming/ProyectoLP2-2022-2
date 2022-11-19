@@ -50,13 +50,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbArea = new System.Windows.Forms.ComboBox();
-            this.btBuscarAlmacen = new System.Windows.Forms.Button();
             this.btSubirFoto = new System.Windows.Forms.Button();
             this.pbFotPerfil = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.dtpFechaIngreso = new System.Windows.Forms.DateTimePicker();
             this.lblVariableTipo = new System.Windows.Forms.Label();
-            this.txtVariableTipo = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtContrasena = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -71,6 +69,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btCancelar = new System.Windows.Forms.Button();
             this.btRegresar = new System.Windows.Forms.Button();
+            this.txtVariableTipo = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -286,7 +285,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cbArea);
-            this.groupBox1.Controls.Add(this.btBuscarAlmacen);
             this.groupBox1.Controls.Add(this.btSubirFoto);
             this.groupBox1.Controls.Add(this.pbFotPerfil);
             this.groupBox1.Controls.Add(this.label14);
@@ -319,20 +317,8 @@
             "Supervisor de Almacen"});
             this.cbArea.Location = new System.Drawing.Point(134, 296);
             this.cbArea.Name = "cbArea";
-            this.cbArea.Size = new System.Drawing.Size(114, 21);
+            this.cbArea.Size = new System.Drawing.Size(148, 21);
             this.cbArea.TabIndex = 34;
-            // 
-            // btBuscarAlmacen
-            // 
-            this.btBuscarAlmacen.BackgroundImage = global::QingYunSoft.Properties.Resources.magnifyingglass_circle;
-            this.btBuscarAlmacen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btBuscarAlmacen.FlatAppearance.BorderSize = 0;
-            this.btBuscarAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btBuscarAlmacen.Location = new System.Drawing.Point(254, 296);
-            this.btBuscarAlmacen.Name = "btBuscarAlmacen";
-            this.btBuscarAlmacen.Size = new System.Drawing.Size(25, 25);
-            this.btBuscarAlmacen.TabIndex = 33;
-            this.btBuscarAlmacen.UseVisualStyleBackColor = true;
             // 
             // btSubirFoto
             // 
@@ -381,14 +367,6 @@
             this.lblVariableTipo.Size = new System.Drawing.Size(29, 13);
             this.lblVariableTipo.TabIndex = 21;
             this.lblVariableTipo.Text = "Area";
-            // 
-            // txtVariableTipo
-            // 
-            this.txtVariableTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVariableTipo.Location = new System.Drawing.Point(134, 296);
-            this.txtVariableTipo.Name = "txtVariableTipo";
-            this.txtVariableTipo.Size = new System.Drawing.Size(114, 20);
-            this.txtVariableTipo.TabIndex = 20;
             // 
             // label12
             // 
@@ -546,6 +524,14 @@
             this.btRegresar.UseVisualStyleBackColor = true;
             this.btRegresar.Click += new System.EventHandler(this.btRegresar_Click);
             // 
+            // txtVariableTipo
+            // 
+            this.txtVariableTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVariableTipo.Location = new System.Drawing.Point(134, 296);
+            this.txtVariableTipo.Name = "txtVariableTipo";
+            this.txtVariableTipo.Size = new System.Drawing.Size(114, 20);
+            this.txtVariableTipo.TabIndex = 20;
+            // 
             // frmInfoEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -605,14 +591,13 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DateTimePicker dtpFechaIngreso;
         private System.Windows.Forms.Label lblVariableTipo;
-        private System.Windows.Forms.TextBox txtVariableTipo;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtContrasena;
         private System.Windows.Forms.Button btSubirFoto;
         private System.Windows.Forms.PictureBox pbFotPerfil;
-        private System.Windows.Forms.Button btBuscarAlmacen;
         private System.Windows.Forms.ComboBox cbSexo;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cbArea;
+        private System.Windows.Forms.TextBox txtVariableTipo;
     }
 }

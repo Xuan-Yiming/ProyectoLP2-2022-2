@@ -70,7 +70,10 @@ namespace QingYunSoft.Usuario
                 MessageBox.Show("Debe seleccionar un usuario", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
         //otros
 
         //round border
@@ -163,10 +166,13 @@ namespace QingYunSoft.Usuario
 
         }
 
-        private void btCancelar_Click(object sender, EventArgs e)
+        private void frmBuscarEmpleados_MouseDown(object sender, MouseEventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            ReleaseCapture();
+            SendMessage(this.Handle, 0xA1, 0x2, 0);
         }
+
+
         //out drop shadow done
     }
 }

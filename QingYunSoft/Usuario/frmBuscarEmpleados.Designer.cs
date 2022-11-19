@@ -175,6 +175,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmBuscarEmpleados";
             this.Text = "frmBuscarEmpleados";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmBuscarEmpleados_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

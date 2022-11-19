@@ -12,31 +12,16 @@ namespace QingYunSoft.Almacen
         public frmBuscarAlmacen()
         {
             InitializeComponent();
+            CenterToScreen();
             //round form border
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
+            FormBorderStyle = FormBorderStyle.None;
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
 
+            //configurar datagrid view
             dgvAlmacenes.AutoGenerateColumns = false;
-            dgvAlmacenes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-            this.CenterToScreen();
+            dgvAlmacenes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;   
         }
-
         public almacen AlmacenSeleccionado { get => almacenSeleccionado; set => almacenSeleccionado = value; }
-
-        private void btSeleccionar_Click(object sender, EventArgs e)
-        {
-            if (dgvAlmacenes.CurrentRow != null)
-            {
-                almacenSeleccionado = (VentasWS.almacen)dgvAlmacenes.CurrentRow.DataBoundItem;
-                this.DialogResult = DialogResult.OK;
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un almacen", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
         private void dgvAlmacenes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             VentasWS.almacen almacen = (VentasWS.almacen)dgvAlmacenes.CurrentRow.DataBoundItem;
@@ -59,7 +44,22 @@ namespace QingYunSoft.Almacen
                 MessageBox.Show(ex.Message);
             }
         }
-
+        private void btSeleccionar_Click(object sender, EventArgs e)
+        {
+            if (dgvAlmacenes.CurrentRow != null)
+            {
+                almacenSeleccionado = (VentasWS.almacen)dgvAlmacenes.CurrentRow.DataBoundItem;
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un almacen", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
         //otros
 
         //round border
@@ -150,14 +150,8 @@ namespace QingYunSoft.Almacen
             if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
                 m.Result = (IntPtr)HTCAPTION;
 
-        }
-
-        private void btCancelar_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
-        
-        //otros
+        }        
+        //mover ventana
         private void frmBuscarAlmacen_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();

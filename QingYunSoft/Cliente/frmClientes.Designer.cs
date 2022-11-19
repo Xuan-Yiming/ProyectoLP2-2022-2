@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.btBuscar = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -41,14 +42,13 @@
             this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btNuevoCiente = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btBuscar = new System.Windows.Forms.Button();
-            this.btReporteClienteAdeudados = new System.Windows.Forms.Button();
-            this.btNuevoCiente = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btReporteClienteMasPedido = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btReporteClienteAdeudados = new System.Windows.Forms.Button();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -57,8 +57,8 @@
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -81,6 +81,22 @@
             this.panel9.Padding = new System.Windows.Forms.Padding(5);
             this.panel9.Size = new System.Drawing.Size(40, 40);
             this.panel9.TabIndex = 1;
+            // 
+            // btBuscar
+            // 
+            this.btBuscar.BackgroundImage = global::QingYunSoft.Properties.Resources.magnifyingglass;
+            this.btBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btBuscar.FlatAppearance.BorderSize = 0;
+            this.btBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btBuscar.Location = new System.Drawing.Point(5, 5);
+            this.btBuscar.Name = "btBuscar";
+            this.btBuscar.Padding = new System.Windows.Forms.Padding(10);
+            this.btBuscar.Size = new System.Drawing.Size(30, 30);
+            this.btBuscar.TabIndex = 1;
+            this.btBuscar.UseVisualStyleBackColor = true;
+            this.btBuscar.Click += new System.EventHandler(this.btBuscar_Click);
             // 
             // panel8
             // 
@@ -199,6 +215,24 @@
             this.panel2.Size = new System.Drawing.Size(107, 129);
             this.panel2.TabIndex = 0;
             // 
+            // btNuevoCiente
+            // 
+            this.btNuevoCiente.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btNuevoCiente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btNuevoCiente.FlatAppearance.BorderSize = 0;
+            this.btNuevoCiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btNuevoCiente.Image = global::QingYunSoft.Properties.Resources.person_badge_plus;
+            this.btNuevoCiente.Location = new System.Drawing.Point(7, 13);
+            this.btNuevoCiente.Margin = new System.Windows.Forms.Padding(2);
+            this.btNuevoCiente.Name = "btNuevoCiente";
+            this.btNuevoCiente.Size = new System.Drawing.Size(73, 103);
+            this.btNuevoCiente.TabIndex = 0;
+            this.btNuevoCiente.Text = "Nuevo Cliente";
+            this.btNuevoCiente.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btNuevoCiente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btNuevoCiente.UseVisualStyleBackColor = false;
+            this.btNuevoCiente.Click += new System.EventHandler(this.btNuevoCiente_Click);
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -221,68 +255,6 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(33, 0, 33, 0);
             this.panel1.Size = new System.Drawing.Size(827, 130);
             this.panel1.TabIndex = 2;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btReporteClienteAdeudados);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(140, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
-            this.panel3.Size = new System.Drawing.Size(107, 129);
-            this.panel3.TabIndex = 1;
-            // 
-            // btBuscar
-            // 
-            this.btBuscar.BackgroundImage = global::QingYunSoft.Properties.Resources.magnifyingglass;
-            this.btBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btBuscar.FlatAppearance.BorderSize = 0;
-            this.btBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btBuscar.Location = new System.Drawing.Point(5, 5);
-            this.btBuscar.Name = "btBuscar";
-            this.btBuscar.Padding = new System.Windows.Forms.Padding(10);
-            this.btBuscar.Size = new System.Drawing.Size(30, 30);
-            this.btBuscar.TabIndex = 1;
-            this.btBuscar.UseVisualStyleBackColor = true;
-            this.btBuscar.Click += new System.EventHandler(this.btBuscar_Click);
-            // 
-            // btReporteClienteAdeudados
-            // 
-            this.btReporteClienteAdeudados.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btReporteClienteAdeudados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btReporteClienteAdeudados.FlatAppearance.BorderSize = 0;
-            this.btReporteClienteAdeudados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btReporteClienteAdeudados.Image = global::QingYunSoft.Properties.Resources.doc_text;
-            this.btReporteClienteAdeudados.Location = new System.Drawing.Point(7, 13);
-            this.btReporteClienteAdeudados.Margin = new System.Windows.Forms.Padding(2);
-            this.btReporteClienteAdeudados.Name = "btReporteClienteAdeudados";
-            this.btReporteClienteAdeudados.Size = new System.Drawing.Size(73, 103);
-            this.btReporteClienteAdeudados.TabIndex = 0;
-            this.btReporteClienteAdeudados.Text = "Clientes Adeudados";
-            this.btReporteClienteAdeudados.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btReporteClienteAdeudados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btReporteClienteAdeudados.UseVisualStyleBackColor = false;
-            // 
-            // btNuevoCiente
-            // 
-            this.btNuevoCiente.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btNuevoCiente.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btNuevoCiente.FlatAppearance.BorderSize = 0;
-            this.btNuevoCiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btNuevoCiente.Image = global::QingYunSoft.Properties.Resources.person_badge_plus;
-            this.btNuevoCiente.Location = new System.Drawing.Point(7, 13);
-            this.btNuevoCiente.Margin = new System.Windows.Forms.Padding(2);
-            this.btNuevoCiente.Name = "btNuevoCiente";
-            this.btNuevoCiente.Size = new System.Drawing.Size(73, 103);
-            this.btNuevoCiente.TabIndex = 0;
-            this.btNuevoCiente.Text = "Nuevo Cliente";
-            this.btNuevoCiente.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btNuevoCiente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btNuevoCiente.UseVisualStyleBackColor = false;
-            this.btNuevoCiente.Click += new System.EventHandler(this.btNuevoCiente_Click);
             // 
             // panel4
             // 
@@ -312,6 +284,34 @@
             this.btReporteClienteMasPedido.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btReporteClienteMasPedido.UseVisualStyleBackColor = false;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btReporteClienteAdeudados);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(140, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
+            this.panel3.Size = new System.Drawing.Size(107, 129);
+            this.panel3.TabIndex = 1;
+            // 
+            // btReporteClienteAdeudados
+            // 
+            this.btReporteClienteAdeudados.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btReporteClienteAdeudados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btReporteClienteAdeudados.FlatAppearance.BorderSize = 0;
+            this.btReporteClienteAdeudados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btReporteClienteAdeudados.Image = global::QingYunSoft.Properties.Resources.doc_text;
+            this.btReporteClienteAdeudados.Location = new System.Drawing.Point(7, 13);
+            this.btReporteClienteAdeudados.Margin = new System.Windows.Forms.Padding(2);
+            this.btReporteClienteAdeudados.Name = "btReporteClienteAdeudados";
+            this.btReporteClienteAdeudados.Size = new System.Drawing.Size(73, 103);
+            this.btReporteClienteAdeudados.TabIndex = 0;
+            this.btReporteClienteAdeudados.Text = "Clientes Adeudados";
+            this.btReporteClienteAdeudados.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btReporteClienteAdeudados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btReporteClienteAdeudados.UseVisualStyleBackColor = false;
+            // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -332,8 +332,8 @@
             this.panel6.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

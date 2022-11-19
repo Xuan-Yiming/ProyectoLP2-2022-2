@@ -43,8 +43,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btNuevoAlmacen = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btRegistrarProducto = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel9.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -53,7 +51,6 @@
             this.panel10.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,7 +133,6 @@
             this.dgvAlmacenes.RowHeadersWidth = 62;
             this.dgvAlmacenes.Size = new System.Drawing.Size(727, 398);
             this.dgvAlmacenes.TabIndex = 1;
-            this.dgvAlmacenes.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentDoubleClick);
             this.dgvAlmacenes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAlmacenes_CellDoubleClick);
             this.dgvAlmacenes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductos_CellFormatting);
             // 
@@ -230,39 +226,8 @@
             this.btNuevoAlmacen.UseVisualStyleBackColor = false;
             this.btNuevoAlmacen.Click += new System.EventHandler(this.btNuevoAlmacen_Click);
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btRegistrarProducto);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(140, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
-            this.panel3.Size = new System.Drawing.Size(107, 129);
-            this.panel3.TabIndex = 1;
-            this.panel3.Visible = false;
-            // 
-            // btRegistrarProducto
-            // 
-            this.btRegistrarProducto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btRegistrarProducto.FlatAppearance.BorderSize = 0;
-            this.btRegistrarProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btRegistrarProducto.Image = global::QingYunSoft.Properties.Resources.cube_box;
-            this.btRegistrarProducto.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btRegistrarProducto.Location = new System.Drawing.Point(7, 13);
-            this.btRegistrarProducto.Margin = new System.Windows.Forms.Padding(2);
-            this.btRegistrarProducto.Name = "btRegistrarProducto";
-            this.btRegistrarProducto.Size = new System.Drawing.Size(73, 103);
-            this.btRegistrarProducto.TabIndex = 0;
-            this.btRegistrarProducto.Text = "Registrar Producto";
-            this.btRegistrarProducto.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btRegistrarProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btRegistrarProducto.UseVisualStyleBackColor = true;
-            this.btRegistrarProducto.Click += new System.EventHandler(this.btRegistrarProducto_Click);
-            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -292,7 +257,6 @@
             this.panel10.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -311,8 +275,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btNuevoAlmacen;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btRegistrarProducto;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;

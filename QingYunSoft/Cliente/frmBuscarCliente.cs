@@ -62,13 +62,19 @@ namespace QingYunSoft.Cliente
 
             }
         }
-
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
+        
+        //otros
+        //mover la ventada
         private void frmCBuscarCliente_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0xA1, 0x2, 0);
         }
-
+        //dropshadow
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -167,9 +173,6 @@ namespace QingYunSoft.Cliente
 
         }
 
-        private void btCancelar_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
+
     }
 }

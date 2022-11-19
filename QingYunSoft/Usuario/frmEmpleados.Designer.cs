@@ -38,16 +38,16 @@
             this.fechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.btBuscar = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btBuscar = new System.Windows.Forms.Button();
-            this.btNuevoUsuario = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btReporteMejoresVendedores = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btNuevoUsuario = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
@@ -55,9 +55,9 @@
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel6
@@ -167,6 +167,22 @@
             this.panel9.Size = new System.Drawing.Size(40, 40);
             this.panel9.TabIndex = 1;
             // 
+            // btBuscar
+            // 
+            this.btBuscar.BackgroundImage = global::QingYunSoft.Properties.Resources.magnifyingglass;
+            this.btBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btBuscar.FlatAppearance.BorderSize = 0;
+            this.btBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btBuscar.Location = new System.Drawing.Point(5, 5);
+            this.btBuscar.Name = "btBuscar";
+            this.btBuscar.Padding = new System.Windows.Forms.Padding(10);
+            this.btBuscar.Size = new System.Drawing.Size(30, 30);
+            this.btBuscar.TabIndex = 1;
+            this.btBuscar.UseVisualStyleBackColor = true;
+            this.btBuscar.Click += new System.EventHandler(this.btBuscar_Click);
+            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.label1);
@@ -201,69 +217,6 @@
             this.panel1.Size = new System.Drawing.Size(827, 130);
             this.panel1.TabIndex = 6;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btNuevoUsuario);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(33, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
-            this.panel2.Size = new System.Drawing.Size(107, 129);
-            this.panel2.TabIndex = 0;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(33, 129);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(761, 1);
-            this.panel5.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.panel6);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 130);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(827, 458);
-            this.panel3.TabIndex = 7;
-            // 
-            // btBuscar
-            // 
-            this.btBuscar.BackgroundImage = global::QingYunSoft.Properties.Resources.magnifyingglass;
-            this.btBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btBuscar.FlatAppearance.BorderSize = 0;
-            this.btBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btBuscar.Location = new System.Drawing.Point(5, 5);
-            this.btBuscar.Name = "btBuscar";
-            this.btBuscar.Padding = new System.Windows.Forms.Padding(10);
-            this.btBuscar.Size = new System.Drawing.Size(30, 30);
-            this.btBuscar.TabIndex = 1;
-            this.btBuscar.UseVisualStyleBackColor = true;
-            this.btBuscar.Click += new System.EventHandler(this.btBuscar_Click);
-            // 
-            // btNuevoUsuario
-            // 
-            this.btNuevoUsuario.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btNuevoUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btNuevoUsuario.FlatAppearance.BorderSize = 0;
-            this.btNuevoUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btNuevoUsuario.Image = global::QingYunSoft.Properties.Resources.person_badge_plus;
-            this.btNuevoUsuario.Location = new System.Drawing.Point(7, 13);
-            this.btNuevoUsuario.Margin = new System.Windows.Forms.Padding(2);
-            this.btNuevoUsuario.Name = "btNuevoUsuario";
-            this.btNuevoUsuario.Size = new System.Drawing.Size(73, 103);
-            this.btNuevoUsuario.TabIndex = 0;
-            this.btNuevoUsuario.Text = "Nuevo Usuario";
-            this.btNuevoUsuario.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btNuevoUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btNuevoUsuario.UseVisualStyleBackColor = false;
-            this.btNuevoUsuario.Click += new System.EventHandler(this.btNuevoUsuario_Click);
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.btReporteMejoresVendedores);
@@ -292,6 +245,53 @@
             this.btReporteMejoresVendedores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btReporteMejoresVendedores.UseVisualStyleBackColor = false;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btNuevoUsuario);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(33, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
+            this.panel2.Size = new System.Drawing.Size(107, 129);
+            this.panel2.TabIndex = 0;
+            // 
+            // btNuevoUsuario
+            // 
+            this.btNuevoUsuario.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btNuevoUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btNuevoUsuario.FlatAppearance.BorderSize = 0;
+            this.btNuevoUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btNuevoUsuario.Image = global::QingYunSoft.Properties.Resources.person_badge_plus;
+            this.btNuevoUsuario.Location = new System.Drawing.Point(7, 13);
+            this.btNuevoUsuario.Margin = new System.Windows.Forms.Padding(2);
+            this.btNuevoUsuario.Name = "btNuevoUsuario";
+            this.btNuevoUsuario.Size = new System.Drawing.Size(73, 103);
+            this.btNuevoUsuario.TabIndex = 0;
+            this.btNuevoUsuario.Text = "Nuevo Usuario";
+            this.btNuevoUsuario.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btNuevoUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btNuevoUsuario.UseVisualStyleBackColor = false;
+            this.btNuevoUsuario.Click += new System.EventHandler(this.btNuevoUsuario_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Location = new System.Drawing.Point(33, 129);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(761, 1);
+            this.panel5.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel6);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 130);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(827, 458);
+            this.panel3.TabIndex = 7;
+            // 
             // frmEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -311,9 +311,9 @@
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

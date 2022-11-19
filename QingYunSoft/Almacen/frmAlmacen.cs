@@ -1,5 +1,4 @@
-﻿using QingYunSoft.VentasWS;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace QingYunSoft.Almacen
@@ -8,20 +7,40 @@ namespace QingYunSoft.Almacen
     {
         private frmPrincipal _frmPrincipal;
         private VentasWS.VentasWSClient daoVentasWS;
-        private RRHHWS.RRHHWSClient daoRRHHWS;
         private VentasWS.almacen[] almacenes;
+        
         public frmAlmacen(frmPrincipal _frmPrincipal)
         {
-            InitializeComponent();
+            InitializeComponent();            
             this._frmPrincipal = _frmPrincipal;
-
-            dgvAlmacenes.AutoGenerateColumns = false;
+            
+            //instanciar dao
             daoVentasWS = new VentasWS.VentasWSClient();
-            this.almacenes = daoVentasWS.listarAlmacen();
-            dgvAlmacenes.DataSource = this.almacenes;
+            
+            //configurar datagrid view
+            dgvAlmacenes.AutoGenerateColumns = false;
             dgvAlmacenes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //cargar datos
+            almacenes = daoVentasWS.listarAlmacen();
+            dgvAlmacenes.DataSource = almacenes;
+            
         }
-
+        private void btNuevoAlmacen_Click(object sender, EventArgs e)
+        {
+            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Nuevo, almacenes));
+        }        
+        private void btBuscar_Click(object sender, EventArgs e)
+        {
+            frmBuscarAlmacen _frmBuscarAlmacen = new frmBuscarAlmacen();
+            if (_frmBuscarAlmacen.ShowDialog() == DialogResult.OK)
+            {
+                _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Resultado, _frmBuscarAlmacen.AlmacenSeleccionado, almacenes));
+            }
+        }
+        private void dgvAlmacenes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Resultado, (VentasWS.almacen)dgvAlmacenes.CurrentRow.DataBoundItem, almacenes));
+        }
         private void dgvProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             VentasWS.almacen almacen = (VentasWS.almacen)dgvAlmacenes.Rows[e.RowIndex].DataBoundItem;
@@ -30,37 +49,6 @@ namespace QingYunSoft.Almacen
             dgvAlmacenes.Rows[e.RowIndex].Cells["supervisor"].Value = ((VentasWS.supervisorDeAlmacen)almacen.supervisor).nombre
                                                                         + " " + ((VentasWS.supervisorDeAlmacen)almacen.supervisor).apellido;
             dgvAlmacenes.Rows[e.RowIndex].Cells["direccion"].Value = almacen.direccion;
-        }
-
-        private void dgvProductos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Resultado, (VentasWS.almacen)dgvAlmacenes.CurrentRow.DataBoundItem));
-        }
-
-        private void btRegistrarProducto_Click(object sender, EventArgs e)
-        {
-            frmInfoProducto _frmInfoProducto = new frmInfoProducto(Estado.Nuevo, this.almacenes);
-            _frmInfoProducto.ShowDialog();
-            //_frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoProducto(/*_frmPrincipal, Estado.Nuevo*/));
-        }
-
-        private void btNuevoAlmacen_Click(object sender, EventArgs e)
-        {
-            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Nuevo));
-        }
-
-        private void btBuscar_Click(object sender, EventArgs e)
-        {
-            frmBuscarAlmacen _frmBuscarAlmacen = new frmBuscarAlmacen();
-            if (_frmBuscarAlmacen.ShowDialog() == DialogResult.OK)
-            {
-                _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Resultado, _frmBuscarAlmacen.AlmacenSeleccionado));
-            }
-        }
-
-        private void dgvAlmacenes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoAlmacen(_frmPrincipal, Estado.Resultado, (VentasWS.almacen)dgvAlmacenes.CurrentRow.DataBoundItem));
-        }
+        }       
     }
 }

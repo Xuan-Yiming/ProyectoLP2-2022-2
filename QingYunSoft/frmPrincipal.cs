@@ -157,7 +157,7 @@ namespace QingYunSoft
         }
         private void establecerMenu()
         {
-            //limpiar menu
+            //limpiarComponentes menu
             pnlBt1.Controls.Clear();
             pnlBt2.Controls.Clear();
             pnlBt3.Controls.Clear();

@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="dgvStocks.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
   <metadata name="ID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -142,7 +139,7 @@
   <data name="btCancelar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACYAAAAfCAYAAACLSL/LAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAHcSURBVFhHzZhJ
+        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAHcSURBVFhHzZhJ
         TgMxEEV9G4YlEtwHEGOYJxERECCmFadhxX1A4g5AeCW5pEr46dhJFHjSW+S77C6a0HaTut3uv1SHKc3j
         ghqbpLCEs3JMhil94Ccuq/FJCGv5Gm9yXIYp3eNXnriqasYRNvLado1rWaNCEx7xO9tSNaMI6+hNPasa
         U4YuPKA3t6NqaoR4p+5VjSvDqC2A3tyuqikRNtGbulM1URn2C528oC28p2qahK08t6gpU4ZKiM3tqxol
@@ -157,7 +154,7 @@
   <data name="btRegresar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADMAAAAfCAYAAABKz/VnAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAF1SURBVFhHzZjN
+        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAF1SURBVFhHzZjN
         SsNAGEXn0QTfxJWoUK31Z6F1Jfho4mPoXtxbjffCDAzhpE2CSb4LB8LpV5jbtOkkqWmaf0N5Et/ig16f
         GpRjULZil8tsaGZqUA5FucslzJZm5gDlEHIRnxHzSDNzgbIvym2UIgZlH5SbqsgDzcwNykMoG/GTCVHE
         oNxHq8giV60uUHahXEctYlASuchvZk0zS4OyjeKvlkv4jFzSTARQ1ihr4QOXuaKZKKAsePG5iDmjmUig

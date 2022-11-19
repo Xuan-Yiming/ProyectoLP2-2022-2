@@ -27,7 +27,7 @@ namespace QingYunSoft
             //inicializar ventas
             dgvVentas.AutoGenerateColumns = false;
             daoVentas = new VentasWS.VentasWSClient();
-            //dgvVentas.DataSource = daoVentas.listarOrdenesDeCompraUltimas50();
+            dgvVentas.DataSource = daoVentas.listarOrdenesDeCompraUltimas50();
             dgvVentas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 

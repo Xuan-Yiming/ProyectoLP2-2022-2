@@ -148,6 +148,12 @@
     <Compile Include="frmIniciarSeccion.Designer.cs">
       <DependentUpon>frmIniciarSeccion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Venta\frmReclamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Venta\frmReclamo.Designer.cs">
+      <DependentUpon>frmReclamo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Venta\frmVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmIniciarSeccion.resx">
       <DependentUpon>frmIniciarSeccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Venta\frmReclamo.resx">
+      <DependentUpon>frmReclamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Venta\frmVentas.resx">
       <DependentUpon>frmVentas.cs</DependentUpon>
@@ -591,6 +600,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\doc.text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

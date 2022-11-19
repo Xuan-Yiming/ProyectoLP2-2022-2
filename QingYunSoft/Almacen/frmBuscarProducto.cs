@@ -1,5 +1,4 @@
-﻿using QingYunSoft.VentasWS;
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -10,67 +9,61 @@ namespace QingYunSoft.Almacen
         private VentasWS.VentasWSClient daoVentasWS;
         private VentasWS.VentasWSClient daoProductosWS;
         private VentasWS.stock stockSeleccionado;
-        private VentasWS.almacen AlmacenSeleccionado;
-        private VentasWS.producto productoSeleccionado;
-
-        public VentasWS.producto ProductoSeleccionado { get => productoSeleccionado; set => productoSeleccionado = value; }
-
-        public frmBuscarProducto(VentasWS.almacen almacen)
-        {
-            InitializeComponent();
-            //round form border
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
-
-
-            daoVentasWS = new VentasWSClient();
-            daoProductosWS = new VentasWSClient();
-            this.cbAlmacen.DataSource = almacen;
-            this.cbAlmacen.DisplayMember = "nombre";
-
-            dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProductos.AutoGenerateColumns = false;
-            this.CenterToScreen();
-        }
-
         public frmBuscarProducto(VentasWS.almacen[] almacenes)
         {
             InitializeComponent();
+            CenterToScreen();
             //round form border
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
+            FormBorderStyle = FormBorderStyle.None;
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
 
-
-            daoVentasWS = new VentasWSClient();
-            daoProductosWS = new VentasWSClient();
-            this.cbAlmacen.DataSource = almacenes;
-            this.cbAlmacen.DisplayMember = "nombre";
-
+            //inicialzar dao
+            daoVentasWS = new VentasWS.VentasWSClient();
+            daoProductosWS = new VentasWS.VentasWSClient();
+            
+            //configurar dataridview
             dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProductos.AutoGenerateColumns = false;
-            this.CenterToScreen();
+
+            //configurar combobox
+            cbAlmacen.DataSource = almacenes;
+            cbAlmacen.DisplayMember = "nombre";
+            cbAlmacen.ValueMember = "idAlmacen";
         }
 
-        public stock StockSeleccionado { get => stockSeleccionado; set => stockSeleccionado = value; }
-        public almacen AlmacenSeleccionado1 { get => AlmacenSeleccionado; set => AlmacenSeleccionado = value; }
+        public VentasWS.stock StockSeleccionado { get => stockSeleccionado; set => stockSeleccionado = value; }
 
         private void btSeleccionar_Click(object sender, EventArgs e)
         {
             if (dgvProductos.CurrentRow != null)
             {
-                this.StockSeleccionado = (VentasWS.stock)dgvProductos.CurrentRow.DataBoundItem;
-                this.AlmacenSeleccionado = (VentasWS.almacen)cbAlmacen.SelectedItem;
-                this.DialogResult = DialogResult.OK;
+                StockSeleccionado = (VentasWS.stock)dgvProductos.CurrentRow.DataBoundItem;
+                DialogResult = DialogResult.OK;
             }
             else
             {
                 MessageBox.Show("Debe seleccionar un producto", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        private void btBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvProductos.DataSource = daoVentasWS.listarStockPorIdAlmacenYNombre(((VentasWS.almacen)cbAlmacen.SelectedItem).idAlmacen, txtNombreCodigo.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
+        }
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
         private void dgvProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            stock stock = (stock)dgvProductos.Rows[e.RowIndex].DataBoundItem;
+            VentasWS.stock stock = (VentasWS.stock)dgvProductos.Rows[e.RowIndex].DataBoundItem;
             dgvProductos.Rows[e.RowIndex].Cells["ID"].Value = stock.producto.idProducto;
             dgvProductos.Rows[e.RowIndex].Cells["nombre"].Value = stock.producto.nombre;
             dgvProductos.Rows[e.RowIndex].Cells["precio"].Value = stock.producto.precio;
@@ -79,26 +72,11 @@ namespace QingYunSoft.Almacen
             dgvProductos.Rows[e.RowIndex].Cells["fechaIngreso"].Value = stock.producto.fechaDeIngreso;
         }
 
-        private void btBuscar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                daoProductosWS = new VentasWS.VentasWSClient();
-                dgvProductos.DataSource = daoVentasWS.listarStockPorIdAlmacenYNombre(((almacen)cbAlmacen.SelectedItem).idAlmacen, txtNombreCodigo.Text);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-
-        private void btCancelar_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
-
+        
+        
+        
+        //otros        
+        //dropshadow
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -123,12 +101,10 @@ namespace QingYunSoft.Almacen
 
         [DllImport("dwmapi.dll")]
         public static extern int DwmIsCompositionEnabled(ref int pfEnabled);
-
         private bool m_aeroEnabled;                     // variables for box shadow
         private const int CS_DROPSHADOW = 0x00020000;
         private const int WM_NCPAINT = 0x0085;
         private const int WM_ACTIVATEAPP = 0x001C;
-
         public struct MARGINS                           // struct for box shadow
         {
             public int leftWidth;
@@ -136,11 +112,9 @@ namespace QingYunSoft.Almacen
             public int topHeight;
             public int bottomHeight;
         }
-
         private const int WM_NCHITTEST = 0x84;          // variables for dragging the form
         private const int HTCLIENT = 0x1;
         private const int HTCAPTION = 0x2;
-
         protected override CreateParams CreateParams
         {
             get
@@ -154,8 +128,6 @@ namespace QingYunSoft.Almacen
                 return cp;
             }
         }
-
-
         private bool CheckAeroEnabled()
         {
             if (Environment.OSVersion.Version.Major >= 6)
@@ -196,7 +168,7 @@ namespace QingYunSoft.Almacen
                 m.Result = (IntPtr)HTCAPTION;
 
         }
-
+        //mover el formulario
         private void frmBuscarProducto_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();

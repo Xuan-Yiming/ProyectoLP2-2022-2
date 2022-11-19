@@ -12,29 +12,35 @@ namespace QingYunSoft.Almacen
         private VentasWS.VentasWSClient daoVentasWS;
         private System.Windows.Forms.OpenFileDialog ofdFoto;
         private String _rutaFoto;
+        private VentasWS.almacen almacenSeleccionado;
+
         VentasWS.producto _producto = new VentasWS.producto();
         VentasWS.stock _stock = new VentasWS.stock();
         VentasWS.almacen _almacen = new VentasWS.almacen();
-        public frmInfoProducto(Estado estado, VentasWS.almacen almacene)
+        public frmInfoProducto(Estado estado, VentasWS.almacen almacen)
         {
+            //nuevo producto
             InitializeComponent();
             _estado = estado;
             daoVentasWS = new VentasWSClient();
-            this.cbAlmacen.DataSource = almacene;
+            this.cbAlmacen.DataSource = almacen;
             this.cbAlmacen.DisplayMember = "nombre";
             this.cbAlmacen.ValueMember = "idAlmacen";
+            this.almacenSeleccionado = new almacen();
+            this.almacenSeleccionado = almacen;
             establecerEstadoComponentes();
             this.CenterToScreen();
         }
 
-        public frmInfoProducto(VentasWS.stock stock, Estado estado, VentasWS.almacen almacen)
+        public frmInfoProducto(VentasWS.stock stock, Estado estado, VentasWS.almacen almacen, VentasWS.almacen[] almacenes)
         {
+            //editar producto
             InitializeComponent();
             _estado = estado;
             this._almacen = almacen;
             this._stock = stock;
             daoVentasWS = new VentasWSClient();
-            this.cbAlmacen.DataSource = almacen;
+            this.cbAlmacen.DataSource = almacenes;
             this.cbAlmacen.DisplayMember = "nombre";
             this.cbAlmacen.ValueMember = "idAlmacen";
             establecerEstadoComponentes();
@@ -51,25 +57,47 @@ namespace QingYunSoft.Almacen
                 MemoryStream ms = new MemoryStream(stock.producto.foto);
                 pbFoto.Image = new Bitmap(ms);
             }
-
+            this.almacenSeleccionado = new almacen();
+            this.almacenSeleccionado = almacen;
             this.CenterToScreen();
         }
 
         private void btEditarGuardar_Click(object sender, EventArgs e)
         {
+            daoVentasWS = new VentasWSClient();
             if (this._estado == Estado.Resultado)
             {
                 this._estado = Estado.Modificar;
+                cbAlmacen.DataSource = daoVentasWS.listarAlmacen();
+                cbAlmacen.DisplayMember = "nombre";
+                cbAlmacen.ValueMember = "idAlmacen";
+                cbAlmacen.SelectedValue = this.almacenSeleccionado;
                 establecerEstadoComponentes();
             }
             else
             {
-                if (cbAlmacen)
-                daoVentasWS = new VentasWSClient();
+                if (this.cbAlmacen.SelectedItem == null || this.txtCosto.Text.Trim().Equals("") ||
+                    this.txtNombre.Text.Trim().Equals("") || this.txtPrecio.Text.Trim().Equals("") ||
+                    this.txtStock.Text.Trim().Equals(""))
+                {
+                    MessageBox.Show("Debe llenar todos los campos", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 this._stock.producto.nombre = txtNombre.Text;
-                this._stock.producto.precio = double.Parse(txtPrecio.Text);
-                this._stock.producto.costo = double.Parse(txtCosto.Text);
+                if(!double.TryParse(txtPrecio.Text, out double precio))
+                {
+                    MessageBox.Show("Precio debe ser un numero", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                this._stock.producto.precio = precio;
+
+                if (!double.TryParse(txtCosto.Text, out double costo))
+                {
+                    MessageBox.Show("Costo debe ser un numero", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                this._stock.producto.costo = costo;
                 this._stock.producto.fechaDeIngreso = dtpFechaIngreso.Value;
                 this._stock.producto.devuelto = cbxDevuelto.Checked;
 
@@ -86,7 +114,13 @@ namespace QingYunSoft.Almacen
                 this._stock.producto.devueltoSpecified = true;
                 this._stock.producto.fechaDeIngresoSpecified = true;
 
-                _stock.cantidad = Int32.Parse(txtStock.Text);
+                if (!Int32.TryParse(txtStock.Text, out Int32 stock))
+                {
+                    MessageBox.Show("stock debe ser un numero", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                _stock.cantidad = stock;
                 _stock.activo = true;
                 _stock.activoSpecified = true;
 
@@ -234,6 +268,5 @@ namespace QingYunSoft.Almacen
                     break;
             }
         }
-
     }
 }

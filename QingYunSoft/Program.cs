@@ -13,7 +13,7 @@ namespace QingYunSoft
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmIniciarSeccion());
+            Application.Run(new frmInfoVenta());
         }
     }
 }

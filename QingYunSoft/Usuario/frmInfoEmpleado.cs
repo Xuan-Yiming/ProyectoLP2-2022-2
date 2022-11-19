@@ -82,104 +82,10 @@ namespace QingYunSoft.Usuario
                 MemoryStream ms = new MemoryStream(usuario.fotoPerfil);
                 pbFotPerfil.Image = new Bitmap(ms);
             }
-
-
             this._usuario = usuario;
         }
         //metodos
-        private void establecerEstadoComponentes()
-        {
-            switch (estado)
-            {
 
-                case Estado.Nuevo:
-                    txtID.Enabled = false;
-                    txtUsername.Enabled = true;
-                    cbTipoUsuario.Enabled = true;
-                    txtContrasena.Enabled = true;
-                    txtVariableTipo.Enabled = true;
-                    dtpFechaIngreso.Enabled = false;
-
-                    cbTipoDocumento.Enabled = true;
-                    txtNumeroDocumento.Enabled = true;
-                    txtNombre.Enabled = true;
-                    txtApellido.Enabled = true;
-                    txtTelefono.Enabled = true;
-                    txtCorreo.Enabled = true;
-                    txtDireccion.Enabled = true;
-                    dtpFechaNacimiento.Enabled = true;
-                    cbSexo.Enabled = true;
-                    cbArea.Enabled = true;
-
-                    txtID.Enabled = false;
-                    btAnular.Enabled = false;
-                    btEditarGuardar.Enabled = true;
-                    btRegresar.Enabled = true;
-                    btCancelar.Enabled = true;
-                    btEditarGuardar.Text = "Guardar";
-                    btBuscarAlmacen.Enabled = false;
-                    btSubirFoto.Enabled = true;
-
-                    break;
-                case Estado.Modificar:
-                    txtID.Enabled = false;
-                    txtUsername.Enabled = true;
-                    cbTipoUsuario.Enabled = false;
-                    txtContrasena.Enabled = true;
-                    txtVariableTipo.Enabled = true;
-                    dtpFechaIngreso.Enabled = false;
-
-                    cbTipoDocumento.Enabled = true;
-                    txtNumeroDocumento.Enabled = true;
-                    txtNombre.Enabled = true;
-                    txtApellido.Enabled = true;
-                    txtTelefono.Enabled = true;
-                    txtCorreo.Enabled = true;
-                    txtDireccion.Enabled = true;
-                    dtpFechaNacimiento.Enabled = true;
-                    cbSexo.Enabled = true;
-                    cbArea.Enabled = true;
-
-                    txtID.Enabled = true;
-                    btAnular.Enabled = true;
-                    btEditarGuardar.Enabled = true;
-                    btRegresar.Enabled = true;
-                    btCancelar.Enabled = true;
-                    btEditarGuardar.Text = "Guardar";
-                    btBuscarAlmacen.Enabled = false;
-                    btSubirFoto.Enabled = true;
-                    break;
-                case Estado.Resultado:
-                    //disable all txtbox
-                    txtID.Enabled = false;
-                    txtUsername.Enabled = false;
-                    cbTipoUsuario.Enabled = false;
-                    txtContrasena.Enabled = false;
-                    txtVariableTipo.Enabled = false;
-                    dtpFechaIngreso.Enabled = false;
-
-                    cbTipoDocumento.Enabled = false;
-                    txtNumeroDocumento.Enabled = false;
-                    txtNombre.Enabled = false;
-                    txtApellido.Enabled = false;
-                    txtTelefono.Enabled = false;
-                    txtCorreo.Enabled = false;
-                    txtDireccion.Enabled = false;
-                    dtpFechaNacimiento.Enabled = false;
-                    cbSexo.Enabled = false;
-                    cbArea.Enabled = false;
-
-                    btAnular.Enabled = true;
-                    btEditarGuardar.Enabled = true;
-                    btRegresar.Enabled = true;
-                    btCancelar.Enabled = false;
-                    btEditarGuardar.Text = "Editar";
-                    btBuscarAlmacen.Enabled = false;
-                    btSubirFoto.Enabled = false;
-                    break;
-
-            }
-        }
         private void btEditarGuardar_Click(object sender, EventArgs e)
         {
             daoRRHH = new RRHHWS.RRHHWSClient();
@@ -191,17 +97,59 @@ namespace QingYunSoft.Usuario
             }
             else
             {
+                // virificar
+                int n;
+                if (txtUsername.Text == "" || txtContrasena.Text == "" || txtNombre.Text == "" || txtApellido.Text == "" || 
+                    txtNumeroDocumento.Text == "" || txtTelefono.Text == "" || txtCorreo.Text == "" || txtDireccion.Text == ""||
+                    cbTipoUsuario.SelectedIndex == -1 || cbArea.SelectedIndex == -1 || cbSexo.SelectedIndex == -1 || cbTipoDocumento.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Debe llenar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 //validarDatos();                
                 if (cbTipoUsuario.SelectedIndex == 0)
                 {
                     this._usuario = new RRHHWS.administrador();
                     ((RRHHWS.administrador)this._usuario).area = (RRHHWS.area)cbArea.SelectedItem;
                     ((RRHHWS.administrador)this._usuario).areaSpecified = true;
+                    
+                    if(cbArea.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Debe seleccionar un area", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
+                
+                if ((GestClientesWS.tipoDeDocumento)cbTipoDocumento.SelectedItem == GestClientesWS.tipoDeDocumento.DNI)
+                {
+                    if (txtNumeroDocumento.Text.Length != 8 || !int.TryParse(txtNumeroDocumento.Text, out n))
+                    {
+                        MessageBox.Show("El DNI debe tener 8 digitos numericos", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else if ((GestClientesWS.tipoDeDocumento)cbTipoDocumento.SelectedItem == GestClientesWS.tipoDeDocumento.CE)
+                {
+                    if (txtNumeroDocumento.Text.Length != 9 || !int.TryParse(txtNumeroDocumento.Text, out n))
+                    {
+                        MessageBox.Show("El CE debe tener 8 digitos numericos", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else if ((GestClientesWS.tipoDeDocumento)cbTipoDocumento.SelectedItem == GestClientesWS.tipoDeDocumento.Pasaporte)
+                {
+                    if (txtNumeroDocumento.Text.Length != 9)
+                    {
+                        MessageBox.Show("El pasaporte debe tener 9 caracteres", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
                 else if (cbTipoUsuario.SelectedIndex == 1)
                 {
                     this._usuario = new RRHHWS.vendedor();
-                    ((RRHHWS.vendedor)this._usuario).cantidadVentas = Int32.Parse(txtVariableTipo.Text);
+                    //((RRHHWS.vendedor)this._usuario).cantidadVentas = Int32.Parse(txtVariableTipo.Text);
                 }
                 else if (cbTipoUsuario.SelectedIndex == 2)
                 {
@@ -323,36 +271,21 @@ namespace QingYunSoft.Usuario
 
         private void btRegresar_Click(object sender, EventArgs e)
         {
-            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmEmpleados(_frmPrincipal));
+            if ((MessageBox.Show("¿Está seguro que desea salir sin guardar el cambio?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes))
+                _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmEmpleados(_frmPrincipal));
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
-            this.estado = Estado.Nuevo;
-            establecerEstadoComponentes();
-            limpiar();
+            if (MessageBox.Show("¿Esta seguro que desea borrar los datos ingresados?", "Mensaje de confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                this.estado = Estado.Nuevo;
+                establecerEstadoComponentes();
+                limpiar();
+            }
         }
 
-        private void limpiar()
-        {
-            this.pbFotPerfil.Image = null;
-            this.txtID.Text = "";
-            this.txtUsername.Text = "";
-            this.txtContrasena.Text = "";
-            this.cbTipoUsuario.SelectedItem = null;
-            this.cbArea.SelectedItem = null;
-            this.txtVariableTipo.Text = "";
-            this.cbTipoDocumento.SelectedItem = null;
-            this.txtNumeroDocumento.Text = "";
-            this.txtNombre.Text = "";
-            this.txtApellido.Text = "";
-            this.txtTelefono.Text = "";
-            this.txtCorreo.Text = "";
-            this.txtDireccion.Text = "";
-            this.dtpFechaNacimiento.Value = DateTime.Today;
-            this.cbSexo.SelectedItem = null;
-            this._usuario = null;
-        }
+
 
         private void btSubirFoto_Click(object sender, EventArgs e)
         {
@@ -379,7 +312,6 @@ namespace QingYunSoft.Usuario
                 lblVariableTipo.Text = "Area";
                 txtVariableTipo.Text = "";
                 txtVariableTipo.Visible = false;
-                btBuscarAlmacen.Enabled = false;
                 cbArea.Visible = true;
             }
             else if (cbTipoUsuario.SelectedIndex == 1)
@@ -391,84 +323,128 @@ namespace QingYunSoft.Usuario
                 else
                     txtVariableTipo.Text = ((RRHHWS.vendedor)this._usuario).cantidadVentas.ToString();
                 txtVariableTipo.Visible = true;
-                btBuscarAlmacen.Enabled = false;
                 cbArea.Visible = false;
             }
             else if (cbTipoUsuario.SelectedIndex == 2)
             {
                 lblVariableTipo.Text = "Almacen";
-                txtVariableTipo.Text = "";
+                txtVariableTipo.Text = VentasWS.VentasWSClient.buscarNombreAlmacenPorIdSupervisor(((RRHHWS.supervisorDeAlmacen)this._usuario).idUsuario);
                 txtVariableTipo.Enabled = false;
-                btBuscarAlmacen.Enabled = true;
                 txtVariableTipo.Visible = true;
+                
                 cbArea.Visible = false;
             }
         }
 
-        private void validarDatos()
+        private void establecerEstadoComponentes()
         {
-            if (txtNumeroDocumento.Text.Trim().Length < 1)
+            switch (estado)
             {
-                MessageBox.Show("El documento ingresado es inválido", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+
+                case Estado.Nuevo:
+                    txtID.Enabled = false;
+                    txtUsername.Enabled = true;
+                    cbTipoUsuario.Enabled = true;
+                    txtContrasena.Enabled = true;
+                    txtVariableTipo.Enabled = true;
+                    dtpFechaIngreso.Enabled = false;
+
+                    cbTipoDocumento.Enabled = true;
+                    txtNumeroDocumento.Enabled = true;
+                    txtNombre.Enabled = true;
+                    txtApellido.Enabled = true;
+                    txtTelefono.Enabled = true;
+                    txtCorreo.Enabled = true;
+                    txtDireccion.Enabled = true;
+                    dtpFechaNacimiento.Enabled = true;
+                    cbSexo.Enabled = true;
+                    cbArea.Enabled = true;
+
+                    txtID.Enabled = false;
+                    btAnular.Enabled = false;
+                    btEditarGuardar.Enabled = true;
+                    btRegresar.Enabled = true;
+                    btCancelar.Enabled = true;
+                    btEditarGuardar.Text = "Guardar";
+                    btSubirFoto.Enabled = true;
+
+                    break;
+                case Estado.Modificar:
+                    txtID.Enabled = false;
+                    txtUsername.Enabled = true;
+                    cbTipoUsuario.Enabled = false;
+                    txtContrasena.Enabled = true;
+                    txtVariableTipo.Enabled = true;
+                    dtpFechaIngreso.Enabled = false;
+
+                    cbTipoDocumento.Enabled = true;
+                    txtNumeroDocumento.Enabled = true;
+                    txtNombre.Enabled = true;
+                    txtApellido.Enabled = true;
+                    txtTelefono.Enabled = true;
+                    txtCorreo.Enabled = true;
+                    txtDireccion.Enabled = true;
+                    dtpFechaNacimiento.Enabled = true;
+                    cbSexo.Enabled = true;
+                    cbArea.Enabled = true;
+
+                    txtID.Enabled = true;
+                    btAnular.Enabled = true;
+                    btEditarGuardar.Enabled = true;
+                    btRegresar.Enabled = true;
+                    btCancelar.Enabled = true;
+                    btEditarGuardar.Text = "Guardar";
+                    btSubirFoto.Enabled = true;
+                    break;
+                case Estado.Resultado:
+                    //disable all txtbox
+                    txtID.Enabled = false;
+                    txtUsername.Enabled = false;
+                    cbTipoUsuario.Enabled = false;
+                    txtContrasena.Enabled = false;
+                    txtVariableTipo.Enabled = false;
+                    dtpFechaIngreso.Enabled = false;
+
+                    cbTipoDocumento.Enabled = false;
+                    txtNumeroDocumento.Enabled = false;
+                    txtNombre.Enabled = false;
+                    txtApellido.Enabled = false;
+                    txtTelefono.Enabled = false;
+                    txtCorreo.Enabled = false;
+                    txtDireccion.Enabled = false;
+                    dtpFechaNacimiento.Enabled = false;
+                    cbSexo.Enabled = false;
+                    cbArea.Enabled = false;
+
+                    btAnular.Enabled = true;
+                    btEditarGuardar.Enabled = true;
+                    btRegresar.Enabled = true;
+                    btCancelar.Enabled = false;
+                    btEditarGuardar.Text = "Editar";
+                    btSubirFoto.Enabled = false;
+                    break;
+
             }
-            try
-            {
-                Int32.Parse(txtNumeroDocumento.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("El DNI debe ser un número", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txtNombre.Text.Trim() == "")
-            {
-                MessageBox.Show("Debe ingresar un nombre", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txtApellido.Text.Trim() == "")
-            {
-                MessageBox.Show("Debe ingresar un apellido", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txtUsername.Text.Trim() == "")
-            {
-                MessageBox.Show("Debe indicar el nombre de usuario", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (cbTipoUsuario.SelectedIndex == -1)
-            {
-                MessageBox.Show("No ha seleccionado tipo de usuario", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (cbTipoDocumento.SelectedIndex == -1)
-            {
-                MessageBox.Show("No ha seleccionado tipo de documento", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txtContrasena.Text == "")
-            {
-                MessageBox.Show("No ha ingresado la contraseña", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txtTelefono.Text == "")
-            {
-                MessageBox.Show("No ha ingresado el numero de telefono", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txtDireccion.Text == "")
-            {
-                MessageBox.Show("No ha ingresado la direccion", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txtCorreo.Text == "")
-            {
-                MessageBox.Show("No ha ingresado el correo electrónico", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            //Se inicializa el objeto empleado y se completan todos sus datos
         }
-
-
+        private void limpiar()
+        {
+            this.pbFotPerfil.Image = null;
+            this.txtID.Text = "";
+            this.txtUsername.Text = "";
+            this.txtContrasena.Text = "";
+            this.cbTipoUsuario.SelectedItem = null;
+            this.cbArea.SelectedItem = null;
+            this.txtVariableTipo.Text = "";
+            this.cbTipoDocumento.SelectedItem = null;
+            this.txtNumeroDocumento.Text = "";
+            this.txtNombre.Text = "";
+            this.txtApellido.Text = "";
+            this.txtTelefono.Text = "";
+            this.txtCorreo.Text = "";
+            this.txtDireccion.Text = "";
+            this.dtpFechaNacimiento.Value = DateTime.Today;
+            this.cbSexo.SelectedItem = null;
+            this._usuario = null;
+        }
     }
 }
