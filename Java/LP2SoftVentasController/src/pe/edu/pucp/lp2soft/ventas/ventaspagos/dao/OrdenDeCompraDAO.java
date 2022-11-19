@@ -5,8 +5,7 @@ import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
 
 
 public interface OrdenDeCompraDAO {
-    public int insertar(OrdenDeCompra ordenDeCompra, int idCliente);
-    public int modificar(OrdenDeCompra ordenDeCompra);
+    public int insertar(OrdenDeCompra ordenDeCompra);
     public int eliminar(int id);
     public ArrayList<OrdenDeCompra> listarTodos();
     public ArrayList<OrdenDeCompra> listarPorCliente(int idCliente);

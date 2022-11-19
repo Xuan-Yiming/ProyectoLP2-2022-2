@@ -1,10 +1,11 @@
 package pe.edu.pucp.lp2soft.ventas.manejoproductos;
 import java.util.Date;
 import java.util.ArrayList;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
 
 public class Reclamo {
     private int idReclamo;
-    private int fid_orden_de_compra;
+    private OrdenDeCompra ordenDeCompra;
     private Date fecha;
     private boolean atendido;
     private String justificacion;
@@ -62,11 +63,10 @@ public class Reclamo {
         this.activo = activo;
     }
     
-    public int getFid_orden_de_compra() {
-        return fid_orden_de_compra;
+    public OrdenDeCompra getOrdenDeCompra() {
+        return ordenDeCompra;
     }
-
-    public void setFid_orden_de_compra(int fid_orden_de_compra) {
-        this.fid_orden_de_compra = fid_orden_de_compra;
+    public void setOrdenDeCompra(OrdenDeCompra ordenDeCompra) {
+        this.ordenDeCompra = ordenDeCompra;
     }
 }

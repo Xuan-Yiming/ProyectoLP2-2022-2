@@ -1,16 +1,13 @@
 package pe.edu.pucp.lp2soft.gestclientes.model;
-
-import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.enums.Categoria;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
 
 public class Empresa extends Cliente {
     private String RUC;
     private String razonSocial;
     private String direccion;
 
-    public Empresa(String RUC, String razonSocial, String direccion, int idCliente, Categoria categoria, Boolean activo, ArrayList<OrdenDeCompra> ordenesCompras) {
-        super(idCliente, categoria, activo, ordenesCompras);
+    public Empresa(String RUC, String razonSocial, String direccion, int idCliente, Categoria categoria, Boolean activo) {
+        super(idCliente, categoria, activo);
         this.RUC = RUC;
         this.razonSocial = razonSocial;
         this.direccion = direccion;

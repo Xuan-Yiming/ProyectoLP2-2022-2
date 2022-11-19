@@ -1,20 +1,15 @@
 package pe.edu.pucp.lp2soft.gestclientes.model;
-
-import java.util.ArrayList;
 import pe.edu.pucp.lp2soft.enums.Categoria;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
 
-public abstract class Cliente{
+public class Cliente{
     private int idCliente;
     private Categoria categoria;
     private Boolean activo;
-    private ArrayList<OrdenDeCompra> ordenesCompras;
 
-    public Cliente(int idCliente, Categoria categoria, Boolean activo, ArrayList<OrdenDeCompra> ordenesCompras) {
+    public Cliente(int idCliente, Categoria categoria, Boolean activo) {
         this.idCliente = idCliente;
         this.categoria = categoria;
         this.activo = activo;
-        this.ordenesCompras = ordenesCompras;
     }
 
     public Cliente() {
@@ -43,14 +38,4 @@ public abstract class Cliente{
     public void setActivo(Boolean activo) {
         this.activo = activo;
     }
-
-    public ArrayList<OrdenDeCompra> getOrdenesCompras() {
-        return ordenesCompras;
-    }
-
-    public void setOrdenesCompras(ArrayList<OrdenDeCompra> ordenesCompras) {
-        this.ordenesCompras = ordenesCompras;
-    }
-    
-    
 }

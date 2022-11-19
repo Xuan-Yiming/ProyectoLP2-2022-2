@@ -1,11 +1,8 @@
 package pe.edu.pucp.lp2soft.gestclientes.model;
-
-import java.util.ArrayList;
 import java.util.Date;
 import pe.edu.pucp.lp2soft.enums.Categoria;
 import pe.edu.pucp.lp2soft.enums.Sexo;
 import pe.edu.pucp.lp2soft.enums.TipoDeDocumento;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
 
 public class PersonaNatural extends Cliente {
     private TipoDeDocumento tipoDeDocumento;
@@ -18,8 +15,8 @@ public class PersonaNatural extends Cliente {
     private String direccion;
     private String email;
 
-    public PersonaNatural(TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, Sexo sexo, String telefono, String direccion, String email, int idCliente, Categoria categoria, Boolean activo, ArrayList<OrdenDeCompra> ordenesCompras) {
-        super(idCliente, categoria, activo, ordenesCompras);
+    public PersonaNatural(TipoDeDocumento tipoDeDocumento, String numDeDocumento, String nombre, String apellido, Date fechaDeNacimiento, Sexo sexo, String telefono, String direccion, String email, int idCliente, Categoria categoria, Boolean activo) {
+        super(idCliente, categoria, activo);
         this.tipoDeDocumento = tipoDeDocumento;
         this.numDeDocumento = numDeDocumento;
         this.nombre = nombre;

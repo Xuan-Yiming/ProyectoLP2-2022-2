@@ -236,38 +236,6 @@ public class VentasWS {
         }
         return resultado;
     }
-//    
-//    @WebMethod(operationName = "modificarTerminoPago")
-//    public int modificarTerminoPago(@WebParam(name = "terminoPago") TerminoDePago terminoPago) {
-//        int resultado = 0;
-//        try{
-//            resultado = daoTerminoPago.modificar(terminoPago);
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        return resultado;
-//    }
-//    @WebMethod(operationName = "eliminarTerminoPago")
-//    public int eliminarTerminoPago(@WebParam(name = "terminoPago") int idTerminoPago) {
-//        int resultado = 0;
-//        try{
-//            resultado = daoTerminoPago.eliminar(idTerminoPago);
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        return resultado;
-//    }
-//    @WebMethod(operationName = "listarTerminoPago")
-//    public ArrayList<TerminoDePago> listarTerminoDePagos() {
-//        ArrayList<TerminoDePago> terminoPagos = null;
-//        try{
-//            terminoPagos = daoTerminoPago.listarTodos();
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        return terminoPagos;
-//    }
-    
 	
 //    /*Gestionar Pedidos*/
     @WebMethod(operationName = "insertarPedido")
@@ -275,16 +243,6 @@ public class VentasWS {
         int resultado = 0;
         try{
             resultado = daoPedido.insertar(pedido);
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-        return resultado;
-    }
-    @WebMethod(operationName = "modificarPedido")
-    public int modificarPedido(@WebParam(name = "pedido") Pedido pedido) {
-        int resultado = 0;
-        try{
-            resultado = daoPedido.modificar(pedido);
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }
@@ -300,44 +258,12 @@ public class VentasWS {
         }
         return resultado;
     }
-//    @WebMethod(operationName = "listarPedidos")
-//    public ArrayList<Pedido> listarPedidos() {
-//        ArrayList<Pedido> pedidos = null;
-//        try{
-//            pedidos = daoPedido.listarTodos();
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        return pedidos;
-//    }
-//    @WebMethod(operationName = "listarPedidosPorOrdenDeCompra")
-//    public ArrayList<Pedido> listarPedidosPorOrdenDeCompra(@WebParam(name = "idOrdenDeCompra") int idOrdenDeCompra) {
-//        ArrayList<Pedido> pedidos = null;
-//        try{
-//            pedidos = daoPedido.listarPorOrdenDeCompra(idOrdenDeCompra);
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        return pedidos;
-//    }
-//    
-
     /*Gestionar Ordenes de Compra*/
     @WebMethod(operationName = "insertarOrdenDeCompra")
-    public int insertarOrdenDeCompra(@WebParam(name = "ordenDeCompra") OrdenDeCompra ordenDeCompra, @WebParam(name = "idCliente") int idCliente) {
+    public int insertarOrdenDeCompra(@WebParam(name = "ordenDeCompra") OrdenDeCompra ordenDeCompra) {
         int resultado = 0;
         try{
-            resultado = daoOrdenDeCompra.insertar(ordenDeCompra,idCliente);
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-        return resultado;
-    }
-    @WebMethod(operationName = "modificarOrdenDeCompra")
-    public int modificarOrdenDeCompra(@WebParam(name = "ordenDeCompra") OrdenDeCompra ordenDeCompra) {
-        int resultado = 0;
-        try{
-            resultado = daoOrdenDeCompra.modificar(ordenDeCompra);
+            resultado = daoOrdenDeCompra.insertar(ordenDeCompra);
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }
@@ -393,10 +319,6 @@ public class VentasWS {
         }
         return ordenesDeCompra;
     }
-    
-
-
-    
     
     //Gestionar Moneda//
     @WebMethod(operationName = "insertarMoneda")
