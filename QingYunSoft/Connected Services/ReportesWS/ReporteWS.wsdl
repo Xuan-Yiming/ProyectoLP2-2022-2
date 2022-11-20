@@ -5,6 +5,18 @@
       <xsd:import schemaLocation="http://localhost:8080/LP2SoftWebServices/ReporteWS?xsd=1" namespace="http://services.lp2soft.pucp.edu.pe/" />
     </xsd:schema>
   </types>
+  <message name="generarReporteTop5Clientes">
+    <part name="parameters" element="tns:generarReporteTop5Clientes" />
+  </message>
+  <message name="generarReporteTop5ClientesResponse">
+    <part name="parameters" element="tns:generarReporteTop5ClientesResponse" />
+  </message>
+  <message name="generarReporteDeudores">
+    <part name="parameters" element="tns:generarReporteDeudores" />
+  </message>
+  <message name="generarReporteDeudoresResponse">
+    <part name="parameters" element="tns:generarReporteDeudoresResponse" />
+  </message>
   <message name="generarReporteVendedoresMasVentas">
     <part name="parameters" element="tns:generarReporteVendedoresMasVentas" />
   </message>
@@ -18,6 +30,14 @@
     <part name="parameters" element="tns:generarReporteVentasPeriodoResponse" />
   </message>
   <portType name="ReporteWS">
+    <operation name="generarReporteTop5Clientes">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteTop5ClientesRequest" message="tns:generarReporteTop5Clientes" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteTop5ClientesResponse" message="tns:generarReporteTop5ClientesResponse" />
+    </operation>
+    <operation name="generarReporteDeudores">
+      <input wsam:Action="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteDeudoresRequest" message="tns:generarReporteDeudores" />
+      <output wsam:Action="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteDeudoresResponse" message="tns:generarReporteDeudoresResponse" />
+    </operation>
     <operation name="generarReporteVendedoresMasVentas">
       <input wsam:Action="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteVendedoresMasVentasRequest" message="tns:generarReporteVendedoresMasVentas" />
       <output wsam:Action="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteVendedoresMasVentasResponse" message="tns:generarReporteVendedoresMasVentasResponse" />
@@ -29,6 +49,24 @@
   </portType>
   <binding name="ReporteWSPortBinding" type="tns:ReporteWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="generarReporteTop5Clientes">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="generarReporteDeudores">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="generarReporteVendedoresMasVentas">
       <soap:operation soapAction="" />
       <input>

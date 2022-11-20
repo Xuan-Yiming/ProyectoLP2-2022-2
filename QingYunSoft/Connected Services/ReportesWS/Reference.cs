@@ -16,6 +16,22 @@ namespace QingYunSoft.ReportesWS {
     public interface ReporteWS {
         
         // CODEGEN: Generating message contract since message part namespace () does not match the default value (http://services.lp2soft.pucp.edu.pe/)
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteTop5ClientesRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteTop5ClientesResponse")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.ReportesWS.generarReporteTop5ClientesResponse generarReporteTop5Clientes(QingYunSoft.ReportesWS.generarReporteTop5ClientesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteTop5ClientesRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteTop5ClientesResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.ReportesWS.generarReporteTop5ClientesResponse> generarReporteTop5ClientesAsync(QingYunSoft.ReportesWS.generarReporteTop5ClientesRequest request);
+        
+        // CODEGEN: Generating message contract since message part namespace () does not match the default value (http://services.lp2soft.pucp.edu.pe/)
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteDeudoresRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteDeudoresResponse")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        QingYunSoft.ReportesWS.generarReporteDeudoresResponse generarReporteDeudores(QingYunSoft.ReportesWS.generarReporteDeudoresRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteDeudoresRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteDeudoresResponse")]
+        System.Threading.Tasks.Task<QingYunSoft.ReportesWS.generarReporteDeudoresResponse> generarReporteDeudoresAsync(QingYunSoft.ReportesWS.generarReporteDeudoresRequest request);
+        
+        // CODEGEN: Generating message contract since message part namespace () does not match the default value (http://services.lp2soft.pucp.edu.pe/)
         [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteVendedoresMasVentasRe" +
             "quest", ReplyAction="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteVendedoresMasVentasRe" +
             "sponse")]
@@ -36,6 +52,60 @@ namespace QingYunSoft.ReportesWS {
         [System.ServiceModel.OperationContractAttribute(Action="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteVentasPeriodoRequest", ReplyAction="http://services.lp2soft.pucp.edu.pe/ReporteWS/generarReporteVentasPeriodoResponse" +
             "")]
         System.Threading.Tasks.Task<QingYunSoft.ReportesWS.generarReporteVentasPeriodoResponse> generarReporteVentasPeriodoAsync(QingYunSoft.ReportesWS.generarReporteVentasPeriodoRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="generarReporteTop5Clientes", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class generarReporteTop5ClientesRequest {
+        
+        public generarReporteTop5ClientesRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="generarReporteTop5ClientesResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class generarReporteTop5ClientesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public byte[] @return;
+        
+        public generarReporteTop5ClientesResponse() {
+        }
+        
+        public generarReporteTop5ClientesResponse(byte[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="generarReporteDeudores", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class generarReporteDeudoresRequest {
+        
+        public generarReporteDeudoresRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="generarReporteDeudoresResponse", WrapperNamespace="http://services.lp2soft.pucp.edu.pe/", IsWrapped=true)]
+    public partial class generarReporteDeudoresResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="", Order=0)]
+        public byte[] @return;
+        
+        public generarReporteDeudoresResponse() {
+        }
+        
+        public generarReporteDeudoresResponse(byte[] @return) {
+            this.@return = @return;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -128,6 +198,48 @@ namespace QingYunSoft.ReportesWS {
         
         public ReporteWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.ReportesWS.generarReporteTop5ClientesResponse QingYunSoft.ReportesWS.ReporteWS.generarReporteTop5Clientes(QingYunSoft.ReportesWS.generarReporteTop5ClientesRequest request) {
+            return base.Channel.generarReporteTop5Clientes(request);
+        }
+        
+        public byte[] generarReporteTop5Clientes() {
+            QingYunSoft.ReportesWS.generarReporteTop5ClientesRequest inValue = new QingYunSoft.ReportesWS.generarReporteTop5ClientesRequest();
+            QingYunSoft.ReportesWS.generarReporteTop5ClientesResponse retVal = ((QingYunSoft.ReportesWS.ReporteWS)(this)).generarReporteTop5Clientes(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.ReportesWS.generarReporteTop5ClientesResponse> QingYunSoft.ReportesWS.ReporteWS.generarReporteTop5ClientesAsync(QingYunSoft.ReportesWS.generarReporteTop5ClientesRequest request) {
+            return base.Channel.generarReporteTop5ClientesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.ReportesWS.generarReporteTop5ClientesResponse> generarReporteTop5ClientesAsync() {
+            QingYunSoft.ReportesWS.generarReporteTop5ClientesRequest inValue = new QingYunSoft.ReportesWS.generarReporteTop5ClientesRequest();
+            return ((QingYunSoft.ReportesWS.ReporteWS)(this)).generarReporteTop5ClientesAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        QingYunSoft.ReportesWS.generarReporteDeudoresResponse QingYunSoft.ReportesWS.ReporteWS.generarReporteDeudores(QingYunSoft.ReportesWS.generarReporteDeudoresRequest request) {
+            return base.Channel.generarReporteDeudores(request);
+        }
+        
+        public byte[] generarReporteDeudores() {
+            QingYunSoft.ReportesWS.generarReporteDeudoresRequest inValue = new QingYunSoft.ReportesWS.generarReporteDeudoresRequest();
+            QingYunSoft.ReportesWS.generarReporteDeudoresResponse retVal = ((QingYunSoft.ReportesWS.ReporteWS)(this)).generarReporteDeudores(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<QingYunSoft.ReportesWS.generarReporteDeudoresResponse> QingYunSoft.ReportesWS.ReporteWS.generarReporteDeudoresAsync(QingYunSoft.ReportesWS.generarReporteDeudoresRequest request) {
+            return base.Channel.generarReporteDeudoresAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<QingYunSoft.ReportesWS.generarReporteDeudoresResponse> generarReporteDeudoresAsync() {
+            QingYunSoft.ReportesWS.generarReporteDeudoresRequest inValue = new QingYunSoft.ReportesWS.generarReporteDeudoresRequest();
+            return ((QingYunSoft.ReportesWS.ReporteWS)(this)).generarReporteDeudoresAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

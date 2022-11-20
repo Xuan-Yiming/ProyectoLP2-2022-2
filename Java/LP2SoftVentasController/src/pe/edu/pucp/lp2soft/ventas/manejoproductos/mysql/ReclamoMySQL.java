@@ -19,13 +19,13 @@ public class ReclamoMySQL implements ReclamoDAO {
         int resultado = 0;
         try{
             con = DBManager.getInstance().getConnection();
-            cs = con.prepareCall("{call INSERTAR_RECLAMO(?,?,?,?,,?,?)}");
+            cs = con.prepareCall("{call INSERTAR_RECLAMO(?,?,?,?,?,?)}");
             cs.registerOutParameter("_id_reclamo", java.sql.Types.INTEGER);
             cs.setInt("_fid_orden_de_compra", reclamo.getOrdenDeCompra().getIdOrdenDeCompra());
             cs.setDate("_fecha", new java.sql.Date(reclamo.getFecha().getTime()));
             cs.setBoolean("_atendido", reclamo.isAtendido());
             cs.setString("_justificacion", reclamo.getJustificacion());
-            cs.setString("_activo", reclamo.getJustificacion());
+            cs.setBoolean("_activo", true);
             cs.executeUpdate();
             reclamo.setIdReclamo(cs.getInt("_id_reclamo"));
             resultado = reclamo.getIdReclamo();

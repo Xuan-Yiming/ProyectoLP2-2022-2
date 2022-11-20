@@ -280,6 +280,12 @@
     <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.modificarPersonaNaturalResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ReportesWS\QingYunSoft.ReportesWS.generarReporteDeudoresResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportesWS\QingYunSoft.ReportesWS.generarReporteTop5ClientesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ReportesWS\QingYunSoft.ReportesWS.generarReporteVendedoresMasVentasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

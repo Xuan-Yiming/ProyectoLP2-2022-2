@@ -326,6 +326,7 @@ namespace QingYunSoft
                 frmReclamo _frmReclamo = new frmReclamo(Estado.Resultado, this._ordenDeCompra.idOrdenDeCompra);
                 _frmReclamo.Show();
             }
+            this._ordenDeCompra.reclamo = daoVentasWS.listarReclamoxOrden(this._ordenDeCompra.idOrdenDeCompra)[0];
         }
 
         private void btAnular_Click(object sender, EventArgs e)

@@ -80,14 +80,14 @@ namespace QingYunSoft.Cliente
         private void btReporteClienteAdeudados_Click(object sender, EventArgs e)
         {
             daoReportes = new ReportesWS.ReporteWSClient();
-            frmReporteViewer _frmReporteViewer = new frmReporteViewer(null);
+            frmReporteViewer _frmReporteViewer = new frmReporteViewer(daoReportes.generarReporteDeudores());
             _frmReporteViewer.Show();
         }
 
         private void btReporteClienteMasPedido_Click(object sender, EventArgs e)
         {
             daoReportes = new ReportesWS.ReporteWSClient();
-            frmReporteViewer _frmReporteViewer = new frmReporteViewer(null);
+            frmReporteViewer _frmReporteViewer = new frmReporteViewer(daoReportes.generarReporteTop5Clientes());
             _frmReporteViewer.Show();
         }
     }
