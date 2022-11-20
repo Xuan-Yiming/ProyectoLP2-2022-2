@@ -151,22 +151,22 @@
       <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="modificarVendedor">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="vendedor" type="tns:vendedor" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="modificarVendedorResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="insertarSupervisor">
     <xs:sequence>
       <xs:element minOccurs="0" name="supervisor" type="tns:supervisorDeAlmacen" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarSupervisorResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarVendedor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vendedor" type="tns:vendedor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarVendedorResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>

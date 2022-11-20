@@ -1,5 +1,6 @@
 ﻿using QingYunSoft.VentasWS;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace QingYunSoft.Almacen
@@ -49,6 +50,7 @@ namespace QingYunSoft.Almacen
             _frmPrincipal = (frmPrincipal)from;
             _estado = estado;
             _almacenes = almacenes;
+            _almacen = new almacen();
             //instanciar dao
             daoVentasWS = new VentasWS.VentasWSClient();
             //configurar combobox
@@ -90,7 +92,8 @@ namespace QingYunSoft.Almacen
         }
         private void btAgregar_Click(object sender, EventArgs e)
         {
-            frmInfoProducto _frmInfoProducto = new frmInfoProducto(Estado.Nuevo, _almacen);
+            VentasWS.almacen[] alamcenes = { this._almacen };
+            frmInfoProducto _frmInfoProducto = new frmInfoProducto(Estado.Nuevo, alamcenes);
             _frmInfoProducto.ShowDialog();
             dgvStocks.DataSource = daoVentasWS.listarStockPorIdAlmacen(_almacen.idAlmacen);
         }
@@ -175,11 +178,11 @@ namespace QingYunSoft.Almacen
                     txtNombre.Enabled = true;
                     txtDireccion.Enabled = true;
                     cbSupervisores.Enabled = true;
-                    btModificar.Enabled = true;
-                    btAgregar.Enabled = true;
+                    btModificar.Enabled = false;
+                    btAgregar.Enabled = false;
                     btEditarGuardar.Enabled = true;
                     btCancelar.Enabled = true;
-                    btRegresar.Enabled = false;
+                    btRegresar.Enabled = true;
                     btAnular.Enabled = false;
                     break;
                 case Estado.Modificar:
@@ -192,7 +195,7 @@ namespace QingYunSoft.Almacen
                     btAgregar.Enabled = true;
                     btEditarGuardar.Enabled = true;
                     btCancelar.Enabled = true;
-                    btRegresar.Enabled = false;
+                    btRegresar.Enabled = true;
                     btAnular.Enabled = true;
                     break;
                 case Estado.Resultado:

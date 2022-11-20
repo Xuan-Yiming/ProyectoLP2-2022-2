@@ -101,6 +101,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\ReportesWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\RRHHWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -141,6 +146,12 @@
     </Compile>
     <Compile Include="Venta\frmBuscarVenta.Designer.cs">
       <DependentUpon>frmBuscarVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Venta\frmElegirFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Venta\frmElegirFecha.Designer.cs">
+      <DependentUpon>frmElegirFecha.cs</DependentUpon>
     </Compile>
     <Compile Include="Venta\frmInfoVenta.cs">
       <SubType>Form</SubType>
@@ -213,6 +224,9 @@
     <EmbeddedResource Include="Venta\frmBuscarVenta.resx">
       <DependentUpon>frmBuscarVenta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Venta\frmElegirFecha.resx">
+      <DependentUpon>frmElegirFecha.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Venta\frmInfoVenta.resx">
       <DependentUpon>frmInfoVenta.cs</DependentUpon>
     </EmbeddedResource>
@@ -266,6 +280,16 @@
     <None Include="Connected Services\GestClientesWS\QingYunSoft.GestClientesWS.modificarPersonaNaturalResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ReportesWS\QingYunSoft.ReportesWS.generarReporteVendedoresMasVentasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportesWS\QingYunSoft.ReportesWS.generarReporteVentasPeriodoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportesWS\ReporteWS.wsdl" />
+    <None Include="Connected Services\ReportesWS\ReporteWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\RRHHWS\QingYunSoft.RRHHWS.eliminarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -304,6 +328,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.almacen.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.buscarAlmacenxIdUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.buscarMonedaResponse.datasource">
@@ -384,6 +411,9 @@
     <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarMonedasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarMonedaUltimoTipoDeCambioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarMonedaXNombreResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -397,6 +427,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarOrdenesDeCompraUltimas50Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarPedidosPorIdOrdenDeCompraResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.listarProductosPorNombreResponse.datasource">
@@ -432,12 +465,6 @@
     <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.modificarMonedaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.modificarOrdenDeCompraResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.modificarPedidoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.modificarProductoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -456,6 +483,9 @@
     <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.ordenDeCompra.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.pedido.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.producto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -469,6 +499,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.tipoDeCambio.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VentasWS\QingYunSoft.VentasWS.uwuResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\VentasWS\VentasWS1.wsdl" />
@@ -559,6 +592,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\GestClientesWS\" />
+    <WCFMetadataStorage Include="Connected Services\ReportesWS\" />
     <WCFMetadataStorage Include="Connected Services\RRHHWS\" />
     <WCFMetadataStorage Include="Connected Services\VentasWS\" />
   </ItemGroup>
@@ -631,6 +665,18 @@
       <WrapperTool>aximp</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ReportesWS\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ReportesWS\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ReportesWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

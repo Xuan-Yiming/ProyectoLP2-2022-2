@@ -47,10 +47,13 @@ public class OrdenDeCompraMySQL implements OrdenDeCompraDAO {
             resultado = ordenDeCompra.getIdOrdenDeCompra();
             
             for(Pedido pedido : ordenDeCompra.getPedidos()){
-                cs = con.prepareCall("{call INSERTAR_ORDEN_DE_COMPRA_PEDIDO(?,?,?)}");
-                cs.registerOutParameter("_id_orden_de_compra_pedido", java.sql.Types.INTEGER);
+                cs = con.prepareCall("{call INSERTAR_PEDIDO(?,?,?,?,?,?)}");
+                cs.registerOutParameter("_id_pedido", java.sql.Types.INTEGER);
                 cs.setInt("_fid_orden_de_compra", ordenDeCompra.getIdOrdenDeCompra());
-                cs.setInt("_fid_pedido", pedido.getIdPedido());
+                cs.setInt("_fid_producto", pedido.getProducto().getIdProducto());
+                cs.setInt("_cantidad", pedido.getCantidad());
+                cs.setDouble("_descuento", pedido.getDescuento());
+                cs.setBoolean("_activo", pedido.getActivo());
                 cs.executeUpdate();
             }
         }catch(Exception ex){
@@ -194,6 +197,7 @@ public class OrdenDeCompraMySQL implements OrdenDeCompraDAO {
                 orden.setIdOrdenDeCompra(rs.getInt("id_orden_de_compra"));
                 orden.setFechaDeCompra(rs.getDate("fecha_de_compra"));
                 orden.setFechaDeEntrega(rs.getDate("fecha_de_entrega"));
+                orden.setFechaLimite(rs.getDate("fecha_limite"));
                 orden.setDireccionDeEntrega(rs.getString("direccion_de_entrega"));
                 orden.setFormaDeEntrega(FormaDeEntrega.valueOf(rs.getString("forma_de_entrega")));
                 orden.setPagado(rs.getBoolean("pagado"));

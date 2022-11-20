@@ -574,5 +574,17 @@ public class VentasWS {
         }
         return nombre;
     }
+    
+    @WebMethod(operationName = "listarMonedaUltimoTipoDeCambio")
+    public ArrayList<Moneda> listarMonedaUltimoTipoDeCambio() {
+        ArrayList<Moneda> monedas = new ArrayList<Moneda>();
+        try{
+             monedas = daoMoneda.listarMonedaUltimoTipoDeCambio();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+
+        return monedas;
+    }
 }
 

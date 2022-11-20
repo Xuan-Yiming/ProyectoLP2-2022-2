@@ -33,8 +33,6 @@
             this.btReporteReclamos = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
             this.btReporteClienteAdeudados = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btRegistrarPago = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btNuevaVenta = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -42,6 +40,8 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.dgvVentas = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.moneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,7 +53,6 @@
             this.panel1.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel11.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -67,7 +66,6 @@
             // 
             this.panel1.Controls.Add(this.panel12);
             this.panel1.Controls.Add(this.panel11);
-            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -82,7 +80,7 @@
             // 
             this.panel12.Controls.Add(this.btReporteReclamos);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel12.Location = new System.Drawing.Point(354, 0);
+            this.panel12.Location = new System.Drawing.Point(247, 0);
             this.panel12.Margin = new System.Windows.Forms.Padding(2);
             this.panel12.Name = "panel12";
             this.panel12.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
@@ -111,7 +109,7 @@
             // 
             this.panel11.Controls.Add(this.btReporteClienteAdeudados);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel11.Location = new System.Drawing.Point(247, 0);
+            this.panel11.Location = new System.Drawing.Point(140, 0);
             this.panel11.Margin = new System.Windows.Forms.Padding(2);
             this.panel11.Name = "panel11";
             this.panel11.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
@@ -134,36 +132,7 @@
             this.btReporteClienteAdeudados.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btReporteClienteAdeudados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btReporteClienteAdeudados.UseVisualStyleBackColor = false;
-            this.btReporteClienteAdeudados.Click += new System.EventHandler(this.btReporteClienteAdeudados_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.btRegistrarPago);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(140, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
-            this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
-            this.panel4.Size = new System.Drawing.Size(107, 129);
-            this.panel4.TabIndex = 2;
-            // 
-            // btRegistrarPago
-            // 
-            this.btRegistrarPago.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btRegistrarPago.Enabled = false;
-            this.btRegistrarPago.FlatAppearance.BorderSize = 0;
-            this.btRegistrarPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btRegistrarPago.Image = global::QingYunSoft.Properties.Resources.creditcard;
-            this.btRegistrarPago.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btRegistrarPago.Location = new System.Drawing.Point(7, 13);
-            this.btRegistrarPago.Margin = new System.Windows.Forms.Padding(2);
-            this.btRegistrarPago.Name = "btRegistrarPago";
-            this.btRegistrarPago.Size = new System.Drawing.Size(73, 103);
-            this.btRegistrarPago.TabIndex = 0;
-            this.btRegistrarPago.Text = "Registrar Pago";
-            this.btRegistrarPago.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btRegistrarPago.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btRegistrarPago.UseVisualStyleBackColor = true;
+            this.btReporteClienteAdeudados.Click += new System.EventHandler(this.btReporteVEntasPorPeriodo_Click);
             // 
             // panel2
             // 
@@ -233,6 +202,8 @@
             this.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
+            this.vendedor,
+            this.cliente,
             this.fechaVenta,
             this.moneda,
             this.monto});
@@ -246,7 +217,7 @@
             this.dgvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVentas.Size = new System.Drawing.Size(727, 398);
             this.dgvVentas.TabIndex = 1;
-            this.dgvVentas.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellContentDoubleClick);
+            this.dgvVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVentas_CellDoubleClick);
             this.dgvVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvVentas_CellFormatting);
             // 
             // ID
@@ -255,7 +226,21 @@
             this.ID.MinimumWidth = 8;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 150;
+            this.ID.Width = 80;
+            // 
+            // vendedor
+            // 
+            this.vendedor.HeaderText = "Vendedor";
+            this.vendedor.Name = "vendedor";
+            this.vendedor.ReadOnly = true;
+            this.vendedor.Width = 150;
+            // 
+            // cliente
+            // 
+            this.cliente.HeaderText = "Cliente";
+            this.cliente.Name = "cliente";
+            this.cliente.ReadOnly = true;
+            this.cliente.Width = 150;
             // 
             // fechaVenta
             // 
@@ -351,7 +336,6 @@
             this.panel1.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
@@ -369,8 +353,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btNuevaVenta;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btRegistrarPago;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
@@ -380,13 +362,15 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.DataGridView dgvVentas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn moneda;
-        private System.Windows.Forms.DataGridViewTextBoxColumn monto;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Button btReporteReclamos;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Button btReporteClienteAdeudados;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vendedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn moneda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn monto;
     }
 }

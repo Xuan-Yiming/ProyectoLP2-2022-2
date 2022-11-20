@@ -12,9 +12,13 @@ namespace QingYunSoft
         {
             InitializeComponent();
             _archivo = recurso;
-            File.WriteAllBytes("temp.pdf", recurso);
-            PDFview.LoadFile("temp.pdf");
-            PDFview.setShowScrollbars(true);
+            if(_archivo != null)
+            {
+                File.WriteAllBytes("temp.pdf", recurso);
+                PDFview.LoadFile("temp.pdf");
+                PDFview.setShowScrollbars(true);
+            }
+            
         }
 
         private void btDescagar_Click(object sender, EventArgs e)

@@ -209,7 +209,7 @@ namespace QingYunSoft.Cliente
                         return;
                     }
 
-                    if (txtRuc.Text.Length != 11 || !int.TryParse(txtRuc.Text, out resultado))
+                    if (txtRuc.Text.Length != 11 || !Int64.TryParse(txtRuc.Text, out Int64 a))
                     {
                         MessageBox.Show("El RUC debe tener 11 digitos numericos", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -327,7 +327,7 @@ namespace QingYunSoft.Cliente
                 case Estado.Modificar:
                     txtID.Enabled = false;
                     cbCategoria.Enabled = true;
-                    cbTipoCliente.Enabled = true;
+                    cbTipoCliente.Enabled = false;
                     pnlEmpresa.Enabled = true;
                     pnlPersonaNatural.Enabled = true;
 

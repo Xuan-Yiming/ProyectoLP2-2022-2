@@ -8,7 +8,7 @@ namespace QingYunSoft.Cliente
         //objetos
         private frmPrincipal _frmPrincipal;
         private GestClientesWS.GestClientesWSClient daoClientes;
-
+        private ReportesWS.ReporteWSClient daoReportes;
         //constructores
         public frmClientes()
         {
@@ -79,13 +79,15 @@ namespace QingYunSoft.Cliente
 
         private void btReporteClienteAdeudados_Click(object sender, EventArgs e)
         {
-            frmReporteViewer _frmReporteViewer = new frmReporteViewer(daoClientes.clientesAdeudados());
+            daoReportes = new ReportesWS.ReporteWSClient();
+            frmReporteViewer _frmReporteViewer = new frmReporteViewer(null);
             _frmReporteViewer.Show();
         }
 
         private void btReporteClienteMasPedido_Click(object sender, EventArgs e)
         {
-            frmReporteViewer _frmReporteViewer = new frmReporteViewer(daoVentas.clientesMasPdidos());
+            daoReportes = new ReportesWS.ReporteWSClient();
+            frmReporteViewer _frmReporteViewer = new frmReporteViewer(null);
             _frmReporteViewer.Show();
         }
     }

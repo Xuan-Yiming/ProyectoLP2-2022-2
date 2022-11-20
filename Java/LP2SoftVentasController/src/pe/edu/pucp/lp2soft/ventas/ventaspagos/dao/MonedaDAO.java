@@ -11,4 +11,6 @@ public interface MonedaDAO {
     public ArrayList<Moneda> listarMonedaXNombre(String nombre);
     public int buscarMoneda (String nombre);
     public ArrayList<Moneda> listarTodos();
+    public ArrayList<Moneda> listarMonedaUltimoTipoDeCambio();
+    public void actualizarTipoDeCambio();
 }

@@ -11,7 +11,7 @@ namespace QingYunSoft.Usuario
 
         //daos
         private RRHHWS.RRHHWSClient daoEmpleados;
-
+        private ReportesWS.ReporteWSClient daoReportes;
         public frmEmpleados(frmPrincipal _frmPrincipal)
         {
             InitializeComponent();
@@ -81,7 +81,8 @@ namespace QingYunSoft.Usuario
 
         private void btReporteMejoresVendedores_Click(object sender, EventArgs e)
         {
-            frmReporteViewer _frmReporteViewer = new frmReporteViewer(daoEmpleados.mejoresVendedores());
+            daoReportes = new ReportesWS.ReporteWSClient();
+            frmReporteViewer _frmReporteViewer = new frmReporteViewer(daoReportes.generarReporteVendedoresMasVentas());
             _frmReporteViewer.Show();
         }
     }

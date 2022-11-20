@@ -1,10 +1,12 @@
 ﻿using QingYunSoft.Almacen;
 using QingYunSoft.Cliente;
-using QingYunSoft.GestClientesWS;
+using QingYunSoft.VentasWS;
+using QingYunSoft.Venta;
 using QingYunSoft.VentasWS;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace QingYunSoft
 {
@@ -18,11 +20,13 @@ namespace QingYunSoft
         private VentasWS.VentasWSClient daoVentasWS;
 
         //
-        private GestClientesWS.cliente _cliente;
+        private VentasWS.cliente _cliente;
         private VentasWS.stock _stock;
-        private VentasWS.pedido[] _pedidos = null;
+        //private VentasWS.pedido[] _pedidos;
+        private BindingList<VentasWS.pedido> _pedidos;
         private VentasWS.terminoDePago _terminoDePago;
         private VentasWS.moneda _moneda;
+        private VentasWS.tipoDeCambio[] _tipodecambios;
         private VentasWS.ordenDeCompra _ordenDeCompra;
         private RRHHWS.usuario _vendedor;
         private VentasWS.almacen[] _almacenes;
@@ -44,38 +48,43 @@ namespace QingYunSoft
             dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             daoVentasWS = new VentasWS.VentasWSClient();
-            cbMoneda.DataSource = daoVentasWS.listarMonedas();
+            cbMoneda.DataSource = daoVentasWS.listarMonedaUltimoTipoDeCambio();
             cbMoneda.DisplayMember = "abreviatura";
             cbMoneda.ValueMember = "idMoneda";
-
+            
             this._almacenes = daoVentasWS.listarAlmacen();
-
             limpiarComponentes();
+
+            //inicilize _pedidos
+            this._pedidos = new BindingList<pedido>();
+            this._ordenDeCompra = new ordenDeCompra();
+            
             establecerEstadoComponentes();
         }
 
         public frmInfoVenta(frmPrincipal _frmPrincipal, Estado estado, VentasWS.ordenDeCompra ordenDeCompra, RRHHWS.usuario _usuario)
         {
+            //resultado
             InitializeComponent();
             this._estado = estado;
             this._frmPrincipal = _frmPrincipal;
             this._ordenDeCompra = ordenDeCompra;
-            this._cliente = ordenDeCompra.cliente;
             this._vendedor = _usuario;
+            this._cliente = ordenDeCompra.cliente;
             establecerEstadoComponentes();
 
+            daoVentasWS = new VentasWSClient();
             this._almacenes = daoVentasWS.listarAlmacen();
-
-
-            if (_cliente is GestClientesWS.personaNatural)
+            
+            if (_cliente is VentasWS.personaNatural)
             {
-                txtNombreCliente.Text = ((GestClientesWS.personaNatural)_cliente).nombre + ", " + ((GestClientesWS.personaNatural)_cliente).apellido;
-                txtNumDocCliente.Text = ((GestClientesWS.personaNatural)_cliente).numDeDocumento;
+                txtNombreCliente.Text = ((VentasWS.personaNatural)_cliente).nombre + ", " + ((VentasWS.personaNatural)_cliente).apellido;
+                txtNumDocCliente.Text = ((VentasWS.personaNatural)_cliente).numDeDocumento;
             }
             else
             {
-                txtNombreCliente.Text = ((GestClientesWS.empresa)_cliente).razonSocial;
-                txtNumDocCliente.Text = ((GestClientesWS.empresa)_cliente).RUC;
+                txtNombreCliente.Text = ((VentasWS.empresa)_cliente).razonSocial;
+                txtNumDocCliente.Text = ((VentasWS.empresa)_cliente).RUC;
             }
 
             if (ordenDeCompra.formaDeEntrega == VentasWS.formaDeEntrega.ADestino)
@@ -115,16 +124,17 @@ namespace QingYunSoft
             frmBuscarCliente _frmBuscarCliente = new frmBuscarCliente();
             if (_frmBuscarCliente.ShowDialog() == DialogResult.OK)
             {
-                this._cliente = _frmBuscarCliente.ClienteSeleccionado;
-                if (_cliente is GestClientesWS.personaNatural)
+                this._cliente = new cliente();
+                this._cliente.idCliente = _frmBuscarCliente.ClienteSeleccionado.idCliente;
+                if (_frmBuscarCliente.ClienteSeleccionado is GestClientesWS.personaNatural)
                 {
-                    txtNombreCliente.Text = ((GestClientesWS.personaNatural)_cliente).nombre + ", " + ((GestClientesWS.personaNatural)_cliente).apellido;
-                    txtNumDocCliente.Text = ((GestClientesWS.personaNatural)_cliente).numDeDocumento;
+                    txtNombreCliente.Text = ((GestClientesWS.personaNatural)_frmBuscarCliente.ClienteSeleccionado).nombre + ", " + ((GestClientesWS.personaNatural)_frmBuscarCliente.ClienteSeleccionado).apellido;
+                    txtNumDocCliente.Text = ((GestClientesWS.personaNatural)_frmBuscarCliente.ClienteSeleccionado).numDeDocumento;
                 }
-                else if (_cliente is GestClientesWS.empresa)
+                else if (_frmBuscarCliente.ClienteSeleccionado is GestClientesWS.empresa)
                 {
-                    txtNombreCliente.Text = ((GestClientesWS.empresa)_cliente).razonSocial;
-                    txtNumDocCliente.Text = ((GestClientesWS.empresa)_cliente).RUC;
+                    txtNombreCliente.Text = ((GestClientesWS.empresa)_frmBuscarCliente.ClienteSeleccionado).razonSocial;
+                    txtNumDocCliente.Text = ((GestClientesWS.empresa)_frmBuscarCliente.ClienteSeleccionado).RUC;
                 }
             }
         }
@@ -152,15 +162,25 @@ namespace QingYunSoft
             if (txtDescuento.Text == "")
             {
                 txtDescuento.Text = "0.0";
+            }else if (double.Parse(txtDescuento.Text) > 100 || double.Parse(txtDescuento.Text) < 0)
+            {
+                MessageBox.Show("Verificar el descuento", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             if (!Int32.TryParse(txtCantidad.Text, out int a) || !double.TryParse(txtDescuento.Text, out double b))
             {
                 MessageBox.Show("Debe ingresar un numero en cantidad y descuento", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (int.Parse(txtCantidad.Text) > int.Parse(txtStock.Text))
+            {
+                MessageBox.Show("No hay suficiente stock", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             VentasWS.pedido pedido = new VentasWS.pedido();
 
             pedido.cantidad = int.Parse(txtCantidad.Text);
+            pedido.producto = new VentasWS.producto();
             pedido.producto = _stock.producto;
             pedido.descuento = double.Parse(txtDescuento.Text);
             pedido.activo = true;
@@ -170,7 +190,8 @@ namespace QingYunSoft
             pedido.producto.devueltoSpecified = true;
             pedido.producto.fechaDeIngresoSpecified = true;
 
-            _pedidos.Append(pedido);
+            _pedidos.Add(pedido);
+            
             dgvProductos.DataSource = _pedidos;
             dgvProductos.Refresh();
 
@@ -190,10 +211,11 @@ namespace QingYunSoft
         }
         private void btEliminarProducto_Click(object sender, EventArgs e)
         {
+            if (dgvProductos.RowCount == 0) return;
             if (dgvProductos.CurrentRow.Index != -1)
             {
                 VentasWS.pedido pedido = (VentasWS.pedido)dgvProductos.CurrentRow.DataBoundItem;
-                _pedidos = _pedidos.Except(new VentasWS.pedido[] { pedido }).ToArray();
+                _pedidos.Remove(pedido);
 
                 dgvProductos.DataSource = _pedidos;
                 dgvProductos.Refresh();
@@ -218,6 +240,8 @@ namespace QingYunSoft
                 return;
             }
 
+            
+
             //guardar los datos
             if (rbTienda.Checked)
             {
@@ -236,6 +260,9 @@ namespace QingYunSoft
 
             _ordenDeCompra.moneda = (VentasWS.moneda)cbMoneda.SelectedItem;
             _ordenDeCompra.moneda.activoSpecified = true;
+            _ordenDeCompra.moneda.activo = true;
+            _ordenDeCompra.moneda.cambios[0].fechaSpecified = true;
+            _ordenDeCompra.moneda.cambios[0].activoSpecified = true;
 
             _ordenDeCompra.fechaLimite = dtpFechaLimite.Value;
             _ordenDeCompra.fechaDeCompra = dtpFechaCompra.Value;
@@ -252,7 +279,7 @@ namespace QingYunSoft
                 _ordenDeCompra.pagado = false;
             }
 
-            _ordenDeCompra.pedidos = this._pedidos;
+            _ordenDeCompra.pedidos = this._pedidos.ToArray();
 
             _ordenDeCompra.vendedor = new VentasWS.vendedor();
             _ordenDeCompra.vendedor.idUsuario = this._vendedor.idUsuario;
@@ -266,7 +293,14 @@ namespace QingYunSoft
             _ordenDeCompra.activo = true;
             _ordenDeCompra.activoSpecified = true;
 
-            int resultado = daoVentasWS.insertarOrdenDeCompra(this._ordenDeCompra, _cliente.idCliente);
+            _ordenDeCompra.cliente = this._cliente;
+            _ordenDeCompra.cliente.activo = true;
+            _ordenDeCompra.cliente.activoSpecified = true;
+            _ordenDeCompra.cliente.categoriaSpecified = true;
+
+            _ordenDeCompra.reclamo = new reclamo();
+
+            int resultado = daoVentasWS.insertarOrdenDeCompra(this._ordenDeCompra);
             if (resultado != 0)
             {
                 MessageBox.Show("Se ha registrado con éxito", "Mensaje de confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -282,13 +316,29 @@ namespace QingYunSoft
 
         private void btReclamo_Click_1(object sender, EventArgs e)
         {
-
+            if (this._ordenDeCompra.reclamo == null)
+            {
+                frmReclamo _frmReclamo = new frmReclamo(Estado.Nuevo, this._ordenDeCompra.idOrdenDeCompra, this._pedidos);
+                _frmReclamo.Show();
+            }
+            else
+            {
+                frmReclamo _frmReclamo = new frmReclamo(Estado.Resultado, this._ordenDeCompra.idOrdenDeCompra);
+                _frmReclamo.Show();
+            }
         }
 
         private void btAnular_Click(object sender, EventArgs e)
         {
             if ((MessageBox.Show("¿Está seguro que desea aunlar la venta?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
+                daoVentasWS = new VentasWSClient();
+                int result = 0;
+                result = daoVentasWS.eliminarOrdenDeCompra(this._ordenDeCompra.idOrdenDeCompra);
+                if (result == 1)
+                    MessageBox.Show("Se ha eliminado exitosamente la venta", "Mensaje de Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("Ha ocurrido un error al momento de eliminar la venta", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmVentas(_frmPrincipal, this._vendedor));
             }
         }
@@ -311,6 +361,7 @@ namespace QingYunSoft
         }
         private void cbMoneda_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbMoneda.SelectedIndex == -1) return;
             VentasWS.moneda moneda = (VentasWS.moneda)cbMoneda.SelectedItem;
             txtTipoDeCambio.Text = moneda.cambios[0].cambio.ToString();
         }

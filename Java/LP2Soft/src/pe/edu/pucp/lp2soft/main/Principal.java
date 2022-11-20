@@ -28,34 +28,35 @@ import pe.edu.pucp.lp2soft.ventas.manejoproductos.dao.StockDAO;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.AlmacenMySQL;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.ProductoMySQL;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.StockMySQL;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.Moneda;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.TipoDeCambio;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.MonedaDAO;
+import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.MonedaMySQL;
 public class Principal {
     public static void main(String[] args) throws Exception{
         Date date = new Date(); 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
-        StockDAO daoStock = new StockMySQL();
-        Stock s = new Stock();
-        s.setProducto(new Producto());
-        s.getProducto().setIdProducto(3);
-        s.setCantidad(10);
-        
-        s.getProducto().setIdProducto(2);
-        daoStock.insertar(s, 1);
-        s.getProducto().setIdProducto(4);
-        daoStock.insertar(s, 1);
-        s.getProducto().setIdProducto(5);
-        daoStock.insertar(s, 1);
-        s.getProducto().setIdProducto(6);
-        daoStock.insertar(s, 1);
-        s.getProducto().setIdProducto(7);
-        daoStock.insertar(s, 1);
-        s.getProducto().setIdProducto(8);
-        daoStock.insertar(s, 1);
-        s.getProducto().setIdProducto(9);
-        daoStock.insertar(s, 1);
-        s.getProducto().setIdProducto(10);
-        daoStock.insertar(s, 1);
+        MonedaDAO daoMoneda = new MonedaMySQL();
 
+          ArrayList<Moneda> monedas = new ArrayList<Moneda>();
+          monedas=daoMoneda.listarMonedaUltimoTipoDeCambio();
+
+          for(Moneda moneda : monedas){
+            ArrayList<TipoDeCambio> tiposDeCambio = new ArrayList<TipoDeCambio>();
+            tiposDeCambio= moneda.getCambios();
+
+            System.out.println(moneda.getIdMoneda()+ " " + 
+                    moneda.getNombre()+ " " + 
+                    moneda.getAbreviatura()+ " : " 
+                    );
+
+            for(TipoDeCambio tipoDeCambio : tiposDeCambio){
+                System.out.println(tipoDeCambio.getFecha()+ " " + 
+                    tipoDeCambio.getCambio());
+            }
+
+        }
         
         //daoStock.modificar(s, 1);
 

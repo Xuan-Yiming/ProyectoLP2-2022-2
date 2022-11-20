@@ -1,5 +1,6 @@
 ﻿using QingYunSoft.VentasWS;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -16,7 +17,7 @@ namespace QingYunSoft.Venta
 
         private VentasWS.VentasWSClient daoVentasWS;
 
-        public frmReclamo(Estado estado, int idOrdenDeCompra, VentasWS.pedido[] pedidos)
+        public frmReclamo(Estado estado, int idOrdenDeCompra, BindingList<VentasWS.pedido> pedidos)
         {
             //nuevo
             InitializeComponent();
@@ -26,23 +27,25 @@ namespace QingYunSoft.Venta
             dgvProductos.DataSource = pedidos;
             this._idVenta = idOrdenDeCompra;
             this._estado = estado;
-
+            this._reclamo = new VentasWS.reclamo();
+            this._reclamo.ordenDeCompra = new ordenDeCompra();
+            this._reclamo.ordenDeCompra.idOrdenDeCompra = idOrdenDeCompra;
             establecerComponentes();
             CenterToScreen();
 
         }
 
-        public frmReclamo(Estado estado, int idReclamo)
+        public frmReclamo(Estado estado, int idOrdenDeCompra)
         {
             //Resultado
             InitializeComponent();
             daoVentasWS = new VentasWS.VentasWSClient();
-            this._reclamo = daoVentasWS.buscarReclamo(idReclamo);
+            this._reclamo = daoVentasWS.listarReclamoxOrden(idOrdenDeCompra)[0];
             dtpFecha.Value = _reclamo.fecha;
             txtDescripcion.Text = _reclamo.justificacion;
             txtID.Text = _reclamo.idReclamo.ToString();
             dgvProductos.AutoGenerateColumns = false;
-            dgvProductos.DataSource = daoVentasWS.listarDevolucionXReclamo(idReclamo);
+            dgvProductos.DataSource = daoVentasWS.listarDevolucionXReclamo(this._reclamo.idReclamo);
             establecerComponentes();
             CenterToScreen();
         }
@@ -53,7 +56,7 @@ namespace QingYunSoft.Venta
                 MessageBox.Show("Debe colocar la justificacion", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            this._reclamo = new VentasWS.reclamo();
+            
             this._reclamo.fecha = dtpFecha.Value;
             this._reclamo.fechaSpecified = true;
             this._reclamo.activo = true;
@@ -73,8 +76,9 @@ namespace QingYunSoft.Venta
                 _devoluciones.Append(devolucion);
             }
 
-            this._reclamo.devoluciones = this._devoluciones;
-
+            if (this._devoluciones != null)
+                this._reclamo.devoluciones = this._devoluciones.ToArray();
+            this._reclamo.devoluciones = new devolucion[] { };
             int resultado = 0;
             resultado = daoVentasWS.insertarReclamo(this._reclamo);
             if (resultado != 0)
@@ -111,9 +115,12 @@ namespace QingYunSoft.Venta
             daoVentasWS = new VentasWSClient();
             if (MessageBox.Show("¿Esta seguro que desea marcar este reclamo como atendido?", "Mensaje de confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-
+                this._reclamo.atendido = true;
+                this._reclamo.activoSpecified = true;
+                this._reclamo.fechaSpecified = true;
+                
                 int result = 0;
-                result = daoVentasWS.atenderReclamo(this._reclamo.idReclamo);
+                result = daoVentasWS.modificarReclamo(this._reclamo);
                 if (result == 1)
                     MessageBox.Show("Reclamo Atendido", "Mensaje de Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else

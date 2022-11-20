@@ -17,7 +17,7 @@ namespace QingYunSoft.Usuario
         private String _rutaFoto;
         //dao
         private RRHHWS.RRHHWSClient daoRRHH;
-
+        private VentasWS.VentasWSClient daoVentas;
         //constrcutores
         public frmInfoEmpleado()
         {
@@ -327,8 +327,10 @@ namespace QingYunSoft.Usuario
             }
             else if (cbTipoUsuario.SelectedIndex == 2)
             {
+                daoVentas = new VentasWS.VentasWSClient();
                 lblVariableTipo.Text = "Almacen";
-                txtVariableTipo.Text = VentasWS.VentasWSClient.buscarNombreAlmacenPorIdSupervisor(((RRHHWS.supervisorDeAlmacen)this._usuario).idUsuario);
+                if (this.estado != Estado.Nuevo)
+                    txtVariableTipo.Text = daoVentas.buscarAlmacenxIdUsuario(((RRHHWS.supervisorDeAlmacen)this._usuario).idUsuario);
                 txtVariableTipo.Enabled = false;
                 txtVariableTipo.Visible = true;
 

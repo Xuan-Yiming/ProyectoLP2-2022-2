@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://services.lp2soft.pucp.edu.pe/" targetNamespace="http://services.lp2soft.pucp.edu.pe/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="generarReporteVendedoresMasVentas" type="tns:generarReporteVendedoresMasVentas" />
+  <xs:element name="generarReporteVendedoresMasVentasResponse" type="tns:generarReporteVendedoresMasVentasResponse" />
+  <xs:element name="generarReporteVentasPeriodo" type="tns:generarReporteVentasPeriodo" />
+  <xs:element name="generarReporteVentasPeriodoResponse" type="tns:generarReporteVentasPeriodoResponse" />
+  <xs:complexType name="generarReporteVentasPeriodo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fecha1" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fecha2" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="generarReporteVentasPeriodoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="generarReporteVendedoresMasVentas">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="generarReporteVendedoresMasVentasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

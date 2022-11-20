@@ -17,7 +17,7 @@ namespace QingYunSoft.Almacen
         VentasWS.producto _producto = new VentasWS.producto();
         VentasWS.stock _stock = new VentasWS.stock();
         VentasWS.almacen _almacen = new VentasWS.almacen();
-        public frmInfoProducto(Estado estado, VentasWS.almacen almacen)
+        public frmInfoProducto(Estado estado, VentasWS.almacen[] almacen)
         {
             //nuevo producto
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace QingYunSoft.Almacen
             this.cbAlmacen.DisplayMember = "nombre";
             this.cbAlmacen.ValueMember = "idAlmacen";
             this.almacenSeleccionado = new almacen();
-            this.almacenSeleccionado = almacen;
+            this.almacenSeleccionado = (VentasWS.almacen)cbAlmacen.SelectedItem;
             establecerEstadoComponentes();
             this.CenterToScreen();
         }
@@ -44,7 +44,7 @@ namespace QingYunSoft.Almacen
             this.cbAlmacen.DisplayMember = "nombre";
             this.cbAlmacen.ValueMember = "idAlmacen";
             establecerEstadoComponentes();
-            this.cbAlmacen.SelectedValue = almacen.idAlmacen;
+            this.cbAlmacen.SelectedItem = almacen;
             this.txtID.Text = stock.producto.idProducto.ToString();
             this.txtNombre.Text = stock.producto.nombre;
             this.txtCosto.Text = stock.producto.costo.ToString();
@@ -68,10 +68,6 @@ namespace QingYunSoft.Almacen
             if (this._estado == Estado.Resultado)
             {
                 this._estado = Estado.Modificar;
-                cbAlmacen.DataSource = daoVentasWS.listarAlmacen();
-                cbAlmacen.DisplayMember = "nombre";
-                cbAlmacen.ValueMember = "idAlmacen";
-                cbAlmacen.SelectedValue = this.almacenSeleccionado;
                 establecerEstadoComponentes();
             }
             else
@@ -83,7 +79,7 @@ namespace QingYunSoft.Almacen
                     MessageBox.Show("Debe llenar todos los campos", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
+                this._stock.producto = new producto();
                 this._stock.producto.nombre = txtNombre.Text;
                 if (!double.TryParse(txtPrecio.Text, out double precio))
                 {
@@ -130,6 +126,7 @@ namespace QingYunSoft.Almacen
                 {
                     int resultado = 0;
                     resultado = daoVentasWS.insertarProducto(_stock.producto);
+                    this._stock.producto.idProducto = resultado;
                     if (resultado != 0)
                     {
                         daoVentasWS = new VentasWSClient();
@@ -151,6 +148,7 @@ namespace QingYunSoft.Almacen
                 else
                 {
                     int resultado = 0;
+                    _stock.producto.idProducto = Int32.Parse(txtID.Text);
                     resultado = daoVentasWS.modificarProducto(_stock.producto);
                     if (resultado != 0)
                     {
@@ -207,18 +205,6 @@ namespace QingYunSoft.Almacen
             }
         }
 
-        private void limpiarCampos()
-        {
-            this.txtID.Text = "";
-            this.txtNombre.Text = "";
-            this.txtCosto.Text = "";
-            this.txtPrecio.Text = "";
-            this.txtStock.Text = "";
-            this.cbxDevuelto.Checked = false;
-            this.cbAlmacen.SelectedIndex = -1;
-            this.dtpFechaIngreso.Value = DateTime.Now;
-        }
-
         private void establecerEstadoComponentes()
         {
             switch (this._estado)
@@ -236,7 +222,6 @@ namespace QingYunSoft.Almacen
                     this.cbAlmacen.Enabled = true;
                     this.dtpFechaIngreso.Enabled = true;
                     this.btSubirFoto.Enabled = true;
-                    this.limpiarCampos();
                     break;
                 case Estado.Modificar:
                     this.btEditarGuardar.Text = "Guardar";
