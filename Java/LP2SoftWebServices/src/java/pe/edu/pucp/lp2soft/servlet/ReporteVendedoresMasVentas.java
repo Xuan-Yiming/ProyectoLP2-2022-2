@@ -4,10 +4,12 @@ package pe.edu.pucp.lp2soft.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.ImageIcon;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -36,7 +38,11 @@ public class ReporteVendedoresMasVentas extends HttpServlet {
                     Connection con = DBManager.getInstance().getConnection();
                     JasperReport reporte = (JasperReport) JRLoader.loadObject(
                            ReporteVendedoresMasVentas.class.getResource("/pe/edu/pucp/lp2soft/report/ReporteVendedoresMasVentas.jasper"));
-                    JasperPrint jp = JasperFillManager.fillReport(reporte, null, con);
+                    String rutaImagen = ReporteVendedoresMasVentas.class.getResource("/pe/edu/pucp/lp2soft/img/Background.png").getPath();
+                    java.awt.Image imagen = (new ImageIcon(rutaImagen)).getImage() ;
+                    HashMap parametros = new HashMap();
+                    parametros.put("imagen",imagen);
+                    JasperPrint jp = JasperFillManager.fillReport(reporte, parametros, con);
                     con.close();
                     JasperExportManager.exportReportToPdfStream(jp, response.getOutputStream());
                 }catch(Exception ex){
