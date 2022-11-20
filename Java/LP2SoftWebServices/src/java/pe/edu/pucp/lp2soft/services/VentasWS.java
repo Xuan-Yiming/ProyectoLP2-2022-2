@@ -39,6 +39,9 @@ import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.OrdenDeCompraMySQL;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.TerminoDePagoMySQL;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.TipoDeCambioMySQL;
 
+import pe.edu.pucp.lp2soft.gestclientes.model.Cliente;
+import pe.edu.pucp.lp2soft.gestclientes.model.Empresa;
+import pe.edu.pucp.lp2soft.gestclientes.model.PersonaNatural;
 
 @WebService(serviceName = "VentasWS")
 public class VentasWS {
@@ -483,9 +486,20 @@ public class VentasWS {
         }
         return reclamos;
     }
+    @WebMethod(operationName = "uwu")
+    public void uwu(@WebParam(name = "a") Cliente a,
+            @WebParam(name = "b") Empresa b,
+            @WebParam(name = "v") PersonaNatural c) {
+    }
     
     @WebMethod(operationName = "listarReclamoTodos")
     public ArrayList<Reclamo> listarReclamoTodos() {
+        Cliente cliente = new Cliente();
+        Empresa empresa = new Empresa();
+        PersonaNatural pn = new PersonaNatural();
+        cliente.setActivo(true);
+        empresa.setActivo(true);
+        pn.setActivo(true);
         ArrayList<Reclamo> reclamos = new ArrayList<Reclamo>();
         try{
             reclamos = daoReclamo.listarReclamoTodos();
