@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class DBManager {
     private static DBManager dbManager;
-    private String url = "jdbc:mysql://lasjoyasdb.cmkeurxfbwvg.us-east-1.rds.amazonaws.com:3306/DBProyectoLP2?useSSL=false";
+    private String url = "jdbc:mysql://dbproyectolp2.cq8hlrdo5fgj.us-east-1.rds.amazonaws.com:3306/DBProyectoLP2?useSSL=false";
     private String user = "adminjoya";
     private String password = "lasjoyaslp2";
     private Connection con;

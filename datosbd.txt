@@ -1,5 +1,5 @@
 
-id instancia: lasjoyasdb
+id instancia: DBProyectoLP2
 
 usuario: adminjoya
 
