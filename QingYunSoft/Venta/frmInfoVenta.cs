@@ -58,7 +58,7 @@ namespace QingYunSoft
             //inicilize _pedidos
             this._pedidos = new BindingList<pedido>();
             this._ordenDeCompra = new ordenDeCompra();
-            
+            this._ordenDeCompra.reclamo = new reclamo();
             establecerEstadoComponentes();
         }
 
@@ -115,8 +115,12 @@ namespace QingYunSoft
                 rbNoCancelado.Checked = true;
             }
             dtpFechaCompra.Value = ordenDeCompra.fechaDeCompra;
+            dgvProductos.AutoGenerateColumns = false;
+            this._pedidos = new BindingList<pedido>(daoVentasWS.listarPedidosPorIdOrdenDeCompra(ordenDeCompra.idOrdenDeCompra));
+            dgvProductos.DataSource = this._pedidos;
 
-            dgvProductos.DataSource = daoVentasWS.listarPedidosPorIdOrdenDeCompra(ordenDeCompra.idOrdenDeCompra);
+            this._ordenDeCompra.reclamo = new reclamo();
+            
         }
 
         private void btBuscarCliente_Click_1(object sender, EventArgs e)
@@ -206,7 +210,7 @@ namespace QingYunSoft
                 {
                     montoTotal += pedido.producto.precio * pedido.cantidad * (1 - pedido.descuento / 100);
                 }
-                return montoTotal;
+                return montoTotal/ double.Parse(this.txtTipoDeCambio.Text);
             }
         }
         private void btEliminarProducto_Click(object sender, EventArgs e)
@@ -314,19 +318,35 @@ namespace QingYunSoft
 
         }
 
-        private void btReclamo_Click_1(object sender, EventArgs e)
+        private void btReclamo_Click_1(object sender, EventArgs e)            
         {
-            if (this._ordenDeCompra.reclamo == null)
+            reclamo[] _tempReclamo;
+            if (this._ordenDeCompra.idOrdenDeCompra == 0)
             {
-                frmReclamo _frmReclamo = new frmReclamo(Estado.Nuevo, this._ordenDeCompra.idOrdenDeCompra, this._pedidos);
-                _frmReclamo.Show();
+                MessageBox.Show("Debe guardar la orden de compra antes de registrar un reclamo", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+            frmReclamo _frmReclamo;
+            if (this._ordenDeCompra.reclamo.idReclamo != 0)
+            {
+                _frmReclamo = new frmReclamo(Estado.Resultado, this._ordenDeCompra.reclamo);
             }
             else
             {
-                frmReclamo _frmReclamo = new frmReclamo(Estado.Resultado, this._ordenDeCompra.idOrdenDeCompra);
-                _frmReclamo.Show();
+                _tempReclamo = daoVentasWS.listarReclamoxOrden(this._ordenDeCompra.idOrdenDeCompra);
+                if (_tempReclamo != null)
+                    this._ordenDeCompra.reclamo = _tempReclamo[0];
+                if (this._ordenDeCompra.reclamo.idReclamo == 0)
+                    _frmReclamo = new frmReclamo(Estado.Nuevo, this._ordenDeCompra.idOrdenDeCompra, this._pedidos);
+                else
+                    _frmReclamo = new frmReclamo(Estado.Resultado, this._ordenDeCompra.reclamo);
+
             }
-            this._ordenDeCompra.reclamo = daoVentasWS.listarReclamoxOrden(this._ordenDeCompra.idOrdenDeCompra)[0];
+            if (_frmReclamo.ShowDialog() == DialogResult.Cancel)
+            {
+                this._ordenDeCompra.reclamo = _frmReclamo.Reclamo;
+            }
         }
 
         private void btAnular_Click(object sender, EventArgs e)
@@ -365,6 +385,10 @@ namespace QingYunSoft
             if (cbMoneda.SelectedIndex == -1) return;
             VentasWS.moneda moneda = (VentasWS.moneda)cbMoneda.SelectedItem;
             txtTipoDeCambio.Text = moneda.cambios[0].cambio.ToString();
+            if (this.txtMontoTotal.Text != "")
+            {
+                this.txtMontoTotal.Text = (Convert.ToDouble(this.txtMontoTotal.Text) / double.Parse(this.txtTipoDeCambio.Text)).ToString();
+            }
         }
 
         private void establecerEstadoComponentes()
@@ -467,9 +491,10 @@ namespace QingYunSoft
             txtCantidad.Text = "";
             txtDescuento.Text = "";
             txtStock.Text = "";
-
+            
             cbMoneda.SelectedIndex = -1;
-
+            txtTipoDeCambio.Text = "";
+            
             dtpFechaCompra.Value = DateTime.Now;
             dtpFechaLimite.Value = DateTime.Now;
             dtpFechaEntrega.Value = DateTime.Now;

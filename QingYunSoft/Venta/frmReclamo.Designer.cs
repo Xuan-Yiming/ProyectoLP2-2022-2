@@ -33,17 +33,17 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.RichTextBox();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.devolver = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btEditarGuardar = new System.Windows.Forms.Button();
             this.btAnular = new System.Windows.Forms.Button();
             this.btAtender = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.devolver = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,50 +107,9 @@
             this.dgvProductos.RowHeadersWidth = 62;
             this.dgvProductos.Size = new System.Drawing.Size(432, 212);
             this.dgvProductos.TabIndex = 17;
+            this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
+            this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
             this.dgvProductos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductos_CellFormatting);
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "Codigo";
-            this.ID.MinimumWidth = 8;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 50;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.MinimumWidth = 6;
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            this.nombre.Width = 180;
-            // 
-            // cantidad
-            // 
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.MinimumWidth = 6;
-            this.cantidad.Name = "cantidad";
-            this.cantidad.ReadOnly = true;
-            this.cantidad.Width = 60;
-            // 
-            // precio
-            // 
-            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.precio.HeaderText = "SubTotal";
-            this.precio.MinimumWidth = 6;
-            this.precio.Name = "precio";
-            this.precio.ReadOnly = true;
-            this.precio.Width = 80;
-            // 
-            // devolver
-            // 
-            this.devolver.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.devolver.HeaderText = "Devolver";
-            this.devolver.Name = "devolver";
-            this.devolver.ReadOnly = true;
-            this.devolver.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.devolver.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.devolver.Width = 60;
             // 
             // btEditarGuardar
             // 
@@ -222,6 +181,46 @@
             this.txtID.Size = new System.Drawing.Size(149, 20);
             this.txtID.TabIndex = 23;
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "Codigo";
+            this.ID.MinimumWidth = 8;
+            this.ID.Name = "ID";
+            this.ID.Width = 50;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.MinimumWidth = 6;
+            this.nombre.Name = "nombre";
+            this.nombre.Width = 180;
+            // 
+            // cantidad
+            // 
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.MinimumWidth = 6;
+            this.cantidad.Name = "cantidad";
+            this.cantidad.Width = 60;
+            // 
+            // precio
+            // 
+            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.precio.HeaderText = "SubTotal";
+            this.precio.MinimumWidth = 6;
+            this.precio.Name = "precio";
+            this.precio.Width = 80;
+            // 
+            // devolver
+            // 
+            this.devolver.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.devolver.FalseValue = "false";
+            this.devolver.HeaderText = "Devolver";
+            this.devolver.Name = "devolver";
+            this.devolver.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.devolver.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.devolver.TrueValue = "true";
+            this.devolver.Width = 60;
+            // 
             // frmReclamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,16 +254,16 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.RichTextBox txtDescripcion;
         private System.Windows.Forms.DataGridView dgvProductos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precio;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn devolver;
         private System.Windows.Forms.Button btEditarGuardar;
         private System.Windows.Forms.Button btAnular;
         private System.Windows.Forms.Button btAtender;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precio;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn devolver;
     }
 }
