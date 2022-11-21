@@ -446,6 +446,42 @@ BEGIN
 END ;;
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS `LISTAR_MONEDAS_X_NOMBRE`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `LISTAR_MONEDAS_X_NOMBRE`(
+	IN _nombre VARCHAR(80)
+)
+BEGIN
+	SELECT *
+    FROM moneda m
+    WHERE activo = 1
+    AND nombre LIKE CONCAT('%',_nombre,'%');
+END ;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `LISTAR_MONEDAS`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `LISTAR_MONEDAS`()
+BEGIN
+	SELECT *
+    FROM moneda m
+    WHERE activo = 1;
+END ;;
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `LISTAR_MONEDA_ULTIMO_TIPODECAMBIO`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `LISTAR_MONEDA_ULTIMO_TIPODECAMBIO`(
+	IN _id_moneda INT
+)
+BEGIN
+	SELECT *
+    FROM tipoDeCambio T
+    WHERE activo = 1
+    AND fecha=(select MAX(fecha) from tipoDeCambio where fid_moneda=_id_moneda);
+END ;;
+DELIMITER ;
+
 -- Tipo De Cambio
 DROP PROCEDURE IF EXISTS `INSERTAR_TIPO_DE_CAMBIO`;
 DELIMITER ;;
@@ -487,6 +523,24 @@ BEGIN
     UPDATE tipo_de_cambio SET activo=0 WHERE id_tipo_de_cambio = _id_tipo_de_cambio;
 END ;; 
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `LISTAR_TIPOS_DE_CAMBIO_X_NOMBRE`;
+DELIMITER ;;
+CREATE DEFINER=`adminjoya`@`%` PROCEDURE `LISTAR_TIPOS_DE_CAMBIO_X_NOMBRE`(
+	IN _nombre VARCHAR(80)
+)
+BEGIN
+	SELECT t.*,m.*
+    FROM tipo_de_cambio t
+    INNER JOIN moneda m
+    ON id_moneda=fid_moneda
+    WHERE activo = 1
+    AND nombre LIKE CONCAT('%',_nombre,'%');
+END ;;
+DELIMITER ;
+
+
+
 
 -- Documento Debito
 DROP PROCEDURE IF EXISTS `INSERTAR_DOCUMENTO_DEBITO`;
