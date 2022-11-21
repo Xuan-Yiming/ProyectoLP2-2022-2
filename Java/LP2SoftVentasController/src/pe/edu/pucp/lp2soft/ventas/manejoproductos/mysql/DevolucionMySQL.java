@@ -211,9 +211,12 @@ public class DevolucionMySQL implements DevolucionDAO {
             while(rs.next()){
                 Devolucion devolucion = new Devolucion();
                 devolucion.setIdDevolucion(rs.getInt("id_devolucion"));
+                devolucion.setCantidad(rs.getInt("cantidad"));
                 producto.setIdProducto(rs.getInt("fid_producto"));
                 devolucion.setProducto(producto);
                 devolucion.setFid_reclamo(rs.getInt("fid_reclamo"));
+                producto.setIdProducto(rs.getInt("id_producto"));
+                producto.setNombre(rs.getString("nombre"));
                 devoluciones.add(devolucion);
             }
         }catch(Exception ex){

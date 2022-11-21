@@ -327,7 +327,7 @@ namespace QingYunSoft
                 MessageBox.Show("Debe guardar la orden de compra antes de registrar un reclamo", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
+            // recien insertado 
             frmReclamo _frmReclamo;
             if (this._ordenDeCompra.reclamo.idReclamo != 0)
             {
@@ -340,15 +340,18 @@ namespace QingYunSoft
                 if (_tempReclamo != null)
                     this._ordenDeCompra.reclamo = _tempReclamo[0];
 
+                // no tiene reclamo en cloud
                 if (this._ordenDeCompra.reclamo.idReclamo == 0)
                     _frmReclamo = new frmReclamo(Estado.Nuevo, this._ordenDeCompra.idOrdenDeCompra, this._pedidos);
-                else
+                else // tiene reclamo en cloud
                     _frmReclamo = new frmReclamo(Estado.Resultado, this._ordenDeCompra.reclamo);
 
             }
             if (_frmReclamo.ShowDialog() == DialogResult.Cancel)
             {
+                this._ordenDeCompra.reclamo.idReclamo = 0;
                 this._ordenDeCompra.reclamo = _frmReclamo.Reclamo;
+
             }
         }
 
@@ -368,7 +371,7 @@ namespace QingYunSoft
         }
         private void btRegresar_Click(object sender, EventArgs e)
         {
-            if (this._estado != Estado.Modificar)
+            if (this._estado != Estado.Resultado)
             if (!(MessageBox.Show("¿Está seguro que desea salir sin guardar el cambio?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
                 return;

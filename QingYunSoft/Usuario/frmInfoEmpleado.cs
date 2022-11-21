@@ -276,7 +276,7 @@ namespace QingYunSoft.Usuario
 
         private void btRegresar_Click(object sender, EventArgs e)
         {
-            if (this.estado != Estado.Modificar)
+            if (this.estado != Estado.Resultado)
                 if (!(MessageBox.Show("¿Está seguro que desea salir sin guardar el cambio?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes))
                 {
                     return;

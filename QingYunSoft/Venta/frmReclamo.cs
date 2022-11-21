@@ -45,6 +45,7 @@ namespace QingYunSoft.Venta
         {
             //Resultado
             InitializeComponent();
+            this._estado = estado;
             daoVentasWS = new VentasWS.VentasWSClient();
             this._reclamo = daoVentasWS.listarReclamoxOrden(idOrdenDeCompra)[0];
             dtpFecha.Value = _reclamo.fecha;
@@ -52,6 +53,7 @@ namespace QingYunSoft.Venta
             txtID.Text = _reclamo.idReclamo.ToString();
             dgvProductos.AutoGenerateColumns = false;
             dgvProductos.DataSource = daoVentasWS.listarDevolucionXReclamo(this._reclamo.idReclamo);
+            
             establecerComponentes();
             CenterToScreen();
         }
@@ -62,12 +64,13 @@ namespace QingYunSoft.Venta
             InitializeComponent();
             daoVentasWS = new VentasWS.VentasWSClient();
             this._reclamo = reclamo;
+            this._estado = estado;
             dtpFecha.Value = _reclamo.fecha;
             txtDescripcion.Text = _reclamo.justificacion;
             txtID.Text = _reclamo.idReclamo.ToString();
             btAnular.Enabled = !reclamo.atendido;
             dgvProductos.AutoGenerateColumns = false;
-            dgvProductos.DataSource = this._reclamo.devoluciones;
+            dgvProductos.DataSource = daoVentasWS.listarDevolucionXReclamo(this._reclamo.idReclamo);
             establecerComponentes();
             CenterToScreen();
         }
