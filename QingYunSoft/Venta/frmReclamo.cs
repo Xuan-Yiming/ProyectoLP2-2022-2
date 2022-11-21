@@ -227,7 +227,7 @@ namespace QingYunSoft.Venta
 
         private void dgvProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (this._estado == Estado.Nuevo)
+            if (dgvProductos.Rows[e.RowIndex].DataBoundItem is VentasWS.pedido)
             {
                 VentasWS.pedido pedido = (VentasWS.pedido)dgvProductos.Rows[e.RowIndex].DataBoundItem;
                 dgvProductos.Rows[e.RowIndex].Cells[0].Value = pedido.producto.idProducto;

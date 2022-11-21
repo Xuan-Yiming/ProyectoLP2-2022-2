@@ -52,8 +52,7 @@
             this.dgvVentas = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.moneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pagado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlEmpresa = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -99,6 +98,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(727, 518);
             this.panel3.TabIndex = 16;
+            this.panel3.Visible = false;
             // 
             // pnlPersonaNatural
             // 
@@ -312,25 +312,24 @@
             this.dgvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.fechaVenta,
-            this.moneda,
-            this.monto});
+            this.pagado});
             this.dgvVentas.GridColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgvVentas.Location = new System.Drawing.Point(338, 7);
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.ReadOnly = true;
             this.dgvVentas.RowHeadersVisible = false;
             this.dgvVentas.RowHeadersWidth = 62;
-            this.dgvVentas.Size = new System.Drawing.Size(382, 422);
+            this.dgvVentas.Size = new System.Drawing.Size(382, 492);
             this.dgvVentas.TabIndex = 19;
             this.dgvVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvVentas_CellFormatting);
             // 
             // ID
             // 
-            this.ID.HeaderText = "# Venta";
+            this.ID.HeaderText = "Orden de compra";
             this.ID.MinimumWidth = 8;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 80;
+            this.ID.Width = 150;
             // 
             // fechaVenta
             // 
@@ -340,20 +339,13 @@
             this.fechaVenta.ReadOnly = true;
             this.fechaVenta.Width = 150;
             // 
-            // moneda
+            // pagado
             // 
-            this.moneda.HeaderText = "Moneda";
-            this.moneda.MinimumWidth = 8;
-            this.moneda.Name = "moneda";
-            this.moneda.ReadOnly = true;
-            this.moneda.Width = 50;
-            // 
-            // monto
-            // 
-            this.monto.HeaderText = "Monto Total";
-            this.monto.MinimumWidth = 8;
-            this.monto.Name = "monto";
-            this.monto.ReadOnly = true;
+            this.pagado.HeaderText = "Pagado";
+            this.pagado.MinimumWidth = 8;
+            this.pagado.Name = "pagado";
+            this.pagado.ReadOnly = true;
+            this.pagado.Width = 80;
             // 
             // pnlEmpresa
             // 
@@ -519,7 +511,7 @@
             this.btEditarGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btEditarGuardar.ForeColor = System.Drawing.Color.White;
             this.btEditarGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btEditarGuardar.Location = new System.Drawing.Point(572, 435);
+            this.btEditarGuardar.Location = new System.Drawing.Point(194, 476);
             this.btEditarGuardar.Name = "btEditarGuardar";
             this.btEditarGuardar.Size = new System.Drawing.Size(117, 23);
             this.btEditarGuardar.TabIndex = 12;
@@ -532,11 +524,11 @@
             // 
             this.btAnular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAnular.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btAnular.Location = new System.Drawing.Point(377, 435);
+            this.btAnular.Location = new System.Drawing.Point(30, 476);
             this.btAnular.Name = "btAnular";
             this.btAnular.Size = new System.Drawing.Size(117, 23);
             this.btAnular.TabIndex = 15;
-            this.btAnular.Text = "Anular";
+            this.btAnular.Text = "Eliminar";
             this.btAnular.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btAnular.UseVisualStyleBackColor = true;
             this.btAnular.Click += new System.EventHandler(this.btAnular_Click);
@@ -636,10 +628,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btCancelar;
         private System.Windows.Forms.DataGridView dgvVentas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn moneda;
-        private System.Windows.Forms.DataGridViewTextBoxColumn monto;
         private System.Windows.Forms.Panel pnlPersonaNatural;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label5;
@@ -668,5 +656,8 @@
         private System.Windows.Forms.ComboBox cbSexo;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cbCategoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pagado;
     }
 }

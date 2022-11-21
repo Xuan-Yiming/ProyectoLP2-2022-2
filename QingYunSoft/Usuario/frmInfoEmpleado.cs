@@ -108,18 +108,7 @@ namespace QingYunSoft.Usuario
                 }
 
                 //validarDatos();                
-                if (cbTipoUsuario.SelectedIndex == 0)
-                {
-                    this._usuario = new RRHHWS.administrador();
-                    ((RRHHWS.administrador)this._usuario).area = (RRHHWS.area)cbArea.SelectedItem;
-                    ((RRHHWS.administrador)this._usuario).areaSpecified = true;
-
-                    if (cbArea.SelectedIndex == -1)
-                    {
-                        MessageBox.Show("Debe seleccionar un area", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
+                
 
                 if ((GestClientesWS.tipoDeDocumento)cbTipoDocumento.SelectedItem == GestClientesWS.tipoDeDocumento.DNI)
                 {
@@ -146,7 +135,18 @@ namespace QingYunSoft.Usuario
                     }
                 }
 
-                else if (cbTipoUsuario.SelectedIndex == 1)
+                if (cbTipoUsuario.SelectedIndex == 0)
+                {
+                    this._usuario = new RRHHWS.administrador();
+                    ((RRHHWS.administrador)this._usuario).area = (RRHHWS.area)cbArea.SelectedItem;
+                    ((RRHHWS.administrador)this._usuario).areaSpecified = true;
+
+                    if (cbArea.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Debe seleccionar un area", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                } else if (cbTipoUsuario.SelectedIndex == 1)
                 {
                     this._usuario = new RRHHWS.vendedor();
                     //((RRHHWS.vendedor)this._usuario).cantidadVentas = Int32.Parse(txtVariableTipo.Text);
@@ -160,11 +160,14 @@ namespace QingYunSoft.Usuario
                 if (this._usuario.password != txtContrasena.Text)
                     this._usuario.password = txtContrasena.Text;
                 this._usuario.fechaIngreso = dtpFechaIngreso.Value;
-
-                FileStream fs = new FileStream(_rutaFoto, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fs);
-                this._usuario.fotoPerfil = br.ReadBytes((int)fs.Length);
-                fs.Close();
+                if (_rutaFoto != null)
+                {
+                    FileStream fs = new FileStream(_rutaFoto, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    this._usuario.fotoPerfil = br.ReadBytes((int)fs.Length);
+                    fs.Close();
+                }
+                
 
 
                 this._usuario.tipoDeDocumento = (RRHHWS.tipoDeDocumento)cbTipoDocumento.SelectedItem;
@@ -241,6 +244,8 @@ namespace QingYunSoft.Usuario
                         MessageBox.Show("Se ha modificado correctamente");
                         txtID.Text = resultado.ToString();
                         this._usuario.idUsuario = resultado;
+                        this.estado = Estado.Resultado;
+                        establecerEstadoComponentes();
                     }
                     else
                     {
@@ -271,8 +276,12 @@ namespace QingYunSoft.Usuario
 
         private void btRegresar_Click(object sender, EventArgs e)
         {
-            if ((MessageBox.Show("¿Está seguro que desea salir sin guardar el cambio?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes))
-                _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmEmpleados(_frmPrincipal));
+            if (this.estado != Estado.Modificar)
+                if (!(MessageBox.Show("¿Está seguro que desea salir sin guardar el cambio?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes))
+                {
+                    return;
+                }
+            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmEmpleados(_frmPrincipal));
         }
 
         private void btCancelar_Click(object sender, EventArgs e)

@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using System.ComponentModel;
+using System.Globalization;
 
 namespace QingYunSoft
 {
@@ -199,7 +200,7 @@ namespace QingYunSoft
             dgvProductos.DataSource = _pedidos;
             dgvProductos.Refresh();
 
-            txtMontoTotal.Text = calcularMontoTotal().ToString();
+            txtMontoTotal.Text = calcularMontoTotal().ToString("F", CultureInfo.CreateSpecificCulture("en-CA"));
         }
 
         private double calcularMontoTotal()
@@ -224,7 +225,7 @@ namespace QingYunSoft
                 dgvProductos.DataSource = _pedidos;
                 dgvProductos.Refresh();
 
-                txtMontoTotal.Text = calcularMontoTotal().ToString();
+                txtMontoTotal.Text = calcularMontoTotal().ToString("F", CultureInfo.CreateSpecificCulture("en-CA"));
             }
         }
 
@@ -335,8 +336,10 @@ namespace QingYunSoft
             else
             {
                 _tempReclamo = daoVentasWS.listarReclamoxOrden(this._ordenDeCompra.idOrdenDeCompra);
+
                 if (_tempReclamo != null)
                     this._ordenDeCompra.reclamo = _tempReclamo[0];
+
                 if (this._ordenDeCompra.reclamo.idReclamo == 0)
                     _frmReclamo = new frmReclamo(Estado.Nuevo, this._ordenDeCompra.idOrdenDeCompra, this._pedidos);
                 else
@@ -365,11 +368,12 @@ namespace QingYunSoft
         }
         private void btRegresar_Click(object sender, EventArgs e)
         {
-            if ((MessageBox.Show("¿Está seguro que desea salir sin guardar el cambio?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes))
+            if (this._estado != Estado.Modificar)
+            if (!(MessageBox.Show("¿Está seguro que desea salir sin guardar el cambio?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
-                _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmVentas(_frmPrincipal, this._vendedor));
+                return;
             }
-
+            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmVentas(_frmPrincipal, this._vendedor));
         }
         private void btCancelar_Click(object sender, EventArgs e)
         {
@@ -384,10 +388,10 @@ namespace QingYunSoft
         {
             if (cbMoneda.SelectedIndex == -1) return;
             VentasWS.moneda moneda = (VentasWS.moneda)cbMoneda.SelectedItem;
-            txtTipoDeCambio.Text = moneda.cambios[0].cambio.ToString();
+            txtTipoDeCambio.Text = moneda.cambios[0].cambio.ToString("F", CultureInfo.CreateSpecificCulture("en-CA"));
             if (this.txtMontoTotal.Text != "")
             {
-                this.txtMontoTotal.Text = (Convert.ToDouble(this.txtMontoTotal.Text) / double.Parse(this.txtTipoDeCambio.Text)).ToString();
+                this.txtMontoTotal.Text = calcularMontoTotal().ToString("F",CultureInfo.CreateSpecificCulture("en-CA"));
             }
         }
 
@@ -492,8 +496,8 @@ namespace QingYunSoft
             txtDescuento.Text = "";
             txtStock.Text = "";
             
-            cbMoneda.SelectedIndex = -1;
-            txtTipoDeCambio.Text = "";
+            cbMoneda.SelectedIndex = 0;
+            txtTipoDeCambio.Text = "1";
             
             dtpFechaCompra.Value = DateTime.Now;
             dtpFechaLimite.Value = DateTime.Now;

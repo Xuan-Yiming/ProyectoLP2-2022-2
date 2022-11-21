@@ -31,6 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInfoAlmacen));
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvStocks = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.devuelto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btModificar = new System.Windows.Forms.Button();
             this.btAgregar = new System.Windows.Forms.Button();
@@ -49,12 +55,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btCancelar = new System.Windows.Forms.Button();
             this.btRegresar = new System.Windows.Forms.Button();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.devuelto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStocks)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -68,8 +68,6 @@
             this.panel3.Controls.Add(this.dgvStocks);
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Controls.Add(this.groupBox1);
-            this.panel3.Controls.Add(this.btEditarGuardar);
-            this.panel3.Controls.Add(this.btAnular);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(50, 0);
             this.panel3.Name = "panel3";
@@ -91,8 +89,8 @@
             this.devuelto,
             this.fechaIngreso});
             this.dgvStocks.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvStocks.Location = new System.Drawing.Point(14, 161);
-            this.dgvStocks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvStocks.Location = new System.Drawing.Point(8, 205);
+            this.dgvStocks.Margin = new System.Windows.Forms.Padding(2);
             this.dgvStocks.Name = "dgvStocks";
             this.dgvStocks.ReadOnly = true;
             this.dgvStocks.RowHeadersVisible = false;
@@ -102,12 +100,60 @@
             this.dgvStocks.TabIndex = 17;
             this.dgvStocks.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvStocks_CellFormatting);
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 8;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 150;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.MinimumWidth = 8;
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            this.nombre.Width = 150;
+            // 
+            // precio
+            // 
+            this.precio.HeaderText = "Precio";
+            this.precio.MinimumWidth = 8;
+            this.precio.Name = "precio";
+            this.precio.ReadOnly = true;
+            this.precio.Width = 80;
+            // 
+            // cantidad
+            // 
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.MinimumWidth = 8;
+            this.cantidad.Name = "cantidad";
+            this.cantidad.ReadOnly = true;
+            this.cantidad.Width = 80;
+            // 
+            // devuelto
+            // 
+            this.devuelto.HeaderText = "Devuelto";
+            this.devuelto.MinimumWidth = 8;
+            this.devuelto.Name = "devuelto";
+            this.devuelto.ReadOnly = true;
+            this.devuelto.Width = 80;
+            // 
+            // fechaIngreso
+            // 
+            this.fechaIngreso.HeaderText = "Fecha de Ingreso";
+            this.fechaIngreso.MinimumWidth = 8;
+            this.fechaIngreso.Name = "fechaIngreso";
+            this.fechaIngreso.ReadOnly = true;
+            this.fechaIngreso.Width = 150;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btModificar);
             this.groupBox2.Controls.Add(this.btAgregar);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(14, 98);
+            this.groupBox2.Location = new System.Drawing.Point(8, 143);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(702, 57);
             this.groupBox2.TabIndex = 16;
@@ -145,6 +191,8 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtDireccion);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.btAnular);
+            this.groupBox1.Controls.Add(this.btEditarGuardar);
             this.groupBox1.Controls.Add(this.cbSupervisores);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtNombre);
@@ -153,10 +201,10 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(14, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(702, 86);
+            this.groupBox1.Size = new System.Drawing.Size(702, 121);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Informacion del almacenSeleccionado";
+            this.groupBox1.Text = "Informacion del almacen";
             // 
             // label3
             // 
@@ -242,7 +290,7 @@
             this.btEditarGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btEditarGuardar.ForeColor = System.Drawing.Color.White;
             this.btEditarGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btEditarGuardar.Location = new System.Drawing.Point(599, 478);
+            this.btEditarGuardar.Location = new System.Drawing.Point(573, 92);
             this.btEditarGuardar.Name = "btEditarGuardar";
             this.btEditarGuardar.Size = new System.Drawing.Size(117, 23);
             this.btEditarGuardar.TabIndex = 12;
@@ -255,7 +303,7 @@
             // 
             this.btAnular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAnular.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btAnular.Location = new System.Drawing.Point(469, 478);
+            this.btAnular.Location = new System.Drawing.Point(441, 92);
             this.btAnular.Name = "btAnular";
             this.btAnular.Size = new System.Drawing.Size(117, 23);
             this.btAnular.TabIndex = 15;
@@ -313,54 +361,6 @@
             this.btRegresar.TabIndex = 0;
             this.btRegresar.UseVisualStyleBackColor = true;
             this.btRegresar.Click += new System.EventHandler(this.btRegresar_Click);
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 8;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 150;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.MinimumWidth = 8;
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            this.nombre.Width = 150;
-            // 
-            // precio
-            // 
-            this.precio.HeaderText = "Precio";
-            this.precio.MinimumWidth = 8;
-            this.precio.Name = "precio";
-            this.precio.ReadOnly = true;
-            this.precio.Width = 80;
-            // 
-            // cantidad
-            // 
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.MinimumWidth = 8;
-            this.cantidad.Name = "cantidad";
-            this.cantidad.ReadOnly = true;
-            this.cantidad.Width = 80;
-            // 
-            // devuelto
-            // 
-            this.devuelto.HeaderText = "Devuelto";
-            this.devuelto.MinimumWidth = 8;
-            this.devuelto.Name = "devuelto";
-            this.devuelto.ReadOnly = true;
-            this.devuelto.Width = 80;
-            // 
-            // fechaIngreso
-            // 
-            this.fechaIngreso.HeaderText = "Fecha de Ingreso";
-            this.fechaIngreso.MinimumWidth = 8;
-            this.fechaIngreso.Name = "fechaIngreso";
-            this.fechaIngreso.ReadOnly = true;
-            this.fechaIngreso.Width = 150;
             // 
             // frmInfoAlmacen
             // 

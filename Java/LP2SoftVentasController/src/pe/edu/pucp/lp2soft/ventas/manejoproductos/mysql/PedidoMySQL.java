@@ -66,6 +66,7 @@ public class PedidoMySQL implements PedidoDAO {
                 pedido.getProducto().setNombre(rs.getString("nombre"));
                 pedido.getProducto().setIdProducto(rs.getInt("id_producto"));
                 pedido.setCantidad(rs.getInt("cantidad"));
+                pedido.getProducto().setPrecio(rs.getDouble("precio"));
                 pedidos.add(pedido);
             }
         }catch(Exception ex){

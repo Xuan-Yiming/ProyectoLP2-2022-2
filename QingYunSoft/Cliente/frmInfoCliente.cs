@@ -28,6 +28,8 @@ namespace QingYunSoft.Cliente
             cbTipoDeDocumento.DataSource = Enum.GetValues(typeof(GestClientesWS.tipoDeDocumento));
             cbCategoria.DataSource = Enum.GetValues(typeof(GestClientesWS.categoria));
             cbSexo.DataSource = Enum.GetValues(typeof(GestClientesWS.sexo));
+
+            dgvVentas.AutoGenerateColumns = false;
             limpiarComponentes();
         }
         public frmInfoCliente(frmPrincipal _frmPrincipal, Estado estado, GestClientesWS.cliente cliente)
@@ -73,8 +75,9 @@ namespace QingYunSoft.Cliente
                 txtDirecionP.Text = ((GestClientesWS.personaNatural)cliente).direccion;
                 dtpFecha.Value = ((GestClientesWS.personaNatural)cliente).fechaDeNacimiento;
             }
-            dgvVentas.DataSource = daoVentas.listarOrdenesDeCompraPorCliente(cliente.idCliente);
             dgvVentas.AutoGenerateColumns = false;
+            dgvVentas.DataSource = daoVentas.listarOrdenesDeCompraPorCliente(cliente.idCliente);
+            
         }
         public void mostrarFormularioEnPnlTipoCliente(Form _frm)
         {
@@ -283,8 +286,12 @@ namespace QingYunSoft.Cliente
         }
         private void btRegresar_Click(object sender, EventArgs e)
         {
-            if ((MessageBox.Show("¿Está seguro que desea salir sin guardar el cambio?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes))
-                _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmClientes(_frmPrincipal));
+            if (this.estado != Estado.Modificar)
+                if (!(MessageBox.Show("¿Está seguro que desea salir sin guardar el cambio?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes))
+                {
+                    return;
+                }
+            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmClientes(_frmPrincipal));
         }
         private void btCancelar_Click(object sender, EventArgs e)
         {
@@ -303,8 +310,7 @@ namespace QingYunSoft.Cliente
             VentasWS.ordenDeCompra orden = (VentasWS.ordenDeCompra)dgvVentas.Rows[e.RowIndex].DataBoundItem;
             dgvVentas.Rows[e.RowIndex].Cells["ID"].Value = orden.idOrdenDeCompra;
             dgvVentas.Rows[e.RowIndex].Cells["fechaVenta"].Value = orden.fechaDeCompra;
-            dgvVentas.Rows[e.RowIndex].Cells["moneda"].Value = orden.moneda.abreviatura;
-            dgvVentas.Rows[e.RowIndex].Cells["monto"].Value = orden.monto;
+            dgvVentas.Rows[e.RowIndex].Cells["pagado"].Value = orden.pagado ? "Si" : "No";
         }
         public void establecarComponentes()
         {
