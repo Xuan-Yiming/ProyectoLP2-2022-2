@@ -28,15 +28,12 @@ import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.ReclamoMySQL;
 import pe.edu.pucp.lp2soft.ventas.manejoproductos.mysql.StockMySQL;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.Moneda;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.OrdenDeCompra;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.TerminoDePago;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.TipoDeCambio;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.MonedaDAO;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.OrdenDeCompraDAO;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.TerminoDePagoDAO;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.dao.TipoDeCambioDAO;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.MonedaMySQL;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.OrdenDeCompraMySQL;
-import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.TerminoDePagoMySQL;
 import pe.edu.pucp.lp2soft.ventas.ventaspagos.mysql.TipoDeCambioMySQL;
 
 import pe.edu.pucp.lp2soft.gestclientes.model.Cliente;
@@ -53,7 +50,6 @@ public class VentasWS {
     SupervisorDeAlmacenDAO daoSupervisor = new SupervisorDeAlmacenMySQL();
     ReclamoDAO daoReclamo = new ReclamoMySQL();
     DevolucionDAO daoDevolucion = new DevolucionMySQL();
-    TerminoDePagoDAO daoTerminoPago = new TerminoDePagoMySQL();
     PedidoDAO daoPedido = new PedidoMySQL();
     OrdenDeCompraDAO daoOrdenDeCompra = new OrdenDeCompraMySQL();
     
@@ -228,17 +224,7 @@ public class VentasWS {
         }
         return almacenes;
     }
-//    /*Gestionar Termino Pago*/
-    @WebMethod(operationName = "insertarTerminoPago")
-    public int insertarTerminoPago(@WebParam(name = "terminoPago") TerminoDePago terminoPago) {
-        int resultado = 0;
-        try{
-            resultado = daoTerminoPago.insertar(terminoPago);
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-        return resultado;
-    }
+
 	
 //    /*Gestionar Pedidos*/
     @WebMethod(operationName = "insertarPedido")
