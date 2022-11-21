@@ -1,13 +1,12 @@
-
 id instancia: DBProyectoLP2
 
 usuario: adminjoya
 
 contraseña: lasjoyaslp2
 
-nombre: lasjoyasdb
+nombre: Dbproyectolp2
 
-url: lasjoyasdb.cmkeurxfbwvg.us-east-1.rds.amazonaws.com
+url: dbproyectolp2.cq8hlrdo5fgj.us-east-1.rds.amazonaws.com
 
 puerto: 3306
 
