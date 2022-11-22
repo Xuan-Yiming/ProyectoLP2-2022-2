@@ -309,7 +309,7 @@ namespace QingYunSoft.Cliente
         {
             VentasWS.ordenDeCompra orden = (VentasWS.ordenDeCompra)dgvVentas.Rows[e.RowIndex].DataBoundItem;
             dgvVentas.Rows[e.RowIndex].Cells["ID"].Value = orden.idOrdenDeCompra;
-            dgvVentas.Rows[e.RowIndex].Cells["fechaVenta"].Value = orden.fechaDeCompra;
+            dgvVentas.Rows[e.RowIndex].Cells["fechaVenta"].Value = orden.fechaDeCompra.ToString("dd/MM/yyyy");
             dgvVentas.Rows[e.RowIndex].Cells["pagado"].Value = orden.pagado ? "Si" : "No";
         }
         public void establecarComponentes()
