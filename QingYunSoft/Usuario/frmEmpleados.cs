@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QingYunSoft.Venta;
+using System;
 using System.Windows.Forms;
 
 namespace QingYunSoft.Usuario
@@ -81,9 +82,8 @@ namespace QingYunSoft.Usuario
 
         private void btReporteMejoresVendedores_Click(object sender, EventArgs e)
         {
-            daoReportes = new ReportesWS.ReporteWSClient();
-            frmReporteViewer _frmReporteViewer = new frmReporteViewer(daoReportes.generarReporteVendedoresMasVentas());
-            _frmReporteViewer.Show();
+            frmElegirFecha _frmElegirFecha = new frmElegirFecha(3);
+            _frmElegirFecha.Show();
         }
     }
 }

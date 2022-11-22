@@ -8,6 +8,10 @@ using System.Linq;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Globalization;
+using RestSharp;
+using ExchangeRate_API;
+using Newtonsoft.Json;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace QingYunSoft
 {
@@ -31,6 +35,8 @@ namespace QingYunSoft
         private VentasWS.ordenDeCompra _ordenDeCompra;
         private RRHHWS.usuario _vendedor;
         private VentasWS.almacen[] _almacenes;
+        private BindingList<VentasWS.moneda> monedas;
+        private API_Obj tipoDeCambios;
         //constructores
         public frmInfoVenta()
         {
@@ -49,7 +55,42 @@ namespace QingYunSoft
             dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             daoVentasWS = new VentasWS.VentasWSClient();
-            cbMoneda.DataSource = daoVentasWS.listarMonedaUltimoTipoDeCambio();
+            this.monedas = new BindingList<VentasWS.moneda>(daoVentasWS.listarMonedaUltimoTipoDeCambio());
+            try
+            {
+                String URLString = "https://v6.exchangerate-api.com/v6/5fb08f39ef95d2fbd5770d1e/latest/PEN";
+                using (var webClient = new System.Net.WebClient())
+                {
+                    var json = webClient.DownloadString(URLString);
+                    tipoDeCambios = JsonConvert.DeserializeObject<API_Obj>(json);
+                    // Test.conversion_rates.GetType().GetProperty("USD").GetValue(Test.conversion_rates).ToString();
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+            foreach (VentasWS.moneda moneda in monedas)
+            {
+                if (moneda.cambios[0].fecha != DateTime.Today)
+                {
+                    moneda.cambios[0].fecha = DateTime.Today;
+                    // get "result" as double from response
+                    moneda.cambios[0].cambio = 1 / Convert.ToDouble(tipoDeCambios.conversion_rates.GetType().GetProperty(moneda.abreviatura).GetValue(tipoDeCambios.conversion_rates).ToString());
+                    moneda.cambios[0].fid_Moneda = moneda.idMoneda;
+                    moneda.cambios[0].activoSpecified = true;
+                    moneda.cambios[0].activo = true;
+                    moneda.cambios[0].fecha = DateTime.Today;
+                    moneda.cambios[0].fechaSpecified = true;
+                    int res = daoVentasWS.insertarTipoDeCambio(moneda.cambios[0]);
+                    if (res == 0)
+                    {
+                        moneda.cambios[0].idTipoDeCambio = res;
+                        MessageBox.Show("Error al insertar tipo de cambio");                        
+                    }
+                }
+            }
+            cbMoneda.DataSource = this.monedas;
             cbMoneda.DisplayMember = "abreviatura";
             cbMoneda.ValueMember = "idMoneda";
             

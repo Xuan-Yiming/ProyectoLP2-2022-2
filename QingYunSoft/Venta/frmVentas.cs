@@ -75,7 +75,7 @@ namespace QingYunSoft
 
         private void btReporteVEntasPorPeriodo_Click(object sender, EventArgs e)
         {
-            frmElegirFecha _frmElegirFecha = new frmElegirFecha();
+            frmElegirFecha _frmElegirFecha = new frmElegirFecha(1);
             _frmElegirFecha.Show();
         }
 
