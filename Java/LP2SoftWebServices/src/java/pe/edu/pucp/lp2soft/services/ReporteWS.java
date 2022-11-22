@@ -28,12 +28,14 @@ public class ReporteWS {
             con = DBManager.getInstance().getConnection();
             JasperReport reporte = (JasperReport) JRLoader.loadObject(
                 ReporteWS.class.getResource("/pe/edu/pucp/lp2soft/report/ReporteVentasPeriodo.jasper"));
+            String rutaSubReporte = ReporteWS.class.getResource("/pe/edu/pucp/lp2soft/report/SubReporteVentasPeriodo.jasper").getPath();
             String rutaImagen = ReporteWS.class.getResource("/pe/edu/pucp/lp2soft/img/Background.png").getPath();
             java.awt.Image imagen = (new ImageIcon(rutaImagen)).getImage() ;
             HashMap parametros = new HashMap();
             parametros.put("fecha1",fecha1);
             parametros.put("fecha2",fecha2);
-            parametros.put("imagen",imagen);
+            parametros.put("imagenLogo",imagen);
+            parametros.put("subReporteVentasPeriodo",rutaSubReporte);
             JasperPrint jp = JasperFillManager.fillReport(reporte, parametros, con);
             con.close();
             reporteBytes = JasperExportManager.exportReportToPdf(jp);
@@ -44,16 +46,20 @@ public class ReporteWS {
     }
     
     @WebMethod(operationName = "generarReporteVendedoresMasVentas")
-    public byte[] generarReporteVendedoresMasVentas() {
+    public byte[] generarReporteVendedoresMasVentas(@WebParam(name = "fecha1") Date fecha1,@WebParam(name = "fecha2") Date fecha2) {
         byte[] reporteBytes = null;
         try{
             con = DBManager.getInstance().getConnection();
             JasperReport reporte = (JasperReport) JRLoader.loadObject(
                 ReporteWS.class.getResource("/pe/edu/pucp/lp2soft/report/ReporteVendedoresMasVentas.jasper"));
+            String rutaSubReporte = ReporteWS.class.getResource("/pe/edu/pucp/lp2soft/report/SubReporteVendedoresMasVentas.jasper").getPath();
             String rutaImagen = ReporteWS.class.getResource("/pe/edu/pucp/lp2soft/img/Background.png").getPath();
             java.awt.Image imagen = (new ImageIcon(rutaImagen)).getImage() ;
             HashMap parametros = new HashMap();
-            parametros.put("imagen",imagen);
+            parametros.put("imagenLogo",imagen);
+            parametros.put("fecha1",fecha1);
+            parametros.put("fecha2",fecha2);
+            parametros.put("subReporteVendedoresMasVentas",rutaSubReporte);
             JasperPrint jp = JasperFillManager.fillReport(reporte,parametros, con);
             con.close();
             reporteBytes = JasperExportManager.exportReportToPdf(jp);
@@ -87,7 +93,7 @@ public class ReporteWS {
     }
     
     @WebMethod(operationName = "generarReporteTop5Clientes")
-    public byte[] generarReporteTop5Clientes() {
+    public byte[] generarReporteTop5Clientes(@WebParam(name = "fecha1") Date fecha1,@WebParam(name = "fecha2") Date fecha2) {
         byte[] reporteBytes = null;
         try{
             con = DBManager.getInstance().getConnection();
@@ -97,6 +103,8 @@ public class ReporteWS {
             String rutaImagen = ReporteWS.class.getResource("/pe/edu/pucp/lp2soft/img/Background.png").getPath();
             java.awt.Image imagen = (new ImageIcon(rutaImagen)).getImage() ;
             HashMap parametros = new HashMap();
+            parametros.put("fecha1",fecha1);
+            parametros.put("fecha2",fecha2);
             parametros.put("imagenLogo",imagen);
             parametros.put("subReporteTop5Clientes",rutaSubReporte);
             
