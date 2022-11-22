@@ -57,7 +57,11 @@ namespace QingYunSoft.Venta
 
         private void btBuscarPorCliente_Click(object sender, EventArgs e)
         {
-            
+            if (this._cliente == null)
+            {
+                MessageBox.Show("Debe seleccionar un cliente", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorCliente(this._cliente.idCliente);
         }
 

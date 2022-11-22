@@ -182,10 +182,10 @@
     <Compile Include="Venta\frmBuscarVenta.Designer.cs">
       <DependentUpon>frmBuscarVenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Venta\frmElegirFecha.cs">
+    <Compile Include="frmElegirFecha.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Venta\frmElegirFecha.Designer.cs">
+    <Compile Include="frmElegirFecha.Designer.cs">
       <DependentUpon>frmElegirFecha.cs</DependentUpon>
     </Compile>
     <Compile Include="Venta\frmInfoVenta.cs">
@@ -259,7 +259,7 @@
     <EmbeddedResource Include="Venta\frmBuscarVenta.resx">
       <DependentUpon>frmBuscarVenta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Venta\frmElegirFecha.resx">
+    <EmbeddedResource Include="frmElegirFecha.resx">
       <DependentUpon>frmElegirFecha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Venta\frmInfoVenta.resx">

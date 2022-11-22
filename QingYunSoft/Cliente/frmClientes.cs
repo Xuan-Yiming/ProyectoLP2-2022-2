@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QingYunSoft.Venta;
+using System;
 using System.Windows.Forms;
 
 namespace QingYunSoft.Cliente
@@ -86,9 +87,8 @@ namespace QingYunSoft.Cliente
 
         private void btReporteClienteMasPedido_Click(object sender, EventArgs e)
         {
-            daoReportes = new ReportesWS.ReporteWSClient();
-            frmReporteViewer _frmReporteViewer = new frmReporteViewer(daoReportes.generarReporteTop5Clientes());
-            _frmReporteViewer.Show();
+            frmElegirFecha _frmElegirFecha = new frmElegirFecha(2);
+            _frmElegirFecha.Show();
         }
     }
 }
