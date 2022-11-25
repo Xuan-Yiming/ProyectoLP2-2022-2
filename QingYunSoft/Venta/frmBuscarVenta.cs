@@ -8,9 +8,9 @@ namespace QingYunSoft.Venta
     public partial class frmBuscarVenta : Form
     {
         //objetos
-        //private VentasWS.ordenDeCompra ordenDeCompraSeleccionado;
-        //public ordenDeCompra OrdenDeCompraSeleccionado { get => ordenDeCompraSeleccionado; set => ordenDeCompraSeleccionado = value; }
-        //private GestClientesWS.cliente clienteSeleccionado;
+        private VentasWS.ordenDeCompra ordenDeCompraSeleccionado;
+        public VentasWS.ordenDeCompra OrdenDeCompraSeleccionado { get => ordenDeCompraSeleccionado; set => ordenDeCompraSeleccionado = value; }
+        private GestClientesWS.cliente clienteSeleccionado;
         private GestClientesWS.cliente _cliente;
         public frmBuscarVenta()
         {
@@ -18,6 +18,8 @@ namespace QingYunSoft.Venta
             this.CenterToParent();
             //round form border
             this.FormBorderStyle = FormBorderStyle.None;
+            this.dgvVentas.AutoGenerateColumns = false;
+            this.dgvVentas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
         }
 
@@ -31,7 +33,7 @@ namespace QingYunSoft.Venta
         {
             if (dgvVentas.CurrentRow != null)
             {
-                //OrdenDeCompraSeleccionado = (VentasWS.ordenDeCompra)dgvVentas.CurrentRow.DataBoundItem;
+                OrdenDeCompraSeleccionado = (VentasWS.ordenDeCompra)dgvVentas.CurrentRow.DataBoundItem;
                 this.DialogResult = DialogResult.OK;
             }
             else
@@ -42,22 +44,30 @@ namespace QingYunSoft.Venta
 
         private void dgvVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //VentasWS.ordenDeCompra venta = (VentasWS.ordenDeCompra)dgvVentas.Rows[e.RowIndex].DataBoundItem;
-            //dgvVentas.Rows[e.RowIndex].Cells["ID"].Value = venta.id;
-            //dgvVentas.Rows[e.RowIndex].Cells["idCliente"].Value = venta.idCliente;
-            //dgvVentas.Rows[e.RowIndex].Cells["fechaVenta"].Value = venta.fechaDeCompra;
-            //dgvVentas.Rows[e.RowIndex].Cells["moneda"].Value = ((VentasWS.moneda)venta.moneda).abreviatura;
-            //dgvVentas.Rows[e.RowIndex].Cells["monto"].Value = (double)venta.monto;
+            VentasWS.ordenDeCompra venta = (VentasWS.ordenDeCompra)dgvVentas.Rows[e.RowIndex].DataBoundItem;
+            dgvVentas.Rows[e.RowIndex].Cells["ID"].Value = venta.idOrdenDeCompra;
+            if (venta.cliente is VentasWS.empresa)
+            dgvVentas.Rows[e.RowIndex].Cells["nombreCliente"].Value = ((VentasWS.empresa)venta.cliente).razonSocial;
+            else
+                dgvVentas.Rows[e.RowIndex].Cells["nombreCliente"].Value = ((VentasWS.personaNatural)venta.cliente).nombre + " " + ((VentasWS.personaNatural)venta.cliente).apellido;
+            dgvVentas.Rows[e.RowIndex].Cells["fechaVenta"].Value = venta.fechaDeCompra.ToString("dd/MM/yyyy");
+            dgvVentas.Rows[e.RowIndex].Cells["moneda"].Value = ((VentasWS.moneda)venta.moneda).nombre;
+            dgvVentas.Rows[e.RowIndex].Cells["monto"].Value = (double)venta.monto;
         }
 
         private void btBuscarPorCliente_Click(object sender, EventArgs e)
         {
-            //dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorCliente(this.clienteSeleccionado.idCliente);
+            if (this._cliente == null)
+            {
+                MessageBox.Show("Debe seleccionar un cliente", "Mensaje de advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorCliente(this._cliente.idCliente);
         }
 
         private void btBuscarPorFecha_Click(object sender, EventArgs e)
         {
-            //dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorFecha(dtpFecha.Value);       
+            dgvVentas.DataSource = new VentasWS.VentasWSClient().listarOrdenesDeCompraPorFecha(dtpFecha.Value);       
         }
 
         private void btBuscarCliente_Click(object sender, EventArgs e)

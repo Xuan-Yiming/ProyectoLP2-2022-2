@@ -37,7 +37,7 @@ namespace QingYunSoft.Almacen
             txtID.Text = almacen.idAlmacen.ToString();
             txtNombre.Text = almacen.nombre;
             txtDireccion.Text = almacen.direccion;
-            cbSupervisores.SelectedItem = almacen.supervisor;
+            cbSupervisores.SelectedValue = almacen.supervisor.idUsuario;
             dgvStocks.DataSource = daoVentasWS.listarStockPorIdAlmacen(almacen.idAlmacen);
 
             establecarComponentes();
@@ -65,8 +65,12 @@ namespace QingYunSoft.Almacen
         }
         private void btRegresar_Click(object sender, EventArgs e)
         {
-            if ((MessageBox.Show("¿Está seguro que desea salir sin guardar el cambio?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes))
-                _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmAlmacen(_frmPrincipal));
+            if (this._estado != Estado.Modificar)
+                if (!(MessageBox.Show("¿Está seguro que desea salir sin guardar el cambio?", "Saliendo", MessageBoxButtons.YesNo) == DialogResult.Yes))
+                {
+                    return;
+                }
+            _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmAlmacen(_frmPrincipal));
         }
         private void btCancelar_Click(object sender, EventArgs e)
         {
@@ -100,6 +104,7 @@ namespace QingYunSoft.Almacen
 
         private void btModificar_Click(object sender, EventArgs e)
         {
+            if (this.dgvStocks.CurrentRow == null) return;
             frmInfoProducto _frmInfoProducto = new frmInfoProducto((VentasWS.stock)dgvStocks.CurrentRow.DataBoundItem,
                                                     Estado.Resultado, _almacen, _almacenes);
             _frmInfoProducto.ShowDialog();
@@ -166,7 +171,7 @@ namespace QingYunSoft.Almacen
             dgvStocks.Rows[e.RowIndex].Cells["precio"].Value = stock.producto.precio;
             dgvStocks.Rows[e.RowIndex].Cells["cantidad"].Value = stock.cantidad;
             dgvStocks.Rows[e.RowIndex].Cells["devuelto"].Value = stock.producto.devuelto ? "Si" : "No";
-            dgvStocks.Rows[e.RowIndex].Cells["fechaIngreso"].Value = stock.producto.fechaDeIngreso;
+            dgvStocks.Rows[e.RowIndex].Cells["fechaIngreso"].Value = stock.producto.fechaDeIngreso.ToString("dd/MM/yyyy");
         }
         private void establecarComponentes()
         {
@@ -204,8 +209,8 @@ namespace QingYunSoft.Almacen
                     txtNombre.Enabled = false;
                     txtDireccion.Enabled = false;
                     cbSupervisores.Enabled = false;
-                    btModificar.Enabled = false;
-                    btAgregar.Enabled = false;
+                    btModificar.Enabled = true;
+                    btAgregar.Enabled = true;
                     btEditarGuardar.Enabled = true;
                     btCancelar.Enabled = false;
                     btRegresar.Enabled = true;

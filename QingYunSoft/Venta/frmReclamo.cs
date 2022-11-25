@@ -13,9 +13,11 @@ namespace QingYunSoft.Venta
         private Estado _estado;
         private int _idVenta;
         private VentasWS.reclamo _reclamo;
-        private VentasWS.devolucion[] _devoluciones = null;
-
+        private BindingList<VentasWS.devolucion> _devoluciones;
+        private bool[] _devueltos;
         private VentasWS.VentasWSClient daoVentasWS;
+
+        public reclamo Reclamo { get => _reclamo; set => _reclamo = value; }
 
         public frmReclamo(Estado estado, int idOrdenDeCompra, BindingList<VentasWS.pedido> pedidos)
         {
@@ -30,6 +32,10 @@ namespace QingYunSoft.Venta
             this._reclamo = new VentasWS.reclamo();
             this._reclamo.ordenDeCompra = new ordenDeCompra();
             this._reclamo.ordenDeCompra.idOrdenDeCompra = idOrdenDeCompra;
+
+            this.
+            _devueltos = new bool[pedidos.Count];
+            this._devoluciones = new BindingList<devolucion>();
             establecerComponentes();
             CenterToScreen();
 
@@ -39,11 +45,30 @@ namespace QingYunSoft.Venta
         {
             //Resultado
             InitializeComponent();
+            this._estado = estado;
             daoVentasWS = new VentasWS.VentasWSClient();
             this._reclamo = daoVentasWS.listarReclamoxOrden(idOrdenDeCompra)[0];
             dtpFecha.Value = _reclamo.fecha;
             txtDescripcion.Text = _reclamo.justificacion;
             txtID.Text = _reclamo.idReclamo.ToString();
+            dgvProductos.AutoGenerateColumns = false;
+            dgvProductos.DataSource = daoVentasWS.listarDevolucionXReclamo(this._reclamo.idReclamo);
+            
+            establecerComponentes();
+            CenterToScreen();
+        }
+
+        public frmReclamo(Estado estado, reclamo reclamo)
+        {
+            //Modificar
+            InitializeComponent();
+            daoVentasWS = new VentasWS.VentasWSClient();
+            this._reclamo = reclamo;
+            this._estado = estado;
+            dtpFecha.Value = _reclamo.fecha;
+            txtDescripcion.Text = _reclamo.justificacion;
+            txtID.Text = _reclamo.idReclamo.ToString();
+            btAnular.Enabled = !reclamo.atendido;
             dgvProductos.AutoGenerateColumns = false;
             dgvProductos.DataSource = daoVentasWS.listarDevolucionXReclamo(this._reclamo.idReclamo);
             establecerComponentes();
@@ -73,7 +98,7 @@ namespace QingYunSoft.Venta
                 devolucion.producto = pedido.producto;
                 devolucion.activo = true;
                 devolucion.activoSpecified = true;
-                _devoluciones.Append(devolucion);
+                _devoluciones.Add(devolucion);
             }
 
             if (this._devoluciones != null)
@@ -82,11 +107,48 @@ namespace QingYunSoft.Venta
             int resultado = 0;
             resultado = daoVentasWS.insertarReclamo(this._reclamo);
             if (resultado != 0)
-            {
-                MessageBox.Show("Se ha insertado correctamente");
+            {                
                 txtID.Text = resultado.ToString();
                 this._reclamo.idReclamo = resultado;
-                this._estado = Estado.Resultado;
+
+                //insertar devoluciones
+                if (this._devoluciones != null)
+                {
+                    foreach (devolucion devolucion in this._devoluciones)
+                    {
+                        devolucion.activoSpecified = true;
+                        devolucion.fid_reclamo = this.Reclamo.idReclamo;
+                        int res2 = 
+                        daoVentasWS.insertarDevolucion(devolucion);
+                        if (res2 == 0)
+                        {
+                            MessageBox.Show("Error al insertar devolucion", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                }
+
+                this.Reclamo.devoluciones = this._devoluciones.ToArray();
+
+                MessageBox.Show("Se ha insertado correctamente");
+                dtpFecha.Enabled = false;
+                txtDescripcion.Enabled = false;
+                txtID.Enabled = false;
+                dgvProductos.Enabled = false;
+                btEditarGuardar.Enabled = false;
+                btEditarGuardar.BackColor = Color.Gray;
+
+                if (this._reclamo.atendido == false)
+                {
+                    btAtender.Enabled = true;
+                    btAnular.Enabled = true;
+                }
+                else
+                {
+                    btAtender.Enabled = false;
+                    btAtender.Text = "Atendido";
+                    btAnular.Enabled = false;
+                }
                 establecerComponentes();
             }
             else
@@ -168,14 +230,14 @@ namespace QingYunSoft.Venta
 
         private void dgvProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (this._estado == Estado.Nuevo)
+            if (dgvProductos.Rows[e.RowIndex].DataBoundItem is VentasWS.pedido)
             {
                 VentasWS.pedido pedido = (VentasWS.pedido)dgvProductos.Rows[e.RowIndex].DataBoundItem;
                 dgvProductos.Rows[e.RowIndex].Cells[0].Value = pedido.producto.idProducto;
                 dgvProductos.Rows[e.RowIndex].Cells[1].Value = pedido.producto.nombre;
                 dgvProductos.Rows[e.RowIndex].Cells[2].Value = pedido.cantidad;
                 dgvProductos.Rows[e.RowIndex].Cells[3].Value = pedido.cantidad * pedido.producto.precio * (1 - pedido.descuento / 100);
-                dgvProductos.Rows[e.RowIndex].Cells[4].Value = false;
+                dgvProductos.Rows[e.RowIndex].Cells[4].Value = this._devueltos[e.RowIndex];
             }
             else
             {
@@ -189,6 +251,14 @@ namespace QingYunSoft.Venta
 
         }
 
+        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4 && this._estado == Estado.Nuevo)
+            {
 
+                this._devueltos[e.RowIndex] = !this._devueltos[e.RowIndex];
+                dgvProductos.Refresh();
+            }
+        }
     }
 }

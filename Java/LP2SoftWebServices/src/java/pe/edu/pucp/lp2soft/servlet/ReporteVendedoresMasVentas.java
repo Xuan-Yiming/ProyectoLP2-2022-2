@@ -2,7 +2,6 @@
 package pe.edu.pucp.lp2soft.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.util.HashMap;
 import javax.servlet.ServletException;

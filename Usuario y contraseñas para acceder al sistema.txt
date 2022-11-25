@@ -1,0 +1,11 @@
+Tipo Administrador
+usuario: 	omarpal12
+contraseña: passwordomar
+
+Tipo Supervisor de Almacen
+usuario: 	jaquino18
+contraseña: passwordjoel
+
+Tipo Vendedor
+usuario:	omaruiz2000
+contraseña: passwordomar

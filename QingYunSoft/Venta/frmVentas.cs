@@ -51,7 +51,7 @@ namespace QingYunSoft
             frmBuscarVenta _frmBuscarVenta = new frmBuscarVenta();
             if (_frmBuscarVenta.ShowDialog() == DialogResult.OK)
             {
-                //_frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoVenta(_frmPrincipal, Estado.Resultado, _frmBuscarVenta.OrdenDeCompraSeleccionado, this._usuario));
+                _frmPrincipal.mostrarFormularioEnPnlPrincipal(new frmInfoVenta(_frmPrincipal, Estado.Resultado, _frmBuscarVenta.OrdenDeCompraSeleccionado, this._usuario));
             }
         }
         private void dgvVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -75,7 +75,7 @@ namespace QingYunSoft
 
         private void btReporteVEntasPorPeriodo_Click(object sender, EventArgs e)
         {
-            frmElegirFecha _frmElegirFecha = new frmElegirFecha();
+            frmElegirFecha _frmElegirFecha = new frmElegirFecha(1);
             _frmElegirFecha.Show();
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QingYunSoft.Venta;
+using System;
 using System.Windows.Forms;
 
 namespace QingYunSoft.Usuario
@@ -52,7 +53,7 @@ namespace QingYunSoft.Usuario
             dgvEmpleados.Rows[e.RowIndex].Cells["nombre"].Value = empleado.nombre + " " + empleado.apellido;
             dgvEmpleados.Rows[e.RowIndex].Cells["tipoDocumento"].Value = empleado.tipoDeDocumento.ToString();
             dgvEmpleados.Rows[e.RowIndex].Cells["nmrDocumento"].Value = empleado.numDeDocumento;
-            dgvEmpleados.Rows[e.RowIndex].Cells["fechaIngreso"].Value = empleado.fechaIngreso;
+            dgvEmpleados.Rows[e.RowIndex].Cells["fechaIngreso"].Value = empleado.fechaIngreso.ToString("dd/MM/yyyy");
             if (empleado is RRHHWS.administrador)
             {
                 dgvEmpleados.Rows[e.RowIndex].Cells["cargo"].Value = "Administrador";
@@ -81,9 +82,8 @@ namespace QingYunSoft.Usuario
 
         private void btReporteMejoresVendedores_Click(object sender, EventArgs e)
         {
-            daoReportes = new ReportesWS.ReporteWSClient();
-            frmReporteViewer _frmReporteViewer = new frmReporteViewer(daoReportes.generarReporteVendedoresMasVentas());
-            _frmReporteViewer.Show();
+            frmElegirFecha _frmElegirFecha = new frmElegirFecha(3);
+            _frmElegirFecha.Show();
         }
     }
 }

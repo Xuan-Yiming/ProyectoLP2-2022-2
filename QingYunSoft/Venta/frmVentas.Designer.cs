@@ -86,6 +86,7 @@
             this.panel12.Padding = new System.Windows.Forms.Padding(7, 13, 27, 13);
             this.panel12.Size = new System.Drawing.Size(107, 129);
             this.panel12.TabIndex = 4;
+            this.panel12.Visible = false;
             // 
             // btReporteReclamos
             // 
